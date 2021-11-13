@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09A30C126F850DB0950266E1 /* Pods_lostfilm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BBB12FA0032CC6726267C5F /* Pods_lostfilm.framework */; };
+		F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A82274051F8004B81EF /* TVSeriesController.swift */; };
+		F74E3A862740579F004B81EF /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A852740579F004B81EF /* NewsController.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */; };
 		F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */; };
@@ -20,6 +22,8 @@
 		3BBB12FA0032CC6726267C5F /* Pods_lostfilm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lostfilm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4D4B45EEE09A9874051CB0 /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D1F890FFE45D1767EFFAFC18 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
+		F74E3A82274051F8004B81EF /* TVSeriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesController.swift; sourceTree = "<group>"; };
+		F74E3A852740579F004B81EF /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -61,6 +65,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F74E3A81274051AA004B81EF /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */,
+				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		F7AEE460273FEB7900C304D0 = {
 			isa = PBXGroup;
 			children = (
@@ -82,9 +95,8 @@
 		F7AEE46B273FEB7900C304D0 /* lostfilm */ = {
 			isa = PBXGroup;
 			children = (
+				F74E3A81274051AA004B81EF /* Delegates */,
 				F7AEE480273FF2C600C304D0 /* Controllers */,
-				F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */,
-				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
 				F7AEE475273FEB7A00C304D0 /* Assets.xcassets */,
 				F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */,
 				F7AEE47A273FEB7A00C304D0 /* Info.plist */,
@@ -97,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
+				F74E3A82274051F8004B81EF /* TVSeriesController.swift */,
+				F74E3A852740579F004B81EF /* NewsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,8 +213,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
+				F74E3A862740579F004B81EF /* NewsController.swift in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

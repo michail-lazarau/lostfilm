@@ -6,8 +6,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let tabBarRootVC = TabBarRootController()
+        
         let window = UIWindow(frame: UIScreen.main.bounds); //TO-DO: no difference with UIWindow() ?
-        window.rootViewController = TabBarRootController()
+        window.rootViewController = tabBarRootVC
         window.makeKeyAndVisible()
         return true
     }
