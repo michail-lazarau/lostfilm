@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   GetNewsDetailsContext.plist
+   Lostfilm
+
+   Created by Denis Vashkovski on 02.02.2020.
+   Copyright (c) 2020 VandV. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        
+        <key>url</key>
+        <string>https://www.lostfilm.tv/news/%@/</string>
+        <key>data</key>
+        <array>
+            <dict>
+                
+                <key>xPathRoot</key>
+                <string>//div[@id=&apos;left-pane&apos;]/div/div[@class=&apos;padding news_text_block&apos;]</string>
+                <key>className</key>
+                <string>LFNewsModel</string>
+                <key>fields</key>
+                <array>
+                    
+                    <dict>
+                        <key>name</key>
+                        <string>content</string>
+                        <key>result</key>
+                        <array>
+                            <dict>
+                                <key>data</key>
+                                <dict>
+                                    <key>xPathRoot</key>
+                                    <string>//./div/text()[normalize-space()][not(ancestor::div[@class=&apos;video-block video_block&apos;])] | //./a | //./div[@class=&apos;video-block video_block&apos;] | //./div[@class=&apos;photo-slider photos_block&apos;]</string>
+                                    <key>className</key>
+                                    <string>LFContentModel</string>
+                                    <key>fields</key>
+                                    <array>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>type</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./p</string>
+                                                    <key>value</key>
+                                                    <string>text</string>
+                                                </dict>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./a</string>
+                                                    <key>attribute</key>
+                                                    <string>href</string>
+                                                    <key>value</key>
+                                                    <string>link</string>
+                                                </dict>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./div[@class=&apos;photo&apos;]/img</string>
+                                                    <key>attribute</key>
+                                                    <string>data-id</string>
+                                                    <key>value</key>
+                                                    <string>photos</string>
+                                                </dict>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./div[@class=&apos;play-btn&apos;]</string>
+                                                    <key>attribute</key>
+                                                    <string>data-src</string>
+                                                    <key>value</key>
+                                                    <string>video</string>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>text</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./p</string>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>title</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./a | //./div[@class=&apos;bottom-pane&apos;]/div[@class=&apos;title&apos;]</string>
+                                                    <key>textType</key>
+                                                    <string>all</string>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>details</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./div[@class=&apos;bottom-pane&apos;]/div[@class=&apos;description&apos;]</string>
+                                                    <key>textType</key>
+                                                    <string>all</string>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>url</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./a</string>
+                                                    <key>attribute</key>
+                                                    <string>href</string>
+                                                    <key>formats</key>
+                                                    <array>
+                                                        <dict>
+                                                            <key>conditions</key>
+                                                            <array>
+                                                                <dict>
+                                                                    <key>regex</key>
+                                                                    <string>^http</string>
+                                                                    <key>negative</key>
+                                                                    <true/>
+                                                                </dict>
+                                                            </array>
+                                                            <key>format</key>
+                                                            <string>https://www.lostfilm.tv%@</string>
+                                                        </dict>
+                                                    </array>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>previewURL</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./img</string>
+                                                    <key>attribute</key>
+                                                    <string>src</string>
+                                                    <key>formats</key>
+                                                    <array>
+                                                        <dict>
+                                                            <key>conditions</key>
+                                                            <array>
+                                                                <dict>
+                                                                    <key>regex</key>
+                                                                    <string>^http</string>
+                                                                    <key>negative</key>
+                                                                    <true/>
+                                                                </dict>
+                                                            </array>
+                                                            <key>format</key>
+                                                            <string>http:%@</string>
+                                                        </dict>
+                                                    </array>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>urls</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>data</key>
+                                                    <dict>
+                                                        <key>xPathRoot</key>
+                                                        <string>//./div[@class=&apos;photo&apos;] | //./div[@class=&apos;photo hide&apos;]</string>
+                                                        <key>className</key>
+                                                        <string>LFPhotoListContentItemModel</string>
+                                                        <key>fields</key>
+                                                        <array>
+
+                                                            <dict>
+                                                                <key>name</key>
+                                                                <string>url</string>
+                                                                <key>result</key>
+                                                                <array>
+                                                                    <dict>
+                                                                        <key>xPath</key>
+                                                                        <string>//img</string>
+                                                                        <key>attribute</key>
+                                                                        <string>src</string>
+                                                                        <key>formats</key>
+                                                                        <array>
+                                                                            <dict>
+                                                                                <key>conditions</key>
+                                                                                <array>
+                                                                                    <dict>
+                                                                                        <key>regex</key>
+                                                                                        <string>^http</string>
+                                                                                        <key>negative</key>
+                                                                                        <true/>
+                                                                                    </dict>
+                                                                                </array>
+                                                                                <key>format</key>
+                                                                                <string>http:%@</string>
+                                                                            </dict>
+                                                                        </array>
+                                                                    </dict>
+                                                                </array>
+                                                            </dict>
+                                                            
+                                                        </array>
+                                                    </dict>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                        <dict>
+                                            <key>name</key>
+                                            <string>videoURL</string>
+                                            <key>result</key>
+                                            <array>
+                                                <dict>
+                                                    <key>xPath</key>
+                                                    <string>//./div[@class=&apos;play-btn&apos;]</string>
+                                                    <key>attribute</key>
+                                                    <string>data-src</string>
+                                                </dict>
+                                            </array>
+                                        </dict>
+                                        
+                                    </array>
+                                </dict>
+                            </dict>
+                        </array>
+                    </dict>
+
+                </array>
+                    
+            </dict>
+        </array>
+        
+    </dict>
+</plist>

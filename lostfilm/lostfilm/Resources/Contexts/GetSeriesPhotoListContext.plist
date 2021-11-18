@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   GetSeriesPhotoListContext.plist
+   Lostfilm
+
+   Created by Denis Vashkovski on 19.01.2020.
+   Copyright (c) 2020 VandV. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>url</key>
+        <string>https://www.lostfilm.tv/series/%@/photos/page_%@</string>
+        <key>data</key>
+        <array>
+            <dict>
+                <key>xPathRoot</key>
+                <string>//div[@id=&apos;gallery_main&apos;]/a</string>
+                <key>className</key>
+                <string>LFPhotoModel</string>
+                <key>fields</key>
+                <array>
+                    <dict>
+                        <key>name</key>
+                        <string>id</string>
+                        <key>result</key>
+                        <array>
+                            <dict>
+                                <key>xPath</key>
+                                <string>//img</string>
+                                <key>attribute</key>
+                                <string>data-id</string>
+                            </dict>
+                        </array>
+                    </dict>
+                    <dict>
+                        <key>name</key>
+                        <string>url</string>
+                        <key>result</key>
+                        <array>
+                            <dict>
+                                <key>xPath</key>
+                                <string>//img</string>
+                                <key>attribute</key>
+                                <string>src</string>
+                                <key>formats</key>
+                                <array>
+                                    <dict>
+                                        <key>conditions</key>
+                                        <array>
+                                            <dict>
+                                                <key>regex</key>
+                                                <string>^http</string>
+                                                <key>negative</key>
+                                                <true/>
+                                            </dict>
+                                        </array>
+                                        <key>format</key>
+                                        <string>http:%@</string>
+                                    </dict>
+                                </array>
+                            </dict>
+                        </array>
+                    </dict>
+                    <dict>
+                        <key>name</key>
+                        <string>title</string>
+                        <key>result</key>
+                        <array>
+                            <dict>
+                                <key>xPath</key>
+                                <string>//img</string>
+                                <key>attribute</key>
+                                <string>data-description</string>
+                            </dict>
+                        </array>
+                    </dict>
+                </array>
+            </dict>
+        </array>
+    </dict>
+</plist>
