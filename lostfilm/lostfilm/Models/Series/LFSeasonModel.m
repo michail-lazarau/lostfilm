@@ -20,6 +20,13 @@ AC_EXTERN_STRING_M_V(LFSeasonModelEpisodeListKey, @"episodeList")
 
 AC_EXTERN_STRING_M_V(LFSeasonModelDateFormat, @"yyyy")
 
+
+@interface NSDate (AppCore)
+
+-(NSString *)ac_stringWithFormat:(NSString *)format;
+
+@end
+
 @implementation LFSeasonModel
 
 - (instancetype)initWithData:(NSDictionary *)data {

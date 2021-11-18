@@ -28,6 +28,12 @@ AC_EXTERN_STRING_M_V(LFSeriesModelSeriesDescriptionKey, @"seriesDescription")
 AC_EXTERN_STRING_M_V(LFSeriesModelShortDateFormat, @"yyyy")
 AC_EXTERN_STRING_M_V(LFSeriesModelSFullDateFormat, @"dd MMMM yyyy")
 
+@interface NSDate (AppCore) // required for making method "ac_stringWithFormat" exposed for the class
+
+-(NSString *)ac_stringWithFormat:(NSString *)format;
+
+@end
+
 @implementation LFSeriesModel
 
 - (instancetype)initWithData:(NSDictionary *)data andId:(NSString *)id {

@@ -9,6 +9,7 @@
 #import "LFApiVideos.h"
 
 #import <DVHtmlToModels/DVHtmlToModels.h>
+#import "NSError+LF.h" // for exposing "lf_errorDefault" method to the class
 
 @implementation LFApiVideos
 

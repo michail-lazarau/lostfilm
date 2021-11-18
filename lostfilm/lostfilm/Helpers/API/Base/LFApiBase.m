@@ -7,6 +7,7 @@
 //
 
 #import "LFApiBase+Protected.h"
+#import "NSString+AppCore.h"
 
 @interface LFApiBase()
 @property (nonatomic, strong) LFApiBase *rootParent;
