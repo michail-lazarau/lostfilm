@@ -11,8 +11,9 @@
 #import "LFApiBase+Protected.h"
 
 #import <DVHtmlToModels/DVHtmlToModels.h>
-
+#import "NSURLRequest+AppCore.h" // MARK: fixing "No known class method for selector 'ac_requestPostForRootLinkByHref:parameters:headerFields:'" issie
 #import "NSError+LF.h" // MARK: for exposing "lf_errorDefault" method to the class
+#import "NSDictionary+LF.h" // MARK: fixing "No visible @interface for 'NSDictionary' declares the selector 'lf_itemsForKeyWhichAsNameOfItemClass:'" issue
 
 static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
 

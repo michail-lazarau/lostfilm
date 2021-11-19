@@ -10,11 +10,12 @@
 #import "LFApiBase+Protected.h"
 #import "NSURLRequest+AppCore.h" // MARK: required for typedef ACURLCompletionHadler
 
-@interface NSURLRequest (AppCore) // MARK: required for making method "ac_sendAsynchronousWithCompletionHandler" exposed for the class
-
-- (void)ac_sendAsynchronousWithCompletionHandler:(ACURLCompletionHadler)handler;
-
-@end
+// MARK: commented exposed interface NSDate (AppCore) was substituted with #import "NSURLRequest+AppCore.h"
+//@interface NSURLRequest (AppCore) // MARK: required for making method "ac_sendAsynchronousWithCompletionHandler" exposed for the class
+//
+//- (void)ac_sendAsynchronousWithCompletionHandler:(ACURLCompletionHadler)handler;
+//
+//@end
 
 @implementation LFApiHelper
 

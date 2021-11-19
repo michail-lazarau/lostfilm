@@ -7,6 +7,7 @@
 //
 
 #import "LFSeasonModel.h"
+#import "NSDate+AppCore.h"
 
 AC_EXTERN_STRING_M_V(LFSeasonModelIdKey, @"id")
 AC_EXTERN_STRING_M_V(LFSeasonModelNumberKey, @"number")
@@ -20,12 +21,12 @@ AC_EXTERN_STRING_M_V(LFSeasonModelEpisodeListKey, @"episodeList")
 
 AC_EXTERN_STRING_M_V(LFSeasonModelDateFormat, @"yyyy")
 
-
-@interface NSDate (AppCore) // MARK: required for making method "ac_stringWithFormat" exposed for the class
-
--(NSString *)ac_stringWithFormat:(NSString *)format;
-
-@end
+// MARK: commented exposed interface NSDate (AppCore) was substituted with #import "NSDate+AppCore.h"
+//@interface NSDate (AppCore) // MARK: required for making method "ac_stringWithFormat" exposed for the class
+//
+//-(NSString *)ac_stringWithFormat:(NSString *)format;
+//
+//@end
 
 @implementation LFSeasonModel
 

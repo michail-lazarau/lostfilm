@@ -7,6 +7,7 @@
 //
 
 #import "LFSeriesModel.h"
+#import "NSDate+AppCore.h"
 
 AC_EXTERN_STRING_M_V(LFSeriesModelIdKey, @"alias")
 AC_EXTERN_STRING_M_V(LFSeriesModelNameRuKey, @"title")
@@ -28,11 +29,12 @@ AC_EXTERN_STRING_M_V(LFSeriesModelSeriesDescriptionKey, @"seriesDescription")
 AC_EXTERN_STRING_M_V(LFSeriesModelShortDateFormat, @"yyyy")
 AC_EXTERN_STRING_M_V(LFSeriesModelSFullDateFormat, @"dd MMMM yyyy")
 
-@interface NSDate (AppCore) // MARK: required for making method "ac_stringWithFormat" exposed for the class
-
--(NSString *)ac_stringWithFormat:(NSString *)format;
-
-@end
+// MARK: commented exposed interface NSDate (AppCore) was substituted with #import "NSDate+AppCore.h"
+//@interface NSDate (AppCore) // MARK: required for making method "ac_stringWithFormat" exposed for the class. Error "No visible @interface for 'NSDate' declares the selector 'ac_stringWithFormat:'"
+//
+//-(NSString *)ac_stringWithFormat:(NSString *)format;
+//
+//@end
 
 @implementation LFSeriesModel
 

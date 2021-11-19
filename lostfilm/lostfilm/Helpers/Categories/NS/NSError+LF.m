@@ -7,6 +7,8 @@
 //
 
 #import "NSError+LF.h"
+#import "NSObject+AppCore.h" // MARK: fixing "Expected identifier" issue
+#import "ACLocalizationHelper.h" // MARK: fixing "Implicit declaration of function 'ACStringByKey' is invalid in C99" issue
 
 AC_EXTERN_STRING_M_V(LF_ERROR_DOMAIN, @"com.vandv.Lostfilm")
 

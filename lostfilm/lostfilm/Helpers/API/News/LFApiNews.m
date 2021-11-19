@@ -7,7 +7,7 @@
 //
 
 #import "LFApiNews.h"
-
+#import "NSError+LF.h" // MARK: fixing "No known class method for selector 'lf_errorDefault'" issue
 #import <DVHtmlToModels/DVHtmlToModels.h>
 
 @implementation LFApiNews
