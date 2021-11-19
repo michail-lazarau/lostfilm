@@ -50,6 +50,7 @@
 		F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */; };
 		F7AEE479273FEB7A00C304D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */; };
 		F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE481273FF32400C304D0 /* TabBarRootController.swift */; };
+		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,8 @@
 		F7AEE478273FEB7A00C304D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7AEE47A273FEB7A00C304D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7AEE481273FF32400C304D0 /* TabBarRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRootController.swift; sourceTree = "<group>"; };
+		F7EF678C2747DB3500A2A8DD /* NSError+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LF.h"; sourceTree = "<group>"; };
+		F7EF678D2747DB3600A2A8DD /* NSError+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LF.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,7 @@
 		F711A4502745A87000E1515D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F7EF678F2747DB4B00A2A8DD /* Categories */,
 				F711A4AC2745A94E00E1515D /* API */,
 			);
 			path = Helpers;
@@ -387,6 +391,23 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		F7EF678B2747DB0F00A2A8DD /* NS */ = {
+			isa = PBXGroup;
+			children = (
+				F7EF678C2747DB3500A2A8DD /* NSError+LF.h */,
+				F7EF678D2747DB3600A2A8DD /* NSError+LF.m */,
+			);
+			path = NS;
+			sourceTree = "<group>";
+		};
+		F7EF678F2747DB4B00A2A8DD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F7EF678B2747DB0F00A2A8DD /* NS */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -534,6 +555,7 @@
 				F74E3A862740579F004B81EF /* NewsController.swift in Sources */,
 				F79C97332746CCA3001BD5F8 /* LFContentItemModel.m in Sources */,
 				F79C97352746CCA3001BD5F8 /* LFLinkContentItemModel.m in Sources */,
+				F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */,
 				F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */,
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,

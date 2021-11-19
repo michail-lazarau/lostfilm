@@ -12,7 +12,7 @@
 
 #import <DVHtmlToModels/DVHtmlToModels.h>
 
-#import "NSError+LF.h" // for exposing "lf_errorDefault" method to the class
+#import "NSError+LF.h" // MARK: for exposing "lf_errorDefault" method to the class
 
 static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
 

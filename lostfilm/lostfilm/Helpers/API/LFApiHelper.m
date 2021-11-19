@@ -8,9 +8,9 @@
 
 #import "LFApiHelper.h"
 #import "LFApiBase+Protected.h"
-#import "NSURLRequest+AppCore.h" // required for typedef ACURLCompletionHadler
+#import "NSURLRequest+AppCore.h" // MARK: required for typedef ACURLCompletionHadler
 
-@interface NSURLRequest (AppCore) // required for making method "ac_sendAsynchronousWithCompletionHandler" exposed for the class
+@interface NSURLRequest (AppCore) // MARK: required for making method "ac_sendAsynchronousWithCompletionHandler" exposed for the class
 
 - (void)ac_sendAsynchronousWithCompletionHandler:(ACURLCompletionHadler)handler;
 

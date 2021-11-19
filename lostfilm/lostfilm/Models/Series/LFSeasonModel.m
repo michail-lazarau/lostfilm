@@ -21,7 +21,7 @@ AC_EXTERN_STRING_M_V(LFSeasonModelEpisodeListKey, @"episodeList")
 AC_EXTERN_STRING_M_V(LFSeasonModelDateFormat, @"yyyy")
 
 
-@interface NSDate (AppCore) // required for making method "ac_stringWithFormat" exposed for the class
+@interface NSDate (AppCore) // MARK: required for making method "ac_stringWithFormat" exposed for the class
 
 -(NSString *)ac_stringWithFormat:(NSString *)format;
 
