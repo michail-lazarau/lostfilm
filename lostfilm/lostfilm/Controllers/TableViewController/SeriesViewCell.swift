@@ -2,16 +2,40 @@ import UIKit
 
 class SeriesViewCell: UITableViewCell {
     
-    required init(dataModel: LFSeriesModel) {
-        super.init(style: .default, reuseIdentifier: String(describing: type(of: self)))
-        setupCellStackView(dataModel: dataModel)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        // reuseIdentifier: String(describing: type(of: self)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    let cellStackView: UIStackView = {
+    private let title: UILabel = {
+        let title = UILabel()
+        title.font = UIFont(name: "System", size: 12.0)
+        title.textColor = UIColor(red: 32/255, green: 32/255, blue: 32/255, alpha: 1.0)
+        title.numberOfLines = 2
+        return title
+    }()
+    
+    private let subtitle: UILabel = {
+        let subtitle = UILabel()
+        subtitle.font = UIFont(name: "System", size: 10.0)
+        subtitle.textColor = UIColor(red: 157/255, green: 157/255, blue: 160/255, alpha: 1.0)
+        subtitle.numberOfLines = 2
+        return subtitle
+    }()
+    
+    private let details: UILabel = {
+        let details = UILabel()
+        details.font = UIFont(name: "System", size: 11.0)
+        details.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
+        details.numberOfLines = 0
+        return details
+    }()
+    
+    private var cellStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
@@ -20,18 +44,26 @@ class SeriesViewCell: UITableViewCell {
         return stackView
     }()
     
-    var labelStackView: UIStackView = {
+    private let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .leading
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         return stackView
     }()
     
-    private func setupCellStackView(dataModel: LFSeriesModel) {
+    func configureWith(dataModel: LFSeriesModel) {
         imageView?.image = try? UIImage(data: Data(contentsOf: dataModel.photoUrl))
+        title.text = dataModel.nameRu
+        subtitle.text = dataModel.nameEn
+        details.text = dataModel.details
+    }
+    
+    private func setupCellStackView() {
+//        imageView?.image = try? UIImage(data: Data(contentsOf: dataModel.photoUrl))
         imageView?.contentMode = .scaleAspectFill
         imageView?.translatesAutoresizingMaskIntoConstraints = false
         if let imageView = self.imageView {
@@ -39,28 +71,28 @@ class SeriesViewCell: UITableViewCell {
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 3.0/5.0).isActive = true
         }
         
-        setupLabelStackView(dataModel: dataModel)
+        setupLabelStackView()
         cellStackView.addArrangedSubview(labelStackView)
         addSubview(cellStackView)
     }
     
-    private func setupLabelStackView(dataModel: LFSeriesModel) {
-        let title = UILabel()
-        let subtitle = UILabel()
-        let details = UILabel()
+    private func setupLabelStackView() {
+//        let title = UILabel()
+//        let subtitle = UILabel()
+//        let details = UILabel()
         
-        title.font = UIFont(name: "System", size: 12.0)
-        title.textColor = UIColor(red: 32/255, green: 32/255, blue: 32/255, alpha: 1.0)
-        title.numberOfLines = 2
-        title.text = dataModel.nameRu
-        subtitle.font = UIFont(name: "System", size: 10.0)
-        subtitle.textColor = UIColor(red: 157/255, green: 157/255, blue: 160/255, alpha: 1.0)
-        subtitle.numberOfLines = 2
-        subtitle.text = dataModel.nameEn
-        details.font = UIFont(name: "System", size: 11.0)
-        details.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
-        details.numberOfLines = 0
-        details.text = dataModel.details
+//        title.font = UIFont(name: "System", size: 12.0)
+//        title.textColor = UIColor(red: 32/255, green: 32/255, blue: 32/255, alpha: 1.0)
+//        title.numberOfLines = 2
+//        title.text = dataModel.nameRu
+//        subtitle.font = UIFont(name: "System", size: 10.0)
+//        subtitle.textColor = UIColor(red: 157/255, green: 157/255, blue: 160/255, alpha: 1.0)
+//        subtitle.numberOfLines = 2
+//        subtitle.text = dataModel.nameEn
+//        details.font = UIFont(name: "System", size: 11.0)
+//        details.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
+//        details.numberOfLines = 0
+//        details.text = dataModel.details
         
         labelStackView.addArrangedSubview(title)
         labelStackView.addArrangedSubview(subtitle)
@@ -80,5 +112,4 @@ class SeriesViewCell: UITableViewCell {
     }
 
 }
-
 // https://stackoverflow.com/questions/56372172/how-to-create-custom-uitableviewcell-with-dynamic-number-of-labels
