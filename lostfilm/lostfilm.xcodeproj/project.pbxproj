@@ -26,8 +26,11 @@
 		F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B32745A94E00E1515D /* LFApiVideos.m */; };
 		F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B72745A94E00E1515D /* LFApiNews.m */; };
 		F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4BB2745A94E00E1515D /* LFApiBase.m */; };
+		F73CEF5727494FD40011AE04 /* SeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */; };
 		F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A82274051F8004B81EF /* TVSeriesController.swift */; };
 		F74E3A862740579F004B81EF /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A852740579F004B81EF /* NewsController.swift */; };
+		F7511810274FCC8400A0E6B7 /* TestingSeriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */; };
+		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97062746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m */; };
 		F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97092746CCA3001BD5F8 /* LFSeriesFilterModel.m */; };
@@ -50,6 +53,8 @@
 		F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */; };
 		F7AEE479273FEB7A00C304D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */; };
 		F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE481273FF32400C304D0 /* TabBarRootController.swift */; };
+		F7B2DB90274A82250099CF29 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB8F274A82250099CF29 /* DataController.swift */; };
+		F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */; };
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
 		F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */; };
 /* End PBXBuildFile section */
@@ -83,8 +88,11 @@
 		F711A4B92745A94E00E1515D /* LFApiBase+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LFApiBase+Protected.h"; sourceTree = "<group>"; };
 		F711A4BA2745A94E00E1515D /* LFApiBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFApiBase.h; sourceTree = "<group>"; };
 		F711A4BB2745A94E00E1515D /* LFApiBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFApiBase.m; sourceTree = "<group>"; };
+		F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewController.swift; sourceTree = "<group>"; };
 		F74E3A82274051F8004B81EF /* TVSeriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesController.swift; sourceTree = "<group>"; };
 		F74E3A852740579F004B81EF /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
+		F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestingSeriesViewCell.xib; sourceTree = "<group>"; };
+		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -129,6 +137,8 @@
 		F7AEE478273FEB7A00C304D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7AEE47A273FEB7A00C304D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7AEE481273FF32400C304D0 /* TabBarRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRootController.swift; sourceTree = "<group>"; };
+		F7B2DB8F274A82250099CF29 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFApplicationHelper.swift; sourceTree = "<group>"; };
 		F7EF678C2747DB3500A2A8DD /* NSError+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LF.h"; sourceTree = "<group>"; };
 		F7EF678D2747DB3600A2A8DD /* NSError+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LF.m"; sourceTree = "<group>"; };
 		F7EF67902747E41F00A2A8DD /* NSDictionary+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LF.h"; sourceTree = "<group>"; };
@@ -195,6 +205,7 @@
 		F711A4502745A87000E1515D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F7B2DB91274AA29B0099CF29 /* Application */,
 				F7EF678F2747DB4B00A2A8DD /* Categories */,
 				F711A4AC2745A94E00E1515D /* API */,
 			);
@@ -258,6 +269,16 @@
 				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		F7551D27274D886E00E1748E /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */,
+				F7551D28274D88CF00E1748E /* SeriesViewCell.swift */,
+				F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */,
+			);
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
 		F79C97012746CCA3001BD5F8 /* Models */ = {
@@ -387,11 +408,29 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F7551D27274D886E00E1748E /* TableViewController */,
+				F7B2DB8E274A81E30099CF29 /* DataControllers */,
 				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
 				F74E3A82274051F8004B81EF /* TVSeriesController.swift */,
 				F74E3A852740579F004B81EF /* NewsController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F7B2DB8E274A81E30099CF29 /* DataControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7B2DB8F274A82250099CF29 /* DataController.swift */,
+			);
+			path = DataControllers;
+			sourceTree = "<group>";
+		};
+		F7B2DB91274AA29B0099CF29 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
@@ -488,6 +527,7 @@
 				F711A44F2745A84A00E1515D /* GetVideoListContext.plist in Resources */,
 				F711A4492745A84A00E1515D /* GetNewEpisodeListContext.plist in Resources */,
 				F711A44B2745A84A00E1515D /* GetNewsDetailsContext.plist in Resources */,
+				F7511810274FCC8400A0E6B7 /* TestingSeriesViewCell.xib in Resources */,
 				F711A44A2745A84A00E1515D /* GetSeriesCastContext.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +591,7 @@
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
+				F73CEF5727494FD40011AE04 /* SeriesTableViewController.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
 				F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */,
@@ -565,6 +606,9 @@
 				F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */,
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,
+				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
+				F7B2DB90274A82250099CF29 /* DataController.swift in Sources */,
+				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
 				F79C97312746CCA3001BD5F8 /* LFAttributedTextContentItemModel.m in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,

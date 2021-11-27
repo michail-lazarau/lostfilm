@@ -11,7 +11,6 @@ class TabBarRootController: UITabBarController {
         
         tvSeriesVC.tabBarItem = UITabBarItem(title: "TV Series", image: UIImage(named: "icon_series_list"), tag: 0)
         newsVC.tabBarItem = UITabBarItem(title: "News", image: UIImage(named: "icon_news"), tag: 1)
-
-        viewControllers = [tvSeriesVC, newsVC]
+        viewControllers = [UINavigationController(rootViewController: tvSeriesVC), newsVC]
     }
 }
