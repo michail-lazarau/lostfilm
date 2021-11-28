@@ -55,6 +55,7 @@
 		F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE481273FF32400C304D0 /* TabBarRootController.swift */; };
 		F7B2DB90274A82250099CF29 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB8F274A82250099CF29 /* DataController.swift */; };
 		F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */; };
+		F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C4EE822753E222006B5961 /* NSURLRequest+LF.m */; };
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
 		F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */; };
 /* End PBXBuildFile section */
@@ -139,6 +140,9 @@
 		F7AEE481273FF32400C304D0 /* TabBarRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRootController.swift; sourceTree = "<group>"; };
 		F7B2DB8F274A82250099CF29 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFApplicationHelper.swift; sourceTree = "<group>"; };
+		F7C4EE822753E222006B5961 /* NSURLRequest+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+LF.m"; sourceTree = "<group>"; };
+		F7C4EE832753E222006B5961 /* NSURLRequest+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+LF.h"; sourceTree = "<group>"; };
+		F7C4EE862753E559006B5961 /* LFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFConstants.h; sourceTree = "<group>"; };
 		F7EF678C2747DB3500A2A8DD /* NSError+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LF.h"; sourceTree = "<group>"; };
 		F7EF678D2747DB3600A2A8DD /* NSError+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LF.m"; sourceTree = "<group>"; };
 		F7EF67902747E41F00A2A8DD /* NSDictionary+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LF.h"; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 		F7AEE46B273FEB7900C304D0 /* lostfilm */ = {
 			isa = PBXGroup;
 			children = (
+				F7C4EE852753E539006B5961 /* Other */,
 				F79C97012746CCA3001BD5F8 /* Models */,
 				F711A4502745A87000E1515D /* Helpers */,
 				F711A41A2745A74300E1515D /* Resources */,
@@ -433,9 +438,19 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		F7C4EE852753E539006B5961 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				F7C4EE862753E559006B5961 /* LFConstants.h */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
 			isa = PBXGroup;
 			children = (
+				F7C4EE832753E222006B5961 /* NSURLRequest+LF.h */,
+				F7C4EE822753E222006B5961 /* NSURLRequest+LF.m */,
 				F7EF67902747E41F00A2A8DD /* NSDictionary+LF.h */,
 				F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */,
 				F7EF678C2747DB3500A2A8DD /* NSError+LF.h */,
@@ -609,6 +624,7 @@
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
 				F7B2DB90274A82250099CF29 /* DataController.swift in Sources */,
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
+				F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */,
 				F79C97312746CCA3001BD5F8 /* LFAttributedTextContentItemModel.m in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
