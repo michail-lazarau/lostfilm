@@ -1,14 +1,19 @@
 import UIKit
 
-class SeriesTableViewController: UITableViewController {
+class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     init(style: UITableView.Style, dataController: DataController) {
         super.init(style: style)
         dataSource = dataController
+        dataSource?.delegate = self
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         dataSource = nil
+    }
+
+    func didLoad() {
+        tableView.reloadData()
     }
 
     private let cellIdentifier = String(describing: type(of: SeriesViewCell.self))
@@ -20,7 +25,7 @@ class SeriesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+
         dataSource?.getNextItemList()
         setupTableViewController()
     }
@@ -34,15 +39,15 @@ class SeriesTableViewController: UITableViewController {
     }
 
     // MARK: - Table view delegate
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 175
     }
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

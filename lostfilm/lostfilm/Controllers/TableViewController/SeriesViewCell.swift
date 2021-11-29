@@ -112,4 +112,5 @@ class SeriesViewCell: UITableViewCell {
     }
 
 }
+
 // https://stackoverflow.com/questions/56372172/how-to-create-custom-uitableviewcell-with-dynamic-number-of-labels
