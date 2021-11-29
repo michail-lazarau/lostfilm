@@ -4,16 +4,23 @@ class SeriesViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // reuseIdentifier: String(describing: type(of: self)
+        contentView.clipsToBounds = true
+        setupCellStackView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    private let serialView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     private let title: UILabel = {
         let title = UILabel()
-        title.font = UIFont(name: "System", size: 12.0)
+        title.font = UIFont.systemFont(ofSize: 12.0)
         title.textColor = UIColor(red: 32/255, green: 32/255, blue: 32/255, alpha: 1.0)
         title.numberOfLines = 2
         return title
@@ -21,7 +28,7 @@ class SeriesViewCell: UITableViewCell {
     
     private let subtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.font = UIFont(name: "System", size: 10.0)
+        subtitle.font = UIFont.systemFont(ofSize: 10.0)
         subtitle.textColor = UIColor(red: 157/255, green: 157/255, blue: 160/255, alpha: 1.0)
         subtitle.numberOfLines = 2
         return subtitle
@@ -29,9 +36,13 @@ class SeriesViewCell: UITableViewCell {
     
     private let details: UILabel = {
         let details = UILabel()
-        details.font = UIFont(name: "System", size: 11.0)
+        details.font = UIFont.systemFont(ofSize: 11.0)
         details.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
         details.numberOfLines = 0
+        details.lineBreakMode = .byTruncatingTail
+//        details.sizeToFit()
+//        details.preferredMaxLayoutWidth
+//        details.translatesAutoresizingMaskIntoConstraints = false
         return details
     }()
     
@@ -39,7 +50,7 @@ class SeriesViewCell: UITableViewCell {
        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
-//        stackView.spacing = 12
+        stackView.spacing = 12
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -50,39 +61,33 @@ class SeriesViewCell: UITableViewCell {
         stackView.distribution = .fill
         stackView.alignment = .leading
         stackView.spacing = 0
+        stackView.clipsToBounds = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
     }()
     
     func configureWith(dataModel: LFSeriesModel) {
-        imageView?.image = try? UIImage(data: Data(contentsOf: dataModel.photoUrl))
+        serialView.image = try? UIImage(data: Data(contentsOf: dataModel.photoUrl))
         title.text = dataModel.nameRu
         subtitle.text = dataModel.nameEn
         details.text = dataModel.details
     }
     
     private func setupCellStackView() {
-        imageView?.contentMode = .scaleAspectFill
-        imageView?.translatesAutoresizingMaskIntoConstraints = false
-        if let imageView = self.imageView {
-            cellStackView.addArrangedSubview(imageView)
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 3.0/5.0).isActive = true
-        }
-        
         setupLabelStackView()
+        cellStackView.addArrangedSubview(serialView)
         cellStackView.addArrangedSubview(labelStackView)
-        addSubview(labelStackView)
-        addSubview(cellStackView)
-        
-        if let superview = superview {
+        cellStackView.alignment = .top
+        contentView.addSubview(cellStackView)
+//        cellStackView.layoutMargins = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         NSLayoutConstraint.activate([
-            cellStackView.leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            cellStackView.trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: 8),
-            cellStackView.topAnchor.constraint(equalTo: superview.topAnchor, constant: 12),
-            cellStackView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 12)
+            cellStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            cellStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: 8),
+            cellStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 12)
         ])
-        }
+        serialView.heightAnchor.constraint(equalTo: serialView.widthAnchor, multiplier: 3.0/5.0).isActive = true
     }
     
     private func setupLabelStackView() {

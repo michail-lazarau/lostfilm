@@ -12,7 +12,7 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         dataSource = nil
     }
 
-    func didLoad() {
+    func updateUIForTable() {
         tableView.reloadData()
     }
 

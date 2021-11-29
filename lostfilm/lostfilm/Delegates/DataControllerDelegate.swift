@@ -1,5 +1,5 @@
 import Foundation
 
 protocol DataControllerDelegate: AnyObject {
-    func didLoad()
+    func updateUIForTable()
 }

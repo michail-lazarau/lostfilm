@@ -20,7 +20,7 @@ class DataController {
 
             DispatchQueue.main.async {
                 if let delegate = self?.delegate {
-                    delegate.didLoad()
+                    delegate.updateUIForTable()
                 }
             }
         }
