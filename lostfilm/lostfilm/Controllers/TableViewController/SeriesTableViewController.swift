@@ -35,6 +35,11 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     func setupTableViewController() {
         tableView.register(SeriesViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+
+//        NSLayoutConstraint.activate([
+//            tableView.leadingAnchor.constraint(equalTo: , constant: <#T##CGFloat#>)
+//        ])
         // continue
     }
 

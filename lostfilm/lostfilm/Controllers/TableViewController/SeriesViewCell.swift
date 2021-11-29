@@ -39,7 +39,7 @@ class SeriesViewCell: UITableViewCell {
        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.spacing = 12
+//        stackView.spacing = 12
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -63,7 +63,6 @@ class SeriesViewCell: UITableViewCell {
     }
     
     private func setupCellStackView() {
-//        imageView?.image = try? UIImage(data: Data(contentsOf: dataModel.photoUrl))
         imageView?.contentMode = .scaleAspectFill
         imageView?.translatesAutoresizingMaskIntoConstraints = false
         if let imageView = self.imageView {
@@ -73,27 +72,20 @@ class SeriesViewCell: UITableViewCell {
         
         setupLabelStackView()
         cellStackView.addArrangedSubview(labelStackView)
+        addSubview(labelStackView)
         addSubview(cellStackView)
+        
+        if let superview = superview {
+        NSLayoutConstraint.activate([
+            cellStackView.leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            cellStackView.trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: 8),
+            cellStackView.topAnchor.constraint(equalTo: superview.topAnchor, constant: 12),
+            cellStackView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 12)
+        ])
+        }
     }
     
     private func setupLabelStackView() {
-//        let title = UILabel()
-//        let subtitle = UILabel()
-//        let details = UILabel()
-        
-//        title.font = UIFont(name: "System", size: 12.0)
-//        title.textColor = UIColor(red: 32/255, green: 32/255, blue: 32/255, alpha: 1.0)
-//        title.numberOfLines = 2
-//        title.text = dataModel.nameRu
-//        subtitle.font = UIFont(name: "System", size: 10.0)
-//        subtitle.textColor = UIColor(red: 157/255, green: 157/255, blue: 160/255, alpha: 1.0)
-//        subtitle.numberOfLines = 2
-//        subtitle.text = dataModel.nameEn
-//        details.font = UIFont(name: "System", size: 11.0)
-//        details.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
-//        details.numberOfLines = 0
-//        details.text = dataModel.details
-        
         labelStackView.addArrangedSubview(title)
         labelStackView.addArrangedSubview(subtitle)
         labelStackView.addArrangedSubview(details)
