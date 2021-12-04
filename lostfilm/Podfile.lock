@@ -79,11 +79,19 @@ PODS:
   - DVAppCore/Views/LayoutConstraintHairline (0.9.1)
   - DVHtmlToModels (0.1.4)
   - hpple (0.3.0)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
 
 DEPENDENCIES:
   - DVAppCore (from `https://github.com/denis-vashkovski/DVAppCore.git`)
   - DVHtmlToModels (from `https://github.com/denis-vashkovski/DVHtmlToModels.git`)
   - hpple (from `https://github.com/topfunky/hpple.git`)
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
 
 EXTERNAL SOURCES:
   DVAppCore:
@@ -108,7 +116,8 @@ SPEC CHECKSUMS:
   DVAppCore: fc1bad763b32c720aa171252a132459801e19c79
   DVHtmlToModels: ce76fe6b54409937e9529d9218d693a9a0a60002
   hpple: 37ac0a804d0f8a7f488712b5ff5f06129e1c9e31
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: fee5ccaee04c02d7ff3a14d044ce73c5cfa1d65c
+PODFILE CHECKSUM: 9544f549c842c8e7111a75241d4d06d11e54dd81
 
 COCOAPODS: 1.11.2

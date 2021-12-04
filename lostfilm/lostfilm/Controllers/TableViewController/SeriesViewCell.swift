@@ -4,7 +4,7 @@ class SeriesViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.clipsToBounds = true
+//        contentView.clipsToBounds = true
         setupCellStackView()
     }
     
@@ -59,7 +59,8 @@ class SeriesViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.alignment = .leading
+//                stackView.alignment = .top
+//        stackView.alignment = .leading
         stackView.spacing = 0
         stackView.clipsToBounds = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,14 +79,13 @@ class SeriesViewCell: UITableViewCell {
         setupLabelStackView()
         cellStackView.addArrangedSubview(serialView)
         cellStackView.addArrangedSubview(labelStackView)
-        cellStackView.alignment = .top
         contentView.addSubview(cellStackView)
-//        cellStackView.layoutMargins = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+//        cellStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         NSLayoutConstraint.activate([
             cellStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            cellStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: 8),
+            cellStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             cellStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 12)
+            cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
         serialView.heightAnchor.constraint(equalTo: serialView.widthAnchor, multiplier: 3.0/5.0).isActive = true
     }
