@@ -12,18 +12,29 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         dataSource?.delegate = self
     }
 
+    fileprivate let tableFooterHeight: CGFloat = 50
     private var dataSource: DataController?
 
     @objc private func pullToRefresh(_ sender: UIRefreshControl) {
         // TODO: reloadData logics
-        // dataSource?.getNextItemList() - проверить вызов именно этого метода у Дениса.
+        // попробовать реализовать проверку о доп загрузке или по новой через sender
+        // dataSource?.getNextSeriesList() - проверить вызов именно этого метода у Дениса.
         // релизовать пагинацию вызова (страница +1), но вызывать только первую страницу по вызову pullToRefresh
         // убедиться, что я понимаю как работают делегаты
         sender.endRefreshing()
     }
 
-    func updateUIForTable() {
-        tableView.reloadData()
+    func updateUIForTableWith(rowsRange: Range<Int>) {
+        let isListEmpty = (rowsRange.lowerBound == 0)
+        if isListEmpty {
+            tableView.reloadData()
+        } else {
+            var array: [IndexPath] = []
+            for index in rowsRange {
+                array.append(IndexPath(row: index, section: 0))
+            }
+            tableView.insertRows(at: array, with: .bottom)
+        }
     }
 
     override func viewDidLoad() {
@@ -34,8 +45,9 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        dataSource?.getNextItemList()
+        dataSource?.getNextSeriesList()
         setupTableViewController()
+        setupTableFooter()
     }
 
     func setupTableViewController() {
@@ -44,6 +56,19 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
 
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+    }
+
+    func setupTableFooter() {
+        // FIXME: is UIScreen.main.bounds.width ok?
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: tableFooterHeight))
+        footerView.backgroundColor = .clear
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        spinner.center = footerView.center
+        spinner.startAnimating()
+        footerView.addSubview(spinner)
+        tableView.tableFooterView = footerView
+//        tableView.tableFooterView = spinner // works as well
     }
 
     // MARK: - Table view delegate
@@ -55,6 +80,36 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 175
     }
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y + scrollView.frame.size.height
+        let maximumOffset = scrollView.contentSize.height - tableFooterHeight
+        let deltaOffset = maximumOffset - currentOffset
+        if deltaOffset <= 0 {
+//            print("fetch more")
+//            dataSource?.getNextSeriesList()
+        }
+    }
+
+    //    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    //        let spinner = UIActivityIndicatorView(style: .gray)
+    //        spinner.hidesWhenStopped = true
+    //        spinner.center = view.center
+    ////        spinner.frame = view.bounds
+    //        spinner.startAnimating()
+    //        view.addSubview(spinner)
+    ////        let subviewSize = CGSize(width: view.bounds.width, height: view.bounds.height)
+    //    }
+
+    //    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    //        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
+    //        footerView.backgroundColor = .clear
+    //        return footerView
+    //    }
+    //
+    //    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    //        50
+    //    }
 
     // MARK: - Table view data source
 

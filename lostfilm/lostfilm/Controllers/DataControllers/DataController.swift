@@ -2,31 +2,44 @@ import Foundation
 
 class DataController {
     var delegate: DataControllerDelegate?
-    private var itemList: [LFSeriesModel] = []
+    var loadMore: Bool = false
+    private var seriesList: [LFSeriesModel] = []
     private var currentPage: UInt = 1
     var count: Int {
-        itemList.count
+        seriesList.count
     }
 
     init() {
         // empty
     }
 
-    func getNextItemList() {
-        getItemListForPage(number: currentPage) { [weak self] itemList, _ in
-            guard let strongWeak = self
-            else { return }
-            strongWeak.itemList += itemList ?? []
+    func paginating() {
+        if loadMore {
+            return
+        }
+        loadMore = true
+        currentPage += 1
+        getNextSeriesList()
+        loadMore = false
+    }
 
+    func getNextSeriesList() {
+        getSeriesListForPage(number: currentPage) { [weak self] itemList, _ in
+            guard let strongSelf = self
+            else { return }
+            guard let itemList = itemList
+            else { return }
+            strongSelf.seriesList += itemList
+            let appendingSeriesRange = strongSelf.count - itemList.count ..< strongSelf.count
             DispatchQueue.main.async {
-                if let delegate = self?.delegate {
-                    delegate.updateUIForTable()
+                if let delegate = self?.delegate { // FIXME: strongWeak instead of self?
+                    delegate.updateUIForTableWith(rowsRange: appendingSeriesRange)
                 }
             }
         }
     }
 
-    private func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
+    private func getSeriesListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
         apiHelper.series.getListForPage(number, completionHandler: { seriesList, error in
             completionHander(seriesList, error as NSError?)
@@ -36,6 +49,6 @@ class DataController {
 
 extension DataController {
     subscript(index: Int) -> LFSeriesModel {
-        itemList[index]
+        seriesList[index]
     }
 }
