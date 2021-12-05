@@ -1,4 +1,5 @@
 import UIKit
+import SDWebImage
 
 class SeriesViewCell: UITableViewCell {
     
@@ -10,6 +11,11 @@ class SeriesViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    // FIXME: class or static? I want to call this property out of any cellClass and receive the respective self. I don't want to override the property later. I assume it must be static.
+    class var cellIdentifier: String {
+        String(describing: type(of: self))
     }
     
     private let serialView: UIImageView = {
@@ -69,7 +75,7 @@ class SeriesViewCell: UITableViewCell {
     }()
     
     func configureWith(dataModel: LFSeriesModel) {
-        serialView.image = try? UIImage(data: Data(contentsOf: dataModel.photoUrl))
+        serialView.sd_setImage(with: dataModel.photoUrl)
         title.text = dataModel.nameRu
         subtitle.text = dataModel.nameEn
         details.text = dataModel.details

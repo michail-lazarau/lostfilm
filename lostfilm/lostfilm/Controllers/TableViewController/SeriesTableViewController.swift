@@ -1,22 +1,30 @@
 import UIKit
 
 class SeriesTableViewController: UITableViewController, DataControllerDelegate {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        dataSource = nil
+    }
+
     init(style: UITableView.Style, dataController: DataController) {
         super.init(style: style)
         dataSource = dataController
         dataSource?.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        dataSource = nil
+    private var dataSource: DataController?
+
+    @objc private func pullToRefresh(_ sender: UIRefreshControl) {
+        // TODO: reloadData logics
+        // dataSource?.getNextItemList() - проверить вызов именно этого метода у Дениса.
+        // релизовать пагинацию вызова (страница +1), но вызывать только первую страницу по вызову pullToRefresh
+        // убедиться, что я понимаю как работают делегаты
+        sender.endRefreshing()
     }
 
     func updateUIForTable() {
         tableView.reloadData()
     }
-
-    private let cellIdentifier = String(describing: type(of: SeriesViewCell.self))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +38,12 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         setupTableViewController()
     }
 
-    private var dataSource: DataController?
-
     func setupTableViewController() {
-        tableView.register(SeriesViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(SeriesViewCell.self, forCellReuseIdentifier: SeriesViewCell.cellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
 
-//        NSLayoutConstraint.activate([
-//            tableView.leadingAnchor.constraint(equalTo: , constant: <#T##CGFloat#>)
-//        ])
-        // continue
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
 
     // MARK: - Table view delegate
@@ -65,7 +68,7 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SeriesViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SeriesViewCell.cellIdentifier, for: indexPath) as! SeriesViewCell
         if let model = dataSource?[indexPath.row] {
             cell.configureWith(dataModel: model)
         }
