@@ -15,18 +15,14 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     fileprivate let tableFooterHeight: CGFloat = 50
     private var dataSource: DataController?
 
-    @objc private func pullToRefresh(_ sender: UIRefreshControl) {
+    @objc func pullToRefresh(_ sender: UIRefreshControl) {
         // TODO: reloadData logics
-        // попробовать реализовать проверку о доп загрузке или по новой через sender
-        // dataSource?.getNextSeriesList() - проверить вызов именно этого метода у Дениса.
-        // релизовать пагинацию вызова (страница +1), но вызывать только первую страницу по вызову pullToRefresh
-        // убедиться, что я понимаю как работают делегаты
         sender.endRefreshing()
     }
 
     func updateUIForTableWith(rowsRange: Range<Int>) {
-//        if (rowsRange.isEmpty)
-//        { return destroyTableFooter() }
+        if rowsRange.isEmpty
+        { return destroyTableFooter() }
         let isListEmpty = (rowsRange.lowerBound == 0)
         if isListEmpty {
             tableView.reloadData()
@@ -41,13 +37,7 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-//        dataSource?.paginating()
         setupTableViewController()
         setupTableFooter()
     }
@@ -61,22 +51,21 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     }
 
     func setupTableFooter() {
-        // FIXME: is UIScreen.main.bounds.width ok?
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: tableFooterHeight))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: tableFooterHeight)) // MARK: is UIScreen.main.bounds.width ok?
+
         footerView.backgroundColor = .clear
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.hidesWhenStopped = true
         spinner.center = footerView.center
         spinner.startAnimating()
         footerView.addSubview(spinner)
-        tableView.tableFooterView = footerView
-//        tableView.tableFooterView = spinner // works as well
+        tableView.tableFooterView = footerView // works as well: = spinner
     }
 
     func destroyTableFooter() {
         tableView.tableFooterView = nil
     }
-    
+
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,29 +81,17 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         let maximumOffset = scrollView.contentSize.height - tableFooterHeight
         let deltaOffset = maximumOffset - currentOffset
         if deltaOffset <= 0 {
-            dataSource?.paginating()
+            dataSource?.LoadingData()
+
+            tableView.tableFooterView?.isHidden = true // MARK: hide UIActivityIndicatorView when table is updated
         }
     }
 
-    //    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-    //        let spinner = UIActivityIndicatorView(style: .gray)
-    //        spinner.hidesWhenStopped = true
-    //        spinner.center = view.center
-    ////        spinner.frame = view.bounds
-    //        spinner.startAnimating()
-    //        view.addSubview(spinner)
-    ////        let subviewSize = CGSize(width: view.bounds.width, height: view.bounds.height)
-    //    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
 
-    //    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    //        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
-    //        footerView.backgroundColor = .clear
-    //        return footerView
-    //    }
-    //
-    //    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //        50
-    //    }
+        tableView.tableFooterView?.isHidden = false // MARK: display UIActivityIndicatorView before table is updated
+    }
 
     // MARK: - Table view data source
 

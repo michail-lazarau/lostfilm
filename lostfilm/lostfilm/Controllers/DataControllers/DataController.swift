@@ -13,30 +13,31 @@ class DataController {
         // empty
     }
 
-    func paginating() {
+    func LoadingData() {
         if isLoading == true {
             return
         }
         isLoading = true
         currentPage += 1
         getNextSeriesList()
-        currentPage += 5000 // FIXME: delete later, test purpose
     }
 
     func getNextSeriesList() {
         getSeriesListForPage(number: currentPage) { [weak self] itemList, _ in
             guard let strongSelf = self
             else { return }
-            guard let itemList = itemList
-            else { return }
-            strongSelf.seriesList += itemList
-            let appendingSeriesRange = strongSelf.count - itemList.count ..< strongSelf.count
+
+            let safeItemList: [LFSeriesModel] = itemList ?? [] // MARK: if "guard let > return" is used then spinner is not destroyed
+
+            strongSelf.seriesList += safeItemList
+            let appendingSeriesRange = strongSelf.count - safeItemList.count ..< strongSelf.count
             DispatchQueue.main.async {
                 if let delegate = self?.delegate { // FIXME: strongWeak instead of self?
                     delegate.updateUIForTableWith(rowsRange: appendingSeriesRange)
                 }
             }
-            strongSelf.isLoading = false // must be within getSeriesListForPage() method, not outside of it
+
+            strongSelf.isLoading = false // MARK: must be within getSeriesListForPage() method, not outside of it
         }
     }
 
