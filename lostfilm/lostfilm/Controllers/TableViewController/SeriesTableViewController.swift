@@ -22,7 +22,9 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
 
     func updateUIForTableWith(rowsRange: Range<Int>) {
         if rowsRange.isEmpty
-        { return destroyTableFooter() }
+        { tableView.tableFooterView?.isHidden = true
+            return
+        } // MARK: i dont see a reason for using destroyTableFooter()
         let isListEmpty = (rowsRange.lowerBound == 0)
         if isListEmpty {
             tableView.reloadData()
