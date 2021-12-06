@@ -25,6 +25,8 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     }
 
     func updateUIForTableWith(rowsRange: Range<Int>) {
+//        if (rowsRange.isEmpty)
+//        { return destroyTableFooter() }
         let isListEmpty = (rowsRange.lowerBound == 0)
         if isListEmpty {
             tableView.reloadData()
@@ -45,7 +47,7 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        dataSource?.getNextSeriesList()
+//        dataSource?.paginating()
         setupTableViewController()
         setupTableFooter()
     }
@@ -71,6 +73,10 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
 //        tableView.tableFooterView = spinner // works as well
     }
 
+    func destroyTableFooter() {
+        tableView.tableFooterView = nil
+    }
+    
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,12 +88,11 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentOffset = scrollView.contentOffset.y + scrollView.frame.size.height
+        let currentOffset = scrollView.contentOffset.y + tableView.frame.size.height
         let maximumOffset = scrollView.contentSize.height - tableFooterHeight
         let deltaOffset = maximumOffset - currentOffset
         if deltaOffset <= 0 {
-//            print("fetch more")
-//            dataSource?.getNextSeriesList()
+            dataSource?.paginating()
         }
     }
 

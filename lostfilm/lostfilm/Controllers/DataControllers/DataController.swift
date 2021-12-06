@@ -2,9 +2,9 @@ import Foundation
 
 class DataController {
     var delegate: DataControllerDelegate?
-    var loadMore: Bool = false
+    var isLoading: Bool = false
     private var seriesList: [LFSeriesModel] = []
-    private var currentPage: UInt = 1
+    private var currentPage: UInt = 0
     var count: Int {
         seriesList.count
     }
@@ -14,13 +14,13 @@ class DataController {
     }
 
     func paginating() {
-        if loadMore {
+        if isLoading == true {
             return
         }
-        loadMore = true
+        isLoading = true
         currentPage += 1
         getNextSeriesList()
-        loadMore = false
+        currentPage += 5000 // FIXME: delete later, test purpose
     }
 
     func getNextSeriesList() {
@@ -36,6 +36,7 @@ class DataController {
                     delegate.updateUIForTableWith(rowsRange: appendingSeriesRange)
                 }
             }
+            strongSelf.isLoading = false // must be within getSeriesListForPage() method, not outside of it
         }
     }
 
