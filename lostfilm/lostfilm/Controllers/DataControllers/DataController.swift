@@ -32,7 +32,7 @@ class DataController {
             strongSelf.seriesList += safeItemList
             let appendingSeriesRange = strongSelf.count - safeItemList.count ..< strongSelf.count
             DispatchQueue.main.async {
-                if let delegate = self?.delegate { // FIXME: strongWeak instead of self?
+                if let delegate = self?.delegate { // FIXME: strongSelf instead of self?
                     delegate.updateUIForTableWith(rowsRange: appendingSeriesRange)
                 }
             }
@@ -52,5 +52,10 @@ class DataController {
 extension DataController {
     subscript(index: Int) -> LFSeriesModel {
         seriesList[index]
+    }
+    
+    func DidEmptySeriesList() {
+        seriesList.removeAll()
+        currentPage = 0
     }
 }

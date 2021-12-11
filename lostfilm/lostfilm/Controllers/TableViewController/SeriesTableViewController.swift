@@ -13,10 +13,13 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
     }
 
     fileprivate let tableFooterHeight: CGFloat = 50
+    fileprivate let tableCellHeight: CGFloat = 175
     private var dataSource: DataController?
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         // TODO: reloadData logics
+        dataSource?.DidEmptySeriesList()
+        dataSource?.LoadingData()
         sender.endRefreshing()
     }
 
@@ -39,9 +42,9 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "TV Series"
+        
         setupTableViewController()
-        setupTableFooter()
     }
 
     func setupTableViewController() {
@@ -52,9 +55,31 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
 
-    func setupTableFooter() {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: tableFooterHeight)) // MARK: is UIScreen.main.bounds.width ok?
+    // MARK: out of use
+    func destroyTableFooter() {
+        tableView.tableFooterView = nil
+    }
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        tableView.tableFooterView?.isHidden = false // MARK: displays UIActivityIndicatorView before table is updated
+    }
+}
+// MARK: - Table view delegate
+extension SeriesTableViewController {
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableCellHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0,
+                                              width: UIScreen.main.bounds.width,
+                                              height: tableFooterHeight)) // MARK: is UIScreen.main.bounds.width ok?
         footerView.backgroundColor = .clear
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.hidesWhenStopped = true
@@ -62,41 +87,25 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         spinner.startAnimating()
         footerView.addSubview(spinner)
         tableView.tableFooterView = footerView // works as well: = spinner
+        return footerView
     }
+}
 
-    func destroyTableFooter() {
-        tableView.tableFooterView = nil
-    }
-
-    // MARK: - Table view delegate
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 175
-    }
-
+// MARK: - Scroll view delegate
+extension SeriesTableViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y + tableView.frame.size.height
         let maximumOffset = scrollView.contentSize.height - tableFooterHeight
         let deltaOffset = maximumOffset - currentOffset
         if deltaOffset <= 0 {
             dataSource?.LoadingData()
-
-            tableView.tableFooterView?.isHidden = true // MARK: hide UIActivityIndicatorView when table is updated
+            tableView.tableFooterView?.isHidden = true // MARK: hides UIActivityIndicatorView when table is updated
         }
     }
+}
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        tableView.tableFooterView?.isHidden = false // MARK: display UIActivityIndicatorView before table is updated
-    }
-
-    // MARK: - Table view data source
-
+// MARK: - Table view data source
+extension SeriesTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -113,39 +122,39 @@ class SeriesTableViewController: UITableViewController, DataControllerDelegate {
         }
         return cell
     }
-
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-         // Return false if you do not want the specified item to be editable.
-         return true
-     }
-     */
-
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-         if editingStyle == .delete {
-             // Delete the row from the data source
-             tableView.deleteRows(at: [indexPath], with: .fade)
-         } else if editingStyle == .insert {
-             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-         }
-     }
-     */
-
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-     }
-     */
-
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-         // Return false if you do not want the item to be re-orderable.
-         return true
-     }
-     */
 }
+
+/*
+ // Override to support conditional editing of the table view.
+ override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+         // Delete the row from the data source
+         tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+ }
+ */
