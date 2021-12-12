@@ -29,9 +29,7 @@
 		F73459DA2765F98B00E45725 /* TableViewControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */; };
 		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
 		F73CEF5727494FD40011AE04 /* SeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */; };
-		F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A82274051F8004B81EF /* TVSeriesController.swift */; };
 		F74E3A862740579F004B81EF /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A852740579F004B81EF /* NewsController.swift */; };
-		F7511810274FCC8400A0E6B7 /* TestingSeriesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97062746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m */; };
@@ -95,9 +93,7 @@
 		F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerTemplate.swift; sourceTree = "<group>"; };
 		F73459DB276610F000E45725 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewController.swift; sourceTree = "<group>"; };
-		F74E3A82274051F8004B81EF /* TVSeriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesController.swift; sourceTree = "<group>"; };
 		F74E3A852740579F004B81EF /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
-		F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestingSeriesViewCell.xib; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -272,6 +268,22 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		F73459DD276642E200E45725 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F73459DB276610F000E45725 /* CellConfigurable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F73459DE2766435300E45725 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F7551D28274D88CF00E1748E /* SeriesViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		F74E3A81274051AA004B81EF /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,16 +294,13 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		F7551D27274D886E00E1748E /* TableViewController */ = {
+		F7551D27274D886E00E1748E /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */,
-				F7551D28274D88CF00E1748E /* SeriesViewCell.swift */,
-				F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */,
-				F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */,
-				F73459DB276610F000E45725 /* CellConfigurable.swift */,
+				F73459DE2766435300E45725 /* TableViewCells */,
 			);
-			path = TableViewController;
+			path = TableViewControllers;
 			sourceTree = "<group>";
 		};
 		F79C97012746CCA3001BD5F8 /* Models */ = {
@@ -408,6 +417,7 @@
 				F79C97012746CCA3001BD5F8 /* Models */,
 				F711A4502745A87000E1515D /* Helpers */,
 				F711A41A2745A74300E1515D /* Resources */,
+				F73459DD276642E200E45725 /* Protocols */,
 				F74E3A81274051AA004B81EF /* Delegates */,
 				F7AEE480273FF2C600C304D0 /* Controllers */,
 				F7AEE475273FEB7A00C304D0 /* Assets.xcassets */,
@@ -422,10 +432,10 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F7551D27274D886E00E1748E /* TableViewController */,
+				F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */,
+				F7551D27274D886E00E1748E /* TableViewControllers */,
 				F7B2DB8E274A81E30099CF29 /* DataControllers */,
 				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
-				F74E3A82274051F8004B81EF /* TVSeriesController.swift */,
 				F74E3A852740579F004B81EF /* NewsController.swift */,
 			);
 			path = Controllers;
@@ -551,7 +561,6 @@
 				F711A44F2745A84A00E1515D /* GetVideoListContext.plist in Resources */,
 				F711A4492745A84A00E1515D /* GetNewEpisodeListContext.plist in Resources */,
 				F711A44B2745A84A00E1515D /* GetNewsDetailsContext.plist in Resources */,
-				F7511810274FCC8400A0E6B7 /* TestingSeriesViewCell.xib in Resources */,
 				F711A44A2745A84A00E1515D /* GetSeriesCastContext.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,7 +618,6 @@
 				F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */,
 				F79C972D2746CCA3001BD5F8 /* LFPersonModel.m in Sources */,
 				F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */,
-				F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */,
 				F73459DA2765F98B00E45725 /* TableViewControllerTemplate.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,

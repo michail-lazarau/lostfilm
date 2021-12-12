@@ -1,6 +1,6 @@
 import UIKit
 
-class TableViewControllerTemplate<T>: UITableViewController, DataControllerDelegate where T: CellConfigurable {
+class TableViewControllerTemplate<Cell>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable {
 
     fileprivate let tableFooterHeight: CGFloat = 50
     internal var dataSource: DataController?
@@ -22,7 +22,7 @@ class TableViewControllerTemplate<T>: UITableViewController, DataControllerDeleg
     }
     
     func setupTableViewController() {
-        let cellType = T.self
+        let cellType = Cell.self
         let cellIdentifier = String(describing: type(of: cellType))
         
         tableView.register(cellType, forCellReuseIdentifier: cellIdentifier)
@@ -99,12 +99,12 @@ class TableViewControllerTemplate<T>: UITableViewController, DataControllerDeleg
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = T.self
+        let cellType = Cell.self
         let cellIdentifier = String(describing: type(of: cellType))
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! T
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! Cell
         if let model = dataSource?[indexPath.row] {
-            cell.configureWith(dataModel: model as! T.DataModel)
+            cell.configureWith(dataModel: model as! Cell.DataModel)
         }
         return cell
     }

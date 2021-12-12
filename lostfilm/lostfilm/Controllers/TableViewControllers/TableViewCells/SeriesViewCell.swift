@@ -3,6 +3,8 @@ import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
     
+    typealias DataModel = LFSeriesModel // not sure if it makes any sence
+    
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
         title.text = dataModel.nameRu
@@ -80,13 +82,6 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
 
         return stackView
     }()
-
-//    func configureWith(dataModel: LFSeriesModel) {
-//        serialView.sd_setImage(with: dataModel.photoUrl)
-//        title.text = dataModel.nameRu
-//        subtitle.text = dataModel.nameEn
-//        details.text = dataModel.details
-//    }
 
     private func setupCellStackView() {
         setupLabelStackView()
