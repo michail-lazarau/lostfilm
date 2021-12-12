@@ -3,7 +3,7 @@ import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
     
-    typealias DataModel = LFSeriesModel // not sure if it makes any sence
+//    typealias DataModel = LFSeriesModel // not sure if it makes any sence
     
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)

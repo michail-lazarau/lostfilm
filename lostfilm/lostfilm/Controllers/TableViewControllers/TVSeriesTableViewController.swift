@@ -1,6 +1,6 @@
 import UIKit
 
-class SeriesTableViewController: TableViewControllerTemplate<SeriesViewCell> {
+class TVSeriesTableViewController: TableViewController<SeriesViewCell, LFSeriesModel> {
 
     fileprivate let tableCellHeight: CGFloat = 175
     
@@ -11,7 +11,7 @@ class SeriesTableViewController: TableViewControllerTemplate<SeriesViewCell> {
 }
 
 // MARK: - Table view delegate
-extension SeriesTableViewController {
+extension TVSeriesTableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableCellHeight
@@ -19,7 +19,7 @@ extension SeriesTableViewController {
 }
 
 // MARK: - Table view data source
-extension SeriesTableViewController {
+extension TVSeriesTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

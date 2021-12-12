@@ -1,14 +1,15 @@
 import Foundation
 
-class DataController {
+class DataController<DataModel> where DataModel: LFJsonObject {
+    
     var delegate: DataControllerDelegate?
     var isLoading: Bool = false
-    private var seriesList: [LFSeriesModel] = []
+    private var itemList: [DataModel] = []
     private var currentPage: UInt = 0
     var count: Int {
-        seriesList.count
+        itemList.count
     }
-
+    
     init() {
         // empty
     }
@@ -19,17 +20,17 @@ class DataController {
         }
         isLoading = true
         currentPage += 1
-        getNextSeriesList()
+        getNextItemList()
     }
-
-    func getNextSeriesList() {
-        getSeriesListForPage(number: currentPage) { [weak self] itemList, _ in
+    
+    func getNextItemList() {
+        getItemListForPage(number: currentPage) { [weak self] itemList, _ in
             guard let strongSelf = self
             else { return }
 
-            let safeItemList: [LFSeriesModel] = itemList ?? [] // MARK: if "guard let > return" is used then spinner is not destroyed
+            let safeItemList: [DataModel] = itemList ?? [] // MARK: if "guard let > return" is used then spinner is not destroyed
 
-            strongSelf.seriesList += safeItemList
+            strongSelf.itemList += safeItemList
             let appendingSeriesRange = strongSelf.count - safeItemList.count ..< strongSelf.count
             DispatchQueue.main.async {
                 if let delegate = self?.delegate { // FIXME: strongSelf instead of self?
@@ -40,22 +41,19 @@ class DataController {
             strongSelf.isLoading = false // MARK: must be within getSeriesListForPage() method, not outside of it
         }
     }
-
-    private func getSeriesListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
-        let apiHelper = LFApplicationHelper.sharedApiHelper
-        apiHelper.series.getListForPage(number, completionHandler: { seriesList, error in
-            completionHander(seriesList, error as NSError?)
-        })
+    
+    internal func getItemListForPage(number: UInt, completionHander: @escaping ([DataModel]?, NSError?) -> Void) {
+        preconditionFailure("This func must be overridden")
     }
 }
 
 extension DataController {
-    subscript(index: Int) -> LFSeriesModel {
-        seriesList[index]
+    subscript(index: Int) -> DataModel {
+        itemList[index]
     }
     
     func DidEmptySeriesList() {
-        seriesList.removeAll()
+        itemList.removeAll()
         currentPage = 0
     }
 }

@@ -1,19 +1,19 @@
 import UIKit
 
-class TableViewControllerTemplate<Cell>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable {
+class TableViewController<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell : CellConfigurable, DataModel: LFJsonObject {
 
     fileprivate let tableFooterHeight: CGFloat = 50
-    internal var dataSource: DataController?
+    internal var dataSource: DataController<DataModel>?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         dataSource = nil
     }
     
-    init(style: UITableView.Style, dataController: DataController) {
+    init(style: UITableView.Style, dataController: DataController<DataModel>) {
         super.init(style: style)
         dataSource = dataController
-        dataSource?.delegate = self
+        dataSource!.delegate = self
     }
     
     override func viewDidLoad() {
