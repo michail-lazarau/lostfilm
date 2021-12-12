@@ -1,7 +1,15 @@
 import SDWebImage
 import UIKit
 
-class SeriesViewCell: UITableViewCell {
+class SeriesViewCell: UITableViewCell, CellConfigurable {
+    
+    func configureWith(dataModel: LFSeriesModel) {
+        serialView.sd_setImage(with: dataModel.photoUrl)
+        title.text = dataModel.nameRu
+        subtitle.text = dataModel.nameEn
+        details.text = dataModel.details
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 //        contentView.clipsToBounds = true
@@ -73,12 +81,12 @@ class SeriesViewCell: UITableViewCell {
         return stackView
     }()
 
-    func configureWith(dataModel: LFSeriesModel) {
-        serialView.sd_setImage(with: dataModel.photoUrl)
-        title.text = dataModel.nameRu
-        subtitle.text = dataModel.nameEn
-        details.text = dataModel.details
-    }
+//    func configureWith(dataModel: LFSeriesModel) {
+//        serialView.sd_setImage(with: dataModel.photoUrl)
+//        title.text = dataModel.nameRu
+//        subtitle.text = dataModel.nameEn
+//        details.text = dataModel.details
+//    }
 
     private func setupCellStackView() {
         setupLabelStackView()

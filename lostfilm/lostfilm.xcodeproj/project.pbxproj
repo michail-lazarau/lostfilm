@@ -26,6 +26,8 @@
 		F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B32745A94E00E1515D /* LFApiVideos.m */; };
 		F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B72745A94E00E1515D /* LFApiNews.m */; };
 		F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4BB2745A94E00E1515D /* LFApiBase.m */; };
+		F73459DA2765F98B00E45725 /* TableViewControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */; };
+		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
 		F73CEF5727494FD40011AE04 /* SeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */; };
 		F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A82274051F8004B81EF /* TVSeriesController.swift */; };
 		F74E3A862740579F004B81EF /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A852740579F004B81EF /* NewsController.swift */; };
@@ -90,6 +92,8 @@
 		F711A4B92745A94E00E1515D /* LFApiBase+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LFApiBase+Protected.h"; sourceTree = "<group>"; };
 		F711A4BA2745A94E00E1515D /* LFApiBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFApiBase.h; sourceTree = "<group>"; };
 		F711A4BB2745A94E00E1515D /* LFApiBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFApiBase.m; sourceTree = "<group>"; };
+		F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerTemplate.swift; sourceTree = "<group>"; };
+		F73459DB276610F000E45725 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewController.swift; sourceTree = "<group>"; };
 		F74E3A82274051F8004B81EF /* TVSeriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesController.swift; sourceTree = "<group>"; };
 		F74E3A852740579F004B81EF /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				F73CEF5627494FD40011AE04 /* SeriesTableViewController.swift */,
 				F7551D28274D88CF00E1748E /* SeriesViewCell.swift */,
 				F751180F274FCC8400A0E6B7 /* TestingSeriesViewCell.xib */,
+				F73459D92765F98B00E45725 /* TableViewControllerTemplate.swift */,
+				F73459DB276610F000E45725 /* CellConfigurable.swift */,
 			);
 			path = TableViewController;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				F79C972D2746CCA3001BD5F8 /* LFPersonModel.m in Sources */,
 				F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */,
 				F74E3A83274051F8004B81EF /* TVSeriesController.swift in Sources */,
+				F73459DA2765F98B00E45725 /* TableViewControllerTemplate.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
@@ -613,6 +620,7 @@
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
+				F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */,
 				F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */,
 				F711A4BC2745A94E00E1515D /* LFApiSeries.m in Sources */,
 				F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */,
