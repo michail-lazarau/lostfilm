@@ -1,16 +1,21 @@
 import UIKit
 
-class TableViewController<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell : CellConfigurable, DataModel: LFJsonObject {
+class TemplateTableViewController<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell : CellConfigurable, DataModel: LFJsonObject {
 
     fileprivate let tableFooterHeight: CGFloat = 50
-    internal var dataSource: DataController<DataModel>?
+    
+    internal var tableCellHeight: CGFloat {
+        return 0
+    }
+    
+    internal var dataSource: TemplateDataController<DataModel>?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         dataSource = nil
     }
     
-    init(style: UITableView.Style, dataController: DataController<DataModel>) {
+    init(style: UITableView.Style, dataController: TemplateDataController<DataModel>) {
         super.init(style: style)
         dataSource = dataController
         dataSource!.delegate = self
@@ -22,19 +27,21 @@ class TableViewController<Cell, DataModel>: UITableViewController, DataControlle
     }
     
     func setupTableViewController() {
-        let cellType = Cell.self
-        let cellIdentifier = String(describing: type(of: cellType))
-        
-        tableView.register(cellType, forCellReuseIdentifier: cellIdentifier)
+        registerCell()
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
     
+    func registerCell() {
+        let cellType = Cell.self       
+        tableView.register(cellType, forCellReuseIdentifier: Cell.cellIdentifier())
+    }
+    
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         // TODO: reloadData logics
-        dataSource?.DidEmptySeriesList()
+        dataSource?.DidEmptyItemList()
         dataSource?.LoadingData()
         sender.endRefreshing()
     }
@@ -63,6 +70,10 @@ class TableViewController<Cell, DataModel>: UITableViewController, DataControlle
     
     
     // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableCellHeight
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -99,13 +110,19 @@ class TableViewController<Cell, DataModel>: UITableViewController, DataControlle
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = Cell.self
-        let cellIdentifier = String(describing: type(of: cellType))
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.cellIdentifier(), for: indexPath) as! Cell
         if let model = dataSource?[indexPath.row] {
             cell.configureWith(dataModel: model as! Cell.DataModel)
         }
         return cell
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let count = dataSource?.count else { return 0 }
+        return count
     }
 }

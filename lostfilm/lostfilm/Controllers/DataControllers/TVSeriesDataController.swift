@@ -1,6 +1,6 @@
 import Foundation
 
-class TVSeriesDataController: DataController<LFSeriesModel> {
+class TVSeriesDataController: TemplateDataController<LFSeriesModel> {
     
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper

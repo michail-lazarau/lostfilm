@@ -1,6 +1,6 @@
 import Foundation
 
-class DataController<DataModel> where DataModel: LFJsonObject {
+class TemplateDataController<DataModel> where DataModel: LFJsonObject {
     
     var delegate: DataControllerDelegate?
     var isLoading: Bool = false
@@ -47,12 +47,12 @@ class DataController<DataModel> where DataModel: LFJsonObject {
     }
 }
 
-extension DataController {
+extension TemplateDataController {
     subscript(index: Int) -> DataModel {
         itemList[index]
     }
     
-    func DidEmptySeriesList() {
+    func DidEmptyItemList() {
         itemList.removeAll()
         currentPage = 0
     }

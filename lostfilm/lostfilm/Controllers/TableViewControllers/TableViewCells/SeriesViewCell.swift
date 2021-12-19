@@ -3,7 +3,9 @@ import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
     
-//    typealias DataModel = LFSeriesModel // not sure if it makes any sence
+    static func cellIdentifier() -> String {
+        String(describing: SeriesViewCell.self)
+    }
     
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
@@ -14,18 +16,22 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        contentView.clipsToBounds = true
         setupCellStackView()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    // FIXME: class or static? I want to call this property out of any cellClass and receive the respective self. I don't want to override the property later. I assume it must be static.
-    class var cellIdentifier: String {
-        String(describing: type(of: self))
-    }
+//    // FIXME: class or static? I want to call this property out of any cellClass and receive the respective self. I don't want to override the property later. I assume it must be static.
+//    class var cellIdentifier: String {
+//        String(describing: type(of: self))
+//    }
 
     private let serialView: UIImageView = {
         let imageView = UIImageView()
@@ -38,6 +44,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         title.font = UIFont.systemFont(ofSize: 12.0)
         title.textColor = UIColor(red: 32 / 255, green: 32 / 255, blue: 32 / 255, alpha: 1.0)
         title.numberOfLines = 2
+        title.setContentHuggingPriority(UILayoutPriority.init(252), for: .vertical)
         return title
     }()
 
@@ -46,6 +53,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         subtitle.font = UIFont.systemFont(ofSize: 10.0)
         subtitle.textColor = UIColor(red: 157 / 255, green: 157 / 255, blue: 160 / 255, alpha: 1.0)
         subtitle.numberOfLines = 2
+        subtitle.setContentHuggingPriority(UILayoutPriority.init(252), for: .vertical)
         return subtitle
     }()
 
@@ -55,9 +63,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         details.textColor = UIColor(red: 102 / 255, green: 102 / 255, blue: 102 / 255, alpha: 1.0)
         details.numberOfLines = 0
         details.lineBreakMode = .byTruncatingTail
-//        details.sizeToFit()
-//        details.preferredMaxLayoutWidth
-//        details.translatesAutoresizingMaskIntoConstraints = false
+        details.setContentHuggingPriority(UILayoutPriority.init(251), for: .vertical)
         return details
     }()
 
@@ -74,12 +80,9 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-//                stackView.alignment = .top
-//        stackView.alignment = .leading
         stackView.spacing = 0
         stackView.clipsToBounds = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
         return stackView
     }()
 
@@ -88,7 +91,6 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         cellStackView.addArrangedSubview(serialView)
         cellStackView.addArrangedSubview(labelStackView)
         contentView.addSubview(cellStackView)
-//        cellStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         NSLayoutConstraint.activate([
             cellStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             cellStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
@@ -105,15 +107,8 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         labelStackView.setCustomSpacing(12.0, after: subtitle)
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
 

@@ -26,14 +26,20 @@
 		F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B32745A94E00E1515D /* LFApiVideos.m */; };
 		F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B72745A94E00E1515D /* LFApiNews.m */; };
 		F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4BB2745A94E00E1515D /* LFApiBase.m */; };
-		F73459DA2765F98B00E45725 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TableViewController.swift */; };
+		F73459DA2765F98B00E45725 /* TemplateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TemplateTableViewController.swift */; };
 		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
-		F73459E0276647ED00E45725 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DF276647ED00E45725 /* DataController.swift */; };
+		F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DF276647ED00E45725 /* TemplateDataController.swift */; };
 		F73459E227664D6400E45725 /* DataModelQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459E127664D6400E45725 /* DataModelQueryable.swift */; };
 		F73CEF5727494FD40011AE04 /* TVSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */; };
-		F74E3A862740579F004B81EF /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E3A852740579F004B81EF /* NewsController.swift */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
+		F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */; };
+		F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */; };
+		F76D9CDB27691D12008D8CA4 /* NewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
+		F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CC9276DF70700DFCC19 /* NewsDataController.swift */; };
+		F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */; };
+		F7997CD0276F93BA00DFCC19 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCF276F93BA00DFCC19 /* VideoViewCell.swift */; };
+		F7997CD2276FBAE700DFCC19 /* VideosDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */; };
 		F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97062746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m */; };
 		F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97092746CCA3001BD5F8 /* LFSeriesFilterModel.m */; };
 		F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C970A2746CCA3001BD5F8 /* LFSeriesModel.m */; };
@@ -92,16 +98,22 @@
 		F711A4B92745A94E00E1515D /* LFApiBase+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LFApiBase+Protected.h"; sourceTree = "<group>"; };
 		F711A4BA2745A94E00E1515D /* LFApiBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFApiBase.h; sourceTree = "<group>"; };
 		F711A4BB2745A94E00E1515D /* LFApiBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFApiBase.m; sourceTree = "<group>"; };
-		F73459D92765F98B00E45725 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		F73459D92765F98B00E45725 /* TemplateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableViewController.swift; sourceTree = "<group>"; };
 		F73459DB276610F000E45725 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
-		F73459DF276647ED00E45725 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		F73459DF276647ED00E45725 /* TemplateDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataController.swift; sourceTree = "<group>"; };
 		F73459E127664D6400E45725 /* DataModelQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelQueryable.swift; sourceTree = "<group>"; };
 		F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesTableViewController.swift; sourceTree = "<group>"; };
-		F74E3A852740579F004B81EF /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
+		F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewCell.xib; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F7997CC9276DF70700DFCC19 /* NewsDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataController.swift; sourceTree = "<group>"; };
+		F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTableViewController.swift; sourceTree = "<group>"; };
+		F7997CCF276F93BA00DFCC19 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
+		F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosDataController.swift; sourceTree = "<group>"; };
 		F79C97032746CCA3001BD5F8 /* LFSeriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSeriesModel.h; sourceTree = "<group>"; };
 		F79C97042746CCA3001BD5F8 /* LFSeriesFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSeriesFilterModel.h; sourceTree = "<group>"; };
 		F79C97052746CCA3001BD5F8 /* LFPersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPersonModel.h; sourceTree = "<group>"; };
@@ -285,6 +297,9 @@
 			isa = PBXGroup;
 			children = (
 				F7551D28274D88CF00E1748E /* SeriesViewCell.swift */,
+				F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */,
+				F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */,
+				F7997CCF276F93BA00DFCC19 /* VideoViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -302,8 +317,10 @@
 		F7551D27274D886E00E1748E /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F73459D92765F98B00E45725 /* TableViewController.swift */,
+				F73459D92765F98B00E45725 /* TemplateTableViewController.swift */,
 				F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */,
+				F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */,
+				F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */,
 				F73459DE2766435300E45725 /* TableViewCells */,
 			);
 			path = TableViewControllers;
@@ -441,7 +458,6 @@
 				F7551D27274D886E00E1748E /* TableViewControllers */,
 				F7B2DB8E274A81E30099CF29 /* DataControllers */,
 				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
-				F74E3A852740579F004B81EF /* NewsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -450,7 +466,9 @@
 			isa = PBXGroup;
 			children = (
 				F7B2DB8F274A82250099CF29 /* TVSeriesDataController.swift */,
-				F73459DF276647ED00E45725 /* DataController.swift */,
+				F73459DF276647ED00E45725 /* TemplateDataController.swift */,
+				F7997CC9276DF70700DFCC19 /* NewsDataController.swift */,
+				F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */,
 			);
 			path = DataControllers;
 			sourceTree = "<group>";
@@ -562,6 +580,7 @@
 				F711A4452745A84A00E1515D /* GetSeriesNewsListContext.plist in Resources */,
 				F7839836274017840025A6B5 /* Localizable.strings in Resources */,
 				F711A44C2745A84A00E1515D /* GetSeriesPhotoListContext.plist in Resources */,
+				F76D9CDB27691D12008D8CA4 /* NewsViewCell.xib in Resources */,
 				F711A44D2745A84A00E1515D /* GetSeriesListsFilterContext.plist in Resources */,
 				F711A4462745A84A00E1515D /* GetTimetableContext.plist in Resources */,
 				F711A44F2745A84A00E1515D /* GetVideoListContext.plist in Resources */,
@@ -621,13 +640,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F79C97322746CCA3001BD5F8 /* LFContentModel.m in Sources */,
+				F7997CD2276FBAE700DFCC19 /* VideosDataController.swift in Sources */,
 				F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */,
 				F79C972D2746CCA3001BD5F8 /* LFPersonModel.m in Sources */,
 				F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */,
-				F73459DA2765F98B00E45725 /* TableViewController.swift in Sources */,
+				F73459DA2765F98B00E45725 /* TemplateTableViewController.swift in Sources */,
+				F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
-				F73459E0276647ED00E45725 /* DataController.swift in Sources */,
+				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
@@ -642,7 +663,6 @@
 				F79C97372746CCA3001BD5F8 /* LFPhotoListContentItemModel.m in Sources */,
 				F73459E227664D6400E45725 /* DataModelQueryable.swift in Sources */,
 				F79C97302746CCA3001BD5F8 /* LFVideoModel.m in Sources */,
-				F74E3A862740579F004B81EF /* NewsController.swift in Sources */,
 				F79C97332746CCA3001BD5F8 /* LFContentItemModel.m in Sources */,
 				F79C97352746CCA3001BD5F8 /* LFLinkContentItemModel.m in Sources */,
 				F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */,
@@ -650,12 +670,16 @@
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
+				F7997CD0276F93BA00DFCC19 /* VideoViewCell.swift in Sources */,
 				F7B2DB90274A82250099CF29 /* TVSeriesDataController.swift in Sources */,
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
+				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
+				F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */,
 				F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */,
 				F79C97312746CCA3001BD5F8 /* LFAttributedTextContentItemModel.m in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
+				F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */,
 				F711A4BD2745A94E00E1515D /* LFApiHelper.m in Sources */,
 				F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */,
 			);
