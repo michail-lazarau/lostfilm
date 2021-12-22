@@ -16,13 +16,6 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
         briefTextLabel.text = dataModel.briefText
         dateLabel.text = dateToString(date: dataModel.date, locale: Locale(identifier: "ru_RU"), dateFormat: "dd MMMM yyyy г.")
     }
-    
-    func dateToString(date: Date, locale: Locale, dateFormat: String) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = locale
-        formatter.dateFormat = dateFormat
-        return formatter.string(from: date)
-    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,6 +33,7 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
     private let newsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true //MARK: because the image expands beyond its view due to non-fitting aspect ratio
         return imageView
     }()
     
@@ -96,7 +90,6 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 8
-        stackView.clipsToBounds = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()

@@ -36,6 +36,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     private let serialView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -81,7 +82,6 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 0
-        stackView.clipsToBounds = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()

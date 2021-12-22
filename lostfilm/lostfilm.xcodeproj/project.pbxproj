@@ -30,11 +30,16 @@
 		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
 		F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DF276647ED00E45725 /* TemplateDataController.swift */; };
 		F73459E227664D6400E45725 /* DataModelQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459E127664D6400E45725 /* DataModelQueryable.swift */; };
+		F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */; };
+		F7355EF02772523C00B42B0F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEF2772523C00B42B0F /* Util.swift */; };
+		F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */; };
+		F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */; };
 		F73CEF5727494FD40011AE04 /* TVSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
 		F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */; };
 		F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */; };
 		F76D9CDB27691D12008D8CA4 /* NewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */; };
+		F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D52773BB0A007FF03B /* ScheduleDataController.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CC9276DF70700DFCC19 /* NewsDataController.swift */; };
 		F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */; };
@@ -102,11 +107,16 @@
 		F73459DB276610F000E45725 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		F73459DF276647ED00E45725 /* TemplateDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataController.swift; sourceTree = "<group>"; };
 		F73459E127664D6400E45725 /* DataModelQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelQueryable.swift; sourceTree = "<group>"; };
+		F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodeViewCell.swift; sourceTree = "<group>"; };
+		F7355EEF2772523C00B42B0F /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesDataController.swift; sourceTree = "<group>"; };
+		F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesTableViewController.swift; sourceTree = "<group>"; };
 		F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesTableViewController.swift; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
 		F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewCell.xib; sourceTree = "<group>"; };
+		F77300D52773BB0A007FF03B /* ScheduleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataController.swift; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -300,8 +310,17 @@
 				F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */,
 				F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */,
 				F7997CCF276F93BA00DFCC19 /* VideoViewCell.swift */,
+				F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		F7355EEE2772522500B42B0F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F7355EEF2772523C00B42B0F /* Util.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		F74E3A81274051AA004B81EF /* Delegates */ = {
@@ -321,6 +340,7 @@
 				F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */,
 				F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */,
 				F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */,
+				F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */,
 				F73459DE2766435300E45725 /* TableViewCells */,
 			);
 			path = TableViewControllers;
@@ -436,6 +456,7 @@
 		F7AEE46B273FEB7900C304D0 /* lostfilm */ = {
 			isa = PBXGroup;
 			children = (
+				F7355EEE2772522500B42B0F /* Util */,
 				F7C4EE852753E539006B5961 /* Other */,
 				F79C97012746CCA3001BD5F8 /* Models */,
 				F711A4502745A87000E1515D /* Helpers */,
@@ -469,6 +490,8 @@
 				F73459DF276647ED00E45725 /* TemplateDataController.swift */,
 				F7997CC9276DF70700DFCC19 /* NewsDataController.swift */,
 				F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */,
+				F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */,
+				F77300D52773BB0A007FF03B /* ScheduleDataController.swift */,
 			);
 			path = DataControllers;
 			sourceTree = "<group>";
@@ -656,6 +679,9 @@
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
+				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
+				F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */,
+				F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */,
 				F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */,
 				F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */,
 				F711A4BC2745A94E00E1515D /* LFApiSeries.m in Sources */,
@@ -670,11 +696,13 @@
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
+				F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */,
 				F7997CD0276F93BA00DFCC19 /* VideoViewCell.swift in Sources */,
 				F7B2DB90274A82250099CF29 /* TVSeriesDataController.swift in Sources */,
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
 				F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */,
+				F7355EF02772523C00B42B0F /* Util.swift in Sources */,
 				F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */,
 				F79C97312746CCA3001BD5F8 /* LFAttributedTextContentItemModel.m in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
@@ -838,9 +866,10 @@
 				APIServerURL = "https://www.lostfilm.tv/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = 6Q53JH268X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -856,6 +885,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "DV iOS Development";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mikhail-lazarau/GitRepos/lostfilm/lostfilm/lostfilm/lostfilm-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -870,9 +900,10 @@
 				APIServerURL = "https://www.lostfilm.tv/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = 6Q53JH268X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -888,6 +919,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "DV iOS Development";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mikhail-lazarau/GitRepos/lostfilm/lostfilm/lostfilm/lostfilm-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

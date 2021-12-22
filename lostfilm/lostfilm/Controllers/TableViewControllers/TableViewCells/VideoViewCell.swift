@@ -34,6 +34,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -60,7 +61,6 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 2
-        stackView.clipsToBounds = true
         stackView.backgroundColor = UIColor(red: 31 / 255, green: 31 / 255, blue: 31 / 255, alpha: 0.8)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

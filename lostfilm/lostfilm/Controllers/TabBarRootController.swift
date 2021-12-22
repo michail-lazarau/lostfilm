@@ -7,15 +7,23 @@ class TabBarRootController: UITabBarController {
         tabBar.backgroundColor = .white
         
         let tvSeriesVC = TVSeriesTableViewController(style: .plain, dataController: TVSeriesDataController())
+        let tvSeriesNC = UINavigationController(rootViewController: tvSeriesVC)
+        tvSeriesNC.navigationBar.prefersLargeTitles = true
         let newsVC = NewsTableViewController(style: .plain, dataController: NewsDataController())
+        let newsNC = UINavigationController(rootViewController: newsVC)
+        newsNC.navigationBar.prefersLargeTitles = true
         let videosVC = VideosTableViewController(style: .plain, dataController: VideosDataController())
+        let videosNC = UINavigationController(rootViewController: videosVC)
+        videosNC.navigationBar.prefersLargeTitles = true
+        let newEpisodesVC = NewEpisodesTableViewController(style: .plain, dataController: NewEpisodesDataController())
+        let newEpisodesNC = UINavigationController(rootViewController: newEpisodesVC);
+        newEpisodesNC.navigationBar.prefersLargeTitles = true
         
         tvSeriesVC.tabBarItem = UITabBarItem(title: "TV Series", image: UIImage(named: "icon_series_list"), tag: 0)
         newsVC.tabBarItem = UITabBarItem(title: "News", image: UIImage(named: "icon_news"), tag: 1)
         videosVC.tabBarItem = UITabBarItem(title: "Videos", image:  UIImage(named: "icon_videos"), tag: 2)
-
-        let navigationController = UINavigationController(rootViewController: tvSeriesVC)
-        navigationController.navigationBar.prefersLargeTitles = true
-        viewControllers = [navigationController, newsVC, videosVC]
+        newEpisodesVC.tabBarItem = UITabBarItem(title: "New Episodes", image: UIImage(named: "icon_novelties"), tag: 3)
+        
+        viewControllers = [tvSeriesNC, newsNC, videosNC, newEpisodesNC]
     }
 }
