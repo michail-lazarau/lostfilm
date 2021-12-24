@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds); //TO-DO: no difference with UIWindow() ?
         window.rootViewController = tabBarRootVC
         window.makeKeyAndVisible()
+        login()
         return true
     }
 

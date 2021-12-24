@@ -23,8 +23,10 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         if (dataModel.dateRu != nil) {
             let releaseDateRu = dateToString(date: dataModel.dateRu, dateFormat: "dd.MM.yyyy")
             releaseDateRuLabel.text = "Дата выхода Ru: \(releaseDateRu)"
+            // insert logics of daysBeforeReleaseLabel
         } else {
             releaseDateRuLabel.isHidden = true
+            daysBeforeReleaseLabel.isHidden = true
         }
         
         if (dataModel.dateEn != nil) {
@@ -125,6 +127,15 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         return releaseDateEn
     }()
     
+    private let daysBeforeReleaseLabel: UILabel = {
+        let daysBeforeRelease = UILabel()
+        daysBeforeRelease.font = UIFont.systemFont(ofSize: 17.0)
+        daysBeforeRelease.textColor = .black
+        daysBeforeRelease.numberOfLines = 1
+        daysBeforeRelease.lineBreakMode = .byTruncatingTail
+        return daysBeforeRelease
+    }()
+    
     private let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -134,7 +145,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         return stackView
     }()
     
-    private var cellStackView: UIStackView = {
+    private let cellStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
@@ -178,6 +189,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         labelStackView.addArrangedSubview(tvSeriesTitleStack)
         labelStackView.addArrangedSubview(episodeTitleStack)
         labelStackView.addArrangedSubview(releaseDateStack)
+        labelStackView.addArrangedSubview(daysBeforeReleaseLabel)
     }
     
 //    setupLabelWith(font: .systemFont(ofSize: 10.0), textColor: UIColor(red: 31 / 255, green: 31 / 255, blue: 31 / 255, alpha: 1.0), numberOfLines: 2)
