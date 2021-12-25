@@ -4,6 +4,8 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
     
     fileprivate let tableFooterHeight: CGFloat = 50
     
+    private let sections: [ScheduleDateInterval] = [.today, .tomorrow, .thisWeek, .nextWeek, .later]
+    
     internal var tableCellHeight: CGFloat {
         return 144
     }
@@ -81,18 +83,32 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.cellIdentifier(), for: indexPath) as! NewEpisodeViewCell
-        if let model = dataSource?[indexPath.row] {
+        if let model = dataSource?.selectItemsWithin(dateInterval: sections[indexPath.section])[indexPath.row] {
             cell.configureWith(dataModel: model )
         }
         return cell
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = dataSource?.count else { return 0 }
-        return count
+        return dataSource?.selectItemsWithin(dateInterval: sections[section]).count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch sections[section] {
+        case .today:
+            return "Сегодня"
+        case .tomorrow:
+            return "Завтра"
+        case .thisWeek:
+            return "На этой неделе"
+        case .nextWeek:
+            return "На следующей неделе"
+        case .later:
+            return "Позже"
+        }
     }
 }

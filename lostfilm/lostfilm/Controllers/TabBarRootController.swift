@@ -18,7 +18,7 @@ class TabBarRootController: UITabBarController {
         let newEpisodesVC = NewEpisodesTableViewController(style: .plain, dataController: NewEpisodesDataController())
         let newEpisodesNC = UINavigationController(rootViewController: newEpisodesVC);
         newEpisodesNC.navigationBar.prefersLargeTitles = true
-        let scheduleVC = ScheduleTableViewController(style: .plain, dataController: ScheduleDataController())
+        let scheduleVC = ScheduleTableViewController(style: .grouped, dataController: ScheduleDataController())
         let scheduleNC = UINavigationController(rootViewController: scheduleVC);
         scheduleNC.navigationBar.prefersLargeTitles = true
         
