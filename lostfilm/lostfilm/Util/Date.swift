@@ -10,13 +10,12 @@ extension Date {
         Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: self)!
     }
     
-    var dayAfterTomorrow: Date {
-        Calendar.current.date(byAdding: .day, value: 2, to: self)!
-    }
-    
-    func getDayOfThisWeek(weekday: Int) -> Date {
-        var dateComponents = Calendar.current.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date())
+    func getDay(weekday: Int, weekOffset: Int) -> Date {
+        var calendar = Calendar.current
+        calendar.locale = Locale(identifier: "ru_RU")
+        var dateComponents = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: self)
         dateComponents.weekday = weekday
-        return Calendar.current.date(from: dateComponents)!
+        let day = calendar.date(from: dateComponents)!
+        return calendar.date(byAdding: .weekOfYear, value: weekOffset, to: day)!
     }
 }

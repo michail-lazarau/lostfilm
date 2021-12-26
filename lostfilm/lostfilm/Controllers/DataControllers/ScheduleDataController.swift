@@ -58,39 +58,26 @@ class ScheduleDataController {
     
     func selectItemsWithin(dateInterval intervalEnum: ScheduleDateInterval) -> ArraySlice<LFEpisodeModel> {
         let today = Date()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+        let dayAfterTomorrow = Calendar.current.date(byAdding: .day, value: 2, to: today)!
+        let sundayOfThisWeek = today.getDay(weekday: 1, weekOffset: 0) // weekday 1 is Sunday
+        let mondayOfNextWeek = today.getDay(weekday: 2, weekOffset: 1) // weekday 2 is Monday
+        let mondayInFortnight = today.getDay(weekday: 2, weekOffset: 2) // weekday 2 is Monday
         let dateInterval: DateInterval
-//        Calendar.current.locale = Locale(identifier: "ru_RU")
-        
-        var calendar = Calendar.current
-        calendar.locale = Locale(identifier: "ru_RU")
-        calendar.timeZone = .current
-        var dateComponents = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: today)
         
         switch intervalEnum {
         case .today:
             dateInterval = DateInterval(start: today.startOfDay, end: today.startOfDay)
         case .tomorrow:
-            let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
             dateInterval = DateInterval(start: tomorrow.startOfDay, end: tomorrow.endOfDay)
-        case .thisWeek:
-            dateComponents.weekday = 1 // Sunday
-            let dayOfThisWeek = calendar.date(from: dateComponents)!
-            let dayAfterTomorrow = today.dayAfterTomorrow
-            if(dayAfterTomorrow <= dayOfThisWeek) {
-                dateInterval = DateInterval(start: today.dayAfterTomorrow, end: dayOfThisWeek)
-            } else {
-                return ArraySlice<LFEpisodeModel>()
-            }
+        case .thisWeek where sundayOfThisWeek >= dayAfterTomorrow:
+            dateInterval = DateInterval(start: dayAfterTomorrow.startOfDay, end: sundayOfThisWeek.endOfDay)
         case .nextWeek:
-            dateComponents.weekday = 2 // Monday
-            let dayOfThisWeek = calendar.date(from: dateComponents)!
-            let nextWeek = calendar.date(byAdding: .weekOfYear, value: 1, to: dayOfThisWeek)!
-            dateInterval = DateInterval(start: nextWeek, duration: 604800 - 1)
+            dateInterval = DateInterval(start: mondayOfNextWeek.startOfDay, duration: 604800 - 1)
         case .later:
-            dateComponents.weekday = 2 // Monday
-            let dayOfThisWeek = calendar.date(from: dateComponents)!
-            let fortnight = calendar.date(byAdding: .weekOfYear, value: 2, to: dayOfThisWeek)!
-            dateInterval = DateInterval(start: fortnight, duration: 31536000)
+            dateInterval = DateInterval(start: mondayInFortnight.startOfDay, duration: 31536000)
+        default:
+            dateInterval = DateInterval()
         }
         return itemList.prefix { model in
             dateInterval.contains(model.dateRu)
