@@ -83,9 +83,14 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.cellIdentifier(), for: indexPath) as! NewEpisodeViewCell
-        if let model = dataSource?.selectItemsWithin(dateInterval: sections[indexPath.section])[indexPath.row] {
-            cell.configureWith(dataModel: model )
+        if let models = dataSource?.selectItemsWithin(dateInterval: sections[indexPath.section]) {
+            let offset = models.startIndex
+            let model = models[indexPath.row - offset]
+            cell.configureWith(dataModel: model)
         }
+//        if let model = dataSource?.selectItemsWithin(dateInterval: sections[indexPath.section])[indexPath.row] {
+//            cell.configureWith(dataModel: model )
+//        }
         return cell
     }
     
