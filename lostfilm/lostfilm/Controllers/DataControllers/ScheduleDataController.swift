@@ -7,6 +7,7 @@ class ScheduleDataController {
     var count: Int {
         itemList.count
     }
+    private var offset: Int = 0
 //    override func getItemListForPage(number: UInt, completionHander: @escaping ([LFEpisodeModel]?, NSError?) -> Void) {
 //        let apiHelper = LFApplicationHelper.sharedApiHelper
 //        apiHelper.series.getTimetableWithCompletionHandler { episodesList, error in
@@ -79,9 +80,11 @@ class ScheduleDataController {
         default:
             dateInterval = DateInterval()
         }
-        return itemList.prefix { model in
+        let slice = itemList[offset...].prefix { model in
             dateInterval.contains(model.dateRu)
         }
+        offset += slice.count
+        return slice
     }
 }
 

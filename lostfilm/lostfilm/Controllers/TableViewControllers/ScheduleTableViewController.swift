@@ -85,7 +85,7 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
         let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.cellIdentifier(), for: indexPath) as! NewEpisodeViewCell
         if let models = dataSource?.selectItemsWithin(dateInterval: sections[indexPath.section]) {
             let offset = models.startIndex
-            let model = models[indexPath.row - offset]
+            let model = models[indexPath.row + offset]
             cell.configureWith(dataModel: model)
         }
 //        if let model = dataSource?.selectItemsWithin(dateInterval: sections[indexPath.section])[indexPath.row] {
