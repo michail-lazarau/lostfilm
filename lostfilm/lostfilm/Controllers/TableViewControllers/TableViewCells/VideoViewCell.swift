@@ -1,11 +1,10 @@
 import UIKit
 
 class VideoViewCell: UITableViewCell, CellConfigurable {
-    
     static func cellIdentifier() -> String {
         "VideosViewCell"
     }
-    
+
     func configureWith(dataModel: LFVideoModel) {
         videoImageView.sd_setImage(with: dataModel.previewURL)
         titleLabel.text = dataModel.title
@@ -16,12 +15,12 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellView()
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -37,7 +36,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
+
     private let titleLabel: UILabel = {
         let title = UILabel()
         title.font = UIFont.systemFont(ofSize: 12.0)
@@ -46,7 +45,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         title.lineBreakMode = .byTruncatingTail
         return title
     }()
-    
+
     private let detailsLabel: UILabel = {
         let details = UILabel()
         details.font = UIFont.systemFont(ofSize: 9.0)
@@ -55,7 +54,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         details.lineBreakMode = .byTruncatingTail
         return details
     }()
-    
+
     private let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -67,24 +66,24 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
-    
+
     private func setupCellView() {
         labelStackView.addArrangedSubview(titleLabel)
         labelStackView.addArrangedSubview(detailsLabel)
-        
+
         contentView.addSubview(videoImageView)
         contentView.addSubview(labelStackView)
-        
+
         NSLayoutConstraint.activate([
             videoImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             videoImageView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             videoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             videoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
+
             labelStackView.heightAnchor.constraint(equalToConstant: 44),
             labelStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-            labelStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            labelStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
 }

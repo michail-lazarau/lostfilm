@@ -1,26 +1,25 @@
 import UIKit
 
 class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
-    
     static func cellIdentifier() -> String {
         "NewEpisodeViewCell"
     }
-    
+
     func configureWith(dataModel: LFEpisodeModel) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 8
 //        paragraphStyle.headIndent = 8
 //        paragraphStyle.tailIndent = -8
-        
+
         newEpisodeImageView.sd_setImage(with: dataModel.series.photoUrl)
 //        episodeNumLabel.text = "\(dataModel.seasonNumber) сезон \(dataModel.number) серия"
-        episodeNumLabel.attributedText = NSAttributedString(string: "\(dataModel.seasonNumber) сезон \(dataModel.number) серия", attributes: [.paragraphStyle : paragraphStyle])
+        episodeNumLabel.attributedText = NSAttributedString(string: "\(dataModel.seasonNumber) сезон \(dataModel.number) серия", attributes: [.paragraphStyle: paragraphStyle])
         tvSeriesTitleRuLabel.text = dataModel.series.nameRu
         tvSeriesTitleEnLabel.text = dataModel.series.nameEn
         episodeTitleRuLabel.text = dataModel.titleRu
         episodeTitleEnLabel.text = dataModel.titleEn
-        
-        if (dataModel.dateRu != nil) {
+
+        if dataModel.dateRu != nil {
             let releaseDateRu = dateToString(date: dataModel.dateRu, dateFormat: "dd.MM.yyyy")
             releaseDateRuLabel.text = "Дата выхода Ru: \(releaseDateRu)"
             // insert logics of daysBeforeReleaseLabel
@@ -28,8 +27,8 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
             releaseDateRuLabel.isHidden = true
             daysBeforeReleaseLabel.isHidden = true
         }
-        
-        if (dataModel.dateEn != nil) {
+
+        if dataModel.dateEn != nil {
             let releaseDateEn = dateToString(date: dataModel.dateEn, dateFormat: "dd.MM.yyyy")
             releaseDateEnLabel.text = "Дата выхода En: \(releaseDateEn)"
         } else {
@@ -41,7 +40,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellStackView()
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -49,11 +48,11 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     private let newEpisodeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -61,7 +60,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
+
     private let episodeNumLabel: UILabel = {
         let episodeNum = UILabel()
         episodeNum.font = UIFont.boldSystemFont(ofSize: 12.0)
@@ -72,7 +71,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         episodeNum.translatesAutoresizingMaskIntoConstraints = false
         return episodeNum
     }()
-    
+
     private let tvSeriesTitleRuLabel: UILabel = {
         let tvSeriesTitleRu = UILabel()
         tvSeriesTitleRu.font = UIFont.systemFont(ofSize: 10.0)
@@ -81,7 +80,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         tvSeriesTitleRu.lineBreakMode = .byTruncatingTail
         return tvSeriesTitleRu
     }()
-    
+
     private let tvSeriesTitleEnLabel: UILabel = {
         let tvSeriesTitleEn = UILabel()
         tvSeriesTitleEn.font = UIFont.systemFont(ofSize: 10.0)
@@ -99,7 +98,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         episodeTitleRu.lineBreakMode = .byTruncatingTail
         return episodeTitleRu
     }()
-    
+
     private let episodeTitleEnLabel: UILabel = {
         let episodeTitleEn = UILabel()
         episodeTitleEn.font = UIFont.systemFont(ofSize: 10.0)
@@ -108,7 +107,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         episodeTitleEn.lineBreakMode = .byTruncatingTail
         return episodeTitleEn
     }()
-    
+
     private let releaseDateRuLabel: UILabel = {
         let releaseDateRu = UILabel()
         releaseDateRu.font = UIFont.systemFont(ofSize: 10.0)
@@ -117,7 +116,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         releaseDateRu.lineBreakMode = .byTruncatingTail
         return releaseDateRu
     }()
-    
+
     private let releaseDateEnLabel: UILabel = {
         let releaseDateEn = UILabel()
         releaseDateEn.font = UIFont.systemFont(ofSize: 10.0)
@@ -126,7 +125,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         releaseDateEn.lineBreakMode = .byTruncatingTail
         return releaseDateEn
     }()
-    
+
     private let daysBeforeReleaseLabel: UILabel = {
         let daysBeforeRelease = UILabel()
         daysBeforeRelease.font = UIFont.systemFont(ofSize: 17.0)
@@ -135,7 +134,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         daysBeforeRelease.lineBreakMode = .byTruncatingTail
         return daysBeforeRelease
     }()
-    
+
     private let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -144,7 +143,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     private let cellStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -153,31 +152,31 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     private func setupCellStackView() {
         setupLabelStackView()
         cellStackView.addArrangedSubview(newEpisodeImageView)
         cellStackView.addArrangedSubview(labelStackView)
-        
+
         contentView.addSubview(cellStackView)
         contentView.addSubview(episodeNumLabel)
-        
+
         NSLayoutConstraint.activate([
             cellStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             cellStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             cellStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
+
 //            episodeNumLabel.heightAnchor.constraint(equalToConstant: episodeNumLabel.intrinsicContentSize.height + 16),
             episodeNumLabel.heightAnchor.constraint(equalToConstant: 30),
             episodeNumLabel.leadingAnchor.constraint(equalTo: newEpisodeImageView.leadingAnchor),
             episodeNumLabel.trailingAnchor.constraint(equalTo: newEpisodeImageView.trailingAnchor),
-            episodeNumLabel.bottomAnchor.constraint(equalTo: newEpisodeImageView.bottomAnchor)
+            episodeNumLabel.bottomAnchor.constraint(equalTo: newEpisodeImageView.bottomAnchor),
         ])
-        
+
         newEpisodeImageView.heightAnchor.constraint(equalTo: newEpisodeImageView.widthAnchor, multiplier: 3.0 / 5.0).isActive = true
     }
-    
+
     private func setupLabelStackView() {
         let tvSeriesTitleStack = UIStackView(arrangedSubviews: [tvSeriesTitleRuLabel, tvSeriesTitleEnLabel])
         tvSeriesTitleStack.axis = .vertical
@@ -185,13 +184,13 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         episodeTitleStack.axis = .vertical
         let releaseDateStack = UIStackView(arrangedSubviews: [releaseDateRuLabel, releaseDateEnLabel])
         releaseDateStack.axis = .vertical
-        
+
         labelStackView.addArrangedSubview(tvSeriesTitleStack)
         labelStackView.addArrangedSubview(episodeTitleStack)
         labelStackView.addArrangedSubview(releaseDateStack)
         labelStackView.addArrangedSubview(daysBeforeReleaseLabel)
     }
-    
+
 //    setupLabelWith(font: .systemFont(ofSize: 10.0), textColor: UIColor(red: 31 / 255, green: 31 / 255, blue: 31 / 255, alpha: 1.0), numberOfLines: 2)
 //    private func setupLabelWith(font: UIFont, textColor: UIColor, numberOfLines: Int) -> UILabel {
 //        let label = UILabel()

@@ -1,7 +1,6 @@
 import Foundation
 
 class TemplateDataController<DataModel> where DataModel: LFJsonObject {
-    
     var delegate: DataControllerDelegate?
     var isLoading: Bool = false
     private var itemList: [DataModel] = []
@@ -9,7 +8,7 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
     var count: Int {
         itemList.count
     }
-    
+
     init() {
         // empty
     }
@@ -22,7 +21,7 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
         currentPage += 1
         getNextItemList()
     }
-    
+
     func getNextItemList() {
         getItemListForPage(number: currentPage) { [weak self] itemList, _ in
             guard let strongSelf = self
@@ -41,7 +40,7 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
             strongSelf.isLoading = false // MARK: must be within getSeriesListForPage() method, not outside of it
         }
     }
-    
+
     internal func getItemListForPage(number: UInt, completionHander: @escaping ([DataModel]?, NSError?) -> Void) {
         preconditionFailure("This func must be overridden")
     }
@@ -51,7 +50,7 @@ extension TemplateDataController {
     subscript(index: Int) -> DataModel {
         itemList[index]
     }
-    
+
     func DidEmptyItemList() {
         itemList.removeAll()
         currentPage = 0

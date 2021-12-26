@@ -1,7 +1,6 @@
 import Foundation
 
-class VideosDataController : TemplateDataController<LFVideoModel> {
-    
+class VideosDataController: TemplateDataController<LFVideoModel> {
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFVideoModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
         apiHelper.videos.getVideoList(forPage: number, completionHandler: { videosList, error in

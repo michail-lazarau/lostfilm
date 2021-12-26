@@ -2,23 +2,22 @@ import SDWebImage
 import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
-    
     static func cellIdentifier() -> String {
         String(describing: SeriesViewCell.self)
     }
-    
+
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
         title.text = dataModel.nameRu
         subtitle.text = dataModel.nameEn
         details.text = dataModel.details
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellStackView()
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,7 +44,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         title.font = UIFont.systemFont(ofSize: 12.0)
         title.textColor = UIColor(red: 32 / 255, green: 32 / 255, blue: 32 / 255, alpha: 1.0)
         title.numberOfLines = 2
-        title.setContentHuggingPriority(UILayoutPriority.init(252), for: .vertical)
+        title.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
         return title
     }()
 
@@ -54,7 +53,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         subtitle.font = UIFont.systemFont(ofSize: 10.0)
         subtitle.textColor = UIColor(red: 157 / 255, green: 157 / 255, blue: 160 / 255, alpha: 1.0)
         subtitle.numberOfLines = 2
-        subtitle.setContentHuggingPriority(UILayoutPriority.init(252), for: .vertical)
+        subtitle.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
         return subtitle
     }()
 
@@ -64,7 +63,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         details.textColor = UIColor(red: 102 / 255, green: 102 / 255, blue: 102 / 255, alpha: 1.0)
         details.numberOfLines = 0
         details.lineBreakMode = .byTruncatingTail
-        details.setContentHuggingPriority(UILayoutPriority.init(251), for: .vertical)
+        details.setContentHuggingPriority(UILayoutPriority(251), for: .vertical)
         return details
     }()
 

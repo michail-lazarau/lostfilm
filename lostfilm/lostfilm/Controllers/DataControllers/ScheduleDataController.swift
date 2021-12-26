@@ -2,46 +2,29 @@ import Foundation
 
 class ScheduleDataController {
     var delegate: ScheduleDataControllerDelegate?
-    private var itemList: [LFEpisodeModel] = []
+    private var itemList: [[LFEpisodeModel]] = Array(repeating: [], count: 5)
     private var isLoading: Bool = false
-    var count: Int {
+    var sectionsCount: Int {
         itemList.count
     }
-    private var offset: Int = 0
-//    override func getItemListForPage(number: UInt, completionHander: @escaping ([LFEpisodeModel]?, NSError?) -> Void) {
-//        let apiHelper = LFApplicationHelper.sharedApiHelper
-//        apiHelper.series.getTimetableWithCompletionHandler { episodesList, error in
-//            completionHander(episodesList, error as NSError?)
-//        }
 
-//    func getSchedule() {
-//        if isLoading == true {
-//            return
-//        }
-//        isLoading = true
-//
-//        let apiHelper = LFApplicationHelper.sharedApiHelper
-//        apiHelper.series.getTimetableWithCompletionHandler { [weak self] episodesList, _ in
-//            guard let strongSelf = self
-//            else { return }
-//
-//            strongSelf.itemList = episodesList ?? []
-//            DispatchQueue.main.async {
-//                if let delegate = self?.delegate { // FIXME: strongSelf instead of self?
-//                    delegate.updateUIForTimeTable()
-//                }
-//            }
-//            strongSelf.isLoading = false
-//        }
-//    }
-    
+    private let sections: [ScheduleDateInterval] = [.today, .tomorrow, .thisWeek, .nextWeek, .later]
+
     func getSchedule() {
-        
         getTimeTable { [weak self] episodesList, _ in
             guard let strongSelf = self
             else { return }
-            
-            strongSelf.itemList = episodesList ?? []
+            if let episodesList = episodesList {
+                var offset = 0
+                for section in strongSelf.sections {
+                    let dateInterval = strongSelf.makeInterval(dateInterval: section)
+                    let slice = episodesList[offset...].prefix { model in
+                        dateInterval.contains(model.dateRu)
+                    }
+                    strongSelf.itemList[section.rawValue] += slice
+                    offset += slice.count
+                }
+            }
             DispatchQueue.main.async {
                 if let delegate = self?.delegate { // FIXME: strongSelf instead of self?
                     delegate.updateUIForTimeTable()
@@ -49,15 +32,15 @@ class ScheduleDataController {
             }
         }
     }
-    
+
     func getTimeTable(completionHander: @escaping ([LFEpisodeModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
         apiHelper.series.getTimetableWithCompletionHandler { newsList, error in
             completionHander(newsList, error as NSError?)
         }
     }
-    
-    func selectItemsWithin(dateInterval intervalEnum: ScheduleDateInterval) -> ArraySlice<LFEpisodeModel> {
+
+    func makeInterval(dateInterval intervalEnum: ScheduleDateInterval) -> DateInterval {
         let today = Date()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
         let dayAfterTomorrow = Calendar.current.date(byAdding: .day, value: 2, to: today)!
@@ -65,10 +48,10 @@ class ScheduleDataController {
         let mondayOfNextWeek = today.getDay(weekday: 2, weekOffset: 1) // weekday 2 is Monday
         let mondayInFortnight = today.getDay(weekday: 2, weekOffset: 2) // weekday 2 is Monday
         let dateInterval: DateInterval
-        
+
         switch intervalEnum {
         case .today:
-            dateInterval = DateInterval(start: today.startOfDay, end: today.startOfDay)
+            dateInterval = DateInterval(start: today.startOfDay, end: today.endOfDay)
         case .tomorrow:
             dateInterval = DateInterval(start: tomorrow.startOfDay, end: tomorrow.endOfDay)
         case .thisWeek where sundayOfThisWeek >= dayAfterTomorrow:
@@ -80,16 +63,16 @@ class ScheduleDataController {
         default:
             dateInterval = DateInterval()
         }
-        let slice = itemList[offset...].prefix { model in
-            dateInterval.contains(model.dateRu)
-        }
-        offset += slice.count
-        return slice
+        return dateInterval
     }
 }
 
 extension ScheduleDataController {
-    subscript(index: Int) -> LFEpisodeModel {
-        itemList[index]
+    subscript(section: Int, model: Int) -> LFEpisodeModel {
+        itemList[section][model]
+    }
+
+    subscript(section: Int) -> [LFEpisodeModel] {
+        itemList[section]
     }
 }
