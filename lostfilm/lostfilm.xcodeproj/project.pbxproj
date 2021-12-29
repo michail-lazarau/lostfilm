@@ -44,6 +44,8 @@
 		F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D52773BB0A007FF03B /* ScheduleDataController.swift */; };
 		F77300D82773BC91007FF03B /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D72773BC91007FF03B /* ScheduleTableViewController.swift */; };
 		F77E8DEF277CF40F005E7F50 /* FilteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DEE277CF40F005E7F50 /* FilteringViewController.swift */; };
+		F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */; };
+		F77E8DF3277CFCBE005E7F50 /* FilteringDataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CC9276DF70700DFCC19 /* NewsDataController.swift */; };
 		F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */; };
@@ -126,6 +128,8 @@
 		F77300D52773BB0A007FF03B /* ScheduleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataController.swift; sourceTree = "<group>"; };
 		F77300D72773BC91007FF03B /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		F77E8DEE277CF40F005E7F50 /* FilteringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringViewController.swift; sourceTree = "<group>"; };
+		F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataController.swift; sourceTree = "<group>"; };
+		F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataControllerDelegate.swift; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
 				F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */,
 				F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */,
+				F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */,
 				F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */,
 				F77300D52773BB0A007FF03B /* ScheduleDataController.swift */,
+				F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */,
 			);
 			path = DataControllers;
 			sourceTree = "<group>";
@@ -686,7 +692,9 @@
 				F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
+				F77E8DF3277CFCBE005E7F50 /* FilteringDataControllerDelegate.swift in Sources */,
 				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
+				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,

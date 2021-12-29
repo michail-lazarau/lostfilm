@@ -2,11 +2,16 @@ import UIKit
 
 class ScheduleTableViewController: UITableViewController, ScheduleDataControllerDelegate {
     internal var dataSource: ScheduleDataController?
+    // MARK: delete code below it later
+    internal var dataSourceOfFiltering: FilteringDataController = FilteringDataController()
 
     init(style: UITableView.Style, dataController: ScheduleDataController) {
         super.init(style: style)
         dataSource = dataController
         dataSource!.delegate = self
+        
+        // MARK: delete code below it later
+        dataSourceOfFiltering.getFilters()
     }
 
     required init?(coder: NSCoder) {
