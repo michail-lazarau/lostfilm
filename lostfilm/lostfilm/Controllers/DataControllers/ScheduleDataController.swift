@@ -9,8 +9,13 @@ class ScheduleDataController {
     }
 
     private let sections: [ScheduleDateInterval] = [.today, .tomorrow, .thisWeek, .nextWeek, .later]
-
+    
     func getSchedule() {
+        if isLoading == true {
+            return
+        }
+        isLoading = true
+        
         getTimeTable { [weak self] episodesList, _ in
             guard let strongSelf = self
             else { return }
@@ -26,10 +31,12 @@ class ScheduleDataController {
                 }
             }
             DispatchQueue.main.async {
-                if let delegate = self?.delegate { // FIXME: strongSelf instead of self?
+                if let delegate = strongSelf.delegate {
                     delegate.updateUIForTimeTable()
                 }
             }
+            
+            strongSelf.isLoading = false
         }
     }
 
@@ -64,6 +71,11 @@ class ScheduleDataController {
             dateInterval = DateInterval()
         }
         return dateInterval
+    }
+    
+    func DidEmptyItemList() {
+        itemList.removeAll()
+        itemList = Array(repeating: [], count: 5)
     }
 }
 

@@ -1,12 +1,6 @@
 import UIKit
 
 class ScheduleTableViewController: UITableViewController, ScheduleDataControllerDelegate {
-    fileprivate let tableFooterHeight: CGFloat = 50
-
-    internal var tableCellHeight: CGFloat {
-        return 144
-    }
-
     internal var dataSource: ScheduleDataController?
 
     init(style: UITableView.Style, dataController: ScheduleDataController) {
@@ -35,26 +29,23 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
     func setupTableViewController() {
         tableView.register(NewEpisodeViewCell.self, forCellReuseIdentifier: NewEpisodeViewCell.cellIdentifier())
         tableView.translatesAutoresizingMaskIntoConstraints = false
+//        self.tableView.contentInsetAdjustmentBehavior = .never
 
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
+        dataSource?.DidEmptyItemList()
         dataSource?.getSchedule()
+        tableView.reloadData()
         sender.endRefreshing()
-    }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        tableView.tableFooterView?.isHidden = false // MARK: displays UIActivityIndicatorView before table is updated
     }
 
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableCellHeight
+        return 144
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -65,23 +56,12 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
         }
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0,
-                                              width: UIScreen.main.bounds.width,
-                                              height: tableFooterHeight)) // MARK: is UIScreen.main.bounds.width ok?
-
-        footerView.backgroundColor = .clear
-        let spinner = UIActivityIndicatorView(style: .gray)
-        spinner.hidesWhenStopped = true
-        spinner.center = footerView.center
-        spinner.startAnimating()
-        footerView.addSubview(spinner)
-        tableView.tableFooterView = footerView // works as well: = spinner
-        return footerView
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Table view data source
