@@ -1,6 +1,7 @@
 import UIKit
 
 class ScheduleTableViewController: UITableViewController, ScheduleDataControllerDelegate {
+    private let sections: [String] = ["Сегодня", "Завтра", "На этой неделе", "На следующей неделе", "Позже"]
     internal var dataSource: ScheduleDataController?
     // MARK: delete code below it later
     internal var dataSourceOfFiltering: FilteringDataController = FilteringDataController()
@@ -89,19 +90,6 @@ class ScheduleTableViewController: UITableViewController, ScheduleDataController
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Сегодня"
-        case 1:
-            return "Завтра"
-        case 2:
-            return "На этой неделе"
-        case 3:
-            return "На следующей неделе"
-        case 4:
-            return "Позже"
-        default:
-            return "Error"
-        }
+        sections[section]
     }
 }

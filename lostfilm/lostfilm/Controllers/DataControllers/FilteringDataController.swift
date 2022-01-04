@@ -3,7 +3,12 @@ import Foundation
 class FilteringDataController {
     
     var delegate: FilteringDataControllerDelegate?
-    private var filtersModel: LFSeriesFilterModel?
+    internal var filtersModel: LFSeriesFilterModel?
+//    private var types: [LFSeriesFilterBaseModel]
+//    private var genres: [LFSeriesFilterBaseModel]
+//    private var years: [LFSeriesFilterBaseModel]
+//    private var channels: [LFSeriesFilterBaseModel]
+//    private var groups: [LFSeriesFilterBaseModel]
     
     func getFilters() {
         getSeriesFilter { [weak self] filtersList, _ in
