@@ -12,7 +12,7 @@ class TVSeriesTableViewController: TemplateTableViewController<SeriesViewCell, L
     }
     
     @objc private func DidShowFilters() {
-        let filteringTVC = FilteringTVC()
+        let filteringTVC = FilteringTVC(style: .grouped, dataController: FilteringDataController())
         let navController = UINavigationController(rootViewController: filteringTVC)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)

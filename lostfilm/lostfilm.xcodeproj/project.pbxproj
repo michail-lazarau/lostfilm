@@ -37,6 +37,8 @@
 		F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */; };
 		F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */; };
 		F73CEF5727494FD40011AE04 /* TVSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */; };
+		F74C4BD9278635EB008C5969 /* FilteringEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C4BD8278635EB008C5969 /* FilteringEnum.swift */; };
+		F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
 		F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */; };
 		F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */; };
@@ -122,6 +124,8 @@
 		F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesDataController.swift; sourceTree = "<group>"; };
 		F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesTableViewController.swift; sourceTree = "<group>"; };
 		F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesTableViewController.swift; sourceTree = "<group>"; };
+		F74C4BD8278635EB008C5969 /* FilteringEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringEnum.swift; sourceTree = "<group>"; };
+		F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterTVC.swift; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
 		F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				F7355EEF2772523C00B42B0F /* Util.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
+				F74C4BD8278635EB008C5969 /* FilteringEnum.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 		F7551D27274D886E00E1748E /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */,
 				F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */,
 				F73459D92765F98B00E45725 /* TemplateTableViewController.swift */,
 				F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */,
@@ -706,6 +712,7 @@
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
+				F74C4BD9278635EB008C5969 /* FilteringEnum.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
 				F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */,
 				F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */,
@@ -731,6 +738,7 @@
 				F77E8DEF277CF40F005E7F50 /* FilteringTVC.swift in Sources */,
 				F7B2DB90274A82250099CF29 /* TVSeriesDataController.swift in Sources */,
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
+				F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */,
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
 				F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */,
 				F7355EF02772523C00B42B0F /* Util.swift in Sources */,
