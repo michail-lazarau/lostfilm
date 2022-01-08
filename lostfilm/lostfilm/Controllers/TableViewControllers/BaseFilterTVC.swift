@@ -18,7 +18,7 @@ class BaseFilterTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BaseFilterTVCCell")
+        tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.cellIdentifier())
         navigationItem.backBarButtonItem?.action = #selector(sendFilters(sender:))
         //        presentingVC - pass data?
     }
@@ -46,22 +46,26 @@ class BaseFilterTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let filterModel = dataSource?[indexPath.row]
         else { return }
-        let switcher = (self.tableView.cellForRow(at: indexPath)?.accessoryView) as! UISwitch
-        switcher.setOn(!switcher.isOn, animated: true)
-        switchFilter(switcher, filterModel: filterModel)
+        //        let switcher = (self.tableView.cellForRow(at: indexPath)?.accessoryView) as! UISwitch
+        if let switcher = (self.tableView.cellForRow(at: indexPath) as! BaseFilterViewCell).switcher {
+            switcher.setOn(!switcher.isOn, animated: true)
+            switchFilter(switcher, filterModel: filterModel)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BaseFilterTVCCell", for: indexPath)
-        let filterModel = dataSource?[indexPath.row]
-        cell.textLabel?.text = filterModel?.name
-        let switcher = UISwitch()
-//        TODO: switcher.isOn - засетай начальное состояние!
-        cell.accessoryView = switcher
-        switcher.addTarget(self, action: #selector(switchFilter(_:filterModel:)), for: .valueChanged)
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BaseFilterViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.cellIdentifier(), for: indexPath) as! BaseFilterViewCell
+        if let filterModel = dataSource?[indexPath.row] {
+            // switcher.isOn - засетай начальное состояние!
+            cell.switcher.isOn = ((filterSet?.values.contains(filterModel.value)) != nil)
+            cell.textLabel?.text = filterModel.name
+            cell.switcherAction = { [unowned self] in
+                switchFilter(cell.switcher, filterModel: filterModel)
+            }
+        }
         return cell
     }
     
@@ -73,5 +77,4 @@ class BaseFilterTVC: UITableViewController {
         guard let count = dataSource?.count else { return 0 }
         return count
     }
-
 }
