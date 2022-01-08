@@ -1,6 +1,13 @@
 import UIKit
 
-class TVSeriesTableViewController: TemplateTableViewController<SeriesViewCell, LFSeriesModel> {
+class TVSeriesTableViewController: TemplateTableViewController<SeriesViewCell, LFSeriesModel>, BaseFilterDelegate {
+    
+    func sendFiltersToTVSeriesTVC(filters: (key: String, values: Set<String>)) {
+//        filterDictionary?.merge(<#T##other: [String : Set<String>]##[String : Set<String>]#>, uniquingKeysWith: <#T##(Set<String>, Set<String>) throws -> Set<String>#>)
+    }
+    
+    
+    internal var filterDictionary: [String : Set<String>]?
     override internal var tableCellHeight: CGFloat {
         return 175
     }
