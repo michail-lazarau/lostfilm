@@ -377,7 +377,6 @@
 				F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */,
 				F77300D72773BC91007FF03B /* ScheduleTableViewController.swift */,
 				F73459DE2766435300E45725 /* TableViewCells */,
-				F7E1F744278A441200E7A709 /* CustomElements */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -547,13 +546,6 @@
 				F7C4EE862753E559006B5961 /* LFConstants.h */,
 			);
 			path = Other;
-			sourceTree = "<group>";
-		};
-		F7E1F744278A441200E7A709 /* CustomElements */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomElements;
 			sourceTree = "<group>";
 		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
