@@ -2,12 +2,13 @@ import UIKit
 
 class BaseFilterTVC: UITableViewController {
     internal var dataSource: [LFSeriesFilterBaseModel]?
-    private var delegate: BaseFilterDelegate?
+    var delegate: BaseFilterDelegate?
     private var filterSet: (key: String, values: Set<String>)?
     
-    init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel]) {
+    init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel], filterSet: (key: String, values: Set<String>)?) {
         super.init(style: style)
         dataSource = dataController
+        self.filterSet = filterSet
 //        dataSource!.delegate = self
     }
 
@@ -19,14 +20,18 @@ class BaseFilterTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.cellIdentifier())
-        navigationItem.backBarButtonItem?.action = #selector(sendFilters(sender:))
-        //        presentingVC - pass data?
+//        let backButton = UIBarButtonItem(title: "Back", image: UIImage(named: "chevron.backward"), primaryAction: UIAction(handler: <#T##UIActionHandler##UIActionHandler##(UIAction) -> Void#>), menu: UIMenu())
+        let backButton = UIBarButtonItem(image: UIImage(named: "chevron.backward"), style: .plain, target: self, action: #selector(sendFilters(sender:)))
+        backButton.title = "Back"
+        navigationItem.leftBarButtonItem = backButton
+//        navigationItem.backBarButtonItem?.action = #selector(sendFilters(sender:))
     }
     
     @objc private func sendFilters(sender: UIBarButtonItem) {
         if let filterSet = filterSet {
-            delegate?.sendFiltersToTVSeriesTVC(filters: filterSet)
+            delegate?.sendFiltersToFilteringTVC(filters: filterSet)
         }
+        navigationController?.popViewController(animated: true)
     }
 
     @objc private func switchFilter(_ sender: UISwitch, filterModel: LFSeriesFilterBaseModel) {
@@ -60,7 +65,7 @@ class BaseFilterTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.cellIdentifier(), for: indexPath) as! BaseFilterViewCell
         if let filterModel = dataSource?[indexPath.row] {
             // switcher.isOn - засетай начальное состояние!
-            cell.switcher.isOn = ((filterSet?.values.contains(filterModel.value)) != nil)
+            cell.switcher.isOn = filterSet?.values.contains(filterModel.value) ?? false
             cell.textLabel?.text = filterModel.name
             cell.switcherAction = { [unowned self] in
                 switchFilter(cell.switcher, filterModel: filterModel)

@@ -1,14 +1,16 @@
 import UIKit
 
-class FilteringTVC: UITableViewController, FilteringDataControllerDelegate {
+class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, BaseFilterDelegate {
     private let sections: [String] = ["Сортировка", "Фильтр"]
     private let sectionCells: [[String]] = [["Сортировать"], ["Статус", "Жанр", "Год выхода", "Канал", "Тип"]]
     internal var dataSource: FilteringDataController?
+    internal var filterDictionary: [String : Set<String>]?
     
-    init(style: UITableView.Style, dataController: FilteringDataController) {
+    init(style: UITableView.Style, dataController: FilteringDataController, filterDictionary: [String : Set<String>]?) {
         super.init(style: style)
         dataSource = dataController
         dataSource!.delegate = self
+        self.filterDictionary = filterDictionary
     }
 
     required init?(coder: NSCoder) {
@@ -28,6 +30,14 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
+    func sendFiltersToFilteringTVC(filters: (key: String, values: Set<String>)) {
+        if filterDictionary == nil {
+            filterDictionary = [:]
+        }
+        
+        filterDictionary?.merge([filters.key : filters.values]) { _, new in new }
+    }
+    
     func callMe() {
 //        <#code#>
     }
@@ -35,24 +45,39 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate {
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let baseFilters = dataSource?.filtersModel
-        else { return }
+        guard let baseFilters = dataSource?.filtersModel else {
+            return
+        }
+        
         let controller: BaseFilterTVC
+        let filterSet: (String, Set<String>)?
         
         switch sectionCells[indexPath.section][indexPath.row] {
 //        case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataSource?.filtersModel.)
-        case "Статус": controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types)
+        case "Статус":
+            filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.types.first?.key}
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types, filterSet: filterSet)
             controller.navigationItem.title = "Выбрать " + "Статус"
-        case "Жанр": controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres)
+        case "Жанр":
+            filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.genres.first?.key}
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres, filterSet: filterSet)
             controller.navigationItem.title = "Выбрать " + "Жанр"
-        case "Год выхода": controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years)
+        case "Год выхода":
+            filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.years.first?.key}
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years, filterSet: filterSet)
             controller.navigationItem.title = "Выбрать " + "Год выхода"
-        case "Канал": controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels)
+        case "Канал":
+            filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.channels.first?.key}
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, filterSet: filterSet)
             controller.navigationItem.title = "Выбрать " + "Канал"
-        case "Тип": controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups)
+        case "Тип":
+            filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.groups.first?.key}
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, filterSet: filterSet)
             controller.navigationItem.title = "Выбрать " + "Тип"
         default: return
         }
+        
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
