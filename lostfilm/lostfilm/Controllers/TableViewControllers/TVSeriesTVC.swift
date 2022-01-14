@@ -1,6 +1,7 @@
 import UIKit
 
-class TVSeriesTableViewController: TemplateTableViewController<SeriesViewCell, LFSeriesModel> {
+class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, FilteringDelegate {
+    
     internal var filterDictionary: [String : Set<String>]?
     override internal var tableCellHeight: CGFloat {
         return 175
@@ -12,11 +13,17 @@ class TVSeriesTableViewController: TemplateTableViewController<SeriesViewCell, L
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
     }
     
+    func sendFiltersToTVSeriesTVC(filters: [String : Set<String>]) {
+        filterDictionary = filters
+        
+    }
+    
     @objc private func DidShowFilters() {
         let filteringTVC = FilteringTVC(style: .grouped, dataController: FilteringDataController(), filterDictionary: filterDictionary)
         
         let navController = UINavigationController(rootViewController: filteringTVC)
         navController.modalPresentationStyle = .fullScreen
+        filteringTVC.filteringDelegate = self
         present(navController, animated: true)
         
 //                addChild(filteringTVC)

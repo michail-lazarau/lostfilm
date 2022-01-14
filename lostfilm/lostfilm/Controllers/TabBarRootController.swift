@@ -5,19 +5,19 @@ class TabBarRootController: UITabBarController {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
 
-        let tvSeriesVC = TVSeriesTableViewController(style: .plain, dataController: TVSeriesDataController())
+        let tvSeriesVC = TVSeriesTVC(style: .plain, dataController: TVSeriesDataController())
         let tvSeriesNC = UINavigationController(rootViewController: tvSeriesVC)
         tvSeriesNC.navigationBar.prefersLargeTitles = true
-        let newsVC = NewsTableViewController(style: .plain, dataController: NewsDataController())
+        let newsVC = NewsTVC(style: .plain, dataController: NewsDataController())
         let newsNC = UINavigationController(rootViewController: newsVC)
         newsNC.navigationBar.prefersLargeTitles = true
-        let videosVC = VideosTableViewController(style: .plain, dataController: VideosDataController())
+        let videosVC = VideosTVC(style: .plain, dataController: VideosDataController())
         let videosNC = UINavigationController(rootViewController: videosVC)
         videosNC.navigationBar.prefersLargeTitles = true
-        let newEpisodesVC = NewEpisodesTableViewController(style: .plain, dataController: NewEpisodesDataController())
+        let newEpisodesVC = NewEpisodesTVC(style: .plain, dataController: NewEpisodesDataController())
         let newEpisodesNC = UINavigationController(rootViewController: newEpisodesVC)
         newEpisodesNC.navigationBar.prefersLargeTitles = true
-        let scheduleVC = ScheduleTableViewController(style: .grouped, dataController: ScheduleDataController())
+        let scheduleVC = ScheduleTVC(style: .grouped, dataController: ScheduleDataController())
         let scheduleNC = UINavigationController(rootViewController: scheduleVC)
         scheduleNC.navigationBar.prefersLargeTitles = true
 

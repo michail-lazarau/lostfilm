@@ -2,7 +2,7 @@ import UIKit
 
 class BaseFilterTVC: UITableViewController {
     internal var dataSource: [LFSeriesFilterBaseModel]?
-    var delegate: BaseFilterDelegate?
+    var baseFilterDelegate: BaseFilterDelegate?
     private var filterSet: (key: String, values: Set<String>)?
     
     init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel], filterSet: (key: String, values: Set<String>)?) {
@@ -29,7 +29,7 @@ class BaseFilterTVC: UITableViewController {
     
     @objc private func sendFilters(sender: UIBarButtonItem) {
         if let filterSet = filterSet {
-            delegate?.sendFiltersToFilteringTVC(filters: filterSet)
+            baseFilterDelegate?.sendFiltersToFilteringTVC(filters: filterSet)
         }
         navigationController?.popViewController(animated: true)
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-class ScheduleTableViewController: UITableViewController, ScheduleDataControllerDelegate {
+class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
     private let sections: [String] = ["Сегодня", "Завтра", "На этой неделе", "На следующей неделе", "Позже"]
     internal var dataSource: ScheduleDataController?
 

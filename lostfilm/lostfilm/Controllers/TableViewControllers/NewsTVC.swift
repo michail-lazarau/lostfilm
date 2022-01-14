@@ -1,6 +1,6 @@
 import UIKit
 
-class NewsTableViewController: TemplateTableViewController<NewsViewCell, LFNewsModel> {
+class NewsTVC: TemplateTVC<NewsViewCell, LFNewsModel> {
     override internal var tableCellHeight: CGFloat {
         return 120
     }

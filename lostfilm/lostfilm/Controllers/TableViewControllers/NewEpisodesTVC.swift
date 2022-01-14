@@ -1,6 +1,6 @@
 import UIKit
 
-class NewEpisodesTableViewController: TemplateTableViewController<NewEpisodeViewCell, LFEpisodeModel> {
+class NewEpisodesTVC: TemplateTVC<NewEpisodeViewCell, LFEpisodeModel> {
     override internal var tableCellHeight: CGFloat {
         return 144
     }

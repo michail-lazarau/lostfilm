@@ -26,31 +26,32 @@
 		F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B32745A94E00E1515D /* LFApiVideos.m */; };
 		F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B72745A94E00E1515D /* LFApiNews.m */; };
 		F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4BB2745A94E00E1515D /* LFApiBase.m */; };
+		F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721A0422792273800C614C7 /* FilteringDelegate.swift */; };
 		F72518272774FBD000C60103 /* ScheduleDataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */; };
 		F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */; };
-		F73459DA2765F98B00E45725 /* TemplateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TemplateTableViewController.swift */; };
+		F73459DA2765F98B00E45725 /* TemplateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TemplateTVC.swift */; };
 		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
 		F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DF276647ED00E45725 /* TemplateDataController.swift */; };
 		F73459E227664D6400E45725 /* DataModelQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459E127664D6400E45725 /* DataModelQueryable.swift */; };
 		F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */; };
 		F7355EF02772523C00B42B0F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEF2772523C00B42B0F /* Util.swift */; };
 		F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */; };
-		F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */; };
-		F73CEF5727494FD40011AE04 /* TVSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */; };
+		F7355EF42772584E00B42B0F /* NewEpisodesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF32772584E00B42B0F /* NewEpisodesTVC.swift */; };
+		F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* TVSeriesTVC.swift */; };
 		F74C4BD9278635EB008C5969 /* FilteringEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C4BD8278635EB008C5969 /* FilteringEnum.swift */; };
 		F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
-		F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */; };
+		F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD627691CC2008D8CA4 /* NewsTVC.swift */; };
 		F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */; };
 		F76D9CDB27691D12008D8CA4 /* NewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */; };
 		F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D52773BB0A007FF03B /* ScheduleDataController.swift */; };
-		F77300D82773BC91007FF03B /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D72773BC91007FF03B /* ScheduleTableViewController.swift */; };
+		F77300D82773BC91007FF03B /* ScheduleTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D72773BC91007FF03B /* ScheduleTVC.swift */; };
 		F77E8DEF277CF40F005E7F50 /* FilteringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */; };
 		F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */; };
 		F77E8DF3277CFCBE005E7F50 /* FilteringDataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CC9276DF70700DFCC19 /* NewsDataController.swift */; };
-		F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */; };
+		F7997CCE276F933000DFCC19 /* VideosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCD276F933000DFCC19 /* VideosTVC.swift */; };
 		F7997CD0276F93BA00DFCC19 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCF276F93BA00DFCC19 /* VideoViewCell.swift */; };
 		F7997CD2276FBAE700DFCC19 /* VideosDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */; };
 		F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97062746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m */; };
@@ -116,25 +117,26 @@
 		F711A4B92745A94E00E1515D /* LFApiBase+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LFApiBase+Protected.h"; sourceTree = "<group>"; };
 		F711A4BA2745A94E00E1515D /* LFApiBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFApiBase.h; sourceTree = "<group>"; };
 		F711A4BB2745A94E00E1515D /* LFApiBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFApiBase.m; sourceTree = "<group>"; };
+		F721A0422792273800C614C7 /* FilteringDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDelegate.swift; sourceTree = "<group>"; };
 		F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataControllerDelegate.swift; sourceTree = "<group>"; };
 		F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateIntervalEnum.swift; sourceTree = "<group>"; };
-		F73459D92765F98B00E45725 /* TemplateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableViewController.swift; sourceTree = "<group>"; };
+		F73459D92765F98B00E45725 /* TemplateTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTVC.swift; sourceTree = "<group>"; };
 		F73459DB276610F000E45725 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		F73459DF276647ED00E45725 /* TemplateDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataController.swift; sourceTree = "<group>"; };
 		F73459E127664D6400E45725 /* DataModelQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelQueryable.swift; sourceTree = "<group>"; };
 		F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodeViewCell.swift; sourceTree = "<group>"; };
 		F7355EEF2772523C00B42B0F /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesDataController.swift; sourceTree = "<group>"; };
-		F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesTableViewController.swift; sourceTree = "<group>"; };
-		F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesTableViewController.swift; sourceTree = "<group>"; };
+		F7355EF32772584E00B42B0F /* NewEpisodesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesTVC.swift; sourceTree = "<group>"; };
+		F73CEF5627494FD40011AE04 /* TVSeriesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesTVC.swift; sourceTree = "<group>"; };
 		F74C4BD8278635EB008C5969 /* FilteringEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringEnum.swift; sourceTree = "<group>"; };
 		F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterTVC.swift; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
-		F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		F76D9CD627691CC2008D8CA4 /* NewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTVC.swift; sourceTree = "<group>"; };
 		F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		F76D9CD927691D12008D8CA4 /* NewsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewCell.xib; sourceTree = "<group>"; };
 		F77300D52773BB0A007FF03B /* ScheduleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataController.swift; sourceTree = "<group>"; };
-		F77300D72773BC91007FF03B /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		F77300D72773BC91007FF03B /* ScheduleTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTVC.swift; sourceTree = "<group>"; };
 		F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringTVC.swift; sourceTree = "<group>"; };
 		F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataController.swift; sourceTree = "<group>"; };
 		F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataControllerDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +144,7 @@
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7997CC9276DF70700DFCC19 /* NewsDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataController.swift; sourceTree = "<group>"; };
-		F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTableViewController.swift; sourceTree = "<group>"; };
+		F7997CCD276F933000DFCC19 /* VideosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTVC.swift; sourceTree = "<group>"; };
 		F7997CCF276F93BA00DFCC19 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
 		F7997CD1276FBAE700DFCC19 /* VideosDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosDataController.swift; sourceTree = "<group>"; };
 		F79C97032746CCA3001BD5F8 /* LFSeriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSeriesModel.h; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */,
 				F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */,
 				F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */,
+				F721A0422792273800C614C7 /* FilteringDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -373,12 +376,12 @@
 			children = (
 				F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */,
 				F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */,
-				F73459D92765F98B00E45725 /* TemplateTableViewController.swift */,
-				F73CEF5627494FD40011AE04 /* TVSeriesTableViewController.swift */,
-				F76D9CD627691CC2008D8CA4 /* NewsTableViewController.swift */,
-				F7997CCD276F933000DFCC19 /* VideosTableViewController.swift */,
-				F7355EF32772584E00B42B0F /* NewEpisodesTableViewController.swift */,
-				F77300D72773BC91007FF03B /* ScheduleTableViewController.swift */,
+				F73459D92765F98B00E45725 /* TemplateTVC.swift */,
+				F73CEF5627494FD40011AE04 /* TVSeriesTVC.swift */,
+				F76D9CD627691CC2008D8CA4 /* NewsTVC.swift */,
+				F7997CCD276F933000DFCC19 /* VideosTVC.swift */,
+				F7355EF32772584E00B42B0F /* NewEpisodesTVC.swift */,
+				F77300D72773BC91007FF03B /* ScheduleTVC.swift */,
 				F73459DE2766435300E45725 /* TableViewCells */,
 			);
 			path = TableViewControllers;
@@ -706,8 +709,8 @@
 				F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */,
 				F79C972D2746CCA3001BD5F8 /* LFPersonModel.m in Sources */,
 				F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */,
-				F73459DA2765F98B00E45725 /* TemplateTableViewController.swift in Sources */,
-				F7997CCE276F933000DFCC19 /* VideosTableViewController.swift in Sources */,
+				F73459DA2765F98B00E45725 /* TemplateTVC.swift in Sources */,
+				F7997CCE276F933000DFCC19 /* VideosTVC.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
 				F77E8DF3277CFCBE005E7F50 /* FilteringDataControllerDelegate.swift in Sources */,
@@ -717,14 +720,14 @@
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
-				F73CEF5727494FD40011AE04 /* TVSeriesTableViewController.swift in Sources */,
+				F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */,
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
 				F74C4BD9278635EB008C5969 /* FilteringEnum.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
-				F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */,
+				F7355EF42772584E00B42B0F /* NewEpisodesTVC.swift in Sources */,
 				F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */,
 				F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */,
 				F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */,
@@ -741,7 +744,7 @@
 				F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */,
 				F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */,
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
-				F77300D82773BC91007FF03B /* ScheduleTableViewController.swift in Sources */,
+				F77300D82773BC91007FF03B /* ScheduleTVC.swift in Sources */,
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
 				F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */,
@@ -752,10 +755,11 @@
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
 				F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */,
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
-				F76D9CD727691CC2008D8CA4 /* NewsTableViewController.swift in Sources */,
+				F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */,
 				F7355EF02772523C00B42B0F /* Util.swift in Sources */,
 				F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */,
 				F79C97312746CCA3001BD5F8 /* LFAttributedTextContentItemModel.m in Sources */,
+				F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
 				F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */,

@@ -1,6 +1,6 @@
 import UIKit
 
-class VideosTableViewController: TemplateTableViewController<VideoViewCell, LFVideoModel> {
+class VideosTVC: TemplateTVC<VideoViewCell, LFVideoModel> {
     override internal var tableCellHeight: CGFloat {
         return 210
     }
