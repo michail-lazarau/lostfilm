@@ -70,6 +70,7 @@
 		F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97232746CCA3001BD5F8 /* LFNewsModel.m */; };
 		F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97252746CCA3001BD5F8 /* LFPhotoModel.m */; };
 		F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97282746CCA3001BD5F8 /* LFJsonObject.m */; };
+		F7AA54CB2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA54CA2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift */; };
 		F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */; };
 		F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */; };
 		F7AEE479273FEB7A00C304D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */; };
@@ -178,6 +179,7 @@
 		F79C97262746CCA3001BD5F8 /* LFPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPhotoModel.h; sourceTree = "<group>"; };
 		F79C97282746CCA3001BD5F8 /* LFJsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFJsonObject.m; sourceTree = "<group>"; };
 		F79C97292746CCA3001BD5F8 /* LFJsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFJsonObject.h; sourceTree = "<group>"; };
+		F7AA54CA2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesFilterModelPropertyEnum.swift; sourceTree = "<group>"; };
 		F7AEE469273FEB7900C304D0 /* lostfilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lostfilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
 				F74C4BD8278635EB008C5969 /* FilteringEnum.swift */,
+				F7AA54CA2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
 				F74C4BD9278635EB008C5969 /* FilteringEnum.swift in Sources */,
+				F7AA54CB2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
 				F7355EF42772584E00B42B0F /* NewEpisodesTableViewController.swift in Sources */,
 				F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */,

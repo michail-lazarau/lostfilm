@@ -1,8 +1,10 @@
 import UIKit
 
 class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, BaseFilterDelegate {
-    private let sections: [String] = ["Сортировка", "Фильтр"]
-    private let sectionCells: [[String]] = [["Сортировать"], ["Статус", "Жанр", "Год выхода", "Канал", "Тип"]]
+    
+    typealias FilterEnum = LFSeriesFilterModelPropertyEnum
+    private let sections: [String] = [NSLocalizedString("Sorting", comment: ""), NSLocalizedString("Filtering", comment: "")]
+    private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Groups]]
     internal var dataSource: FilteringDataController?
     internal var filterDictionary: [String : Set<String>]?
     
@@ -22,7 +24,7 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FilteringTVCCell")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "xmark"), style: .plain, target: self, action: #selector(DidViewControllerDismiss))
-        navigationItem.title = "Сортировка и фильтр"
+        navigationItem.title = "\(NSLocalizedString("Sorting", comment: "")) \(NSLocalizedString("and", comment: "")) \(NSLocalizedString("filtering", comment: ""))"
         dataSource?.getFilters()
     }
     
@@ -48,32 +50,32 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
         guard let baseFilters = dataSource?.filtersModel else {
             return
         }
-        
+        let choose = NSLocalizedString("Choose", comment: "")
         let controller: BaseFilterTVC
         let filterSet: (String, Set<String>)?
         
         switch sectionCells[indexPath.section][indexPath.row] {
 //        case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataSource?.filtersModel.)
-        case "Статус":
+        case .CustomType:
             filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.types.first?.key}
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types, filterSet: filterSet)
-            controller.navigationItem.title = "Выбрать " + "Статус"
-        case "Жанр":
+            controller.navigationItem.title =  "\(choose) \(FilterEnum.CustomType.localizedString())"
+        case .Genre:
             filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.genres.first?.key}
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres, filterSet: filterSet)
-            controller.navigationItem.title = "Выбрать " + "Жанр"
-        case "Год выхода":
+            controller.navigationItem.title = "\(choose) \(FilterEnum.Genre.localizedString())"
+        case .ReleaseYear:
             filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.years.first?.key}
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years, filterSet: filterSet)
-            controller.navigationItem.title = "Выбрать " + "Год выхода"
-        case "Канал":
+            controller.navigationItem.title = "\(choose) \(FilterEnum.ReleaseYear.localizedString())"
+        case .Channel:
             filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.channels.first?.key}
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, filterSet: filterSet)
-            controller.navigationItem.title = "Выбрать " + "Канал"
-        case "Тип":
+            controller.navigationItem.title = "\(choose) \(FilterEnum.Channel.localizedString())"
+        case .Groups:
             filterSet = filterDictionary?.first{$0.key == dataSource?.filtersModel?.groups.first?.key}
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, filterSet: filterSet)
-            controller.navigationItem.title = "Выбрать " + "Тип"
+            controller.navigationItem.title = "\(choose) \(FilterEnum.Groups.localizedString())"
         default: return
         }
         
@@ -87,7 +89,7 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FilteringTVCCell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = sectionCells[indexPath.section][indexPath.row]
+        cell.textLabel?.text = sectionCells[indexPath.section][indexPath.row].localizedString()
         return cell
     }
 
