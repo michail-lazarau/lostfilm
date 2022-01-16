@@ -50,12 +50,22 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
            completionHandler:(void (^)(NSArray<LFSeriesModel *> *,
                                        NSError *))completionHandler {
     
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{ @"act": @"serial",
+                                                                                         @"type": @"search",
+                                                                                         @"s": @(3),
+                                                                                         @"t": @(0) }];
+    
+    [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
+}
+
+- (void)getSeriesListForPage:(NSUInteger)page
+              withParameters:(NSMutableDictionary *)parameters
+           completionHandler:(void (^)(NSArray<LFSeriesModel *> *,
+                                       NSError *))completionHandler {
+    [parameters setObject:@(LFApiSeriesNumberOfItemsOnPage * (page - 1)) forKey:@"o"];
+    
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref:@"ajaxik.php"
-                                                               parameters:@{ @"act": @"serial",
-                                                                             @"type": @"search",
-                                                                             @"o": @(LFApiSeriesNumberOfItemsOnPage * (page - 1)),
-                                                                             @"s": @(3),
-                                                                             @"t": @(0) }
+                                                               parameters: parameters
                                                              headerFields:@{ @"Referer": @"https://www.lostfilm.tv/series/?type=search&s=3&t=0" }];
     [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
         
