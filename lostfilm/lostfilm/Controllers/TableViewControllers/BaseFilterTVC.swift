@@ -20,7 +20,6 @@ class BaseFilterTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.cellIdentifier())
-//        let backButton = UIBarButtonItem(title: "Back", image: UIImage(named: "chevron.backward"), primaryAction: UIAction(handler: <#T##UIActionHandler##UIActionHandler##(UIAction) -> Void#>), menu: UIMenu())
         let backButton = UIBarButtonItem(image: UIImage(named: "chevron.backward"), style: .plain, target: self, action: #selector(sendFilters(sender:)))
         backButton.title = "Back"
         navigationItem.leftBarButtonItem = backButton
