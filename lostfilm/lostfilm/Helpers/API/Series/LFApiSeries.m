@@ -50,9 +50,7 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
            completionHandler:(void (^)(NSArray<LFSeriesModel *> *,
                                        NSError *))completionHandler {
     
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{ @"act": @"serial",
-                                                                                         @"type": @"search",
-                                                                                         @"s": @(3),
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:@{ @"s": @(3),
                                                                                          @"t": @(0) }];
     
     [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
@@ -62,7 +60,11 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
               withParameters:(NSMutableDictionary *)parameters
            completionHandler:(void (^)(NSArray<LFSeriesModel *> *,
                                        NSError *))completionHandler {
-    [parameters setObject:@(LFApiSeriesNumberOfItemsOnPage * (page - 1)) forKey:@"o"];
+    
+    [parameters addEntriesFromDictionary:@{
+            @"act": @"serial",
+            @"type": @"search",
+            @"o": @(LFApiSeriesNumberOfItemsOnPage * (page - 1)) }];
     
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref:@"ajaxik.php"
                                                                parameters: parameters
