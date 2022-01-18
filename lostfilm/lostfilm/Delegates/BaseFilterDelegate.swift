@@ -1,5 +1,5 @@
 import Foundation
 
 protocol BaseFilterDelegate: AnyObject {
-    func sendFiltersToFilteringTVC(filters: (key: String, values: Set<String>))
+    func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel]?)
 }

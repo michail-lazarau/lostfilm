@@ -2,7 +2,7 @@ import UIKit
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, FilteringDelegate {
     
-    internal var filterDictionary: [String : Set<String>]?
+    internal var filterDictionary: [LFSeriesFilterBaseModel]?
     override internal var tableCellHeight: CGFloat {
         return 175
     }
@@ -13,7 +13,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, FilteringDelegate
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
     }
     
-    func sendFiltersToTVSeriesTVC(filters: [String : Set<String>]) {
+    func sendFiltersToTVSeriesTVC(filters: [LFSeriesFilterBaseModel]?) {
         filterDictionary = filters
         
     }
