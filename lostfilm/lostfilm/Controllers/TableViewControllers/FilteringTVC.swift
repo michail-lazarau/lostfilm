@@ -5,18 +5,18 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
     private let sections: [String] = [NSLocalizedString("Sorting", comment: ""), NSLocalizedString("Filtering", comment: "")]
     private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Groups]]
     internal var dataSource: FilteringDataController?
-    internal var filterDictionary: [LFSeriesFilterBaseModel]
+    internal var appliedFilters: [LFSeriesFilterBaseModel]
     internal var filteringDelegate: FilteringDelegate?
 
-    init(style: UITableView.Style, dataController: FilteringDataController, filterDictionary: [LFSeriesFilterBaseModel]?) {
-        self.filterDictionary = filterDictionary ?? []
+    init(style: UITableView.Style, dataController: FilteringDataController, appliedFilters: [LFSeriesFilterBaseModel]?) {
+        self.appliedFilters = appliedFilters ?? []
         super.init(style: style)
         dataSource = dataController
         dataSource!.delegate = self
     }
 
     required init?(coder: NSCoder) {
-        filterDictionary = []
+        appliedFilters = []
         super.init(coder: coder)
         dataSource = nil
     }
@@ -31,18 +31,18 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        filteringDelegate?.sendFiltersToTVSeriesTVC(filters: filterDictionary)
+        filteringDelegate?.sendFiltersToTVSeriesTVC(filters: appliedFilters)
     }
 
     @objc func DidViewControllerDismiss() {
         dismiss(animated: true, completion: nil)
     }
 
-    func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel]?) {
-        if let filters = filters {
-            filterDictionary.removeAll { $0.key == filters[0].key }
-            filterDictionary.append(contentsOf: filters)
+    func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel]) {
+        if !filters.isEmpty {
+            appliedFilters.removeAll { $0.key == filters[0].key }
         }
+            appliedFilters.append(contentsOf: filters)
     }
 
     func callMe() {
@@ -57,29 +57,29 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
         }
         let choose = NSLocalizedString("Choose", comment: "")
         let controller: BaseFilterTVC
-        let appliedFilters: [LFSeriesFilterBaseModel]
+        let selectedFilters: [LFSeriesFilterBaseModel]
 
         switch sectionCells[indexPath.section][indexPath.row] {
 //        case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataSource?.filtersModel.)
         case .CustomType:
-            appliedFilters = filterDictionary.filter { $0.key == baseFilters.types.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types, appliedFilters: appliedFilters)
+            selectedFilters = appliedFilters.filter { $0.key == baseFilters.types.first?.key }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types, selectedFilters: selectedFilters)
             controller.navigationItem.title = "\(choose) \(FilterEnum.CustomType.localizedString())"
         case .Genre:
-            appliedFilters = filterDictionary.filter { $0.key == baseFilters.genres.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres, appliedFilters: appliedFilters)
+            selectedFilters = appliedFilters.filter { $0.key == baseFilters.genres.first?.key }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres, selectedFilters: selectedFilters)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Genre.localizedString())"
         case .ReleaseYear:
-            appliedFilters = filterDictionary.filter { $0.key == baseFilters.years.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years, appliedFilters: appliedFilters)
+            selectedFilters = appliedFilters.filter { $0.key == baseFilters.years.first?.key }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years, selectedFilters: selectedFilters)
             controller.navigationItem.title = "\(choose) \(FilterEnum.ReleaseYear.localizedString())"
         case .Channel:
-            appliedFilters = filterDictionary.filter { $0.key == baseFilters.channels.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, appliedFilters: appliedFilters)
+            selectedFilters = appliedFilters.filter { $0.key == baseFilters.channels.first?.key }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, selectedFilters: selectedFilters)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Channel.localizedString())"
         case .Groups:
-            appliedFilters = filterDictionary.filter { $0.key == baseFilters.groups.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, appliedFilters: appliedFilters)
+            selectedFilters = appliedFilters.filter { $0.key == baseFilters.groups.first?.key }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, selectedFilters: selectedFilters)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Groups.localizedString())"
         default: return
         }

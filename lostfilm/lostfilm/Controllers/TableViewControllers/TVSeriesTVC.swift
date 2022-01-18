@@ -13,13 +13,13 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, FilteringDelegate
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
     }
     
-    func sendFiltersToTVSeriesTVC(filters: [LFSeriesFilterBaseModel]?) {
+    func sendFiltersToTVSeriesTVC(filters: [LFSeriesFilterBaseModel]) {
         filterDictionary = filters
         
     }
     
     @objc private func DidShowFilters() {
-        let filteringTVC = FilteringTVC(style: .grouped, dataController: FilteringDataController(), filterDictionary: filterDictionary)
+        let filteringTVC = FilteringTVC(style: .grouped, dataController: FilteringDataController(), appliedFilters: filterDictionary)
         
         let navController = UINavigationController(rootViewController: filteringTVC)
         navController.modalPresentationStyle = .fullScreen
