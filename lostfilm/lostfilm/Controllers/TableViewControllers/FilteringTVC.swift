@@ -3,7 +3,7 @@ import UIKit
 class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, BaseFilterDelegate {
     typealias FilterEnum = LFSeriesFilterModelPropertyEnum
     private let sections: [String] = [NSLocalizedString("Sorting", comment: ""), NSLocalizedString("Filtering", comment: "")]
-    private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Groups]]
+    private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Group]]
     internal var dataSource: FilteringDataController?
     internal var appliedFilters: [LFSeriesFilterBaseModel]
     internal var filteringDelegate: FilteringDelegate?
@@ -31,7 +31,7 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        filteringDelegate?.sendFiltersToTVSeriesTVC(filters: appliedFilters)
+        filteringDelegate?.sendFiltersToTVSeriesDC(filters: appliedFilters)
     }
 
     @objc func DidViewControllerDismiss() {
@@ -77,10 +77,10 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
             selectedFilters = appliedFilters.filter { $0.key == baseFilters.channels.first?.key }
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, selectedFilters: selectedFilters)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Channel.localizedString())"
-        case .Groups:
+        case .Group:
             selectedFilters = appliedFilters.filter { $0.key == baseFilters.groups.first?.key }
             controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, selectedFilters: selectedFilters)
-            controller.navigationItem.title = "\(choose) \(FilterEnum.Groups.localizedString())"
+            controller.navigationItem.title = "\(choose) \(FilterEnum.Group.localizedString())"
         default: return
         }
 

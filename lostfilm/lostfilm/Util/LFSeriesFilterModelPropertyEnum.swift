@@ -6,7 +6,7 @@ public enum LFSeriesFilterModelPropertyEnum: String {
     case Genre = "Genre"
     case ReleaseYear = "Release year"
     case Channel = "Channel"
-    case Groups = "Groups"
+    case Group = "Group"
     
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue, comment: "")
