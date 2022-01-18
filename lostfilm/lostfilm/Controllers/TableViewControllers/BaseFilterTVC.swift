@@ -3,16 +3,17 @@ import UIKit
 class BaseFilterTVC: UITableViewController {
     internal var dataSource: [LFSeriesFilterBaseModel]?
     var baseFilterDelegate: BaseFilterDelegate?
-    private var appliedFilters: [LFSeriesFilterBaseModel]?
+    private var appliedFilters: [LFSeriesFilterBaseModel]
     
-    init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel], appliedFilters: [LFSeriesFilterBaseModel]?) {
+    init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel], appliedFilters: [LFSeriesFilterBaseModel]) {
+        self.appliedFilters = appliedFilters
         super.init(style: style)
         dataSource = dataController
-        self.appliedFilters = appliedFilters
 //        dataSource!.delegate = self
     }
 
     required init?(coder: NSCoder) {
+        appliedFilters = []
         super.init(coder: coder)
         dataSource = nil
     }
@@ -27,22 +28,16 @@ class BaseFilterTVC: UITableViewController {
     }
     
     @objc private func sendFilters(sender: UIBarButtonItem) {
-        if let appliedFilters = appliedFilters {
             baseFilterDelegate?.sendFiltersToFilteringTVC(filters: appliedFilters)
-        }
         navigationController?.popViewController(animated: true)
     }
 
     @objc private func switchFilter(_ sender: UISwitch, filterModel: LFSeriesFilterBaseModel) {
-        if appliedFilters == nil {
-            appliedFilters = []
-        }
-
         if sender.isOn {
-            appliedFilters?.append(filterModel)
+            appliedFilters.append(filterModel)
         } else {
-            if let index = appliedFilters?.firstIndex(of: filterModel) {
-                appliedFilters?.remove(at: index)
+            if let index = appliedFilters.firstIndex(of: filterModel) {
+                appliedFilters.remove(at: index)
             }
         }
     }
@@ -66,7 +61,7 @@ class BaseFilterTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.cellIdentifier(), for: indexPath) as! BaseFilterViewCell
         if let filterModel = dataSource?[indexPath.row] {
             // switcher.isOn - засетай начальное состояние!
-            cell.switcher.isOn = appliedFilters?.contains(filterModel) ?? false
+            cell.switcher.isOn = appliedFilters.contains(filterModel)
             cell.textLabel?.text = filterModel.name
             cell.switcherAction = { [unowned self] in
                 switchFilter(cell.switcher, filterModel: filterModel)
