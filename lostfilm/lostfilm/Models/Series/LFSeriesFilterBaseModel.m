@@ -23,4 +23,16 @@ AC_EXTERN_STRING_M_V(LFSeriesFilterBaseModelValueKey, @"value")
     return self;
 }
 
+- (BOOL)isEqual:(id)object {
+    BOOL result = NO;
+    if ([object isKindOfClass: [self class]]) {
+        LFSeriesFilterBaseModel *model = object;
+        result = [self.key isEqual:model.key] &&
+        [self.value isEqual:model.value] &&
+        [self.name isEqual:model.name];
+    }
+    return result;
+}
+// https://stackoverflow.com/questions/5054730/comparing-objects-in-obj-c
+
 @end

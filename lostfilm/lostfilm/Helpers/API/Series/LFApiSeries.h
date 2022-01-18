@@ -26,6 +26,11 @@
            completionHandler:(void (^)(NSArray<LFSeriesModel *> *seriesList,
                                        NSError *error))completionHandler;
 
+- (void)getSeriesListForPage:(NSUInteger)page
+              withParameters:(NSDictionary *)parameters
+           completionHandler:(void (^)(NSArray<LFSeriesModel *> *seriesList,
+                                       NSError *error))completionHandler;
+
 - (void)getNewEpisodeListForPage:(NSUInteger)page
                completionHandler:(void (^)(NSArray<LFEpisodeModel *> *episodeList,
                                            NSError *error))completionHandler;
