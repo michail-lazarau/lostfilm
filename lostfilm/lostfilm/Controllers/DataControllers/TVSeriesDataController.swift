@@ -2,10 +2,14 @@ import Foundation
 
 class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDelegate {
     var savedFilters: [LFSeriesFilterBaseModel] = []
+    
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
-//        let parameters: NSMutableDictionary = transformFiltersIntoParameters() ?? [:]
-        apiHelper.series.getListForPage(number, withParameters: transformFiltersIntoParameters() as? [AnyHashable : Any], completionHandler: { seriesList, error in
+//        if let parameters = transformFiltersIntoParameters() {
+//            var str = parameters["t"]
+//        }
+//        let nsMutableDict =  (transformFiltersIntoParameters() as NSDictionary?)?.mutableCopy() as? NSMutableDictionary
+        apiHelper.series.getListForPage(number, withParameters: transformFiltersIntoParameters() ?? nil, completionHandler: { seriesList, error in
                 completionHander(seriesList, error as NSError?)
             })
     }
@@ -14,20 +18,20 @@ class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDe
         savedFilters = filters
     }
     
-    private func transformFiltersIntoParameters() -> NSMutableDictionary? {
+    private func transformFiltersIntoParameters() -> [String : String]? {
         if savedFilters.isEmpty {
             return nil
         }
         
         let parameters = savedFilters.reduce(into: [String : String]()) { partialResult, LFSeriesFilterBaseModel in
-            partialResult[LFSeriesFilterBaseModel.key, default: ""] += "\(String(describing: LFSeriesFilterBaseModel.value)) ,"
+            partialResult[LFSeriesFilterBaseModel.key, default: ""] += "\(String(describing: LFSeriesFilterBaseModel.value)),"
         }
-        return (parameters.mapValues{$0.dropLast(" ,".count)} as NSDictionary).mutableCopy() as! NSMutableDictionary
+        return parameters.mapValues{String($0.dropLast(",".count))}
         
 //        MARK: should work as well
 //        let groupByKey: [String : [LFSeriesFilterBaseModel]] = Dictionary(grouping: savedFilters, by: {$0.key})
 //        return groupByKey.reduce(into: [String : String]()) { partialResult, tuple in
-//            partialResult.updateValue(tuple.value.map{$0.value}.joined(separator: ", "), forKey: tuple.key)
+//            partialResult.updateValue(tuple.value.map{$0.value}.joined(separator: ","), forKey: tuple.key)
 //        }
     }
 }
