@@ -8,8 +8,8 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
     internal var appliedFilters: [LFSeriesFilterBaseModel]
     internal var filteringDelegate: FilteringDelegate?
 
-    init(style: UITableView.Style, dataController: FilteringDataController, appliedFilters: [LFSeriesFilterBaseModel]?) {
-        self.appliedFilters = appliedFilters ?? []
+    init(style: UITableView.Style, dataController: FilteringDataController, appliedFilters: [LFSeriesFilterBaseModel]) {
+        self.appliedFilters = appliedFilters
         super.init(style: style)
         dataSource = dataController
         dataSource!.delegate = self
@@ -31,11 +31,12 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        filteringDelegate?.sendFiltersToTVSeriesDC(filters: appliedFilters)
+//        filteringDelegate?.sendFiltersToTVSeriesDC(filters: appliedFilters)
     }
 
     @objc func DidViewControllerDismiss() {
         dismiss(animated: true, completion: nil)
+        filteringDelegate?.sendFiltersToTVSeriesDC(filters: appliedFilters)
     }
 
     func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel]) {

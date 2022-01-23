@@ -11,6 +11,20 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        if let dataSource = dataSource {
+//            if !(dataSource as! TVSeriesDataController).savedFilters.isEmpty {
+//                dataSource.DidEmptyItemList()
+//                dataSource.LoadingData()
+//            }
+//        }
+        if !(dataSource as! TVSeriesDataController).savedFilters.isEmpty {
+            dataSource?.DidEmptyItemList()
+            dataSource?.LoadingData()
+        }
+    }
+    
     @objc private func DidShowFilters() {
         let filteringTVC = FilteringTVC(style: .grouped, dataController: FilteringDataController(), appliedFilters: (dataSource as! TVSeriesDataController).savedFilters)
         

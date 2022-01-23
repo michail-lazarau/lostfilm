@@ -57,9 +57,14 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
 }
 
 - (void)getSeriesListForPage:(NSUInteger)page
-              withParameters:(NSMutableDictionary *)parameters
+              withParameters:(NSMutableDictionary * _Nullable)parameters
            completionHandler:(void (^)(NSArray<LFSeriesModel *> *,
                                        NSError *))completionHandler {
+    
+    if (!parameters) {
+        parameters = [[NSMutableDictionary alloc] initWithDictionary:@{ @"s": @(3),
+                                                                        @"t": @(0) }];
+    }
     
     [parameters addEntriesFromDictionary:@{
             @"act": @"serial",

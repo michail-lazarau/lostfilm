@@ -21,10 +21,8 @@ class BaseFilterTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.cellIdentifier())
-        let backButton = UIBarButtonItem(image: UIImage(named: "chevron.backward"), style: .plain, target: self, action: #selector(sendFilters(sender:)))
-        backButton.title = "Back"
-        navigationItem.leftBarButtonItem = backButton
-//        navigationItem.backBarButtonItem?.action = #selector(sendFilters(sender:))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "chevron.backward"), style: .plain, target: self, action: #selector(sendFilters(sender:)))
+        navigationItem.leftBarButtonItem?.title = "Back" // doesn't work
     }
     
     @objc private func sendFilters(sender: UIBarButtonItem) {

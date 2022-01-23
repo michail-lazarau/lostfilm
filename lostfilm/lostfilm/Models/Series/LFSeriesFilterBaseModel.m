@@ -33,6 +33,18 @@ AC_EXTERN_STRING_M_V(LFSeriesFilterBaseModelValueKey, @"value")
     }
     return result;
 }
+- (NSUInteger)hash
+{
+    NSUInteger result = 1;
+    NSUInteger prime = 31;
+
+    result = prime * result + [_name hash];
+    result = prime * result + [_key hash];
+    result = prime * result + [_value hash];
+
+    return result;
+}
+// https://stackoverflow.com/questions/5915147/recommended-hash-function-for-overwriting-nsobjects-hash-method
 // https://stackoverflow.com/questions/5054730/comparing-objects-in-obj-c
 
 @end
