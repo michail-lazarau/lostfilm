@@ -23,8 +23,8 @@ class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDe
             return nil
         }
         
-        let parameters = savedFilters.reduce(into: [String : String]()) { partialResult, LFSeriesFilterBaseModel in
-            partialResult[LFSeriesFilterBaseModel.key, default: ""] += "\(String(describing: LFSeriesFilterBaseModel.value)),"
+        let parameters = savedFilters.reduce(into: [String : String]()) { partialResult, savedFilter in
+            partialResult[savedFilter.key, default: ""] += "\(savedFilter.value ?? ""),"
         }
         return parameters.mapValues{String($0.dropLast(",".count))}
         
