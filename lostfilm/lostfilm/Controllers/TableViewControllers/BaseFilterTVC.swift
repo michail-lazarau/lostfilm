@@ -4,11 +4,13 @@ class BaseFilterTVC: UITableViewController {
     internal var dataSource: [LFSeriesFilterBaseModel]?
     var baseFilterDelegate: BaseFilterDelegate?
     private var selectedFilters: [LFSeriesFilterBaseModel]
+    private var keyForModel: String?
     
-    init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel], selectedFilters: [LFSeriesFilterBaseModel]) {
+    init(style: UITableView.Style, dataController: [LFSeriesFilterBaseModel], selectedFilters: [LFSeriesFilterBaseModel], forKey: String?) {
         self.selectedFilters = selectedFilters
         super.init(style: style)
         dataSource = dataController
+        keyForModel = forKey
 //        dataSource!.delegate = self
     }
 
@@ -21,12 +23,12 @@ class BaseFilterTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.cellIdentifier())
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "chevron.backward"), style: .plain, target: self, action: #selector(sendFilters(sender:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "chevron.backward"), style: .plain, target: self, action: #selector(didTransmitFiltersAndPopVC(sender:)))
         navigationItem.leftBarButtonItem?.title = "Back" // doesn't work
     }
     
-    @objc private func sendFilters(sender: UIBarButtonItem) {
-            baseFilterDelegate?.sendFiltersToFilteringTVC(filters: selectedFilters)
+    @objc private func didTransmitFiltersAndPopVC(sender: UIBarButtonItem) {
+            baseFilterDelegate?.sendFiltersToFilteringTVC(filters: selectedFilters, forKey: keyForModel)
         navigationController?.popViewController(animated: true)
     }
 
@@ -58,8 +60,7 @@ class BaseFilterTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BaseFilterViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.cellIdentifier(), for: indexPath) as! BaseFilterViewCell
         if let filterModel = dataSource?[indexPath.row] {
-            // switcher.isOn - засетай начальное состояние!
-            cell.switcher.isOn = selectedFilters.contains(filterModel)
+            cell.switcher.isOn = selectedFilters.contains(filterModel) // setting an initial value for a switch
             cell.textLabel?.text = filterModel.name
             cell.switcherAction = { [unowned self] in
                 switchFilter(cell.switcher, filterModel: filterModel)

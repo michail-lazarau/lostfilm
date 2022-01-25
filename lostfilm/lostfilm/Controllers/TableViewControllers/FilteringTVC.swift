@@ -39,11 +39,9 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
         filteringDelegate?.sendFiltersToTVSeriesDC(filters: appliedFilters)
     }
 
-    func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel]) {
-        if !filters.isEmpty {
-            appliedFilters.removeAll { $0.key == filters[0].key }
-        }
-            appliedFilters.append(contentsOf: filters)
+    func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel], forKey: String?) {
+        appliedFilters.removeAll { $0.key == forKey } // MARK: forKey is necessary due to possibility of absence of any value in filters. Optimisation here is possible
+        appliedFilters.append(contentsOf: filters)
     }
 
     func callMe() {
@@ -59,28 +57,34 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
         let choose = NSLocalizedString("Choose", comment: "")
         let controller: BaseFilterTVC
         let selectedFilters: [LFSeriesFilterBaseModel]
+        let keyForModel: String?
 
         switch sectionCells[indexPath.section][indexPath.row] {
 //        case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataSource?.filtersModel.)
         case .CustomType:
-            selectedFilters = appliedFilters.filter { $0.key == baseFilters.types.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types, selectedFilters: selectedFilters)
+            keyForModel = baseFilters.types.first?.key
+            selectedFilters = appliedFilters.filter { $0.key == keyForModel }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.types, selectedFilters: selectedFilters, forKey: keyForModel)
             controller.navigationItem.title = "\(choose) \(FilterEnum.CustomType.localizedString())"
         case .Genre:
-            selectedFilters = appliedFilters.filter { $0.key == baseFilters.genres.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres, selectedFilters: selectedFilters)
+            keyForModel = baseFilters.genres.first?.key
+            selectedFilters = appliedFilters.filter { $0.key == keyForModel }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.genres, selectedFilters: selectedFilters, forKey: keyForModel)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Genre.localizedString())"
         case .ReleaseYear:
-            selectedFilters = appliedFilters.filter { $0.key == baseFilters.years.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years, selectedFilters: selectedFilters)
+            keyForModel = baseFilters.years.first?.key
+            selectedFilters = appliedFilters.filter { $0.key == keyForModel }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.years, selectedFilters: selectedFilters, forKey: keyForModel)
             controller.navigationItem.title = "\(choose) \(FilterEnum.ReleaseYear.localizedString())"
         case .Channel:
-            selectedFilters = appliedFilters.filter { $0.key == baseFilters.channels.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, selectedFilters: selectedFilters)
+            keyForModel = baseFilters.channels.first?.key
+            selectedFilters = appliedFilters.filter { $0.key == keyForModel }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.channels, selectedFilters: selectedFilters, forKey: keyForModel)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Channel.localizedString())"
         case .Group:
-            selectedFilters = appliedFilters.filter { $0.key == baseFilters.groups.first?.key }
-            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, selectedFilters: selectedFilters)
+            keyForModel = baseFilters.groups.first?.key
+            selectedFilters = appliedFilters.filter { $0.key == keyForModel }
+            controller = BaseFilterTVC(style: .plain, dataController: baseFilters.groups, selectedFilters: selectedFilters, forKey: keyForModel)
             controller.navigationItem.title = "\(choose) \(FilterEnum.Group.localizedString())"
         default: return
         }
