@@ -48,7 +48,6 @@
 		F77300D82773BC91007FF03B /* ScheduleTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D72773BC91007FF03B /* ScheduleTVC.swift */; };
 		F77E8DEF277CF40F005E7F50 /* FilteringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */; };
 		F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */; };
-		F77E8DF3277CFCBE005E7F50 /* FilteringDataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CC9276DF70700DFCC19 /* NewsDataController.swift */; };
 		F7997CCE276F933000DFCC19 /* VideosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7997CCD276F933000DFCC19 /* VideosTVC.swift */; };
@@ -80,6 +79,8 @@
 		F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */; };
 		F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C4EE822753E222006B5961 /* NSURLRequest+LF.m */; };
 		F7C693A12782133A002C6D25 /* FilteringViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C693A02782133A002C6D25 /* FilteringViewCell.swift */; };
+		F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */; };
+		F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */; };
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
 		F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */; };
@@ -139,7 +140,6 @@
 		F77300D72773BC91007FF03B /* ScheduleTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTVC.swift; sourceTree = "<group>"; };
 		F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringTVC.swift; sourceTree = "<group>"; };
 		F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataController.swift; sourceTree = "<group>"; };
-		F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataControllerDelegate.swift; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -195,6 +195,8 @@
 		F7C4EE832753E222006B5961 /* NSURLRequest+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+LF.h"; sourceTree = "<group>"; };
 		F7C4EE862753E559006B5961 /* LFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFConstants.h; sourceTree = "<group>"; };
 		F7C693A02782133A002C6D25 /* FilteringViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringViewCell.swift; sourceTree = "<group>"; };
+		F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewButton.swift; sourceTree = "<group>"; };
+		F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringNavigationController.swift; sourceTree = "<group>"; };
 		F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterDelegate.swift; sourceTree = "<group>"; };
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
 		F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerDelegate.swift; sourceTree = "<group>"; };
@@ -364,7 +366,6 @@
 				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
 				F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */,
 				F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */,
-				F77E8DF2277CFCBD005E7F50 /* FilteringDataControllerDelegate.swift */,
 				F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */,
 				F721A0422792273800C614C7 /* FilteringDelegate.swift */,
 			);
@@ -504,6 +505,7 @@
 				F711A41A2745A74300E1515D /* Resources */,
 				F73459DD276642E200E45725 /* Protocols */,
 				F74E3A81274051AA004B81EF /* Delegates */,
+				F7DAE2C427A17676003AED19 /* CustomElements */,
 				F7AEE480273FF2C600C304D0 /* Controllers */,
 				F7AEE475273FEB7A00C304D0 /* Assets.xcassets */,
 				F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */,
@@ -520,6 +522,7 @@
 				F7551D27274D886E00E1748E /* TableViewControllers */,
 				F7B2DB8E274A81E30099CF29 /* DataControllers */,
 				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
+				F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -552,6 +555,14 @@
 				F7C4EE862753E559006B5961 /* LFConstants.h */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		F7DAE2C427A17676003AED19 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
@@ -713,7 +724,6 @@
 				F7997CCE276F933000DFCC19 /* VideosTVC.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
-				F77E8DF3277CFCBE005E7F50 /* FilteringDataControllerDelegate.swift in Sources */,
 				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
@@ -721,6 +731,7 @@
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
 				F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */,
+				F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */,
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
@@ -761,6 +772,7 @@
 				F79C97312746CCA3001BD5F8 /* LFAttributedTextContentItemModel.m in Sources */,
 				F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
+				F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
 				F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */,
 				F711A4BD2745A94E00E1515D /* LFApiHelper.m in Sources */,

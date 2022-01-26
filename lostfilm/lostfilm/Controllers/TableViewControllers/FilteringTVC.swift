@@ -1,6 +1,6 @@
 import UIKit
 
-class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, BaseFilterDelegate {
+class FilteringTVC: UITableViewController, BaseFilterDelegate {
     typealias FilterEnum = LFSeriesFilterModelPropertyEnum
     private let sections: [String] = [NSLocalizedString("Sorting", comment: ""), NSLocalizedString("Filtering", comment: "")]
     private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Group]]
@@ -12,7 +12,6 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
         self.appliedFilters = appliedFilters
         super.init(style: style)
         dataSource = dataController
-        dataSource!.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -31,7 +30,6 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        filteringDelegate?.sendFiltersToTVSeriesDC(filters: appliedFilters)
     }
 
     @objc func DidViewControllerDismiss() {
@@ -42,10 +40,6 @@ class FilteringTVC: UITableViewController, FilteringDataControllerDelegate, Base
     func sendFiltersToFilteringTVC(filters: [LFSeriesFilterBaseModel], forKey: String?) {
         appliedFilters.removeAll { $0.key == forKey } // MARK: forKey is necessary due to possibility of absence of any value in filters. Optimisation here is possible
         appliedFilters.append(contentsOf: filters)
-    }
-
-    func callMe() {
-//        <#code#>
     }
 
     // MARK: - Table view delegate

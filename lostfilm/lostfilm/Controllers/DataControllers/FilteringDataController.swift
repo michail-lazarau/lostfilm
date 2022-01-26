@@ -1,7 +1,6 @@
 import Foundation
 
 class FilteringDataController {
-    var delegate: FilteringDataControllerDelegate?
     internal var filtersModel: LFSeriesFilterModel?
     
     func getFilters() {
@@ -12,7 +11,7 @@ class FilteringDataController {
             
 //            DispatchQueue.main.async {
 //                if let delegate = strongSelf.delegate {
-//                    delegate.callMe()
+//                    delegate.func()
 //                }
 //            }
         }
