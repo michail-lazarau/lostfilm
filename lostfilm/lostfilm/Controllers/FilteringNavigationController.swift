@@ -8,6 +8,12 @@ class FilteringNavigationController: UINavigationController {
         modalPresentationStyle = .fullScreen
         view.addSubview(showSeriesButton)
         setupButtonConstraints()
+        showSeriesButton.addTarget(self, action: #selector(dismissViewControllers), for: .touchUpInside)
+    }
+    
+     @objc func dismissViewControllers() {
+        popToRootViewController(animated: false) // MARK: i'm so ashamed it's working this way along with viewWillDisappear implementation in the FilteringTVC class
+        dismiss(animated: true, completion: nil)
     }
     
     private func setupButtonConstraints() {

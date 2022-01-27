@@ -13,17 +13,12 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        if !(dataSource as! TVSeriesDataController).savedFilters.isEmpty {
-//            dataSource?.DidEmptyItemList()
-//            dataSource?.LoadingData()
-//        }
     }
 
     @objc private func DidShowFilters() {
         let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataSource as! TVSeriesDataController)
         let navController = FilteringNavigationController(rootViewController: filteringTVC)
         filteringTVC.filteringDelegate = (dataSource as! FilteringDelegate)
-        
         present(navController, animated: true)
     }
 }
