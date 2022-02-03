@@ -18,7 +18,8 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: controllers, delegate: self)
+        let items = ["Test Title"]
+        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation.insert(intoRootViewController: self)
     }
 

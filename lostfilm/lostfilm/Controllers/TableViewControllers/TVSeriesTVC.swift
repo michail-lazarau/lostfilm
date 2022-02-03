@@ -10,10 +10,6 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         navigationItem.title = "TV Series"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let dataSource = dataSource {
