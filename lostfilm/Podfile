@@ -4,6 +4,7 @@ platform :ios, '12.0'
 target 'lostfilm' do
   # Comment the next line if you don't want to use dynamic frameworks
   #use_frameworks!
+  pod 'CarbonKit'
   pod 'SDWebImage', :modular_headers => true
   pod 'hpple', :git => 'https://github.com/topfunky/hpple.git'
   pod 'DVAppCore', :git => 'https://github.com/denis-vashkovski/DVAppCore.git'

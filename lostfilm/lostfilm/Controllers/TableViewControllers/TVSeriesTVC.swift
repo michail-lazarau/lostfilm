@@ -14,6 +14,13 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let dataSource = dataSource {
+            navigationController?.pushViewController(LFSeriesDetailsVC(model: dataSource[indexPath.row]), animated: true)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     @objc private func DidShowFilters() {
         let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataSource as! TVSeriesDataController)
