@@ -1,7 +1,7 @@
 import Foundation
 
-protocol LFSeriesVMitem {
-    var type: LFSeriesModelItemType { get }
+protocol VMseriesItem {
+    var type: SeriesModelItemType { get }
     var rowCount: Int { get }
     var sectionTitle: String { get }
 }

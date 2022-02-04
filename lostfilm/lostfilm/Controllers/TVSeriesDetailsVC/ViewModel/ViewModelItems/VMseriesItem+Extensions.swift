@@ -1,6 +1,6 @@
 import Foundation
 
-extension LFSeriesVMitem {
+extension VMseriesItem {
     var rowCount: Int {
         return 1
     }

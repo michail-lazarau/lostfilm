@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SeriesPosterViewCell" rowHeight="169" id="KGk-i7-Jjw" customClass="SeriesPosterViewCell" customModule="lostfilm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0B-V1-8Ds">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eu-b3-Iqk">
+                        <rect key="frame" x="0.0" y="121" width="320" height="48"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rW3-vf-4S5">
+                                <rect key="frame" x="8" y="4" width="304" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-Qj-vBn">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62g-If-jdQ">
+                                                <rect key="frame" x="2" y="2" width="36" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.82352941176470584" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="62g-If-jdQ" firstAttribute="leading" secondItem="vlz-Qj-vBn" secondAttribute="leading" constant="2" id="EMY-rc-wRU"/>
+                                            <constraint firstAttribute="bottom" secondItem="62g-If-jdQ" secondAttribute="bottom" constant="2" id="Fro-9c-dwf"/>
+                                            <constraint firstItem="62g-If-jdQ" firstAttribute="top" secondItem="vlz-Qj-vBn" secondAttribute="top" constant="2" id="KqT-Nd-hVk"/>
+                                            <constraint firstAttribute="width" secondItem="vlz-Qj-vBn" secondAttribute="height" multiplier="1:1" id="bNv-N6-54V"/>
+                                            <constraint firstAttribute="trailing" secondItem="62g-If-jdQ" secondAttribute="trailing" constant="2" id="sro-gU-5vE"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvu-cP-j1W">
+                                        <rect key="frame" x="48" y="0.0" width="256" height="40"/>
+                                        <string key="text">Оценка Пользователей
+Lostfilm.TV</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="who-XX-k93"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rW3-vf-4S5" secondAttribute="bottom" constant="4" id="Dn1-7w-GFW"/>
+                            <constraint firstItem="rW3-vf-4S5" firstAttribute="top" secondItem="6eu-b3-Iqk" secondAttribute="top" constant="4" id="HjT-j2-Xv2"/>
+                            <constraint firstItem="rW3-vf-4S5" firstAttribute="leading" secondItem="6eu-b3-Iqk" secondAttribute="leading" constant="8" id="fnv-oq-UA8"/>
+                            <constraint firstAttribute="trailing" secondItem="rW3-vf-4S5" secondAttribute="trailing" constant="8" id="fqQ-ag-7X3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="6eu-b3-Iqk" secondAttribute="trailing" id="2FE-o1-Qec"/>
+                    <constraint firstItem="6eu-b3-Iqk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QSm-aL-FCa"/>
+                    <constraint firstAttribute="trailing" secondItem="k0B-V1-8Ds" secondAttribute="trailing" id="U7U-zU-SLn"/>
+                    <constraint firstItem="k0B-V1-8Ds" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Upw-b8-WFC"/>
+                    <constraint firstAttribute="bottom" secondItem="k0B-V1-8Ds" secondAttribute="bottom" id="VJb-cq-zyB"/>
+                    <constraint firstItem="k0B-V1-8Ds" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="f93-ab-NVg"/>
+                    <constraint firstAttribute="bottom" secondItem="6eu-b3-Iqk" secondAttribute="bottom" id="iLh-OV-plN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="posterImageView" destination="k0B-V1-8Ds" id="i93-cf-zd3"/>
+                <outlet property="ratingLabel" destination="62g-If-jdQ" id="WAc-La-PWr"/>
+                <outlet property="ratingViewContainer" destination="6eu-b3-Iqk" id="lDO-5M-MBz"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="154.35267857142856"/>
+        </tableViewCell>
+    </objects>
+</document>

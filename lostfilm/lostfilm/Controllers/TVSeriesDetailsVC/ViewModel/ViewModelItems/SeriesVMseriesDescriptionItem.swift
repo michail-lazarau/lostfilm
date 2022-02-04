@@ -1,7 +1,7 @@
 import Foundation
 
-class LFSeriesVMseriesDescriptionItem: LFSeriesVMitem {
-    var type: LFSeriesModelItemType {
+class SeriesVMseriesDescriptionItem: VMseriesItem {
+    var type: SeriesModelItemType {
         return .description
     }
     

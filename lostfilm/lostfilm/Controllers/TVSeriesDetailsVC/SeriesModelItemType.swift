@@ -1,6 +1,6 @@
 import Foundation
 
-enum LFSeriesModelItemType: String, CaseIterable {
+enum SeriesModelItemType: String, CaseIterable {
     case detailPremiereDate = "Премьера:"
     case detailChannelCountry = "Канал, Страна:"
     case detailRatingIMDb = "Рейтинг IMDb:"

@@ -1,7 +1,7 @@
 import Foundation
 
-class LFSeriesVMdetailRatingIMDbItem: LFSeriesVMitem {
-    var type: LFSeriesModelItemType {
+class SeriesVMdetailRatingIMDbItem: VMseriesItem {
+    var type: SeriesModelItemType {
         return .detailRatingIMDb
     }
     

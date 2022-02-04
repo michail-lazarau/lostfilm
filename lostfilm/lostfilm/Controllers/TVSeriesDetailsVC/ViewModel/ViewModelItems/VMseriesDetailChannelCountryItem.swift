@@ -1,7 +1,7 @@
 import Foundation
 
-class LFSeriesVMdetailChannelCountryItem: LFSeriesVMitem {
-    var type: LFSeriesModelItemType {
+class VMseriesDetailChannelCountryItem: VMseriesItem {
+    var type: SeriesModelItemType {
         return .detailChannelCountry
     }
     

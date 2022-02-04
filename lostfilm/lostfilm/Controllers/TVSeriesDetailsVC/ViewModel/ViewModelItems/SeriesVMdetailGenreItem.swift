@@ -1,7 +1,7 @@
 import Foundation
 
-class LFSeriesVMdetailGenreItem: LFSeriesVMitem {
-    var type: LFSeriesModelItemType {
+class SeriesVMdetailGenreItem: VMseriesItem {
+    var type: SeriesModelItemType {
         return .detailGenre
     }
     
