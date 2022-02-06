@@ -17,8 +17,10 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
+        registerCells()
         tableView.dataSource = viewModel
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView?.estimatedRowHeight = 100
         viewModel.dataProvider?.getDetails()
     }
     
@@ -29,17 +31,38 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
         tableView.reloadData()
     }
 
-    func registerCell() {
-        let nib = UINib(nibName: SeriesPosterViewCell.reuseIdentifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SeriesPosterViewCell.reuseIdentifier)
+    func registerCells() {
+        tableView.register(SeriesPosterViewCell.nib, forCellReuseIdentifier: SeriesPosterViewCell.reuseIdentifier)
+        tableView.register(SeriesDetailViewCell.nib, forCellReuseIdentifier: SeriesDetailViewCell.reuseIdentifier)
     }
 
     // MARK: - Table view delegate
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        175
-    }
-
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        tableView.cellForRow(at: indexPath).
+//        tableView.rowHeight = UITableView.automaticDimension
+//        let item = viewModel.items[indexPath.section]
+//        switch item.type {
+//        case .poster:
+//            return 175
+//        case .detailPremiereDate:
+//            <#code#>
+//        case .detailChannelCountry:
+//            <#code#>
+//        case .detailRatingIMDb:
+//            <#code#>
+//        case .detailGenre:
+//            <#code#>
+//        case .detailType:
+//            <#code#>
+//        case .detailOfficialSite:
+//            <#code#>
+//        case .description:
+//            tableView.estimatedRowHeight = 600
+//        default: tableView.estimatedRowHeight = 50
+//        }
+//    }
+    
     //   didSelectRowAt
 }
 

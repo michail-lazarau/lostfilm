@@ -1,6 +1,6 @@
 import Foundation
 
-class SeriesVMdetailOfficialSiteItem: VMseriesItem {
+class VMseriesDetailOfficialSiteItem: VMseriesItem {
     var type: SeriesModelItemType {
         return .detailOfficialSite
     }

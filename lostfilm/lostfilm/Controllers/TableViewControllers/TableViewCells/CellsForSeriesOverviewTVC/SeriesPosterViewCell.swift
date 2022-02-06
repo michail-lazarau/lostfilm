@@ -5,7 +5,6 @@ class SeriesPosterViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingViewContainer: UIView!
-    let height: CGFloat = 175
     var item: VMseriesItem? {
         didSet {
             guard let item = item as? VMseriesPosterItem else {
@@ -19,6 +18,10 @@ class SeriesPosterViewCell: UITableViewCell {
     class var reuseIdentifier: String {
 //        String(describing: self)
         "SeriesPosterViewCell"
+    }
+    
+    class var nib: UINib {
+        return UINib(nibName: reuseIdentifier, bundle: nil)
     }
     
     override func awakeFromNib() {

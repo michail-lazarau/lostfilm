@@ -1,6 +1,6 @@
 import Foundation
 
-class SeriesVMdetailGenreItem: VMseriesItem {
+class VMseriesDetailGenreItem: VMseriesItem {
     var type: SeriesModelItemType {
         return .detailGenre
     }
