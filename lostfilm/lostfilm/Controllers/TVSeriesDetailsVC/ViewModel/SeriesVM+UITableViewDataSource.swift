@@ -2,15 +2,15 @@ import Foundation
 
 extension SeriesVM: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return itemList.count
+        return items.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList[section].rowCount
+        return items[section].rowCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = itemList[indexPath.section]
+        let item = items[indexPath.section]
         switch item.type {
         case .poster:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesPosterViewCell.reuseIdentifier, for: indexPath) as? SeriesPosterViewCell {
@@ -23,6 +23,6 @@ extension SeriesVM: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        itemList[section].sectionTitle
+        items[section].sectionTitle
     }
 }

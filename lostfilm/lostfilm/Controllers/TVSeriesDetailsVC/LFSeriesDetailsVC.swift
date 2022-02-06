@@ -5,7 +5,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     let controllers: [UITableViewController]
 
     init(model: LFSeriesModel) {
-        viewModel = SeriesVM(model: model)
+        viewModel = SeriesVM(dataProvider: TVSeriesOverviewDC(model: model))
         controllers = [TVSeriesOverviewTVC(style: .grouped, viewModel: viewModel)]
         super.init(nibName: nil, bundle: nil)
     }

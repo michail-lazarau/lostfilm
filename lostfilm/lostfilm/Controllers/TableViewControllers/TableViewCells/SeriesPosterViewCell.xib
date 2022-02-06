@@ -61,10 +61,10 @@ Lostfilm.TV</string>
                         </subviews>
                         <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="rW3-vf-4S5" secondAttribute="bottom" constant="4" id="Dn1-7w-GFW"/>
-                            <constraint firstItem="rW3-vf-4S5" firstAttribute="top" secondItem="6eu-b3-Iqk" secondAttribute="top" constant="4" id="HjT-j2-Xv2"/>
+                            <constraint firstAttribute="trailing" secondItem="rW3-vf-4S5" secondAttribute="trailing" constant="8" id="9DX-ex-XZB"/>
+                            <constraint firstAttribute="bottom" secondItem="rW3-vf-4S5" secondAttribute="bottom" constant="4" id="Ced-1r-Fy4"/>
+                            <constraint firstItem="rW3-vf-4S5" firstAttribute="top" secondItem="6eu-b3-Iqk" secondAttribute="top" constant="4" id="U0g-fB-wef"/>
                             <constraint firstItem="rW3-vf-4S5" firstAttribute="leading" secondItem="6eu-b3-Iqk" secondAttribute="leading" constant="8" id="fnv-oq-UA8"/>
-                            <constraint firstAttribute="trailing" secondItem="rW3-vf-4S5" secondAttribute="trailing" constant="8" id="fqQ-ag-7X3"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -1,28 +1,32 @@
 import UIKit
 
-class TVSeriesOverviewTVC: UITableViewController {
+class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
     var viewModel: SeriesVM
 
     init(style: UITableView.Style, viewModel: SeriesVM) {
         self.viewModel = viewModel
         super.init(style: style)
+        self.viewModel.dataProvider?.delegate = self
     }
-
+  
     required init?(coder: NSCoder) {
         viewModel = SeriesVM()
         super.init(coder: coder)
         view.backgroundColor = .white
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         tableView.dataSource = viewModel
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        viewModel.dataProvider?.getDetails()
+    }
+    
+    func updateTableView() {
+        if let model = viewModel.dataProvider?.model {
+            viewModel.setupVMwith(model: model)
+        }
+        tableView.reloadData()
     }
 
     func registerCell() {
@@ -38,3 +42,9 @@ class TVSeriesOverviewTVC: UITableViewController {
 
     //   didSelectRowAt
 }
+
+// Uncomment the following line to preserve selection between presentations
+// self.clearsSelectionOnViewWillAppear = false
+
+// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+// self.navigationItem.rightBarButtonItem = self.editButtonItem

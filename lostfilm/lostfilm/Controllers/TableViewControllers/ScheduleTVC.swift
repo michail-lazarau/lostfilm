@@ -39,7 +39,7 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         dataSource?.DidEmptyItemList()
         dataSource?.getSchedule()
-        tableView.reloadData()
+        tableView.reloadData() // TODO: remove and check
         sender.endRefreshing()
     }
 

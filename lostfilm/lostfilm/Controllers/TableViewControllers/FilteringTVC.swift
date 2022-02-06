@@ -6,7 +6,7 @@ class FilteringTVC: UITableViewController {
     private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Group]]
     internal var dataSource: FilteringDataController = FilteringDataController()
     internal var DCwithSavedFilters: TVSeriesDataController? // make weak?
-    internal var filteringDelegate: FilteringDelegate?
+    internal var filteringDelegate: FilteringDelegate? // MARK: check how it's used
 
     init(style: UITableView.Style, DCwithSavedFilters: TVSeriesDataController) {
         self.DCwithSavedFilters = DCwithSavedFilters
