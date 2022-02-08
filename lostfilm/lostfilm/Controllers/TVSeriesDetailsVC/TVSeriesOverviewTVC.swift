@@ -22,8 +22,8 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
         viewModel.dataProvider?.getDetails()
         
         tableView.sectionHeaderHeight = 0.0
+        tableView.sectionFooterHeight = 0.0
         tableView.separatorStyle = .none
-        tableView.separatorColor = UIColor.clear
     }
     
     func updateTableView() {

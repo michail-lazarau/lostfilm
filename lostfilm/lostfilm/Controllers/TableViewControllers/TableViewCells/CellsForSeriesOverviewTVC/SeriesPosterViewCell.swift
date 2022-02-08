@@ -25,10 +25,6 @@ class SeriesPosterViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        contentView.backgroundColor = .clear
-        backgroundView?.sizeToFit()
-        clipsToBounds = true
-//        translatesAutoresizingMaskIntoConstraints = false
+//        translatesAutoresizingMaskIntoConstraints = false // MARK: never ever set false
     }
 }
