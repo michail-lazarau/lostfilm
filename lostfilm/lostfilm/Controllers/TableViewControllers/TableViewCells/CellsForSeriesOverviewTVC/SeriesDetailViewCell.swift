@@ -48,6 +48,9 @@ class SeriesDetailViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        translatesAutoresizingMaskIntoConstraints = false
+        
+        backgroundView?.sizeToFit()
+        clipsToBounds = true
+//        translatesAutoresizingMaskIntoConstraints = false
     }
 }

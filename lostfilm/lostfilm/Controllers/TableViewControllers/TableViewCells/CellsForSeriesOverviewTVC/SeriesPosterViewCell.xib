@@ -55,27 +55,27 @@ Lostfilm.TV</string>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="who-XX-k93"/>
+                                    <constraint firstAttribute="height" constant="40" id="2XQ-ug-wPW"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="rW3-vf-4S5" secondAttribute="trailing" constant="8" id="9DX-ex-XZB"/>
-                            <constraint firstAttribute="bottom" secondItem="rW3-vf-4S5" secondAttribute="bottom" constant="4" id="Ced-1r-Fy4"/>
-                            <constraint firstItem="rW3-vf-4S5" firstAttribute="top" secondItem="6eu-b3-Iqk" secondAttribute="top" constant="4" id="U0g-fB-wef"/>
-                            <constraint firstItem="rW3-vf-4S5" firstAttribute="leading" secondItem="6eu-b3-Iqk" secondAttribute="leading" constant="8" id="fnv-oq-UA8"/>
+                            <constraint firstAttribute="bottom" secondItem="rW3-vf-4S5" secondAttribute="bottom" constant="4" id="3gb-Ae-TZn"/>
+                            <constraint firstItem="rW3-vf-4S5" firstAttribute="leading" secondItem="6eu-b3-Iqk" secondAttribute="leading" constant="8" id="9GO-Ye-F27"/>
+                            <constraint firstAttribute="trailing" secondItem="rW3-vf-4S5" secondAttribute="trailing" constant="8" id="DKR-pq-7By"/>
+                            <constraint firstItem="rW3-vf-4S5" firstAttribute="top" secondItem="6eu-b3-Iqk" secondAttribute="top" constant="4" id="oJa-e8-T7A"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="6eu-b3-Iqk" secondAttribute="trailing" id="2FE-o1-Qec"/>
-                    <constraint firstItem="6eu-b3-Iqk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QSm-aL-FCa"/>
-                    <constraint firstAttribute="trailing" secondItem="k0B-V1-8Ds" secondAttribute="trailing" id="U7U-zU-SLn"/>
-                    <constraint firstItem="k0B-V1-8Ds" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Upw-b8-WFC"/>
-                    <constraint firstAttribute="bottom" secondItem="k0B-V1-8Ds" secondAttribute="bottom" id="VJb-cq-zyB"/>
-                    <constraint firstItem="k0B-V1-8Ds" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="f93-ab-NVg"/>
-                    <constraint firstAttribute="bottom" secondItem="6eu-b3-Iqk" secondAttribute="bottom" id="iLh-OV-plN"/>
+                    <constraint firstAttribute="trailing" secondItem="6eu-b3-Iqk" secondAttribute="trailing" id="aMu-sh-6aZ"/>
+                    <constraint firstItem="k0B-V1-8Ds" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aSf-VG-5zs"/>
+                    <constraint firstItem="6eu-b3-Iqk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="anX-C7-NBQ"/>
+                    <constraint firstItem="k0B-V1-8Ds" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gkV-ci-kXz"/>
+                    <constraint firstAttribute="bottom" secondItem="k0B-V1-8Ds" secondAttribute="bottom" id="tLv-Ic-o6a"/>
+                    <constraint firstAttribute="trailing" secondItem="k0B-V1-8Ds" secondAttribute="trailing" id="vgq-TQ-O2J"/>
+                    <constraint firstAttribute="bottom" secondItem="6eu-b3-Iqk" secondAttribute="bottom" id="yhG-5G-cF6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

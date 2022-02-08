@@ -19,9 +19,11 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView?.estimatedRowHeight = 100
         viewModel.dataProvider?.getDetails()
+        
+        tableView.sectionHeaderHeight = 0.0
+        tableView.separatorStyle = .none
+        tableView.separatorColor = UIColor.clear
     }
     
     func updateTableView() {
@@ -37,37 +39,22 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
     }
 
     // MARK: - Table view delegate
-
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        tableView.cellForRow(at: indexPath).
-//        tableView.rowHeight = UITableView.automaticDimension
-//        let item = viewModel.items[indexPath.section]
-//        switch item.type {
-//        case .poster:
-//            return 175
-//        case .detailPremiereDate:
-//            <#code#>
-//        case .detailChannelCountry:
-//            <#code#>
-//        case .detailRatingIMDb:
-//            <#code#>
-//        case .detailGenre:
-//            <#code#>
-//        case .detailType:
-//            <#code#>
-//        case .detailOfficialSite:
-//            <#code#>
-//        case .description:
-//            tableView.estimatedRowHeight = 600
-//        default: tableView.estimatedRowHeight = 50
-//        }
-//    }
     
-    //   didSelectRowAt
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let item = viewModel.items[indexPath.section]
+        switch item.type {
+        case .poster:
+            return 175
+        case .detailPremiereDate, .detailChannelCountry, .detailRatingIMDb, .detailGenre, .detailType, .detailOfficialSite:
+            return 50
+        case .description:
+//            tableView.estimatedRowHeight = 600
+//            return tableView.estimatedRowHeight
+            return UITableView.automaticDimension
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
-
-// Uncomment the following line to preserve selection between presentations
-// self.clearsSelectionOnViewWillAppear = false
-
-// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-// self.navigationItem.rightBarButtonItem = self.editButtonItem

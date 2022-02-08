@@ -36,16 +36,16 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bks-te-qgn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Agd-47-0nn"/>
-                    <constraint firstItem="bks-te-qgn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ga3-Sm-AQr"/>
-                    <constraint firstAttribute="bottom" secondItem="bks-te-qgn" secondAttribute="bottom" constant="8" id="QcG-uP-uYC"/>
-                    <constraint firstAttribute="trailing" secondItem="bks-te-qgn" secondAttribute="trailing" constant="16" id="ziY-KR-Bqz"/>
+                    <constraint firstItem="bks-te-qgn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SZc-q4-Aj0"/>
+                    <constraint firstItem="bks-te-qgn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="SuR-Mk-QY3"/>
+                    <constraint firstAttribute="bottom" secondItem="bks-te-qgn" secondAttribute="bottom" constant="8" id="o4J-AT-t7M"/>
+                    <constraint firstAttribute="trailing" secondItem="bks-te-qgn" secondAttribute="trailing" constant="16" id="spG-9L-Fk2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="keyLabel" destination="WRR-ir-RkG" id="ITq-eU-4z9"/>
-                <outlet property="valueLabel" destination="WRR-ir-RkG" id="vSy-gw-1Wg"/>
+                <outlet property="keyLabel" destination="tOF-Jp-Mlb" id="e2g-W1-6jr"/>
+                <outlet property="valueLabel" destination="WRR-ir-RkG" id="iCt-R3-ghG"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="79.6875"/>
         </tableViewCell>

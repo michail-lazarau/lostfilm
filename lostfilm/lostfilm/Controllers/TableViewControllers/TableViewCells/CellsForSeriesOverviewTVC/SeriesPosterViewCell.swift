@@ -7,11 +7,10 @@ class SeriesPosterViewCell: UITableViewCell {
     @IBOutlet weak var ratingViewContainer: UIView!
     var item: VMseriesItem? {
         didSet {
-            guard let item = item as? VMseriesPosterItem else {
-                return
+            if let item = item as? VMseriesPosterItem {
+                posterImageView.sd_setImage(with: item.posterUrl)
+                ratingLabel.text = String(format: "%.1f", item.rating)
             }
-            posterImageView.sd_setImage(with: item.posterUrl)
-            ratingLabel.text = String(format: "%.1f", item.rating)
         }
     }
     
@@ -26,6 +25,10 @@ class SeriesPosterViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.backgroundColor = .clear
+        backgroundView?.sizeToFit()
+        clipsToBounds = true
+//        translatesAutoresizingMaskIntoConstraints = false
     }
 }

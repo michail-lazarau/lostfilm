@@ -26,8 +26,4 @@ extension SeriesVM: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        items[section].sectionTitle
-    }
 }
