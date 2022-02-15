@@ -1,17 +1,20 @@
 import UIKit
 
 class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
-    var viewModel: SeriesVM
+    var viewModel: SeriesVM // MARK: make let?
+//    let episodesViewModel: EpisodesVM
     let controllers: [UITableViewController]
 
     init(model: LFSeriesModel) {
         viewModel = SeriesVM(dataProvider: TVSeriesOverviewDC(model: model))
-        controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel)]
+        let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDC(model: model))
+        controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel), TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel)]
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         viewModel = SeriesVM()
+//        episodesViewModel = EpisodesVM()
         controllers = []
         super.init(coder: coder)
     }

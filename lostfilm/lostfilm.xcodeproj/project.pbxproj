@@ -424,6 +424,7 @@
 		F7471DF327AAE5B300BDA17A /* ViewModelItems */ = {
 			isa = PBXGroup;
 			children = (
+				F7471DDA27AAADF700BDA17A /* SeriesModelItemType.swift */,
 				F76D1F7D27B99D65007E5933 /* Episodes */,
 				F76D1F7C27B99896007E5933 /* Series */,
 			);
@@ -727,7 +728,6 @@
 			children = (
 				F7471DE227AABA4100BDA17A /* ViewModel */,
 				F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */,
-				F7471DDA27AAADF700BDA17A /* SeriesModelItemType.swift */,
 				F7471DF627AAFAB100BDA17A /* TVSeriesOverviewTVC.swift */,
 				F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */,
 			);
