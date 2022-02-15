@@ -17,12 +17,11 @@ extension SeriesVM: UITableViewDataSource {
                 cell.item = item
                 return cell
             }
-        case .detailPremiereDate, .detailChannelCountry, .detailRatingIMDb, .detailGenre, .detailType, .detailOfficialSite:
+        case .detailPremiereDate, .detailChannelCountry, .detailRatingIMDb, .detailGenre, .detailType, .detailOfficialSite, .description:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesDetailViewCell.reuseIdentifier, for: indexPath) as? SeriesDetailViewCell {
                 cell.item = item
                 return cell
             }
-        default: break
         }
         return UITableViewCell()
     }

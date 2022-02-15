@@ -9,11 +9,8 @@ class TVSeriesOverviewDC {
     }
     
     func getDetails() {
-        getDetails(seriesId: model.id) { [weak self] seriesModel, _ in
-            guard let strongSelf = self else {
-                return
-            }
-            guard let seriesModel = seriesModel else {
+        getDetailsForSeriesBy(seriesId: model.id) { [weak self] seriesModel, _ in
+            guard let strongSelf = self, let seriesModel = seriesModel else {
                 return
             }
             strongSelf.model = seriesModel
@@ -23,7 +20,7 @@ class TVSeriesOverviewDC {
         }
     }
     
-    private func getDetails(seriesId: String, completionHander: @escaping (LFSeriesModel?, NSError?) -> Void) {
+    private func getDetailsForSeriesBy(seriesId: String, completionHander: @escaping (LFSeriesModel?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
         apiHelper.series.getDetailsForSeries(byId: seriesId, completionHandler: { seriesModel, error in
             completionHander(seriesModel, error as NSError?)

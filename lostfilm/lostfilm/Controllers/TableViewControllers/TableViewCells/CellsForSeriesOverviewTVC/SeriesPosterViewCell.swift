@@ -25,6 +25,5 @@ class SeriesPosterViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        translatesAutoresizingMaskIntoConstraints = false // MARK: never ever set false
     }
 }

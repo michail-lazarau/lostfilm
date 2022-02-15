@@ -34,6 +34,11 @@ class SeriesDetailViewCell: UITableViewCell {
                 keyLabel.text = item.sectionTitle
                 valueLabel.text = item.officialSiteUrl.absoluteString
             }
+            
+            if let item = item as? VMseriesDescriptionItem {
+                keyLabel.text = item.sectionTitle
+                valueLabel.attributedText = item.seriesDescription.ac_htmlAttributedString()
+            }
         }
     }
     
@@ -48,6 +53,6 @@ class SeriesDetailViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        translatesAutoresizingMaskIntoConstraints = false
+//        translatesAutoresizingMaskIntoConstraints = false // MARK: never set false unless autoreleasingmask is off across xib
     }
 }

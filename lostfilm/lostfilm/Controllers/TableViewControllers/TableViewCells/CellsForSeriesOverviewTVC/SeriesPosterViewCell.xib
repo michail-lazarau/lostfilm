@@ -21,16 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eu-b3-Iqk">
-                        <rect key="frame" x="0.0" y="121" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="129" width="320" height="40"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rW3-vf-4S5">
-                                <rect key="frame" x="8" y="4" width="304" height="40"/>
+                                <rect key="frame" x="8" y="4" width="304" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-Qj-vBn">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62g-If-jdQ">
-                                                <rect key="frame" x="2" y="2" width="36" height="36"/>
+                                                <rect key="frame" x="2" y="2" width="28" height="28"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvu-cP-j1W">
-                                        <rect key="frame" x="48" y="0.0" width="256" height="40"/>
+                                        <rect key="frame" x="40" y="0.0" width="264" height="32"/>
                                         <string key="text">Оценка Пользователей
 Lostfilm.TV</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -54,9 +54,6 @@ Lostfilm.TV</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2XQ-ug-wPW"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,6 +61,7 @@ Lostfilm.TV</string>
                             <constraint firstAttribute="bottom" secondItem="rW3-vf-4S5" secondAttribute="bottom" constant="4" id="3gb-Ae-TZn"/>
                             <constraint firstItem="rW3-vf-4S5" firstAttribute="leading" secondItem="6eu-b3-Iqk" secondAttribute="leading" constant="8" id="9GO-Ye-F27"/>
                             <constraint firstAttribute="trailing" secondItem="rW3-vf-4S5" secondAttribute="trailing" constant="8" id="DKR-pq-7By"/>
+                            <constraint firstAttribute="height" constant="40" id="f5E-DL-vWf"/>
                             <constraint firstItem="rW3-vf-4S5" firstAttribute="top" secondItem="6eu-b3-Iqk" secondAttribute="top" constant="4" id="oJa-e8-T7A"/>
                         </constraints>
                     </view>

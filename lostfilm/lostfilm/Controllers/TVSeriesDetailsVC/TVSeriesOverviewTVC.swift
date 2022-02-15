@@ -45,11 +45,7 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesOverviewDC {
         switch item.type {
         case .poster:
             return 175
-        case .detailPremiereDate, .detailChannelCountry, .detailRatingIMDb, .detailGenre, .detailType, .detailOfficialSite:
-            return 50
-        case .description:
-//            tableView.estimatedRowHeight = 600
-//            return tableView.estimatedRowHeight
+        case .detailPremiereDate, .detailChannelCountry, .detailRatingIMDb, .detailGenre, .detailType, .detailOfficialSite, .description:
             return UITableView.automaticDimension
         }
     }

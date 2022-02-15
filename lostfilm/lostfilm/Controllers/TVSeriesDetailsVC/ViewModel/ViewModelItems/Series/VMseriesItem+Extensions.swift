@@ -6,6 +6,6 @@ extension VMseriesItem {
     }
     
     var sectionTitle: String {
-        return type.rawValue
+        return type.description
     }
 }
