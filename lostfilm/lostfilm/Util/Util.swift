@@ -21,7 +21,7 @@ func dateToString(date: Date, locale: Locale, dateFormat: String) -> String {
 }
 
 func dateToString(date: Date, dateFormat: String) -> String {
-    dateToString(date: date, locale: Locale(identifier: "en_US"), dateFormat: dateFormat)
+    dateToString(date: date, locale: Locale.current, dateFormat: dateFormat)
 }
 
 // MARK: Trash

@@ -16,8 +16,10 @@ class EpisodesVM: NSObject {
     
     func setupVMwith(modelList: [LFSeasonModel]) {
         for model in modelList {
-            let episodeItem = VMepisodeItem(episodeList: model.episodeList)
-            items.append(episodeItem)
+            if let episodeList = model.episodeList {
+                let episodeItem = VMepisodeItem(episodeList: episodeList)
+                items.append(episodeItem)
+            }
         }
     }
 }

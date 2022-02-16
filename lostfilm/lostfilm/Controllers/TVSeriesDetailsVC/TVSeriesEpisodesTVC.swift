@@ -17,10 +17,16 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesOverviewDC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCells()
+        tableView.dataSource = viewModel
+        viewModel.dataProvider?.getSeriesGuide()
     }
 
     func updateTableView() {
-//        <#code#>
+        if let modelList = viewModel.dataProvider?.modelList {
+            viewModel.setupVMwith(modelList: modelList)
+        }
+        tableView.reloadData()
     }
 
     func registerCells() {
