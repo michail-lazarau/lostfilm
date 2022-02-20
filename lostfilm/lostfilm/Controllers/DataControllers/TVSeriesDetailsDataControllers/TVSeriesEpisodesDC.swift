@@ -3,7 +3,7 @@ import Foundation
 class TVSeriesEpisodesDC {
     var delegate: DelegateTVSeriesOverviewDC?
     let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
-    var modelList: [LFSeasonModel] = []
+    var seasonList: [LFSeasonModel] = []
     
     init(model: LFSeriesModel) {
         self.tvSeries = model
@@ -14,7 +14,7 @@ class TVSeriesEpisodesDC {
             guard let strongSelf = self, let seasonList = seasonList else {
                 return
             }
-            strongSelf.modelList = seasonList
+            strongSelf.seasonList = seasonList
             DispatchQueue.main.async {
                 strongSelf.delegate?.updateTableView()
             }

@@ -23,14 +23,15 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesOverviewDC {
     }
 
     func updateTableView() {
-        if let modelList = viewModel.dataProvider?.modelList {
-            viewModel.setupVMwith(modelList: modelList)
+        if let modelList = viewModel.dataProvider?.seasonList {
+            viewModel.setupVMwith(seasonList: modelList)
         }
         tableView.reloadData()
     }
 
     func registerCells() {
         tableView.register(EpisodeViewCell.nib, forCellReuseIdentifier: EpisodeViewCell.reuseIdentifier)
+        tableView.register(EpisodeTableHeaderView.nib, forHeaderFooterViewReuseIdentifier: EpisodeTableHeaderView.reuseIdentifier)
     }
 
     // MARK: - Table view delegate
@@ -42,4 +43,15 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesOverviewDC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let item = viewModel.items[section]
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: EpisodeTableHeaderView.reuseIdentifier) as? EpisodeTableHeaderView
+        header?.item = item
+        return header
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        200
+//    }
 }

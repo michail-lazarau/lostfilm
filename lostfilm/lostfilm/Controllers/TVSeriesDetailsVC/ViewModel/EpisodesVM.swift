@@ -14,10 +14,16 @@ class EpisodesVM: NSObject {
         self.dataProvider = dataProvider
     }
     
-    func setupVMwith(modelList: [LFSeasonModel]) {
-        for model in modelList {
-            if let episodeList = model.episodeList {
-                let episodeItem = VMepisodeItem(episodeList: episodeList)
+    func setupVMwith(seasonList: [LFSeasonModel]) {
+        for season in seasonList {
+            if let episodeList = season.episodeList {
+                let episodeItem: VMepisodeItem
+                
+                if let seasonPosterUrl = season.posterURL, let seasonDetails = season.details {
+                    episodeItem = VMepisodeItem(episodeList: episodeList, seasonNumber: season.number, seasonPosterUrl: seasonPosterUrl, seasonDetails: seasonDetails)
+                } else {
+                    episodeItem = VMepisodeItem(episodeList: episodeList, seasonNumber: season.number)
+                }
                 items.append(episodeItem)
             }
         }
