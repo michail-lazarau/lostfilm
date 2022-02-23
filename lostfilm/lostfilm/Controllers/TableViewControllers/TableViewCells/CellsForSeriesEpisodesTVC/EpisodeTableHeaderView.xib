@@ -54,6 +54,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="contentStackView" destination="8hx-G0-LrC" id="BD8-dP-eb8"/>
+                <outlet property="contentStackViewBottom" destination="KCA-rg-28q" id="XRn-b4-v6Q"/>
+                <outlet property="contentStackViewLeading" destination="M4d-oL-QFH" id="1pn-H6-8jT"/>
+                <outlet property="contentStackViewTop" destination="kgE-ce-H1W" id="UdZ-sx-GY3"/>
+                <outlet property="contentStackViewTrailing" destination="d0h-JG-oaa" id="0LM-aN-KaP"/>
                 <outlet property="detailsLabel" destination="lZ9-4M-hwc" id="2sb-it-Llm"/>
                 <outlet property="paragraphView" destination="VrY-GV-qwt" id="lW7-dI-KhH"/>
                 <outlet property="posterView" destination="n3t-Wr-SKH" id="gFG-hk-7J8"/>

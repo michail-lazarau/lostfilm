@@ -6,6 +6,10 @@ class EpisodeTableHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var contentStackView: UIStackView!
+    @IBOutlet weak var contentStackViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var contentStackViewTop: NSLayoutConstraint!
+    @IBOutlet weak var contentStackViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var contentStackViewLeading: NSLayoutConstraint!
     var item: VMepisodeItem? {
         didSet {
             paragraphView.label.text = item?.seasonNumber
@@ -14,8 +18,11 @@ class EpisodeTableHeaderView: UITableViewHeaderFooterView {
                 posterView.sd_setImage(with: posterURL)
                 detailsLabel.text = details
             } else {
+                contentStackViewTop.isActive = false
+                contentStackViewBottom.isActive = false
+                contentStackViewLeading.isActive = false
+                contentStackViewTrailing.isActive = false
                 contentStackView.isHidden = true
-//                contentStackView = nil
             }
         }
     }

@@ -51,7 +51,12 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesOverviewDC {
         return header
     }
     
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        200
-//    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let item = viewModel.items[section]
+        if item.seasonPosterUrl != nil && item.seasonDetails != nil {
+            return 200
+        } else {
+            return 50
+        }
+    }
 }
