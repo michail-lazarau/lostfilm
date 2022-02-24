@@ -7,8 +7,10 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     init(model: LFSeriesModel) {
         viewModel = SeriesVM(dataProvider: TVSeriesOverviewDC(model: model))
         let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDC(model: model))
+        let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDC(model: model))
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
-                       TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel)]
+                       TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
+                       TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),]
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -20,7 +22,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let items = ["Обзор сериала", "Гид по сериям"]
+        let items = ["Обзор сериала", "Гид по сериям", "Новости"] // MARK: refactor this - make localization
         let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation.insert(intoRootViewController: self)
         carbonTabSwipeNavigation.toolbar.isTranslucent = false

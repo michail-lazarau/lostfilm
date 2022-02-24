@@ -1,7 +1,7 @@
 import Foundation
 
 class TVSeriesOverviewDC {
-    var delegate: DelegateTVSeriesOverviewDC?
+    var delegate: DelegateTVSeriesDetailsDC?
     var model: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
     
     init(model: LFSeriesModel) {
