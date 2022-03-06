@@ -122,6 +122,7 @@
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
 		F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */; };
+		F7EC8ED927CC0A7E00616727 /* DelegateTVSeriesNewsDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesNewsDC.swift */; };
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
 		F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */; };
 		F7FFA1042777D486004B5D38 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFA1032777D486004B5D38 /* Date.swift */; };
@@ -276,6 +277,7 @@
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
 		F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesDetailsVC.swift; sourceTree = "<group>"; };
 		F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerDelegate.swift; sourceTree = "<group>"; };
+		F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesNewsDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateTVSeriesNewsDC.swift; sourceTree = "<group>"; };
 		F7EF678C2747DB3500A2A8DD /* NSError+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LF.h"; sourceTree = "<group>"; };
 		F7EF678D2747DB3600A2A8DD /* NSError+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LF.m"; sourceTree = "<group>"; };
 		F7EF67902747E41F00A2A8DD /* NSDictionary+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LF.h"; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */,
 				F721A0422792273800C614C7 /* FilteringDelegate.swift */,
 				F717BF1927AD5CF80029B796 /* DelegateTVSeriesDetailsDC.swift */,
+				F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesNewsDC.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */,
 				F7471DDF27AAB22300BDA17A /* VMseriesItem+Extensions.swift in Sources */,
 				F76D1F7927B95F61007E5933 /* TVSeriesEpisodesDC.swift in Sources */,
+				F7EC8ED927CC0A7E00616727 /* DelegateTVSeriesNewsDC.swift in Sources */,
 				F7C2812627C7A80000DA8A62 /* NewsVM.swift in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
 				F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */,

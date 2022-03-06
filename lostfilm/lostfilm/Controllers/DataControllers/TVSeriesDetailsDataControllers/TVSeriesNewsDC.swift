@@ -1,11 +1,11 @@
 import Foundation
 
 class TVSeriesNewsDC {
-    private var currentPage: UInt = 0
     private var isLoading: Bool = false
-    var delegate: DelegateTVSeriesDetailsDC?
+    var currentPage: UInt = 0
+    var delegate: DelegateTVSeriesNewsDC?
     let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
-    var newsList: [LFNewsModel] = []
+//    var newsList: [LFNewsModel] = []
     
     init(model: LFSeriesModel) {
         self.tvSeries = model
@@ -25,9 +25,9 @@ class TVSeriesNewsDC {
             guard let strongSelf = self, let newsList = newsList else {
                 return
             }
-            strongSelf.newsList += newsList
+//            strongSelf.newsList += newsList
             DispatchQueue.main.async {
-                strongSelf.delegate?.updateTableView()
+                strongSelf.delegate?.updateTableViewWith(newsList: newsList)
             }
             strongSelf.isLoading = false
         }

@@ -1,6 +1,6 @@
 import Foundation
 
-extension NewsVM: UITableViewDataSource {
+extension NewsVM: UITableViewDataSource {   
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
     }
@@ -11,10 +11,12 @@ extension NewsVM: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section].newsList[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesNewsViewCell.reuseIdentifier, for: indexPath) as? SeriesNewsViewCell {
-            cell.item = item
-            return cell
-        }
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: SeriesNewsViewCell.reuseIdentifier, for: indexPath) as? SeriesNewsViewCell
+        cell?.item = item
+        return cell ?? UITableViewCell()
+//        if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesNewsViewCell.reuseIdentifier, for: indexPath) as? SeriesNewsViewCell {
+//            cell.item = item
+//            return cell
+//        }
     }
 }

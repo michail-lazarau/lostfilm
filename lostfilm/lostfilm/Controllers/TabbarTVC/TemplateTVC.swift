@@ -46,7 +46,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     }
 
     func updateUIForTableWith(rowsRange: Range<Int>) {
-        if rowsRange.isEmpty { tableView.tableFooterView?.isHidden = true
+        if rowsRange.isEmpty {tableView.tableFooterView?.isHidden = true
             return
         } // MARK: i dont see a reason for using destroyTableFooter()
 
@@ -64,7 +64,6 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-
         tableView.tableFooterView?.isHidden = false // MARK: displays UIActivityIndicatorView before table is updated
     }
 
