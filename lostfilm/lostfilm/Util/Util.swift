@@ -3,7 +3,7 @@ import Foundation
 func login() {
     let cookieProperties: [HTTPCookiePropertyKey: Any] = [
         HTTPCookiePropertyKey.name: "lf_session",
-        HTTPCookiePropertyKey.value: "980bc13ad5a05ee696cfb3e732e4b489.938288",
+        HTTPCookiePropertyKey.value: "9047358a6d75b472555ad2ae02c4a623.7024831", //"980bc13ad5a05ee696cfb3e732e4b489.938288",
         HTTPCookiePropertyKey.domain: ".lostfilm.tv",
         HTTPCookiePropertyKey.path: "/",
         HTTPCookiePropertyKey.expires: Date().addingTimeInterval(10000000),

@@ -39,8 +39,8 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
-        // TODO: reloadData logics
         dataSource?.DidEmptyItemList()
+        tableView.reloadData() // MARK: Fix for issue
         dataSource?.LoadingData()
         sender.endRefreshing()
     }

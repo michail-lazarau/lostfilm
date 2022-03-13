@@ -5,7 +5,7 @@ class TVSeriesNewsDC {
     var currentPage: UInt = 0
     var delegate: DelegateTVSeriesNewsDC?
     let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
-//    var newsList: [LFNewsModel] = []
+    var newsList: [LFNewsModel] = []
     
     init(model: LFSeriesModel) {
         self.tvSeries = model
@@ -25,9 +25,15 @@ class TVSeriesNewsDC {
             guard let strongSelf = self, let newsList = newsList else {
                 return
             }
-//            strongSelf.newsList += newsList
+            strongSelf.newsList += newsList
+            
             DispatchQueue.main.async {
-                strongSelf.delegate?.updateTableViewWith(newsList: newsList)
+                if strongSelf.currentPage > 1 {
+                    let indexPathToReload = strongSelf.calculateIndexPathsToReload(from: newsList)
+                    strongSelf.delegate?.updateTableView(with: indexPathToReload)
+                } else {
+                    strongSelf.delegate?.updateTableView(with: .none)
+                }
             }
             strongSelf.isLoading = false
         }
@@ -38,5 +44,16 @@ class TVSeriesNewsDC {
         apiHelper.series.getNewsListForSeries(byId: seriesId, page: pageNumber) { newsList, error in
             completionHandler(newsList, error as NSError?)
         }
+    }
+    
+    private func calculateIndexPathsToReload(from newNewsList: [LFNewsModel]) -> [IndexPath] {
+      let startIndex = newsList.count - newNewsList.count
+      let endIndex = startIndex + newNewsList.count
+      return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    }
+    
+    func didEmptyNewsList() {
+        newsList.removeAll()
+        currentPage = 0
     }
 }

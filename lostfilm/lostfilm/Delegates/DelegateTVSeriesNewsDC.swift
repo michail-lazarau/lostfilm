@@ -1,5 +1,5 @@
 import Foundation
 
 protocol DelegateTVSeriesNewsDC: AnyObject {
-    func updateTableViewWith(newsList: [LFNewsModel])
+    func updateTableView(with newIndexPathsToReload: [IndexPath]?)
 }

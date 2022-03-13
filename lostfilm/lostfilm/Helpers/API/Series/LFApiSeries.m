@@ -75,9 +75,9 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
             @"type": @"search",
             @"o": @(LFApiSeriesNumberOfItemsOnPage * (page - 1)) }];
     
-    NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref:@"ajaxik.php"
+    NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref: @"ajaxik.php"
                                                                parameters: mutableDict
-                                                             headerFields:@{ @"Referer": @"https://www.lostfilm.tv/series/" }];
+                                                             headerFields:@{ @"Referer": @"https://www.lostfilm.uno/series/" }];
     [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
         
         NSMutableArray<LFSeriesModel *> *seriesList = nil;
