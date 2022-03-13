@@ -11,7 +11,7 @@
     <dict>
         
         <key>url</key>
-        <string>https://www.lostfilm.tv/news/%@/</string>
+        <string>https://www.lostfilm.uno/news/%@/</string>
         <key>data</key>
         <array>
             <dict>
@@ -139,7 +139,7 @@
                                                                 </dict>
                                                             </array>
                                                             <key>format</key>
-                                                            <string>https://www.lostfilm.tv%@</string>
+                                                            <string>https://www.lostfilm.uno%@</string>
                                                         </dict>
                                                     </array>
                                                 </dict>
