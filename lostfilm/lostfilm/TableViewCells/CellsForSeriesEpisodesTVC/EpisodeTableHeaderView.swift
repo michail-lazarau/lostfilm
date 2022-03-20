@@ -28,8 +28,7 @@ class EpisodeTableHeaderView: UITableViewHeaderFooterView {
     }
     
     class var reuseIdentifier: String {
-//        String(describing: self)
-        "EpisodeTableHeaderView"
+        String(describing: self)
     }
     
     class var nib: UINib {

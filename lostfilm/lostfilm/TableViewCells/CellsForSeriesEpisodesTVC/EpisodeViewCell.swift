@@ -41,8 +41,7 @@ class EpisodeViewCell: UITableViewCell {
     }
     
     class var reuseIdentifier: String {
-//        String(describing: self)
-        "EpisodeViewCell"
+        String(describing: self)
     }
     
     class var nib: UINib {

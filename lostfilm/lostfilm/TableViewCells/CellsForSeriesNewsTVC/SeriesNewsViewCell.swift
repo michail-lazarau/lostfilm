@@ -21,8 +21,7 @@ class SeriesNewsViewCell: UITableViewCell {
     }
 
     class var reuseIdentifier: String {
-//        String(describing: self)
-        "SeriesNewsViewCell"
+        String(describing: self)
     }
 
     class var nib: UINib {

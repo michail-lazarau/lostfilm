@@ -43,8 +43,7 @@ class SeriesDetailViewCell: UITableViewCell {
     }
     
     class var reuseIdentifier: String {
-//        String(describing: self)
-        "SeriesDetailViewCell"
+        String(describing: self)
     }
     
     class var nib: UINib {

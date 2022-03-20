@@ -1,11 +1,11 @@
 import Foundation
 
-class TVSeriesNewsDC {
+class TVSeriesPhotosDC {
     private var isLoading: Bool = false
     var currentPage: UInt = 0
     var delegate: DelegateTVSeriesDCwithPagination?
     let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
-    var newsList: [LFNewsModel] = []
+    var photoList: [LFPhotoModel] = []
     
     init(model: LFSeriesModel) {
         self.tvSeries = model
@@ -21,15 +21,15 @@ class TVSeriesNewsDC {
     }
     
     private func getDetailsFor(page: UInt) {
-        getNewsListForSeriesBy(seriesId: tvSeries.id, pageNumber: page) { [weak self] newsList, _ in
-            guard let strongSelf = self, let newsList = newsList else {
+        getPhotoListForSeriesBy(seriesId: tvSeries.id, pageNumber: page) { [weak self] photoList, _ in
+            guard let strongSelf = self, let photoList = photoList else {
                 return
             }
-            strongSelf.newsList += newsList
+            strongSelf.photoList += photoList
             
             DispatchQueue.main.async {
                 if strongSelf.currentPage > 1 {
-                    let indexPathToReload = strongSelf.calculateIndexPathsToReload(from: newsList)
+                    let indexPathToReload = strongSelf.calculateIndexPathsToReload(from: photoList)
                     strongSelf.delegate?.updateTableView(with: indexPathToReload)
                 } else {
                     strongSelf.delegate?.updateTableView(with: .none)
@@ -39,21 +39,21 @@ class TVSeriesNewsDC {
         }
     }
     
-    private func getNewsListForSeriesBy(seriesId: String, pageNumber: UInt, completionHandler: @escaping ([LFNewsModel]?, NSError?) -> Void) {
+    private func getPhotoListForSeriesBy(seriesId: String, pageNumber: UInt, completionHandler: @escaping ([LFPhotoModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
-        apiHelper.series.getNewsListForSeries(byId: seriesId, page: pageNumber) { newsList, error in
-            completionHandler(newsList, error as NSError?)
+        apiHelper.series.getPhotoListForSeries(byId: seriesId, page: pageNumber) { photoList, error in
+            completionHandler(photoList, error as NSError?)
         }
     }
     
-    private func calculateIndexPathsToReload(from newNewsList: [LFNewsModel]) -> [IndexPath] {
-      let startIndex = newsList.count - newNewsList.count
-      let endIndex = startIndex + newNewsList.count
+    private func calculateIndexPathsToReload(from newPhotoList: [LFPhotoModel]) -> [IndexPath] {
+      let startIndex = photoList.count - newPhotoList.count
+      let endIndex = startIndex + newPhotoList.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
     
     func didEmptyNewsList() {
-        newsList.removeAll()
+        photoList.removeAll()
         currentPage = 0
     }
 }

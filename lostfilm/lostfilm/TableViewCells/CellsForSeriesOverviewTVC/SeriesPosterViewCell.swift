@@ -15,8 +15,7 @@ class SeriesPosterViewCell: UITableViewCell {
     }
     
     class var reuseIdentifier: String {
-//        String(describing: self)
-        "SeriesPosterViewCell"
+        String(describing: self)
     }
     
     class var nib: UINib {

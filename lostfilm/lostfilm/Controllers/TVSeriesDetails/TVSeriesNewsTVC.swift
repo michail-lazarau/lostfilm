@@ -21,7 +21,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
         registerCells()
         tableView.dataSource = viewModel
         tableView.prefetchDataSource = self
-        viewModel.dataProvider?.loadDataByPage()
+        viewModel.dataProvider?.loadItemsByPage()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
@@ -32,7 +32,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         viewModel.dataProvider?.didEmptyNewsList()
-        viewModel.dataProvider?.loadDataByPage()
+        viewModel.dataProvider?.loadItemsByPage()
         sender.endRefreshing()
     }
 
@@ -50,7 +50,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            viewModel.dataProvider?.loadDataByPage()
+            viewModel.dataProvider?.loadItemsByPage()
         }
     }
 }
@@ -66,7 +66,7 @@ private extension TVSeriesNewsTVC {
     }
 }
 
-extension TVSeriesNewsTVC: DelegateTVSeriesNewsDC {
+extension TVSeriesNewsTVC: DelegateTVSeriesDCwithPagination {
     func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
         guard let newIndexPathsToReload = newIndexPathsToReload else {
             tableView.reloadData()

@@ -2,7 +2,6 @@ import Foundation
 
 // NSObject inheritance is required for conforming UITableViewDataSource
 class NewsVM: NSObject {
-    
     var rowCount: Int {
         return dataProvider?.newsList.count ?? 0
     }
