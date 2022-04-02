@@ -122,6 +122,11 @@
 		F7D7D18227B057D100970959 /* SeriesDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D7D18027B057D100970959 /* SeriesDetailViewCell.xib */; };
 		F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */; };
 		F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */; };
+		F7DFCF9127F0A423006A0789 /* ZoomTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DFCF9027F0A423006A0789 /* ZoomTransitioningDelegate.swift */; };
+		F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */; };
+		F7DFCF9527F0B5EB006A0789 /* ImageViewTransitionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */; };
+		F7DFCF9A27F0F6F9006A0789 /* TVSeriesPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DFCF9827F0F6F9006A0789 /* TVSeriesPhotoVC.swift */; };
+		F7DFCF9B27F0F6F9006A0789 /* TVSeriesPhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7DFCF9927F0F6F9006A0789 /* TVSeriesPhotoVC.xib */; };
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
@@ -282,6 +287,11 @@
 		F7D7D18027B057D100970959 /* SeriesDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesDetailViewCell.xib; sourceTree = "<group>"; };
 		F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewButton.swift; sourceTree = "<group>"; };
 		F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringNavigationController.swift; sourceTree = "<group>"; };
+		F7DFCF9027F0A423006A0789 /* ZoomTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomTransitioningDelegate.swift; sourceTree = "<group>"; };
+		F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewZoomable.swift; sourceTree = "<group>"; };
+		F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTransitionState.swift; sourceTree = "<group>"; };
+		F7DFCF9827F0F6F9006A0789 /* TVSeriesPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesPhotoVC.swift; sourceTree = "<group>"; };
+		F7DFCF9927F0F6F9006A0789 /* TVSeriesPhotoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVSeriesPhotoVC.xib; sourceTree = "<group>"; };
 		F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterDelegate.swift; sourceTree = "<group>"; };
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
 		F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesDetailsVC.swift; sourceTree = "<group>"; };
@@ -416,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				F73459DB276610F000E45725 /* CellConfigurable.swift */,
+				F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -442,6 +453,7 @@
 				F74C4BD8278635EB008C5969 /* FilteringEnum.swift */,
 				F7AA54CA2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift */,
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
+				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -460,14 +472,10 @@
 		F74E3A81274051AA004B81EF /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				F7DFCF8F27F0A339006A0789 /* DelegateProtocol */,
 				F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */,
 				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
-				F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */,
-				F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */,
-				F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */,
-				F721A0422792273800C614C7 /* FilteringDelegate.swift */,
-				F717BF1927AD5CF80029B796 /* DelegateTVSeriesDetailsDC.swift */,
-				F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesDCwithPagination.swift */,
+				F7DFCF9027F0A423006A0789 /* ZoomTransitioningDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -475,6 +483,7 @@
 		F7551D27274D886E00E1748E /* TabbarTVC */ = {
 			isa = PBXGroup;
 			children = (
+				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
 				F73459D92765F98B00E45725 /* TemplateTVC.swift */,
 				F73CEF5627494FD40011AE04 /* TVSeriesTVC.swift */,
 				F76D9CD627691CC2008D8CA4 /* NewsTVC.swift */,
@@ -685,8 +694,6 @@
 				F7C2812F27C7D89A00DA8A62 /* FilterTVC */,
 				F7E8E46427A8067000BA9DC7 /* TVSeriesDetails */,
 				F7B2DB8E274A81E30099CF29 /* DataControllers */,
-				F7AEE481273FF32400C304D0 /* TabBarRootController.swift */,
-				F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -747,6 +754,7 @@
 		F7C2812F27C7D89A00DA8A62 /* FilterTVC */ = {
 			isa = PBXGroup;
 			children = (
+				F7DAE2C727A1887A003AED19 /* FilteringNavigationController.swift */,
 				F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */,
 				F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */,
 			);
@@ -819,6 +827,19 @@
 			path = CustomElements;
 			sourceTree = "<group>";
 		};
+		F7DFCF8F27F0A339006A0789 /* DelegateProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */,
+				F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */,
+				F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */,
+				F721A0422792273800C614C7 /* FilteringDelegate.swift */,
+				F717BF1927AD5CF80029B796 /* DelegateTVSeriesDetailsDC.swift */,
+				F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesDCwithPagination.swift */,
+			);
+			path = DelegateProtocol;
+			sourceTree = "<group>";
+		};
 		F7E8E46427A8067000BA9DC7 /* TVSeriesDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +849,8 @@
 				F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */,
 				F78EC95D27C6A71C0041F998 /* TVSeriesNewsTVC.swift */,
 				F781ACCD27E1348A003ABF31 /* TVSeriesPhotosCVC.swift */,
+				F7DFCF9827F0F6F9006A0789 /* TVSeriesPhotoVC.swift */,
+				F7DFCF9927F0F6F9006A0789 /* TVSeriesPhotoVC.xib */,
 			);
 			path = TVSeriesDetails;
 			sourceTree = "<group>";
@@ -924,6 +947,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7D7D18227B057D100970959 /* SeriesDetailViewCell.xib in Resources */,
+				F7DFCF9B27F0F6F9006A0789 /* TVSeriesPhotoVC.xib in Resources */,
 				F711A4482745A84A00E1515D /* GetSeriesVideoListContext.plist in Resources */,
 				F711A4472745A84A00E1515D /* GetSeriesListContext.plist in Resources */,
 				F711A4442745A84A00E1515D /* GetNewsListContext.plist in Resources */,
@@ -1008,6 +1032,7 @@
 				F7D7D18127B057D100970959 /* SeriesDetailViewCell.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
+				F7DFCF9527F0B5EB006A0789 /* ImageViewTransitionState.swift in Sources */,
 				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
@@ -1026,6 +1051,7 @@
 				F717BF1827AD54F30029B796 /* TVSeriesOverviewDC.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
+				F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */,
 				F74C4BD9278635EB008C5969 /* FilteringEnum.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift in Sources */,
 				F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */,
@@ -1074,8 +1100,10 @@
 				F77E8DEF277CF40F005E7F50 /* FilteringTVC.swift in Sources */,
 				F7B2DB90274A82250099CF29 /* TVSeriesDataController.swift in Sources */,
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
+				F7DFCF9127F0A423006A0789 /* ZoomTransitioningDelegate.swift in Sources */,
 				F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */,
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
+				F7DFCF9A27F0F6F9006A0789 /* TVSeriesPhotoVC.swift in Sources */,
 				F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDC.swift in Sources */,
 				F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */,
 				F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */,

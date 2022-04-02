@@ -1,6 +1,8 @@
 import UIKit
 
 class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
+    private let navigationControllerDelegate = ZoomTransitioningDelegate()
+    var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
     var viewModel: SeriesVM // MARK: make let?
     let controllers: [UIViewController]
     let collectionLayout: UICollectionViewFlowLayout = {
@@ -18,10 +20,14 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDC(model: model))
         let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDC(model: model))
         let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDC(model: model))
+        
+        let navControllerForTVSeriesPhotosCVC = UINavigationController(rootViewController: TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel))
+        navControllerForTVSeriesPhotosCVC.delegate = navigationControllerDelegate
+        
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
                        TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),
-                       TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel)]
+                       navControllerForTVSeriesPhotosCVC]
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,13 +40,13 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let items = ["Обзор сериала", "Гид по сериям", "Новости", "Фото"] // MARK: refactor this - make localization
-        let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
-        carbonTabSwipeNavigation.insert(intoRootViewController: self)
-        carbonTabSwipeNavigation.toolbar.isTranslucent = false
+        carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
+        carbonTabSwipeNavigation?.insert(intoRootViewController: self)
+        carbonTabSwipeNavigation?.toolbar.isTranslucent = false
         
         self.navigationItem.title = viewModel.dataProvider?.model.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
-        carbonTabSwipeNavigation.navigationController?.navigationBar.backgroundColor = .white
+        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
 //        carbonTabSwipeNavigation.setNormalColor(.white)
 //        carbonTabSwipeNavigation.carbonSegmentedControl?.backgroundColor = .white
 //        carbonTabSwipeNavigation.toolbar.clipsToBounds = true
