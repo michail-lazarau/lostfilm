@@ -1,15 +1,14 @@
 import UIKit
+import SDWebImage
 
 class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching {
-    var viewModel: PhotosVM
-    private let navigationControllerDelegate = ZoomTransitioningDelegate()
+    private var viewModel: PhotosVM
     var selectedIndexPath: IndexPath?
     
     init(collectionViewLayout: UICollectionViewLayout, viewModel: PhotosVM) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: collectionViewLayout)
         self.viewModel.dataProvider?.delegate = self
-//        navigationController?.delegate = navigationControllerDelegate
     }
 
     required init?(coder: NSCoder) {
@@ -28,7 +27,6 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.isHidden = true
     }
     
     func registerCells() {
@@ -50,13 +48,11 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     }
 
     // MARK: UICollectionViewDelegate
-    private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, image: cell.imageView.image)
-        
+        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, image: cell.imageView.image) // cell.highQualityImageView?.image
         navigationController?.pushViewController(photoVC, animated: true)
 //        collectionView.deselectItem(at: indexPath, animated: true)
     }
@@ -84,13 +80,3 @@ extension TVSeriesPhotosCVC: DelegateTVSeriesDCwithPagination {
         collectionView.insertItems(at: newIndexPathsToReload)
     }
 }
-
-//extension TVSeriesPhotosCVC: ImageViewZoomable {
-//    func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-//        if let indexPath = selectedIndexPath {
-//            let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-//            return cell.imageView
-//        }
-//        return nil
-//    }
-//}

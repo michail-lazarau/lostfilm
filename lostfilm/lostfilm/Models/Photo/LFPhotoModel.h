@@ -11,5 +11,6 @@
 @interface LFPhotoModel : LFJsonObject
 @property (nonatomic, copy, readonly) NSString *id;
 @property (nonatomic, strong, readonly) NSURL *url;
+@property (nonatomic, strong, readonly) NSURL *highQualityImageUrl;
 @property (nonatomic, copy, readonly) NSString *title;
 @end

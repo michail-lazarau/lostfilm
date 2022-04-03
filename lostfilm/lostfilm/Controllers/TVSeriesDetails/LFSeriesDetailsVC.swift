@@ -24,7 +24,6 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
                        TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),
                        TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel)]
-//                       navControllerForTVSeriesPhotosCVC]
         super.init(nibName: nil, bundle: nil)
     }
 
