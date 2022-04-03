@@ -1,6 +1,8 @@
 import UIKit
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
+    private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
+    
     override internal var tableCellHeight: CGFloat {
         return 175
     }
@@ -13,6 +15,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let dataSource = dataSource {
+            navigationController?.delegate = customNavigationControllerDelegate
             navigationController?.pushViewController(LFSeriesDetailsVC(model: dataSource[indexPath.row]), animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)

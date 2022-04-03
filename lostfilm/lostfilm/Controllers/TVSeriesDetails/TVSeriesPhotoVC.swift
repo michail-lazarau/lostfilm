@@ -21,7 +21,6 @@ class TVSeriesPhotoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        edgesForExtendedLayout = [.top, .bottom]
         navigationController?.navigationBar.isHidden = false
         imageView.image = image
     }
@@ -30,7 +29,11 @@ class TVSeriesPhotoVC: UIViewController {
         super.viewWillAppear(animated)
         
         tabbarRootController?.tabBar.isHidden = true
-        navigationController?.setToolbarHidden(true, animated: false)
+//        navigationController?.setToolbarHidden(true, animated: false)
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = .clear
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,7 +47,3 @@ extension TVSeriesPhotoVC: ImageViewZoomable {
         imageView
     }
 }
-
-//        let window = UIApplication.shared.delegate?.window
-//        let tabbar: TabBarRootController = window!!.rootViewController as! TabBarRootController
-//        tabbar.hidesBottomBarWhenPushed = true

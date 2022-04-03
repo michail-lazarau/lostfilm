@@ -1,7 +1,6 @@
 import UIKit
 
 class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
-    private let navigationControllerDelegate = ZoomTransitioningDelegate()
     var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
     var viewModel: SeriesVM // MARK: make let?
     let controllers: [UIViewController]
@@ -21,13 +20,11 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDC(model: model))
         let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDC(model: model))
         
-        let navControllerForTVSeriesPhotosCVC = UINavigationController(rootViewController: TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel))
-        navControllerForTVSeriesPhotosCVC.delegate = navigationControllerDelegate
-        
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
                        TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),
-                       navControllerForTVSeriesPhotosCVC]
+                       TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel)]
+//                       navControllerForTVSeriesPhotosCVC]
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -46,17 +43,19 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         
         self.navigationItem.title = viewModel.dataProvider?.model.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
+        carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
-//        carbonTabSwipeNavigation.setNormalColor(.white)
-//        carbonTabSwipeNavigation.carbonSegmentedControl?.backgroundColor = .white
-//        carbonTabSwipeNavigation.toolbar.clipsToBounds = true
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        super.viewWillAppear(animated)
-//    }
-//
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
 //    override func viewWillDisappear(_ animated: Bool) {
 //        self.navigationController?.navigationBar.shadowImage = nil
 //        super.viewWillDisappear(animated)
@@ -64,5 +63,15 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         return controllers[Int(index)]
+    }
+}
+
+extension LFSeriesDetailsVC: ImageViewZoomable {
+    func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
+        if let TVSeriesPhotosCVC = (self.controllers[3] as? TVSeriesPhotosCVC), let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
+            let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
+            return cell.imageView
+        }
+        return nil
     }
 }

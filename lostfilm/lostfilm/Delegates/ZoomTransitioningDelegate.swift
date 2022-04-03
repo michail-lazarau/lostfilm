@@ -44,7 +44,7 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
         }
         
         guard let fromImageView = (fromVC as? ImageViewZoomable)?.zoomingImageView(for: self), let toImageView = (toVC as? ImageViewZoomable)?.zoomingImageView(for: self) else {
-            fromVC is ImageViewZoomable ? fatalError("toVC is not ImageViewZoomable protocol compliant") : fatalError("fromVC is not ImageViewZoomable protocol compliant")
+            fromVC is ImageViewZoomable ? fatalError("fromVC is not ImageViewZoomable protocol compliant") : fatalError("toVC is not ImageViewZoomable protocol compliant")
         }
         
         fromImageView.isHidden = true
@@ -58,7 +58,6 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
         toVC.view.backgroundColor = .clear
         containerView.backgroundColor = .white
         
-        containerView.backgroundColor = UIColor.white
         containerView.addSubview(fromVC.view)
         containerView.addSubview(toVC.view)
         containerView.addSubview(imageViewSnapshot)
@@ -88,9 +87,9 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
     }
 }
 
-extension ZoomTransitioningDelegate: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        self.operation = operation
-        return self
-    }
-}
+//extension ZoomTransitioningDelegate: UINavigationControllerDelegate {
+//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        self.operation = operation
+//        return self
+//    }
+//}

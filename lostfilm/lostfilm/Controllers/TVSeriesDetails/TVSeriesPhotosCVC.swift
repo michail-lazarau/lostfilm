@@ -2,13 +2,14 @@ import UIKit
 
 class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching {
     var viewModel: PhotosVM
-//    private let navigationControllerDelegate = ZoomTransitioningDelegate()
-    private var selectedIndexPath: IndexPath?
+    private let navigationControllerDelegate = ZoomTransitioningDelegate()
+    var selectedIndexPath: IndexPath?
     
     init(collectionViewLayout: UICollectionViewLayout, viewModel: PhotosVM) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: collectionViewLayout)
         self.viewModel.dataProvider?.delegate = self
+//        navigationController?.delegate = navigationControllerDelegate
     }
 
     required init?(coder: NSCoder) {
@@ -16,8 +17,6 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         super.init(coder: coder)
     }
     override func viewDidLoad() {
-        (parent?.parent?.parent as! CarbonTabSwipeNavigation).carbonSegmentedControl?.isHidden = true
-        navigationController?.children
         super.viewDidLoad()
         registerCells()
         collectionView.dataSource = viewModel
@@ -29,7 +28,7 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
     }
     
     func registerCells() {
@@ -51,14 +50,19 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     }
 
     // MARK: UICollectionViewDelegate
-
+    private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
         let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, image: cell.imageView.image)
-        photoVC.hidesBottomBarWhenPushed = true
+        
         navigationController?.pushViewController(photoVC, animated: true)
 //        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 }
 
@@ -81,12 +85,12 @@ extension TVSeriesPhotosCVC: DelegateTVSeriesDCwithPagination {
     }
 }
 
-extension TVSeriesPhotosCVC: ImageViewZoomable {
-    func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-        if let indexPath = selectedIndexPath {
-            let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-            return cell.imageView
-        }
-        return nil
-    }
-}
+//extension TVSeriesPhotosCVC: ImageViewZoomable {
+//    func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
+//        if let indexPath = selectedIndexPath {
+//            let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
+//            return cell.imageView
+//        }
+//        return nil
+//    }
+//}
