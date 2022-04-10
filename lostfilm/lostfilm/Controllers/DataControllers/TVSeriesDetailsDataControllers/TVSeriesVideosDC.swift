@@ -1,11 +1,11 @@
 import Foundation
 
-class TVSeriesPhotosDC {
+class TVSeriesVideosDC {
     private var isLoading: Bool = false
     var currentPage: UInt = 0
     var delegate: DelegateTVSeriesDCwithPagination?
     let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
-    var photoList: [LFPhotoModel] = []
+    var videoList: [LFVideoModel] = []
     
     init(model: LFSeriesModel) {
         self.tvSeries = model
@@ -21,15 +21,15 @@ class TVSeriesPhotosDC {
     }
     
     private func getDetailsFor(page: UInt) {
-        getPhotoListForSeriesBy(seriesId: tvSeries.id, pageNumber: page) { [weak self] photoList, _ in
-            guard let strongSelf = self, let photoList = photoList else {
+        getVideoListForSeriesBy(seriesId: tvSeries.id, pageNumber: page) { [weak self] videoList, _ in
+            guard let strongSelf = self, let videoList = videoList else {
                 return
             }
-            strongSelf.photoList += photoList
+            strongSelf.videoList += videoList
             
             DispatchQueue.main.async {
                 if strongSelf.currentPage > 1 {
-                    let indexPathToReload = strongSelf.calculateIndexPathsToReload(from: photoList)
+                    let indexPathToReload = strongSelf.calculateIndexPathsToReload(from: videoList)
                     strongSelf.delegate?.updateTableView(with: indexPathToReload)
                 } else {
                     strongSelf.delegate?.updateTableView(with: .none)
@@ -40,20 +40,20 @@ class TVSeriesPhotosDC {
     }
     
     func didEmptyNewsList() {
-        photoList.removeAll()
+        videoList.removeAll()
         currentPage = 0
     }
     
-    private func getPhotoListForSeriesBy(seriesId: String, pageNumber: UInt, completionHandler: @escaping ([LFPhotoModel]?, NSError?) -> Void) {
+    private func getVideoListForSeriesBy(seriesId: String, pageNumber: UInt, completionHander: @escaping ([LFVideoModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
-        apiHelper.series.getPhotoListForSeries(byId: seriesId, page: pageNumber) { photoList, error in
-            completionHandler(photoList, error as NSError?)
+        apiHelper.series.getVideoListForSeries(byId: seriesId, page: pageNumber) { videoList, error in
+            completionHander(videoList, error as NSError?)
         }
     }
     
-    private func calculateIndexPathsToReload(from newPhotoList: [LFPhotoModel]) -> [IndexPath] {
-      let startIndex = photoList.count - newPhotoList.count
-      let endIndex = startIndex + newPhotoList.count
+    private func calculateIndexPathsToReload(from newVideoList: [LFVideoModel]) -> [IndexPath] {
+      let startIndex = videoList.count - newVideoList.count
+      let endIndex = startIndex + newVideoList.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
 }

@@ -9,6 +9,7 @@ class TVSeriesPhotoVC: UIViewController {
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, image: UIImage?) {
         self.image = image
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//        viewTransitionSetup()
     }
     
     required init?(coder: NSCoder) {
@@ -22,23 +23,23 @@ class TVSeriesPhotoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-        imageView.image = image
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         tabbarRootController?.tabBar.isHidden = true
-//        navigationController?.setToolbarHidden(true, animated: false)
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = .clear
+        imageView.image = image
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabbarRootController?.tabBar.isHidden = false
+    }
+    
+    private func viewTransitionSetup() {
+        imageView.sd_imageTransition = SDWebImageTransition.fade
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     }
 }
 

@@ -52,7 +52,7 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, image: cell.imageView.image) // cell.highQualityImageView?.image
+        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, image: cell.imageView.image) // cell.highResolutionImageView?.image // cell.imageView.image
         navigationController?.pushViewController(photoVC, animated: true)
 //        collectionView.deselectItem(at: indexPath, animated: true)
     }

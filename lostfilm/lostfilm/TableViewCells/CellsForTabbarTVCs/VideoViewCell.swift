@@ -1,14 +1,19 @@
 import UIKit
+import AVKit
 
 class VideoViewCell: UITableViewCell, CellConfigurable {
     static func cellIdentifier() -> String {
         "VideosViewCell"
     }
+    
+    private var videoUrl: URL?
+    var presentAVPlayerViewController: ((AVPlayerViewController)->())?
 
     func configureWith(dataModel: LFVideoModel) {
         videoImageView.sd_setImage(with: dataModel.previewURL)
         titleLabel.text = dataModel.title
         detailsLabel.text = dataModel.details
+        videoUrl = dataModel.videoURL
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -55,6 +60,17 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         return details
     }()
 
+    private let launchButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "icon_play"), for: .normal)
+        button.frame.size = CGSize(width: 45, height: 45)
+        button.layer.cornerRadius = button.frame.width / 2
+        button.addTarget(self, action: #selector(launchVideoPlayer), for: .touchUpInside)
+//        button.clipsToBounds = true
+        return button
+    }()
+
     private let labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -73,17 +89,30 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
 
         contentView.addSubview(videoImageView)
         contentView.addSubview(labelStackView)
-
+        contentView.addSubview(launchButton)
+        
         NSLayoutConstraint.activate([
             videoImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             videoImageView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             videoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             videoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
+            
+            launchButton.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
+            launchButton.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
+            launchButton.heightAnchor.constraint(equalTo: launchButton.widthAnchor, multiplier: 1.0 / 1.0),
+            
             labelStackView.heightAnchor.constraint(equalToConstant: 44),
             labelStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             labelStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
+    }
+    
+    @objc private func launchVideoPlayer() {
+        let vc = AVPlayerViewController()
+        if let videoUrl = videoUrl {
+            vc.player = AVPlayer(url: videoUrl)
+            presentAVPlayerViewController?(vc)
+        }
     }
 }

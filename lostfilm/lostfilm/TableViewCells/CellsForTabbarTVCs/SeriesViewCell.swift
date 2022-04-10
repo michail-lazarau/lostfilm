@@ -16,6 +16,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellStackView()
+        viewTransitionSetup()
     }
 
     override func awakeFromNib() {
@@ -104,6 +105,11 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         labelStackView.addArrangedSubview(subtitle)
         labelStackView.addArrangedSubview(details)
         labelStackView.setCustomSpacing(12.0, after: subtitle)
+    }
+    
+    private func viewTransitionSetup() {
+        serialView.sd_imageTransition = SDWebImageTransition.fade
+        serialView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
