@@ -4,16 +4,6 @@ import UIKit
 class SeriesPhotoViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
-    var highResolutionImageView: UIImageView? {
-        if let highResolutionImageUrl = item?.highResolutionImageUrl {
-            let highResolutionImageView = imageView
-            highResolutionImageView?.sd_setImage(with: highResolutionImageUrl)
-            return highResolutionImageView
-        } else {
-            return nil
-        }
-    }
-    
     var item: LFPhotoModel? {
         didSet {
             guard let item = item else {
