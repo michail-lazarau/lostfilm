@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TVSeriesPhotoVC" customModule="lostfilm" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="Auz-2o-uvm" id="kgz-AR-odr"/>
+                <outlet property="scrollView" destination="W2v-H8-2Dv" id="pfA-y5-JFy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +20,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Auz-2o-uvm">
+                <scrollView multipleTouchEnabled="YES" contentMode="scaleAspectFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-H8-2Dv">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                </imageView>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="X8Y-aT-hea"/>
+                    </connections>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="aaZ-20-kfG"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Auz-2o-uvm" secondAttribute="bottom" id="OEd-i1-JgN"/>
-                <constraint firstItem="Auz-2o-uvm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TYn-RQ-B00"/>
-                <constraint firstAttribute="trailing" secondItem="Auz-2o-uvm" secondAttribute="trailing" id="UbE-vp-6Lj"/>
-                <constraint firstItem="Auz-2o-uvm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WoU-9C-KMm"/>
+                <constraint firstItem="W2v-H8-2Dv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BaJ-wn-jGg"/>
+                <constraint firstItem="aaZ-20-kfG" firstAttribute="trailing" secondItem="W2v-H8-2Dv" secondAttribute="trailing" id="ado-O1-ETY"/>
+                <constraint firstAttribute="bottom" secondItem="W2v-H8-2Dv" secondAttribute="bottom" id="bAW-Vb-z27"/>
+                <constraint firstItem="W2v-H8-2Dv" firstAttribute="leading" secondItem="aaZ-20-kfG" secondAttribute="leading" id="iF8-k5-YC4"/>
             </constraints>
             <point key="canvasLocation" x="132" y="62"/>
         </view>
