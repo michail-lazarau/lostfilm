@@ -27,10 +27,8 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
-        viewModel = SeriesVM()
-        controllers = []
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -69,6 +67,7 @@ extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
         if let TVSeriesPhotosCVC = (self.controllers[3] as? TVSeriesPhotosCVC), let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
             let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
+//            cell.imageView.transform = CGAffineTransform.identity
             return cell.imageView
         }
         return nil

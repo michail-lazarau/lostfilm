@@ -9,10 +9,8 @@ class TVSeriesVideosTVC: UITableViewController {
         self.viewModel.dataProvider?.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        viewModel = VideoVM()
-        super.init(coder: coder)
-        view.backgroundColor = .white
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {

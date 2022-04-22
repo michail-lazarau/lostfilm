@@ -10,10 +10,8 @@ class BaseFilterTVC: UITableViewController {
         super.init(style: style)
     }
 
-    required init?(coder: NSCoder) {
-        filtersToDisplay = []
-        dcWithSelectedFilters = TVSeriesDataController()
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {

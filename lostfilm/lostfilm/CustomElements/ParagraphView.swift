@@ -3,9 +3,9 @@ import UIKit
 @IBDesignable
 class ParagraphView: UIView {
     @IBOutlet weak var label: UILabel!
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect) {

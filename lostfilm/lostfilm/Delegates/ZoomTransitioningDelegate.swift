@@ -13,10 +13,14 @@ class ZoomTransitioningDelegate: NSObject {
             fromViewController.view.transform = CGAffineTransform.identity
             fromViewController.view.alpha = 1
             snapshotView.frame = containerView.convert(fromImageView.frame, from: fromImageView.superview)
+            //
+//            toImageView.alpha = 1
         case .final:
             fromViewController.view.transform = CGAffineTransform(scaleX: backgroundScale, y: backgroundScale)
             fromViewController.view.alpha = 0
             snapshotView.frame = containerView.convert(toImageView.frame, from: toImageView.superview)
+            //
+//            snapshotView.alpha = 0
         }
     }
 }
@@ -50,7 +54,7 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
         toImageView.isHidden = true
         
         let imageViewSnapshot = UIImageView(image: fromImageView.image)
-        imageViewSnapshot.contentMode = .scaleAspectFill //different option?
+        imageViewSnapshot.contentMode = .scaleAspectFit //different option?
         imageViewSnapshot.layer.masksToBounds = true //remove?
         
         let toVCBackgroundColor = toVC.view.backgroundColor
@@ -71,6 +75,7 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
             self.configureViews(for: postTransitionState, containerView: containerView, fromViewController: fromVC, fromImageView: fromImageView, toImageView: toImageView, snapshotView: imageViewSnapshot)
         } completion: { (finished) in
             fromVC.view.transform = CGAffineTransform.identity
+            let test3Img = imageViewSnapshot.image
             imageViewSnapshot.removeFromSuperview()
             fromImageView.isHidden = false
             toImageView.isHidden = false

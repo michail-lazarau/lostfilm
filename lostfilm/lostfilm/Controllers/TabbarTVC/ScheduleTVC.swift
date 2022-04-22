@@ -10,9 +10,8 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
         dataSource!.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        dataSource = nil
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     func updateUIForTimeTable() {

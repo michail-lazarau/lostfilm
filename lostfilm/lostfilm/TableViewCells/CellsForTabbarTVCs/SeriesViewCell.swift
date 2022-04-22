@@ -24,8 +24,8 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         // Initialization code
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 //    // FIXME: class or static? I want to call this property out of any cellClass and receive the respective self. I don't want to override the property later. I assume it must be static.

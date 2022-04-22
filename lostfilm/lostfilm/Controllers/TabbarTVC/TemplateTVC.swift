@@ -9,9 +9,8 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
 
     internal var dataSource: TemplateDataController<DataModel>?
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        dataSource = nil
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     init(style: UITableView.Style, dataController: TemplateDataController<DataModel>) {

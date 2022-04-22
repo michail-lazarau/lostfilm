@@ -11,6 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TVSeriesPhotoVC" customModule="lostfilm" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="GDG-l9-Fdh" id="nYC-S8-M4t"/>
+                <outlet property="imageViewBottomConstraint" destination="bMz-cI-8h9" id="IHh-w6-6ag"/>
+                <outlet property="imageViewLeadingConstraint" destination="cqx-Kg-1VE" id="4Jt-T1-VOe"/>
+                <outlet property="imageViewTopConstraint" destination="afl-08-mSh" id="ISm-3n-IKo"/>
+                <outlet property="imageViewTrailingConstraint" destination="ihs-Xi-WPQ" id="ffC-W8-pFk"/>
                 <outlet property="scrollView" destination="W2v-H8-2Dv" id="pfA-y5-JFy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,8 +25,21 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView multipleTouchEnabled="YES" contentMode="scaleAspectFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-H8-2Dv">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <scrollView multipleTouchEnabled="YES" contentMode="scaleAspectFill" bounces="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-H8-2Dv">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GDG-l9-Fdh">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="GDG-l9-Fdh" firstAttribute="centerY" secondItem="W2v-H8-2Dv" secondAttribute="centerY" id="XZm-Ne-fW2"/>
+                        <constraint firstItem="GDG-l9-Fdh" firstAttribute="top" secondItem="W2v-H8-2Dv" secondAttribute="top" id="afl-08-mSh"/>
+                        <constraint firstAttribute="bottom" secondItem="GDG-l9-Fdh" secondAttribute="bottom" id="bMz-cI-8h9"/>
+                        <constraint firstItem="GDG-l9-Fdh" firstAttribute="leading" secondItem="W2v-H8-2Dv" secondAttribute="leading" id="cqx-Kg-1VE"/>
+                        <constraint firstAttribute="trailing" secondItem="GDG-l9-Fdh" secondAttribute="trailing" id="ihs-Xi-WPQ"/>
+                        <constraint firstItem="GDG-l9-Fdh" firstAttribute="centerX" secondItem="W2v-H8-2Dv" secondAttribute="centerX" id="waq-vb-BrO"/>
+                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="X8Y-aT-hea"/>
                     </connections>
@@ -30,9 +48,9 @@
             <viewLayoutGuide key="safeArea" id="aaZ-20-kfG"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="W2v-H8-2Dv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BaJ-wn-jGg"/>
+                <constraint firstItem="W2v-H8-2Dv" firstAttribute="top" secondItem="aaZ-20-kfG" secondAttribute="top" id="BaJ-wn-jGg"/>
                 <constraint firstItem="aaZ-20-kfG" firstAttribute="trailing" secondItem="W2v-H8-2Dv" secondAttribute="trailing" id="ado-O1-ETY"/>
-                <constraint firstAttribute="bottom" secondItem="W2v-H8-2Dv" secondAttribute="bottom" id="bAW-Vb-z27"/>
+                <constraint firstItem="aaZ-20-kfG" firstAttribute="bottom" secondItem="W2v-H8-2Dv" secondAttribute="bottom" id="bAW-Vb-z27"/>
                 <constraint firstItem="W2v-H8-2Dv" firstAttribute="leading" secondItem="aaZ-20-kfG" secondAttribute="leading" id="iF8-k5-YC4"/>
             </constraints>
             <point key="canvasLocation" x="132" y="62"/>

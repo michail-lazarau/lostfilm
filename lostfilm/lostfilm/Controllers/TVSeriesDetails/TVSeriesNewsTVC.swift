@@ -10,10 +10,8 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
         self.viewModel.dataProvider?.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        viewModel = NewsVM()
-        super.init(coder: coder)
-        view.backgroundColor = .white
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
