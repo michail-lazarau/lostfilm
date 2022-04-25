@@ -29,21 +29,22 @@ class TVSeriesPhotoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false // MARK: what for?
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         imageView.image = thumbnailImg
+//        settingUpScrollView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hidingTabAndNavigationBars()
-        settingUpImageVIew()
+        settingUpImageView()
         // TODO: cпросить про кеширование! Идентифицируются ли файлы как одинаковые скачанные с помощью SDWebImage и URLSession.shared.downloadTask
         
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 1, animations: {
             self.scrollView.zoomScale = self.scrollView.minimumZoomScale
-        } completion: { (_) in
-        }
+        }, completion: nil)
+        
+//        settingUpScrollView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -59,27 +60,50 @@ class TVSeriesPhotoVC: UIViewController {
         tabbarRootController?.tabBar.isHidden = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-
-        navigationController?.navigationBar.isTranslucent = true // MARK: what for - no difference
-
         navigationController?.navigationBar.backgroundColor = .clear
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        centerImage()
+//        scrollView.layoutIfNeeded()
+    }
 
-    private func settingUpImageVIew() {
+//    private func settingUpScrollView() {
+//        scrollView.contentSize = imageView.image?.size ?? .zero
+////        setMaxMinZoomScaleForCurrentBounds()
+////        scrollView.zoomScale = scrollView.minimumZoomScale
+//    }
+    
+    private func settingUpImageView() {
         // TODO: debug it with a weak internet connection once a special developer tool is available to download
-        imageView.contentMode = .scaleAspectFit // MARK: check if needed
         imageView.sd_setImage(with: model?.highResolutionImageUrl, placeholderImage: thumbnailImg, options: []) { (image, error, _, _)  in
             if let image = image {
                 self.scrollView.zoomScale = self.scrollView.zoomScale * image.size.width / image.size.height
-                UIView.animate(withDuration: 1) {
+                UIView.animate(withDuration: 1, animations: {
                     self.scrollView.zoomScale = self.scrollView.minimumZoomScale
-                } completion: { (_) in
-                }
+                }, completion: nil)
             }
         }
     }
+}
 
-//
+extension TVSeriesPhotoVC: ImageViewZoomable {
+    func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
+        return imageView
+    }
+}
+
+extension TVSeriesPhotoVC: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+//        centerImage()
+//    }
+}
+
 //    func updateMinZoomScaleForSize(_ size: CGSize) {
 //      let widthScale = size.width / imageView.bounds.width
 //      let heightScale = size.height / imageView.bounds.height
@@ -113,16 +137,3 @@ class TVSeriesPhotoVC: UIViewController {
 //
 //      view.layoutIfNeeded()
 //    }
-}
-
-extension TVSeriesPhotoVC: ImageViewZoomable {
-    func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-        return imageView
-    }
-}
-
-extension TVSeriesPhotoVC: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-}
