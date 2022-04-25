@@ -2,11 +2,6 @@ import SDWebImage
 import UIKit
 
 class TVSeriesPhotoVC: UIViewController {
-    @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
-    
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var imageView: UIImageView!
     weak var tabbarRootController = UIApplication.shared.windows.first?.rootViewController as? TabBarRootController
@@ -31,20 +26,16 @@ class TVSeriesPhotoVC: UIViewController {
         super.viewDidLoad()
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         imageView.image = thumbnailImg
-//        settingUpScrollView()
+//        scrollView.contentInsetAdjustmentBehavior = .never //MARK: to figure out what is this for
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hidingTabAndNavigationBars()
         settingUpImageView()
-        // TODO: cпросить про кеширование! Идентифицируются ли файлы как одинаковые скачанные с помощью SDWebImage и URLSession.shared.downloadTask
-        
         UIView.animate(withDuration: 1, animations: {
             self.scrollView.zoomScale = self.scrollView.minimumZoomScale
         }, completion: nil)
-        
-//        settingUpScrollView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -62,18 +53,6 @@ class TVSeriesPhotoVC: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.backgroundColor = .clear
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        centerImage()
-//        scrollView.layoutIfNeeded()
-    }
-
-//    private func settingUpScrollView() {
-//        scrollView.contentSize = imageView.image?.size ?? .zero
-////        setMaxMinZoomScaleForCurrentBounds()
-////        scrollView.zoomScale = scrollView.minimumZoomScale
-//    }
     
     private func settingUpImageView() {
         // TODO: debug it with a weak internet connection once a special developer tool is available to download
@@ -99,41 +78,26 @@ extension TVSeriesPhotoVC: UIScrollViewDelegate {
         return imageView
     }
     
-//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//        centerImage()
-//    }
-}
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        if scrollView.zoomScale > 1 {
 
-//    func updateMinZoomScaleForSize(_ size: CGSize) {
-//      let widthScale = size.width / imageView.bounds.width
-//      let heightScale = size.height / imageView.bounds.height
-//      let minScale = min(widthScale, heightScale)
-//
-//      scrollView.minimumZoomScale = minScale
-//      scrollView.zoomScale = minScale
-//    }
-    
-//    override func viewWillLayoutSubviews() {
-//      super.viewWillLayoutSubviews()
-//      updateMinZoomScaleForSize(view.bounds.size)
-//    }
-//
-//    //1
-//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//      updateConstraintsForSize(view.bounds.size)
-//    }
-//
-//    //2
-//    func updateConstraintsForSize(_ size: CGSize) {
-//      //3
-//      let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-//      imageViewTopConstraint.constant = yOffset
-//      imageViewBottomConstraint.constant = yOffset
-//
-//      //4
-//      let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-//      imageViewLeadingConstraint.constant = xOffset
-//      imageViewTrailingConstraint.constant = xOffset
-//
-//      view.layoutIfNeeded()
-//    }
+            if let image = imageView.image {
+
+                let ratioW = imageView.frame.width / image.size.width
+                let ratioH = imageView.frame.height / image.size.height
+
+                let ratio = ratioW < ratioH ? ratioW:ratioH
+
+                let newWidth = image.size.width*ratio
+                let newHeight = image.size.height*ratio
+
+                let left = 0.5 * (newWidth * scrollView.zoomScale > imageView.frame.width ? (newWidth - imageView.frame.width) : (scrollView.frame.width - scrollView.contentSize.width))
+                let top = 0.5 * (newHeight * scrollView.zoomScale > imageView.frame.height ? (newHeight - imageView.frame.height) : (scrollView.frame.height - scrollView.contentSize.height))
+
+                scrollView.contentInset = UIEdgeInsets(top: top, left: left, bottom: top, right: left)
+            }
+        } else {
+            scrollView.contentInset = .zero
+        }
+    }
+}
