@@ -37,6 +37,10 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
             transitionContext.viewController(forKey: .from) != nil ? fatalError("Cannot find fromVC") : fatalError("Cannot find toVC")
         }
         
+        if operation == .push {
+            (toVC as? TVSeriesPhotoVC)?.scrollView.zoomScale = 1
+        }
+        
         if operation == .pop {
             let temp = fromVC
             fromVC = toVC
@@ -75,7 +79,6 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
             self.configureViews(for: postTransitionState, containerView: containerView, fromViewController: fromVC, fromImageView: fromImageView, toImageView: toImageView, snapshotView: imageViewSnapshot)
         } completion: { (finished) in
             fromVC.view.transform = CGAffineTransform.identity
-            let test3Img = imageViewSnapshot.image
             imageViewSnapshot.removeFromSuperview()
             fromImageView.isHidden = false
             toImageView.isHidden = false
