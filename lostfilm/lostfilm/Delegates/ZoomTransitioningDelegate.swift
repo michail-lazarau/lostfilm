@@ -37,10 +37,6 @@ extension ZoomTransitioningDelegate: UIViewControllerAnimatedTransitioning {
             transitionContext.viewController(forKey: .from) != nil ? fatalError("Cannot find fromVC") : fatalError("Cannot find toVC")
         }
         
-        if operation == .push {
-            (toVC as? TVSeriesPhotoVC)?.scrollView.zoomScale = 1
-        }
-        
         if operation == .pop {
             let temp = fromVC
             fromVC = toVC

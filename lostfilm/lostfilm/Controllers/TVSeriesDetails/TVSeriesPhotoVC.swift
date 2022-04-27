@@ -24,6 +24,7 @@ class TVSeriesPhotoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.zoomScale = 1
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         imageView.image = thumbnailImg
 //        scrollView.contentInsetAdjustmentBehavior = .never //MARK: to figure out what is this for
@@ -32,14 +33,14 @@ class TVSeriesPhotoVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hidingTabAndNavigationBars()
-        settingUpImageView()
-        UIView.animate(withDuration: 1, animations: {
-            self.scrollView.zoomScale = self.scrollView.minimumZoomScale
-        }, completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        settingUpImageView()
+        UIView.animate(withDuration: 1, animations: {
+            self.scrollView.zoomScale = self.scrollView.minimumZoomScale
+        }, completion: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +60,17 @@ class TVSeriesPhotoVC: UIViewController {
         imageView.sd_setImage(with: model?.highResolutionImageUrl, placeholderImage: thumbnailImg, options: []) { (image, error, _, _)  in
             if let image = image {
                 self.scrollView.zoomScale = self.scrollView.zoomScale * image.size.width / image.size.height
+                
+                if image.size.height > image.size.width {
+                    self.imageView.clipsToBounds = true
+                    self.imageView.bounds.size = image.size
+                    self.imageView.frame.size = CGSize(width: image.size.width, height: image.size.width)
+                    
+                    UIView.animate(withDuration: 1, animations: {
+                        self.scrollView.frame.size = image.size
+                    }, completion: nil)
+                }
+                
                 UIView.animate(withDuration: 1, animations: {
                     self.scrollView.zoomScale = self.scrollView.minimumZoomScale
                 }, completion: nil)
@@ -78,6 +90,7 @@ extension TVSeriesPhotoVC: UIScrollViewDelegate {
         return imageView
     }
     
+    // https://stackoverflow.com/questions/39460256/uiscrollview-zooming-contentinset
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         if scrollView.zoomScale > 1 {
 
