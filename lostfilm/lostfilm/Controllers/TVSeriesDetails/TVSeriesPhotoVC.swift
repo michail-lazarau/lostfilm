@@ -46,6 +46,8 @@ class TVSeriesPhotoVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabbarRootController?.tabBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
 
     private func hidingTabAndNavigationBars() {
@@ -61,15 +63,16 @@ class TVSeriesPhotoVC: UIViewController {
             if let image = image {
                 self.scrollView.zoomScale = self.scrollView.zoomScale * image.size.width / image.size.height
                 
-                if image.size.height > image.size.width {
-                    self.imageView.clipsToBounds = true
-                    self.imageView.bounds.size = image.size
-                    self.imageView.frame.size = CGSize(width: image.size.width, height: image.size.width)
-                    
-                    UIView.animate(withDuration: 1, animations: {
-                        self.scrollView.frame.size = image.size
-                    }, completion: nil)
-                }
+                    // TODO: animation for vertical images dont work yet
+//                if image.size.height > image.size.width {
+//                    self.imageView.clipsToBounds = true
+//                    self.imageView.bounds.size = image.size
+//                    self.imageView.frame.size = CGSize(width: image.size.width, height: image.size.width)
+//
+//                    UIView.animate(withDuration: 1, animations: {
+//                        self.scrollView.frame.size = image.size
+//                    }, completion: nil)
+//                }
                 
                 UIView.animate(withDuration: 1, animations: {
                     self.scrollView.zoomScale = self.scrollView.minimumZoomScale

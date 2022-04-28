@@ -4,8 +4,10 @@ import UIKit
 class ParagraphView: UIView {
     @IBOutlet weak var label: UILabel!
     
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    //coder is a must
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
     }
     
     override init(frame: CGRect) {
@@ -21,6 +23,7 @@ class ParagraphView: UIView {
             contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
         
+        // Extension: loadViewFromNib
 //        if let view = loadViewFromNib(nibName: "ParagraphView") {
 //            addSubview(view)
 //            view.frame = self.bounds
