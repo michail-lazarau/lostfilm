@@ -11,10 +11,6 @@ class PhotosVM: NSObject {
     
     var dataProvider: TVSeriesPhotosDC?
     
-    override init() {
-        super.init()
-    }
-    
     init(dataProvider: TVSeriesPhotosDC) {
         super.init()
         self.dataProvider = dataProvider

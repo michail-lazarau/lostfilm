@@ -11,10 +11,6 @@ class VideoVM: NSObject {
     
     var dataProvider: TVSeriesVideosDC?
     
-    override init() {
-        super.init()
-    }
-    
     init(dataProvider: TVSeriesVideosDC) {
         super.init()
         self.dataProvider = dataProvider

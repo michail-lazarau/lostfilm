@@ -3,15 +3,11 @@ import Foundation
 // NSObject inheritance is required for conforming UITableViewDataSource
 class EpisodesVM: NSObject {
     var items = [VMepisodeItem]() // number of elements are equal to the number of seasons
-    var dataProvider: TVSeriesEpisodesDC?
-    
-    override init() {
-        super.init()
-    }
+    var dataProvider: TVSeriesEpisodesDC
     
     init(dataProvider: TVSeriesEpisodesDC) {
-        super.init()
         self.dataProvider = dataProvider
+        super.init()
     }
     
     func setupVMwith(seasonList: [LFSeasonModel]) {

@@ -135,6 +135,8 @@
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
+		F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */; };
+		F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */; };
 		F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */; };
 		F7EC8ED927CC0A7E00616727 /* DelegateTVSeriesDCwithPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesDCwithPagination.swift */; };
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
@@ -305,6 +307,8 @@
 		F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterDelegate.swift; sourceTree = "<group>"; };
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
 		F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesDetailsVC.swift; sourceTree = "<group>"; };
+		F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchTVC.swift; sourceTree = "<group>"; };
+		F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GetGlobalSearchContext.plist; sourceTree = "<group>"; };
 		F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerDelegate.swift; sourceTree = "<group>"; };
 		F7EC8ED827CC0A7E00616727 /* DelegateTVSeriesDCwithPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateTVSeriesDCwithPagination.swift; sourceTree = "<group>"; };
 		F7EF678C2747DB3500A2A8DD /* NSError+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LF.h"; sourceTree = "<group>"; };
@@ -368,6 +372,7 @@
 				F711A43B2745A84900E1515D /* GetSeriesVideoListContext.plist */,
 				F711A4392745A84900E1515D /* GetTimetableContext.plist */,
 				F711A4422745A84A00E1515D /* GetVideoListContext.plist */,
+				F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -703,6 +708,7 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F7EA704D281FCE99006444B9 /* GlobalSearchTVC */,
 				F7551D27274D886E00E1748E /* TabbarTVC */,
 				F7C2812F27C7D89A00DA8A62 /* FilterTVC */,
 				F7E8E46427A8067000BA9DC7 /* TVSeriesDetails */,
@@ -878,6 +884,14 @@
 			path = TVSeriesDetails;
 			sourceTree = "<group>";
 		};
+		F7EA704D281FCE99006444B9 /* GlobalSearchTVC */ = {
+			isa = PBXGroup;
+			children = (
+				F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */,
+			);
+			path = GlobalSearchTVC;
+			sourceTree = "<group>";
+		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
 			isa = PBXGroup;
 			children = (
@@ -979,6 +993,7 @@
 				F711A4432745A84A00E1515D /* GetSeriesDetailsContext.plist in Resources */,
 				F711A44E2745A84A00E1515D /* GetSeriesGuideContext.plist in Resources */,
 				F711A4452745A84A00E1515D /* GetSeriesNewsListContext.plist in Resources */,
+				F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */,
 				F7839836274017840025A6B5 /* Localizable.strings in Resources */,
 				F711A44C2745A84A00E1515D /* GetSeriesPhotoListContext.plist in Resources */,
 				F7978D6527BC2D6C00C71147 /* EpisodeViewCell.xib in Resources */,
@@ -1153,6 +1168,7 @@
 				F711A4BD2745A94E00E1515D /* LFApiHelper.m in Sources */,
 				F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */,
 				F72518272774FBD000C60103 /* ScheduleDataControllerDelegate.swift in Sources */,
+				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
 				F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
