@@ -65,4 +65,7 @@
 - (void)getTimetableWithCompletionHandler:(void (^)(NSArray<LFEpisodeModel *> *episodeList,
                                                     NSError *error))completionHandler;
 
+- (void)getGlobalSearchOutputForContext:(NSString *)searchContext
+                  withCompletionHandler:(void (^)(NSArray<LFSeriesModel *> *, NSArray<LFPersonModel *> *, NSError *))completionHandler;
+
 @end

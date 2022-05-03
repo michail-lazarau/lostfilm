@@ -30,6 +30,7 @@
 		F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B32745A94E00E1515D /* LFApiVideos.m */; };
 		F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4B72745A94E00E1515D /* LFApiNews.m */; };
 		F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F711A4BB2745A94E00E1515D /* LFApiBase.m */; };
+		F7169BAE2821347E00B16251 /* GlobalSearchDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7169BAD2821347E00B16251 /* GlobalSearchDC.swift */; };
 		F717BF1527AC86E10029B796 /* SeriesPosterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717BF1327AC86E10029B796 /* SeriesPosterViewCell.swift */; };
 		F717BF1627AC86E10029B796 /* SeriesPosterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F717BF1427AC86E10029B796 /* SeriesPosterViewCell.xib */; };
 		F717BF1827AD54F30029B796 /* TVSeriesOverviewDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717BF1727AD54F30029B796 /* TVSeriesOverviewDC.swift */; };
@@ -178,6 +179,7 @@
 		F711A4B92745A94E00E1515D /* LFApiBase+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LFApiBase+Protected.h"; sourceTree = "<group>"; };
 		F711A4BA2745A94E00E1515D /* LFApiBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFApiBase.h; sourceTree = "<group>"; };
 		F711A4BB2745A94E00E1515D /* LFApiBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFApiBase.m; sourceTree = "<group>"; };
+		F7169BAD2821347E00B16251 /* GlobalSearchDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchDC.swift; sourceTree = "<group>"; };
 		F717BF1327AC86E10029B796 /* SeriesPosterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesPosterViewCell.swift; sourceTree = "<group>"; };
 		F717BF1427AC86E10029B796 /* SeriesPosterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesPosterViewCell.xib; sourceTree = "<group>"; };
 		F717BF1727AD54F30029B796 /* TVSeriesOverviewDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesOverviewDC.swift; sourceTree = "<group>"; };
@@ -435,6 +437,14 @@
 				F711A4BB2745A94E00E1515D /* LFApiBase.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		F7169BAC2821345E00B16251 /* GlobalSearchDataController */ = {
+			isa = PBXGroup;
+			children = (
+				F7169BAD2821347E00B16251 /* GlobalSearchDC.swift */,
+			);
+			path = GlobalSearchDataController;
 			sourceTree = "<group>";
 		};
 		F73459DD276642E200E45725 /* Protocols */ = {
@@ -720,6 +730,7 @@
 		F7B2DB8E274A81E30099CF29 /* DataControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F7169BAC2821345E00B16251 /* GlobalSearchDataController */,
 				F7C2813027C7D8E200DA8A62 /* FilterDataControllers */,
 				F76D1F7B27B95FFA007E5933 /* TVSeriesDetailsDataControllers */,
 				F76D1F7A27B95F86007E5933 /* TabbarDataControllers */,
@@ -1168,6 +1179,7 @@
 				F711A4BD2745A94E00E1515D /* LFApiHelper.m in Sources */,
 				F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */,
 				F72518272774FBD000C60103 /* ScheduleDataControllerDelegate.swift in Sources */,
+				F7169BAE2821347E00B16251 /* GlobalSearchDC.swift in Sources */,
 				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
 				F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */,
 			);

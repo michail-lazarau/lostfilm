@@ -71,7 +71,6 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
     
     [mutableDict addEntriesFromDictionary:@{
             @"act": @"serial",
-            
             @"type": @"search",
             @"o": @(LFApiSeriesNumberOfItemsOnPage * (page - 1)) }];
     
@@ -341,6 +340,47 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
         
         if (completionHandler) {
             completionHandler(ACValidArray(newEpisodeList) ? newEpisodeList.copy : nil, error);
+        }
+    }];
+}
+
+- (void)getGlobalSearchOutputForContext: (NSString *) searchContext
+                  withCompletionHandler: (void (^)(NSArray<LFSeriesModel *> *, NSArray<LFPersonModel *> *, NSError *))completionHandler {
+    
+    DVHtmlToModels *htmlToModels = [DVHtmlToModels htmlToModelsWithContextByName:@"GetGlobalSearchContext"];
+    [htmlToModels loadDataWithReplacingURLParameters: @[searchContext]
+                                  queryURLParameters:nil
+                                              asJSON:YES
+                                   completionHandler:
+     ^(NSDictionary *data, NSData *htmlData) {
+        NSMutableArray<LFSeriesModel *> *seriesList = nil;
+        NSMutableArray<LFPersonModel *> *personList = nil;
+        NSError *error = nil;
+        
+        if (data) {
+            NSArray *seriesListData = data[NSStringFromClass([LFSeriesModel class])];
+            NSArray *personListData = data[NSStringFromClass([LFPersonModel class])];
+            if (ACValidArray(seriesListData)) {
+                seriesList = [NSMutableArray new];
+                
+                for (NSDictionary *seriesData in seriesListData) {
+                    [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
+                }
+            }
+            
+            if (ACValidArray(personListData)) {
+                personList = [NSMutableArray new];
+                
+                for (NSDictionary *personData in personListData) {
+                    [personList addObject:[[LFPersonModel alloc] initWithData:personData]];
+                }
+            }
+        } else {
+            error = [NSError lf_errorDefault];
+        }
+        
+        if (completionHandler) {
+            completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, ACValidArray(personList) ? personList.copy : nil, error);
         }
     }];
 }
