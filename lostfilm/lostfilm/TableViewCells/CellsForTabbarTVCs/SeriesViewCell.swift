@@ -2,9 +2,6 @@ import SDWebImage
 import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        String(describing: SeriesViewCell.self)
-    }
 
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
@@ -27,11 +24,6 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-//    // FIXME: class or static? I want to call this property out of any cellClass and receive the respective self. I don't want to override the property later. I assume it must be static.
-//    class var cellIdentifier: String {
-//        String(describing: type(of: self))
-//    }
 
     private let serialView: UIImageView = {
         let imageView = UIImageView()

@@ -24,7 +24,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
 
-    func registerCells() {
+    private func registerCells() {
         tableView.register(SeriesNewsViewCell.nib, forCellReuseIdentifier: SeriesNewsViewCell.reuseIdentifier)
     }
 

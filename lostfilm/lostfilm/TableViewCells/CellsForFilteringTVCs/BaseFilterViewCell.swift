@@ -6,8 +6,8 @@ class BaseFilterViewCell: UITableViewCell {
     var switcherAction: (()->())?
     var switcher: UISwitch!
     
-    static func cellIdentifier() -> String {
-        "BaseFilterViewCell"
+    class var reuseIdentifier: String {
+        String(describing: self)
     }
     
 //    MARK: ask about usage of << override var reuseIdentifier: String {"BaseFilterViewCell"} >>

@@ -1,6 +1,7 @@
 import Foundation
 
 class GlobalSearchDC {
+    var delegate: DelegateGlobalSearchDC?
     var seriesList: [LFSeriesModel]?
     var personList: [LFPersonModel]?
     

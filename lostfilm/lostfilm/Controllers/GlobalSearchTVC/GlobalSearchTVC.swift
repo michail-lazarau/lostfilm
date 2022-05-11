@@ -1,57 +1,58 @@
 import UIKit
 
-class GlobalSearchTVC: UITableViewController {
-
+class GlobalSearchTVC: UITableViewController, DelegateGlobalSearchDC {
+    var viewModel: GlobalSearchVM
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    init(style: UITableView.Style, viewModel: GlobalSearchVM) {
+        self.viewModel = viewModel
+        super.init(style: style)
+        self.viewModel.dataProvider.delegate = self
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = viewModel
+        setupSearchController()
+        registerCells()
+    }
+    
+    func updateTableView(by searchContext: String) {
+//        viewModel.dataProvider.getGlobalSearchOutputFor(searchContext: searchContext)
+//        viewModel.fetchDataItems()
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+extension GlobalSearchTVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+//        <#code#>
+    }
+}
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+// MARK: - Setup
+
+extension GlobalSearchTVC {
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    private func registerCells() {
+        tableView.register(SeriesViewCell.self, forCellReuseIdentifier: SeriesViewCell.reuseIdentifier)
+        tableView.register(SeriesCastViewCell.nib, forCellReuseIdentifier: SeriesCastViewCell.reuseIdentifier)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
 }

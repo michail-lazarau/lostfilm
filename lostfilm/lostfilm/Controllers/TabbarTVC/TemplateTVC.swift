@@ -34,7 +34,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
 
     func registerCell() {
         let cellType = Cell.self
-        tableView.register(cellType, forCellReuseIdentifier: Cell.cellIdentifier())
+        tableView.register(cellType, forCellReuseIdentifier: Cell.reuseIdentifier)
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
@@ -107,7 +107,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.cellIdentifier(), for: indexPath) as! Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         if let model = dataSource?[indexPath.row] {
             cell.configureWith(dataModel: model as! Cell.DataModel)
             

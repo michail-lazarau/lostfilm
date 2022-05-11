@@ -2,9 +2,6 @@ import UIKit
 import AVKit
 
 class VideoViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        "VideosViewCell"
-    }
     
     private var videoUrl: URL?
     var presentAVPlayerViewController: ((AVPlayerViewController)->())?

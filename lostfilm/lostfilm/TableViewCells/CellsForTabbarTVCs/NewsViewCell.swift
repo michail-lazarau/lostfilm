@@ -1,9 +1,6 @@
 import UIKit
 
 class NewsViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        "NewsViewCell"
-    }
 
     func configureWith(dataModel: LFNewsModel) {
         let paragraphStyle = NSMutableParagraphStyle()

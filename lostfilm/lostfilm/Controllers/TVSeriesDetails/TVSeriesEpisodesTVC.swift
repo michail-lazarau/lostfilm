@@ -25,7 +25,7 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesDetailsDC {
         tableView.reloadData()
     }
 
-    func registerCells() {
+    private func registerCells() {
         tableView.register(EpisodeViewCell.nib, forCellReuseIdentifier: EpisodeViewCell.reuseIdentifier)
         tableView.register(EpisodeTableHeaderView.nib, forHeaderFooterViewReuseIdentifier: EpisodeTableHeaderView.reuseIdentifier)
     }

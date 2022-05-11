@@ -1,10 +1,6 @@
 import UIKit
 
 class FilteringViewCell: UITableViewCell, CellConfigurable {
-
-    static func cellIdentifier() -> String {
-        "FilteringViewCell"
-    }
     
     func configureWith(dataModel: LFSeriesFilterBaseModel) {
         textLabel?.text = dataModel.name

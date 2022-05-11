@@ -27,7 +27,7 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
     }
 
     func setupTableViewController() {
-        tableView.register(NewEpisodeViewCell.self, forCellReuseIdentifier: NewEpisodeViewCell.cellIdentifier())
+        tableView.register(NewEpisodeViewCell.self, forCellReuseIdentifier: NewEpisodeViewCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
 //        self.tableView.contentInsetAdjustmentBehavior = .never
 
@@ -67,7 +67,7 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.cellIdentifier(), for: indexPath) as! NewEpisodeViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.reuseIdentifier, for: indexPath) as! NewEpisodeViewCell
 
         if let model = dataSource?[indexPath.section, indexPath.row] {
             cell.configureWith(dataModel: model)

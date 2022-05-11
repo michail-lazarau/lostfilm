@@ -29,7 +29,7 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         super.viewWillAppear(animated)
     }
     
-    func registerCells() {
+    private func registerCells() {
         collectionView.register(SeriesPhotoViewCell.nib, forCellWithReuseIdentifier: SeriesPhotoViewCell.reuseIdentifier)
     }
 

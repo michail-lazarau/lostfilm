@@ -1,9 +1,6 @@
 import UIKit
 
 class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        "NewEpisodeViewCell"
-    }
 
     func configureWith(dataModel: LFEpisodeModel) {
         let paragraphStyle = NSMutableParagraphStyle()

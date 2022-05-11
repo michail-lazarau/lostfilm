@@ -31,7 +31,7 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesDetailsDC {
         tableView.reloadData()
     }
 
-    func registerCells() {
+    private func registerCells() {
         tableView.register(SeriesPosterViewCell.nib, forCellReuseIdentifier: SeriesPosterViewCell.reuseIdentifier)
         tableView.register(SeriesDetailViewCell.nib, forCellReuseIdentifier: SeriesDetailViewCell.reuseIdentifier)
     }
