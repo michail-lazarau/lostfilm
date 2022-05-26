@@ -6,17 +6,23 @@ class GlobalSearchDC {
     var personList: [LFPersonModel]?
     
     func getGlobalSearchOutputFor(searchContext: String) {
-        getGlobalSearchOutputFor(searchContext: searchContext) { [weak self] seriesList, personList, _ in
+        getGlobalSearchOutputFor(searchContext: searchContext) { [weak self] seriesList, personList, error in
             guard let strongSelf = self else {
                 return
             }
             strongSelf.seriesList = seriesList
             strongSelf.personList = personList
-            
-            DispatchQueue.main.async {
-                //
+            if error == nil {
+                DispatchQueue.main.async {
+                    strongSelf.delegate?.updateTableView()
+                }
             }
         }
+    }
+    
+    func DidEmptySearchResults() {
+        seriesList = nil
+        personList = nil
     }
     
     private func getGlobalSearchOutputFor(searchContext: String, completionHandler: @escaping ([LFSeriesModel]?, [LFPersonModel]?, NSError?) -> Void) {

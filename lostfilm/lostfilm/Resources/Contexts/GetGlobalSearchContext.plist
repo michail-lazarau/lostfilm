@@ -91,7 +91,7 @@
 			<key>className</key>
 			<string>LFPersonModel</string>
 			<key>xPathRoot</key>
-			<string>//div[@class=&apos;text-block persons&apos;]//a[@class=&apos;row&apos;]</string>
+			<string>//div[@class=&apos;text-block persons&apos;]/div[@class=&apos;body&apos;]/a[@class=&apos;row&apos;]</string>
 			<key>fields</key>
 			<array>
 				<dict>
@@ -118,7 +118,7 @@
 							<key>xPath</key>
 							<string>//img</string>
 							<key>attribute</key>
-							<string>autoload</string>
+							<string>src</string>
 							<key>formats</key>
 							<array>
 								<dict>

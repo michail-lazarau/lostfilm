@@ -7,13 +7,12 @@
 //
 
 #import "LFApiSeries.h"
-
 #import "LFApiBase+Protected.h"
-
 #import <DVHtmlToModels/DVHtmlToModels.h>
 #import "NSURLRequest+AppCore.h" // MARK: fixing "No known class method for selector 'ac_requestPostForRootLinkByHref:parameters:headerFields:'" issie
 #import "NSError+LF.h" // MARK: for exposing "lf_errorDefault" method to the class
 #import "NSDictionary+LF.h" // MARK: fixing "No visible @interface for 'NSDictionary' declares the selector 'lf_itemsForKeyWhichAsNameOfItemClass:'" issue
+#import "lostfilm-Bridging-Header.h"
 
 static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
 
@@ -77,25 +76,31 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref: @"ajaxik.php"
                                                                parameters: mutableDict
                                                              headerFields:@{ @"Referer": @"https://www.lostfilm.uno/series/" }];
-    [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
-        
-        NSMutableArray<LFSeriesModel *> *seriesList = nil;
+//    [NSTimer scheduledTimerWithTimeInterval: 5 repeats:true block:^(NSTimer * _Nonnull timer) {
+//        __block int varCount = 0;
+        [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
+//            varCount += 1;
+            NSMutableArray<LFSeriesModel *> *seriesList = nil;
 
-        if (data) {
-            NSArray *seriesListData = [data ac_arrayForKey:@"data"];
-            if (ACValidArray(seriesListData)) {
-                seriesList = [NSMutableArray new];
+            if (data) {
+//                if (data != nil || varCount == 3) {
+//                    [timer invalidate];
+//                }
+                NSArray *seriesListData = [data ac_arrayForKey:@"data"];
+                if (ACValidArray(seriesListData)) {
+                    seriesList = [NSMutableArray new];
 
-                for (NSDictionary *seriesData in seriesListData) {
-                    [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
+                    for (NSDictionary *seriesData in seriesListData) {
+                        [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
+                    }
                 }
             }
-        }
 
-        if (completionHandler) {
-            completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
-        }
-    }];
+            if (completionHandler) {
+                completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
+            }
+        }];
+//    }];
 }
 
 - (void)getNewEpisodeListForPage:(NSUInteger)page

@@ -20,11 +20,13 @@ extension GlobalSearchVM: UITableViewDataSource {
         case .persons:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesCastViewCell.reuseIdentifier, for: indexPath) as? SeriesCastViewCell,  let item = item as? GlobalSearchPersonsItem {
                 cell.item = item.persons[indexPath.row]
+                // FIXME: delete if unnecessary
+//                cell.layoutIfNeeded()
+//                cell.updateConstraintsIfNeeded()
+//                cell.setNeedsLayout()
                 return cell
             }
         }
         return UITableViewCell()
     }
-    
-    
 }

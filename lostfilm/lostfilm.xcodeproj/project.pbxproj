@@ -91,6 +91,7 @@
 		F781ACCC27E11F3F003ABF31 /* SeriesPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F781ACCA27E11F3F003ABF31 /* SeriesPhotoViewCell.xib */; };
 		F781ACCE27E1348A003ABF31 /* TVSeriesPhotosCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781ACCD27E1348A003ABF31 /* TVSeriesPhotosCVC.swift */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
+		F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C5DB528319B6100AF8400 /* WeakTimer.swift */; };
 		F78EC95E27C6A71C0041F998 /* TVSeriesNewsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78EC95D27C6A71C0041F998 /* TVSeriesNewsTVC.swift */; };
 		F78EC96027C6A7820041F998 /* TVSeriesNewsDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78EC95F27C6A7820041F998 /* TVSeriesNewsDC.swift */; };
 		F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5D27BC195800C71147 /* EpisodesVM.swift */; };
@@ -253,6 +254,7 @@
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F78C5DB528319B6100AF8400 /* WeakTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakTimer.swift; sourceTree = "<group>"; };
 		F78EC95D27C6A71C0041F998 /* TVSeriesNewsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesNewsTVC.swift; sourceTree = "<group>"; };
 		F78EC95F27C6A7820041F998 /* TVSeriesNewsDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesNewsDC.swift; sourceTree = "<group>"; };
 		F7978D5D27BC195800C71147 /* EpisodesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesVM.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				F7AA54CA2791B200002A7179 /* LFSeriesFilterModelPropertyEnum.swift */,
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
 				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
+				F78C5DB528319B6100AF8400 /* WeakTimer.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1146,6 +1149,7 @@
 				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
+				F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */,
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F717BF1527AC86E10029B796 /* SeriesPosterViewCell.swift in Sources */,

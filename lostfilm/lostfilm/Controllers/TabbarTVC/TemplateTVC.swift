@@ -33,8 +33,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     }
 
     func registerCell() {
-        let cellType = Cell.self
-        tableView.register(cellType, forCellReuseIdentifier: Cell.reuseIdentifier)
+        tableView.register(Cell.self, forCellReuseIdentifier: Cell.reuseIdentifier)
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {

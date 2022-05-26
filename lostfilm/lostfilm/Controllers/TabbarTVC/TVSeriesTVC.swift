@@ -31,8 +31,11 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     
     @objc private func DidShowGlobalSearch() {
         let globalSearchTVC = GlobalSearchTVC(style: .grouped, viewModel: GlobalSearchVM(dataProvider: GlobalSearchDC()))
-        globalSearchTVC.modalPresentationStyle = .fullScreen
-        present(globalSearchTVC, animated: true)
+        if let presentedVC = self.presentedViewController {
+            presentedVC.dismiss(animated: false, completion: nil)
+        }
+        
+        self.navigationController?.setViewControllers([ self, globalSearchTVC ], animated: true)
     }
 }
 // MARK: how to display a VC
