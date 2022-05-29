@@ -12,6 +12,7 @@ class GlobalSearchDC {
             }
             strongSelf.seriesList = seriesList
             strongSelf.personList = personList
+            // FIXME: an error is caught when the output is out of records. Hence the datasource is not updated
             if error == nil {
                 DispatchQueue.main.async {
                     strongSelf.delegate?.updateTableView()

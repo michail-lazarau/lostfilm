@@ -8,9 +8,15 @@ class GlobalSearchPersonsItem: GlobalSearchItem {
     var rowCount: Int {
         persons.count
     }
-    let persons: [LFPersonModel]
+    private let persons: [LFPersonModel]
     
     init(personList: [LFPersonModel]) {
         persons = personList
+    }
+}
+
+extension GlobalSearchPersonsItem {
+    subscript(index: Int) -> LFPersonModel {
+        persons[index]
     }
 }

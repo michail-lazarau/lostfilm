@@ -8,9 +8,15 @@ class GlobalSearchSeriesItem: GlobalSearchItem {
     var rowCount: Int {
         series.count
     }
-    let series: [LFSeriesModel]
+    private let series: [LFSeriesModel]
     
     init(seriesList: [LFSeriesModel]) {
         series = seriesList
+    }
+}
+
+extension GlobalSearchSeriesItem {
+    subscript(index: Int) -> LFSeriesModel {
+        series[index]
     }
 }

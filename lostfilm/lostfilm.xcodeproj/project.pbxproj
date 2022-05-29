@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B4BC4EBD423483FE3D87426 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCA35C65AC3861940A87C20 /* libPods-lostfilm.a */; };
+		620E4E736DB55180518B6B71 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8888D32A4058668957B78C0 /* libPods-lostfilm.a */; };
 		F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90427C14C8200924479 /* ParagraphView.xib */; };
 		F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DB90627C14CC700924479 /* ParagraphView.swift */; };
 		F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */; };
@@ -145,6 +145,8 @@
 		F7DFCF9527F0B5EB006A0789 /* ImageViewTransitionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */; };
 		F7DFCF9A27F0F6F9006A0789 /* TVSeriesPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DFCF9827F0F6F9006A0789 /* TVSeriesPhotoVC.swift */; };
 		F7DFCF9B27F0F6F9006A0789 /* TVSeriesPhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7DFCF9927F0F6F9006A0789 /* TVSeriesPhotoVC.xib */; };
+		F7E022A12844273A00123B56 /* GlobalSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E022A02844273A00123B56 /* GlobalSearchHeaderView.swift */; };
+		F7E022A32844276400123B56 /* GlobalSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */; };
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
@@ -160,8 +162,8 @@
 
 /* Begin PBXFileReference section */
 		6A4D4B45EEE09A9874051CB0 /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
+		C8888D32A4058668957B78C0 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F890FFE45D1767EFFAFC18 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
-		EFCA35C65AC3861940A87C20 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70DB90427C14C8200924479 /* ParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParagraphView.xib; sourceTree = "<group>"; };
 		F70DB90627C14CC700924479 /* ParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphView.swift; sourceTree = "<group>"; };
 		F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeTableHeaderView.xib; sourceTree = "<group>"; };
@@ -330,6 +332,8 @@
 		F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTransitionState.swift; sourceTree = "<group>"; };
 		F7DFCF9827F0F6F9006A0789 /* TVSeriesPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesPhotoVC.swift; sourceTree = "<group>"; };
 		F7DFCF9927F0F6F9006A0789 /* TVSeriesPhotoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVSeriesPhotoVC.xib; sourceTree = "<group>"; };
+		F7E022A02844273A00123B56 /* GlobalSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchHeaderView.swift; sourceTree = "<group>"; };
+		F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlobalSearchHeaderView.xib; sourceTree = "<group>"; };
 		F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterDelegate.swift; sourceTree = "<group>"; };
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
 		F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesDetailsVC.swift; sourceTree = "<group>"; };
@@ -350,7 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B4BC4EBD423483FE3D87426 /* libPods-lostfilm.a in Frameworks */,
+				620E4E736DB55180518B6B71 /* libPods-lostfilm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +373,7 @@
 		3BF103F10585E073A54CCD5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EFCA35C65AC3861940A87C20 /* libPods-lostfilm.a */,
+				C8888D32A4058668957B78C0 /* libPods-lostfilm.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -484,6 +488,7 @@
 		F73459DE2766435300E45725 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				F7E0229F284426AD00123B56 /* CellsForGlobalSearchTVC */,
 				F7D7D18427B05DB200970959 /* CellsForFilteringTVCs */,
 				F7D7D18327B05D8300970959 /* CellsForTabbarTVCs */,
 				F7D7D17E27B0566800970959 /* CellsForSeriesOverviewTVC */,
@@ -939,6 +944,15 @@
 			path = DelegateProtocol;
 			sourceTree = "<group>";
 		};
+		F7E0229F284426AD00123B56 /* CellsForGlobalSearchTVC */ = {
+			isa = PBXGroup;
+			children = (
+				F7E022A02844273A00123B56 /* GlobalSearchHeaderView.swift */,
+				F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */,
+			);
+			path = CellsForGlobalSearchTVC;
+			sourceTree = "<group>";
+		};
 		F7E8E46427A8067000BA9DC7 /* TVSeriesDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -1004,7 +1018,7 @@
 				F7AEE465273FEB7900C304D0 /* Sources */,
 				F7AEE466273FEB7900C304D0 /* Frameworks */,
 				F7AEE467273FEB7900C304D0 /* Resources */,
-				5D395025B3DCC819DF31254C /* [CP] Copy Pods Resources */,
+				4B772F711478BE86C70C6A0C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1070,6 +1084,7 @@
 				F711A44C2745A84A00E1515D /* GetSeriesPhotoListContext.plist in Resources */,
 				F7978D6527BC2D6C00C71147 /* EpisodeViewCell.xib in Resources */,
 				F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */,
+				F7E022A32844276400123B56 /* GlobalSearchHeaderView.xib in Resources */,
 				F76D9CDB27691D12008D8CA4 /* SeriesNewsViewCell.xib in Resources */,
 				F717BF1627AC86E10029B796 /* SeriesPosterViewCell.xib in Resources */,
 				F711A44D2745A84A00E1515D /* GetSeriesListsFilterContext.plist in Resources */,
@@ -1107,7 +1122,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5D395025B3DCC819DF31254C /* [CP] Copy Pods Resources */ = {
+		4B772F711478BE86C70C6A0C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1161,6 +1176,7 @@
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
 				F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */,
 				F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */,
+				F7E022A12844273A00123B56 /* GlobalSearchHeaderView.swift in Sources */,
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
 				F7516D72282BE20800E1A138 /* GlobalSearchPersonsItem.swift in Sources */,
 				F717BF1827AD54F30029B796 /* TVSeriesOverviewDC.swift in Sources */,

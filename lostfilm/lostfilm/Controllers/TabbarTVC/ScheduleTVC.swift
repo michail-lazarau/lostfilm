@@ -55,9 +55,13 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
             return UITableView.automaticDimension
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return .leastNormalMagnitude
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -14,16 +14,12 @@ extension GlobalSearchVM: UITableViewDataSource {
         switch item.type {
         case .series:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesViewCell.reuseIdentifier, for: indexPath) as? SeriesViewCell,  let item = item as? GlobalSearchSeriesItem {
-                cell.configureWith(dataModel: item.series[indexPath.row])
+                cell.configureWith(dataModel: item[indexPath.row])
                 return cell
             }
         case .persons:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesCastViewCell.reuseIdentifier, for: indexPath) as? SeriesCastViewCell,  let item = item as? GlobalSearchPersonsItem {
-                cell.item = item.persons[indexPath.row]
-                // FIXME: delete if unnecessary
-//                cell.layoutIfNeeded()
-//                cell.updateConstraintsIfNeeded()
-//                cell.setNeedsLayout()
+                cell.item = item[indexPath.row]
                 return cell
             }
         }

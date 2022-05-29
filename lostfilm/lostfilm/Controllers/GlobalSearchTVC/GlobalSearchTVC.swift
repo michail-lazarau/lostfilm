@@ -6,11 +6,16 @@ class GlobalSearchTVC: UITableViewController, DelegateGlobalSearchDC, UISearchBa
     private let searchController = UISearchController(searchResultsController: nil)
     private var lastSearchText: String?
     private var refreshTimer: Timer?
+//    private let spinner: UIActivityIndicatorView = {
+//        let spinner = UIActivityIndicatorView(style: .gray)
+//        spinner.hidesWhenStopped = true
+//        return spinner
+//    }()
 
     init(style: UITableView.Style, viewModel: GlobalSearchVM) {
         self.viewModel = viewModel
         super.init(style: style)
-        self.viewModel.dataProvider.delegate = self // useless (no?)
+        self.viewModel.dataProvider.delegate = self
     }
 
     required init(coder: NSCoder) {
@@ -22,11 +27,11 @@ class GlobalSearchTVC: UITableViewController, DelegateGlobalSearchDC, UISearchBa
         tableView.dataSource = viewModel
         setupSearchController()
         registerCells()
-//        tableView.rowHeight = UITableView.automaticDimension
     }
 
     func updateTableView() {
         viewModel.populateWithData()
+//        spinner.stopAnimating()
         tableView.reloadData()
     }
 
@@ -49,18 +54,20 @@ class GlobalSearchTVC: UITableViewController, DelegateGlobalSearchDC, UISearchBa
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let searchItem = viewModel.itemsForSections[indexPath.section]
+        switch searchItem.type {
+            case .series:
+            let seriesDetailsVC = LFSeriesDetailsVC(model: (searchItem as! GlobalSearchSeriesItem)[indexPath.row])
+            seriesDetailsVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(seriesDetailsVC, animated: true)
+        default: break
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    // TODO: think of replacing literal height with dinamic by changing constraints
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = viewModel.itemsForSections[indexPath.section]
-//        switch item.type {
-//        case .persons:
-//            return (self.tableView(tableView, cellForRowAt: indexPath).contentView.frame.height)
-//        case .series:
-//            return (self.tableView(tableView, cellForRowAt: indexPath).contentView.frame.height)
-//        }
-
         switch item.type {
         case .persons:
             return 66
@@ -68,6 +75,25 @@ class GlobalSearchTVC: UITableViewController, DelegateGlobalSearchDC, UISearchBa
             return 168
         }
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: GlobalSearchHeaderView.reuseIdentifier) as? GlobalSearchHeaderView
+        header?.paragraphView.label.text = viewModel.itemsForSections[section].sectionTitle
+        return header
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
 }
 
 extension GlobalSearchTVC: UISearchResultsUpdating {
@@ -96,9 +122,12 @@ extension GlobalSearchTVC: UISearchResultsUpdating {
             guard strongSelf.lastSearchText != searchText else {
                 return
             }
-
+//            if !strongSelf.spinner.isAnimating {
+//                strongSelf.spinner.startAnimating()
+//            }
             strongSelf.lastSearchText = searchText
             strongSelf.viewModel.dataProvider.getGlobalSearchOutputFor(searchContext: strongSelf.lastSearchText!) // MARK: lastSearchText is never nil by this step
+//            strongSelf.spinner.stopAnimating()
             strongSelf.refreshTimer = nil
         }
     }
@@ -126,11 +155,17 @@ extension GlobalSearchTVC {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.hidesBackButton = true
         (searchController.searchBar.value(forKey: "cancelButton") as? UIButton)?.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
+//        UIApplication.shared.windows.first?.addSubview(spinner)
+//        NSLayoutConstraint.activate([
+//            spinner.centerXAnchor.constraint(equalTo: UIApplication.shared.windows.first!.centerXAnchor),
+//            spinner.centerYAnchor.constraint(equalTo: UIApplication.shared.windows.first!.centerYAnchor)
+//        ])
     }
 
     private func registerCells() {
         tableView.register(SeriesViewCell.self, forCellReuseIdentifier: SeriesViewCell.reuseIdentifier)
         tableView.register(SeriesCastViewCell.nib, forCellReuseIdentifier: SeriesCastViewCell.reuseIdentifier)
+        tableView.register(GlobalSearchHeaderView.nib, forHeaderFooterViewReuseIdentifier: GlobalSearchHeaderView.reuseIdentifier)
     }
 
     @objc internal func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

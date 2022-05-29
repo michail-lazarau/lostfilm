@@ -15,6 +15,7 @@
 #import "lostfilm-Bridging-Header.h"
 
 static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
+static NSUInteger recursiveCallsEvoked = 0;
 
 @implementation LFApiSeries
 
@@ -76,16 +77,16 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref: @"ajaxik.php"
                                                                parameters: mutableDict
                                                              headerFields:@{ @"Referer": @"https://www.lostfilm.uno/series/" }];
-//    [NSTimer scheduledTimerWithTimeInterval: 5 repeats:true block:^(NSTimer * _Nonnull timer) {
-//        __block int varCount = 0;
+    // workaround for setting a timer
+    NSMutableURLRequest *requestWithTimeout = [request mutableCopy];
+    requestWithTimeout.timeoutInterval = 5;
+    request = requestWithTimeout;
+    //
         [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
-//            varCount += 1;
             NSMutableArray<LFSeriesModel *> *seriesList = nil;
 
             if (data) {
-//                if (data != nil || varCount == 3) {
-//                    [timer invalidate];
-//                }
+                recursiveCallsEvoked = 0;
                 NSArray *seriesListData = [data ac_arrayForKey:@"data"];
                 if (ACValidArray(seriesListData)) {
                     seriesList = [NSMutableArray new];
@@ -94,13 +95,18 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
                         [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
                     }
                 }
+            } else if (error.code == NSURLErrorTimedOut, recursiveCallsEvoked < 3) {
+                // FIXME: spinner doesnt work correctly when the request was failed for the 1st time
+                // TODO: check for 3g internet: try to use timeoutIntervalForRequest option instead
+                recursiveCallsEvoked++;
+                [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
             }
 
             if (completionHandler) {
                 completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
             }
         }];
-//    }];
+//    }
 }
 
 - (void)getNewEpisodeListForPage:(NSUInteger)page

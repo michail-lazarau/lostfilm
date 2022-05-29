@@ -41,22 +41,17 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         self.navigationItem.title = viewModel.dataProvider?.model.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
-        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNeedsStatusBarAppearanceUpdate()
+        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = nil
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.shadowImage = nil
-//        super.viewWillDisappear(animated)
-//    }
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         return controllers[Int(index)]
@@ -67,7 +62,6 @@ extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
         if let TVSeriesPhotosCVC = (self.controllers[3] as? TVSeriesPhotosCVC), let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
             let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-//            cell.imageView.transform = CGAffineTransform.identity
             return cell.imageView
         }
         return nil
