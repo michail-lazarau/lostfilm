@@ -95,7 +95,7 @@ static NSUInteger recursiveCallsEvoked = 0;
                         [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
                     }
                 }
-            } else if (error.code == NSURLErrorTimedOut, recursiveCallsEvoked < 3) {
+            } else if (error.code == NSURLErrorTimedOut && recursiveCallsEvoked < 3) {
                 // FIXME: spinner doesnt work correctly when the request was failed for the 1st time
                 // TODO: check for 3g internet: try to use timeoutIntervalForRequest option instead
                 recursiveCallsEvoked++;

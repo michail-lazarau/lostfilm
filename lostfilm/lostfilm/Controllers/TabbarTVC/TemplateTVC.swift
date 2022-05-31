@@ -2,7 +2,13 @@ import UIKit
 
 class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable, DataModel: LFJsonObject {
     fileprivate let tableFooterHeight: CGFloat = 50
-
+    
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     internal var tableCellHeight: CGFloat {
         return 0
     }
@@ -38,16 +44,16 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         dataSource?.DidEmptyItemList()
-        tableView.reloadData() // MARK: Fix for issue
+        tableView.reloadData()
         dataSource?.LoadingData()
         sender.endRefreshing()
     }
 
     func updateUIForTableWith(rowsRange: Range<Int>) {
-        if rowsRange.isEmpty {tableView.tableFooterView?.isHidden = true
-            return
-        } // MARK: i dont see a reason for using destroyTableFooter()
-
+        if rowsRange.isEmpty {
+            return spinner.stopAnimating()
+        }
+        
         let isListEmpty = (rowsRange.lowerBound == 0)
         if isListEmpty {
             tableView.reloadData()
@@ -58,6 +64,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
             }
             tableView.insertRows(at: array, with: .bottom)
         }
+        spinner.stopAnimating()
     }
 
     override func viewWillLayoutSubviews() {
@@ -78,13 +85,9 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0,
                                               width: UIScreen.main.bounds.width,
-                                              height: tableFooterHeight)) // MARK: is UIScreen.main.bounds.width ok?
-
+                                              height: tableFooterHeight))
         footerView.backgroundColor = .clear
-        let spinner = UIActivityIndicatorView(style: .gray)
-        spinner.hidesWhenStopped = true
         spinner.center = footerView.center
-        spinner.startAnimating()
         footerView.addSubview(spinner)
         tableView.tableFooterView = footerView // works as well: = spinner
         return footerView
@@ -97,9 +100,8 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         let maximumOffset = scrollView.contentSize.height - tableFooterHeight
         let deltaOffset = maximumOffset - currentOffset
         if deltaOffset <= 0 {
+            spinner.startAnimating() // MARK: must be inside the loadingData() to follow the looped calling
             dataSource?.LoadingData()
-
-            tableView.tableFooterView?.isHidden = true // MARK: hides UIActivityIndicatorView when table is updated
         }
     }
 
