@@ -15,7 +15,7 @@
 #import "lostfilm-Bridging-Header.h"
 
 static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
-static NSUInteger recursiveCallsEvoked = 0;
+static NSUInteger recursiveCallsEvokedForGetSeriesListForPage = 0;
 
 @implementation LFApiSeries
 
@@ -84,9 +84,10 @@ static NSUInteger recursiveCallsEvoked = 0;
     //
         [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
             NSMutableArray<LFSeriesModel *> *seriesList = nil;
+            bool retryConditionForMissingDataWasMet = error.code == NSURLErrorTimedOut && recursiveCallsEvokedForGetSeriesListForPage < 3;
 
             if (data) {
-                recursiveCallsEvoked = 0;
+                recursiveCallsEvokedForGetSeriesListForPage = 0;
                 NSArray *seriesListData = [data ac_arrayForKey:@"data"];
                 if (ACValidArray(seriesListData)) {
                     seriesList = [NSMutableArray new];
@@ -95,14 +96,14 @@ static NSUInteger recursiveCallsEvoked = 0;
                         [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
                     }
                 }
-            } else if (error.code == NSURLErrorTimedOut && recursiveCallsEvoked < 3) {
+            } else if (retryConditionForMissingDataWasMet) {
                 // FIXME: spinner doesnt work correctly when the request was failed for the 1st time
                 // TODO: check for 3g internet: try to use timeoutIntervalForRequest option instead
-                recursiveCallsEvoked++;
+                recursiveCallsEvokedForGetSeriesListForPage++;
                 [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
             }
-
-            if (completionHandler) {
+            // TODO: check if new condition works correctly
+            if (completionHandler && !retryConditionForMissingDataWasMet) {
                 completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
             }
         }];
