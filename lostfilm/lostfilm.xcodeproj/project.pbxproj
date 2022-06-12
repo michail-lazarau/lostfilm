@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		620E4E736DB55180518B6B71 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8888D32A4058668957B78C0 /* libPods-lostfilm.a */; };
+		5C0733B6909895A016980DB8 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
+		AB59F67B07B52DA50CFEAA52 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F4BBAF40584950A12C758 /* libPods-lostfilmTests.a */; };
+		BA77573F99E14F86F11BBF9C /* libPods-lostfilmUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EA0C4D67D6C82048560257 /* libPods-lostfilmUITests.a */; };
 		F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90427C14C8200924479 /* ParagraphView.xib */; };
 		F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DB90627C14CC700924479 /* ParagraphView.swift */; };
 		F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */; };
@@ -38,6 +40,7 @@
 		F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721A0422792273800C614C7 /* FilteringDelegate.swift */; };
 		F72518272774FBD000C60103 /* ScheduleDataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72518262774FBD000C60103 /* ScheduleDataControllerDelegate.swift */; };
 		F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */; };
+		F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */; };
 		F73459DA2765F98B00E45725 /* TemplateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TemplateTVC.swift */; };
 		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
 		F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DF276647ED00E45725 /* TemplateDataController.swift */; };
@@ -75,6 +78,9 @@
 		F7516D7D282C56CE00E1A138 /* SeriesCastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7516D7B282C56CE00E1A138 /* SeriesCastViewCell.xib */; };
 		F7516D7F282C674E00E1A138 /* DelegateGlobalSearchDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7516D7E282C674E00E1A138 /* DelegateGlobalSearchDC.swift */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
+		F7640B4E2850F5D400D8365B /* lostfimFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B4D2850F5D400D8365B /* lostfimFakeTests.swift */; };
+		F7640B5628512DF200D8365B /* lostfilmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B5528512DF200D8365B /* lostfilmUITests.swift */; };
+		F7640B5828512DF200D8365B /* lostfilmUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */; };
 		F76D1F7527B9454C007E5933 /* TVSeriesEpisodesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */; };
 		F76D1F7727B949C5007E5933 /* VMepisodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D1F7627B949C5007E5933 /* VMepisodeItem.swift */; };
 		F76D1F7927B95F61007E5933 /* TVSeriesEpisodesDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D1F7827B95F61007E5933 /* TVSeriesEpisodesDC.swift */; };
@@ -132,6 +138,9 @@
 		F7C2813627C802F900DA8A62 /* SeriesNewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2813427C802F900DA8A62 /* SeriesNewsViewCell.swift */; };
 		F7C4EE842753E222006B5961 /* NSURLRequest+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C4EE822753E222006B5961 /* NSURLRequest+LF.m */; };
 		F7C693A12782133A002C6D25 /* FilteringViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C693A02782133A002C6D25 /* FilteringViewCell.swift */; };
+		F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */; };
+		F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */; };
+		F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */; };
 		F7D7D18127B057D100970959 /* SeriesDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D7D17F27B057D100970959 /* SeriesDetailViewCell.swift */; };
 		F7D7D18227B057D100970959 /* SeriesDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D7D18027B057D100970959 /* SeriesDetailViewCell.xib */; };
 		F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */; };
@@ -160,10 +169,34 @@
 		F7FFA1042777D486004B5D38 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFA1032777D486004B5D38 /* Date.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F7640B5928512DF200D8365B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7AEE461273FEB7900C304D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7AEE468273FEB7900C304D0;
+			remoteInfo = lostfilm;
+		};
+		F7B02F7B284E6D17004D95A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7AEE461273FEB7900C304D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7AEE468273FEB7900C304D0;
+			remoteInfo = lostfilm;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		6A4D4B45EEE09A9874051CB0 /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
-		C8888D32A4058668957B78C0 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1F890FFE45D1767EFFAFC18 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
+		0DD3B3F7EB4813B6A43804FD /* Pods-lostfilm-lostfilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm-lostfilmTests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm-lostfilmTests/Pods-lostfilm-lostfilmTests.debug.xcconfig"; sourceTree = "<group>"; };
+		86D9BE18D9C27254DB0787E9 /* Pods-lostfilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8789D6FFE81A1D083CF00DFE /* Pods-lostfilmUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmUITests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilmUITests/Pods-lostfilmUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9F6B971C1FAD7DDE8ACF5253 /* Pods-lostfilmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmUITests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmUITests/Pods-lostfilmUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
+		B5EA0C4D67D6C82048560257 /* libPods-lostfilmUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilmUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
+		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
+		D82F4BBAF40584950A12C758 /* libPods-lostfilmTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilmTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70DB90427C14C8200924479 /* ParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParagraphView.xib; sourceTree = "<group>"; };
 		F70DB90627C14CC700924479 /* ParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphView.swift; sourceTree = "<group>"; };
 		F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeTableHeaderView.xib; sourceTree = "<group>"; };
@@ -238,6 +271,10 @@
 		F7516D7B282C56CE00E1A138 /* SeriesCastViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesCastViewCell.xib; sourceTree = "<group>"; };
 		F7516D7E282C674E00E1A138 /* DelegateGlobalSearchDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateGlobalSearchDC.swift; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
+		F7640B4D2850F5D400D8365B /* lostfimFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfimFakeTests.swift; sourceTree = "<group>"; };
+		F7640B5328512DF200D8365B /* lostfilmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lostfilmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7640B5528512DF200D8365B /* lostfilmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmUITests.swift; sourceTree = "<group>"; };
+		F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesEpisodesTVC.swift; sourceTree = "<group>"; };
 		F76D1F7627B949C5007E5933 /* VMepisodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMepisodeItem.swift; sourceTree = "<group>"; };
 		F76D1F7827B95F61007E5933 /* TVSeriesEpisodesDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesEpisodesDC.swift; sourceTree = "<group>"; };
@@ -309,6 +346,8 @@
 		F7AEE478273FEB7A00C304D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7AEE47A273FEB7A00C304D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7AEE481273FF32400C304D0 /* TabBarRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRootController.swift; sourceTree = "<group>"; };
+		F7B02F77284E6D17004D95A1 /* lostfilmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lostfilmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmTests.swift; sourceTree = "<group>"; };
 		F7B2DB8F274A82250099CF29 /* TVSeriesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesDataController.swift; sourceTree = "<group>"; };
 		F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFApplicationHelper.swift; sourceTree = "<group>"; };
 		F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -319,6 +358,9 @@
 		F7C4EE832753E222006B5961 /* NSURLRequest+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+LF.h"; sourceTree = "<group>"; };
 		F7C4EE862753E559006B5961 /* LFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFConstants.h; sourceTree = "<group>"; };
 		F7C693A02782133A002C6D25 /* FilteringViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringViewCell.swift; sourceTree = "<group>"; };
+		F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGlobalSearchDC.swift; sourceTree = "<group>"; };
+		F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGlobalSearchTVC.swift; sourceTree = "<group>"; };
+		F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataObject.swift; sourceTree = "<group>"; };
 		F7D7D17F27B057D100970959 /* SeriesDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailViewCell.swift; sourceTree = "<group>"; };
 		F7D7D18027B057D100970959 /* SeriesDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesDetailViewCell.xib; sourceTree = "<group>"; };
 		F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewButton.swift; sourceTree = "<group>"; };
@@ -347,14 +389,31 @@
 		F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LF.m"; sourceTree = "<group>"; };
 		F7FC47B827DE79BE0002C3E4 /* TVSeriesPhotosDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesPhotosDC.swift; sourceTree = "<group>"; };
 		F7FFA1032777D486004B5D38 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		FC4EB35F02C954E7F4B1AAAE /* Pods-lostfilm-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilm-lostfilmTests/Pods-lostfilm-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F7640B5028512DF200D8365B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA77573F99E14F86F11BBF9C /* libPods-lostfilmUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7AEE466273FEB7900C304D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				620E4E736DB55180518B6B71 /* libPods-lostfilm.a in Frameworks */,
+				5C0733B6909895A016980DB8 /* libPods-lostfilm.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7B02F74284E6D17004D95A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB59F67B07B52DA50CFEAA52 /* libPods-lostfilmTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,16 +423,24 @@
 		2B89820781B4F7ACD1604C0A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D1F890FFE45D1767EFFAFC18 /* Pods-lostfilm.debug.xcconfig */,
-				6A4D4B45EEE09A9874051CB0 /* Pods-lostfilm.release.xcconfig */,
+				AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */,
+				C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */,
+				0DD3B3F7EB4813B6A43804FD /* Pods-lostfilm-lostfilmTests.debug.xcconfig */,
+				FC4EB35F02C954E7F4B1AAAE /* Pods-lostfilm-lostfilmTests.release.xcconfig */,
+				86D9BE18D9C27254DB0787E9 /* Pods-lostfilmTests.debug.xcconfig */,
+				D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */,
+				8789D6FFE81A1D083CF00DFE /* Pods-lostfilmUITests.debug.xcconfig */,
+				9F6B971C1FAD7DDE8ACF5253 /* Pods-lostfilmUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		3BF103F10585E073A54CCD5B /* Frameworks */ = {
+		74E4AB7C1BAA9FE998558E52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C8888D32A4058668957B78C0 /* libPods-lostfilm.a */,
+				AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */,
+				D82F4BBAF40584950A12C758 /* libPods-lostfilmTests.a */,
+				B5EA0C4D67D6C82048560257 /* libPods-lostfilmUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -421,9 +488,9 @@
 			isa = PBXGroup;
 			children = (
 				F711A4AD2745A94E00E1515D /* Series */,
-				F711A4B02745A94E00E1515D /* LFApiHelper.m */,
 				F711A4B12745A94E00E1515D /* Videos */,
 				F711A4B42745A94E00E1515D /* LFApiHelper.h */,
+				F711A4B02745A94E00E1515D /* LFApiHelper.m */,
 				F711A4B52745A94E00E1515D /* News */,
 				F711A4B82745A94E00E1515D /* Base */,
 			);
@@ -585,6 +652,15 @@
 			path = TabbarTVC;
 			sourceTree = "<group>";
 		};
+		F7640B5428512DF200D8365B /* lostfilmUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F7640B5528512DF200D8365B /* lostfilmUITests.swift */,
+				F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */,
+			);
+			path = lostfilmUITests;
+			sourceTree = "<group>";
+		};
 		F76D1F7A27B95F86007E5933 /* TabbarDataControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,6 +713,16 @@
 				F781ACC727E11D55003ABF31 /* PhotosVM+UITableViewDataSource.swift */,
 			);
 			path = Photos;
+			sourceTree = "<group>";
+		};
+		F793AE8A2853A5150004BF0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */,
+				F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */,
+				F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F7978D6127BC2D5100C71147 /* CellsForSeriesEpisodesTVC */ = {
@@ -743,9 +829,11 @@
 			isa = PBXGroup;
 			children = (
 				F7AEE46B273FEB7900C304D0 /* lostfilm */,
+				F7B02F78284E6D17004D95A1 /* lostfilmTests */,
+				F7640B5428512DF200D8365B /* lostfilmUITests */,
 				F7AEE46A273FEB7900C304D0 /* Products */,
 				2B89820781B4F7ACD1604C0A /* Pods */,
-				3BF103F10585E073A54CCD5B /* Frameworks */,
+				74E4AB7C1BAA9FE998558E52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -753,6 +841,8 @@
 			isa = PBXGroup;
 			children = (
 				F7AEE469273FEB7900C304D0 /* lostfilm.app */,
+				F7B02F77284E6D17004D95A1 /* lostfilmTests.xctest */,
+				F7640B5328512DF200D8365B /* lostfilmUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -789,6 +879,16 @@
 				F7B2DB8E274A81E30099CF29 /* DataControllers */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F7B02F78284E6D17004D95A1 /* lostfilmTests */ = {
+			isa = PBXGroup;
+			children = (
+				F793AE8A2853A5150004BF0C /* Supporting Files */,
+				F7640B4D2850F5D400D8365B /* lostfimFakeTests.swift */,
+				F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */,
+			);
+			path = lostfilmTests;
 			sourceTree = "<group>";
 		};
 		F7B2DB8E274A81E30099CF29 /* DataControllers */ = {
@@ -1010,15 +1110,34 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F7640B5228512DF200D8365B /* lostfilmUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7640B5B28512DF200D8365B /* Build configuration list for PBXNativeTarget "lostfilmUITests" */;
+			buildPhases = (
+				1663FBC688D19C1D2FC13076 /* [CP] Check Pods Manifest.lock */,
+				F7640B4F28512DF200D8365B /* Sources */,
+				F7640B5028512DF200D8365B /* Frameworks */,
+				F7640B5128512DF200D8365B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7640B5A28512DF200D8365B /* PBXTargetDependency */,
+			);
+			name = lostfilmUITests;
+			productName = lostfilmUITests;
+			productReference = F7640B5328512DF200D8365B /* lostfilmUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		F7AEE468273FEB7900C304D0 /* lostfilm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7AEE47D273FEB7A00C304D0 /* Build configuration list for PBXNativeTarget "lostfilm" */;
 			buildPhases = (
-				25932359A7B4DDBAFFD08996 /* [CP] Check Pods Manifest.lock */,
+				2A05A22F158DED7597A1584F /* [CP] Check Pods Manifest.lock */,
 				F7AEE465273FEB7900C304D0 /* Sources */,
 				F7AEE466273FEB7900C304D0 /* Frameworks */,
 				F7AEE467273FEB7900C304D0 /* Resources */,
-				4B772F711478BE86C70C6A0C /* [CP] Copy Pods Resources */,
+				90686C6129EBBC6A454B862A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1029,6 +1148,25 @@
 			productReference = F7AEE469273FEB7900C304D0 /* lostfilm.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F7B02F76284E6D17004D95A1 /* lostfilmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7B02F7F284E6D17004D95A1 /* Build configuration list for PBXNativeTarget "lostfilmTests" */;
+			buildPhases = (
+				1541FCD318089DE680F3BD17 /* [CP] Check Pods Manifest.lock */,
+				F7B02F73284E6D17004D95A1 /* Sources */,
+				F7B02F74284E6D17004D95A1 /* Frameworks */,
+				F7B02F75284E6D17004D95A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7B02F7C284E6D17004D95A1 /* PBXTargetDependency */,
+			);
+			name = lostfilmTests;
+			productName = lostfilmTests;
+			productReference = F7B02F77284E6D17004D95A1 /* lostfilmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1036,11 +1174,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					F7640B5228512DF200D8365B = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = F7AEE468273FEB7900C304D0;
+					};
 					F7AEE468273FEB7900C304D0 = {
 						CreatedOnToolsVersion = 13.1;
+					};
+					F7B02F76284E6D17004D95A1 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = F7AEE468273FEB7900C304D0;
 					};
 				};
 			};
@@ -1059,11 +1205,20 @@
 			projectRoot = "";
 			targets = (
 				F7AEE468273FEB7900C304D0 /* lostfilm */,
+				F7B02F76284E6D17004D95A1 /* lostfilmTests */,
+				F7640B5228512DF200D8365B /* lostfilmUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F7640B5128512DF200D8365B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7AEE467273FEB7900C304D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1097,10 +1252,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F7B02F75284E6D17004D95A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25932359A7B4DDBAFFD08996 /* [CP] Check Pods Manifest.lock */ = {
+		1541FCD318089DE680F3BD17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lostfilmTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1663FBC688D19C1D2FC13076 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lostfilmUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A05A22F158DED7597A1584F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1122,7 +1328,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4B772F711478BE86C70C6A0C /* [CP] Copy Pods Resources */ = {
+		90686C6129EBBC6A454B862A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1142,6 +1348,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F7640B4F28512DF200D8365B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7640B5828512DF200D8365B /* lostfilmUITestsLaunchTests.swift in Sources */,
+				F7640B5628512DF200D8365B /* lostfilmUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7AEE465273FEB7900C304D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1273,7 +1488,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F7B02F73284E6D17004D95A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */,
+				F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */,
+				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
+				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
+				F7640B4E2850F5D400D8365B /* lostfimFakeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7640B5A28512DF200D8365B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7AEE468273FEB7900C304D0 /* lostfilm */;
+			targetProxy = F7640B5928512DF200D8365B /* PBXContainerItemProxy */;
+		};
+		F7B02F7C284E6D17004D95A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7AEE468273FEB7900C304D0 /* lostfilm */;
+			targetProxy = F7B02F7B284E6D17004D95A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F7839838274017840025A6B5 /* Localizable.strings */ = {
@@ -1297,6 +1537,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F7640B5C28512DF200D8365B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8789D6FFE81A1D083CF00DFE /* Pods-lostfilmUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8CYASRM76;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilmUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = lostfilm;
+			};
+			name = Debug;
+		};
+		F7640B5D28512DF200D8365B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6B971C1FAD7DDE8ACF5253 /* Pods-lostfilmUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8CYASRM76;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilmUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = lostfilm;
+			};
+			name = Release;
+		};
 		F7AEE47B273FEB7A00C304D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1421,7 +1699,7 @@
 		};
 		F7AEE47E273FEB7A00C304D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1F890FFE45D1767EFFAFC18 /* Pods-lostfilm.debug.xcconfig */;
+			baseConfigurationReference = AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */;
 			buildSettings = {
 				APIServerURL = "https://www.lostfilm.uno/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1455,7 +1733,7 @@
 		};
 		F7AEE47F273FEB7A00C304D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A4D4B45EEE09A9874051CB0 /* Pods-lostfilm.release.xcconfig */;
+			baseConfigurationReference = C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */;
 			buildSettings = {
 				APIServerURL = "https://www.lostfilm.uno/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1487,9 +1765,60 @@
 			};
 			name = Release;
 		};
+		F7B02F7D284E6D17004D95A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86D9BE18D9C27254DB0787E9 /* Pods-lostfilmTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8CYASRM76;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lostfilm.app/lostfilm";
+			};
+			name = Debug;
+		};
+		F7B02F7E284E6D17004D95A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8CYASRM76;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lostfilm.app/lostfilm";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F7640B5B28512DF200D8365B /* Build configuration list for PBXNativeTarget "lostfilmUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7640B5C28512DF200D8365B /* Debug */,
+				F7640B5D28512DF200D8365B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F7AEE464273FEB7900C304D0 /* Build configuration list for PBXProject "lostfilm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1504,6 +1833,15 @@
 			buildConfigurations = (
 				F7AEE47E273FEB7A00C304D0 /* Debug */,
 				F7AEE47F273FEB7A00C304D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7B02F7F284E6D17004D95A1 /* Build configuration list for PBXNativeTarget "lostfilmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7B02F7D284E6D17004D95A1 /* Debug */,
+				F7B02F7E284E6D17004D95A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

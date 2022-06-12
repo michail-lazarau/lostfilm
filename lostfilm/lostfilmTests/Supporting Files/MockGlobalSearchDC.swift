@@ -1,7 +1,8 @@
 import Foundation
+@testable import lostfilm
 
-class GlobalSearchDC: GlobalSearchProtocol {
-    var delegate: DelegateGlobalSearchDC?
+class MockGlobalSearchDC: GlobalSearchProtocol {
+    var delegate: DelegateGlobalSearchDC? = MockGlobalSearchTVC()
     var seriesList: [LFSeriesModel]?
     var personList: [LFPersonModel]?
     
@@ -21,21 +22,14 @@ class GlobalSearchDC: GlobalSearchProtocol {
         }
     }
     
+    func getGlobalSearchOutputFor(searchContext: String, completionHandler: @escaping ([LFSeriesModel]?, [LFPersonModel]?, NSError?) -> Void) {
+        searchContext == "Lost"
+        ? completionHandler([TestDataObject.seriesModel], [TestDataObject.personModel], nil)
+        : completionHandler(nil, nil, NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotFindHost))
+    }
+    
     func didEmptySearchResults() {
         seriesList = nil
         personList = nil
     }
-    
-    func getGlobalSearchOutputFor(searchContext: String, completionHandler: @escaping ([LFSeriesModel]?, [LFPersonModel]?, NSError?) -> Void) {
-        let apiHelper = LFApplicationHelper.sharedApiHelper
-        apiHelper.series.getGlobalSearchOutput(forContext: searchContext, withCompletionHandler: { seriesList, personList, error in
-            completionHandler(seriesList, personList, error as NSError?)
-        })
-    }
-}
-
-protocol GlobalSearchProtocol {
-    func getGlobalSearchOutputFor(searchContext: String)
-    func getGlobalSearchOutputFor(searchContext: String, completionHandler: @escaping ([LFSeriesModel]?, [LFPersonModel]?, NSError?) -> Void)
-    func didEmptySearchResults()
 }

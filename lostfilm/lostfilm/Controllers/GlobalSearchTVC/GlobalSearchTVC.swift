@@ -114,7 +114,7 @@ extension GlobalSearchTVC: UISearchResultsUpdating {
             let searchText = searchController.searchBar.text
             guard searchText?.count ?? 0 > 1 else {
                 strongSelf.lastSearchText = nil
-                strongSelf.viewModel.dataProvider.DidEmptySearchResults()
+                strongSelf.viewModel.dataProvider.didEmptySearchResults()
                 strongSelf.tableView.reloadData()
                 return
             }

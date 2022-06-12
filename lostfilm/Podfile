@@ -9,7 +9,12 @@ target 'lostfilm' do
   pod 'hpple', :git => 'https://github.com/topfunky/hpple.git'
   pod 'DVAppCore', :git => 'https://github.com/denis-vashkovski/DVAppCore.git'
   pod 'DVHtmlToModels', :git => 'https://github.com/denis-vashkovski/DVHtmlToModels.git'
-
-  # Pods for lostfilm
+  
+  target 'lostfilmTests' do
+    inherit! :search_paths
+  end
+  target 'lostfilmUITests' do
+    inherit! :search_paths
+  end
 
 end
