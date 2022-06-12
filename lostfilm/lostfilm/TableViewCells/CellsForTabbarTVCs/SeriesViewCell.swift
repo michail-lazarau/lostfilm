@@ -2,9 +2,6 @@ import SDWebImage
 import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        String(describing: SeriesViewCell.self)
-    }
 
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
@@ -16,6 +13,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellStackView()
+        viewTransitionSetup()
     }
 
     override func awakeFromNib() {
@@ -23,14 +21,9 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         // Initialization code
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
-//    // FIXME: class or static? I want to call this property out of any cellClass and receive the respective self. I don't want to override the property later. I assume it must be static.
-//    class var cellIdentifier: String {
-//        String(describing: type(of: self))
-//    }
 
     private let serialView: UIImageView = {
         let imageView = UIImageView()
@@ -104,6 +97,11 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         labelStackView.addArrangedSubview(subtitle)
         labelStackView.addArrangedSubview(details)
         labelStackView.setCustomSpacing(12.0, after: subtitle)
+    }
+    
+    private func viewTransitionSetup() {
+        serialView.sd_imageTransition = SDWebImageTransition.fade
+        serialView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

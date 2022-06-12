@@ -11,6 +11,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         super.viewDidLoad()
         navigationItem.title = "TV Series"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "magnifying_glass"), style: .plain, target: self, action: #selector(DidShowGlobalSearch))
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -26,6 +27,15 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         let navController = FilteringNavigationController(rootViewController: filteringTVC)
         filteringTVC.filteringDelegate = (dataSource as! FilteringDelegate)
         present(navController, animated: true)
+    }
+    
+    @objc private func DidShowGlobalSearch() {
+        let globalSearchTVC = GlobalSearchTVC(style: .grouped, viewModel: GlobalSearchVM(dataProvider: GlobalSearchDC()))
+        if let presentedVC = self.presentedViewController {
+            presentedVC.dismiss(animated: false, completion: nil)
+        }
+        
+        self.navigationController?.setViewControllers([ self, globalSearchTVC ], animated: true)
     }
 }
 // MARK: how to display a VC

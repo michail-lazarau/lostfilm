@@ -45,6 +45,10 @@
         
         NSError *error = nil;
         
+        if (response.statusCode == 523) { // MARK: 523 - Cloudflare error "origin is unreachable"
+            error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorCannotFindHost userInfo:nil];
+        }
+        
 //        if (!response) {
 //            error = [NSError tf_errorWithCode:TFErrorTypeNoInternetConnection
 //                                      message:ACStringByKey(@"TF_ERROR_NO_INTERNET_CONNECTION")];

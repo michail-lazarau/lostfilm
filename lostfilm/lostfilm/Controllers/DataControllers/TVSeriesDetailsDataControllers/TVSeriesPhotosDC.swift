@@ -39,6 +39,11 @@ class TVSeriesPhotosDC {
         }
     }
     
+    func didEmptyNewsList() {
+        photoList.removeAll()
+        currentPage = 0
+    }
+    
     private func getPhotoListForSeriesBy(seriesId: String, pageNumber: UInt, completionHandler: @escaping ([LFPhotoModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.sharedApiHelper
         apiHelper.series.getPhotoListForSeries(byId: seriesId, page: pageNumber) { photoList, error in
@@ -50,10 +55,5 @@ class TVSeriesPhotosDC {
       let startIndex = photoList.count - newPhotoList.count
       let endIndex = startIndex + newPhotoList.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-    }
-    
-    func didEmptyNewsList() {
-        photoList.removeAll()
-        currentPage = 0
     }
 }

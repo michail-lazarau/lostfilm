@@ -1,9 +1,6 @@
 import UIKit
 
 class NewsViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        "NewsViewCell"
-    }
 
     func configureWith(dataModel: LFNewsModel) {
         let paragraphStyle = NSMutableParagraphStyle()
@@ -25,8 +22,8 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
         super.awakeFromNib()
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private let newsImageView: UIImageView = {

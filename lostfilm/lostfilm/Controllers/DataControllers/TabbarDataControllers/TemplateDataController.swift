@@ -32,9 +32,7 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
             strongSelf.itemList += safeItemList
             let appendingSeriesRange = strongSelf.count - safeItemList.count ..< strongSelf.count
             DispatchQueue.main.async {
-                if let delegate = self?.delegate { // FIXME: strongSelf instead of self?
-                    delegate.updateUIForTableWith(rowsRange: appendingSeriesRange)
-                }
+                strongSelf.delegate?.updateUIForTableWith(rowsRange: appendingSeriesRange)
             }
 
             strongSelf.isLoading = false // MARK: must be within getSeriesListForPage() method, not outside of it

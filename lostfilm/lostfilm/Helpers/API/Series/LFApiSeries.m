@@ -7,15 +7,15 @@
 //
 
 #import "LFApiSeries.h"
-
 #import "LFApiBase+Protected.h"
-
 #import <DVHtmlToModels/DVHtmlToModels.h>
 #import "NSURLRequest+AppCore.h" // MARK: fixing "No known class method for selector 'ac_requestPostForRootLinkByHref:parameters:headerFields:'" issie
 #import "NSError+LF.h" // MARK: for exposing "lf_errorDefault" method to the class
 #import "NSDictionary+LF.h" // MARK: fixing "No visible @interface for 'NSDictionary' declares the selector 'lf_itemsForKeyWhichAsNameOfItemClass:'" issue
+#import "lostfilm-Bridging-Header.h"
 
 static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
+static NSUInteger recursiveCallsEvokedForGetSeriesListForPage = 0;
 
 @implementation LFApiSeries
 
@@ -71,32 +71,43 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
     
     [mutableDict addEntriesFromDictionary:@{
             @"act": @"serial",
-            
             @"type": @"search",
             @"o": @(LFApiSeriesNumberOfItemsOnPage * (page - 1)) }];
     
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref: @"ajaxik.php"
                                                                parameters: mutableDict
                                                              headerFields:@{ @"Referer": @"https://www.lostfilm.uno/series/" }];
-    [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
-        
-        NSMutableArray<LFSeriesModel *> *seriesList = nil;
+    // workaround for setting a timer
+//    NSMutableURLRequest *requestWithTimeout = [request mutableCopy];
+//    requestWithTimeout.timeoutInterval = 5;
+//    request = requestWithTimeout;
+    //
+        [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
+            NSMutableArray<LFSeriesModel *> *seriesList = nil;
+            bool retryConditionForMissingDataWasMet = error.code == NSURLErrorCannotFindHost && recursiveCallsEvokedForGetSeriesListForPage < 3;
 
-        if (data) {
-            NSArray *seriesListData = [data ac_arrayForKey:@"data"];
-            if (ACValidArray(seriesListData)) {
-                seriesList = [NSMutableArray new];
+            if (data) {
+                recursiveCallsEvokedForGetSeriesListForPage = 0;
+                NSArray *seriesListData = [data ac_arrayForKey:@"data"];
+                if (ACValidArray(seriesListData)) {
+                    seriesList = [NSMutableArray new];
 
-                for (NSDictionary *seriesData in seriesListData) {
-                    [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
+                    for (NSDictionary *seriesData in seriesListData) {
+                        [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
+                    }
                 }
+            } else if (retryConditionForMissingDataWasMet) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    recursiveCallsEvokedForGetSeriesListForPage++;
+                    [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
+                });
             }
-        }
-
-        if (completionHandler) {
-            completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
-        }
-    }];
+            // TODO: check if new condition works correctly
+            if (completionHandler && !retryConditionForMissingDataWasMet) {
+                completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
+            }
+        }];
+//    }
 }
 
 - (void)getNewEpisodeListForPage:(NSUInteger)page
@@ -341,6 +352,47 @@ static NSUInteger const LFApiSeriesNumberOfItemsOnPage = 10;
         
         if (completionHandler) {
             completionHandler(ACValidArray(newEpisodeList) ? newEpisodeList.copy : nil, error);
+        }
+    }];
+}
+
+- (void)getGlobalSearchOutputForContext: (NSString *) searchContext
+                  withCompletionHandler: (void (^)(NSArray<LFSeriesModel *> *, NSArray<LFPersonModel *> *, NSError *))completionHandler {
+    
+    DVHtmlToModels *htmlToModels = [DVHtmlToModels htmlToModelsWithContextByName:@"GetGlobalSearchContext"];
+    [htmlToModels loadDataWithReplacingURLParameters: @[searchContext]
+                                  queryURLParameters:nil
+                                              asJSON:YES
+                                   completionHandler:
+     ^(NSDictionary *data, NSData *htmlData) {
+        NSMutableArray<LFSeriesModel *> *seriesList = nil;
+        NSMutableArray<LFPersonModel *> *personList = nil;
+        NSError *error = nil;
+        
+        if (data) {
+            NSArray *seriesListData = data[NSStringFromClass([LFSeriesModel class])];
+            NSArray *personListData = data[NSStringFromClass([LFPersonModel class])];
+            if (ACValidArray(seriesListData)) {
+                seriesList = [NSMutableArray new];
+                
+                for (NSDictionary *seriesData in seriesListData) {
+                    [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
+                }
+            }
+            
+            if (ACValidArray(personListData)) {
+                personList = [NSMutableArray new];
+                
+                for (NSDictionary *personData in personListData) {
+                    [personList addObject:[[LFPersonModel alloc] initWithData:personData]];
+                }
+            }
+        } else {
+            error = [NSError lf_errorDefault];
+        }
+        
+        if (completionHandler) {
+            completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, ACValidArray(personList) ? personList.copy : nil, error);
         }
     }];
 }

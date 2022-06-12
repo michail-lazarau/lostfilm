@@ -3,6 +3,8 @@ import UIKit
 @IBDesignable
 class ParagraphView: UIView {
     @IBOutlet weak var label: UILabel!
+    
+    //coder is a must
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
@@ -21,6 +23,7 @@ class ParagraphView: UIView {
             contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
         
+        // Extension: loadViewFromNib
 //        if let view = loadViewFromNib(nibName: "ParagraphView") {
 //            addSubview(view)
 //            view.frame = self.bounds

@@ -10,9 +10,8 @@ class NavigationViewButton: UIButton {
         super.init(frame: frame)
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupAppearance()
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 //    override var isHighlighted: Bool {

@@ -80,9 +80,9 @@ PODS:
   - DVAppCore/Views/LayoutConstraintHairline (0.9.1)
   - DVHtmlToModels (0.1.4)
   - hpple (0.3.0)
-  - SDWebImage (5.12.1):
-    - SDWebImage/Core (= 5.12.1)
-  - SDWebImage/Core (5.12.1)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
 
 DEPENDENCIES:
   - CarbonKit
@@ -120,8 +120,8 @@ SPEC CHECKSUMS:
   DVAppCore: fc1bad763b32c720aa171252a132459801e19c79
   DVHtmlToModels: ce76fe6b54409937e9529d9218d693a9a0a60002
   hpple: 37ac0a804d0f8a7f488712b5ff5f06129e1c9e31
-  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
 
-PODFILE CHECKSUM: 2a40845b34f50891dd0858c8e7fe5ae0efe87710
+PODFILE CHECKSUM: 3d366af450b2ae91be3caeacfd72effe5562d67d
 
 COCOAPODS: 1.11.2

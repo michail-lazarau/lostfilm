@@ -47,6 +47,7 @@ class ScheduleDataController {
         }
     }
 
+    // https://www.globalnerdy.com/2020/05/28/how-to-work-with-dates-and-times-in-swift-5-part-3-date-arithmetic/
     func makeInterval(dateInterval intervalEnum: ScheduleDateInterval) -> DateInterval {
         let today = Date()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
@@ -54,14 +55,17 @@ class ScheduleDataController {
         let sundayOfThisWeek = today.getDay(weekday: 1, weekOffset: 0) // weekday 1 is Sunday
         let mondayOfNextWeek = today.getDay(weekday: 2, weekOffset: 1) // weekday 2 is Monday
         let mondayInFortnight = today.getDay(weekday: 2, weekOffset: 2) // weekday 2 is Monday
+        let comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow = Calendar.current.compare(sundayOfThisWeek, to: dayAfterTomorrow, toGranularity: .day)
+        let dateIsOnThisWeekAfterTomorrow = comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedDescending
+        || comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedSame
         let dateInterval: DateInterval
-
+        
         switch intervalEnum {
         case .today:
             dateInterval = DateInterval(start: today.startOfDay, end: today.endOfDay)
         case .tomorrow:
             dateInterval = DateInterval(start: tomorrow.startOfDay, end: tomorrow.endOfDay)
-        case .thisWeek where sundayOfThisWeek >= dayAfterTomorrow:
+        case .thisWeek where dateIsOnThisWeekAfterTomorrow :
             dateInterval = DateInterval(start: dayAfterTomorrow.startOfDay, end: sundayOfThisWeek.endOfDay)
         case .nextWeek:
             dateInterval = DateInterval(start: mondayOfNextWeek.startOfDay, duration: 604800 - 1)

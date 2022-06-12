@@ -10,15 +10,13 @@ class BaseFilterTVC: UITableViewController {
         super.init(style: style)
     }
 
-    required init?(coder: NSCoder) {
-        filtersToDisplay = []
-        dcWithSelectedFilters = TVSeriesDataController()
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.cellIdentifier())
+        tableView.register(BaseFilterViewCell.self, forCellReuseIdentifier: BaseFilterViewCell.reuseIdentifier)
     }
 
     @objc private func switchFilter(_ sender: UISwitch, filterModel: LFSeriesFilterBaseModel) {
@@ -43,7 +41,7 @@ class BaseFilterTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BaseFilterViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.cellIdentifier(), for: indexPath) as! BaseFilterViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.reuseIdentifier, for: indexPath) as! BaseFilterViewCell
         cell.switcher.isOn = dcWithSelectedFilters.savedFilters.contains(filtersToDisplay[indexPath.row]) // setting an initial value for a switch
         cell.textLabel?.text = filtersToDisplay[indexPath.row].name
         cell.switcherAction = { [unowned self] in

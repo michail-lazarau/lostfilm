@@ -6,30 +6,26 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesDetailsDC {
     init(style: UITableView.Style, viewModel: EpisodesVM) {
         self.viewModel = viewModel
         super.init(style: style)
-        self.viewModel.dataProvider?.delegate = self
+        self.viewModel.dataProvider.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        viewModel = EpisodesVM()
-        super.init(coder: coder)
-        view.backgroundColor = .white
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        viewModel.dataProvider?.getSeriesGuide()
+        viewModel.dataProvider.getSeriesGuide()
     }
 
     func updateTableView() {
-        if let modelList = viewModel.dataProvider?.seasonList { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
-            viewModel.setupVMwith(seasonList: modelList)
-        }
+            viewModel.setupVMwith(seasonList: viewModel.dataProvider.seasonList) // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
         tableView.reloadData()
     }
 
-    func registerCells() {
+    private func registerCells() {
         tableView.register(EpisodeViewCell.nib, forCellReuseIdentifier: EpisodeViewCell.reuseIdentifier)
         tableView.register(EpisodeTableHeaderView.nib, forHeaderFooterViewReuseIdentifier: EpisodeTableHeaderView.reuseIdentifier)
     }

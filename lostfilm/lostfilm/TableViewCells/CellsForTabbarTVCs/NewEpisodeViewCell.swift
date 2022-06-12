@@ -1,9 +1,6 @@
 import UIKit
 
 class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
-    static func cellIdentifier() -> String {
-        "NewEpisodeViewCell"
-    }
 
     func configureWith(dataModel: LFEpisodeModel) {
         let paragraphStyle = NSMutableParagraphStyle()
@@ -45,8 +42,8 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         super.awakeFromNib()
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

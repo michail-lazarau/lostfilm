@@ -10,9 +10,8 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
         dataSource!.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        dataSource = nil
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     func updateUIForTimeTable() {
@@ -28,7 +27,7 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
     }
 
     func setupTableViewController() {
-        tableView.register(NewEpisodeViewCell.self, forCellReuseIdentifier: NewEpisodeViewCell.cellIdentifier())
+        tableView.register(NewEpisodeViewCell.self, forCellReuseIdentifier: NewEpisodeViewCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
 //        self.tableView.contentInsetAdjustmentBehavior = .never
 
@@ -56,9 +55,13 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
             return UITableView.automaticDimension
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return .leastNormalMagnitude
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -68,7 +71,7 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.cellIdentifier(), for: indexPath) as! NewEpisodeViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.reuseIdentifier, for: indexPath) as! NewEpisodeViewCell
 
         if let model = dataSource?[indexPath.section, indexPath.row] {
             cell.configureWith(dataModel: model)

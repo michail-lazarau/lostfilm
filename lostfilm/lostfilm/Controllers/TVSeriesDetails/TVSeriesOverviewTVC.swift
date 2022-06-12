@@ -9,10 +9,8 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesDetailsDC {
         self.viewModel.dataProvider?.delegate = self
     }
   
-    required init?(coder: NSCoder) {
-        viewModel = SeriesVM()
-        super.init(coder: coder)
-        view.backgroundColor = .white
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -33,7 +31,7 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesDetailsDC {
         tableView.reloadData()
     }
 
-    func registerCells() {
+    private func registerCells() {
         tableView.register(SeriesPosterViewCell.nib, forCellReuseIdentifier: SeriesPosterViewCell.reuseIdentifier)
         tableView.register(SeriesDetailViewCell.nib, forCellReuseIdentifier: SeriesDetailViewCell.reuseIdentifier)
     }

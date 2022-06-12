@@ -6,8 +6,8 @@ class BaseFilterViewCell: UITableViewCell {
     var switcherAction: (()->())?
     var switcher: UISwitch!
     
-    static func cellIdentifier() -> String {
-        "BaseFilterViewCell"
+    class var reuseIdentifier: String {
+        String(describing: self)
     }
     
 //    MARK: ask about usage of << override var reuseIdentifier: String {"BaseFilterViewCell"} >>
@@ -24,8 +24,8 @@ class BaseFilterViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     @objc func switcherTapped(_ sender: UISwitch) {

@@ -23,7 +23,7 @@ AC_EXTERN_STRING_M_V(LFPhotoModelTitleKey, @"title")
     return self;
 }
 
-- (NSURL *)highQualityImageUrl {
+- (NSURL *)highResolutionImageUrl {
     NSString *initialUrlLastPart = [_url lastPathComponent];
     NSString *modifiedUrlLastPart = [initialUrlLastPart substringFromIndex: @"t_".length];
     return [_url.URLByDeletingLastPathComponent URLByAppendingPathComponent:modifiedUrlLastPart];

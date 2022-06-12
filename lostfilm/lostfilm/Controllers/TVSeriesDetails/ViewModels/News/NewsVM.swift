@@ -11,10 +11,6 @@ class NewsVM: NSObject {
     
     var dataProvider: TVSeriesNewsDC?
     
-    override init() {
-        super.init()
-    }
-    
     init(dataProvider: TVSeriesNewsDC) {
         super.init()
         self.dataProvider = dataProvider

@@ -4,16 +4,6 @@ import UIKit
 class SeriesPhotoViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
-    var highQualityImageView: UIImageView? {
-        if let highQualityImageUrl = item?.highQualityImageUrl {
-            let highQualityImageView = imageView
-            highQualityImageView?.sd_setImage(with: highQualityImageUrl)
-            return highQualityImageView
-        } else {
-            return nil
-        }
-    }
-    
     var item: LFPhotoModel? {
         didSet {
             guard let item = item else {
@@ -38,7 +28,13 @@ class SeriesPhotoViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewTransitionSetup()
         // Initialization code
+    }
+    
+    private func viewTransitionSetup() {
+        imageView.sd_imageTransition = SDWebImageTransition.fade
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     }
 
 }

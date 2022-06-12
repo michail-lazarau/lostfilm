@@ -27,10 +27,8 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
-        viewModel = SeriesVM()
-        controllers = []
-        super.init(coder: coder)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -43,22 +41,17 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         self.navigationItem.title = viewModel.dataProvider?.model.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
-        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNeedsStatusBarAppearanceUpdate()
+        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = nil
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.shadowImage = nil
-//        super.viewWillDisappear(animated)
-//    }
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         return controllers[Int(index)]
