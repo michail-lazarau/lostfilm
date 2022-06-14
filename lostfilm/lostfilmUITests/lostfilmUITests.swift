@@ -40,14 +40,8 @@ class lostfilmUITests: XCTestCase {
         let searchButton = app.navigationBars["TV Series"].children(matching: .button).firstMatch
         let searchField = app.navigationBars["lostfilm.GlobalSearchTVC"].searchFields["Search"]
         searchButton.tap()
-        
-//        let hasFocusPredicate = NSPredicate(format: "hasFocus == true")
-        
-//        let hasFocusPredicate = NSPredicate(value: searchField.value(forKey: "hasKeyboardFocus") as! Bool)
-//        let searchFieldHasFocusExpectation = XCTNSPredicateExpectation(predicate: hasFocusPredicate, object: searchField)
-//        wait(for: [searchFieldHasFocusExpectation], timeout: 3)
         // MARK: When
-                searchField.typeText("Lost")
+        searchField.typeText("Lost")
         // MARK: Then
         let cellIsPresent = expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: app/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Lost")/*[[".cells.containing(.staticText, identifier:\"Остаться в живых\")",".cells.containing(.staticText, identifier:\"Lost\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.firstMatch)
         wait(for: [cellIsPresent], timeout: 5)
