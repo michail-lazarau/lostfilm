@@ -49,28 +49,38 @@ class lostfilmTests: XCTestCase {
         let mockSUT = MockGlobalSearchDC()
         let searchContext = "Lost"
         let delegate = mockSUT.delegate as! MockGlobalSearchTVC
-        let delegateMethodWasCalled = expectation(for: NSPredicate(value: true), evaluatedWith: delegate.didUpdateTableViewCalled)
+//        let delegateMethodWasCalled = expectation(for: NSPredicate(value: true), evaluatedWith: delegate.didUpdateTableViewCalled)
+        // MARK: workable approach 1
+//        let predicate = NSPredicate(format: "didUpdateTableViewCalled == true")
+//        let delegateMethodWasCalled = expectation(for: predicate, evaluatedWith: delegate)
+        // MARK: workable approach 2
+        let predicateKVO = XCTKVOExpectation(keyPath: "didUpdateTableViewCalled", object: delegate, expectedValue: true)
         // MARK: When
         mockSUT.getGlobalSearchOutputFor(searchContext: searchContext)
         // MARK: Then
+        wait(for: [predicateKVO], timeout: 5)
         XCTAssert(mockSUT.seriesList == [TestDataObject.seriesModel])
         XCTAssert(mockSUT.personList == [TestDataObject.personModel])
-        wait(for: [delegateMethodWasCalled], timeout: 5)
     }
+    // MARK: doesn't work
+    //        let predicate = NSPredicate(format: "%K == %@", #keyPath( delegate.didUpdateTableViewCalled), true)
+    //        let delegateMethodWasCalled = expectation(for: NSPredicate(value: delegate.didUpdateTableViewCalled == true), evaluatedWith: delegate.didUpdateTableViewCalled)
     
     func test_fail_getGlobalSearchOutputForSearchContext() {
         // MARK: Given
         let mockSUT = MockGlobalSearchDC()
         let searchContext = "Lost_fail"
         let delegate = mockSUT.delegate as! MockGlobalSearchTVC
-        let delegateMethodWasCalled = expectation(for: NSPredicate(value: true), evaluatedWith: !delegate.didUpdateTableViewCalled)
+        let predicate = NSPredicate(format: "didUpdateTableViewCalled == false")
+        let delegateMethodWasCalled = expectation(for: predicate, evaluatedWith: delegate)
         // MARK: When
         mockSUT.getGlobalSearchOutputFor(searchContext: searchContext)
         // MARK: Then
+        wait(for: [delegateMethodWasCalled], timeout: 5)
         XCTAssertNil(mockSUT.seriesList)
         XCTAssertNil(mockSUT.personList)
-        wait(for: [delegateMethodWasCalled], timeout: 5)
     }
+    //        let delegateMethodWasCalled = expectation(for: NSPredicate(value: false), evaluatedWith: delegate.didUpdateTableViewCalled)
     
     func test_break_getGlobalSearchOutputForSearchContext() {
         // TODO
