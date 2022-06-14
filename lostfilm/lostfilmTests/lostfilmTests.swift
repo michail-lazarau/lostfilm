@@ -78,7 +78,6 @@ class lostfilmTests: XCTestCase {
         XCTAssertNil(mockSUT.seriesList)
         XCTAssertNil(mockSUT.personList)
     }
-    //        let delegateMethodWasCalled = expectation(for: NSPredicate(value: false), evaluatedWith: delegate.didUpdateTableViewCalled)
     
     func test_didEmptySearchResults() {
         // MARK: Given
