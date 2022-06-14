@@ -49,7 +49,6 @@ class lostfilmTests: XCTestCase {
         let mockSUT = MockGlobalSearchDC()
         let searchContext = "Lost"
         let delegate = mockSUT.delegate as! MockGlobalSearchTVC
-//        let delegateMethodWasCalled = expectation(for: NSPredicate(value: true), evaluatedWith: delegate.didUpdateTableViewCalled)
         // MARK: workable approach 1
 //        let predicate = NSPredicate(format: "didUpdateTableViewCalled == true")
 //        let delegateMethodWasCalled = expectation(for: predicate, evaluatedWith: delegate)
@@ -64,7 +63,6 @@ class lostfilmTests: XCTestCase {
     }
     // MARK: doesn't work
     //        let predicate = NSPredicate(format: "%K == %@", #keyPath( delegate.didUpdateTableViewCalled), true)
-    //        let delegateMethodWasCalled = expectation(for: NSPredicate(value: delegate.didUpdateTableViewCalled == true), evaluatedWith: delegate.didUpdateTableViewCalled)
     
     func test_fail_getGlobalSearchOutputForSearchContext() {
         // MARK: Given
