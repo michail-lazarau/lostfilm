@@ -1,5 +1,5 @@
 import Foundation
 
-protocol DelegateGlobalSearchDC: AnyObject {
+@objc protocol DelegateGlobalSearchDC: AnyObject {
     func updateTableView()
 }

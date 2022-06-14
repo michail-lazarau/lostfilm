@@ -78,7 +78,6 @@
 		F7516D7D282C56CE00E1A138 /* SeriesCastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7516D7B282C56CE00E1A138 /* SeriesCastViewCell.xib */; };
 		F7516D7F282C674E00E1A138 /* DelegateGlobalSearchDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7516D7E282C674E00E1A138 /* DelegateGlobalSearchDC.swift */; };
 		F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7551D28274D88CF00E1748E /* SeriesViewCell.swift */; };
-		F7640B4E2850F5D400D8365B /* lostfimFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B4D2850F5D400D8365B /* lostfimFakeTests.swift */; };
 		F7640B5628512DF200D8365B /* lostfilmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B5528512DF200D8365B /* lostfilmUITests.swift */; };
 		F7640B5828512DF200D8365B /* lostfilmUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */; };
 		F76D1F7527B9454C007E5933 /* TVSeriesEpisodesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */; };
@@ -271,7 +270,6 @@
 		F7516D7B282C56CE00E1A138 /* SeriesCastViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesCastViewCell.xib; sourceTree = "<group>"; };
 		F7516D7E282C674E00E1A138 /* DelegateGlobalSearchDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateGlobalSearchDC.swift; sourceTree = "<group>"; };
 		F7551D28274D88CF00E1748E /* SeriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewCell.swift; sourceTree = "<group>"; };
-		F7640B4D2850F5D400D8365B /* lostfimFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfimFakeTests.swift; sourceTree = "<group>"; };
 		F7640B5328512DF200D8365B /* lostfilmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lostfilmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7640B5528512DF200D8365B /* lostfilmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmUITests.swift; sourceTree = "<group>"; };
 		F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -885,7 +883,6 @@
 			isa = PBXGroup;
 			children = (
 				F793AE8A2853A5150004BF0C /* Supporting Files */,
-				F7640B4D2850F5D400D8365B /* lostfimFakeTests.swift */,
 				F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */,
 			);
 			path = lostfilmTests;
@@ -1496,7 +1493,6 @@
 				F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */,
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
 				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
-				F7640B4E2850F5D400D8365B /* lostfimFakeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
