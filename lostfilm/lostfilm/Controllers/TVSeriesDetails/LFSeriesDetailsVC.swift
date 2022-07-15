@@ -41,16 +41,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         self.navigationItem.title = viewModel.dataProvider?.model.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = .white
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        carbonTabSwipeNavigation?.navigationController?.navigationBar.backgroundColor = nil
+        view.backgroundColor = .white
     }
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {

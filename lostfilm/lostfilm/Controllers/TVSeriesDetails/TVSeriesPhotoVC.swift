@@ -54,7 +54,6 @@ class TVSeriesPhotoVC: UIViewController {
         tabbarRootController?.tabBar.isHidden = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.backgroundColor = .clear
     }
     
     private func settingUpImageView() {

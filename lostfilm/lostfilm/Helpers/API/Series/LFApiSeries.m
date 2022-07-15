@@ -77,37 +77,32 @@ static NSUInteger recursiveCallsEvokedForGetSeriesListForPage = 0;
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref: @"ajaxik.php"
                                                                parameters: mutableDict
                                                              headerFields:@{ @"Referer": @"https://www.lostfilm.uno/series/" }];
-    // workaround for setting a timer
-//    NSMutableURLRequest *requestWithTimeout = [request mutableCopy];
-//    requestWithTimeout.timeoutInterval = 5;
-//    request = requestWithTimeout;
-    //
-        [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
-            NSMutableArray<LFSeriesModel *> *seriesList = nil;
-            bool retryConditionForMissingDataWasMet = error.code == NSURLErrorCannotFindHost && recursiveCallsEvokedForGetSeriesListForPage < 3;
 
-            if (data) {
-                recursiveCallsEvokedForGetSeriesListForPage = 0;
-                NSArray *seriesListData = [data ac_arrayForKey:@"data"];
-                if (ACValidArray(seriesListData)) {
-                    seriesList = [NSMutableArray new];
+    [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
+        NSMutableArray<LFSeriesModel *> *seriesList = nil;
+        bool retryConditionForMissingDataWasMet = error.code == NSURLErrorCannotFindHost && recursiveCallsEvokedForGetSeriesListForPage < 3;
 
-                    for (NSDictionary *seriesData in seriesListData) {
-                        [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
-                    }
+        if (data) {
+            recursiveCallsEvokedForGetSeriesListForPage = 0;
+            NSArray *seriesListData = [data ac_arrayForKey:@"data"];
+            if (ACValidArray(seriesListData)) {
+                seriesList = [NSMutableArray new];
+
+                for (NSDictionary *seriesData in seriesListData) {
+                    [seriesList addObject:[[LFSeriesModel alloc] initWithData:seriesData]];
                 }
-            } else if (retryConditionForMissingDataWasMet) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    recursiveCallsEvokedForGetSeriesListForPage++;
-                    [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
-                });
             }
-            // TODO: check if new condition works correctly
-            if (completionHandler && !retryConditionForMissingDataWasMet) {
-                completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
-            }
-        }];
-//    }
+        } else if (retryConditionForMissingDataWasMet) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                recursiveCallsEvokedForGetSeriesListForPage++;
+                [self getSeriesListForPage:page withParameters:parameters completionHandler:completionHandler];
+            });
+        }
+        
+        if (completionHandler && !retryConditionForMissingDataWasMet) {
+            completionHandler(ACValidArray(seriesList) ? seriesList.copy : nil, error);
+        }
+    }];
 }
 
 - (void)getNewEpisodeListForPage:(NSUInteger)page
