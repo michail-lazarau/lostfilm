@@ -2,7 +2,7 @@ import UIKit
 
 class VideosTVC: TemplateTVC<VideoViewCell, LFVideoModel> {
     override internal var tableCellHeight: CGFloat {
-        return 210
+        return UIScreen.main.bounds.width / 16 * 9
     }
 
     override func viewDidLoad() {

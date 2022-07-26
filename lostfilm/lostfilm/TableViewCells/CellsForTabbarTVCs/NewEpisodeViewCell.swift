@@ -2,11 +2,17 @@ import UIKit
 
 class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
 
+    var item: LFEpisodeModel? {
+        didSet {
+            if let item = item {
+                configureWith(dataModel: item)
+            }
+        }
+    }
+    
     func configureWith(dataModel: LFEpisodeModel) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 8
-//        paragraphStyle.headIndent = 8
-//        paragraphStyle.tailIndent = -8
 
         newEpisodeImageView.sd_setImage(with: dataModel.series.photoUrl)
 //        episodeNumLabel.text = "\(dataModel.seasonNumber) сезон \(dataModel.number) серия"

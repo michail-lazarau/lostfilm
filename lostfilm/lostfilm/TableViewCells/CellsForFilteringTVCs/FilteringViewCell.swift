@@ -2,6 +2,14 @@ import UIKit
 
 class FilteringViewCell: UITableViewCell, CellConfigurable {
     
+    var item: LFSeriesFilterBaseModel? {
+        didSet {
+            if let item = item {
+                configureWith(dataModel: item)
+            }
+        }
+    }
+    
     func configureWith(dataModel: LFSeriesFilterBaseModel) {
         textLabel?.text = dataModel.name
     }

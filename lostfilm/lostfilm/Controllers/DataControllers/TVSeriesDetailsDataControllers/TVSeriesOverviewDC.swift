@@ -2,18 +2,18 @@ import Foundation
 
 class TVSeriesOverviewDC {
     var delegate: DelegateTVSeriesDetailsDC?
-    var model: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
+    var tvSeriesModel: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
     
     init(model: LFSeriesModel) {
-        self.model = model
+        self.tvSeriesModel = model
     }
     
     func getDetails() {
-        getDetailsForSeriesBy(seriesId: model.id) { [weak self] seriesModel, _ in
+        getDetailsForSeriesBy(seriesId: tvSeriesModel.id) { [weak self] seriesModel, _ in
             guard let strongSelf = self, let seriesModel = seriesModel else {
                 return
             }
-            strongSelf.model = seriesModel
+            strongSelf.tvSeriesModel = seriesModel
             DispatchQueue.main.async {
                 strongSelf.delegate?.updateTableView()
             }

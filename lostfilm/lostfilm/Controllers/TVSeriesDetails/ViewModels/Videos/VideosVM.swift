@@ -1,7 +1,7 @@
 import Foundation
 
 // NSObject inheritance is required for conforming UITableViewDataSource
-class VideoVM: NSObject {
+class VideosVM: NSObject {
     var rowCount: Int {
         return dataProvider?.videoList.count ?? 0
     }

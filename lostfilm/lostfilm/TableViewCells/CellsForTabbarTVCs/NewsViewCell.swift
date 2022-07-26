@@ -2,6 +2,14 @@ import UIKit
 
 class NewsViewCell: UITableViewCell, CellConfigurable {
 
+    var item: LFNewsModel? {
+        didSet {
+            if let item = item {
+                configureWith(dataModel: item)
+            }
+        }
+    }
+    
     func configureWith(dataModel: LFNewsModel) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 6

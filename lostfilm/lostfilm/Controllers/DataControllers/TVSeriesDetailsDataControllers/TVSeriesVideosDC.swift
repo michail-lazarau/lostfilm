@@ -4,11 +4,11 @@ class TVSeriesVideosDC {
     private var isLoading: Bool = false
     var currentPage: UInt = 0
     var delegate: DelegateTVSeriesDCwithPagination?
-    let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
+    let tvSeriesModel: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
     var videoList: [LFVideoModel] = []
     
     init(model: LFSeriesModel) {
-        self.tvSeries = model
+        self.tvSeriesModel = model
     }
     
     func loadItemsByPage() {
@@ -21,7 +21,7 @@ class TVSeriesVideosDC {
     }
     
     private func getDetailsFor(page: UInt) {
-        getVideoListForSeriesBy(seriesId: tvSeries.id, pageNumber: page) { [weak self] videoList, _ in
+        getVideoListForSeriesBy(seriesId: tvSeriesModel.id, pageNumber: page) { [weak self] videoList, _ in
             guard let strongSelf = self, let videoList = videoList else {
                 return
             }

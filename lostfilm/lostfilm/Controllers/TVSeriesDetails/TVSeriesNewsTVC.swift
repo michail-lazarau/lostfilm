@@ -18,7 +18,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        tableView.prefetchDataSource = self
+        tableView.prefetchDataSource = self // MARK: no scrolling over the 1st backet otherwise
         viewModel.dataProvider?.loadItemsByPage()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)

@@ -6,6 +6,14 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     private var videoUrl: URL?
     var presentAVPlayerViewController: ((AVPlayerViewController)->())?
 
+    var item: LFVideoModel? {
+        didSet {
+            if let item = item {
+                configureWith(dataModel: item)
+            }
+        }
+    }
+    
     func configureWith(dataModel: LFVideoModel) {
         videoImageView.sd_setImage(with: dataModel.previewURL)
         titleLabel.text = dataModel.title
@@ -64,7 +72,6 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         button.frame.size = CGSize(width: 45, height: 45)
         button.layer.cornerRadius = button.frame.width / 2
         button.addTarget(self, action: #selector(launchVideoPlayer), for: .touchUpInside)
-//        button.clipsToBounds = true
         return button
     }()
 

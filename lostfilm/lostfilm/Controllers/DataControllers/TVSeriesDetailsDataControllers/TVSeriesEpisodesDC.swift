@@ -2,15 +2,15 @@ import Foundation
 
 class TVSeriesEpisodesDC {
     var delegate: DelegateTVSeriesDetailsDC?
-    let tvSeries: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
+    let tvSeriesModel: LFSeriesModel // MARK: or ViewModel instead? VMseriesItem has no id yet // MARK: make weak?
     var seasonList: [LFSeasonModel] = []
     
     init(model: LFSeriesModel) {
-        self.tvSeries = model
+        self.tvSeriesModel = model
     }
     
     func getSeriesGuide() {
-        getSeriesGuideForSeriesBy(seriesId: tvSeries.id) { [weak self] seasonList, _ in
+        getSeriesGuideForSeriesBy(seriesId: tvSeriesModel.id) { [weak self] seasonList, _ in
             guard let strongSelf = self, let seasonList = seasonList else {
                 return
             }

@@ -3,6 +3,14 @@ import UIKit
 
 class SeriesViewCell: UITableViewCell, CellConfigurable {
 
+    var item: LFSeriesModel? {
+        didSet {
+            if let item = item {
+                configureWith(dataModel: item)
+            }
+        }
+    }
+    
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
         title.text = dataModel.nameRu

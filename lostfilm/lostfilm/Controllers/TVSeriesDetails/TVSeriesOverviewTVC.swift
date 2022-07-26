@@ -25,7 +25,7 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesDetailsDC {
     }
     
     func updateTableView() {
-        if let model = viewModel.dataProvider?.model { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
+        if let model = viewModel.dataProvider?.tvSeriesModel { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
             viewModel.setupVMwith(model: model)
         }
         tableView.reloadData()

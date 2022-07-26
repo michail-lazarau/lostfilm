@@ -18,11 +18,13 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         viewModel = SeriesVM(dataProvider: TVSeriesOverviewDC(model: model))
         let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDC(model: model))
         let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDC(model: model))
+        let videosViewModel = VideosVM(dataProvider: TVSeriesVideosDC(model: model))
         let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDC(model: model))
         
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
                        TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),
+                       TVSeriesVideosTVC(style: .plain, viewModel: videosViewModel),
                        TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel)]
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,12 +35,12 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let items = ["Обзор сериала", "Гид по сериям", "Новости", "Фото"] // MARK: refactor this - make localization
+        let items = ["Обзор сериала", "Гид по сериям", "Новости", "Видео", "Фото"] // MARK: refactor this - make localization
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
         
-        self.navigationItem.title = viewModel.dataProvider?.model.nameRu
+        self.navigationItem.title = viewModel.dataProvider?.tvSeriesModel.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white
@@ -51,7 +53,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
 extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-        if let TVSeriesPhotosCVC = (self.controllers[3] as? TVSeriesPhotosCVC), let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
+        if let TVSeriesPhotosCVC = (self.controllers.last as? TVSeriesPhotosCVC), let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
             let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
             return cell.imageView
         }

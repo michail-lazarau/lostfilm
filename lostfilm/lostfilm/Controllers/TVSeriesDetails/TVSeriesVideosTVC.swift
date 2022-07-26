@@ -1,9 +1,9 @@
 import UIKit
 
-class TVSeriesVideosTVC: UITableViewController {
-    var viewModel: VideoVM
+class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching {
+    var viewModel: VideosVM
     
-    init(style: UITableView.Style, viewModel: VideoVM) {
+    init(style: UITableView.Style, viewModel: VideosVM) {
         self.viewModel = viewModel
         super.init(style: style)
         self.viewModel.dataProvider?.delegate = self
@@ -15,8 +15,18 @@ class TVSeriesVideosTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCells()
+        tableView.dataSource = viewModel
+        tableView.prefetchDataSource = self
+        viewModel.dataProvider?.loadItemsByPage()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
 
+    private func registerCells() {
+        tableView.register(VideoViewCell.self, forCellReuseIdentifier: VideoViewCell.reuseIdentifier)
+    }
+    
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         viewModel.dataProvider?.didEmptyNewsList()
         viewModel.dataProvider?.loadItemsByPage()
@@ -27,6 +37,10 @@ class TVSeriesVideosTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIScreen.main.bounds.width / 16 * 9
     }
 
     // MARK: - DataSourcePrefetching
