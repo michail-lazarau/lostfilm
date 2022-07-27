@@ -54,7 +54,6 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
         let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, model: cell.item!, image: cell.imageView.image ?? UIImage()) // cell.highResolutionImageView?.image // cell.imageView.image
         navigationController?.pushViewController(photoVC, animated: true)
-//        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,7 +70,7 @@ private extension TVSeriesPhotosCVC {
     }
 }
 
-extension TVSeriesPhotosCVC: DelegateTVSeriesDCwithPagination {
+extension TVSeriesPhotosCVC: TVSeriesDetailsPaginatingDC_Delegate {
     func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
         guard let newIndexPathsToReload = newIndexPathsToReload else {
             collectionView.reloadData()

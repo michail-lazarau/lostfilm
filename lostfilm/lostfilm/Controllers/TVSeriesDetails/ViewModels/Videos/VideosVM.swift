@@ -3,10 +3,10 @@ import Foundation
 // NSObject inheritance is required for conforming UITableViewDataSource
 class VideosVM: NSObject {
     var rowCount: Int {
-        return dataProvider?.videoList.count ?? 0
+        return dataProvider?.itemList.count ?? 0
     }
     var videoList: [LFVideoModel] {
-        return dataProvider?.videoList ?? []
+        return dataProvider?.itemList ?? []
     }
     
     var dataProvider: TVSeriesVideosDC?

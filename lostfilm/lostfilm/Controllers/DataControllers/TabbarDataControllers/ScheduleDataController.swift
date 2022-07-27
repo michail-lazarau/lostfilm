@@ -1,7 +1,7 @@
 import Foundation
 
 class ScheduleDataController {
-    var delegate: ScheduleDataControllerDelegate?
+    var delegate: TVCUpdatingDelegate?
     private var itemList: [[LFEpisodeModel]] = Array(repeating: [], count: 5)
     private var isLoading: Bool = false
     var sectionsCount: Int {
@@ -32,7 +32,7 @@ class ScheduleDataController {
             }
             DispatchQueue.main.async {
                 if let delegate = strongSelf.delegate {
-                    delegate.updateUIForTimeTable()
+                    delegate.updateTableView()
                 }
             }
             

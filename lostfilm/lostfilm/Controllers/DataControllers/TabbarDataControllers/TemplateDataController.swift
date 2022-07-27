@@ -40,7 +40,7 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
     }
 
     internal func getItemListForPage(number: UInt, completionHander: @escaping ([DataModel]?, NSError?) -> Void) {
-        preconditionFailure("This func must be overridden")
+        fatalError("This func must be overridden")
     }
 }
 

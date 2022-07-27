@@ -1,6 +1,6 @@
 import UIKit
 
-class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
+class ScheduleTVC: UITableViewController, TVCUpdatingDelegate {
     private let sections: [String] = ["Сегодня", "Завтра", "На этой неделе", "На следующей неделе", "Позже"]
     internal var dataSource: ScheduleDataController?
 
@@ -14,7 +14,7 @@ class ScheduleTVC: UITableViewController, ScheduleDataControllerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateUIForTimeTable() {
+    func updateTableView() {
         tableView.reloadData()
     }
 

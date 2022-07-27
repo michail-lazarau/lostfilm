@@ -1,6 +1,6 @@
 import UIKit
 
-class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesDetailsDC {
+class TVSeriesOverviewTVC: UITableViewController, TVCUpdatingDelegate {
     var viewModel: SeriesVM
 
     init(style: UITableView.Style, viewModel: SeriesVM) {
@@ -25,7 +25,7 @@ class TVSeriesOverviewTVC: UITableViewController, DelegateTVSeriesDetailsDC {
     }
     
     func updateTableView() {
-        if let model = viewModel.dataProvider?.tvSeriesModel { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
+        if let model = viewModel.dataProvider?.itemList { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
             viewModel.setupVMwith(model: model)
         }
         tableView.reloadData()

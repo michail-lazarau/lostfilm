@@ -1,6 +1,6 @@
 import UIKit
 
-class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesDetailsDC {
+class TVSeriesEpisodesTVC: UITableViewController, TVCUpdatingDelegate {
     var viewModel: EpisodesVM
 
     init(style: UITableView.Style, viewModel: EpisodesVM) {
@@ -17,11 +17,11 @@ class TVSeriesEpisodesTVC: UITableViewController, DelegateTVSeriesDetailsDC {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        viewModel.dataProvider.getSeriesGuide()
+        viewModel.dataProvider.getDetails()
     }
 
     func updateTableView() {
-            viewModel.setupVMwith(seasonList: viewModel.dataProvider.seasonList) // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
+            viewModel.setupVMwith(seasonList: viewModel.dataProvider.itemList ?? []) // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
         tableView.reloadData()
     }
 

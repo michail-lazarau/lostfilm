@@ -2,7 +2,7 @@ import Foundation
 @testable import lostfilm
 
 class MockGlobalSearchDC: NSObject, GlobalSearchProtocol {
-    @objc dynamic var delegate: DelegateGlobalSearchDC? = MockGlobalSearchTVC()
+    @objc dynamic var delegate: TVCUpdatingDelegate? = MockGlobalSearchTVC()
     var seriesList: [LFSeriesModel]?
     var personList: [LFPersonModel]?
     

@@ -64,7 +64,7 @@ private extension TVSeriesNewsTVC {
     }
 }
 
-extension TVSeriesNewsTVC: DelegateTVSeriesDCwithPagination {
+extension TVSeriesNewsTVC: TVSeriesDetailsPaginatingDC_Delegate {
     func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
         guard let newIndexPathsToReload = newIndexPathsToReload else {
             tableView.reloadData()

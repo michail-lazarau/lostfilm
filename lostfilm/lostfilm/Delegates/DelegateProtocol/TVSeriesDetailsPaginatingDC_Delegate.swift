@@ -1,5 +1,5 @@
 import Foundation
 
-protocol DelegateTVSeriesDCwithPagination: AnyObject {
+protocol TVSeriesDetailsPaginatingDC_Delegate: AnyObject {
     func updateTableView(with newIndexPathsToReload: [IndexPath]?)
 }
