@@ -1,10 +1,11 @@
-"Sorting" = "Sorting";
-"Filtering" = "Filtering";
+"Sorting_(verb)" = "Sorting";
+"Sorting_(noun)" = "Sorting";
+"Filtering_(noun)" = "Filtering";
 "Choose" = "Choose";
 "Sort" = "Sort";
 "Type" = "Type";
 "Genre" = "Genre";
-"Release year" = "Release year";
+"Release_year" = "Release year";
 "Channel" = "Channel";
 "Group" = "Group";
 "and" = "and";

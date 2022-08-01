@@ -111,14 +111,6 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
         if let model = dataSource?[indexPath.row] {
             cell.configureWith(dataModel: model as! Cell.DataModel)
-            
-            if (model is LFVideoModel) {
-                (cell as! VideoViewCell).presentAVPlayerViewController = { [unowned self] vc in
-                    self.present(vc, animated: true) {
-                        vc.player?.play()
-                    }
-                }
-            }
         }
         return cell
     }

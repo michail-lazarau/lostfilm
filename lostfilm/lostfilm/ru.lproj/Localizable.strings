@@ -1,10 +1,11 @@
-"Sorting" = "Сортировка";
-"Filtering" = "Фильтр";
+"Sorting_(verb)" = "Cортировать";
+"Sorting_(noun)" = "Сортировка";
+"Filtering_(noun)" = "Фильтр";
 "Choose" = "Выбрать";
 "Sort" = "Сортировать";
 "Type" = "Статус";
 "Genre" = "Жанр";
-"Release year" = "Год выхода";
+"Release_year" = "Год выхода";
 "Channel" = "Канал";
 "Group" = "Тип";
 "and" = "и";

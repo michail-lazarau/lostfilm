@@ -5,7 +5,7 @@ class TVSeriesDetailsAbstractPaginatingDC<DataModel>: TVSeriesDetailsAbstract wh
     private var isLoading: Bool = false
     private var currentPage: UInt = 0
     weak var delegate: TVSeriesDetailsPaginatingDC_Delegate?
-    
+
     func loadItemsByPage() {
         if isLoading == true {
             return
@@ -14,12 +14,12 @@ class TVSeriesDetailsAbstractPaginatingDC<DataModel>: TVSeriesDetailsAbstract wh
         currentPage += 1
         getDetailsFor(page: currentPage)
     }
-    
+
     func didEmptyNewsList() {
         itemList.removeAll()
         currentPage = 0
     }
-    
+
     func getItemListForSeriesBy(seriesId: String, pageNumber: UInt, completionHandler: @escaping ([DataModel]?, NSError?) -> Void) {
         fatalError("This func must be overridden")
     }
@@ -32,7 +32,7 @@ private extension TVSeriesDetailsAbstractPaginatingDC {
                 return
             }
             strongSelf.itemList += itemList
-            
+
             DispatchQueue.main.async {
                 if strongSelf.currentPage > 1 {
                     let indexPathToReload = strongSelf.calculateIndexPathsToReload(from: itemList)
@@ -44,10 +44,10 @@ private extension TVSeriesDetailsAbstractPaginatingDC {
             strongSelf.isLoading = false
         }
     }
-    
+
     private func calculateIndexPathsToReload(from newItemList: [DataModel]) -> [IndexPath] {
-      let startIndex = itemList.count - newItemList.count
-      let endIndex = startIndex + newItemList.count
-      return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        let startIndex = itemList.count - newItemList.count
+        let endIndex = startIndex + newItemList.count
+        return (startIndex ..< endIndex).map { IndexPath(row: $0, section: 0) }
     }
 }

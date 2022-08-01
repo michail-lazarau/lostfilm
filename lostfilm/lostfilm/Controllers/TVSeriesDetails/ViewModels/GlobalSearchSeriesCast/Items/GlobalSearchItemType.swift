@@ -1,13 +1,6 @@
 import Foundation
 
-enum GlobalSearchItemType: CaseIterable {
-    case series
-    case persons
-    
-    var description: String {
-        switch self {
-        case .series: return "Сериалы"
-        case .persons: return "Люди"
-        }
-    }
+enum GlobalSearchItemType: String{
+    case series = "Сериалы"
+    case persons = "Люди"
 }

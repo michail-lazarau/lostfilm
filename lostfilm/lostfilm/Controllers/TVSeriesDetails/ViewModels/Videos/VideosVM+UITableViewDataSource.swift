@@ -8,6 +8,8 @@ extension VideosVM: UITableViewDataSource {
             noDataLabel.textColor = UIColor.red
             noDataLabel.textAlignment = .center
             tableView.backgroundView = noDataLabel
+        } else {
+            tableView.backgroundView = nil
         }
         return 1
     }

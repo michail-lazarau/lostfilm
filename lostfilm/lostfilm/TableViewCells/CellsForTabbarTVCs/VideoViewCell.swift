@@ -3,8 +3,8 @@ import AVKit
 
 class VideoViewCell: UITableViewCell, CellConfigurable {
     
-    private var videoUrl: URL?
-    var presentAVPlayerViewController: ((AVPlayerViewController)->())?
+    private(set) var videoUrl: URL?
+    weak var videoViewCellDelegate: VideoPlayerDelegate?
 
     var item: LFVideoModel? {
         didSet {
@@ -24,6 +24,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellView()
+        
     }
 
     override func awakeFromNib() {
@@ -113,10 +114,8 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     }
     
     @objc private func launchVideoPlayer() {
-        let vc = AVPlayerViewController()
         if let videoUrl = videoUrl {
-            vc.player = AVPlayer(url: videoUrl)
-            presentAVPlayerViewController?(vc)
+            videoViewCellDelegate?.launchVideo(by: videoUrl)
         }
     }
 }

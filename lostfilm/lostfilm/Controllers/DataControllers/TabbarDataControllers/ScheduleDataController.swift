@@ -1,7 +1,7 @@
 import Foundation
 
 class ScheduleDataController {
-    var delegate: TVCUpdatingDelegate?
+    weak var delegate: TVCUpdatingDelegate?
     private var itemList: [[LFEpisodeModel]] = Array(repeating: [], count: 5)
     private var isLoading: Bool = false
     var sectionsCount: Int {

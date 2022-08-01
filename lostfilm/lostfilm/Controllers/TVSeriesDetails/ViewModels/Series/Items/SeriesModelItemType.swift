@@ -1,25 +1,12 @@
 import Foundation
 
-enum SeriesModelItemType: String, CaseIterable {
-    case detailPremiereDate
-    case detailChannelCountry
-    case detailRatingIMDb
-    case detailGenre
-    case detailType
-    case detailOfficialSite
+enum SeriesModelItemType: String {
+    case detailPremiereDate = "Премьера:"
+    case detailChannelCountry = "Канал, Страна:"
+    case detailRatingIMDb = "Рейтинг IMDb:"
+    case detailGenre = "Жанр:"
+    case detailType = "Тип:"
+    case detailOfficialSite = "Официальный сайт:"
     case poster
-    case description
-    
-    var description: String {
-        switch self {
-        case .detailPremiereDate: return "Премьера:"
-        case .detailChannelCountry: return "Канал, Страна:"
-        case .detailRatingIMDb: return "Рейтинг IMDb:"
-        case .detailGenre: return "Жанр:"
-        case .detailType: return "Тип:"
-        case .detailOfficialSite: return "Официальный сайт:"
-        case .description: return "Описание"
-        case .poster: return ""
-        }
-    }
+    case description = "Описание"
 }

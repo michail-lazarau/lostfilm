@@ -2,7 +2,7 @@ import UIKit
 
 class FilteringTVC: UITableViewController {
     typealias FilterEnum = LFSeriesFilterModelPropertyEnum
-    private let sections: [String] = [NSLocalizedString("Sorting", comment: ""), NSLocalizedString("Filtering", comment: "")]
+    private let sections: [String] = [NSLocalizedString("Sorting_(noun)", comment: ""), NSLocalizedString("Filtering_(noun)", comment: "")]
     private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Group]]
     internal var dataSource: FilteringDataController = FilteringDataController()
     internal var DCwithSavedFilters: TVSeriesDataController? // make weak?
@@ -21,7 +21,7 @@ class FilteringTVC: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FilteringTVCCell")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "xmark"), style: .plain, target: self, action: #selector(DidViewControllerDismiss))
-        navigationItem.title = "\(NSLocalizedString("Sorting", comment: "")) \(NSLocalizedString("and", comment: "")) \(NSLocalizedString("filtering", comment: ""))"
+        navigationItem.title = "\(NSLocalizedString("Sorting_(noun)", comment: "")) \(NSLocalizedString("and", comment: "")) \(NSLocalizedString("Filtering_(noun)", comment: ""))"
         dataSource.getFilters()
     }
 

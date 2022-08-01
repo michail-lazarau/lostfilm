@@ -1,19 +1,15 @@
 import Foundation
 
-public enum LFSeriesFilterModelPropertyEnum: String {
+public enum LFSeriesFilterModelPropertyEnum: String/*,CustomStringConvertible*/ {
     case Sort = "Sort"
     case CustomType = "Type"
     case Genre = "Genre"
-    case ReleaseYear = "Release year"
+    case ReleaseYear = "Release_year"
     case Channel = "Channel"
     case Group = "Group"
     
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue, comment: "")
-    }
-    
-    static func getTitleFor(title: LFSeriesFilterModelPropertyEnum) -> String {
-        return title.localizedString()
     }
 }
 

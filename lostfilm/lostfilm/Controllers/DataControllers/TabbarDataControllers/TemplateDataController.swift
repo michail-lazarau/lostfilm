@@ -1,7 +1,7 @@
 import Foundation
 
 class TemplateDataController<DataModel> where DataModel: LFJsonObject {
-    var delegate: DataControllerDelegate?
+    weak var delegate: DataControllerDelegate?
     var isLoading: Bool = false
     private var itemList: [DataModel] = []
     private var currentPage: UInt = 0
