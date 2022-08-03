@@ -27,7 +27,7 @@ class GlobalSearchDC: GlobalSearchProtocol {
     }
     
     func getGlobalSearchOutputFor(searchContext: String, completionHandler: @escaping ([LFSeriesModel]?, [LFPersonModel]?, NSError?) -> Void) {
-        let apiHelper = LFApplicationHelper.sharedApiHelper
+        let apiHelper = LFApplicationHelper.shared
         apiHelper.series.getGlobalSearchOutput(forContext: searchContext, withCompletionHandler: { seriesList, personList, error in
             completionHandler(seriesList, personList, error as NSError?)
         })

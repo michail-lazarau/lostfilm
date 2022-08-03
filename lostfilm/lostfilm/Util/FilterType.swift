@@ -1,6 +1,6 @@
 import Foundation
 
-public enum LFSeriesFilterModelPropertyEnum: String/*,CustomStringConvertible*/ {
+public enum FilterType: String/*,CustomStringConvertible*/ {
     case Sort = "Sort"
     case CustomType = "Type"
     case Genre = "Genre"

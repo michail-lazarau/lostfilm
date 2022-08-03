@@ -4,7 +4,7 @@ class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDe
     var savedFilters: [LFSeriesFilterBaseModel] = []
 
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
-        let apiHelper = LFApplicationHelper.sharedApiHelper
+        let apiHelper = LFApplicationHelper.shared
         apiHelper.series.getListForPage(number, withParameters: transformFiltersIntoParameters() ?? nil, completionHandler: { seriesList, error in
             completionHander(seriesList, error as NSError?)
         })

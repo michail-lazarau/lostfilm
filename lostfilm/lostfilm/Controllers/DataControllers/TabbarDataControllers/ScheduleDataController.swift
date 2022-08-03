@@ -41,7 +41,7 @@ class ScheduleDataController {
     }
 
     func getTimeTable(completionHander: @escaping ([LFEpisodeModel]?, NSError?) -> Void) {
-        let apiHelper = LFApplicationHelper.sharedApiHelper
+        let apiHelper = LFApplicationHelper.shared
         apiHelper.series.getTimetableWithCompletionHandler { episodesList, error in
             completionHander(episodesList, error as NSError?)
         }

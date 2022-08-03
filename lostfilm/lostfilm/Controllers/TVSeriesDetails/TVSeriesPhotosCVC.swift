@@ -20,13 +20,9 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         registerCells()
         collectionView.dataSource = viewModel
         collectionView.prefetchDataSource = self
-        viewModel.dataProvider?.loadItemsByPage()
+        viewModel.dataProvider?.didLoadItemsByPage()
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     private func registerCells() {
@@ -34,8 +30,8 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
-        viewModel.dataProvider?.didEmptyNewsList()
-        viewModel.dataProvider?.loadItemsByPage()
+        viewModel.dataProvider?.didEmptyItemList()
+        viewModel.dataProvider?.didLoadItemsByPage()
         sender.endRefreshing()
     }
     
@@ -43,7 +39,7 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            viewModel.dataProvider?.loadItemsByPage()
+            viewModel.dataProvider?.didLoadItemsByPage()
         }
     }
 
@@ -52,17 +48,13 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, model: cell.item!, image: cell.imageView.image ?? UIImage()) // cell.highResolutionImageView?.image // cell.imageView.image
+        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, model: cell.item!, image: cell.imageView.image ?? UIImage())
         navigationController?.pushViewController(photoVC, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
 }
 
-private extension TVSeriesPhotosCVC {
-    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+extension TVSeriesPhotosCVC {
+    private func isLoadingCell(for indexPath: IndexPath) -> Bool {
         guard let lastVisibleItem = collectionView.indexPathsForVisibleItems.last?.item else {
             return false
         }

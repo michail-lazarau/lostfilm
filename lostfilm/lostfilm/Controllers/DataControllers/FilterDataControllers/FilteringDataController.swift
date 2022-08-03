@@ -18,7 +18,7 @@ class FilteringDataController {
     }
     
     func getSeriesFilter(completionHander: @escaping (LFSeriesFilterModel?, NSError?) -> Void) {
-        let apiHelper = LFApplicationHelper.sharedApiHelper
+        let apiHelper = LFApplicationHelper.shared
         apiHelper.series.getListsFilter { filtersList, error in
             completionHander(filtersList, error as NSError?)
         }

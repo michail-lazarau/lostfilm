@@ -6,7 +6,7 @@ class TVSeriesDetailsAbstractPaginatingDC<DataModel>: TVSeriesDetailsAbstract wh
     private var currentPage: UInt = 0
     weak var delegate: TVSeriesDetailsPaginatingDC_Delegate?
 
-    func loadItemsByPage() {
+    func didLoadItemsByPage() {
         if isLoading == true {
             return
         }
@@ -15,7 +15,7 @@ class TVSeriesDetailsAbstractPaginatingDC<DataModel>: TVSeriesDetailsAbstract wh
         getDetailsFor(page: currentPage)
     }
 
-    func didEmptyNewsList() {
+    func didEmptyItemList() {
         itemList.removeAll()
         currentPage = 0
     }

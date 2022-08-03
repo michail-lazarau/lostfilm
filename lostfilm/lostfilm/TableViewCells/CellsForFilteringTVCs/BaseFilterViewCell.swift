@@ -3,7 +3,7 @@ import UIKit
 // https://fluffy.es/handling-button-tap-inside-uitableviewcell-without-using-tag/
 
 class BaseFilterViewCell: UITableViewCell {
-    var switcherAction: (()->())?
+    var switcherCallback: (() -> Void)?
     var switcher: UISwitch!
     
     class var reuseIdentifier: String {
@@ -29,7 +29,7 @@ class BaseFilterViewCell: UITableViewCell {
     }
 
     @objc func switcherTapped(_ sender: UISwitch) {
-        switcherAction?()
+        switcherCallback?()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

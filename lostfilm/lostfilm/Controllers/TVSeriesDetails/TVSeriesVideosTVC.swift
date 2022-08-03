@@ -18,7 +18,7 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
         registerCells()
         tableView.dataSource = viewModel
         tableView.prefetchDataSource = self
-        viewModel.dataProvider?.loadItemsByPage()
+        viewModel.dataProvider?.didLoadItemsByPage()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
@@ -28,8 +28,8 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
     }
     
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
-        viewModel.dataProvider?.didEmptyNewsList()
-        viewModel.dataProvider?.loadItemsByPage()
+        viewModel.dataProvider?.didEmptyItemList()
+        viewModel.dataProvider?.didLoadItemsByPage()
         sender.endRefreshing()
     }
 
@@ -47,19 +47,19 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            viewModel.dataProvider?.loadItemsByPage()
+            viewModel.dataProvider?.didLoadItemsByPage()
         }
     }
 }
 
 // MARK: - Source https://www.raywenderlich.com/5786-uitableview-infinite-scrolling-tutorial
 
-private extension TVSeriesVideosTVC {
-    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+extension TVSeriesVideosTVC {
+     private func isLoadingCell(for indexPath: IndexPath) -> Bool {
         guard let lastVisibleRow = tableView.indexPathsForVisibleRows?.last?.row else {
             return false
         }
-        return lastVisibleRow >= viewModel.rowCount - 1
+        return lastVisibleRow >= viewModel.itemCount - 1
     }
 }
 

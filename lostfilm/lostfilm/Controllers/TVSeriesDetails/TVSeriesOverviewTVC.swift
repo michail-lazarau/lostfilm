@@ -24,6 +24,9 @@ class TVSeriesOverviewTVC: UITableViewController, TVCUpdatingDelegate {
         tableView.separatorStyle = .none
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
     func updateTableView() {
         if let model = viewModel.dataProvider?.itemList { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
             viewModel.setupVMwith(model: model)

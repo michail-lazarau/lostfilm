@@ -1,9 +1,8 @@
 import UIKit
 
 class FilteringTVC: UITableViewController {
-    typealias FilterEnum = LFSeriesFilterModelPropertyEnum
     private let sections: [String] = [NSLocalizedString("Sorting_(noun)", comment: ""), NSLocalizedString("Filtering_(noun)", comment: "")]
-    private let sectionCells: [[FilterEnum]] = [[FilterEnum.Sort], [FilterEnum.CustomType, FilterEnum.Genre, FilterEnum.ReleaseYear, FilterEnum.Channel, FilterEnum.Group]]
+    private let sectionCells: [[FilterType]] = [[FilterType.Sort], [FilterType.CustomType, FilterType.Genre, FilterType.ReleaseYear, FilterType.Channel, FilterType.Group]]
     internal var dataSource: FilteringDataController = FilteringDataController()
     internal var DCwithSavedFilters: TVSeriesDataController? // make weak?
     internal var filteringDelegate: FilteringDelegate? // MARK: check how it's used
@@ -53,19 +52,19 @@ class FilteringTVC: UITableViewController {
 //        TODO: case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataSource?.filtersModel.)
         case .CustomType:
             controller = BaseFilterTVC(style: .plain, filtersToDisplay: baseFilters.types, DCwithSelectedFilters: DCwithSavedFilters)
-            controller.navigationItem.title = "\(choose) \(FilterEnum.CustomType.localizedString())"
+            controller.navigationItem.title = "\(choose) \(FilterType.CustomType.localizedString())"
         case .Genre:
             controller = BaseFilterTVC(style: .plain, filtersToDisplay: baseFilters.genres, DCwithSelectedFilters: DCwithSavedFilters)
-            controller.navigationItem.title = "\(choose) \(FilterEnum.Genre.localizedString())"
+            controller.navigationItem.title = "\(choose) \(FilterType.Genre.localizedString())"
         case .ReleaseYear:
             controller = BaseFilterTVC(style: .plain, filtersToDisplay: baseFilters.years, DCwithSelectedFilters: DCwithSavedFilters)
-            controller.navigationItem.title = "\(choose) \(FilterEnum.ReleaseYear.localizedString())"
+            controller.navigationItem.title = "\(choose) \(FilterType.ReleaseYear.localizedString())"
         case .Channel:
             controller = BaseFilterTVC(style: .plain, filtersToDisplay: baseFilters.channels, DCwithSelectedFilters: DCwithSavedFilters)
-            controller.navigationItem.title = "\(choose) \(FilterEnum.Channel.localizedString())"
+            controller.navigationItem.title = "\(choose) \(FilterType.Channel.localizedString())"
         case .Group:
             controller = BaseFilterTVC(style: .plain, filtersToDisplay: baseFilters.groups, DCwithSelectedFilters: DCwithSavedFilters)
-            controller.navigationItem.title = "\(choose) \(FilterEnum.Group.localizedString())"
+            controller.navigationItem.title = "\(choose) \(FilterType.Group.localizedString())"
         default: return
         }
 

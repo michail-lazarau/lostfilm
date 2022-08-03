@@ -44,7 +44,7 @@ class BaseFilterTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.reuseIdentifier, for: indexPath) as! BaseFilterViewCell
         cell.switcher.isOn = dcWithSelectedFilters.savedFilters.contains(filtersToDisplay[indexPath.row]) // setting an initial value for a switch
         cell.textLabel?.text = filtersToDisplay[indexPath.row].name
-        cell.switcherAction = { [unowned self] in
+        cell.switcherCallback = { [unowned self] in
             switchFilter(cell.switcher, filterModel: filtersToDisplay[indexPath.row])
         }
         return cell
