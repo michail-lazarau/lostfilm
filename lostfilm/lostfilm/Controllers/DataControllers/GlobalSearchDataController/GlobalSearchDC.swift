@@ -1,7 +1,7 @@
 import Foundation
 
 class GlobalSearchDC: GlobalSearchProtocol {
-    var delegate: TVCUpdatingDelegate?
+    var delegate: IUpdatingViewDelegate?
     var seriesList: [LFSeriesModel]?
     var personList: [LFPersonModel]?
     

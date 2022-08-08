@@ -1,6 +1,6 @@
 import UIKit
 
-class ScheduleTVC: UITableViewController, TVCUpdatingDelegate {
+class ScheduleTVC: UITableViewController, IUpdatingViewDelegate {
     private let sections: [String] = ["Сегодня", "Завтра", "На этой неделе", "На следующей неделе", "Позже"]
     internal var dataSource: ScheduleDataController?
 

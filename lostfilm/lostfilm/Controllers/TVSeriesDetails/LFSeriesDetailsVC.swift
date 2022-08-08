@@ -40,7 +40,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
         
-        self.navigationItem.title = viewModel.dataProvider?.tvSeriesModel.nameRu
+        self.navigationItem.title = viewModel.dataProvider.tvSeriesModel.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white

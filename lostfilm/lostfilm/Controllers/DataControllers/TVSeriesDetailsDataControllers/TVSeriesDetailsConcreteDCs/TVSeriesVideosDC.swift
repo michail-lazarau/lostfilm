@@ -1,9 +1,9 @@
 import Foundation
 
-final class TVSeriesVideosDC: TVSeriesDetailsAbstractPaginatingDC<LFVideoModel> {
-    override func getItemListForSeriesBy(seriesId: String, pageNumber: UInt, completionHandler: @escaping ([LFVideoModel]?, NSError?) -> Void) {
+final class TVSeriesVideosDC: BaseDataProvider, IHaveDataModelFetchedByPage {
+    func getItemListForSeriesBy(pageNumber: UInt, completionHandler: @escaping ([LFVideoModel]?, NSError?) -> Void) {
         let apiHelper: LFApiSeries = LFApplicationHelper.shared.series
-        apiHelper.getVideoListForSeries(byId: seriesId, page: pageNumber) { videoList, error in
+        apiHelper.getVideoListForSeries(byId: tvSeriesModel.id, page: pageNumber) { videoList, error in
             completionHandler(videoList, error as NSError?)
         }
     }

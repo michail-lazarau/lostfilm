@@ -1,14 +1,14 @@
 import UIKit
 import SDWebImage
 
-class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching {
-    private var viewModel: PhotosVM
+class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching, IUpdatingViewPaginatedDelegate {
+    var viewModel: PhotosVM
     var selectedIndexPath: IndexPath?
     
     init(collectionViewLayout: UICollectionViewLayout, viewModel: PhotosVM) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: collectionViewLayout)
-        self.viewModel.dataProvider?.delegate = self
+        viewModel.delegate = self
     }
 
     required init(coder: NSCoder) {
@@ -20,7 +20,7 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         registerCells()
         collectionView.dataSource = viewModel
         collectionView.prefetchDataSource = self
-        viewModel.dataProvider?.didLoadItemsByPage()
+        viewModel.loadItemsByPage()
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
@@ -30,16 +30,34 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
-        viewModel.dataProvider?.didEmptyItemList()
-        viewModel.dataProvider?.didLoadItemsByPage()
+        viewModel.didEmptyItemList()
+        collectionView.reloadData()
+        viewModel.loadItemsByPage()
         sender.endRefreshing()
     }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        guard let lastVisibleRow = collectionView.indexPathsForVisibleItems.last?.item else {
+            return false
+        }
+        return lastVisibleRow >= viewModel.items.count - 1
+    }
+    
+    // MARK: TVSeriesDetailsPaginatingDC_Delegate
+
+        func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
+            guard let newIndexPathsToReload = newIndexPathsToReload else {
+                collectionView.reloadData()
+                return
+            }
+            collectionView.insertItems(at: newIndexPathsToReload)
+        }
     
     // MARK: - DataSourcePrefetching
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            viewModel.dataProvider?.didLoadItemsByPage()
+            viewModel.loadItemsByPage()
         }
     }
 
@@ -50,24 +68,5 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
         let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, model: cell.item!, image: cell.imageView.image ?? UIImage())
         navigationController?.pushViewController(photoVC, animated: true)
-    }
-}
-
-extension TVSeriesPhotosCVC {
-    private func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        guard let lastVisibleItem = collectionView.indexPathsForVisibleItems.last?.item else {
-            return false
-        }
-        return lastVisibleItem >= viewModel.itemCount - 1
-    }
-}
-
-extension TVSeriesPhotosCVC: TVSeriesDetailsPaginatingDC_Delegate {
-    func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
-        guard let newIndexPathsToReload = newIndexPathsToReload else {
-            collectionView.reloadData()
-            return
-        }
-        collectionView.insertItems(at: newIndexPathsToReload)
     }
 }

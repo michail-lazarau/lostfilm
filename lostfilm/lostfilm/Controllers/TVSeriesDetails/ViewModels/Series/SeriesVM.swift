@@ -1,17 +1,13 @@
 import Foundation
 
-// NSObject inheritance is required for conforming UITableViewDataSource
-class SeriesVM: NSObject {
-    var items = [VMseriesItem]() // sections for the UITableView
-    var dataProvider: TVSeriesOverviewDC?
-
-    override init() {
-        super.init()
-    }
+class SeriesVM: BaseViewModel<TVSeriesOverviewDC, VMseriesItem>, ILoadingHeterogeneousItems {
+    typealias ModelType = LFSeriesModel
+    weak var delegate: IUpdatingViewDelegate?
     
-    init(dataProvider: TVSeriesOverviewDC) {
-        super.init()
-        self.dataProvider = dataProvider
+    func loadItems() {
+        loadItems(dataProvider: dataProvider) {
+            self.delegate?.updateTableView()
+        }
     }
     
     func setupVMwith(model: LFSeriesModel) {

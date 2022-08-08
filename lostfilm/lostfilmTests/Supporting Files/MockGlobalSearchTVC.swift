@@ -1,7 +1,7 @@
 import Foundation
 @testable import lostfilm
 
-class MockGlobalSearchTVC: NSObject, TVCUpdatingDelegate {
+class MockGlobalSearchTVC: NSObject, IUpdatingViewDelegate {
     @objc dynamic var didUpdateTableViewCalled: Bool = false
 
     func updateTableView() {

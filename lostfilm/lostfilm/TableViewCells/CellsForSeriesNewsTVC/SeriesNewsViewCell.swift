@@ -2,6 +2,7 @@ import SDWebImage
 import UIKit
 
 class SeriesNewsViewCell: UITableViewCell {
+    
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!

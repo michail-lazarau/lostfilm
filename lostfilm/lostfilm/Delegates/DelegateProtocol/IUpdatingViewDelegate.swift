@@ -1,6 +1,6 @@
 import Foundation
 
 // @objc is for mocking objects in UnitTests
-@objc protocol TVCUpdatingDelegate: AnyObject {
+@objc protocol IUpdatingViewDelegate: AnyObject {
     func updateTableView()
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-class TVSeriesDetailsAbstract {
+class BaseDataProvider {
     let tvSeriesModel: LFSeriesModel
     
     init(model: LFSeriesModel) {

@@ -1,13 +1,13 @@
 import UIKit
 
-class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
+class TVSeriesNewsTVC: UITableViewController, IUpdatingViewPaginatedDelegate, UITableViewDataSourcePrefetching {
     var viewModel: NewsVM
     fileprivate let tableFooterHeight: CGFloat = 50
 
     init(style: UITableView.Style, viewModel: NewsVM) {
         self.viewModel = viewModel
         super.init(style: style)
-        self.viewModel.dataProvider?.delegate = self
+        viewModel.delegate = self
     }
 
     required init(coder: NSCoder) {
@@ -19,7 +19,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
         registerCells()
         tableView.dataSource = viewModel
         tableView.prefetchDataSource = self // MARK: no scrolling over the 1st backet otherwise
-        viewModel.dataProvider?.didLoadItemsByPage()
+        viewModel.loadItemsByPage()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
@@ -27,12 +27,30 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
     private func registerCells() {
         tableView.register(SeriesNewsViewCell.nib, forCellReuseIdentifier: SeriesNewsViewCell.reuseIdentifier)
     }
-
+    
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
-        viewModel.dataProvider?.didEmptyItemList()
-        viewModel.dataProvider?.didLoadItemsByPage()
+        viewModel.didEmptyItemList()
+        tableView.reloadData()
+        viewModel.loadItemsByPage()
         sender.endRefreshing()
     }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        guard let lastVisibleRow = tableView.indexPathsForVisibleRows?.last?.row else {
+            return false
+        }
+        return lastVisibleRow >= viewModel.items.count - 1
+    }
+    
+    // MARK: TVSeriesDetailsPaginatingDC_Delegate
+
+        func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
+            guard let newIndexPathsToReload = newIndexPathsToReload else {
+                tableView.reloadData()
+                return
+            }
+            tableView.insertRows(at: newIndexPathsToReload, with: .automatic)
+        }
 
     // MARK: - Table view delegate
 
@@ -48,28 +66,7 @@ class TVSeriesNewsTVC: UITableViewController, UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            viewModel.dataProvider?.didLoadItemsByPage()
+            viewModel.loadItemsByPage()
         }
-    }
-}
-
-// MARK: - Source https://www.raywenderlich.com/5786-uitableview-infinite-scrolling-tutorial
-
-extension TVSeriesNewsTVC {
-    private func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        guard let lastVisibleRow = tableView.indexPathsForVisibleRows?.last?.row else {
-            return false
-        }
-        return lastVisibleRow >= viewModel.itemCount - 1
-    }
-}
-
-extension TVSeriesNewsTVC: TVSeriesDetailsPaginatingDC_Delegate {
-    func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
-        guard let newIndexPathsToReload = newIndexPathsToReload else {
-            tableView.reloadData()
-            return
-        }
-        tableView.insertRows(at: newIndexPathsToReload, with: .automatic)
     }
 }

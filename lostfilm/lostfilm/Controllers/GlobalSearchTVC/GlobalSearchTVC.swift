@@ -1,6 +1,6 @@
 import UIKit
 
-class GlobalSearchTVC: UITableViewController, TVCUpdatingDelegate, UISearchBarDelegate {
+class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBarDelegate {
     private var viewModel: GlobalSearchVM
     private weak var tabbarRootController = UIApplication.shared.windows.first?.rootViewController as? TabBarRootController
     private let searchController = UISearchController(searchResultsController: nil)

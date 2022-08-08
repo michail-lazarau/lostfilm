@@ -1,12 +1,12 @@
 import UIKit
 
-class TVSeriesOverviewTVC: UITableViewController, TVCUpdatingDelegate {
+class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
     var viewModel: SeriesVM
 
     init(style: UITableView.Style, viewModel: SeriesVM) {
         self.viewModel = viewModel
         super.init(style: style)
-        self.viewModel.dataProvider?.delegate = self
+        self.viewModel.delegate = self
     }
   
     required init(coder: NSCoder) {
@@ -17,7 +17,7 @@ class TVSeriesOverviewTVC: UITableViewController, TVCUpdatingDelegate {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        viewModel.dataProvider?.getDetails()
+        viewModel.loadItems()
         
         tableView.sectionHeaderHeight = 0.0
         tableView.sectionFooterHeight = 0.0
@@ -28,9 +28,6 @@ class TVSeriesOverviewTVC: UITableViewController, TVCUpdatingDelegate {
     }
     
     func updateTableView() {
-        if let model = viewModel.dataProvider?.itemList { // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
-            viewModel.setupVMwith(model: model)
-        }
         tableView.reloadData()
     }
 

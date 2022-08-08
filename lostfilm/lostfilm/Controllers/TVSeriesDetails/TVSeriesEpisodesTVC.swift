@@ -1,12 +1,12 @@
 import UIKit
 
-class TVSeriesEpisodesTVC: UITableViewController, TVCUpdatingDelegate {
+class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
     var viewModel: EpisodesVM
 
     init(style: UITableView.Style, viewModel: EpisodesVM) {
         self.viewModel = viewModel
         super.init(style: style)
-        self.viewModel.dataProvider.delegate = self
+        self.viewModel.delegate = self
     }
 
     required init(coder: NSCoder) {
@@ -17,11 +17,10 @@ class TVSeriesEpisodesTVC: UITableViewController, TVCUpdatingDelegate {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        viewModel.dataProvider.getDetails()
+        viewModel.loadItems()
     }
 
     func updateTableView() {
-            viewModel.setupVMwith(seasonList: viewModel.dataProvider.itemList ?? []) // MARK: refactor this - put this code inside of dataProvider if there's no reason to leave here
         tableView.reloadData()
     }
 
