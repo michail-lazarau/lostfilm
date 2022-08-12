@@ -5,7 +5,7 @@ struct TestDataObject {
         "alias": "Lost",
         "title": "Остаться в живых",
         "title_orig": "Lost",
-        "img": "http://static.lostfilm.uno/Images/30/Posters/image.jpg",
+        "img": "http://static.lostfilm.tv/Images/30/Posters/image.jpg",
         "rating": 9.1999999999999993,
         "date": "",
         "channels": "",

@@ -1,4 +1,5 @@
 import UIKit
+import SDWebImage
 
 class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
 
@@ -13,7 +14,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
     func configureWith(dataModel: LFEpisodeModel) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 8
-
+        newEpisodeImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         newEpisodeImageView.sd_setImage(with: dataModel.series.photoUrl)
 //        episodeNumLabel.text = "\(dataModel.seasonNumber) сезон \(dataModel.number) серия"
         episodeNumLabel.attributedText = NSAttributedString(string: "\(dataModel.seasonNumber) сезон \(dataModel.number) серия", attributes: [.paragraphStyle: paragraphStyle])
@@ -54,6 +55,11 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newEpisodeImageView.sd_cancelCurrentImageLoad()
     }
 
     private let newEpisodeImageView: UIImageView = {

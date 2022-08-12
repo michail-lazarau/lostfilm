@@ -1,226 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   GetSeriesDetailsContext.plist
-   Lostfilm
-
-   Created by Dzianis Vashkouski on 1/10/20.
-   Copyright (c) 2020 VandV. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>url</key>
-        <string>https://www.lostfilm.uno/series/%@/</string>
-        <key>data</key>
-        <array>
-            
-            <!-- SERIES DETAILS === BEGIN -->
-            <dict>
-                <key>xPathRoot</key>
-                <string>//div[@itemscope=&apos;&apos;]</string>
-                <key>className</key>
-                <string>LFSeriesModel</string>
-                <key>fields</key>
-                <array>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>title</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;header&apos;]/h1[@class=&apos;title-ru&apos;]</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>title_orig</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;header&apos;]/h2[@class=&apos;title-en&apos;]</string>
-                            </dict>
-                        </array>
-                    </dict>
-
-                    <dict>
-                        <key>name</key>
-                        <string>posterURL</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;image-block&apos;]/div[@class=&apos;main_poster&apos;]</string>
-                                <key>attribute</key>
-                                <string>style</string>
-                                <key>regex</key>
-                                <string>background:url\(\'(.*?)\'\)</string>
-                                <key>formats</key>
-                                <array>
-                                    <dict>
-                                        <key>conditions</key>
-                                        <array>
-                                            <dict>
-                                                <key>regex</key>
-                                                <string>^http</string>
-                                                <key>negative</key>
-                                                <true/>
-                                            </dict>
-                                        </array>
-                                        <key>format</key>
-                                        <string>http:%@</string>
-                                    </dict>
-                                </array>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>rating</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;image-block&apos;]/div[@class=&apos;overlay-pane&apos;]/div[@class=&apos;serie-mark-pane&apos;]</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>premiereDate</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Премьера: ?(\d{2} ?[а-я]+ ?\d{4})</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>channels</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Канал, ?Страна: ?(.*?) ?(?:\(.*?\))? ?Рейтинг ?IMDb:</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>country</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Канал, ?Страна: ?.*? ?\((.*?)\) ?Рейтинг ?IMDb:</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>ratingIMDb</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Рейтинг ?IMDb: ?(.*?) ?Жанр:</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>genres</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Жанр: ?(.*?) ?(Тип:|$)</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>type</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Тип: ?(.*?) ?(Официальный ?сайт:|$)</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>officialSiteURL</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
-                                <key>textType</key>
-                                <string>all</string>
-                                <key>regex</key>
-                                <string>Официальный ?сайт: ?(.*?)$</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                    <dict>
-                        <key>name</key>
-                        <string>seriesDescription</string>
-                        <key>result</key>
-                        <array>
-                            <dict>
-                                <key>xPath</key>
-                                <string>//div[@class=&apos;text-block description&apos;]/div[@class=&apos;body&apos;]/div[@itemprop=&apos;description&apos;]</string>
-                                <key>textType</key>
-                                <string>raw</string>
-                            </dict>
-                        </array>
-                    </dict>
-                    
-                </array>
-            </dict>
-            <!-- SERIES DETAILS === END -->
-        
-        </array>
-    </dict>
+<dict>
+	<key>url</key>
+	<string>https://www.lostfilm.tv/series/%@/</string>
+	<key>data</key>
+	<array>
+		<dict>
+			<key>xPathRoot</key>
+			<string>//div[@itemscope=&apos;&apos;]</string>
+			<key>className</key>
+			<string>LFSeriesModel</string>
+			<key>fields</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>title</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;header&apos;]/h1[@class=&apos;title-ru&apos;]</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>title_orig</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;header&apos;]/h2[@class=&apos;title-en&apos;]</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>posterURL</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;image-block&apos;]/div[@class=&apos;main_poster&apos;]</string>
+							<key>attribute</key>
+							<string>style</string>
+							<key>regex</key>
+							<string>background:url\(\&apos;(.*?)\&apos;\)</string>
+							<key>formats</key>
+							<array>
+								<dict>
+									<key>conditions</key>
+									<array>
+										<dict>
+											<key>regex</key>
+											<string>^http</string>
+											<key>negative</key>
+											<true/>
+										</dict>
+									</array>
+									<key>format</key>
+									<string>http:%@</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>rating</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;image-block&apos;]/div[@class=&apos;overlay-pane&apos;]/div[@class=&apos;serie-mark-pane&apos;]</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>premiereDate</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Премьера: ?(\d{2} ?[а-я]+ ?\d{4})</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>channels</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Канал, ?Страна: ?(.*?) ?(?:\(.*?\))? ?Рейтинг ?IMDb:</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>country</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Канал, ?Страна: ?.*? ?\((.*?)\) ?Рейтинг ?IMDb:</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ratingIMDb</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Рейтинг ?IMDb: ?(.*?) ?Жанр:</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>genres</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Жанр: ?(.*?) ?(Тип:|$)</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>type</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Тип: ?(.*?) ?(Официальный ?сайт:|$)</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>officialSiteURL</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;title-block&apos;]/div[@class=&apos;details-pane&apos;]</string>
+							<key>textType</key>
+							<string>all</string>
+							<key>regex</key>
+							<string>Официальный ?сайт: ?(.*?)$</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>seriesDescription</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;text-block description&apos;]/div[@class=&apos;body&apos;]/div[@itemprop=&apos;description&apos;]</string>
+							<key>textType</key>
+							<string>raw</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
 </plist>

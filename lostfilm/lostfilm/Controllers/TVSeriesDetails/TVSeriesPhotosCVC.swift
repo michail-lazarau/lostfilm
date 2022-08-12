@@ -5,6 +5,20 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     var viewModel: PhotosVM
     var selectedIndexPath: IndexPath?
     
+    private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
+    private lazy var noDataScreenLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
+        label.text = "No Data Found."
+        label.textColor = UIColor.red
+        label.textAlignment = .center
+        return label
+    }()
+    
     init(collectionViewLayout: UICollectionViewLayout, viewModel: PhotosVM) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: collectionViewLayout)
@@ -20,6 +34,8 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
         registerCells()
         collectionView.dataSource = viewModel
         collectionView.prefetchDataSource = self
+        collectionView.backgroundView = initialScreenLoadingSpinner
+        initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItemsByPage()
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
@@ -46,11 +62,16 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     // MARK: TVSeriesDetailsPaginatingDC_Delegate
 
         func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
-            guard let newIndexPathsToReload = newIndexPathsToReload else {
+            if let newIndexPathsToReload = newIndexPathsToReload {
+                collectionView.insertItems(at: newIndexPathsToReload)
+            } else {
                 collectionView.reloadData()
-                return
             }
-            collectionView.insertItems(at: newIndexPathsToReload)
+            if viewModel.items.count == 0 {
+                collectionView.backgroundView = noDataScreenLabel
+            } else {
+                collectionView.backgroundView = nil // MARK: destroying initialScreenLoadingSpinner
+            }
         }
     
     // MARK: - DataSourcePrefetching

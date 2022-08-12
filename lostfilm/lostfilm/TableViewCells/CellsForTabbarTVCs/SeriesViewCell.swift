@@ -109,11 +109,17 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     
     private func viewTransitionSetup() {
         serialView.sd_imageTransition = SDWebImageTransition.fade
+        serialView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         serialView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        serialView.sd_cancelCurrentImageLoad()
     }
 }
 

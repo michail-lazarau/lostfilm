@@ -3,6 +3,12 @@ import UIKit
 class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
     var viewModel: EpisodesVM
 
+    private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     init(style: UITableView.Style, viewModel: EpisodesVM) {
         self.viewModel = viewModel
         super.init(style: style)
@@ -17,11 +23,14 @@ class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
+        tableView.backgroundView = initialScreenLoadingSpinner
+        initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItems()
     }
 
     func updateTableView() {
         tableView.reloadData()
+        initialScreenLoadingSpinner.stopAnimating()
     }
 
     private func registerCells() {

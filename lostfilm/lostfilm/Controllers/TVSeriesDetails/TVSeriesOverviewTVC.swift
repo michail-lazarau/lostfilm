@@ -3,6 +3,12 @@ import UIKit
 class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
     var viewModel: SeriesVM
 
+    private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     init(style: UITableView.Style, viewModel: SeriesVM) {
         self.viewModel = viewModel
         super.init(style: style)
@@ -17,8 +23,9 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
+        tableView.backgroundView = initialScreenLoadingSpinner
+        initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItems()
-        
         tableView.sectionHeaderHeight = 0.0
         tableView.sectionFooterHeight = 0.0
         tableView.separatorStyle = .none
@@ -29,6 +36,7 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
     
     func updateTableView() {
         tableView.reloadData()
+        initialScreenLoadingSpinner.stopAnimating()
     }
 
     private func registerCells() {

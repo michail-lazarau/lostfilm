@@ -84,7 +84,7 @@
 		F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */; };
 		F76D9CDB27691D12008D8CA4 /* SeriesNewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F76D9CD927691D12008D8CA4 /* SeriesNewsViewCell.xib */; };
 		F76E41CC2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41CB2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift */; };
-		F76E41D2289144FA0086D5B2 /* TVSeriesDetailsAbstractDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D1289144FA0086D5B2 /* TVSeriesDetailsAbstractDC.swift */; };
+		F76E41D2289144FA0086D5B2 /* BaseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D1289144FA0086D5B2 /* BaseDataProvider.swift */; };
 		F76E41D428914A6B0086D5B2 /* IHaveDataModelFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D328914A6B0086D5B2 /* IHaveDataModelFetched.swift */; };
 		F76E41D82891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */; };
 		F77288AE289982D400AB28AB /* PaginatedDataViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77288AD289982D400AB28AB /* PaginatedDataViewable.swift */; };
@@ -287,7 +287,7 @@
 		F76D9CD827691D12008D8CA4 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		F76D9CD927691D12008D8CA4 /* SeriesNewsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesNewsViewCell.xib; sourceTree = "<group>"; };
 		F76E41CB2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHaveDataModelFetchedByPage.swift; sourceTree = "<group>"; };
-		F76E41D1289144FA0086D5B2 /* TVSeriesDetailsAbstractDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesDetailsAbstractDC.swift; sourceTree = "<group>"; };
+		F76E41D1289144FA0086D5B2 /* BaseDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataProvider.swift; sourceTree = "<group>"; };
 		F76E41D328914A6B0086D5B2 /* IHaveDataModelFetched.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHaveDataModelFetched.swift; sourceTree = "<group>"; };
 		F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoPlayerDelegate+Extension.swift"; sourceTree = "<group>"; };
 		F77288AD289982D400AB28AB /* PaginatedDataViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedDataViewable.swift; sourceTree = "<group>"; };
@@ -740,7 +740,7 @@
 		F76E41D6289184AB0086D5B2 /* TVSeriesDetailsAbstractDCs */ = {
 			isa = PBXGroup;
 			children = (
-				F76E41D1289144FA0086D5B2 /* TVSeriesDetailsAbstractDC.swift */,
+				F76E41D1289144FA0086D5B2 /* BaseDataProvider.swift */,
 				F76E41CB2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift */,
 				F76E41D328914A6B0086D5B2 /* IHaveDataModelFetched.swift */,
 			);
@@ -1545,7 +1545,7 @@
 				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
 				F77288B2289AB54700AB28AB /* ViewModelable.swift in Sources */,
 				F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */,
-				F76E41D2289144FA0086D5B2 /* TVSeriesDetailsAbstractDC.swift in Sources */,
+				F76E41D2289144FA0086D5B2 /* BaseDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,7 +1761,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */;
 			buildSettings = {
-				APIServerURL = "https://www.lostfilm.uno/";
+				APIServerURL = "https://www.lostfilm.tv/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1795,7 +1795,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */;
 			buildSettings = {
-				APIServerURL = "https://www.lostfilm.uno/";
+				APIServerURL = "https://www.lostfilm.tv/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

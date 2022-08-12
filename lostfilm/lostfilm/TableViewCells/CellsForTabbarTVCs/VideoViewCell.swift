@@ -1,5 +1,6 @@
 import UIKit
 import AVKit
+import SDWebImage
 
 class VideoViewCell: UITableViewCell, CellConfigurable {
     
@@ -15,6 +16,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     }
     
     func configureWith(dataModel: LFVideoModel) {
+        videoImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         videoImageView.sd_setImage(with: dataModel.previewURL)
         titleLabel.text = dataModel.title
         detailsLabel.text = dataModel.details
@@ -38,6 +40,11 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        videoImageView.sd_cancelCurrentImageLoad()
     }
 
     private let videoImageView: UIImageView = {

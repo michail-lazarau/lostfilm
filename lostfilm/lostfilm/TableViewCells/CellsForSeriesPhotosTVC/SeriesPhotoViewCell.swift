@@ -9,6 +9,7 @@ class SeriesPhotoViewCell: UICollectionViewCell {
             guard let item = item else {
                 return
             }
+            imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
             imageView.sd_setImage(with: item.url)
         }
     }
@@ -23,7 +24,7 @@ class SeriesPhotoViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        item = nil
+        imageView.sd_cancelCurrentImageLoad()
     }
     
     override func awakeFromNib() {

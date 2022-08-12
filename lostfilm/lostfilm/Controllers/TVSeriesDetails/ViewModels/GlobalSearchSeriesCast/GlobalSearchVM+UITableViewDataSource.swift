@@ -13,7 +13,7 @@ extension GlobalSearchVM: UITableViewDataSource {
         let item = itemsForSections[indexPath.section]
         switch item.type {
         case .series:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesViewCell.reuseIdentifier, for: indexPath) as? SeriesViewCell,  let item = item as? GlobalSearchSeriesItem {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesViewCell.reuseIdentifier, for: indexPath) as? SeriesViewCell, let item = item as? GlobalSearchSeriesItem {
                 cell.configureWith(dataModel: item[indexPath.row])
                 return cell
             }

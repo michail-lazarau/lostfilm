@@ -2,15 +2,6 @@ import Foundation
 
 extension VideosVM: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if (items.count == 0) {
-            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text = "No Data Found."
-            noDataLabel.textColor = UIColor.red
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView = noDataLabel
-        } else {
-            tableView.backgroundView = nil
-        }
         return 1
     }
 

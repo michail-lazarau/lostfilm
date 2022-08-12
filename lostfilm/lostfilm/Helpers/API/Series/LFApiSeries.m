@@ -76,7 +76,7 @@ static NSUInteger recursiveCallsEvokedForGetSeriesListForPage = 0;
     
     NSURLRequest *request = [NSURLRequest ac_requestPostForRootLinkByHref: @"ajaxik.php"
                                                                parameters: mutableDict
-                                                             headerFields:@{ @"Referer": @"https://www.lostfilm.uno/series/" }];
+                                                             headerFields:@{ @"Referer": @"https://www.lostfilm.tv/series/" }];
 
     [self sendAsynchronousRequest:request completionHandler:^(id data, NSError *error) {
         NSMutableArray<LFSeriesModel *> *seriesList = nil;

@@ -4,7 +4,7 @@ func login() {
     let cookieProperties: [HTTPCookiePropertyKey: Any] = [
         HTTPCookiePropertyKey.name: "lf_session",
         HTTPCookiePropertyKey.value: "70aadc36df10002bd40a6d01d2b567d7.7024831", //"980bc13ad5a05ee696cfb3e732e4b489.938288"
-        HTTPCookiePropertyKey.domain: ".lostfilm.uno",
+        HTTPCookiePropertyKey.domain: ".lostfilm.tv",
         HTTPCookiePropertyKey.path: "/",
         HTTPCookiePropertyKey.expires: Date().addingTimeInterval(10000000),
         HTTPCookiePropertyKey.secure: true,

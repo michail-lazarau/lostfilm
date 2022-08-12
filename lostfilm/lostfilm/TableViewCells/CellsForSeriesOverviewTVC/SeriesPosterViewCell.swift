@@ -8,6 +8,7 @@ class SeriesPosterViewCell: UITableViewCell {
     var item: VMseriesItem? {
         didSet {
             if let item = item as? VMseriesPosterItem {
+                posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
                 posterImageView.sd_setImage(with: item.posterUrl)
                 ratingLabel.text = String(format: "%.1f", item.rating)
             }
@@ -24,5 +25,10 @@ class SeriesPosterViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        posterImageView.sd_cancelCurrentImageLoad()
     }
 }

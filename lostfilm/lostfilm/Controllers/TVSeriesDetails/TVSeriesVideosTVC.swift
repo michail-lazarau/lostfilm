@@ -3,6 +3,20 @@ import UIKit
 class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching, IUpdatingViewPaginatedDelegate {
     var viewModel: VideosVM
 
+    private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
+    private lazy var noDataScreenLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        label.text = "No Data Found."
+        label.textColor = UIColor.red
+        label.textAlignment = .center
+        return label
+    }()
+    
     init(style: UITableView.Style, viewModel: VideosVM) {
         self.viewModel = viewModel
         super.init(style: style)
@@ -18,6 +32,8 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
         registerCells()
         tableView.dataSource = viewModel
         tableView.prefetchDataSource = self
+        tableView.backgroundView = initialScreenLoadingSpinner
+        initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItemsByPage()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
@@ -44,11 +60,17 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
     // MARK: TVSeriesDetailsPaginatingDC_Delegate
 
     func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
-        guard let newIndexPathsToReload = newIndexPathsToReload else {
+        if let newIndexPathsToReload = newIndexPathsToReload {
+            tableView.insertRows(at: newIndexPathsToReload, with: .automatic)
+        } else {
             tableView.reloadData()
-            return
         }
-        tableView.insertRows(at: newIndexPathsToReload, with: .automatic)
+        // tableView.numberOfRows(inSection: <#T##Int#>) == 0
+        if viewModel.items.count == 0 {
+            tableView.backgroundView = noDataScreenLabel
+        } else {
+            tableView.backgroundView = nil // MARK: destroying initialScreenLoadingSpinner
+        }
     }
 
     // MARK: - Table view delegate

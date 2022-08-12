@@ -1,3 +1,4 @@
+import SDWebImage
 import UIKit
 
 class SeriesCastViewCell: UITableViewCell {
@@ -10,6 +11,7 @@ class SeriesCastViewCell: UITableViewCell {
             guard let item = item else {
                 return
             }
+            photoImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
             photoImageView.sd_setImage(with: item.photoURL)
             nameEnLabel.text = item.nameEn
             nameRuLabel.text = item.nameRu
@@ -26,7 +28,7 @@ class SeriesCastViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        item = nil
+        photoImageView.sd_cancelCurrentImageLoad()
     }
     
     override func awakeFromNib() {

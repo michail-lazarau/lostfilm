@@ -15,6 +15,7 @@ class EpisodeTableHeaderView: UITableViewHeaderFooterView {
             paragraphView.label.text = item?.seasonNumber
             
             if let posterURL = item?.seasonPosterUrl, let details = item?.seasonDetails {
+                posterView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
                 posterView.sd_setImage(with: posterURL)
                 detailsLabel.text = details
             } else {

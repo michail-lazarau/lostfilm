@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>url</key>
-	<string>https://www.lostfilm.uno/series/%@/cast</string>
+	<string>https://www.lostfilm.tv/series/%@/cast</string>
 	<key>data</key>
 	<array>
 		<dict>

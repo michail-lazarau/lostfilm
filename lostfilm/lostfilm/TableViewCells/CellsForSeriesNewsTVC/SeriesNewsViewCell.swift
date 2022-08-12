@@ -2,7 +2,6 @@ import SDWebImage
 import UIKit
 
 class SeriesNewsViewCell: UITableViewCell {
-    
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -13,6 +12,7 @@ class SeriesNewsViewCell: UITableViewCell {
             guard let item = item else {
                 return
             }
+            photoView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
             photoView.sd_setImage(with: item.photoUrl)
             typeLabel.text = item.type
             titleLabel.text = item.title
@@ -31,7 +31,7 @@ class SeriesNewsViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        item = nil
+        photoView.sd_cancelCurrentImageLoad()
     }
 
     override func awakeFromNib() {

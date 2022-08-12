@@ -3,7 +3,21 @@ import UIKit
 class TVSeriesNewsTVC: UITableViewController, IUpdatingViewPaginatedDelegate, UITableViewDataSourcePrefetching {
     var viewModel: NewsVM
     fileprivate let tableFooterHeight: CGFloat = 50
-
+    
+    private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
+    private lazy var noDataScreenLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        label.text = "No Data Found."
+        label.textColor = UIColor.red
+        label.textAlignment = .center
+        return label
+    }()
+    
     init(style: UITableView.Style, viewModel: NewsVM) {
         self.viewModel = viewModel
         super.init(style: style)
@@ -18,7 +32,9 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewPaginatedDelegate, UI
         super.viewDidLoad()
         registerCells()
         tableView.dataSource = viewModel
-        tableView.prefetchDataSource = self // MARK: no scrolling over the 1st backet otherwise
+        tableView.prefetchDataSource = self // MARK: otherwise, there's no scrolling beyond the 1st backet
+        tableView.backgroundView = initialScreenLoadingSpinner
+        initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItemsByPage()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
@@ -45,11 +61,17 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewPaginatedDelegate, UI
     // MARK: TVSeriesDetailsPaginatingDC_Delegate
 
         func updateTableView(with newIndexPathsToReload: [IndexPath]?) {
-            guard let newIndexPathsToReload = newIndexPathsToReload else {
+            if let newIndexPathsToReload = newIndexPathsToReload {
+                tableView.insertRows(at: newIndexPathsToReload, with: .automatic)
+            } else {
                 tableView.reloadData()
-                return
             }
-            tableView.insertRows(at: newIndexPathsToReload, with: .automatic)
+            // tableView.numberOfRows(inSection: <#T##Int#>) == 0
+            if viewModel.items.count == 0 {
+                tableView.backgroundView = noDataScreenLabel
+            } else {
+                tableView.backgroundView = nil // MARK: destroying initialScreenLoadingSpinner
+            }
         }
 
     // MARK: - Table view delegate

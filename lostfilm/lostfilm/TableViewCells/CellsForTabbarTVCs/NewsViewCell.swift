@@ -1,4 +1,5 @@
 import UIKit
+import SDWebImage
 
 class NewsViewCell: UITableViewCell, CellConfigurable {
 
@@ -14,6 +15,7 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 6
 
+        newsImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         newsImageView.sd_setImage(with: dataModel.photoUrl)
         newsTypeLabel.attributedText = NSAttributedString(string: dataModel.type, attributes: [.paragraphStyle: paragraphStyle])
         titleLabel.text = dataModel.title
@@ -102,6 +104,11 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsImageView.sd_cancelCurrentImageLoad()
     }
 
     private func setupCellStackView() {
