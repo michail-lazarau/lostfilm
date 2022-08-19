@@ -1,6 +1,6 @@
 import UIKit
 
-class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching, IUpdatingViewPaginatedDelegate {
+class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching, IUpdatingViewByPageDelegate {
     var viewModel: VideosVM
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
@@ -65,7 +65,6 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
         } else {
             tableView.reloadData()
         }
-        // tableView.numberOfRows(inSection: <#T##Int#>) == 0
         if viewModel.items.count == 0 {
             tableView.backgroundView = noDataScreenLabel
         } else {

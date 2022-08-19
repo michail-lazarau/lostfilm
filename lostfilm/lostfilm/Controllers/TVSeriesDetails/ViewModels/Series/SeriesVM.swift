@@ -1,51 +1,50 @@
 import Foundation
 
-class SeriesVM: BaseViewModel<TVSeriesOverviewDC, VMseriesItem>, ILoadingHeterogeneousItems {
-    typealias ModelType = LFSeriesModel
+class SeriesVM: BaseViewModel<TVSeriesOverviewDC, VMseriesItem>, ILoadingHeterogeneousItemsAllAtOnce {
     weak var delegate: IUpdatingViewDelegate?
     
     func loadItems() {
-        loadItems(dataProvider: dataProvider) {
-            self.delegate?.updateTableView()
+        loadItems(dataProvider: dataProvider) { [weak self] in
+            self?.delegate?.updateTableView()
         }
     }
     
-    func setupVMwith(model: LFSeriesModel) {
-        if let posterUrl = model.posterURL{
-            let posterItem = VMseriesPosterItem(posterUrl: posterUrl, rating: model.rating)
+    func splitDataModelToItems(_ dataModel: LFSeriesModel) {
+        if let posterUrl = dataModel.posterURL{
+            let posterItem = VMseriesPosterItem(posterUrl: posterUrl, rating: dataModel.rating)
             items.append(posterItem)
         }
         
-        if let premiereDate = model.premiereDate {
+        if let premiereDate = dataModel.premiereDate {
             let premiereDateItem = VMseriesDetailPremiereDateItem(premiereDate: premiereDate)
             items.append(premiereDateItem)
         }
         
-        if let channel = model.channels, let country = model.country {
+        if let channel = dataModel.channels, let country = dataModel.country {
             let channelCountryItem = VMseriesDetailChannelCountryItem(channels: channel, country: country)
             items.append(channelCountryItem)
         }
         
-        if(model.ratingIMDb > 0.0) {
-            items.append(VMseriesDetailRatingIMDbItem(ratingIMDb: model.ratingIMDb))
+        if(dataModel.ratingIMDb > 0.0) {
+            items.append(VMseriesDetailRatingIMDbItem(ratingIMDb: dataModel.ratingIMDb))
         }
         
-        if let genre = model.genres {
+        if let genre = dataModel.genres {
             let genreItem = VMseriesDetailGenreItem(genre: genre)
             items.append(genreItem)
         }
         
-        if let type = model.type {
+        if let type = dataModel.type {
             let typeItem = VMseriesDetailTypeItem(type: type)
             items.append(typeItem)
         }
         
-        if let officialSiteUrl = model.officialSiteURL {
+        if let officialSiteUrl = dataModel.officialSiteURL {
             let officialSiteItem = VMseriesDetailOfficialSiteItem(officialSiteUrl: officialSiteUrl)
             items.append(officialSiteItem)
         }
         
-        if let seriesDescription = model.seriesDescription {
+        if let seriesDescription = dataModel.seriesDescription {
             let seriesDescriptionItem = VMseriesDescriptionItem(seriesDescription: seriesDescription)
             items.append(seriesDescriptionItem)
         }

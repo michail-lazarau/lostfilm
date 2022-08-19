@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 // FIXME: OUT OF USE - DELETE PROTOCOL LATER
-protocol PaginatedDataLoadable: IUpdatingViewPaginatedDelegate {
+protocol PaginatedDataLoadable: IUpdatingViewByPageDelegate {
 //    associatedtype ViewModelContentable: ViewModelable
 //    var viewModel: ViewModelContentable { get set }
 //    var dataView: PaginatedDataViewable { get }

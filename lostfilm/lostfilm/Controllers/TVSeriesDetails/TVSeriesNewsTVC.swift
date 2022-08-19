@@ -1,6 +1,6 @@
 import UIKit
 
-class TVSeriesNewsTVC: UITableViewController, IUpdatingViewPaginatedDelegate, UITableViewDataSourcePrefetching {
+class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITableViewDataSourcePrefetching {
     var viewModel: NewsVM
     fileprivate let tableFooterHeight: CGFloat = 50
     
@@ -66,7 +66,6 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewPaginatedDelegate, UI
             } else {
                 tableView.reloadData()
             }
-            // tableView.numberOfRows(inSection: <#T##Int#>) == 0
             if viewModel.items.count == 0 {
                 tableView.backgroundView = noDataScreenLabel
             } else {

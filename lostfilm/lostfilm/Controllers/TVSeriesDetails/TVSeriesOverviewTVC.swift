@@ -22,16 +22,17 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        designTableViewStyle()
         tableView.dataSource = viewModel
-        tableView.backgroundView = initialScreenLoadingSpinner
         initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItems()
+    }
+    
+    func designTableViewStyle() {
+        tableView.backgroundView = initialScreenLoadingSpinner
         tableView.sectionHeaderHeight = 0.0
         tableView.sectionFooterHeight = 0.0
         tableView.separatorStyle = .none
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
     
     func updateTableView() {

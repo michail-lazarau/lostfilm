@@ -1,7 +1,7 @@
 import UIKit
 import SDWebImage
 
-class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching, IUpdatingViewPaginatedDelegate {
+class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching, IUpdatingViewByPageDelegate {
     var viewModel: PhotosVM
     var selectedIndexPath: IndexPath?
     

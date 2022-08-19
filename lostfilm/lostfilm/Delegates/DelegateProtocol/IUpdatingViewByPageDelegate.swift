@@ -1,5 +1,5 @@
 import Foundation
 
-protocol IUpdatingViewPaginatedDelegate: AnyObject {
+protocol IUpdatingViewByPageDelegate: AnyObject {
     func updateTableView(with newIndexPathsToReload: [IndexPath]?)
 }
