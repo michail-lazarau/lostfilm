@@ -1,6 +1,6 @@
 import Foundation
 
-class PhotosVM: BaseViewModel<TVSeriesPhotosDC, LFPhotoModel>, ILoadingHomogeneousItemsByPage {
+class PhotosVM: BaseViewModel<TVSeriesPhotosDC, LFPhotoModel>, ILoadingDataForSingleSectionByPage {
     var currentPage: UInt = 0
     var isLoading: Bool = false
     weak var delegate: IUpdatingViewByPageDelegate?

@@ -2,7 +2,7 @@ import UIKit
 
 class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
-    var viewModel: SeriesVM // MARK: make let?
+    let viewModel: SeriesVM // MARK: make let?
     let controllers: [UIViewController]
     let collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -35,7 +35,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let items = ["Обзор сериала", "Гид по сериям", "Новости", "Видео", "Фото"] // MARK: refactor this - make localization
+        let items = [NSLocalizedString("Обзор сериала", comment: ""), NSLocalizedString("Гид по сериям", comment: ""), NSLocalizedString("Новости", comment: ""), NSLocalizedString("Видео", comment: ""), NSLocalizedString("Фото", comment: "")]
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false

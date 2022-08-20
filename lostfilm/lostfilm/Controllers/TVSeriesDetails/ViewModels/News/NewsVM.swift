@@ -1,6 +1,6 @@
 import Foundation
 
-class NewsVM: BaseViewModel<TVSeriesNewsDC, LFNewsModel>, ILoadingHomogeneousItemsByPage{
+class NewsVM: BaseViewModel<TVSeriesNewsDC, LFNewsModel>, ILoadingDataForSingleSectionByPage{
     var currentPage: UInt = 0
     var isLoading: Bool = false
     weak var delegate: IUpdatingViewByPageDelegate?

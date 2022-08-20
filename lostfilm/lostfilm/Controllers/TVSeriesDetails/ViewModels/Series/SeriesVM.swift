@@ -1,6 +1,6 @@
 import Foundation
 
-class SeriesVM: BaseViewModel<TVSeriesOverviewDC, VMseriesItem>, ILoadingHeterogeneousItemsAllAtOnce {
+class SeriesVM: BaseViewModel<TVSeriesOverviewDC, VMseriesItem>, ILoadingDataForMultiSectionAtOnce {
     weak var delegate: IUpdatingViewDelegate?
     
     func loadItems() {

@@ -1,13 +1,13 @@
 import Foundation
 
-protocol ILoadingHeterogeneousItemsAllAtOnce: AnyObject {
+protocol ILoadingDataForMultiSectionAtOnce: AnyObject {
     associatedtype ModelType
     func splitDataModelToItems(_ dataModel: ModelType)
 }
 
-extension ILoadingHeterogeneousItemsAllAtOnce {
+extension ILoadingDataForMultiSectionAtOnce {
     func loadItems<P: BaseDataProvider>(dataProvider: P, async completionHandler: @escaping () -> Void) where P: IHaveDataModelFetched {
-        dataProvider.getItemListForSeriesBy { [weak self] itemList, _ in
+        dataProvider.getItemListForSeries { [weak self] itemList, _ in
             guard let strongSelf = self, let itemList = itemList else {
                 return
             }

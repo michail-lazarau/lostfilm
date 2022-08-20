@@ -1,13 +1,13 @@
 import Foundation
 
-protocol ILoadingHomogeneousItemsByPage: AnyObject {
+protocol ILoadingDataForSingleSectionByPage: AnyObject {
     associatedtype ModelType
     var currentPage: UInt { get set }
     var isLoading: Bool { get set }
     var items: [ModelType] { get set }
 }
 
-extension ILoadingHomogeneousItemsByPage {
+extension ILoadingDataForSingleSectionByPage {
     func didEmptyItemList() {
         items.removeAll()
         currentPage = 0
@@ -26,7 +26,7 @@ extension ILoadingHomogeneousItemsByPage {
     }
     
     private func loadItems<P: BaseDataProvider>(for page: UInt, dataProvider: P, async completionHandler: @escaping ([IndexPath]?) -> Void) where P: IHaveDataModelFetchedByPage {
-        dataProvider.getItemListForSeriesBy(pageNumber: page) { [weak self] itemList, _ in
+        dataProvider.getItemListForSeriesBy(page: page) { [weak self] itemList, _ in
             let indexPathToReload: [IndexPath]?
             if let strongSelf = self, let itemList = itemList as? [Self.ModelType] {
                 strongSelf.items += itemList
