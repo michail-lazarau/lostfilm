@@ -1,7 +1,7 @@
 import Foundation
 
 // FIXME: is AnyObject unnecessary?
-protocol IHaveDataModelFetched: AnyObject {
+protocol IHaveDataModelFetchedOnce: AnyObject {
     associatedtype DataModel
     func getItemListForSeries(completionHandler: @escaping (DataModel?, NSError?) -> Void)
 }

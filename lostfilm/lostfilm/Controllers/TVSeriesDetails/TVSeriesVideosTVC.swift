@@ -1,7 +1,7 @@
 import UIKit
 
 class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching, IUpdatingViewByPageDelegate {
-    var viewModel: VideosVM
+    let viewModel: VideosVM
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .gray)

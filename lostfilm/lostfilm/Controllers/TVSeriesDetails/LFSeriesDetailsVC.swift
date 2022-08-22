@@ -15,17 +15,20 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     }()
 
     init(model: LFSeriesModel) {
-        viewModel = SeriesVM(dataProvider: TVSeriesOverviewDC(model: model))
-        let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDC(model: model))
-        let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDC(model: model))
-        let videosViewModel = VideosVM(dataProvider: TVSeriesVideosDC(model: model))
-        let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDC(model: model))
+        viewModel = SeriesVM(dataProvider: TVSeriesOverviewDataProvider(model: model))
+        let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDataProvider(model: model))
+        let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDataProvider(model: model))
+        let videosViewModel = VideosVM(dataProvider: TVSeriesVideosDataProvider(model: model))
+        let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDataProvider(model: model))
+        let castViewModel = CastVM(dataProvider: TVSeriesCastDataProvider(model: model))
         
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
                        TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),
                        TVSeriesVideosTVC(style: .plain, viewModel: videosViewModel),
-                       TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel)]
+                       TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel),
+                       TVSeriesCastTVC(style: .plain, viewModel: castViewModel)]
+        
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,7 +38,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let items = [NSLocalizedString("Обзор сериала", comment: ""), NSLocalizedString("Гид по сериям", comment: ""), NSLocalizedString("Новости", comment: ""), NSLocalizedString("Видео", comment: ""), NSLocalizedString("Фото", comment: "")]
+        let items = [NSLocalizedString("Overview", comment: ""), NSLocalizedString("Episodes", comment: ""), NSLocalizedString("News", comment: ""), NSLocalizedString("Video", comment: ""), NSLocalizedString("Photo", comment: ""), NSLocalizedString("Cast", comment: "")]
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
@@ -53,7 +56,8 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
 extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-        if let TVSeriesPhotosCVC = (self.controllers.last as? TVSeriesPhotosCVC), let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
+        let collectionViewController = self.controllers.last {$0 is TVSeriesPhotosCVC} as? TVSeriesPhotosCVC
+        if let TVSeriesPhotosCVC = collectionViewController, let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
             let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
             return cell.imageView
         }

@@ -1,6 +1,6 @@
 import Foundation
 
-class EpisodesVM: BaseViewModel<TVSeriesEpisodesDC, VMepisodeItem>, ILoadingDataForMultiSectionAtOnce {
+class EpisodesVM: BaseViewModel<TVSeriesEpisodesDataProvider, VMepisodeItem>, ILoadingDataForMultiSectionOnce {
     weak var delegate: IUpdatingViewDelegate?
     
     func loadItems() {
@@ -9,7 +9,7 @@ class EpisodesVM: BaseViewModel<TVSeriesEpisodesDC, VMepisodeItem>, ILoadingData
         }
     }
     
-    func splitDataModelToItems(_ dataModel: [LFSeasonModel]) {
+    func prepareDataModelForUse(_ dataModel: [LFSeasonModel]) {
         for season in dataModel {
             let episodeItem: VMepisodeItem
             if let seasonPosterUrl = season.posterURL, let seasonDetails = season.details {

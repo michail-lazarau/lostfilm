@@ -1,6 +1,6 @@
 import Foundation
 
-final class TVSeriesNewsDC: BaseDataProvider, IHaveDataModelFetchedByPage {
+final class TVSeriesNewsDataProvider: BaseDataProvider, IHaveDataModelFetchedByPage {
     func getItemListForSeriesBy(page number: UInt, completionHandler: @escaping ([LFNewsModel]?, NSError?) -> Void) {
         let apiHelper: LFApiSeries = LFApplicationHelper.shared.series
         apiHelper.getNewsListForSeries(byId: tvSeriesModel.id, page: number) { newsList, error in

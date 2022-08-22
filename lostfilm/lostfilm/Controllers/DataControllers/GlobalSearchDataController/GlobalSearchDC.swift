@@ -1,7 +1,7 @@
 import Foundation
 
 class GlobalSearchDC: GlobalSearchProtocol {
-    var delegate: IUpdatingViewDelegate?
+    weak var delegate: IUpdatingViewDelegate?
     var seriesList: [LFSeriesModel]?
     var personList: [LFPersonModel]?
     

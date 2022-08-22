@@ -1,7 +1,7 @@
 import UIKit
 
 class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITableViewDataSourcePrefetching {
-    var viewModel: NewsVM
+    let viewModel: NewsVM
     fileprivate let tableFooterHeight: CGFloat = 50
     
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {

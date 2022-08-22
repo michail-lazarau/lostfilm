@@ -2,7 +2,7 @@ import UIKit
 import SDWebImage
 
 class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourcePrefetching, IUpdatingViewByPageDelegate {
-    var viewModel: PhotosVM
+    let viewModel: PhotosVM
     var selectedIndexPath: IndexPath?
     
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {

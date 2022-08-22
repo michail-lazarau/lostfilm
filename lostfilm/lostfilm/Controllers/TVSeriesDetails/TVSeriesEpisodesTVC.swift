@@ -1,7 +1,7 @@
 import UIKit
 
 class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
-    var viewModel: EpisodesVM
+    let viewModel: EpisodesVM
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .gray)

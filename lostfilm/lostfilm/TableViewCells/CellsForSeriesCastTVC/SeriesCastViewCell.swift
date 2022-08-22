@@ -5,6 +5,9 @@ class SeriesCastViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameRuLabel: UILabel!
     @IBOutlet weak var nameEnLabel: UILabel!
+    @IBOutlet weak var roleRuLabel: UILabel!
+    @IBOutlet weak var roleEnLabel: UILabel!
+    @IBOutlet weak var roleContainerView: UIView!
     
     var item: LFPersonModel? {
         didSet {
@@ -15,6 +18,13 @@ class SeriesCastViewCell: UITableViewCell {
             photoImageView.sd_setImage(with: item.photoURL)
             nameEnLabel.text = item.nameEn
             nameRuLabel.text = item.nameRu
+            if let roleRu = item.roleRu, let roleEn = item.roleEn {
+                roleRuLabel.text = roleRu
+                roleEnLabel.text = roleEn
+            }
+            else {
+                roleContainerView.isHidden = true
+            }
         }
     }
     
