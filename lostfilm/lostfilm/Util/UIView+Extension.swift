@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+// MARK: out of use
 extension UIView {
     func loadViewFromNib(nibName: String) -> UIView? {
         let bundle = Bundle(for: type(of: self))

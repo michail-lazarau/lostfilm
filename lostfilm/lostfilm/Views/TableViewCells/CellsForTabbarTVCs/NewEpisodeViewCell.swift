@@ -199,14 +199,4 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
         labelStackView.addArrangedSubview(releaseDateStack)
         labelStackView.addArrangedSubview(daysBeforeReleaseLabel)
     }
-
-//    setupLabelWith(font: .systemFont(ofSize: 10.0), textColor: UIColor(red: 31 / 255, green: 31 / 255, blue: 31 / 255, alpha: 1.0), numberOfLines: 2)
-//    private func setupLabelWith(font: UIFont, textColor: UIColor, numberOfLines: Int) -> UILabel {
-//        let label = UILabel()
-//        label.font = font
-//        label.textColor = textColor
-//        label.numberOfLines = numberOfLines
-//        label.lineBreakMode = .byTruncatingTail
-//        return label
-//    }
 }

@@ -568,6 +568,52 @@
 			path = GlobalSearchDataController;
 			sourceTree = "<group>";
 		};
+		F721B88228B7A08100D521D0 /* LoadingProtocolsForViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F77288C328A1606400AB28AB /* ILoadingDataForMultiSectionOnce.swift */,
+				F76BEDD628AD3A4E00A4B33E /* ILoadingDataForSingleSectionByPage.swift */,
+			);
+			path = LoadingProtocolsForViewModels;
+			sourceTree = "<group>";
+		};
+		F721B88328B7A13A00D521D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F73459DE2766435300E45725 /* TableViewCells */,
+				F7DAE2C427A17676003AED19 /* CustomElements */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F721B88528B7A1ED00D521D0 /* ProtocolsForCells */ = {
+			isa = PBXGroup;
+			children = (
+				F73459DB276610F000E45725 /* CellConfigurable.swift */,
+				F7516D77282C0C1B00E1A138 /* CellConfigurable+Extensions.swift */,
+			);
+			path = ProtocolsForCells;
+			sourceTree = "<group>";
+		};
+		F721B88728B7A27200D521D0 /* NavigationAndTransitionDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				F7DFCF9027F0A423006A0789 /* ZoomTransitioningDelegate.swift */,
+				F7439DEE27F8E68300ACB015 /* CustomNavigationControllerDelegate.swift */,
+			);
+			path = NavigationAndTransitionDelegates;
+			sourceTree = "<group>";
+		};
+		F721B88828B7A36100D521D0 /* OutOfUseProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				F77288AD289982D400AB28AB /* PaginatedDataViewable.swift */,
+				F77288AF289985F500AB28AB /* PaginatedDataLoadable.swift */,
+				F77288B5289C28E600AB28AB /* DataRefreshable.swift */,
+			);
+			path = OutOfUseProtocols;
+			sourceTree = "<group>";
+		};
 		F72E277028B404BA00E751B5 /* Cast */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,9 +626,11 @@
 		F73459DD276642E200E45725 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				F73459DB276610F000E45725 /* CellConfigurable.swift */,
+				F721B88828B7A36100D521D0 /* OutOfUseProtocols */,
+				F7DFCF8F27F0A339006A0789 /* DelegatingProtocols */,
+				F721B88528B7A1ED00D521D0 /* ProtocolsForCells */,
+				F721B88228B7A08100D521D0 /* LoadingProtocolsForViewModels */,
 				F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */,
-				F7516D77282C0C1B00E1A138 /* CellConfigurable+Extensions.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -620,6 +668,7 @@
 		F7471DE227AABA4100BDA17A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F77288BF28A007D200AB28AB /* BaseViewModel.swift */,
 				F7516D67282BDAC900E1A138 /* GlobalSearchSeriesCast */,
 				F76D1F7C27B99896007E5933 /* Series */,
 				F76D1F7D27B99D65007E5933 /* Episodes */,
@@ -628,23 +677,18 @@
 				F781ACC427E11C6F003ABF31 /* Photos */,
 				F72E277028B404BA00E751B5 /* Cast */,
 				F77288B1289AB54700AB28AB /* ViewModelable.swift */,
-				F77288BF28A007D200AB28AB /* BaseViewModel.swift */,
-				F77288C328A1606400AB28AB /* ILoadingDataForMultiSectionOnce.swift */,
-				F76BEDD628AD3A4E00A4B33E /* ILoadingDataForSingleSectionByPage.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		F74E3A81274051AA004B81EF /* Delegates */ = {
+		F74E3A81274051AA004B81EF /* ClassDelegates */ = {
 			isa = PBXGroup;
 			children = (
-				F7DFCF8F27F0A339006A0789 /* DelegateProtocol */,
+				F721B88728B7A27200D521D0 /* NavigationAndTransitionDelegates */,
 				F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */,
 				F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */,
-				F7DFCF9027F0A423006A0789 /* ZoomTransitioningDelegate.swift */,
-				F7439DEE27F8E68300ACB015 /* CustomNavigationControllerDelegate.swift */,
 			);
-			path = Delegates;
+			path = ClassDelegates;
 			sourceTree = "<group>";
 		};
 		F7516D67282BDAC900E1A138 /* GlobalSearchSeriesCast */ = {
@@ -714,13 +758,13 @@
 			path = TabbarDataControllers;
 			sourceTree = "<group>";
 		};
-		F76D1F7B27B95FFA007E5933 /* TVSeriesDetailsDataControllers */ = {
+		F76D1F7B27B95FFA007E5933 /* TVSeriesDetailsDataProviders */ = {
 			isa = PBXGroup;
 			children = (
 				F76E41D6289184AB0086D5B2 /* AbstractDataProviders */,
 				F76E41D5289184950086D5B2 /* ConcreteDataProviders */,
 			);
-			path = TVSeriesDetailsDataControllers;
+			path = TVSeriesDetailsDataProviders;
 			sourceTree = "<group>";
 		};
 		F76D1F7C27B99896007E5933 /* Series */ = {
@@ -913,13 +957,14 @@
 				F7355EEE2772522500B42B0F /* Util */,
 				F7C4EE852753E539006B5961 /* Other */,
 				F79C97012746CCA3001BD5F8 /* Models */,
+				F7471DE227AABA4100BDA17A /* ViewModels */,
+				F721B88328B7A13A00D521D0 /* Views */,
 				F711A4502745A87000E1515D /* Helpers */,
 				F711A41A2745A74300E1515D /* Resources */,
 				F73459DD276642E200E45725 /* Protocols */,
-				F74E3A81274051AA004B81EF /* Delegates */,
-				F7DAE2C427A17676003AED19 /* CustomElements */,
-				F73459DE2766435300E45725 /* TableViewCells */,
+				F74E3A81274051AA004B81EF /* ClassDelegates */,
 				F7AEE480273FF2C600C304D0 /* Controllers */,
+				F7B2DB8E274A81E30099CF29 /* DataControllers */,
 				F7AEE475273FEB7A00C304D0 /* Assets.xcassets */,
 				F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */,
 				F7AEE47A273FEB7A00C304D0 /* Info.plist */,
@@ -935,8 +980,7 @@
 				F7EA704D281FCE99006444B9 /* GlobalSearchTVC */,
 				F7551D27274D886E00E1748E /* TabbarTVC */,
 				F7C2812F27C7D89A00DA8A62 /* FilterTVC */,
-				F7E8E46427A8067000BA9DC7 /* TVSeriesDetails */,
-				F7B2DB8E274A81E30099CF29 /* DataControllers */,
+				F7E8E46427A8067000BA9DC7 /* TVSeriesDetailsControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -955,7 +999,7 @@
 			children = (
 				F7169BAC2821345E00B16251 /* GlobalSearchDataController */,
 				F7C2813027C7D8E200DA8A62 /* FilterDataControllers */,
-				F76D1F7B27B95FFA007E5933 /* TVSeriesDetailsDataControllers */,
+				F76D1F7B27B95FFA007E5933 /* TVSeriesDetailsDataProviders */,
 				F76D1F7A27B95F86007E5933 /* TabbarDataControllers */,
 			);
 			path = DataControllers;
@@ -1098,7 +1142,7 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
-		F7DFCF8F27F0A339006A0789 /* DelegateProtocol */ = {
+		F7DFCF8F27F0A339006A0789 /* DelegatingProtocols */ = {
 			isa = PBXGroup;
 			children = (
 				F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */,
@@ -1108,7 +1152,7 @@
 				F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */,
 				F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */,
 			);
-			path = DelegateProtocol;
+			path = DelegatingProtocols;
 			sourceTree = "<group>";
 		};
 		F7E0229F284426AD00123B56 /* CellsForGlobalSearchTVC */ = {
@@ -1120,10 +1164,9 @@
 			path = CellsForGlobalSearchTVC;
 			sourceTree = "<group>";
 		};
-		F7E8E46427A8067000BA9DC7 /* TVSeriesDetails */ = {
+		F7E8E46427A8067000BA9DC7 /* TVSeriesDetailsControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F7471DE227AABA4100BDA17A /* ViewModels */,
 				F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */,
 				F7471DF627AAFAB100BDA17A /* TVSeriesOverviewTVC.swift */,
 				F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */,
@@ -1133,11 +1176,8 @@
 				F72E277528B407E100E751B5 /* TVSeriesCastTVC.swift */,
 				F7DFCF9827F0F6F9006A0789 /* TVSeriesPhotoVC.swift */,
 				F7DFCF9927F0F6F9006A0789 /* TVSeriesPhotoVC.xib */,
-				F77288AD289982D400AB28AB /* PaginatedDataViewable.swift */,
-				F77288AF289985F500AB28AB /* PaginatedDataLoadable.swift */,
-				F77288B5289C28E600AB28AB /* DataRefreshable.swift */,
 			);
-			path = TVSeriesDetails;
+			path = TVSeriesDetailsControllers;
 			sourceTree = "<group>";
 		};
 		F7EA704D281FCE99006444B9 /* GlobalSearchTVC */ = {
