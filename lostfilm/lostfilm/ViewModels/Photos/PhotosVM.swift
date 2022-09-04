@@ -1,6 +1,6 @@
 import Foundation
 
-class PhotosVM: BaseViewModel<TVSeriesPhotosDataProvider, LFPhotoModel>, ILoadingDataForSingleSectionByPage {
+final class PhotosVM: BaseViewModel<TVSeriesPhotosDataProvider, LFPhotoModel>, ILoadingDataByPage {
     var currentPage: UInt = 0
     var isLoading: Bool = false
     weak var delegate: IUpdatingViewByPageDelegate?

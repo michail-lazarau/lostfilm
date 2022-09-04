@@ -1,9 +1,8 @@
 import Foundation
 
 final class TVSeriesEpisodesDataProvider: BaseDataProvider, IHaveDataModelFetchedOnce {
-    func getItemListForSeries(completionHandler: @escaping ([LFSeasonModel]?, NSError?) -> Void) {
-        let apiHelper: LFApiSeries = LFApplicationHelper.shared.series
-        apiHelper.getSeriesGuideForSeries(byId: tvSeriesModel.id, completionHandler: { seasonList, error in
+    func fetchData(completionHandler: @escaping ([LFSeasonModel]?, NSError?) -> Void) {
+        apiHelper.series.getSeriesGuideForSeries(byId: modelId, completionHandler: { seasonList, error in
             completionHandler(seasonList, error as NSError?)
         })
     }

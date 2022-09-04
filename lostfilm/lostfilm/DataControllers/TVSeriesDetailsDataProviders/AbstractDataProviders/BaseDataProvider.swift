@@ -1,9 +1,12 @@
 import Foundation
 
 class BaseDataProvider {
-    let tvSeriesModel: LFSeriesModel
+    let modelId: String
+    var apiHelper: LFApiHelper {
+        LFApplicationHelper.shared
+    }
     
-    init(model: LFSeriesModel) {
-        self.tvSeriesModel = model
+    init(modelId: String) {
+        self.modelId = modelId
     }
 }

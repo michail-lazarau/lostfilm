@@ -1,6 +1,6 @@
 import Foundation
 
-class CastVM: BaseViewModel<TVSeriesCastDataProvider, LFPersonModel>, ILoadingDataForMultiSectionOnce {
+final class CastVM: BaseViewModel<TVSeriesCastDataProvider, LFPersonModel>, ILoadingDataOnce {
     weak var delegate: IUpdatingViewDelegate?
     
     func loadItems() {

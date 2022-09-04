@@ -15,12 +15,12 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
     }()
 
     init(model: LFSeriesModel) {
-        viewModel = SeriesVM(dataProvider: TVSeriesOverviewDataProvider(model: model))
-        let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDataProvider(model: model))
-        let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDataProvider(model: model))
-        let videosViewModel = VideosVM(dataProvider: TVSeriesVideosDataProvider(model: model))
-        let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDataProvider(model: model))
-        let castViewModel = CastVM(dataProvider: TVSeriesCastDataProvider(model: model))
+        viewModel = SeriesVM(dataProvider: TVSeriesOverviewDataProvider(modelId: model.id))
+        let episodesViewModel = EpisodesVM(dataProvider: TVSeriesEpisodesDataProvider(modelId: model.id))
+        let newsViewModel = NewsVM(dataProvider: TVSeriesNewsDataProvider(modelId: model.id))
+        let videosViewModel = VideosVM(dataProvider: TVSeriesVideosDataProvider(modelId: model.id))
+        let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDataProvider(modelId: model.id))
+        let castViewModel = CastVM(dataProvider: TVSeriesCastDataProvider(modelId: model.id))
         
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
@@ -30,6 +30,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
                        TVSeriesCastTVC(style: .plain, viewModel: castViewModel)]
         
         super.init(nibName: nil, bundle: nil)
+        self.navigationItem.title = model.nameRu
     }
 
     required init(coder: NSCoder) {
@@ -43,7 +44,6 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
         
-        self.navigationItem.title = viewModel.dataProvider.tvSeriesModel.nameRu
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white

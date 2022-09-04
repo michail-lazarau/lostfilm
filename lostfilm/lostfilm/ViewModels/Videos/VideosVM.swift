@@ -1,6 +1,6 @@
 import Foundation
 
-class VideosVM: BaseViewModel<TVSeriesVideosDataProvider, LFVideoModel>, ILoadingDataForSingleSectionByPage {
+final class VideosVM: BaseViewModel<TVSeriesVideosDataProvider, LFVideoModel>, ILoadingDataByPage {
     var currentPage: UInt = 0
     var isLoading: Bool = false
     weak var delegate: IUpdatingViewByPageDelegate?

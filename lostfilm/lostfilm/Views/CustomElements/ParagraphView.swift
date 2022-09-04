@@ -22,13 +22,11 @@ class ParagraphView: UIView {
             contentView.frame = self.bounds
             contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
-        
-        // Extension: loadViewFromNib
+    }
+}
+// Extension: loadViewFromNib
 //        if let view = loadViewFromNib(nibName: "ParagraphView") {
 //            addSubview(view)
 //            view.frame = self.bounds
 //            view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        }
-    }
-
-}

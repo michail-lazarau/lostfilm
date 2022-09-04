@@ -1,6 +1,6 @@
 import Foundation
 
-class EpisodesVM: BaseViewModel<TVSeriesEpisodesDataProvider, VMepisodeItem>, ILoadingDataForMultiSectionOnce {
+final class EpisodesVM: BaseViewModel<TVSeriesEpisodesDataProvider, VMepisodeItem>, ILoadingDataOnce {
     weak var delegate: IUpdatingViewDelegate?
     
     func loadItems() {
