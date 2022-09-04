@@ -118,8 +118,8 @@
 		F781ACCB27E11F3F003ABF31 /* SeriesPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781ACC927E11F3F003ABF31 /* SeriesPhotoViewCell.swift */; };
 		F781ACCC27E11F3F003ABF31 /* SeriesPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F781ACCA27E11F3F003ABF31 /* SeriesPhotoViewCell.xib */; };
 		F781ACCE27E1348A003ABF31 /* TVSeriesPhotosCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781ACCD27E1348A003ABF31 /* TVSeriesPhotosCVC.swift */; };
-		F782735128BE697D003303B7 /* CarouselViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782734F28BE697D003303B7 /* CarouselViewTableViewCell.swift */; };
-		F782735228BE697D003303B7 /* CarouselViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F782735028BE697D003303B7 /* CarouselViewTableViewCell.xib */; };
+		F782735128BE697D003303B7 /* CarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782734F28BE697D003303B7 /* CarouselTableViewCell.swift */; };
+		F782735228BE697D003303B7 /* CarouselTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F782735028BE697D003303B7 /* CarouselTableViewCell.xib */; };
 		F7839836274017840025A6B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7839838274017840025A6B5 /* Localizable.strings */; };
 		F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C5DB528319B6100AF8400 /* WeakTimer.swift */; };
 		F78E0BEE28BF7C36007F2759 /* LFPhotoListContentItemModel+IModelCellReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78E0BED28BF7C36007F2759 /* LFPhotoListContentItemModel+IModelCellReuseIdentifiable.swift */; };
@@ -340,8 +340,8 @@
 		F781ACC927E11F3F003ABF31 /* SeriesPhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesPhotoViewCell.swift; sourceTree = "<group>"; };
 		F781ACCA27E11F3F003ABF31 /* SeriesPhotoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesPhotoViewCell.xib; sourceTree = "<group>"; };
 		F781ACCD27E1348A003ABF31 /* TVSeriesPhotosCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesPhotosCVC.swift; sourceTree = "<group>"; };
-		F782734F28BE697D003303B7 /* CarouselViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewTableViewCell.swift; sourceTree = "<group>"; };
-		F782735028BE697D003303B7 /* CarouselViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselViewTableViewCell.xib; sourceTree = "<group>"; };
+		F782734F28BE697D003303B7 /* CarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselTableViewCell.swift; sourceTree = "<group>"; };
+		F782735028BE697D003303B7 /* CarouselTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselTableViewCell.xib; sourceTree = "<group>"; };
 		F7839833274015FF0025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F7839837274017840025A6B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F7839839274017870025A6B5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -881,8 +881,8 @@
 			children = (
 				F77226BD28BE4FEB002143CC /* CarouselCollectionViewCell.swift */,
 				F77226BE28BE4FEB002143CC /* CarouselCollectionViewCell.xib */,
-				F782734F28BE697D003303B7 /* CarouselViewTableViewCell.swift */,
-				F782735028BE697D003303B7 /* CarouselViewTableViewCell.xib */,
+				F782734F28BE697D003303B7 /* CarouselTableViewCell.swift */,
+				F782735028BE697D003303B7 /* CarouselTableViewCell.xib */,
 			);
 			path = CarouselCell;
 			sourceTree = "<group>";
@@ -1427,7 +1427,7 @@
 				F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */,
 				F7AEE479273FEB7A00C304D0 /* LaunchScreen.storyboard in Resources */,
 				F711A4432745A84A00E1515D /* GetSeriesDetailsContext.plist in Resources */,
-				F782735228BE697D003303B7 /* CarouselViewTableViewCell.xib in Resources */,
+				F782735228BE697D003303B7 /* CarouselTableViewCell.xib in Resources */,
 				F711A44E2745A84A00E1515D /* GetSeriesGuideContext.plist in Resources */,
 				F711A4452745A84A00E1515D /* GetSeriesNewsListContext.plist in Resources */,
 				F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */,
@@ -1645,7 +1645,7 @@
 				F756A72028BCE7A90086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift in Sources */,
 				F72E277628B407E100E751B5 /* TVSeriesCastTVC.swift in Sources */,
 				F78EC95E27C6A71C0041F998 /* TVSeriesNewsTVC.swift in Sources */,
-				F782735128BE697D003303B7 /* CarouselViewTableViewCell.swift in Sources */,
+				F782735128BE697D003303B7 /* CarouselTableViewCell.swift in Sources */,
 				F7471DEE27AAE03C00BDA17A /* VMseriesDetailOfficialSiteItem.swift in Sources */,
 				F79C97332746CCA3001BD5F8 /* LFContentItemModel.m in Sources */,
 				F79C97352746CCA3001BD5F8 /* LFLinkContentItemModel.m in Sources */,

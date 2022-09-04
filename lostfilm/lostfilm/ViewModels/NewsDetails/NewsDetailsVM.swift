@@ -30,7 +30,7 @@ extension NewsDetailsVM: UITableViewDataSource {
         case is LFAttributedTextContentItemModel:
             (cell as! TextViewCell).item = item
         case is LFPhotoListContentItemModel:
-            (cell as! CarouselViewTableViewCell).item = item
+            (cell as! CarouselTableViewCell).item = item
         case is LFVideoContentItemModel:
             (cell as! VideoViewCell).item = (item as! LFVideoContentItemModel).videoModel
         default: fatalError("\(NewsDetailsVM.self): cell cannot be free of data")

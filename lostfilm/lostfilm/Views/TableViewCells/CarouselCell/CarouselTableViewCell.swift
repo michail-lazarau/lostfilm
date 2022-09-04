@@ -1,6 +1,6 @@
 import UIKit
 
-class CarouselViewTableViewCell: UITableViewCell  {
+class CarouselTableViewCell: UITableViewCell  {
     @IBOutlet weak var carouselView: CarouselView!
     var item: LFContentItemModel? {
         didSet {

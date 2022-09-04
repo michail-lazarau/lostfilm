@@ -41,7 +41,7 @@ class NewsDetailsTVC: UITableViewController, IUpdatingViewDelegate {
     private func registerCells() {
         tableView.register(VideoViewCell.self, forCellReuseIdentifier: VideoViewCell.reuseIdentifier)
         tableView.registerCell(nib: TextViewCell.nib, forCellReuseIdentifier: TextViewCell.reuseIdentifier)
-        tableView.registerCell(nib: CarouselViewTableViewCell.nib, forCellReuseIdentifier: CarouselViewTableViewCell.reuseIdentifier)
+        tableView.registerCell(nib: CarouselTableViewCell.nib, forCellReuseIdentifier: CarouselTableViewCell.reuseIdentifier)
     }
     
     // MARK: - Table view delegate
