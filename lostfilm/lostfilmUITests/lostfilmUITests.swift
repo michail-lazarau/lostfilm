@@ -1,5 +1,4 @@
 import XCTest
-@testable import lostfilm
 
 // https://developer.apple.com/documentation/xctest/user_interface_tests
 // https://habr.com/ru/company/vivid_money/blog/533180/
