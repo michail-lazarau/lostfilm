@@ -1,4 +1,5 @@
 import Foundation
+@testable import lostfilm
 
 struct TestDataObject {
     static let seriesModel: LFSeriesModel = LFSeriesModel(data: [
