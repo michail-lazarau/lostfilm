@@ -1,9 +1,23 @@
 import Foundation
 
 func login() {
+    let username = "creativemanhorde%2540gmail.com"
+    let password = "unhollylm0106"
+
+    LoginService(service: NetworkService()).login(userLogin: username, password: password) { result in
+        switch result {
+        case .success:
+            break
+        case let .failure(error):
+            print(error.localizedDescription)
+        }
+    }
+}
+
+func oldLogin() {
     let cookieProperties: [HTTPCookiePropertyKey: Any] = [
         HTTPCookiePropertyKey.name: "lf_session",
-        HTTPCookiePropertyKey.value: "70aadc36df10002bd40a6d01d2b567d7.7024831", //"980bc13ad5a05ee696cfb3e732e4b489.938288"
+        HTTPCookiePropertyKey.value: "70aadc36df10002bd40a6d01d2b567d7.7024831",
         HTTPCookiePropertyKey.domain: ".lostfilm.tv",
         HTTPCookiePropertyKey.path: "/",
         HTTPCookiePropertyKey.expires: Date().addingTimeInterval(10000000),
