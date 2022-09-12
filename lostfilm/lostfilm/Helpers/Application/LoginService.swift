@@ -48,7 +48,7 @@ private extension LoginService {
             URLQueryItem(name: "type", value: "login"),
             URLQueryItem(name: "mail", value: username),
             URLQueryItem(name: "pass", value: password),
-            URLQueryItem(name: "need_captcha", value: nil), // value doesn't effect the response
+            URLQueryItem(name: "need_captcha", value: "0"), // seemingly the value doesn't effect the response
             URLQueryItem(name: "captcha", value: nil),
             URLQueryItem(name: "rem", value: "1")
         ]
