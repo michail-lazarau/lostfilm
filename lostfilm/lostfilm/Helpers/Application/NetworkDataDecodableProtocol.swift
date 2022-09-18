@@ -1,12 +1,12 @@
 import Foundation
 
-protocol NetworkDataDecodable {
-     var service:NetworkService { get set }
+protocol NetworkDataDecodableProtocol: URLSessionProtocol {
 }
 
-extension NetworkDataDecodable {
-    func dataRequest<T:Decodable>(request: URLRequest, response: @escaping (Result<T, Error>) -> Void) {
-        service.sendRequest(request: request) { result in
+extension NetworkDataDecodableProtocol {
+    func sendRequest<T:Decodable>(request: URLRequest, response: @escaping (Result<T, Error>) -> Void) {
+        
+        sendRequest(request: request) { result in
             switch result {
             case .success(let data):
                 do {

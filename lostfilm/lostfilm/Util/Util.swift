@@ -4,7 +4,7 @@ func login() {
     let username = "creativemanhorde%2540gmail.com"
     let password = "unhollylm0106"
 
-    LoginService(service: NetworkService()).login(userLogin: username, password: password) { result in
+    LoginService(session: URLSession.shared).login(userLogin: username, password: password) { result in
         switch result {
         case .success:
             break

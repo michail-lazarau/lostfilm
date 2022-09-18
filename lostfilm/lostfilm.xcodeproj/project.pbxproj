@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C0733B6909895A016980DB8 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
+		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90427C14C8200924479 /* ParagraphView.xib */; };
 		F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DB90627C14CC700924479 /* ParagraphView.swift */; };
 		F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */; };
@@ -38,6 +38,7 @@
 		F717BF1A27AD5CF80029B796 /* IUpdatingViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717BF1927AD5CF80029B796 /* IUpdatingViewDelegate.swift */; };
 		F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721A0422792273800C614C7 /* FilteringDelegate.swift */; };
 		F721B88B28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721B88A28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift */; };
+		F7232D7028D1D63A00BA94B0 /* LoginResponseBodyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7232D6F28D1D63A00BA94B0 /* LoginResponseBodyMock.swift */; };
 		F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */; };
 		F72E276F28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E276E28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift */; };
 		F72E277228B4051C00E751B5 /* CastVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E277128B4051C00E751B5 /* CastVM.swift */; };
@@ -113,8 +114,7 @@
 		F77300D82773BC91007FF03B /* ScheduleTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D72773BC91007FF03B /* ScheduleTVC.swift */; };
 		F77E8DEF277CF40F005E7F50 /* FilteringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */; };
 		F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */; };
-		F780418228C8EC18007B4CE0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780418128C8EC18007B4CE0 /* NetworkService.swift */; };
-		F780418428C92961007B4CE0 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780418328C92961007B4CE0 /* NetworkDataFetcher.swift */; };
+		F780418428C92961007B4CE0 /* NetworkDataDecodableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */; };
 		F780418628C94048007B4CE0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780418528C94048007B4CE0 /* HTTPMethod.swift */; };
 		F780418828C9454E007B4CE0 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780418728C9454E007B4CE0 /* HTTPHeader.swift */; };
 		F781ACC627E11C91003ABF31 /* PhotosVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F781ACC527E11C91003ABF31 /* PhotosVM.swift */; };
@@ -194,6 +194,11 @@
 		F7E022A32844276400123B56 /* GlobalSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */; };
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
+		F7E838F828D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838F728D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift */; };
+		F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FB28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift */; };
+		F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */; };
+		F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FF28D361CB00FC2398 /* URLSessionDataTaskMock.swift */; };
+		F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8390128D3CE4E00FC2398 /* LoginServiceTests.swift */; };
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
 		F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */; };
 		F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */; };
@@ -265,6 +270,7 @@
 		F717BF1927AD5CF80029B796 /* IUpdatingViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUpdatingViewDelegate.swift; sourceTree = "<group>"; };
 		F721A0422792273800C614C7 /* FilteringDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDelegate.swift; sourceTree = "<group>"; };
 		F721B88A28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsDataProvider.swift; sourceTree = "<group>"; };
+		F7232D6F28D1D63A00BA94B0 /* LoginResponseBodyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseBodyMock.swift; sourceTree = "<group>"; };
 		F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateIntervalEnum.swift; sourceTree = "<group>"; };
 		F72E276E28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesCastDataProvider.swift; sourceTree = "<group>"; };
 		F72E277128B4051C00E751B5 /* CastVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastVM.swift; sourceTree = "<group>"; };
@@ -340,8 +346,7 @@
 		F77300D72773BC91007FF03B /* ScheduleTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTVC.swift; sourceTree = "<group>"; };
 		F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringTVC.swift; sourceTree = "<group>"; };
 		F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataController.swift; sourceTree = "<group>"; };
-		F780418128C8EC18007B4CE0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		F780418328C92961007B4CE0 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataDecodableProtocol.swift; sourceTree = "<group>"; };
 		F780418528C94048007B4CE0 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		F780418728C9454E007B4CE0 /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		F781ACC527E11C91003ABF31 /* PhotosVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVM.swift; sourceTree = "<group>"; };
@@ -446,6 +451,11 @@
 		F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlobalSearchHeaderView.xib; sourceTree = "<group>"; };
 		F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterDelegate.swift; sourceTree = "<group>"; };
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
+		F7E838F728D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDataTaskProtocol+URLSessionDataTask.swift"; sourceTree = "<group>"; };
+		F7E838FB28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionProtocol+URLSession.swift"; sourceTree = "<group>"; };
+		F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		F7E838FF28D361CB00FC2398 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
+		F7E8390128D3CE4E00FC2398 /* LoginServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTests.swift; sourceTree = "<group>"; };
 		F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesDetailsVC.swift; sourceTree = "<group>"; };
 		F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchTVC.swift; sourceTree = "<group>"; };
 		F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GetGlobalSearchContext.plist; sourceTree = "<group>"; };
@@ -473,7 +483,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C0733B6909895A016980DB8 /* libPods-lostfilm.a in Frameworks */,
+				F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +518,16 @@
 				0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F70C500828D0DC06004157AD /* NetworkMocks */ = {
+			isa = PBXGroup;
+			children = (
+				F7232D6F28D1D63A00BA94B0 /* LoginResponseBodyMock.swift */,
+				F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */,
+				F7E838FF28D361CB00FC2398 /* URLSessionDataTaskMock.swift */,
+			);
+			path = NetworkMocks;
 			sourceTree = "<group>";
 		};
 		F711A41A2745A74300E1515D /* Resources */ = {
@@ -917,6 +937,7 @@
 		F793AE8A2853A5150004BF0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F70C500828D0DC06004157AD /* NetworkMocks */,
 				F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */,
 				F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */,
 				F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */,
@@ -1089,6 +1110,7 @@
 			children = (
 				F793AE8A2853A5150004BF0C /* Supporting Files */,
 				F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */,
+				F7E8390128D3CE4E00FC2398 /* LoginServiceTests.swift */,
 			);
 			path = lostfilmTests;
 			sourceTree = "<group>";
@@ -1108,11 +1130,11 @@
 		F7B2DB91274AA29B0099CF29 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				F7E838F428D35F2E00FC2398 /* Networking */,
 				F751EBDB28CE5BA10005B652 /* JsonModels */,
 				F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */,
-				F780418128C8EC18007B4CE0 /* NetworkService.swift */,
 				F751EBD928CE4E300005B652 /* LoginService.swift */,
-				F780418328C92961007B4CE0 /* NetworkDataFetcher.swift */,
+				F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */,
 				F780418528C94048007B4CE0 /* HTTPMethod.swift */,
 				F780418728C9454E007B4CE0 /* HTTPHeader.swift */,
 				F792183028C9F3DC00230630 /* DataTaskError.swift */,
@@ -1272,6 +1294,15 @@
 				F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */,
 			);
 			path = CellsForGlobalSearchTVC;
+			sourceTree = "<group>";
+		};
+		F7E838F428D35F2E00FC2398 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F7E838F728D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift */,
+				F7E838FB28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		F7E8E46427A8067000BA9DC7 /* TVSeriesDetailsControllers */ = {
@@ -1585,7 +1616,6 @@
 				F7DFCF9527F0B5EB006A0789 /* ImageViewTransitionState.swift in Sources */,
 				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
-				F780418228C8EC18007B4CE0 /* NetworkService.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */,
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
@@ -1597,6 +1627,7 @@
 				F76D1F7927B95F61007E5933 /* TVSeriesEpisodesDataProvider.swift in Sources */,
 				F721B88B28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift in Sources */,
 				F7EC8ED927CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift in Sources */,
+				F7E838F828D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift in Sources */,
 				F76E41D82891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift in Sources */,
 				F7C2812627C7A80000DA8A62 /* NewsVM.swift in Sources */,
 				F7AEE482273FF32400C304D0 /* TabBarRootController.swift in Sources */,
@@ -1616,6 +1647,7 @@
 				F7516D6C282BDE8400E1A138 /* GlobalSearchItem.swift in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
 				F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */,
+				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
 				F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */,
 				F7516D74282BF29000E1A138 /* GlobalSearchVM.swift in Sources */,
@@ -1623,7 +1655,7 @@
 				F77288B6289C28E600AB28AB /* DataRefreshable.swift in Sources */,
 				F7355EF42772584E00B42B0F /* NewEpisodesTVC.swift in Sources */,
 				F7471DF227AAE3EB00BDA17A /* SeriesVM.swift in Sources */,
-				F780418428C92961007B4CE0 /* NetworkDataFetcher.swift in Sources */,
+				F780418428C92961007B4CE0 /* NetworkDataDecodableProtocol.swift in Sources */,
 				F78E0BEE28BF7C36007F2759 /* LFPhotoListContentItemModel+IModelCellReuseIdentifiable.swift in Sources */,
 				F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */,
 				F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */,
@@ -1730,8 +1762,12 @@
 			files = (
 				F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */,
 				F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */,
+				F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */,
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
 				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
+				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,
+				F7232D7028D1D63A00BA94B0 /* LoginResponseBodyMock.swift in Sources */,
+				F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,10 +1,10 @@
 import Foundation
 
-final class LoginService {
-    let service: NetworkService
-
-    init(service: NetworkService) {
-        self.service = service
+final class LoginService<T: URLSessionProtocol>  {
+    var session: T
+    
+    init(session: T) {
+        self.session = session
     }
 
     func login(userLogin: String, password: String, response: @escaping (Result<String, Error>) -> Void) {
@@ -17,19 +17,21 @@ final class LoginService {
     }
 }
 
-private extension LoginService {
-    private func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
-        service.sendRequest(request: request) { result in
+extension LoginService {
+    func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
+        session.sendRequest(request: request) { result in
             switch result {
             case let .success(data):
                 do {
                     let decodedData = try JSONDecoder().decode(UserLoginResponse.self, from: data)
-                    if decodedData.error == nil, decodedData.name != nil {
-                        response(.success(decodedData.name!))
+                    if decodedData.error == nil, let username = decodedData.name {
+                        response(.success(username))
                     } else if decodedData.needCaptcha == true {
                         response(.failure(LoginServiceError.needCaptcha))
-                    } else {
+                    } else if decodedData.error == 3 {
                         response(.failure(LoginServiceError.invalidCredentials))
+                    } else {
+                        response(.failure(LoginServiceError.unknownLoginError))
                     }
                 } catch let decodeError {
                     response(.failure(decodeError))
@@ -52,21 +54,21 @@ private extension LoginService {
             URLQueryItem(name: "captcha", value: nil),
             URLQueryItem(name: "rem", value: "1")
         ]
-        let body = requestComponents.query?.data(using: .utf8)
-
-        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php", method: HTTPMethod.post, headers: [.referer("https://www.lostfilm.tv"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")], query: nil, body: body)
+        
+//        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php", method: HTTPMethod.post, headers: [.referer("https://www.lostfilm.tv/login"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")], query: nil, body: requestComponents.query?.data(using: .utf8))
+        
+        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php", method: HTTPMethod.post, headers: [.referer("https://www.lostfilm.tv"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")], query: requestComponents.queryItems, body: nil)
     }
 }
 
-private extension LoginService {
-    enum LoginServiceError: LocalizedError {
-        case invalidCredentials, needCaptcha
+enum LoginServiceError: LocalizedError {
+    case invalidCredentials, needCaptcha, unknownLoginError
 
-        public var errorDescription: String? {
-            switch self {
-            case .invalidCredentials: return "Login invalid credentials"
-            case .needCaptcha: return "Need to pass captcha"
-            }
+    public var errorDescription: String? {
+        switch self {
+        case .invalidCredentials: return "Login invalid credentials"
+        case .needCaptcha: return "Need to pass captcha"
+        case .unknownLoginError: return "Error occurred during login"
         }
     }
 }

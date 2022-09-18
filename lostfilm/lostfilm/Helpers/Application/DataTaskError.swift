@@ -5,7 +5,7 @@ public enum DataTaskError: LocalizedError {
     
     case generic
     case invalidURL
-    case invalidJSON
+    case invalidJSON (_: String = "")
     case unexpectedResponseBody
     case httpRequestFailed(statusCode: UInt, json: JSON?)
 
@@ -17,5 +17,11 @@ public enum DataTaskError: LocalizedError {
         case .unexpectedResponseBody: return "Unexpected response body"
         case .httpRequestFailed(let statusCode, _): return "HTTP request failed with status code: \(statusCode)."
         }
+    }
+}
+
+extension DataTaskError: Equatable {
+    public static func == (lhs: DataTaskError, rhs: DataTaskError) -> Bool {
+        type(of: lhs) == type(of: rhs) && lhs.localizedDescription == lhs.localizedDescription
     }
 }
