@@ -1,7 +1,7 @@
 import Foundation
 
 final class LoginService<T: URLSessionProtocol>  {
-    var session: T
+    let session: T
     
     init(session: T) {
         self.session = session
@@ -55,9 +55,11 @@ extension LoginService {
             URLQueryItem(name: "rem", value: "1")
         ]
         
-//        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php", method: HTTPMethod.post, headers: [.referer("https://www.lostfilm.tv/login"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")], query: nil, body: requestComponents.query?.data(using: .utf8))
-        
-        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php", method: HTTPMethod.post, headers: [.referer("https://www.lostfilm.tv"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")], query: requestComponents.queryItems, body: nil)
+        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php",
+                                   method: HTTPMethod.post,
+                                   headers: [.referer("https://www.lostfilm.tv/login"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")],
+                                   query: nil,
+                                   body: requestComponents.query?.data(using: .utf8))
     }
 }
 

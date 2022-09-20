@@ -38,7 +38,7 @@
 		F717BF1A27AD5CF80029B796 /* IUpdatingViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717BF1927AD5CF80029B796 /* IUpdatingViewDelegate.swift */; };
 		F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721A0422792273800C614C7 /* FilteringDelegate.swift */; };
 		F721B88B28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721B88A28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift */; };
-		F7232D7028D1D63A00BA94B0 /* LoginResponseBodyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7232D6F28D1D63A00BA94B0 /* LoginResponseBodyMock.swift */; };
+		F7232D7028D1D63A00BA94B0 /* LoginResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7232D6F28D1D63A00BA94B0 /* LoginResponseMock.swift */; };
 		F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */; };
 		F72E276F28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E276E28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift */; };
 		F72E277228B4051C00E751B5 /* CastVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E277128B4051C00E751B5 /* CastVM.swift */; };
@@ -131,7 +131,6 @@
 		F78EC96027C6A7820041F998 /* TVSeriesNewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78EC95F27C6A7820041F998 /* TVSeriesNewsDataProvider.swift */; };
 		F792183128C9F3DC00230630 /* DataTaskError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183028C9F3DC00230630 /* DataTaskError.swift */; };
 		F792183328C9F48E00230630 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183228C9F48E00230630 /* Request.swift */; };
-		F792183728C9FF4900230630 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183628C9FF4900230630 /* HttpStatusCode.swift */; };
 		F792183D28CB442900230630 /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183C28CB442900230630 /* UserLoginResponse.swift */; };
 		F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5D27BC195800C71147 /* EpisodesVM.swift */; };
 		F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5F27BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift */; };
@@ -270,7 +269,7 @@
 		F717BF1927AD5CF80029B796 /* IUpdatingViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUpdatingViewDelegate.swift; sourceTree = "<group>"; };
 		F721A0422792273800C614C7 /* FilteringDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDelegate.swift; sourceTree = "<group>"; };
 		F721B88A28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsDataProvider.swift; sourceTree = "<group>"; };
-		F7232D6F28D1D63A00BA94B0 /* LoginResponseBodyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseBodyMock.swift; sourceTree = "<group>"; };
+		F7232D6F28D1D63A00BA94B0 /* LoginResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseMock.swift; sourceTree = "<group>"; };
 		F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateIntervalEnum.swift; sourceTree = "<group>"; };
 		F72E276E28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesCastDataProvider.swift; sourceTree = "<group>"; };
 		F72E277128B4051C00E751B5 /* CastVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastVM.swift; sourceTree = "<group>"; };
@@ -365,7 +364,6 @@
 		F78EC95F27C6A7820041F998 /* TVSeriesNewsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesNewsDataProvider.swift; sourceTree = "<group>"; };
 		F792183028C9F3DC00230630 /* DataTaskError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskError.swift; sourceTree = "<group>"; };
 		F792183228C9F48E00230630 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		F792183628C9FF4900230630 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		F792183C28CB442900230630 /* UserLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
 		F7978D5D27BC195800C71147 /* EpisodesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesVM.swift; sourceTree = "<group>"; };
 		F7978D5F27BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodesVM+UITableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -523,7 +521,7 @@
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
 			isa = PBXGroup;
 			children = (
-				F7232D6F28D1D63A00BA94B0 /* LoginResponseBodyMock.swift */,
+				F7232D6F28D1D63A00BA94B0 /* LoginResponseMock.swift */,
 				F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */,
 				F7E838FF28D361CB00FC2398 /* URLSessionDataTaskMock.swift */,
 			);
@@ -1139,7 +1137,6 @@
 				F780418728C9454E007B4CE0 /* HTTPHeader.swift */,
 				F792183028C9F3DC00230630 /* DataTaskError.swift */,
 				F792183228C9F48E00230630 /* Request.swift */,
-				F792183628C9FF4900230630 /* HttpStatusCode.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1751,7 +1748,6 @@
 				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
 				F77288B2289AB54700AB28AB /* ViewModelable.swift in Sources */,
 				F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */,
-				F792183728C9FF4900230630 /* HttpStatusCode.swift in Sources */,
 				F76E41D2289144FA0086D5B2 /* BaseDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1766,7 +1762,7 @@
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
 				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
 				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,
-				F7232D7028D1D63A00BA94B0 /* LoginResponseBodyMock.swift in Sources */,
+				F7232D7028D1D63A00BA94B0 /* LoginResponseMock.swift in Sources */,
 				F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

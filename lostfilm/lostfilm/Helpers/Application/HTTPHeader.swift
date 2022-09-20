@@ -117,10 +117,6 @@ public extension HTTPHeader {
                 return "tvOS"
                 #elseif os(macOS)
                 return "macOS"
-                #elseif os(Linux)
-                return "Linux"
-                #elseif os(Windows)
-                return "Windows"
                 #else
                 return "Unknown"
                 #endif

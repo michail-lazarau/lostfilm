@@ -1,7 +1,7 @@
 import Foundation
 
 func login() {
-    let username = "creativemanhorde%2540gmail.com"
+    let username = "creativemanhorde@gmail.com"
     let password = "unhollylm0106"
 
     LoginService(session: URLSession.shared).login(userLogin: username, password: password) { result in
