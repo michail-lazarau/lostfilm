@@ -27,4 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        // https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623111-applicationwillterminate
+        HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
+    }
 }
