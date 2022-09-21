@@ -92,7 +92,7 @@ DEPENDENCIES:
   - SDWebImage
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - CarbonKit
     - SDWebImage
 

@@ -1,5 +1,6 @@
 import Foundation
 
+// предлагаю перенсти в файл Enums
 enum ScheduleDateInterval: Int {
     case today
     case tomorrow

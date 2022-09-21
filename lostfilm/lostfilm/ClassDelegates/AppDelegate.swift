@@ -2,13 +2,16 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+//    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let tabBarRootVC = TabBarRootController()
+//        let tabBarRootVC = TabBarRootController()
 
-        let window = UIWindow(frame: UIScreen.main.bounds) // TO-DO: no difference with UIWindow() ?
-        window.rootViewController = tabBarRootVC
-        window.makeKeyAndVisible()
-        login()
+//        let window = UIWindow(frame: UIScreen.main.bounds) // TO-DO: no difference with UIWindow() ?
+//        window.rootViewController = tabBarRootVC
+//        window.makeKeyAndVisible()
+//        login()
         return true
     }
 

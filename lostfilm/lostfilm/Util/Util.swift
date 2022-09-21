@@ -24,6 +24,7 @@ func dateToString(date: Date, dateFormat: String) -> String {
     dateToString(date: date, locale: Locale.current, dateFormat: dateFormat)
 }
 
+
 // MARK: Trash
 
 extension UILabel {
