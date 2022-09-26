@@ -8,7 +8,7 @@
 import Foundation
 
 class Utilities {
-    // TEST
+    
     func createInputContainerView(withimage image: UIImage, textField: UITextField) -> UIView {
         let view = UIView()
         let imageView = UIImageView()
