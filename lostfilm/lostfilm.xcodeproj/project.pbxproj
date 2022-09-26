@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5C0733B6909895A016980DB8 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
-		C516A43B28DB3F86003C6013 /* testVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516A43A28DB3F86003C6013 /* testVC.swift */; };
-		C516A43D28DB4016003C6013 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516A43C28DB4016003C6013 /* LoginViewController.swift */; };
 		C567D04028D9B1BD000FDCFE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D03F28D9B1BD000FDCFE /* Extentions.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginVC.swift */; };
@@ -225,8 +223,6 @@
 		86D9BE18D9C27254DB0787E9 /* Pods-lostfilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
-		C516A43A28DB3F86003C6013 /* testVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testVC.swift; sourceTree = "<group>"; };
-		C516A43C28DB4016003C6013 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D03F28D9B1BD000FDCFE /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -508,8 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				C567D04528D9BC72000FDCFE /* LoginVC.swift */,
-				C516A43A28DB3F86003C6013 /* testVC.swift */,
-				C516A43C28DB4016003C6013 /* LoginViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1054,9 +1048,9 @@
 				F7355EEE2772522500B42B0F /* Util */,
 				F7C4EE852753E539006B5961 /* Other */,
 				F79C97012746CCA3001BD5F8 /* Models */,
+				F711A4502745A87000E1515D /* Helpers */,
 				F7471DE227AABA4100BDA17A /* ViewModels */,
 				F721B88328B7A13A00D521D0 /* Views */,
-				F711A4502745A87000E1515D /* Helpers */,
 				F711A41A2745A74300E1515D /* Resources */,
 				F73459DD276642E200E45725 /* Protocols */,
 				F74E3A81274051AA004B81EF /* ClassDelegates */,
@@ -1653,7 +1647,6 @@
 				F72E277228B4051C00E751B5 /* CastVM.swift in Sources */,
 				F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */,
 				F756A72328BCFFE30086A9B9 /* NewsDetailsTVC.swift in Sources */,
-				C516A43D28DB4016003C6013 /* LoginViewController.swift in Sources */,
 				F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */,
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
 				F77226BF28BE4FEB002143CC /* CarouselCollectionViewCell.swift in Sources */,
@@ -1666,7 +1659,6 @@
 				F7DBEE0927FA34570094A7D2 /* TVSeriesVideosDataProvider.swift in Sources */,
 				F75E66C428B8F13200984724 /* TextViewCell.swift in Sources */,
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
-				C516A43B28DB3F86003C6013 /* testVC.swift in Sources */,
 				F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */,
 				F7997CD0276F93BA00DFCC19 /* VideoViewCell.swift in Sources */,
 				F7D6F10528858082007196AF /* SeriesVideoViewCell.swift in Sources */,
