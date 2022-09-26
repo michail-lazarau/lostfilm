@@ -74,6 +74,28 @@ class LoginServiceTests: XCTestCase {
             }
         }
     }
+    
+    func test_positive_loginPageRenderedWithNoCaptchaRequired() throws {
+        guard let htmlToModel = DVHtmlToModels(contextByName: "GetLoginPageContext") else {
+            return // MARK: does return produces error?
+        }
+        htmlToModel.setValue("fake", forKey: "url") // MARK: replace with "fake" with Bundle.main.path(forResource: <#T##String?#>, ofType: "plist")
+        sut.getLoginPage(htmlParserWrapper: htmlToModel, completionHandler: { result in
+//            <#code#>
+        })
+    }
+    
+    func test_positive_loginPageRenderedWithCaptchaRequired() throws {
+        
+    }
+    
+    func test_negative_loginPageNotRendered() throws {
+        
+    }
+    
+    func test_negative_loginPageElementNotFound() throws {
+        
+    }
 }
 
 extension LoginServiceTests {

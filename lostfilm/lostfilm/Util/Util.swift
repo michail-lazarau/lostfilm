@@ -3,7 +3,16 @@ import Foundation
 func login() {
     let username = "creativemanhorde@gmail.com"
     let password = "unhollylm0106"
-
+    
+    HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0))
+    LoginService(session: URLSession.shared).getLoginPage { result in
+        switch result {
+        case .success(let model):
+            break
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
+    }
     LoginService(session: URLSession.shared).login(userLogin: username, password: password) { result in
         switch result {
         case .success:

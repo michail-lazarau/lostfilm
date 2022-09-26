@@ -90,6 +90,9 @@
 		F75E66C528B8F13200984724 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F75E66C328B8F13200984724 /* TextViewCell.xib */; };
 		F7640B5628512DF200D8365B /* lostfilmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B5528512DF200D8365B /* lostfilmUITests.swift */; };
 		F7640B5828512DF200D8365B /* lostfilmUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */; };
+		F766765528DB7EBE009B9516 /* GetLoginPageContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F766765428DB7EBE009B9516 /* GetLoginPageContext.plist */; };
+		F766765728DBCCA1009B9516 /* LFLoginPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766765628DBCCA1009B9516 /* LFLoginPageModel.swift */; };
+		F766765928DE0274009B9516 /* DVHtmlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766765828DE0274009B9516 /* DVHtmlError.swift */; };
 		F76BEDD728AD3A4E00A4B33E /* ILoadingDataByPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BEDD628AD3A4E00A4B33E /* ILoadingDataByPage.swift */; };
 		F76D1F7527B9454C007E5933 /* TVSeriesEpisodesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */; };
 		F76D1F7727B949C5007E5933 /* VMepisodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D1F7627B949C5007E5933 /* VMepisodeItem.swift */; };
@@ -321,6 +324,9 @@
 		F7640B5328512DF200D8365B /* lostfilmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lostfilmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7640B5528512DF200D8365B /* lostfilmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmUITests.swift; sourceTree = "<group>"; };
 		F7640B5728512DF200D8365B /* lostfilmUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F766765428DB7EBE009B9516 /* GetLoginPageContext.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GetLoginPageContext.plist; sourceTree = "<group>"; };
+		F766765628DBCCA1009B9516 /* LFLoginPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFLoginPageModel.swift; sourceTree = "<group>"; };
+		F766765828DE0274009B9516 /* DVHtmlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVHtmlError.swift; sourceTree = "<group>"; };
 		F76BEDD628AD3A4E00A4B33E /* ILoadingDataByPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILoadingDataByPage.swift; sourceTree = "<group>"; };
 		F76D1F7427B9454C007E5933 /* TVSeriesEpisodesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesEpisodesTVC.swift; sourceTree = "<group>"; };
 		F76D1F7627B949C5007E5933 /* VMepisodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMepisodeItem.swift; sourceTree = "<group>"; };
@@ -553,6 +559,7 @@
 				F711A4392745A84900E1515D /* GetTimetableContext.plist */,
 				F711A4422745A84A00E1515D /* GetVideoListContext.plist */,
 				F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */,
+				F766765428DB7EBE009B9516 /* GetLoginPageContext.plist */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -970,18 +977,19 @@
 		F79C97022746CCA3001BD5F8 /* Series */ = {
 			isa = PBXGroup;
 			children = (
-				F79C97032746CCA3001BD5F8 /* LFSeriesModel.h */,
 				F79C97042746CCA3001BD5F8 /* LFSeriesFilterModel.h */,
-				F79C97052746CCA3001BD5F8 /* LFPersonModel.h */,
-				F79C97062746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m */,
-				F79C97072746CCA3001BD5F8 /* LFEpisodeModel.h */,
-				F79C97082746CCA3001BD5F8 /* LFSeasonModel.h */,
 				F79C97092746CCA3001BD5F8 /* LFSeriesFilterModel.m */,
+				F79C97052746CCA3001BD5F8 /* LFPersonModel.h */,
+				F79C97072746CCA3001BD5F8 /* LFEpisodeModel.h */,
+				F79C970E2746CCA3001BD5F8 /* LFSeasonModel.m */,
+				F79C97082746CCA3001BD5F8 /* LFSeasonModel.h */,
 				F79C970A2746CCA3001BD5F8 /* LFSeriesModel.m */,
+				F79C97032746CCA3001BD5F8 /* LFSeriesModel.h */,
 				F79C970B2746CCA3001BD5F8 /* LFPersonModel.m */,
 				F79C970C2746CCA3001BD5F8 /* LFEpisodeModel.m */,
 				F79C970D2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.h */,
-				F79C970E2746CCA3001BD5F8 /* LFSeasonModel.m */,
+				F79C97062746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m */,
+				F766765628DBCCA1009B9516 /* LFLoginPageModel.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -1137,6 +1145,7 @@
 				F780418728C9454E007B4CE0 /* HTTPHeader.swift */,
 				F792183028C9F3DC00230630 /* DataTaskError.swift */,
 				F792183228C9F48E00230630 /* Request.swift */,
+				F766765828DE0274009B9516 /* DVHtmlError.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1485,6 +1494,7 @@
 				F711A44E2745A84A00E1515D /* GetSeriesGuideContext.plist in Resources */,
 				F711A4452745A84A00E1515D /* GetSeriesNewsListContext.plist in Resources */,
 				F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */,
+				F766765528DB7EBE009B9516 /* GetLoginPageContext.plist in Resources */,
 				F77226C028BE4FEB002143CC /* CarouselCollectionViewCell.xib in Resources */,
 				F7839836274017840025A6B5 /* Localizable.strings in Resources */,
 				F711A44C2745A84A00E1515D /* GetSeriesPhotoListContext.plist in Resources */,
@@ -1647,6 +1657,7 @@
 				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
 				F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */,
+				F766765728DBCCA1009B9516 /* LFLoginPageModel.swift in Sources */,
 				F7516D74282BF29000E1A138 /* GlobalSearchVM.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
 				F77288B6289C28E600AB28AB /* DataRefreshable.swift in Sources */,
@@ -1738,6 +1749,7 @@
 				F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */,
 				F76D1F7727B949C5007E5933 /* VMepisodeItem.swift in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
+				F766765928DE0274009B9516 /* DVHtmlError.swift in Sources */,
 				F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
 				F7471DF827AAFAB100BDA17A /* TVSeriesOverviewTVC.swift in Sources */,
