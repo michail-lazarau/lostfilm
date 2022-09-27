@@ -9,13 +9,13 @@ class ScheduleDataController {
     }
 
     private let sections: [ScheduleDateInterval] = [.today, .tomorrow, .thisWeek, .nextWeek, .later]
-    
+
     func getSchedule() {
         if isLoading == true {
             return
         }
         isLoading = true
-        
+
         getTimeTable { [weak self] episodesList, _ in
             guard let strongSelf = self
             else { return }
@@ -35,7 +35,7 @@ class ScheduleDataController {
                     delegate.updateTableView()
                 }
             }
-            
+
             strongSelf.isLoading = false
         }
     }
@@ -59,7 +59,7 @@ class ScheduleDataController {
         let dateIsOnThisWeekAfterTomorrow = comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedDescending
         || comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedSame
         let dateInterval: DateInterval
-        
+
         switch intervalEnum {
         case .today:
             dateInterval = DateInterval(start: today.startOfDay, end: today.endOfDay)
@@ -76,7 +76,7 @@ class ScheduleDataController {
         }
         return dateInterval
     }
-    
+
     func DidEmptyItemList() {
         itemList.removeAll()
         itemList = Array(repeating: [], count: 5)

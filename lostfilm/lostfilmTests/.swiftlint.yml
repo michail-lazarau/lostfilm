@@ -1,0 +1,36 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+
+# rule identifiers to exclude from running
+disabled_rules:
+  - compiler_protocol_init
+  - discarded_notification_center_observer
+  - empty_parameters
+  - file_length
+  - for_where
+  - function_body_length
+  - large_tuple
+  - leading_whitespace
+  - notification_center_detachment
+  - line_length
+  - empty_count
+  - identifier_name
+  - shorthand_operator
+  - type_body_length
+  - cyclomatic_complexity
+  - todo
+  - void_function_in_ternary
+  - force_cast
+  - implicitly_unwrapped_optional
+
+# rule identifiers to opt in
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - fatal_error_message
+
+# special configuration for rules
+colon:
+  flexible_right_spacing: false
+  apply_to_dictionaries: true

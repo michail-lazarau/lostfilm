@@ -1,6 +1,6 @@
 import Foundation
 
-extension NewsVM: UITableViewDataSource {   
+extension NewsVM: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

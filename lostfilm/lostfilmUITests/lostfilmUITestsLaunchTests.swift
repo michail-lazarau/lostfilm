@@ -1,6 +1,6 @@
 import XCTest
 
-class lostfilmUITestsLaunchTests: XCTestCase {
+class LostfilmUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

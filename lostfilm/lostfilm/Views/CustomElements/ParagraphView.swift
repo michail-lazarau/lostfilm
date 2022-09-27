@@ -3,18 +3,18 @@ import UIKit
 @IBDesignable
 class ParagraphView: UIView {
     @IBOutlet weak var label: UILabel!
-    
-    //coder is a must
+
+    // coder is a must
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     private func setup() {
         let bundle = Bundle.init(for: ParagraphView.self)
         if let viewToAdd = bundle.loadNibNamed("ParagraphView", owner: self, options: nil), let contentView = viewToAdd.first as? UIView {

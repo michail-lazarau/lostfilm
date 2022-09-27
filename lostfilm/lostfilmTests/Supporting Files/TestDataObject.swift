@@ -19,7 +19,7 @@ struct TestDataObject {
         "officialSiteURL": "",
         "seriesDescription": ""
     ])
-    
+
     static let personModel: LFPersonModel = LFPersonModel(data: [
         "id": "Justin_Lostutter?ref=sf",
         "nameRu": "Justin Lostutter",

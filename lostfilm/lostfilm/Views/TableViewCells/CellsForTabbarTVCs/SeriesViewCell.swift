@@ -10,7 +10,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
             }
         }
     }
-    
+
     func configureWith(dataModel: LFSeriesModel) {
         serialView.sd_setImage(with: dataModel.photoUrl)
         title.text = dataModel.nameRu
@@ -95,7 +95,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
             cellStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             cellStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             cellStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            cellStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
         serialView.heightAnchor.constraint(equalTo: serialView.widthAnchor, multiplier: 3.0 / 5.0).isActive = true
     }
@@ -106,7 +106,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
         labelStackView.addArrangedSubview(details)
         labelStackView.setCustomSpacing(12.0, after: subtitle)
     }
-    
+
     private func viewTransitionSetup() {
         serialView.sd_imageTransition = SDWebImageTransition.fade
         serialView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
@@ -116,7 +116,7 @@ class SeriesViewCell: UITableViewCell, CellConfigurable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         serialView.sd_cancelCurrentImageLoad()
