@@ -9,8 +9,8 @@ import Foundation
 
 enum Icons {
     static let mailIcon = UIImage(named: "mail") ?? UIImage()
-    static let passwordIcon = UIImage(named: "password")  ?? UIImage()
-    static let logoImage = UIImage(named: "LaunchScreen")  ?? UIImage()
+    static let passwordIcon = UIImage(named: "password") ?? UIImage()
+    static let logoImage = UIImage(named: "LaunchScreen") ?? UIImage()
 }
 
 enum Texts {

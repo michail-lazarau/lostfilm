@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        let vc = LoginVC()
+        let vc = LoginViewController()
         window = UIWindow(windowScene: scene)
         window?.rootViewController = vc
         vc.loadViewIfNeeded()

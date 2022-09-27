@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class LoginVC: UIViewController {
+final class LoginViewController: UIViewController {
     
     private lazy var emailContainerView: UIView = {
         let image = Icons.mailIcon
@@ -65,7 +65,7 @@ final class LoginVC: UIViewController {
     }
 }
     
-extension LoginVC {
+extension LoginViewController {
     
     func setupStackView(withViews view: [UIView]) {
         for view in view {
