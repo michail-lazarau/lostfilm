@@ -8,17 +8,17 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
         spinner.hidesWhenStopped = true
         return spinner
     }()
-    
+
     init(style: UITableView.Style, viewModel: SeriesVM) {
         self.viewModel = viewModel
         super.init(style: style)
         self.viewModel.delegate = self
     }
-  
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -27,14 +27,14 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
         initialScreenLoadingSpinner.startAnimating()
         viewModel.loadItems()
     }
-    
+
     func designTableViewStyle() {
         tableView.backgroundView = initialScreenLoadingSpinner
         tableView.sectionHeaderHeight = 0.0
         tableView.sectionFooterHeight = 0.0
         tableView.separatorStyle = .none
     }
-    
+
     func updateTableView() {
         tableView.reloadData()
         initialScreenLoadingSpinner.stopAnimating()
@@ -46,7 +46,7 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
     }
 
     // MARK: - Table view delegate
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = viewModel.items[indexPath.section]
         switch item.type {
@@ -56,7 +56,7 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
             return UITableView.automaticDimension
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

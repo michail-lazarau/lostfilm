@@ -4,7 +4,7 @@ class GlobalSearchDC: GlobalSearchProtocol {
     weak var delegate: IUpdatingViewDelegate?
     var seriesList: [LFSeriesModel]?
     var personList: [LFPersonModel]?
-    
+
     func getGlobalSearchOutputFor(searchContext: String) {
         getGlobalSearchOutputFor(searchContext: searchContext) { [weak self] seriesList, personList, error in
             guard let strongSelf = self else {
@@ -20,12 +20,12 @@ class GlobalSearchDC: GlobalSearchProtocol {
             }
         }
     }
-    
+
     func didEmptySearchResults() {
         seriesList = nil
         personList = nil
     }
-    
+
     func getGlobalSearchOutputFor(searchContext: String, completionHandler: @escaping ([LFSeriesModel]?, [LFPersonModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.shared
         apiHelper.series.getGlobalSearchOutput(forContext: searchContext, withCompletionHandler: { seriesList, personList, error in

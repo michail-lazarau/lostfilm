@@ -21,7 +21,7 @@ func oldLogin() {
         HTTPCookiePropertyKey.domain: ".lostfilm.tv",
         HTTPCookiePropertyKey.path: "/",
         HTTPCookiePropertyKey.expires: Date().addingTimeInterval(10000000),
-        HTTPCookiePropertyKey.secure: true,
+        HTTPCookiePropertyKey.secure: true
     ]
 
     HTTPCookieStorage.shared.setCookie(HTTPCookie(properties: cookieProperties)!)

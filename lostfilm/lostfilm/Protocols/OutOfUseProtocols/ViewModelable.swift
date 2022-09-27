@@ -9,9 +9,9 @@ protocol ViewModelable {
 //    var dataProvider: IHaveDataModelBySeriesIdAndPage? { get set }
 //    
 //    init(dataProvider: IHaveDataModelBySeriesIdAndPage)
-//}
+// }
 //
-//extension ViewModelable where Self: NSObject {
+// extension ViewModelable where Self: NSObject {
 //    var itemCount: Int {
 //        return dataProvider?.itemList.count ?? 0
 //    }

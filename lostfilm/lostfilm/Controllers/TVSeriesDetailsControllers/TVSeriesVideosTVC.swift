@@ -8,7 +8,7 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
         spinner.hidesWhenStopped = true
         return spinner
     }()
-    
+
     private lazy var noDataScreenLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         label.text = "No Data Found."
@@ -16,7 +16,7 @@ class TVSeriesVideosTVC: UITableViewController, UITableViewDataSourcePrefetching
         label.textAlignment = .center
         return label
     }()
-    
+
     init(style: UITableView.Style, viewModel: VideosVM) {
         self.viewModel = viewModel
         super.init(style: style)

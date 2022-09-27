@@ -8,7 +8,7 @@ class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
         spinner.hidesWhenStopped = true
         return spinner
     }()
-    
+
     init(style: UITableView.Style, viewModel: EpisodesVM) {
         self.viewModel = viewModel
         super.init(style: style)
@@ -47,14 +47,14 @@ class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let item = viewModel.items[section]
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: EpisodeTableHeaderView.reuseIdentifier) as? EpisodeTableHeaderView
         header?.item = item
         return header
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let item = viewModel.items[section]
         if item.seasonPosterUrl != nil && item.seasonDetails != nil {

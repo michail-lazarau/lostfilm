@@ -13,7 +13,7 @@ class EpisodeTableHeaderView: UITableViewHeaderFooterView {
     var item: VMepisodeItem? {
         didSet {
             paragraphView.label.text = item?.seasonNumber
-            
+
             if let posterURL = item?.seasonPosterUrl, let details = item?.seasonDetails {
                 posterView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
                 posterView.sd_setImage(with: posterURL)
@@ -27,15 +27,15 @@ class EpisodeTableHeaderView: UITableViewHeaderFooterView {
             }
         }
     }
-    
+
     class var reuseIdentifier: String {
         String(describing: self)
     }
-    
+
     class var nib: UINib {
         return UINib(nibName: reuseIdentifier, bundle: nil)
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

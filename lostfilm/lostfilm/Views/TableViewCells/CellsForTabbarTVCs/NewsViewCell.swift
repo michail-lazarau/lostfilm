@@ -10,7 +10,7 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
             }
         }
     }
-    
+
     func configureWith(dataModel: LFNewsModel) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 6
@@ -105,7 +105,7 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         newsImageView.sd_cancelCurrentImageLoad()
@@ -128,7 +128,7 @@ class NewsViewCell: UITableViewCell, CellConfigurable {
             newsTypeLabel.heightAnchor.constraint(equalToConstant: 25),
             newsTypeLabel.leadingAnchor.constraint(equalTo: newsImageView.leadingAnchor),
             newsTypeLabel.trailingAnchor.constraint(equalTo: newsImageView.trailingAnchor),
-            newsTypeLabel.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor),
+            newsTypeLabel.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor)
         ])
 
         newsImageView.heightAnchor.constraint(equalTo: newsImageView.widthAnchor, multiplier: 9.0 / 16.0).isActive = true
