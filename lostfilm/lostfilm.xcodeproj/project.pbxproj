@@ -1381,6 +1381,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7AEE47D273FEB7A00C304D0 /* Build configuration list for PBXNativeTarget "lostfilm" */;
 			buildPhases = (
+				FB6480D528E3360900BA3F65 /* Run Swift Lint */,
 				2A05A22F158DED7597A1584F /* [CP] Check Pods Manifest.lock */,
 				F7AEE465273FEB7900C304D0 /* Sources */,
 				F7AEE466273FEB7900C304D0 /* Frameworks */,
@@ -1575,6 +1576,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lostfilm/Pods-lostfilm-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FB6480D528E3360900BA3F65 /* Run Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
