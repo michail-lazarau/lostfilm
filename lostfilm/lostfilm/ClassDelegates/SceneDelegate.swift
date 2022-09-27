@@ -17,15 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = vc
         vc.loadViewIfNeeded()
         window?.makeKeyAndVisible()
-//
-//        let tabBarRootVC = TabBarRootController()
-//
-//        window = UIWindow(windowScene: scene)
-//        window?.rootViewController = tabBarRootVC
-//        window?.makeKeyAndVisible()
-        
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "error.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "password.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

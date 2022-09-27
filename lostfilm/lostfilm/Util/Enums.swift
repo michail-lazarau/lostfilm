@@ -22,6 +22,4 @@ enum Texts {
     static let fullName = "Fullname"
     static let userName = "Username"
     static let alreadyHaveAnAccount = "Already have an account?"
-
-   
 }

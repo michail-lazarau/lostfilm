@@ -1,6 +1,6 @@
 import Foundation
 
-// предлагаю перенсти в файл Enums
+// TODO: - Replace to  Util->Enums
 enum ImageViewTransitionState {
     case initial
     case final

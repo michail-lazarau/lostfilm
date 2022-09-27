@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-
-class LoginVC: UIViewController {
+final class LoginVC: UIViewController {
     
     private lazy var emailContainerView: UIView = {
         let image = Icons.mailIcon
@@ -57,21 +56,12 @@ class LoginVC: UIViewController {
         return stackView
     }()
     
-    let contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        return view
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        setupStackView(withViews: [UIView(),emailContainerView, passwordContainerView, loginButton])
+        setupStackView(withViews: [UIView(), emailContainerView, passwordContainerView, loginButton])
         setupConstraints()
-  
-        
     }
 }
     
