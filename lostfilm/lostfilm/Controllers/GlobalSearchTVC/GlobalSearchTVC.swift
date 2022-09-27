@@ -64,7 +64,7 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     // TODO: think of replacing literal height with dinamic by changing constraints
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = viewModel.itemsForSections[indexPath.section]
@@ -75,32 +75,32 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
             return 168
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: GlobalSearchHeaderView.reuseIdentifier) as? GlobalSearchHeaderView
         header?.paragraphView.label.text = viewModel.itemsForSections[section].sectionTitle
         return header
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         50
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return .leastNormalMagnitude
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
-    
+
 }
 
 extension GlobalSearchTVC: UISearchResultsUpdating {
     private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
+
     private var isFiltering: Bool {
         searchController.isActive && !isSearchBarEmpty
     }
@@ -110,7 +110,7 @@ extension GlobalSearchTVC: UISearchResultsUpdating {
         refreshTimer?.invalidate()
         refreshTimer = WeakTimer.scheduledTimer(timeInterval: 0.25, target: self, userInfo: nil, repeats: false) { [weak self] _ in
             guard let strongSelf = self else { return }
-            
+
             let searchText = searchController.searchBar.text
             guard searchText?.count ?? 0 > 1 else {
                 strongSelf.lastSearchText = nil

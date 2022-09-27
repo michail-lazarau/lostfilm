@@ -2,13 +2,13 @@ import UIKit
 
 class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable, DataModel: LFJsonObject {
     fileprivate let tableFooterHeight: CGFloat = 50
-    
+
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.hidesWhenStopped = true
         return spinner
     }()
-    
+
     internal var tableCellHeight: CGFloat {
         return 0
     }
@@ -53,7 +53,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         if rowsRange.isEmpty {
             return spinner.stopAnimating()
         }
-        
+
         let isListEmpty = (rowsRange.lowerBound == 0)
         if isListEmpty {
             tableView.reloadData()

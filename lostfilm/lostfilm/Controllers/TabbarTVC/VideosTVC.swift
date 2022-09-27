@@ -10,7 +10,7 @@ class VideosTVC: TemplateTVC<VideoViewCell, LFVideoModel>, VideoPlayerDelegate {
         cell.videoViewCellDelegate = self
         return cell
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Videos"

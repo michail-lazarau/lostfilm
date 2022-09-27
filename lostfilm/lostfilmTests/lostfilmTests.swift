@@ -2,9 +2,9 @@ import XCTest
 @testable import lostfilm
 
 // https://www.raywenderlich.com/21020457-ios-unit-testing-and-ui-testing-tutorial
-class lostfilmTests: XCTestCase {
+class LostfilmTests: XCTestCase {
     var sut: GlobalSearchProtocol?
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = GlobalSearchDC()
@@ -43,7 +43,7 @@ class lostfilmTests: XCTestCase {
         }
         wait(for: [promiseForError, promiseForSeriesList, promiseForPersonList], timeout: 4)
     }
-    
+
     func test_pass_getGlobalSearchOutputForSearchContext() {
         // MARK: Given
         let mockSUT = MockGlobalSearchDC()
@@ -63,7 +63,7 @@ class lostfilmTests: XCTestCase {
     }
     // MARK: doesn't work
     //        let predicate = NSPredicate(format: "%K == %@", #keyPath( delegate.didUpdateTableViewCalled), true)
-    
+
     func test_fail_getGlobalSearchOutputForSearchContext() {
         // MARK: Given
         let mockSUT = MockGlobalSearchDC()
@@ -78,7 +78,7 @@ class lostfilmTests: XCTestCase {
         XCTAssertNil(mockSUT.seriesList)
         XCTAssertNil(mockSUT.personList)
     }
-    
+
     func test_didEmptySearchResults() {
         // MARK: Given
         let mockSUT = MockGlobalSearchDC()

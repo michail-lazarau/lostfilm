@@ -1,9 +1,9 @@
 import XCTest
 @testable import lostfilm
 
-class lostfimFakeTests: XCTestCase {
+class LostfimFakeTests: XCTestCase {
     var sut: GlobalSearchDC?
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = GlobalSearchDC()
@@ -15,9 +15,9 @@ class lostfimFakeTests: XCTestCase {
     }
 
     func test() {
-        
+
     }
-    
+
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

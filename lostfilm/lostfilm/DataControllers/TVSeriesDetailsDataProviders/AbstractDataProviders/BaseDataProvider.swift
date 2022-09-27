@@ -5,7 +5,7 @@ class BaseDataProvider {
     var apiHelper: LFApiHelper {
         LFApplicationHelper.shared
     }
-    
+
     init(modelId: String) {
         self.modelId = modelId
     }

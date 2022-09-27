@@ -7,7 +7,7 @@ public enum FilterType: String/*,CustomStringConvertible*/ {
     case ReleaseYear = "Release_year"
     case Channel = "Channel"
     case Group = "Group"
-    
+
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue, comment: "")
     }

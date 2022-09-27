@@ -19,11 +19,11 @@ extension DataRefreshable where Self: UITableViewController {
     }
 }
 
-//extension DataRefreshable {
+// extension DataRefreshable {
 //    func pullToRefresh(_ sender: UIRefreshControl) {
 //        sender.endRefreshing()
 //    }
-//}
+// }
 
 // extension DataRefreshable where Self: PaginatedDataLoadable{
 //    func pullToRefresh(_ sender: UIRefreshControl) {

@@ -12,7 +12,7 @@ extension ILoadingDataByPage {
         items.removeAll()
         currentPage = 0
     }
-    
+
     func loadItemsByPage<P: BaseDataProvider>(dataProvider: P, async completionHandler: @escaping ([IndexPath]?) -> Void) where P: IHaveDataModelFetchedByPage {
         if isLoading == true {
             return
@@ -24,7 +24,7 @@ extension ILoadingDataByPage {
         }
         isLoading = false
     }
-    
+
     private func loadItems<P: BaseDataProvider>(for page: UInt, dataProvider: P, async completionHandler: @escaping ([IndexPath]?) -> Void) where P: IHaveDataModelFetchedByPage {
         dataProvider.fetchData(page: page) { [weak self] data, _ in
             let indexPathToReload: [IndexPath]?
@@ -44,7 +44,7 @@ extension ILoadingDataByPage {
             }
         }
     }
-    
+
     private func calculateIndexPathsToReload(from newItemList: [ModelType]) -> [IndexPath] {
         let startIndex = self.items.count - newItemList.count
         let endIndex = startIndex + newItemList.count

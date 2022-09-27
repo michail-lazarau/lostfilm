@@ -3,7 +3,7 @@ import AVKit
 import SDWebImage
 
 class VideoViewCell: UITableViewCell, CellConfigurable {
-    
+
     private(set) var videoUrl: URL?
     weak var videoViewCellDelegate: VideoPlayerDelegate?
 
@@ -14,7 +14,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
             }
         }
     }
-    
+
     func configureWith(dataModel: LFVideoModel) {
         videoImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         videoImageView.sd_setImage(with: dataModel.previewURL)
@@ -26,7 +26,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellView()
-        
+
     }
 
     override func awakeFromNib() {
@@ -41,7 +41,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         videoImageView.sd_cancelCurrentImageLoad()
@@ -102,24 +102,24 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         contentView.addSubview(videoImageView)
         contentView.addSubview(labelStackView)
         contentView.addSubview(launchButton)
-        
+
         NSLayoutConstraint.activate([
             videoImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             videoImageView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             videoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             videoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
+
             launchButton.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
             launchButton.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
             launchButton.heightAnchor.constraint(equalTo: launchButton.widthAnchor, multiplier: 1.0 / 1.0),
-            
+
             labelStackView.heightAnchor.constraint(equalToConstant: 44),
             labelStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-            labelStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            labelStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-    
+
     @objc private func launchVideoPlayer() {
         if let videoUrl = videoUrl {
             videoViewCellDelegate?.launchVideo(by: videoUrl)

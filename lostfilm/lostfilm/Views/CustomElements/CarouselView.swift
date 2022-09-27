@@ -2,13 +2,13 @@ import UIKit
 
 @IBDesignable
 class CarouselView: UIView {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     // MARK: Subviews
-    
+
     private lazy var carouselCollectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.showsHorizontalScrollIndicator = false
@@ -28,7 +28,7 @@ class CarouselView: UIView {
     }()
 
     // MARK: - Properties
-    
+
     private var carouselData: LFPhotoListContentItemModel?
     private var currentPage = 0 {
         didSet {
@@ -107,7 +107,7 @@ private extension CarouselView {
         carouselLayout.sectionInset = .zero
         carouselLayout.minimumLineSpacing = 0
         carouselCollectionView.collectionViewLayout = carouselLayout
-        
+
         addSubview(carouselCollectionView)
         carouselCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -117,7 +117,7 @@ private extension CarouselView {
             carouselCollectionView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
-    
+
     func setupPageControl() {
         addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -128,7 +128,7 @@ private extension CarouselView {
             pageControl.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
+
     func getCurrentPage() -> Int {
         let visibleRect = CGRect(origin: carouselCollectionView.contentOffset, size: carouselCollectionView.bounds.size)
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)

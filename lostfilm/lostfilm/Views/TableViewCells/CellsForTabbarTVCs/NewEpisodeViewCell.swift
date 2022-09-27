@@ -10,7 +10,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
             }
         }
     }
-    
+
     func configureWith(dataModel: LFEpisodeModel) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 8
@@ -56,7 +56,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         newEpisodeImageView.sd_cancelCurrentImageLoad()
@@ -180,7 +180,7 @@ class NewEpisodeViewCell: UITableViewCell, CellConfigurable {
             episodeNumLabel.heightAnchor.constraint(equalToConstant: 30),
             episodeNumLabel.leadingAnchor.constraint(equalTo: newEpisodeImageView.leadingAnchor),
             episodeNumLabel.trailingAnchor.constraint(equalTo: newEpisodeImageView.trailingAnchor),
-            episodeNumLabel.bottomAnchor.constraint(equalTo: newEpisodeImageView.bottomAnchor),
+            episodeNumLabel.bottomAnchor.constraint(equalTo: newEpisodeImageView.bottomAnchor)
         ])
 
         newEpisodeImageView.heightAnchor.constraint(equalTo: newEpisodeImageView.widthAnchor, multiplier: 3.0 / 5.0).isActive = true

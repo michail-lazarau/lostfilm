@@ -8,7 +8,7 @@ class SeriesCastViewCell: UITableViewCell {
     @IBOutlet weak var roleRuLabel: UILabel!
     @IBOutlet weak var roleEnLabel: UILabel!
     @IBOutlet weak var roleContainerView: UIView!
-    
+
     var item: LFPersonModel? {
         didSet {
             guard let item = item else {
@@ -21,13 +21,12 @@ class SeriesCastViewCell: UITableViewCell {
             if let roleRu = item.roleRu, let roleEn = item.roleEn {
                 roleRuLabel.text = roleRu
                 roleEnLabel.text = roleEn
-            }
-            else {
+            } else {
                 roleContainerView.isHidden = true
             }
         }
     }
-    
+
     class var reuseIdentifier: String {
         String(describing: self)
     }
@@ -40,7 +39,7 @@ class SeriesCastViewCell: UITableViewCell {
         super.prepareForReuse()
         photoImageView.sd_cancelCurrentImageLoad()
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
