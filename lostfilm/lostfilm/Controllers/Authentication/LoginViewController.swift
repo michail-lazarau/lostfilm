@@ -12,12 +12,12 @@ final class LoginViewController: UIViewController {
     
     private lazy var emailContainerView: UIView = {
         let image = Icons.mailIcon
-        let view = Utilities().createInputContainerView(withimage: Icons.mailIcon, textField: emailTextField)
+        let view = Utilities().createInputContainerView(withImage: Icons.mailIcon, textField: emailTextField)
         return view
     }()
 
     private lazy var passwordContainerView: UIView = {
-        let view = Utilities().createInputContainerView(withimage: Icons.passwordIcon, textField: passwordTextField)
+        let view = Utilities().createInputContainerView(withImage: Icons.passwordIcon, textField: passwordTextField)
         return view
     }()
 
