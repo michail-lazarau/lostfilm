@@ -18,15 +18,15 @@ final class LoginService<T: URLSessionProtocol>  {
 }
 
 extension LoginService {
-    func getLoginPage(htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext"), completionHandler: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
+    func getLoginPage(htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext"), response: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
         htmlParserWrapper.loadData(withReplacingURLParameters: nil, queryURLParameters: nil, asJSON: true) { data, htmlData in
             let filteredData: [Any]? = data?[String(describing: LFLoginPageModel.self)] as? [Any] ?? nil
             if let loginFormProperties = filteredData?.first as? [AnyHashable:Any] {
-                completionHandler(.success(LFLoginPageModel(data: loginFormProperties)))
+                response(.success(LFLoginPageModel(data: loginFormProperties)))
             } else if htmlData == nil {
-                completionHandler(.failure(DVHtmlError.failedToLoadDOM))
+                response(.failure(DVHtmlError.failedToLoadOnUrl))
             } else {
-                completionHandler(.failure(DVHtmlError.failedToParseWebElement))
+                response(.failure(DVHtmlError.failedToParseWebElement))
             }
         }
     }

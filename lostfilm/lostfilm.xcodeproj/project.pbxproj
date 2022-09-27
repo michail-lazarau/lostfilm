@@ -177,6 +177,9 @@
 		F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */; };
 		F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */; };
 		F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */; };
+		F7D0A84E28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html in Resources */ = {isa = PBXBuildFile; fileRef = F7D0A84C28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html */; };
+		F7D0A84F28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html in Resources */ = {isa = PBXBuildFile; fileRef = F7D0A84D28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html */; };
+		F7D0A85228E328BD00851CC0 /* LoginPageElementNotFound.html in Resources */ = {isa = PBXBuildFile; fileRef = F7D0A85128E328BD00851CC0 /* LoginPageElementNotFound.html */; };
 		F7D6F10528858082007196AF /* SeriesVideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D6F10328858082007196AF /* SeriesVideoViewCell.swift */; };
 		F7D6F10628858082007196AF /* SeriesVideoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D6F10428858082007196AF /* SeriesVideoViewCell.xib */; };
 		F7D7D18127B057D100970959 /* SeriesDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D7D17F27B057D100970959 /* SeriesDetailViewCell.swift */; };
@@ -436,6 +439,9 @@
 		F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGlobalSearchDC.swift; sourceTree = "<group>"; };
 		F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGlobalSearchTVC.swift; sourceTree = "<group>"; };
 		F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataObject.swift; sourceTree = "<group>"; };
+		F7D0A84C28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = LoginPageRenderedWithCaptchaRequired.html; sourceTree = "<group>"; };
+		F7D0A84D28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = LoginPageRenderedWithNoCaptchaRequired.html; sourceTree = "<group>"; };
+		F7D0A85128E328BD00851CC0 /* LoginPageElementNotFound.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = LoginPageElementNotFound.html; sourceTree = "<group>"; };
 		F7D6F10328858082007196AF /* SeriesVideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesVideoViewCell.swift; sourceTree = "<group>"; };
 		F7D6F10428858082007196AF /* SeriesVideoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesVideoViewCell.xib; sourceTree = "<group>"; };
 		F7D7D17F27B057D100970959 /* SeriesDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailViewCell.swift; sourceTree = "<group>"; };
@@ -527,6 +533,9 @@
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
 			isa = PBXGroup;
 			children = (
+				F7D0A85128E328BD00851CC0 /* LoginPageElementNotFound.html */,
+				F7D0A84C28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html */,
+				F7D0A84D28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html */,
 				F7232D6F28D1D63A00BA94B0 /* LoginResponseMock.swift */,
 				F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */,
 				F7E838FF28D361CB00FC2398 /* URLSessionDataTaskMock.swift */,
@@ -1519,6 +1528,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7D0A84F28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html in Resources */,
+				F7D0A84E28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html in Resources */,
+				F7D0A85228E328BD00851CC0 /* LoginPageElementNotFound.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

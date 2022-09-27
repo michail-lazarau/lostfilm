@@ -74,27 +74,55 @@ class LoginServiceTests: XCTestCase {
             }
         }
     }
-    
+
     func test_positive_loginPageRenderedWithNoCaptchaRequired() throws {
-        guard let htmlToModel = DVHtmlToModels(contextByName: "GetLoginPageContext") else {
-            return // MARK: does return produces error?
+        let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaStyleDisplay.stringValue: "display:none",
+                                               LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
+
+        guard let url = Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html") else {
+            return XCTFail("Unable to generate the url from the local context")
         }
-        htmlToModel.setValue("fake", forKey: "url") // MARK: replace with "fake" with Bundle.main.path(forResource: <#T##String?#>, ofType: "plist")
-        sut.getLoginPage(htmlParserWrapper: htmlToModel, completionHandler: { result in
-//            <#code#>
-        })
+
+        try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
+            XCTAssertEqual(try result.get(), expected)
+        }
     }
-    
+
     func test_positive_loginPageRenderedWithCaptchaRequired() throws {
-        
+        let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
+
+        guard let url = Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html") else {
+            return XCTFail("Unable to generate the url from the local context")
+        }
+
+        try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
+            XCTAssertEqual(try result.get(), expected)
+        }
     }
-    
+
     func test_negative_loginPageNotRendered() throws {
-        
+        let expected = DVHtmlError.failedToLoadOnUrl
+        let url = "stub"
+
+        try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
+            XCTAssertThrowsError(try result.get(), "Catching error") { error in
+                XCTAssertEqual(error as! DVHtmlError, expected)
+            }
+        }
     }
-    
+
     func test_negative_loginPageElementNotFound() throws {
-        
+        let expected = DVHtmlError.failedToParseWebElement
+
+        guard let url = Bundle(for: type(of: self)).path(forResource: "LoginPageElementNotFound", ofType: "html") else {
+            return XCTFail("Unable to generate the url from the local context")
+        }
+
+        try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
+            XCTAssertThrowsError(try result.get(), "Catching error") { error in
+                XCTAssertEqual(error as! DVHtmlError, expected)
+            }
+        }
     }
 }
 
@@ -114,5 +142,27 @@ extension LoginServiceTests {
         waitForExpectations(timeout: 0.1)
         // Then
         try assertHandler(loginResponse, expectedResult)
+    }
+
+    func verifyGetLoginPage<T>(expectedResult: T, urlStub: String, assertHandler: (Result<LFLoginPageModel, Error>, T) throws -> Void) throws -> Void {
+        // Given
+        var loginPageResponse: Result<LFLoginPageModel, Error>!
+
+        let exp = expectation(description: "Requesting data")
+        guard let htmlToModel = DVHtmlToModels(contextByName: "GetLoginPageContext") else {
+            return XCTFail("Unable to generate the html model from the local context")
+        }
+
+        htmlToModel.setValue("file://" + urlStub, forKey: "url")
+
+        // When
+        sut.getLoginPage(htmlParserWrapper: htmlToModel, response: { result in
+            exp.fulfill()
+            loginPageResponse = result
+        })
+        waitForExpectations(timeout: 0.1)
+
+        // Then
+        try assertHandler(loginPageResponse, expectedResult)
     }
 }
