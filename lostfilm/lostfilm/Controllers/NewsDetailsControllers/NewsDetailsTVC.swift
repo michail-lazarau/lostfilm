@@ -2,23 +2,23 @@ import UIKit
 
 class NewsDetailsTVC: UITableViewController, IUpdatingViewDelegate {
     let viewModel: NewsDetailsVM
-    
+
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.hidesWhenStopped = true
         return spinner
     }()
-    
+
     init(style: UITableView.Style, viewModel: NewsDetailsVM) {
         self.viewModel = viewModel
         super.init(style: style)
         self.viewModel.viewUpdatingDelegate = self
     }
-    
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -28,24 +28,24 @@ class NewsDetailsTVC: UITableViewController, IUpdatingViewDelegate {
         navigationItem.largeTitleDisplayMode = .never
         viewModel.loadItems()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+
     func updateTableView() {
         tableView.reloadData()
         initialScreenLoadingSpinner.stopAnimating()
     }
-    
+
     private func registerCells() {
         tableView.register(VideoViewCell.self, forCellReuseIdentifier: VideoViewCell.reuseIdentifier)
         tableView.registerCell(nib: TextViewCell.nib, forCellReuseIdentifier: TextViewCell.reuseIdentifier)
         tableView.registerCell(nib: CarouselTableViewCell.nib, forCellReuseIdentifier: CarouselTableViewCell.reuseIdentifier)
     }
-    
+
     // MARK: - Table view delegate
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = viewModel.items[indexPath.row]
         let height: CGFloat

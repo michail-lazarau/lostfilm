@@ -2,7 +2,7 @@ import XCTest
 
 // https://developer.apple.com/documentation/xctest/user_interface_tests
 // https://habr.com/ru/company/vivid_money/blog/533180/
-class lostfilmUITests: XCTestCase {
+class LostfilmUITests: XCTestCase {
     var app: XCUIApplication!
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -33,7 +33,7 @@ class lostfilmUITests: XCTestCase {
         let seriesHeader = app.staticTexts["TV Series"]
         XCTAssertTrue(seriesHeader.exists)
     }
-    
+
     func test_GlobalSearchShowsRelevantResponse() throws {
         // MARK: Given
         let searchButton = app.navigationBars["TV Series"].children(matching: .button).firstMatch
@@ -42,7 +42,7 @@ class lostfilmUITests: XCTestCase {
         // MARK: When
         searchField.typeText("Lost")
         // MARK: Then
-        let cellIsPresent = expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: app/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Lost")/*[[".cells.containing(.staticText, identifier:\"Остаться в живых\")",".cells.containing(.staticText, identifier:\"Lost\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.firstMatch)
+        let cellIsPresent = expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: app/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier: "Lost")/*[[".cells.containing(.staticText, identifier:\"Остаться в живых\")",".cells.containing(.staticText, identifier:\"Lost\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.firstMatch)
         wait(for: [cellIsPresent], timeout: 5)
     }
 

@@ -3,13 +3,13 @@ import UIKit
 class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITableViewDataSourcePrefetching {
     let viewModel: NewsVM
     fileprivate let tableFooterHeight: CGFloat = 50
-    
+
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.hidesWhenStopped = true
         return spinner
     }()
-    
+
     private lazy var noDataScreenLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         label.text = "No Data Found."
@@ -17,7 +17,7 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITab
         label.textAlignment = .center
         return label
     }()
-    
+
     init(style: UITableView.Style, viewModel: NewsVM) {
         self.viewModel = viewModel
         super.init(style: style)
@@ -43,21 +43,21 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITab
     private func registerCells() {
         tableView.register(SeriesNewsViewCell.nib, forCellReuseIdentifier: SeriesNewsViewCell.reuseIdentifier)
     }
-    
+
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
         viewModel.didEmptyItemList()
         tableView.reloadData()
         viewModel.loadItemsByPage()
         sender.endRefreshing()
     }
-    
+
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
         guard let lastVisibleRow = tableView.indexPathsForVisibleRows?.last?.row else {
             return false
         }
         return lastVisibleRow >= viewModel.items.count - 1
     }
-    
+
     // MARK: TVSeriesDetailsPaginatingDC_Delegate
 
         func updateTableView(with newIndexPathsToReload: [IndexPath]?) {

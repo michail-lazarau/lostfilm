@@ -21,14 +21,14 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         let videosViewModel = VideosVM(dataProvider: TVSeriesVideosDataProvider(modelId: model.id))
         let photosViewModel = PhotosVM(dataProvider: TVSeriesPhotosDataProvider(modelId: model.id))
         let castViewModel = CastVM(dataProvider: TVSeriesCastDataProvider(modelId: model.id))
-        
+
         controllers = [TVSeriesOverviewTVC(style: .plain, viewModel: viewModel),
                        TVSeriesEpisodesTVC(style: .plain, viewModel: episodesViewModel),
                        TVSeriesNewsTVC(style: .plain, viewModel: newsViewModel),
                        TVSeriesVideosTVC(style: .plain, viewModel: videosViewModel),
                        TVSeriesPhotosCVC(collectionViewLayout: collectionLayout, viewModel: photosViewModel),
                        TVSeriesCastTVC(style: .plain, viewModel: castViewModel)]
-        
+
         super.init(nibName: nil, bundle: nil)
         self.navigationItem.title = model.nameRu
     }
@@ -43,12 +43,12 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
-        
+
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white
     }
-    
+
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         return controllers[Int(index)]
     }
@@ -56,7 +56,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
 extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-        let collectionViewController = self.controllers.last {$0 is TVSeriesPhotosCVC} as? TVSeriesPhotosCVC
+        let collectionViewController = self.controllers.last { $0 is TVSeriesPhotosCVC } as? TVSeriesPhotosCVC
         if let TVSeriesPhotosCVC = collectionViewController, let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
             let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
             return cell.imageView

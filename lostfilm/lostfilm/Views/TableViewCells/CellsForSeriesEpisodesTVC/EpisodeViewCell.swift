@@ -13,25 +13,25 @@ class EpisodeViewCell: UITableViewCell {
             } else {
                 numberLabel.isHidden = true
             }
-            
+
             if let titleRu = item?.titleRu {
                 titleRuLabel.text = titleRu
             } else {
                 titleRuLabel.isHidden = true
             }
-            
+
             if let titleEn = item?.titleEn {
                 titleEnLabel.text = titleEn
             } else {
                 titleEnLabel.isHidden = true
             }
-            
+
             if let dateRu = item?.dateRu {
                 dateRuLabel.text = dateToString(date: dateRu, dateFormat: "dd.MM.yyyy")
             } else {
                 dateRuLabel.isHidden = true
             }
-            
+
             if let dateEn = item?.dateEn {
                 dateEnLabel.text = dateToString(date: dateEn, dateFormat: "dd.MM.yyyy")
             } else {
@@ -39,15 +39,15 @@ class EpisodeViewCell: UITableViewCell {
             }
         }
     }
-    
+
     class var reuseIdentifier: String {
         String(describing: self)
     }
-    
+
     class var nib: UINib {
         return UINib(nibName: reuseIdentifier, bundle: nil)
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

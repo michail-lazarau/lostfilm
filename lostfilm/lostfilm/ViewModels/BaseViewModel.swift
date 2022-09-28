@@ -4,10 +4,9 @@ import Foundation
 class BaseViewModel<BaseDataProvider, Entity: Any>: NSObject {
     let dataProvider: BaseDataProvider
     var items = [Entity]()
-    
+
     init(dataProvider: BaseDataProvider) {
         self.dataProvider = dataProvider
         super.init()
     }
 }
-

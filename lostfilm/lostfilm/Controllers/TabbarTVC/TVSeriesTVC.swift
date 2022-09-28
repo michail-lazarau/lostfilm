@@ -2,7 +2,7 @@ import UIKit
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
-    
+
     override internal var tableCellHeight: CGFloat {
         return 175
     }
@@ -13,7 +13,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "magnifying_glass"), style: .plain, target: self, action: #selector(DidShowGlobalSearch))
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let dataSource = dataSource {
             navigationController?.delegate = customNavigationControllerDelegate
@@ -28,13 +28,13 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         filteringTVC.filteringDelegate = (dataSource as! FilteringDelegate)
         present(navController, animated: true)
     }
-    
+
     @objc private func DidShowGlobalSearch() {
         let globalSearchTVC = GlobalSearchTVC(style: .grouped, viewModel: GlobalSearchVM(dataProvider: GlobalSearchDC()))
         if let presentedVC = self.presentedViewController {
             presentedVC.dismiss(animated: false, completion: nil)
         }
-        
+
         self.navigationController?.setViewControllers([ self, globalSearchTVC ], animated: true)
     }
 }
