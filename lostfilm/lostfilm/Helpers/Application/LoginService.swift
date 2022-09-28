@@ -1,8 +1,8 @@
 import Foundation
 
-final class LoginService<T: URLSessionProtocol>  {
+final class LoginService<T: URLSessionProtocol> {
     let session: T
-    
+
     init(session: T) {
         self.session = session
     }
@@ -21,7 +21,7 @@ extension LoginService {
     func getLoginPage(htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext"), response: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
         htmlParserWrapper.loadData(withReplacingURLParameters: nil, queryURLParameters: nil, asJSON: true) { data, htmlData in
             let filteredData: [Any]? = data?[String(describing: LFLoginPageModel.self)] as? [Any] ?? nil
-            if let loginFormProperties = filteredData?.first as? [AnyHashable:Any] {
+            if let loginFormProperties = filteredData?.first as? [AnyHashable: Any] {
                 response(.success(LFLoginPageModel(data: loginFormProperties)))
             } else if htmlData == nil {
                 response(.failure(DVHtmlError.failedToLoadOnUrl))
@@ -30,7 +30,7 @@ extension LoginService {
             }
         }
     }
-    
+
     func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
         session.sendRequest(request: request) { result in
             switch result {
@@ -67,7 +67,7 @@ extension LoginService {
             URLQueryItem(name: "captcha", value: nil),
             URLQueryItem(name: "rem", value: "1")
         ]
-        
+
         return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php",
                                    method: HTTPMethod.post,
                                    headers: [.referer("https://www.lostfilm.tv/login"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")],
