@@ -14,16 +14,14 @@ class LoginServiceTests: XCTestCase {
 
     func test_positive_loginSucceedsWithValidCredentials() throws {
         try verifyLogin(expectedResult: "Michail Lazarev",
-                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.success, error: nil)) {
-            result, expected in
+                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.success, error: nil)) { result, expected in
             XCTAssertEqual(try result.get(), expected)
         }
     }
 
     func test_negative_loginFailsWithNeedCaptchaError() throws {
         try verifyLogin(expectedResult: LoginServiceError.needCaptcha,
-                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.fail(type: .needCaptcha), error: nil)) {
-            result, expected in
+                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.fail(type: .needCaptcha), error: nil)) { result, expected in
             XCTAssertThrowsError(try result.get(), "Catching error") { error in
                 XCTAssertEqual(error as! LoginServiceError, expected)
             }
@@ -79,7 +77,8 @@ class LoginServiceTests: XCTestCase {
         let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaStyleDisplay.stringValue: "display:none",
                                                LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
 
-        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"),
+                                "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertEqual(try result.get(), expected)
@@ -89,7 +88,8 @@ class LoginServiceTests: XCTestCase {
     func test_positive_loginPageRenderedWithCaptchaRequired() throws {
         let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
 
-        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"),
+                                "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertEqual(try result.get(), expected)
@@ -121,7 +121,7 @@ class LoginServiceTests: XCTestCase {
 }
 
 extension LoginServiceTests {
-    func verifyLogin<T>(expectedResult: T, mockedResponse: LoginResponseMock, assertHandler: (Result<String, Error>, T) throws -> Void) throws -> Void {
+    func verifyLogin<T>(expectedResult: T, mockedResponse: LoginResponseMock, assertHandler: (Result<String, Error>, T) throws -> Void) throws {
         // Given
         var loginResponse: Result<String, Error>!
 
@@ -138,7 +138,7 @@ extension LoginServiceTests {
         try assertHandler(loginResponse, expectedResult)
     }
 
-    func verifyGetLoginPage<T>(expectedResult: T, urlStub: String, assertHandler: (Result<LFLoginPageModel, Error>, T) throws -> Void) throws -> Void {
+    func verifyGetLoginPage<T>(expectedResult: T, urlStub: String, assertHandler: (Result<LFLoginPageModel, Error>, T) throws -> Void) throws {
         // Given
         var loginPageResponse: Result<LFLoginPageModel, Error>!
 

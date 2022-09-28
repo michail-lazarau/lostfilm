@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 final class LoginViewController: UIViewController {
-    
     private lazy var emailContainerView: UIView = {
         let image = Icons.mailIcon
         let view = Utilities().createInputContainerView(withImage: Icons.mailIcon, textField: emailTextField)
@@ -40,14 +39,14 @@ final class LoginViewController: UIViewController {
         button.heightAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
         return button
     }()
-    
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .red
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +54,7 @@ final class LoginViewController: UIViewController {
         stackView.spacing = 20
         return stackView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
@@ -64,25 +63,22 @@ final class LoginViewController: UIViewController {
         setupConstraints()
     }
 }
-    
+
 extension LoginViewController {
-    
     func setupStackView(withViews view: [UIView]) {
         for view in view {
             stackView.addArrangedSubview(view)
         }
     }
-    
+
     func setupConstraints() {
-        scrollView.anchor(top:view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom:view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
-        
+        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
+
         stackView.anchor(top: scrollView.contentLayoutGuide.topAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: scrollView.contentLayoutGuide.bottomAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
         stackView.equalWidth(width: scrollView.widthAnchor)
-        
+
         NSLayoutConstraint.activate([
             loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-
     }
 }
-

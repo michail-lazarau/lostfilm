@@ -54,9 +54,9 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let searchItem = viewModel.itemsForSections[indexPath.section]
+        let searchItem = viewModel.itemsForSections[indexPath.section]
         switch searchItem.type {
-            case .series:
+        case .series:
             let seriesDetailsVC = LFSeriesDetailsVC(model: (searchItem as! GlobalSearchSeriesItem)[indexPath.row])
             seriesDetailsVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(seriesDetailsVC, animated: true)
@@ -93,7 +93,6 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
-
 }
 
 extension GlobalSearchTVC: UISearchResultsUpdating {
@@ -126,14 +125,16 @@ extension GlobalSearchTVC: UISearchResultsUpdating {
 //                strongSelf.spinner.startAnimating()
 //            }
             strongSelf.lastSearchText = searchText
+
             strongSelf.viewModel.dataProvider.getGlobalSearchOutputFor(searchContext: strongSelf.lastSearchText!) // MARK: lastSearchText is never nil by this step
+
 //            strongSelf.spinner.stopAnimating()
             strongSelf.refreshTimer = nil
         }
     }
 }
 
-//https://stackoverflow.com/questions/27951965/cannot-set-searchbar-as-firstresponder
+// https://stackoverflow.com/questions/27951965/cannot-set-searchbar-as-firstresponder
 extension GlobalSearchTVC: UISearchControllerDelegate {
     func presentSearchController(_ searchController: UISearchController) {
         searchController.searchBar.becomeFirstResponder()
@@ -155,11 +156,6 @@ extension GlobalSearchTVC {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.hidesBackButton = true
         (searchController.searchBar.value(forKey: "cancelButton") as? UIButton)?.addTarget(self, action: #selector(searchBarCancelButtonClicked), for: .touchUpInside)
-//        UIApplication.shared.windows.first?.addSubview(spinner)
-//        NSLayoutConstraint.activate([
-//            spinner.centerXAnchor.constraint(equalTo: UIApplication.shared.windows.first!.centerXAnchor),
-//            spinner.centerYAnchor.constraint(equalTo: UIApplication.shared.windows.first!.centerYAnchor)
-//        ])
     }
 
     private func registerCells() {

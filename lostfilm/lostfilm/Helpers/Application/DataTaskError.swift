@@ -1,11 +1,11 @@
 import Foundation
 
 public enum DataTaskError: LocalizedError {
-    public typealias JSON = [String:Any]
-    
+    public typealias JSON = [String: Any]
+
     case generic
     case invalidURL
-    case invalidJSON (_: String = "")
+    case invalidJSON(_: String = "")
     case unexpectedResponseBody
     case httpRequestFailed(statusCode: UInt, json: JSON?)
 
@@ -15,7 +15,7 @@ public enum DataTaskError: LocalizedError {
         case .invalidURL: return "Invalid URL"
         case .invalidJSON: return "Invalid JSON."
         case .unexpectedResponseBody: return "Unexpected response body"
-        case .httpRequestFailed(let statusCode, _): return "HTTP request failed with status code: \(statusCode)."
+        case let .httpRequestFailed(statusCode, _): return "HTTP request failed with status code: \(statusCode)."
         }
     }
 }
