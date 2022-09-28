@@ -79,9 +79,7 @@ class LoginServiceTests: XCTestCase {
         let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaStyleDisplay.stringValue: "display:none",
                                                LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
 
-        guard let url = Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html") else {
-            return XCTFail("Unable to generate the url from the local context")
-        }
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertEqual(try result.get(), expected)
@@ -91,9 +89,7 @@ class LoginServiceTests: XCTestCase {
     func test_positive_loginPageRenderedWithCaptchaRequired() throws {
         let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
 
-        guard let url = Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html") else {
-            return XCTFail("Unable to generate the url from the local context")
-        }
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertEqual(try result.get(), expected)
@@ -114,9 +110,7 @@ class LoginServiceTests: XCTestCase {
     func test_negative_loginPageElementNotFound() throws {
         let expected = DVHtmlError.failedToParseWebElement
 
-        guard let url = Bundle(for: type(of: self)).path(forResource: "LoginPageElementNotFound", ofType: "html") else {
-            return XCTFail("Unable to generate the url from the local context")
-        }
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageElementNotFound", ofType: "html"), "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertThrowsError(try result.get(), "Catching error") { error in
