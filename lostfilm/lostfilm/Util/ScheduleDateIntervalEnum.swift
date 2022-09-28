@@ -1,5 +1,6 @@
 import Foundation
 
+// TODO: - Replace to  Util->Enums
 enum ScheduleDateInterval: Int {
     case today
     case tomorrow

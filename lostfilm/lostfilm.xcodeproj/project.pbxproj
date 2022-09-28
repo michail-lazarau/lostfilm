@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0733B6909895A016980DB8 /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
+		C567D04028D9B1BD000FDCFE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D03F28D9B1BD000FDCFE /* Extentions.swift */; };
+		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
+		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
+		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90427C14C8200924479 /* ParagraphView.xib */; };
@@ -232,6 +237,10 @@
 		86D9BE18D9C27254DB0787E9 /* Pods-lostfilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
+		C567D03F28D9B1BD000FDCFE /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 		F70DB90427C14C8200924479 /* ParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParagraphView.xib; sourceTree = "<group>"; };
@@ -518,6 +527,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C567D04428D9BC3A000FDCFE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C567D04528D9BC72000FDCFE /* LoginViewController.swift */,
+			);
+			path = Authentication;
+      	sourceTree = "<group>";
+		};
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,10 +741,13 @@
 			isa = PBXGroup;
 			children = (
 				F7355EEF2772523C00B42B0F /* Util.swift */,
+				C567D04728D9CC9A000FDCFE /* Utilities.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
+				C567D03F28D9B1BD000FDCFE /* Extentions.swift */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
 				F7AA54CA2791B200002A7179 /* FilterType.swift */,
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
+				C567D04128D9B468000FDCFE /* Enums.swift */,
 				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
 				F78C5DB528319B6100AF8400 /* WeakTimer.swift */,
 			);
@@ -1074,9 +1094,9 @@
 				F7355EEE2772522500B42B0F /* Util */,
 				F7C4EE852753E539006B5961 /* Other */,
 				F79C97012746CCA3001BD5F8 /* Models */,
+				F711A4502745A87000E1515D /* Helpers */,
 				F7471DE227AABA4100BDA17A /* ViewModels */,
 				F721B88328B7A13A00D521D0 /* Views */,
-				F711A4502745A87000E1515D /* Helpers */,
 				F711A41A2745A74300E1515D /* Resources */,
 				F73459DD276642E200E45725 /* Protocols */,
 				F74E3A81274051AA004B81EF /* ClassDelegates */,
@@ -1094,6 +1114,7 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C567D04428D9BC3A000FDCFE /* Authentication */,
 				F7EA704D281FCE99006444B9 /* GlobalSearchTVC */,
 				F7551D27274D886E00E1748E /* TabbarTVC */,
 				F7C2812F27C7D89A00DA8A62 /* FilterTVC */,
@@ -1659,6 +1680,7 @@
 				F7516D78282C0C1B00E1A138 /* CellConfigurable+Extensions.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F72E276F28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift in Sources */,
+				C567D04028D9B1BD000FDCFE /* Extentions.swift in Sources */,
 				F77288C428A1606400AB28AB /* ILoadingDataOnce.swift in Sources */,
 				F7516D6C282BDE8400E1A138 /* GlobalSearchItem.swift in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
@@ -1666,6 +1688,7 @@
 				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
 				F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */,
+				C567D04228D9B468000FDCFE /* Enums.swift in Sources */,
 				F7516D74282BF29000E1A138 /* GlobalSearchVM.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
 				F77288B6289C28E600AB28AB /* DataRefreshable.swift in Sources */,
@@ -1681,8 +1704,10 @@
 				F711A4BC2745A94E00E1515D /* LFApiSeries.m in Sources */,
 				F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */,
 				F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */,
+				C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */,
 				F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */,
 				F70DB90B27C1527200924479 /* EpisodeTableHeaderView.swift in Sources */,
+				C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */,
 				F79C97372746CCA3001BD5F8 /* LFPhotoListContentItemModel.m in Sources */,
 				F76D1F7527B9454C007E5933 /* TVSeriesEpisodesTVC.swift in Sources */,
 				F7471DDB27AAADF700BDA17A /* SeriesModelItemType.swift in Sources */,

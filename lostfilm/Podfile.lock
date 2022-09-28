@@ -94,7 +94,7 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - CarbonKit
     - SDWebImage
     - SwiftLint
