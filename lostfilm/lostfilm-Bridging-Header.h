@@ -41,4 +41,6 @@
 
 #import "CarbonKit/CarbonKit.h"
 
+#import "DVHtmlToModels/DVHtmlToModels.h"
+
 #endif /* lostfilm_Bridging_Header_h */
