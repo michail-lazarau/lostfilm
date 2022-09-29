@@ -80,10 +80,10 @@ PODS:
   - DVAppCore/Views/LayoutConstraintHairline (0.9.1)
   - DVHtmlToModels (0.1.4)
   - hpple (0.3.0)
-  - SDWebImage (5.12.5):
-    - SDWebImage/Core (= 5.12.5)
-  - SDWebImage/Core (5.12.5)
-  - SwiftLint (0.48.0)
+  - SDWebImage (5.13.4):
+    - SDWebImage/Core (= 5.13.4)
+  - SDWebImage/Core (5.13.4)
+  - SwiftLint (0.49.1)
 
 DEPENDENCIES:
   - CarbonKit
@@ -123,8 +123,8 @@ SPEC CHECKSUMS:
   DVAppCore: fc1bad763b32c720aa171252a132459801e19c79
   DVHtmlToModels: ce76fe6b54409937e9529d9218d693a9a0a60002
   hpple: 37ac0a804d0f8a7f488712b5ff5f06129e1c9e31
-  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
-  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
+  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
 PODFILE CHECKSUM: fc03090d004f5bb58fe5f37f5a8de5145c655659
 
