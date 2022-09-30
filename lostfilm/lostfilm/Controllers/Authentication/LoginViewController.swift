@@ -79,10 +79,10 @@ extension LoginViewController {
         stackView.anchor(top: scrollView.contentLayoutGuide.topAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: scrollView.contentLayoutGuide.bottomAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
         stackView.equalWidth(width: scrollView.widthAnchor)
 
-        loginButton.centerYAnchor(view)
-        NSLayoutConstraint.activate([
-            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+//        lo
+//        NSLayoutConstraint.activate([
+//            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//        ])
 
     }
 }

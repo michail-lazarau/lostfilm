@@ -38,14 +38,14 @@ final class CustomTextField: UIView {
 
     var textFieldIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .white
         imageView.contentMode = .scaleToFill
         return imageView
     }()
 
     let passwordButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(named: "show")
+        let image = UIImage(named: "icon_play")
+        button.backgroundColor = .gray
         button.setImage(image, for: .normal)
         button.alpha = 1
         button.addTarget(self, action: #selector(passwordButtonPressed), for: .touchUpInside)
@@ -98,9 +98,11 @@ final class CustomTextField: UIView {
     @objc func passwordButtonPressed() {
         print("passwordButtonPressed")
         if buttonON {
+            passwordButton.setImage(UIImage(named: "icon_filter_active"), for: .normal)
             hidePassword()
         } else {
             showPassword()
+            passwordButton.setImage(UIImage(named: "icon_play"), for: .normal)
         }
         buttonON = !buttonON
     }
