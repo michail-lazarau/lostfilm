@@ -7,10 +7,13 @@
 
 import UIKit
 
+// MARK: File Private Variables
+
 fileprivate let defaultFontSize: CGFloat = 10
 
 final class CustomTextField: UIView {
 
+    // MARK: Variabels
 
     var buttonON = false
 
@@ -96,7 +99,6 @@ final class CustomTextField: UIView {
     }
 
     @objc func passwordButtonPressed() {
-        print("passwordButtonPressed")
         if buttonON {
             passwordButton.setImage(UIImage(named: "icon_filter_active"), for: .normal)
             hidePassword()
@@ -152,7 +154,7 @@ extension CustomTextField {
         case password
     }
 
-    func testF( on platform: CustomFields) {
+    func configureInputField(on platform: CustomFields) {
         switch platform {
         case .name:
             setupCommonInputView(withImage: UIImage(named: "close")!, withTitleLabel: Texts.name.uppercased())

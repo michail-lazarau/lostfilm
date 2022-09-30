@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C52D944228E455D500557BBE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52D944128E455D500557BBE /* RegistrationViewController.swift */; };
 		C542477E28E4429C006B2C7D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542477D28E4429C006B2C7D /* CustomTextField.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
@@ -237,7 +236,6 @@
 		86D9BE18D9C27254DB0787E9 /* Pods-lostfilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
-		C52D944128E455D500557BBE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C542477D28E4429C006B2C7D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -540,7 +538,6 @@
 			isa = PBXGroup;
 			children = (
 				C567D04528D9BC72000FDCFE /* LoginViewController.swift */,
-				C52D944128E455D500557BBE /* RegistrationViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1673,7 +1670,6 @@
 				F7471DDF27AAB22300BDA17A /* VMseriesItem+Extensions.swift in Sources */,
 				F76D1F7927B95F61007E5933 /* TVSeriesEpisodesDataProvider.swift in Sources */,
 				F721B88B28B7B3FB00D521D0 /* NewsDetailsDataProvider.swift in Sources */,
-				C52D944228E455D500557BBE /* RegistrationViewController.swift in Sources */,
 				F7EC8ED927CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift in Sources */,
 				F7E838F828D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift in Sources */,
 				F76E41D82891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift in Sources */,
