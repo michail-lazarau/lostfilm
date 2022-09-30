@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "Hide.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "open_eye.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },

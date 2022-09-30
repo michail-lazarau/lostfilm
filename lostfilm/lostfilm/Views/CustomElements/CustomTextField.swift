@@ -11,17 +11,17 @@ fileprivate let defaultFontSize: CGFloat = 10
 
 final class CustomTextField: UIView {
 
+
     var buttonON = false
 
+    // MARK: Subviews
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.backgroundColor = .darkGray
-
         textField.font = .systemFont(ofSize: defaultFontSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
-        textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -36,43 +36,130 @@ final class CustomTextField: UIView {
         return titleLabel
     }()
 
+    var textFieldIcon: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+
     let passwordButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(named: "icon_filter")
+        let image = UIImage(named: "show")
         button.setImage(image, for: .normal)
-        button.backgroundColor = .white
         button.alpha = 1
+        button.addTarget(self, action: #selector(passwordButtonPressed), for: .touchUpInside)
         return button
     }()
 
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        return stackView
+    }()
 
-    init(frame: CGRect = .zero, title: String) {
-        super.init(frame: frame)
-        setTitle(title: title)
-        configure()
-    }
+    private let contentView: UIView = {
+        let contentView = UIView()
+        contentView.contentMode = .scaleToFill
+        return contentView
+    }()
 
-    override init(frame: CGRect){
+    // MARK: Inits
+
+    override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        configure()
+        addSubview(titleLabel)
+        addSubview(stackView)
+        addSubview(textFieldIcon)
+        setupContentView()
+        setupStackView(withViews: [UIView(), titleLabel, contentView])
+        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        textField.isSecureTextEntry = false
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setTitle(title: String) {
-        titleLabel.text = title.uppercased()
+    // MARK: Functions
+
+    func hidePassword() {
+        textField.isSecureTextEntry = false
+        textField.alpha = 1
     }
 
-    func configure() {
-        addSubview(textField)
-        addSubview(titleLabel)
-        addSubview(passwordButton)
+    func showPassword() {
+        textField.isSecureTextEntry = true
+        textField.alpha = 0.5
+    }
 
-        titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: textField.topAnchor, right: rightAnchor)
-        passwordButton.anchor(top: titleLabel.bottomAnchor, left: leftAnchor)
-        passwordButton.setDimensions(width: 50, height: 50)
-        textField.anchor(top: titleLabel.bottomAnchor, left: passwordButton.rightAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
+    @objc func passwordButtonPressed() {
+        print("passwordButtonPressed")
+        if buttonON {
+            hidePassword()
+        } else {
+            showPassword()
+        }
+        buttonON = !buttonON
+    }
+}
+
+    // MARK: Extension
+
+extension CustomTextField {
+
+    func setupStackView(withViews views: [UIView]) {
+        for view in views {
+            stackView.addArrangedSubview(view)
+        }
+    }
+
+    func setupContentView() {
+        contentView.addSubview(textField)
+        contentView.addSubview(passwordButton)
+        contentView.addSubview(textFieldIcon)
+    }
+
+    func setupPasswordInputView() {
+        titleLabel.text = Texts.password
+
+        textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: passwordButton.leftAnchor)
+        passwordButton.anchor(top: contentView.topAnchor, left: textField.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
+        passwordButton.setDimensions(width: 25, height: 25)
+    }
+
+    func setupCommonInputView(withImage image: UIImage, withTitleLabel title: String ) {
+        textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
+        textFieldIcon.image = image
+        titleLabel.text = title
+        textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
+        textFieldIcon.setDimensions(width: 25, height: 25)
+    }
+
+    func configurePasswordFieldConstraint() {
+        titleLabel.anchor(top: stackView.topAnchor, left: stackView.leftAnchor, right: stackView.rightAnchor)
+        contentView.anchor(top: titleLabel.bottomAnchor, left: stackView.leftAnchor, right: stackView.rightAnchor)
+    }
+
+    enum CustomFields {
+        case name
+        case surname
+        case email
+        case password
+    }
+
+    func testF( on platform: CustomFields) {
+        switch platform {
+        case .name:
+            setupCommonInputView(withImage: UIImage(named: "close")!, withTitleLabel: Texts.name.uppercased())
+        case .surname:
+            setupCommonInputView(withImage: UIImage(named: "icon_filter_active")!, withTitleLabel: Texts.surname.uppercased())
+        case .email:
+            setupCommonInputView(withImage: UIImage(named: "icon_filter")!, withTitleLabel: Texts.email.uppercased())
+        case .password:
+            setupPasswordInputView()
+        }
     }
 }

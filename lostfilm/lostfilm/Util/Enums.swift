@@ -17,12 +17,12 @@ enum Icons {
 }
 
 enum Texts {
-    static let email = "email"
-    static let password = "password"
+    static let email = "Email"
+    static let password = "Password"
     static let logIn = "Log In"
     static let singUp = "Sing Up"
     static let forgotPassword = "Forgot Password?"
-    static let fullName = "Fullname"
-    static let userName = "Username"
+    static let name = "Name"
+    static let surname = "Surname"
     static let alreadyHaveAnAccount = "Already have an account?"
 }

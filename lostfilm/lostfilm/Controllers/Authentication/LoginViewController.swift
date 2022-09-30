@@ -47,7 +47,7 @@ final class LoginViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,11 +78,11 @@ extension LoginViewController {
         
         stackView.anchor(top: scrollView.contentLayoutGuide.topAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: scrollView.contentLayoutGuide.bottomAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
         stackView.equalWidth(width: scrollView.widthAnchor)
-        
+
+        loginButton.centerYAnchor(view)
         NSLayoutConstraint.activate([
             loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
     }
 }
-

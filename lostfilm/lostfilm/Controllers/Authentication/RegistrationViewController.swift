@@ -10,7 +10,7 @@ import Foundation
 class RegistrationViewController: UIViewController {
 
     private let emailTextField: CustomTextField = {
-        let tf = CustomTextField(title: "EMAIL")
+        let tf = CustomTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -19,10 +19,10 @@ class RegistrationViewController: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(emailTextField)
-
+        emailTextField.testF(on: .password)
         NSLayoutConstraint.activate([
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
 

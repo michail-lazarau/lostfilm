@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C52D944228E455D500557BBE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52D944128E455D500557BBE /* RegistrationViewController.swift */; };
 		C542477E28E4429C006B2C7D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542477D28E4429C006B2C7D /* CustomTextField.swift */; };
-		C567D04028D9B1BD000FDCFE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D03F28D9B1BD000FDCFE /* Extentions.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
@@ -240,7 +239,6 @@
 		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
 		C52D944128E455D500557BBE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C542477D28E4429C006B2C7D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		C567D03F28D9B1BD000FDCFE /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -530,6 +528,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C55218A528E7028800BC2CD0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C567D04428D9BC3A000FDCFE /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,10 +753,9 @@
 				F7355EEF2772523C00B42B0F /* Util.swift */,
 				C567D04728D9CC9A000FDCFE /* Utilities.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
-				C567D03F28D9B1BD000FDCFE /* Extentions.swift */,
+				C55218A528E7028800BC2CD0 /* Extensions */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
 				F7AA54CA2791B200002A7179 /* FilterType.swift */,
-				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
 				C567D04128D9B468000FDCFE /* Enums.swift */,
 				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
 				F78C5DB528319B6100AF8400 /* WeakTimer.swift */,
@@ -1686,7 +1691,6 @@
 				F7516D78282C0C1B00E1A138 /* CellConfigurable+Extensions.swift in Sources */,
 				F79C972F2746CCA3001BD5F8 /* LFSeasonModel.m in Sources */,
 				F72E276F28B3FF5D00E751B5 /* TVSeriesCastDataProvider.swift in Sources */,
-				C567D04028D9B1BD000FDCFE /* Extentions.swift in Sources */,
 				F77288C428A1606400AB28AB /* ILoadingDataOnce.swift in Sources */,
 				F7516D6C282BDE8400E1A138 /* GlobalSearchItem.swift in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
