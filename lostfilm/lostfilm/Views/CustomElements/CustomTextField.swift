@@ -47,7 +47,7 @@ final class CustomTextField: UIView {
 
     let passwordButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(named: "icon_play")
+        let image = UIImage(systemName: "eye")
         button.backgroundColor = .gray
         button.setImage(image, for: .normal)
         button.alpha = 1
@@ -100,11 +100,11 @@ final class CustomTextField: UIView {
 
     @objc func passwordButtonPressed() {
         if buttonON {
-            passwordButton.setImage(UIImage(named: "icon_filter_active"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
             hidePassword()
         } else {
             showPassword()
-            passwordButton.setImage(UIImage(named: "icon_play"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
         }
         buttonON = !buttonON
     }
@@ -157,11 +157,11 @@ extension CustomTextField {
     func configureInputField(on platform: CustomFields) {
         switch platform {
         case .name:
-            setupCommonInputView(withImage: UIImage(named: "close")!, withTitleLabel: Texts.name.uppercased())
+            setupCommonInputView(withImage: UIImage(systemName: "person.crop.circle.badge.plus")!, withTitleLabel: Texts.name.uppercased())
         case .surname:
-            setupCommonInputView(withImage: UIImage(named: "icon_filter_active")!, withTitleLabel: Texts.surname.uppercased())
+            setupCommonInputView(withImage: UIImage(systemName: "person.crop.rectangle.stack")!, withTitleLabel: Texts.surname.uppercased())
         case .email:
-            setupCommonInputView(withImage: UIImage(named: "icon_filter")!, withTitleLabel: Texts.email.uppercased())
+            setupCommonInputView(withImage: UIImage(systemName: "mail")!, withTitleLabel: Texts.email.uppercased())
         case .password:
             setupPasswordInputView()
         }
