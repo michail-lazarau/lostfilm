@@ -212,6 +212,7 @@
 		F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */; };
 		F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FC47B827DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift */; };
 		F7FFA1042777D486004B5D38 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFA1032777D486004B5D38 /* Date.swift */; };
+		F7FFB18128E5C41F00334400 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFB18028E5C41F00334400 /* LoginVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -476,6 +477,7 @@
 		F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LF.m"; sourceTree = "<group>"; };
 		F7FC47B827DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesPhotosDataProvider.swift; sourceTree = "<group>"; };
 		F7FFA1032777D486004B5D38 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F7FFB18028E5C41F00334400 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		FB0A1C0728CBAB3B001C9C51 /* lostfilm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lostfilm-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		FC4EB35F02C954E7F4B1AAAE /* Pods-lostfilm-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilm-lostfilmTests/Pods-lostfilm-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -752,6 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				F77288BF28A007D200AB28AB /* BaseViewModel.swift */,
+				F7FFB17F28E5BF9100334400 /* Authentication */,
 				F7516D67282BDAC900E1A138 /* GlobalSearchSeriesCast */,
 				F75E66BB28B8D01500984724 /* NewsDetails */,
 				F76D1F7C27B99896007E5933 /* Series */,
@@ -1373,6 +1376,14 @@
 			path = CellsForSeriesPhotosTVC;
 			sourceTree = "<group>";
 		};
+		F7FFB17F28E5BF9100334400 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F7FFB18028E5C41F00334400 /* LoginVM.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1635,6 +1646,7 @@
 				F7DBEE1027FA472E0094A7D2 /* VideosVM+UITableViewDataSource.swift in Sources */,
 				F7471DE427AABB1D00BDA17A /* VMseriesDetailPremiereDateItem.swift in Sources */,
 				F76BEDD728AD3A4E00A4B33E /* ILoadingDataByPage.swift in Sources */,
+				F7FFB18128E5C41F00334400 /* LoginVM.swift in Sources */,
 				F7997CD2276FBAE700DFCC19 /* VideosDataController.swift in Sources */,
 				F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */,
 				F79C972D2746CCA3001BD5F8 /* LFPersonModel.m in Sources */,

@@ -5,7 +5,7 @@ func login() {
     let password = "unhollylm0106"
 
     HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0))
-    LoginService(session: URLSession.shared).login(userLogin: username, password: password) { result in
+    LoginService(session: URLSession.shared).login(eMail: username, password: password) { result in
         switch result {
         case .success:
             break

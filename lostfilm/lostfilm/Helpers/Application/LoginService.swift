@@ -7,17 +7,15 @@ final class LoginService<T: URLSessionProtocol> {
         self.session = session
     }
 
-    func login(userLogin: String, password: String, response: @escaping (Result<String, Error>) -> Void) {
+    func login(eMail: String, password: String, response: @escaping (Result<String, Error>) -> Void) {
         do {
-            let request = try composeLoginRequest(username: userLogin, password: password)
+            let request = try composeLoginRequest(username: eMail, password: password)
             login(request: request, response: response)
         } catch let requestError {
             response(.failure(requestError))
         }
     }
-}
 
-extension LoginService {
     func getLoginPage(htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext"), response: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
         htmlParserWrapper.loadData(withReplacingURLParameters: nil, queryURLParameters: nil, asJSON: true) { data, htmlData in
             let filteredData: [Any]? = data?[String(describing: LFLoginPageModel.self)] as? [Any] ?? nil
@@ -30,7 +28,9 @@ extension LoginService {
             }
         }
     }
+}
 
+extension LoginService {
     func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
         session.sendRequest(request: request) { result in
             switch result {
@@ -65,7 +65,7 @@ extension LoginService {
             URLQueryItem(name: "pass", value: password),
             URLQueryItem(name: "need_captcha", value: "0"), // seemingly the value doesn't effect the response
             URLQueryItem(name: "captcha", value: nil),
-            URLQueryItem(name: "rem", value: "1")
+            URLQueryItem(name: "rem", value: "1"),
         ]
 
         return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php",
