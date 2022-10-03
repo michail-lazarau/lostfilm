@@ -15,7 +15,7 @@ final class CustomTextField: UIView {
 
     // MARK: Variabels
 
-    var buttonON = false
+    var isButtonSelected = false
 
     // MARK: Subviews
     let textField: UITextField = {
@@ -50,7 +50,6 @@ final class CustomTextField: UIView {
         let image = UIImage(systemName: "eye")
         button.backgroundColor = .gray
         button.setImage(image, for: .normal)
-        button.alpha = 1
         button.addTarget(self, action: #selector(passwordButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -63,11 +62,7 @@ final class CustomTextField: UIView {
         return stackView
     }()
 
-    private let contentView: UIView = {
-        let contentView = UIView()
-        contentView.contentMode = .scaleToFill
-        return contentView
-    }()
+    private let contentView = UIView()
 
     // MARK: Inits
 
@@ -79,7 +74,6 @@ final class CustomTextField: UIView {
         setupContentView()
         setupStackView(withViews: [UIView(), titleLabel, contentView])
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
-        textField.isSecureTextEntry = false
     }
 
     required init?(coder: NSCoder) {
@@ -95,18 +89,17 @@ final class CustomTextField: UIView {
 
     func showPassword() {
         textField.isSecureTextEntry = true
-        textField.alpha = 0.5
     }
 
     @objc func passwordButtonPressed() {
-        if buttonON {
+        if isButtonSelected {
             passwordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
             hidePassword()
         } else {
             showPassword()
             passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
         }
-        buttonON = !buttonON
+        isButtonSelected = !isButtonSelected
     }
 }
 
@@ -121,6 +114,7 @@ extension CustomTextField {
     }
 
     func setupContentView() {
+        contentView.contentMode = .scaleToFill
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)
         contentView.addSubview(textFieldIcon)
