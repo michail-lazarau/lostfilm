@@ -73,7 +73,7 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         return details
     }()
 
-    private let launchButton: UIButton = {
+    private lazy var launchButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "icon_play"), for: .normal)

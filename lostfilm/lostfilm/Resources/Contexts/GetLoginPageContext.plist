@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>url</key>
+	<string>https://www.lostfilm.tv/login</string>
+	<key>data</key>
+	<array>
+		<dict>
+			<key>xPathRoot</key>
+			<string>//div[@class=&apos;sign-in-panel&apos;]</string>
+			<key>className</key>
+			<string>LFLoginPageModel</string>
+			<key>fields</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>captchaStyleDisplay</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//div[@class=&apos;need_captcha&apos;]</string>
+							<key>attribute</key>
+							<string>style</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>captchaUrl</string>
+					<key>result</key>
+					<array>
+						<dict>
+							<key>xPath</key>
+							<string>//img[@id=&apos;captcha_pictcha&apos;]</string>
+							<key>attribute</key>
+							<string>src</string>
+							<key>formats</key>
+							<array>
+								<dict>
+									<key>conditions</key>
+									<array>
+										<dict>
+											<key>regex</key>
+											<string>^http</string>
+											<key>negative</key>
+											<true/>
+										</dict>
+									</array>
+									<key>format</key>
+									<string>http://www.lostfilm.tv%@</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
