@@ -14,10 +14,18 @@ fileprivate let defaultFontSize: CGFloat = 10
 final class CustomTextField: UIView {
 
     // MARK: Variabels
-
+    
     var isButtonSelected = false
 
+    enum CustomFields {
+        case name
+        case surname
+        case email
+        case password
+    }
+
     // MARK: Subviews
+
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
@@ -139,13 +147,6 @@ extension CustomTextField {
     func configurePasswordFieldConstraint() {
         titleLabel.anchor(top: stackView.topAnchor, left: stackView.leftAnchor, right: stackView.rightAnchor)
         contentView.anchor(top: titleLabel.bottomAnchor, left: stackView.leftAnchor, right: stackView.rightAnchor)
-    }
-
-    enum CustomFields {
-        case name
-        case surname
-        case email
-        case password
     }
 
     func configureInputField(on platform: CustomFields) {

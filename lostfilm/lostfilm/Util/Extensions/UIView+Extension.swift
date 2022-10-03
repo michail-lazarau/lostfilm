@@ -47,7 +47,7 @@ extension UIView {
         }
     }
 
-    func equalWidth(width: NSLayoutDimension? = nil ) {
+    func equalWidth(width: NSLayoutDimension? = nil) {
         if let width = width {
             widthAnchor.constraint(equalTo: width).isActive = true
         }
@@ -69,22 +69,3 @@ extension UIView {
         }
     }
 }
-
-// MARK: out of use
-
-//    private func setup() {
-//        // way 1
-//        let bundle = Bundle.init(for: EpisodeTableHeaderView.self)
-//        if let viewToAdd = bundle.loadNibNamed(EpisodeTableHeaderView.reuseIdentifier, owner: self, options: nil), let contentView = viewToAdd.first as? UIView {
-//            addSubview(contentView)
-//            contentView.frame = self.bounds
-//            contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        }
-//
-//        // way 2
-//        if let view = loadViewFromNib(nibName: EpisodeTableHeaderView.reuseIdentifier) {
-//            addSubview(view)
-//            view.frame = self.bounds
-//            view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        }
-//    }
