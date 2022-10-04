@@ -1,9 +1,9 @@
 import Foundation
 
-final class LoginService<T: URLSessionProtocol> {
-    let session: T
+final class LoginService: ILoginServiceable {
+    var session: URLSession
 
-    init(session: T) {
+    init(session: URLSession) {
         self.session = session
     }
 
@@ -15,46 +15,9 @@ final class LoginService<T: URLSessionProtocol> {
             response(.failure(requestError))
         }
     }
-
-    func getLoginPage(htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext"), response: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
-        htmlParserWrapper.loadData(withReplacingURLParameters: nil, queryURLParameters: nil, asJSON: true) { data, htmlData in
-            let filteredData: [Any]? = data?[String(describing: LFLoginPageModel.self)] as? [Any] ?? nil
-            if let loginFormProperties = filteredData?.first as? [AnyHashable: Any] {
-                response(.success(LFLoginPageModel(data: loginFormProperties)))
-            } else if htmlData == nil {
-                response(.failure(DVHtmlError.failedToLoadOnUrl))
-            } else {
-                response(.failure(DVHtmlError.failedToParseWebElement))
-            }
-        }
-    }
 }
 
 extension LoginService {
-    func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
-        session.sendRequest(request: request) { result in
-            switch result {
-            case let .success(data):
-                do {
-                    let decodedData = try JSONDecoder().decode(UserLoginResponse.self, from: data)
-                    if decodedData.error == nil, let username = decodedData.name {
-                        response(.success(username))
-                    } else if decodedData.needCaptcha == true {
-                        response(.failure(LoginServiceError.needCaptcha))
-                    } else if decodedData.error == 3 {
-                        response(.failure(LoginServiceError.invalidCredentials))
-                    } else {
-                        response(.failure(LoginServiceError.unknownLoginError))
-                    }
-                } catch let decodeError {
-                    response(.failure(decodeError))
-                }
-            case let .failure(error):
-                response(.failure(error))
-            }
-        }
-    }
-
     // https://medium.com/@serge.works.io/swift-how-to-create-a-http-post-request-with-application-x-www-form-urlencoded-body-bfd9cd26d6d5
     private func composeLoginRequest(username: String, password: String) throws -> URLRequest {
         var requestComponents = URLComponents() // for "x-www-form-urlencoded" content type
