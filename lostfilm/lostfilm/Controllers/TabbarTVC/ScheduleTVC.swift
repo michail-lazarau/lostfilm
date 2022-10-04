@@ -14,7 +14,7 @@ class ScheduleTVC: UITableViewController, IUpdatingViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateTableView() {
+    func updateView() {
         tableView.reloadData()
     }
 

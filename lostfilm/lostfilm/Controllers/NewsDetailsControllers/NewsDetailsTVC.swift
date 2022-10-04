@@ -33,7 +33,7 @@ class NewsDetailsTVC: UITableViewController, IUpdatingViewDelegate {
         super.viewDidAppear(animated)
     }
 
-    func updateTableView() {
+    func updateView() {
         tableView.reloadData()
         initialScreenLoadingSpinner.stopAnimating()
     }

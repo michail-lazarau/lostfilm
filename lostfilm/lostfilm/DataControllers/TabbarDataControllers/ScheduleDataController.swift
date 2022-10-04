@@ -32,7 +32,7 @@ class ScheduleDataController {
             }
             DispatchQueue.main.async {
                 if let delegate = strongSelf.delegate {
-                    delegate.updateTableView()
+                    delegate.updateView()
                 }
             }
 
