@@ -30,6 +30,8 @@ final class LoginViewController: UIViewController {
         return textField
     }()
 
+    private let passwordField = CustomTextField()
+
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Texts.logIn, for: .normal)
@@ -57,9 +59,10 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.setupPasswordInputView()
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        setupStackView(withViews: [UIView(), emailContainerView, passwordContainerView, loginButton])
+        setupStackView(withViews: [UIView(), emailContainerView, passwordContainerView, loginButton, passwordField])
         setupConstraints()
     }
 }
