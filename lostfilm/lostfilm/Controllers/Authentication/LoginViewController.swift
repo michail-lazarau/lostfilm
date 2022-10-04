@@ -10,8 +10,8 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
-    let emailView = CustomTextField()
-    let passwordView = CustomTextField()
+    let emailView = TextFieldView()
+    let passwordView = TextFieldView()
 
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
@@ -33,7 +33,7 @@ final class LoginViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 25
+        stackView.spacing = 10
         return stackView
     }()
 

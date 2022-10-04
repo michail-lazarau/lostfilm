@@ -11,7 +11,7 @@ import UIKit
 
 fileprivate let defaultFontSize: CGFloat = 10
 
-final class CustomTextField: UIView {
+final class TextFieldView: UIView {
 
     // MARK: Variabels
     
@@ -33,7 +33,6 @@ final class CustomTextField: UIView {
         textField.font = .systemFont(ofSize: defaultFontSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
@@ -43,13 +42,12 @@ final class CustomTextField: UIView {
         titleLabel.textAlignment = .left
         titleLabel.font = .systemFont(ofSize: defaultFontSize, weight: .semibold)
         titleLabel.textColor = .red
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
 
     var textFieldIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -113,7 +111,7 @@ final class CustomTextField: UIView {
 
     // MARK: Extension
 
-extension CustomTextField {
+extension TextFieldView {
 
     func setupStackView(withViews views: [UIView]) {
         for view in views {
