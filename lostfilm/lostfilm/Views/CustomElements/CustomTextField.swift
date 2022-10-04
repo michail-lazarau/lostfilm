@@ -66,7 +66,7 @@ final class CustomTextField: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 1
         return stackView
     }()
 
@@ -80,7 +80,7 @@ final class CustomTextField: UIView {
         addSubview(stackView)
         addSubview(textFieldIcon)
         setupContentView()
-        setupStackView(withViews: [UIView(), titleLabel, contentView])
+        setupStackView(withViews: [titleLabel, contentView])
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
     }
 
