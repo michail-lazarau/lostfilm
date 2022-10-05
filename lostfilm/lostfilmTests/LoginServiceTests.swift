@@ -129,7 +129,7 @@ extension LoginServiceTests {
         sut.session.data = mockedResponse.body?.data
         sut.session.error = mockedResponse.error
         // When
-        sut.login(request: URLRequest(url: URL(string: "mocked")!)) { result in
+        sut.login(eMail: "mocked", password: "mocked", captcha: nil) { result in
             exp.fulfill()
             loginResponse = result
         }
