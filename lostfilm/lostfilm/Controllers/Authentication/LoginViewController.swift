@@ -13,9 +13,17 @@ final class LoginViewController: UIViewController {
     let emailView = TextFieldView()
     let passwordView = TextFieldView()
 
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.Titles.logIn
+        label.textColor = .red
+        label.textAlignment = .center
+        return label
+    }()
+
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Texts.logIn, for: .normal)
+        button.setTitle(Texts.Buttons.logIn, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -39,6 +47,7 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(titleLabel)
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         setupTextFields()
@@ -62,12 +71,9 @@ extension LoginViewController {
 
     func setupConstraints() {
         scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
-
-        stackView.anchor(top: scrollView.contentLayoutGuide.topAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: scrollView.contentLayoutGuide.bottomAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
+        titleLabel.anchor(top: scrollView.contentLayoutGuide.topAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: stackView.topAnchor, right: scrollView.contentLayoutGuide.rightAnchor, paddingTop: 100)
+        stackView.anchor(top: titleLabel.bottomAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: scrollView.contentLayoutGuide.bottomAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
         stackView.equalWidth(width: scrollView.widthAnchor)
-
-        NSLayoutConstraint.activate([
-            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        loginButton.centerY(inView: scrollView)
     }
 }
