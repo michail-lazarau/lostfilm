@@ -5,7 +5,7 @@ protocol LoginServiceProtocol {
 }
 
 extension LoginServiceProtocol {
-    func getLoginPage(htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext"), response: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
+    func getLoginPage(htmlParserWrapper: DVHtmlToModels, response: @escaping (Result<LFLoginPageModel, Error>) -> Void) {
         htmlParserWrapper.loadData(withReplacingURLParameters: nil, queryURLParameters: nil, asJSON: true) { data, htmlData in
             let filteredData: [Any]? = data?[String(describing: LFLoginPageModel.self)] as? [Any] ?? nil
             if let loginFormProperties = filteredData?.first as? [AnyHashable: Any] {

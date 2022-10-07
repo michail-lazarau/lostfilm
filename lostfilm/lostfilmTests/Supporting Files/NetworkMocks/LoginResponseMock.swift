@@ -44,7 +44,7 @@ enum LoginResponseBodyMock {
                 "result":"ok"
             }
             """
-        case .fail(type: .genericFour):
+        case .fail(type: .invalidCaptcha):
             return """
             {
                 "error": 4,
@@ -60,7 +60,7 @@ enum LoginResponseBodyMock {
         case invalidCredentials
         case needCaptcha
         case genericOne
-        case genericFour
+        case invalidCaptcha
         case undecodable
     }
 }

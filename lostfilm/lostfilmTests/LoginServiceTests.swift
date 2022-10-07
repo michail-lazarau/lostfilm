@@ -46,9 +46,9 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func test_negative_loginFailsWithUnknownErrorNo4() throws {
-        try verifyLogin(expectedResult: LoginServiceError.unknownLoginError,
-                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericFour), error: nil)) { result, expected in
+    func test_negative_loginFailsWithInvalidCaptchaError() throws {
+        try verifyLogin(expectedResult: LoginServiceError.invalidCaptcha,
+                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCaptcha), error: nil)) { result, expected in
             XCTAssertThrowsError(try result.get(), "Catching error") { error in
                 XCTAssertEqual(error as! LoginServiceError, expected)
             }
@@ -146,7 +146,7 @@ extension LoginServiceTests {
         guard let htmlToModel = DVHtmlToModels(contextByName: "GetLoginPageContext") else {
             return XCTFail("Unable to generate the html model from the local context")
         }
-
+        // faking session url
         htmlToModel.setValue("file://" + urlStub, forKey: "url")
 
         // When

@@ -31,6 +31,8 @@ extension LoginService {
                         response(.failure(LoginServiceError.needCaptcha))
                     } else if decodedData.error == 3 {
                         response(.failure(LoginServiceError.invalidCredentials))
+                    } else if decodedData.error == 4 {
+                        response(.failure(LoginServiceError.invalidCaptcha))
                     } else {
                         response(.failure(LoginServiceError.unknownLoginError))
                     }
@@ -53,7 +55,7 @@ extension LoginService {
             URLQueryItem(name: "pass", value: password),
             URLQueryItem(name: "need_captcha", value: captcha == nil ? "0" : "1"), // seemingly the value doesn't effect the response
             URLQueryItem(name: "captcha", value: captcha),
-            URLQueryItem(name: "rem", value: "1"),
+            URLQueryItem(name: "rem", value: "1")
         ]
 
         return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php",
@@ -65,12 +67,13 @@ extension LoginService {
 }
 
 enum LoginServiceError: LocalizedError {
-    case invalidCredentials, needCaptcha, unknownLoginError
+    case invalidCredentials, needCaptcha, invalidCaptcha, unknownLoginError
 
     public var errorDescription: String? {
         switch self {
         case .invalidCredentials: return "Login invalid credentials"
-        case .needCaptcha: return "Need to pass captcha"
+        case .needCaptcha: return "Need to pass captcha" // MARK: occurs when captcha appears for the 1st time
+        case .invalidCaptcha: return "Picture code was not specified correctly" // MARK: occurs when captcha was requested and was not specified correctly
         case .unknownLoginError: return "Error occurred during login"
         }
     }
