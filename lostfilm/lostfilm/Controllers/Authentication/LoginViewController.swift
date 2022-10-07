@@ -9,26 +9,9 @@ import Foundation
 import UIKit
 
 final class LoginViewController: UIViewController {
-    private lazy var emailContainerView: UIView = {
-        let image = Icons.mailIcon
-        let view = Utilities().createInputContainerView(withImage: Icons.mailIcon, textField: emailTextField)
-        return view
-    }()
 
-    private lazy var passwordContainerView: UIView = {
-        let view = Utilities().createInputContainerView(withImage: Icons.passwordIcon, textField: passwordTextField)
-        return view
-    }()
-
-    private let emailTextField: UITextField = {
-        let textField = Utilities().createTextField(withPlaceholder: Texts.email)
-        return textField
-    }()
-
-    private let passwordTextField: UITextField = {
-        let textField = Utilities().createTextField(withPlaceholder: Texts.password)
-        return textField
-    }()
+    let emailView = TextFieldView()
+    let passwordView = TextFieldView()
 
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
@@ -42,7 +25,6 @@ final class LoginViewController: UIViewController {
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .red
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -51,7 +33,7 @@ final class LoginViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -59,12 +41,19 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        setupStackView(withViews: [UIView(), emailContainerView, passwordContainerView, loginButton])
+        setupTextFields()
+        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton])
         setupConstraints()
     }
 }
 
 extension LoginViewController {
+
+    func setupTextFields() {
+        emailView.configureInputField(on: .email)
+        passwordView.configureInputField(on: .password)
+    }
+
     func setupStackView(withViews view: [UIView]) {
         for view in view {
             stackView.addArrangedSubview(view)
