@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 //import SDWebImage
 
-final class LoginViewController: UIViewController, LoginViewControllerDelegate {
+final class LoginViewController: UIViewController, LoginViewProtocol {
     let emailView = TextFieldView()
     let passwordView = TextFieldView()
     private let captchaTextView = TextFieldView()
@@ -110,22 +110,22 @@ extension LoginViewController {
 // MARK: LoginViewControllerDelegate
 extension LoginViewController {
     func showError(error: Error) {
-        DispatchQueue.main.async {
-            // TODO
-        }
+//        DispatchQueue.main.async {
+            // TODO: Tost alert
+//        }
     }
 
     func authorise(username: String) {
-        DispatchQueue.main.async {
-            // TODO
-        }
+//        DispatchQueue.main.async {
+            // TODO: show Tabbarviewcontroller, dismiss LoginViewController
+//        }
     }
 
     func updateCaptcha(url: URL) {
         // TODO: add a spinner to SDWebImage
-        DispatchQueue.main.async { [weak captchaImageView] in
-            captchaImageView?.sd_setImage(with: url, placeholderImage: nil, options: .refreshCached, context: nil)
-        }
+//        DispatchQueue.main.async { [weak captchaImageView] in
+            captchaImageView.sd_setImage(with: url, placeholderImage: nil, options: .refreshCached, context: nil)
+//        }
 
 //        SDImageCache.shared.removeImage(forKey: url.description)
 
@@ -142,13 +142,13 @@ extension LoginViewController {
     }
 
     func removeUIActivityIndicator() {
-        DispatchQueue.main.async { [weak screenLoadingSpinner] in
-            guard let screenLoadingSpinner = screenLoadingSpinner else {
-                return
-            }
+//        DispatchQueue.main.async { [weak screenLoadingSpinner] in
+//            guard let screenLoadingSpinner = screenLoadingSpinner else {
+//                return
+//            }
             if screenLoadingSpinner.isAnimating {
                 screenLoadingSpinner.stopAnimating()
             }
-        }
+//        }
     }
 }

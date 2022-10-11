@@ -15,7 +15,7 @@
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F707A69828EC5EA0006F9110 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */; };
 		F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */; };
-		F707A69E28F03FDF006F9110 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69D28F03FDF006F9110 /* LoginViewControllerDelegate.swift */; };
+		F707A69E28F03FDF006F9110 /* LoginViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */; };
 		F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90427C14C8200924479 /* ParagraphView.xib */; };
 		F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DB90627C14CC700924479 /* ParagraphView.swift */; };
 		F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */; };
@@ -249,7 +249,7 @@
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 		F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
 		F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
-		F707A69D28F03FDF006F9110 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
+		F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewProtocol.swift; sourceTree = "<group>"; };
 		F70DB90427C14C8200924479 /* ParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParagraphView.xib; sourceTree = "<group>"; };
 		F70DB90627C14CC700924479 /* ParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphView.swift; sourceTree = "<group>"; };
 		F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeTableHeaderView.xib; sourceTree = "<group>"; };
@@ -1316,7 +1316,7 @@
 				F717BF1927AD5CF80029B796 /* IUpdatingViewDelegate.swift */,
 				F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */,
 				F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */,
-				F707A69D28F03FDF006F9110 /* LoginViewControllerDelegate.swift */,
+				F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */,
 			);
 			path = DelegatingProtocols;
 			sourceTree = "<group>";
@@ -1764,7 +1764,7 @@
 				F751EBDA28CE4E310005B652 /* LoginService.swift in Sources */,
 				F756A72328BCFFE30086A9B9 /* NewsDetailsTVC.swift in Sources */,
 				F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */,
-				F707A69E28F03FDF006F9110 /* LoginViewControllerDelegate.swift in Sources */,
+				F707A69E28F03FDF006F9110 /* LoginViewProtocol.swift in Sources */,
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,
 				F77226BF28BE4FEB002143CC /* CarouselCollectionViewCell.swift in Sources */,
 				F781ACC827E11D55003ABF31 /* PhotosVM+UITableViewDataSource.swift in Sources */,
