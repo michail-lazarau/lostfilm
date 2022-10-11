@@ -12,6 +12,5 @@ extension UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
 
-    static let lightBG = UIColor.rgb(red: 217, green: 219, blue: 234)
-    static let darkBG = UIColor.rgb(red: 17, green: 37, blue: 50)
+    static let twitterBlue = UIColor.rgb(red: 29, green: 161, blue: 242)
 }

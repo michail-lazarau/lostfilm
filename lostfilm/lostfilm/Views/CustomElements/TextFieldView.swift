@@ -31,7 +31,6 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.backgroundColor = .darkGray
         textField.font = .systemFont(ofSize: defaultFontSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
@@ -44,7 +43,7 @@ final class TextFieldView: UIView {
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
         titleLabel.font = .systemFont(ofSize: defaultFontSize, weight: .semibold)
-        titleLabel.textColor = .red
+        titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
 
@@ -72,6 +71,7 @@ final class TextFieldView: UIView {
     }()
 
     private let contentView = UIView()
+    private let dividedView = UIView()
 
     // MARK: Inits
 
@@ -103,12 +103,10 @@ final class TextFieldView: UIView {
     @objc func passwordButtonPressed() {
         if isButtonSelected {
             passwordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-//            passwordButton.setImage(Icons.openEye, for: .normal)
             hidePassword()
         } else {
             showPassword()
             passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
-//            passwordButton.setImage(Icons.closeEye, for: .normal)
         }
         isButtonSelected = !isButtonSelected
     }
@@ -126,6 +124,7 @@ extension TextFieldView {
 
     func setupContentView() {
         contentView.contentMode = .scaleToFill
+        contentView.addSubview(dividedView)
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)
         contentView.addSubview(textFieldIcon)
@@ -140,16 +139,24 @@ extension TextFieldView {
         passwordButton.anchor(top: contentView.topAnchor, left: textField.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
 
+        dividedView.backgroundColor = .red
+        dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: passwordButton.leftAnchor, height: 0.75)
+
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
     }
 
     func setupCommonInputView(withImage image: UIImage, withTitleLabel title: String, withPlaceholder placeholder: String) {
-        textFieldIcon.image = image
         titleLabel.text = title
+        textField.placeholder = placeholder
+        textFieldIcon.image = image
 
         textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
+
+        dividedView.backgroundColor = .red
+        dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: textField.rightAnchor, paddingRight: 25, height: 0.75)
+
         textFieldIcon.setDimensions(width: 25, height: 25)
     }
 

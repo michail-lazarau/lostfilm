@@ -31,6 +31,7 @@ enum Texts {
     }
 
     enum Titles {
+        static let welcome = "WELCOM TO LOST FILM"
         static let logIn = "LOG IN"
         static let name = "Name"
         static let surname = "Surname"
@@ -47,3 +48,4 @@ enum Texts {
         static let alreadyHaveAnAccount = "Already have an account?"
     }
 }
+
