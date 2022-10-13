@@ -1475,6 +1475,7 @@
 				en,
 				Base,
 				ru,
+				uk,
 			);
 			mainGroup = F7AEE460273FEB7900C304D0;
 			productRefGroup = F7AEE46A273FEB7900C304D0 /* Products */;

@@ -46,6 +46,6 @@ enum Texts {
         static let forgotPassword = "Forgot Password?"
         static let ready = "Ready"
         static let alreadyHaveAnAccount = "Already have an account?"
+        static let locString = NSLocalizedString("LOG IN", comment: "")
     }
 }
-
