@@ -3,7 +3,9 @@ import Foundation
 protocol LoginViewProtocol: AnyObject {
     func showError(error: Error)
     func authorise(username: String)
-    func updateCaptcha(url: URL)
-    func displayUIActivityIndicator()
-    func removeUIActivityIndicator()
+//    func updateCaptcha(url: URL)
+    func prepareCaptchaToDisplay()
+    func updateCaptcha(data: Data)
+    func displayLoadingIndicator()
+    func removeLoadingIndicator()
 }

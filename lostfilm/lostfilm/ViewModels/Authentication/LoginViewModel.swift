@@ -5,7 +5,7 @@ final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
     private var captcha: Captcha?
     private let dataProvider: LoginServiceProtocol
-    weak var LoginViewModelDelegate: LoginViewProtocol?
+    weak var loginViewModelDelegate: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
 
     init(dataProvider: LoginServiceProtocol) {
@@ -14,7 +14,7 @@ final class LoginViewModel {
 
     // func signature: , response: @escaping (Result<Username, Error>) -> Void
     func login(eMail: String, password: String, captcha: String?) {
-        LoginViewModelDelegate?.displayUIActivityIndicator() // MARK: main thread
+//        loginViewModelDelegate?.displayLoadingIndicator() // MARK: main thread
         dataProvider.login(eMail: eMail, password: password, captcha: captcha) { [weak self] result in
             guard let strongSelf = self else {
                 return
@@ -23,42 +23,59 @@ final class LoginViewModel {
             switch result {
             case let .success(username):
                 strongSelf.captcha = nil
-                strongSelf.LoginViewModelDelegate?.authorise(username: username)
+                strongSelf.loginViewModelDelegate?.authorise(username: username)
             case let .failure(error):
-                strongSelf.LoginViewModelDelegate?.showError(error: error)
+                strongSelf.loginViewModelDelegate?.showError(error: error)
             }
 
-            strongSelf.LoginViewModelDelegate?.removeUIActivityIndicator()
+            strongSelf.loginViewModelDelegate?.removeLoadingIndicator()
         }
     }
 
     func checkLoginPageForCaptcha(completionForLogin: @escaping () -> Void) {
-        LoginViewModelDelegate?.displayUIActivityIndicator() // MARK: main thread
+//        loginViewModelDelegate?.displayLoadingIndicator() // MARK: main thread
         if !(captcha?.captchaIsRequired ?? false) {
-            dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
-                guard let strongSelf = self else {
-                    return
-                }
-
-                switch result {
-                case let .success(captcha):
-                    if captcha.captchaIsRequired {
-                        strongSelf.captcha = captcha // MARK: prevent calling captcha: captcha does not require updating once it's displayed
-                        strongSelf.LoginViewModelDelegate?.updateCaptcha(url: captcha.captchaUrl)
-                    } else {
-                        completionForLogin()
-                    }
-                case let .failure(error):
-                    strongSelf.LoginViewModelDelegate?.showError(error: error)
-                }
-
-                strongSelf.LoginViewModelDelegate?.removeUIActivityIndicator()
+            checkForCaptchaAndRenderIfNecessary(htmlParserWrapper: htmlParserWrapper) {
+                completionForLogin()
             }
         } else { // MARK: main thread
-            LoginViewModelDelegate?.updateCaptcha(url: captcha!.captchaUrl) // MARK: captcha cannot be nil here. The function is evoked to prevent captcha staleness over time.
-            LoginViewModelDelegate?.removeUIActivityIndicator()
+//            renderCaptcha(url: captcha!.captchaUrl) // MARK: captcha cannot be nil here. The function is evoked to prevent captcha staleness over time.
             completionForLogin()
         }
     }
     // FIXME: "'mutating' is not valid on instance methods in classes" error occurs when the capture list [captchaIsMandatory, delegate] is used
+}
+
+private extension LoginViewModel {
+    func renderCaptcha(url: URL) {
+        loginViewModelDelegate?.prepareCaptchaToDisplay()
+        dataProvider.grabCaptcha(url: url) { [loginViewModelDelegate] result in
+            switch result {
+            case let .success(data):
+                loginViewModelDelegate?.updateCaptcha(data: data)
+            case let .failure(error): // Define Error: unable to load captcha
+                loginViewModelDelegate?.showError(error: error)
+            }
+        }
+    }
+
+    func checkForCaptchaAndRenderIfNecessary(htmlParserWrapper: DVHtmlToModels, completionForLogin: @escaping () -> Void) {
+        dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
+            guard let strongSelf = self else {
+                return
+            }
+
+            switch result {
+            case let .success(captcha):
+                if captcha.captchaIsRequired {
+                    strongSelf.captcha = captcha // MARK: prevent calling captcha: captcha does not require updating once it's displayed
+                    strongSelf.renderCaptcha(url: captcha.captchaUrl)
+                } else {
+                    completionForLogin()
+                }
+            case let .failure(error):
+                strongSelf.loginViewModelDelegate?.showError(error: error)
+            }
+        }
+    }
 }

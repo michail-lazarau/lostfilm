@@ -7,16 +7,18 @@
 
 import Foundation
 import UIKit
-//import SDWebImage
+import SDWebImage
 
 final class LoginViewController: UIViewController, LoginViewProtocol {
     let emailView = TextFieldView()
     let passwordView = TextFieldView()
-    private let captchaTextView = TextFieldView()
+    private let captchaTextView = UITextField()
     private let captchaImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.clipsToBounds = true
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        imageView.sd_imageIndicator?.stopAnimatingIndicator()
+        //        imageView.clipsToBounds = true
         return imageView
     }()
     private let viewModel: LoginViewModel
@@ -63,10 +65,12 @@ final class LoginViewController: UIViewController, LoginViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .gray
+        viewModel.loginViewModelDelegate = self
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton])
+        setupStackView(withViews: [UIView(), emailView, passwordView, captchaTextView, loginButton, captchaImageView])
         setupConstraints()
     }
 }
@@ -96,13 +100,12 @@ extension LoginViewController {
     }
 
     @objc func login() {
-        // TODO: call LoginViewModel.getLoginPage
         viewModel.checkLoginPageForCaptcha { [weak self] in
             guard let strongSelf = self, let email = strongSelf.emailView.textField.text, let password = strongSelf.passwordView.textField.text else {
                 return
             }
 
-            strongSelf.viewModel.login(eMail: email, password: password, captcha: strongSelf.captchaTextView.textField.text)
+            strongSelf.viewModel.login(eMail: email, password: password, captcha: strongSelf.captchaTextView.text)
         }
     }
 }
@@ -115,40 +118,66 @@ extension LoginViewController {
 //        }
     }
 
+    func prepareCaptchaToDisplay() {
+        captchaImageView.sd_imageIndicator?.startAnimatingIndicator()
+    }
+
     func authorise(username: String) {
+        print("")
 //        DispatchQueue.main.async {
             // TODO: show Tabbarviewcontroller, dismiss LoginViewController
 //        }
     }
 
-    func updateCaptcha(url: URL) {
-        // TODO: add a spinner to SDWebImage
-//        DispatchQueue.main.async { [weak captchaImageView] in
-            captchaImageView.sd_setImage(with: url, placeholderImage: nil, options: .refreshCached, context: nil)
+    func updateCaptcha(data: Data) {
+        DispatchQueue.main.async { [weak self] in
+            self?.captchaImageView.image = UIImage(data: data)
+            self?.captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
+        }
+    }
+
+    // MARK: out of use
+    func displayLoadingIndicator() {
+//        DispatchQueue.main.async { [weak screenLoadingSpinner] in
+//            guard let screenLoadingSpinner = screenLoadingSpinner else {
+//                return
+//            }
+        if !screenLoadingSpinner.isAnimating {
+            screenLoadingSpinner.startAnimating()
+        }
 //        }
+    }
+
+    // MARK: out of use
+    func removeLoadingIndicator() {
+        DispatchQueue.main.async { [weak screenLoadingSpinner] in
+            guard let screenLoadingSpinner = screenLoadingSpinner else {
+                return
+            }
+            if screenLoadingSpinner.isAnimating {
+                screenLoadingSpinner.stopAnimating()
+            }
+        }
+    }
+}
+
+
+
+//func updateCaptcha(url: URL) {
+    // TODO: add a spinner to SDWebImage
+
+//        let operationClass = SDWebImageDownloaderOperation(request: URLRequest(url: url), in: URLSession.shared)
+//        let downloader = SDWebImageDownloader.shared
+//        downloader.config.operationClass = type(of: operationClass)
+//        downloader.downloadImage(with: url) { [weak self] image, _, _, _ in
+//            self?.captchaImageView.image = image
+//        }
+
+//        captchaImageView.sd_setImage(with: url, placeholderImage: nil, options: .fromLoaderOnly, context: nil)
 
 //        SDImageCache.shared.removeImage(forKey: url.description)
 
 //        captchaImageView.sd_setImage(with: url, placeholderImage: nil, options: .refreshCached) { [weak self] image, error, cacheType, url in
 //            captchaImageView?.image = image
 //        }
-    }
-
-    // FIXME: move it to LVC from the Delegate?
-    func displayUIActivityIndicator() {
-        if !screenLoadingSpinner.isAnimating {
-            screenLoadingSpinner.startAnimating()
-        }
-    }
-
-    func removeUIActivityIndicator() {
-//        DispatchQueue.main.async { [weak screenLoadingSpinner] in
-//            guard let screenLoadingSpinner = screenLoadingSpinner else {
-//                return
-//            }
-            if screenLoadingSpinner.isAnimating {
-                screenLoadingSpinner.stopAnimating()
-            }
-//        }
-    }
-}
+//}

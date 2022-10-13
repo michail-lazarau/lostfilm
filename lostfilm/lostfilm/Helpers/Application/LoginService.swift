@@ -1,13 +1,13 @@
 import Foundation
 
-    final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
+final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
     var session: T
 
     init(session: T) {
         self.session = session
     }
 
-        func login(eMail: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void) {
+    func login(eMail: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void) {
         do {
             let request = try composeLoginRequest(username: eMail, password: password, captcha: captcha)
             login(request: request, response: response)
@@ -15,11 +15,25 @@ import Foundation
             response(.failure(requestError))
         }
     }
+
+    func grabCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void) {
+        session.sendRequest(url: url) { result in
+            response(result)
+        }
+
+//        session.dataTask(with: url) { data, _, error in
+//            if let error = error {
+//                response(.failure(error))
+//                return
+//            }
+//            guard let data = data else { return }
+//            response(.success(data))
+//        }.resume()
+    }
 }
 
-extension LoginService {
-
-    private func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
+private extension LoginService {
+    func login(request: URLRequest, response: @escaping (Result<String, Error>) -> Void) {
         session.sendRequest(request: request) { result in
             switch result {
             case let .success(data):
@@ -46,14 +60,15 @@ extension LoginService {
     }
 
     // https://medium.com/@serge.works.io/swift-how-to-create-a-http-post-request-with-application-x-www-form-urlencoded-body-bfd9cd26d6d5
-    private func composeLoginRequest(username: String, password: String, captcha: String?) throws -> URLRequest {
+    func composeLoginRequest(username: String, password: String, captcha: String?) throws -> URLRequest {
+        let emptyTextField = ""
         var requestComponents = URLComponents() // for "x-www-form-urlencoded" content type
         requestComponents.queryItems = [
             URLQueryItem(name: "act", value: "users"),
             URLQueryItem(name: "type", value: "login"),
             URLQueryItem(name: "mail", value: username),
             URLQueryItem(name: "pass", value: password),
-            URLQueryItem(name: "need_captcha", value: captcha == nil ? "0" : "1"), // seemingly the value doesn't effect the response
+            URLQueryItem(name: "need_captcha", value: captcha == emptyTextField ? "0" : "1"),
             URLQueryItem(name: "captcha", value: captcha),
             URLQueryItem(name: "rem", value: "1")
         ]
@@ -73,7 +88,9 @@ enum LoginServiceError: LocalizedError {
         switch self {
         case .invalidCredentials: return "Login invalid credentials"
         case .needCaptcha: return "Need to pass captcha" // MARK: occurs when captcha appears for the 1st time
-        case .invalidCaptcha: return "Picture code was not specified correctly" // MARK: occurs when captcha was requested and was not specified correctly
+
+        case .invalidCaptcha: return "Captcha code was not specified correctly" // MARK: occurs when captcha was requested and was not specified correctly
+
         case .unknownLoginError: return "Error occurred during login"
         }
     }
