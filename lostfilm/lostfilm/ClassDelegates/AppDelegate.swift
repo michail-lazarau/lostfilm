@@ -23,5 +23,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623111-applicationwillterminate
+    }
 }

@@ -119,14 +119,23 @@ extension LoginViewController {
     }
 
     func prepareCaptchaToDisplay() {
-        captchaImageView.sd_imageIndicator?.startAnimatingIndicator()
+        DispatchQueue.main.async { [weak captchaImageView] in
+            captchaImageView?.sd_imageIndicator?.startAnimatingIndicator()
+        }
     }
 
     func authorise(username: String) {
-        print("")
-//        DispatchQueue.main.async {
-            // TODO: show Tabbarviewcontroller, dismiss LoginViewController
-//        }
+        // TODO: localization
+        DispatchQueue.main.async { [weak self] in
+            let alertController = UIAlertController(title: "Login Successful", message: "Welcome, \(username)", preferredStyle: .alert)
+            alertController.view.translatesAutoresizingMaskIntoConstraints = false
+            let continueAction = UIAlertAction(title: "Continue", style: .default) { alertAction in
+                // TODO: show Tabbarviewcontroller, dismiss LoginViewController
+            }
+            alertController.addAction(continueAction)
+            self?.present(alertController, animated: true) {
+            }
+        }
     }
 
     func updateCaptcha(data: Data) {

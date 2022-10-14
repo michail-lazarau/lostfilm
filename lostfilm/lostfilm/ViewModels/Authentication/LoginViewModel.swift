@@ -39,7 +39,8 @@ final class LoginViewModel {
                 completionForLogin()
             }
         } else { // MARK: main thread
-//            renderCaptcha(url: captcha!.captchaUrl) // MARK: captcha cannot be nil here. The function is evoked to prevent captcha staleness over time.
+            let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0..<1))", relativeTo: captcha!.captchaUrl)!
+            renderCaptcha(url: randomQueryCaptcha) // MARK: captcha cannot be nil here. The function is evoked to prevent captcha staleness over time.
             completionForLogin()
         }
     }
