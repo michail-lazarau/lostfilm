@@ -49,3 +49,7 @@ enum Texts {
         static let locString = NSLocalizedString("LOG IN", comment: "")
     }
 }
+
+enum Spacings {
+    
+}

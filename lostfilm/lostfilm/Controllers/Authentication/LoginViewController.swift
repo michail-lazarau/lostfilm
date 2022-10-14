@@ -10,8 +10,14 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
-    let emailView = TextFieldView()
-    let passwordView = TextFieldView()
+    private let emailView = TextFieldView()
+    private let passwordView = TextFieldView()
+
+    private let contentView: UIView = {
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
+    }()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -29,14 +35,12 @@ final class LoginViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.heightAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
-
         return button
     }()
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.alwaysBounceVertical = true
         return scrollView
     }()
 
@@ -52,10 +56,10 @@ final class LoginViewController: UIViewController {
         view.backgroundColor = UIColor(named: "backgroundColor")
 
         view.addSubview(scrollView)
-        scrollView.addSubview(titleLabel)
-        scrollView.addSubview(stackView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton, UIView()])
+        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton])
         setupConstraints()
     }
 
@@ -90,7 +94,6 @@ final class LoginViewController: UIViewController {
                 viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
         }
-
     }
 
     override func viewDidLoad() {
@@ -98,6 +101,7 @@ final class LoginViewController: UIViewController {
         setupView()
         registerKeyboardNotification()
         initialSetup()
+        setupConstraints()
     }
     deinit {
         removeKeyboardNotification()
@@ -118,10 +122,32 @@ extension LoginViewController {
     }
 
     func setupConstraints() {
-        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
-        titleLabel.anchor(top: scrollView.contentLayoutGuide.topAnchor, left: scrollView.contentLayoutGuide.leftAnchor, bottom: stackView.topAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
-        stackView.anchor(left: scrollView.contentLayoutGuide.leftAnchor, bottom: scrollView.contentLayoutGuide.bottomAnchor, right: scrollView.contentLayoutGuide.rightAnchor)
-        stackView.equalWidth(width: scrollView.widthAnchor)
+
+        let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 0.0)
+        contentViewHeightConstraint.priority = .defaultLow
+
+        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          left: view.safeAreaLayoutGuide.leftAnchor,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          right: view.safeAreaLayoutGuide.rightAnchor)
+
+        contentView.anchor(top: scrollView.contentLayoutGuide.topAnchor,
+                           left: scrollView.contentLayoutGuide.leftAnchor,
+                           bottom: scrollView.contentLayoutGuide.bottomAnchor,
+                           right: scrollView.contentLayoutGuide.rightAnchor)
+
+        NSLayoutConstraint.activate([
+
+                    contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
+
+                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 8.0),
+                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8.0),
+                    stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40.0),
+                    stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0),
+                    stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
+
+                    contentViewHeightConstraint
+                    ])
     }
 
     private func registerKeyboardNotification() {
@@ -138,7 +164,7 @@ extension LoginViewController {
       guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
       else { return }
 
-      let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height , right: 0.0)
+      let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
       scrollView.contentInset = contentInsets
       scrollView.scrollIndicatorInsets = contentInsets
     }
