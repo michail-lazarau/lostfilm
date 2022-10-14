@@ -1,50 +1,50 @@
 import Foundation
 
 final class LoginViewModel {
-    typealias Username = String
     typealias Captcha = LFLoginPageModel
-    private var captcha: Captcha?
+    private var captchaModel: Captcha?
     private let dataProvider: LoginServiceProtocol
+    private let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
     weak var loginViewModelDelegate: LoginViewProtocol?
-    let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
 
     init(dataProvider: LoginServiceProtocol) {
         self.dataProvider = dataProvider
     }
 
-    // func signature: , response: @escaping (Result<Username, Error>) -> Void
     func login(eMail: String, password: String, captcha: String?) {
-//        loginViewModelDelegate?.displayLoadingIndicator() // MARK: main thread
+        // TODO: launch loading indicator
         dataProvider.login(eMail: eMail, password: password, captcha: captcha) { [weak self] result in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
 
             switch result {
             case let .success(username):
-                strongSelf.captcha = nil
-                strongSelf.loginViewModelDelegate?.authorise(username: username)
+                self.captchaModel = nil
+                self.loginViewModelDelegate?.authorise(username: username)
             case let .failure(error):
-                strongSelf.loginViewModelDelegate?.showError(error: error)
+                self.loginViewModelDelegate?.showError(error: error)
+                let error = error as? LoginServiceError
+                if error == .invalidCaptcha || error == .needCaptcha {
+                    if let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0..<1))", relativeTo: captchaUrl) {
+                        self.renderCaptcha(url: randomQueryCaptcha)
+                    }
+                }
             }
-
-            strongSelf.loginViewModelDelegate?.removeLoadingIndicator()
+            // TODO: stop loading indicator
         }
     }
 
-    func checkLoginPageForCaptcha(completionForLogin: @escaping () -> Void) {
-//        loginViewModelDelegate?.displayLoadingIndicator() // MARK: main thread
-        if !(captcha?.captchaIsRequired ?? false) {
-            checkForCaptchaAndRenderIfNecessary(htmlParserWrapper: htmlParserWrapper) {
+    func checkForCaptcha(completionForLogin: @escaping () -> Void) {
+        // TODO: launch loading indicator
+        if !(captchaModel?.captchaIsRequired ?? false) {
+            checkForCaptcha(htmlParserWrapper: htmlParserWrapper) {
                 completionForLogin()
             }
-        } else { // MARK: main thread
-            let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0..<1))", relativeTo: captcha!.captchaUrl)!
-            renderCaptcha(url: randomQueryCaptcha) // MARK: captcha cannot be nil here. The function is evoked to prevent captcha staleness over time.
+        } else {
             completionForLogin()
         }
     }
-    // FIXME: "'mutating' is not valid on instance methods in classes" error occurs when the capture list [captchaIsMandatory, delegate] is used
 }
 
 private extension LoginViewModel {
@@ -60,22 +60,22 @@ private extension LoginViewModel {
         }
     }
 
-    func checkForCaptchaAndRenderIfNecessary(htmlParserWrapper: DVHtmlToModels, completionForLogin: @escaping () -> Void) {
+    func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, completionForLogin: @escaping () -> Void) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
 
             switch result {
             case let .success(captcha):
                 if captcha.captchaIsRequired {
-                    strongSelf.captcha = captcha // MARK: prevent calling captcha: captcha does not require updating once it's displayed
-                    strongSelf.renderCaptcha(url: captcha.captchaUrl)
+                    self.captchaModel = captcha
+                    self.renderCaptcha(url: captcha.captchaUrl)
                 } else {
                     completionForLogin()
                 }
             case let .failure(error):
-                strongSelf.loginViewModelDelegate?.showError(error: error)
+                self.loginViewModelDelegate?.showError(error: error)
             }
         }
     }

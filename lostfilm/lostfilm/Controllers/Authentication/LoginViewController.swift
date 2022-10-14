@@ -38,6 +38,16 @@ final class LoginViewController: UIViewController, LoginViewProtocol {
         return spinner
     }()
 
+    private let alertController: UIAlertController = {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alertController.view.translatesAutoresizingMaskIntoConstraints = false
+        let continueAction = UIAlertAction(title: "Continue", style: .default) { alertAction in
+            // TODO: show Tabbarviewcontroller, dismiss LoginViewController
+        }
+        alertController.addAction(continueAction)
+        return alertController
+    }()
+
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Texts.logIn, for: .normal)
@@ -100,12 +110,12 @@ extension LoginViewController {
     }
 
     @objc func login() {
-        viewModel.checkLoginPageForCaptcha { [weak self] in
-            guard let strongSelf = self, let email = strongSelf.emailView.textField.text, let password = strongSelf.passwordView.textField.text else {
+        viewModel.checkForCaptcha { [weak self] in
+            guard let self = self, let email = self.emailView.textField.text, let password = self.passwordView.textField.text else {
                 return
             }
 
-            strongSelf.viewModel.login(eMail: email, password: password, captcha: strongSelf.captchaTextView.text)
+            self.viewModel.login(eMail: email, password: password, captcha: self.captchaTextView.text)
         }
     }
 }
@@ -113,9 +123,17 @@ extension LoginViewController {
 // MARK: LoginViewControllerDelegate
 extension LoginViewController {
     func showError(error: Error) {
-//        DispatchQueue.main.async {
-            // TODO: Tost alert
-//        }
+        DispatchQueue.main.async {
+            // TODO: localisation
+            DispatchQueue.main.async { [weak self] in
+                if let self = self {
+                    self.alertController.message = error.localizedDescription
+                    self.present(self.alertController, animated: true) {
+                        // completion
+                    }
+                }
+            }
+        }
     }
 
     func prepareCaptchaToDisplay() {
@@ -125,15 +143,13 @@ extension LoginViewController {
     }
 
     func authorise(username: String) {
-        // TODO: localization
+        // TODO: localisation
         DispatchQueue.main.async { [weak self] in
-            let alertController = UIAlertController(title: "Login Successful", message: "Welcome, \(username)", preferredStyle: .alert)
-            alertController.view.translatesAutoresizingMaskIntoConstraints = false
-            let continueAction = UIAlertAction(title: "Continue", style: .default) { alertAction in
-                // TODO: show Tabbarviewcontroller, dismiss LoginViewController
-            }
-            alertController.addAction(continueAction)
-            self?.present(alertController, animated: true) {
+            if let self = self {
+                self.alertController.message = "Welcome, \(username)"
+                self.present(self.alertController, animated: true) {
+                    // completion
+                }
             }
         }
     }
@@ -145,19 +161,19 @@ extension LoginViewController {
         }
     }
 
-    // MARK: out of use
+    // FIXME: temporarily out of use
     func displayLoadingIndicator() {
-//        DispatchQueue.main.async { [weak screenLoadingSpinner] in
-//            guard let screenLoadingSpinner = screenLoadingSpinner else {
-//                return
-//            }
-        if !screenLoadingSpinner.isAnimating {
-            screenLoadingSpinner.startAnimating()
+        DispatchQueue.main.async { [weak screenLoadingSpinner] in
+            guard let screenLoadingSpinner = screenLoadingSpinner else {
+                return
+            }
+            if !screenLoadingSpinner.isAnimating {
+                screenLoadingSpinner.startAnimating()
+            }
         }
-//        }
     }
 
-    // MARK: out of use
+    // FIXME: temporarily out of use
     func removeLoadingIndicator() {
         DispatchQueue.main.async { [weak screenLoadingSpinner] in
             guard let screenLoadingSpinner = screenLoadingSpinner else {
@@ -169,24 +185,3 @@ extension LoginViewController {
         }
     }
 }
-
-
-
-//func updateCaptcha(url: URL) {
-    // TODO: add a spinner to SDWebImage
-
-//        let operationClass = SDWebImageDownloaderOperation(request: URLRequest(url: url), in: URLSession.shared)
-//        let downloader = SDWebImageDownloader.shared
-//        downloader.config.operationClass = type(of: operationClass)
-//        downloader.downloadImage(with: url) { [weak self] image, _, _, _ in
-//            self?.captchaImageView.image = image
-//        }
-
-//        captchaImageView.sd_setImage(with: url, placeholderImage: nil, options: .fromLoaderOnly, context: nil)
-
-//        SDImageCache.shared.removeImage(forKey: url.description)
-
-//        captchaImageView.sd_setImage(with: url, placeholderImage: nil, options: .refreshCached) { [weak self] image, error, cacheType, url in
-//            captchaImageView?.image = image
-//        }
-//}
