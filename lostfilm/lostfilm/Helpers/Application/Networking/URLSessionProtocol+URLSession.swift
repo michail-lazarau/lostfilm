@@ -30,17 +30,6 @@ extension URLSessionProtocol {
             completion(.success(data))
         }.resume()
     }
-
-//    func grabCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void) {
-//        dataTask(with: url) { data, _, error in
-//            if let error = error {
-//                response(.failure(error))
-//                return
-//            }
-//            guard let data = data else { return }
-//            response(.success(data))
-//        }.resume()
-//    }
 }
 
 extension URLSession: URLSessionProtocol {

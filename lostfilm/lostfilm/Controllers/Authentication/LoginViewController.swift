@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 import SDWebImage
+import UIKit
 
 final class LoginViewController: UIViewController, LoginViewProtocol {
     let emailView = TextFieldView()
@@ -18,9 +18,9 @@ final class LoginViewController: UIViewController, LoginViewProtocol {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imageView.sd_imageIndicator?.stopAnimatingIndicator()
-        //        imageView.clipsToBounds = true
         return imageView
     }()
+
     private let viewModel: LoginViewModel
 
     init(viewModel: LoginViewModel) {
@@ -41,7 +41,7 @@ final class LoginViewController: UIViewController, LoginViewProtocol {
     private let alertController: UIAlertController = {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.view.translatesAutoresizingMaskIntoConstraints = false
-        let continueAction = UIAlertAction(title: "Continue", style: .default) { alertAction in
+        let continueAction = UIAlertAction(title: "Continue", style: .default) { _ in
             // TODO: show Tabbarviewcontroller, dismiss LoginViewController
         }
         alertController.addAction(continueAction)
@@ -75,7 +75,7 @@ final class LoginViewController: UIViewController, LoginViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .gray
+        view.backgroundColor = .gray
         viewModel.loginViewModelDelegate = self
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
@@ -86,7 +86,6 @@ final class LoginViewController: UIViewController, LoginViewProtocol {
 }
 
 extension LoginViewController {
-
     func setupTextFields() {
         emailView.configureInputField(on: .email)
         passwordView.configureInputField(on: .password)
@@ -105,7 +104,7 @@ extension LoginViewController {
         stackView.equalWidth(width: scrollView.widthAnchor)
 
         NSLayoutConstraint.activate([
-            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 
@@ -121,6 +120,7 @@ extension LoginViewController {
 }
 
 // MARK: LoginViewControllerDelegate
+
 extension LoginViewController {
     func showError(error: Error) {
         DispatchQueue.main.async {

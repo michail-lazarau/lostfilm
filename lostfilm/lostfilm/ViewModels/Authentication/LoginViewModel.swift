@@ -26,7 +26,7 @@ final class LoginViewModel {
                 self.loginViewModelDelegate?.showError(error: error)
                 let error = error as? LoginServiceError
                 if error == .invalidCaptcha || error == .needCaptcha {
-                    if let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0..<1))", relativeTo: captchaUrl) {
+                    if let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0 ..< 1))", relativeTo: captchaUrl) {
                         self.renderCaptcha(url: randomQueryCaptcha)
                     }
                 }

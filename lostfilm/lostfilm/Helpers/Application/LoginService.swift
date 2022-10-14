@@ -20,15 +20,6 @@ final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
         session.sendRequest(url: url) { result in
             response(result)
         }
-
-//        session.dataTask(with: url) { data, _, error in
-//            if let error = error {
-//                response(.failure(error))
-//                return
-//            }
-//            guard let data = data else { return }
-//            response(.success(data))
-//        }.resume()
     }
 }
 
@@ -62,7 +53,7 @@ private extension LoginService {
     // https://medium.com/@serge.works.io/swift-how-to-create-a-http-post-request-with-application-x-www-form-urlencoded-body-bfd9cd26d6d5
     func composeLoginRequest(username: String, password: String, captcha: String?) throws -> URLRequest {
         let emptyTextField = ""
-        var requestComponents = URLComponents() // for "x-www-form-urlencoded" content type
+        var requestComponents = URLComponents()
         requestComponents.queryItems = [
             URLQueryItem(name: "act", value: "users"),
             URLQueryItem(name: "type", value: "login"),
@@ -70,7 +61,7 @@ private extension LoginService {
             URLQueryItem(name: "pass", value: password),
             URLQueryItem(name: "need_captcha", value: captcha == emptyTextField ? "0" : "1"),
             URLQueryItem(name: "captcha", value: captcha),
-            URLQueryItem(name: "rem", value: "1")
+            URLQueryItem(name: "rem", value: "1"),
         ]
 
         return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php",

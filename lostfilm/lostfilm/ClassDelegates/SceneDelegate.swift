@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let vc = LoginViewController(viewModel: LoginViewModel(dataProvider: LoginService(session: URLSession.shared)))
         window?.rootViewController = vc
-//        vc.loadViewIfNeeded() MARK: commented - the screen seemingly works fine without this line. Is this necessary line of code?
         window?.makeKeyAndVisible()
     }
 
