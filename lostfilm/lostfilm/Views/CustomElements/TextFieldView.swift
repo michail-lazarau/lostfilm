@@ -18,10 +18,12 @@ final class TextFieldView: UIView {
     var isButtonSelected = false
 
     enum CustomFields {
-        case name
-        case surname
         case email
         case password
+        case repeatPassword
+        case nickname
+        case name
+        case surname
     }
 
     // MARK: Subviews
@@ -29,10 +31,10 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.backgroundColor = .darkGray
         textField.font = .systemFont(ofSize: defaultFontSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        textField.layer.cornerRadius = 5
         return textField
     }()
 
@@ -41,7 +43,7 @@ final class TextFieldView: UIView {
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
         titleLabel.font = .systemFont(ofSize: defaultFontSize, weight: .semibold)
-        titleLabel.textColor = .red
+        titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
 
@@ -51,10 +53,10 @@ final class TextFieldView: UIView {
         return imageView
     }()
 
-    let passwordButton: UIButton = {
+    lazy var passwordButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "eye")
-        button.backgroundColor = .gray
+        button.layer.cornerRadius = 5
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(passwordButtonPressed), for: .touchUpInside)
         return button
@@ -69,6 +71,7 @@ final class TextFieldView: UIView {
     }()
 
     private let contentView = UIView()
+    private let dividedView = UIView()
 
     // MARK: Inits
 
@@ -121,24 +124,39 @@ extension TextFieldView {
 
     func setupContentView() {
         contentView.contentMode = .scaleToFill
+        contentView.addSubview(dividedView)
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)
         contentView.addSubview(textFieldIcon)
     }
 
-    func setupPasswordInputView() {
-        titleLabel.text = Texts.password
+    func setupPasswordInputView(withImage image: UIImage, withTitleLabel title: String, withPlaceholder placeholder: String) {
+        titleLabel.text = title
+        textField.placeholder = placeholder
+        textFieldIcon.image = image
 
         textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: passwordButton.leftAnchor)
         passwordButton.anchor(top: contentView.topAnchor, left: textField.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
+        textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
+
+        dividedView.backgroundColor = .red
+        dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: passwordButton.leftAnchor, height: 0.75)
+
+        textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
     }
 
-    func setupCommonInputView(withImage image: UIImage, withTitleLabel title: String ) {
-        textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
-        textFieldIcon.image = image
+    func setupCommonInputView(withImage image: UIImage, withTitleLabel title: String, withPlaceholder placeholder: String) {
         titleLabel.text = title
+        textField.placeholder = placeholder
+        textFieldIcon.image = image
+
+        textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
+
+        dividedView.backgroundColor = .red
+        dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: textField.rightAnchor, paddingRight: 25, height: 0.75)
+
         textFieldIcon.setDimensions(width: 25, height: 25)
     }
 
@@ -149,14 +167,18 @@ extension TextFieldView {
 
     func configureInputField(on platform: CustomFields) {
         switch platform {
-        case .name:
-            setupCommonInputView(withImage: UIImage(systemName: "person.crop.circle.badge.plus")!, withTitleLabel: Texts.name.uppercased())
-        case .surname:
-            setupCommonInputView(withImage: UIImage(systemName: "person.crop.rectangle.stack")!, withTitleLabel: Texts.surname.uppercased())
         case .email:
-            setupCommonInputView(withImage: UIImage(systemName: "mail")!, withTitleLabel: Texts.email.uppercased())
+            setupCommonInputView(withImage: Icons.mail, withTitleLabel: Texts.Titles.email.uppercased(), withPlaceholder: Texts.Placeholders.email)
         case .password:
-            setupPasswordInputView()
+            setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.password, withPlaceholder: Texts.Titles.password)
+        case .nickname:
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name, withPlaceholder: Texts.Placeholders.nickname)
+        case .name:
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name.uppercased(), withPlaceholder: Texts.Placeholders.surnamePlaceholder)
+        case .surname:
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.surname.uppercased(), withPlaceholder: Texts.Placeholders.surnamePlaceholder)
+        case .repeatPassword:
+            setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.repeatPassword, withPlaceholder: Texts.Placeholders.repeatPassword)
         }
     }
 }

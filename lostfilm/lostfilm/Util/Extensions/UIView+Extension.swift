@@ -67,5 +67,5 @@ extension UIView {
         if let leftAnchor = leftAnchor, let paddingLeft = paddingLeft {
             self.leftAnchor.constraint(equalTo: leftAnchor, constant: paddingLeft).isActive = true
         }
-    }
+    }    
 }

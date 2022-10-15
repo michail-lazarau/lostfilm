@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C542477E28E4429C006B2C7D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542477D28E4429C006B2C7D /* TextFieldView.swift */; };
+		C556012E28EF040B0032D75F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C556012D28EF040B0032D75F /* UIColor+Extension.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
@@ -242,6 +243,7 @@
 		AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lostfilm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
 		C542477D28E4429C006B2C7D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		C556012D28EF040B0032D75F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
+				C556012D28EF040B0032D75F /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				en,
 				Base,
 				ru,
+				uk,
 			);
 			mainGroup = F7AEE460273FEB7900C304D0;
 			productRefGroup = F7AEE46A273FEB7900C304D0 /* Products */;
@@ -1781,6 +1785,7 @@
 				F7997CD0276F93BA00DFCC19 /* VideoViewCell.swift in Sources */,
 				F792183128C9F3DC00230630 /* DataTaskError.swift in Sources */,
 				F7D6F10528858082007196AF /* SeriesVideoViewCell.swift in Sources */,
+				C556012E28EF040B0032D75F /* UIColor+Extension.swift in Sources */,
 				F7439DEF27F8E68400ACB015 /* CustomNavigationControllerDelegate.swift in Sources */,
 				F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */,
 				F7471DE627AADC4A00BDA17A /* VMseriesDetailChannelCountryItem.swift in Sources */,
@@ -2044,10 +2049,10 @@
 				APIServerURL = "https://www.lostfilm.tv/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Q53JH268X;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2063,7 +2068,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "DV iOS Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/lostfilm-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2078,10 +2083,10 @@
 				APIServerURL = "https://www.lostfilm.tv/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Q53JH268X;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2097,7 +2102,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "DV iOS Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/lostfilm-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
