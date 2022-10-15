@@ -1,7 +1,7 @@
 import Foundation
 
 final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
-    var session: T
+    let session: T
 
     init(session: T) {
         self.session = session
@@ -78,10 +78,8 @@ enum LoginServiceError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .invalidCredentials: return "Login invalid credentials"
-        case .needCaptcha: return "Need to pass captcha" // MARK: occurs when captcha appears for the 1st time
-
-        case .invalidCaptcha: return "Captcha code was not specified correctly" // MARK: occurs when captcha was requested and was not specified correctly
-
+        case .needCaptcha: return "Need to pass captcha" // captcha appeared for the 1st time
+        case .invalidCaptcha: return "Captcha code was not specified correctly" // captcha was requested and not specified correctly
         case .unknownLoginError: return "Error occurred during login"
         }
     }
