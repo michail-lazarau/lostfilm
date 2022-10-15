@@ -9,7 +9,7 @@ import Foundation
 import SDWebImage
 import UIKit
 
-final class LoginViewController: UIViewController, LoginViewProtocol {
+final class LoginViewController: UIViewController {
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -232,9 +232,7 @@ extension LoginViewController {
     }
 }
 
-// MARK: LoginViewControllerDelegate
-
-extension LoginViewController {
+extension LoginViewController: LoginViewProtocol {
     func showError(error: Error) {
         DispatchQueue.main.async {
             // TODO: localisation
