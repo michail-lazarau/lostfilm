@@ -6,9 +6,7 @@ class URLSessionMock: URLSessionProtocol {
     var data: Data?
     var error: Error?
 
-    func dataTask(
-        with url: URL,
-        completionHandler: @escaping CompletionHandler) -> URLSessionDataTaskMock {
+    func dataTask(with: URL, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskMock {
         let data = self.data
         let error = self.error
         return URLSessionDataTaskMock {
@@ -16,7 +14,7 @@ class URLSessionMock: URLSessionProtocol {
         }
     }
 
-    func dataTask(with: URLRequest, completionHandler: @escaping CompletionHandler) -> URLSessionDataTaskMock {
+    func dataTask(with: URLRequest, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskMock {
         let data = self.data
         let error = self.error
         return URLSessionDataTaskMock {

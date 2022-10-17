@@ -2,7 +2,7 @@ import Foundation
 
 protocol LoginServiceProtocol {
     func login(eMail: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void)
-    func grabCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void)
+    func getCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void)
 }
 
 extension LoginServiceProtocol {

@@ -1,6 +1,7 @@
 import Foundation
 
 final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
+    let authenticationUrl: String = "https://www.lostfilm.tv/ajaxik.users.php"
     let session: T
 
     init(session: T) {
@@ -16,7 +17,7 @@ final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
         }
     }
 
-    func grabCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void) {
+    func getCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void) {
         session.sendRequest(url: url) { result in
             response(result)
         }
@@ -61,10 +62,10 @@ private extension LoginService {
             URLQueryItem(name: "pass", value: password),
             URLQueryItem(name: "need_captcha", value: captcha == emptyTextField ? "0" : "1"),
             URLQueryItem(name: "captcha", value: captcha),
-            URLQueryItem(name: "rem", value: "1"),
+            URLQueryItem(name: "rem", value: "1")
         ]
 
-        return try Request.compose(url: "https://www.lostfilm.tv/ajaxik.users.php",
+        return try Request.compose(url: authenticationUrl,
                                    method: HTTPMethod.post,
                                    headers: [.referer("https://www.lostfilm.tv/login"), .contentType("application/x-www-form-urlencoded"), .cacheControl("no-cache")],
                                    query: nil,

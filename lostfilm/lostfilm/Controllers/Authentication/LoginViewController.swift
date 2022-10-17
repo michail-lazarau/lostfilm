@@ -222,12 +222,8 @@ extension LoginViewController {
     }
 
     @objc func login() {
-        viewModel.checkForCaptcha { [weak self] in
-            guard let self = self, let email = self.emailView.textField.text, let password = self.passwordView.textField.text else {
-                return
-            }
-
-            self.viewModel.login(eMail: email, password: password, captcha: self.captchaTextView.text)
+        if let email = emailView.textField.text, let password = passwordView.textField.text {
+                viewModel.checkForCaptcha(eMail: email, password: password, captcha: captchaTextView.text)
         }
     }
 }

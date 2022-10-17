@@ -2,8 +2,8 @@ import Foundation
 
 protocol URLSessionProtocol {
     associatedtype ReturnType: URLSessionDataTaskProtocol
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> ReturnType
-    func dataTask(with: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> ReturnType
+    func dataTask(with: URL, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) -> ReturnType
+    func dataTask(with: URLRequest, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) -> ReturnType
 }
 
 extension URLSessionProtocol {
@@ -34,3 +34,4 @@ extension URLSessionProtocol {
 
 extension URLSession: URLSessionProtocol {
 }
+// https://stackoverflow.com/questions/73825322/compile-error-sendability-of-function-types-in-instance-method-somemethod-doe

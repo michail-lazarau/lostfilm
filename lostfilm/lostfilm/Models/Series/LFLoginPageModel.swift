@@ -13,6 +13,13 @@ class LFLoginPageModel: LFJsonObject {
         super.init(data: data)
     }
 
+    /// Use for XCTest only
+    init(captchaIsRequired: Bool, captchaUrl: URL) {
+        self.captchaIsRequired = captchaIsRequired
+        self.captchaUrl = captchaUrl
+        super.init()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

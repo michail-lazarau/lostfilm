@@ -119,6 +119,9 @@
 		F77288C428A1606400AB28AB /* ILoadingDataOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77288C328A1606400AB28AB /* ILoadingDataOnce.swift */; };
 		F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D52773BB0A007FF03B /* ScheduleDataController.swift */; };
 		F77300D82773BC91007FF03B /* ScheduleTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77300D72773BC91007FF03B /* ScheduleTVC.swift */; };
+		F773D2BF28FC801500B20C75 /* testCaptchaImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = F773D2BE28FC801500B20C75 /* testCaptchaImage.gif */; };
+		F773D2C128FC84D500B20C75 /* CaptchaResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F773D2C028FC84D500B20C75 /* CaptchaResponseMock.swift */; };
+		F773D2C328FC92FA00B20C75 /* LoginViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F773D2C228FC92FA00B20C75 /* LoginViewModelDelegateMock.swift */; };
 		F77E8DEF277CF40F005E7F50 /* FilteringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */; };
 		F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */; };
 		F780418428C92961007B4CE0 /* NetworkDataDecodableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */; };
@@ -360,6 +363,9 @@
 		F77288C328A1606400AB28AB /* ILoadingDataOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILoadingDataOnce.swift; sourceTree = "<group>"; };
 		F77300D52773BB0A007FF03B /* ScheduleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataController.swift; sourceTree = "<group>"; };
 		F77300D72773BC91007FF03B /* ScheduleTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTVC.swift; sourceTree = "<group>"; };
+		F773D2BE28FC801500B20C75 /* testCaptchaImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = testCaptchaImage.gif; sourceTree = "<group>"; };
+		F773D2C028FC84D500B20C75 /* CaptchaResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaResponseMock.swift; sourceTree = "<group>"; };
+		F773D2C228FC92FA00B20C75 /* LoginViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		F77E8DEE277CF40F005E7F50 /* FilteringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringTVC.swift; sourceTree = "<group>"; };
 		F77E8DF0277CF7B0005E7F50 /* FilteringDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDataController.swift; sourceTree = "<group>"; };
 		F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataDecodableProtocol.swift; sourceTree = "<group>"; };
@@ -562,6 +568,7 @@
 				F7D0A85128E328BD00851CC0 /* LoginPageElementNotFound.html */,
 				F7D0A84C28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html */,
 				F7D0A84D28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html */,
+				F773D2C028FC84D500B20C75 /* CaptchaResponseMock.swift */,
 				F7232D6F28D1D63A00BA94B0 /* LoginResponseMock.swift */,
 				F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */,
 				F7E838FF28D361CB00FC2398 /* URLSessionDataTaskMock.swift */,
@@ -957,6 +964,14 @@
 			path = CarouselCell;
 			sourceTree = "<group>";
 		};
+		F773D2BB28FC7FAE00B20C75 /* NetworkExpectedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				F773D2BE28FC801500B20C75 /* testCaptchaImage.gif */,
+			);
+			path = NetworkExpectedObjects;
+			sourceTree = "<group>";
+		};
 		F781ACC427E11C6F003ABF31 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,10 +984,12 @@
 		F793AE8A2853A5150004BF0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F773D2BB28FC7FAE00B20C75 /* NetworkExpectedObjects */,
 				F70C500828D0DC06004157AD /* NetworkMocks */,
 				F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */,
 				F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */,
 				F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */,
+				F773D2C228FC92FA00B20C75 /* LoginViewModelDelegateMock.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1562,6 +1579,7 @@
 				F7D0A84F28E20B8600851CC0 /* LoginPageRenderedWithNoCaptchaRequired.html in Resources */,
 				F7D0A84E28E20B8600851CC0 /* LoginPageRenderedWithCaptchaRequired.html in Resources */,
 				F7D0A85228E328BD00851CC0 /* LoginPageElementNotFound.html in Resources */,
+				F773D2BF28FC801500B20C75 /* testCaptchaImage.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1836,10 +1854,12 @@
 				F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */,
 				F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */,
 				F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */,
+				F773D2C328FC92FA00B20C75 /* LoginViewModelDelegateMock.swift in Sources */,
 				F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */,
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
 				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
 				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,
+				F773D2C128FC84D500B20C75 /* CaptchaResponseMock.swift in Sources */,
 				F7232D7028D1D63A00BA94B0 /* LoginResponseMock.swift in Sources */,
 				F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */,
 			);
