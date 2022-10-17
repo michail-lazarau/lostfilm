@@ -75,13 +75,13 @@ final class LoginViewController: UIViewController {
     }
 
     func animateView(_ viewToAnimate: UIView) {
-        UIView.animate( withDuration: 0.25,
+        UIView.animate( withDuration: 0.20,
                         delay: 0,
                         usingSpringWithDamping: 1,
                         initialSpringVelocity: 1,
                         options: .curveEaseOut) {
 
-            viewToAnimate.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 
         } completion: { _ in
             UIView.animate( withDuration: 0.25,
@@ -98,6 +98,7 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
         registerKeyboardNotification()
         initialSetup()
@@ -140,10 +141,10 @@ extension LoginViewController {
 
                     contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
 
-                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 8.0),
-                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8.0),
-                    stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40.0),
-                    stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0),
+                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
+                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Paddings.bottom),
+                    stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Paddings.left),
+                    stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
                     stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
                     contentViewHeightConstraint

@@ -9,8 +9,7 @@ import UIKit
 
 // MARK: File Private Variables
 
-fileprivate let defaultFontSize: CGFloat = 10
-
+//fileprivate let fontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
 final class TextFieldView: UIView {
 
     // MARK: Variabels
@@ -31,10 +30,11 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.font = .systemFont(ofSize: defaultFontSize, weight: .medium)
+        textField.font = UIFont.font
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.layer.cornerRadius = 5
+        textField.textAlignment  = .natural
         return textField
     }()
 
@@ -42,7 +42,7 @@ final class TextFieldView: UIView {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
-        titleLabel.font = .systemFont(ofSize: defaultFontSize, weight: .semibold)
+        titleLabel.font = UIFont.font
         titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
@@ -168,15 +168,15 @@ extension TextFieldView {
     func configureInputField(on platform: CustomFields) {
         switch platform {
         case .email:
-            setupCommonInputView(withImage: Icons.mail, withTitleLabel: Texts.Titles.email.uppercased(), withPlaceholder: Texts.Placeholders.email)
+            setupCommonInputView(withImage: Icons.mail, withTitleLabel: Texts.Titles.email, withPlaceholder: Texts.Placeholders.email)
         case .password:
             setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.password, withPlaceholder: Texts.Titles.password)
         case .nickname:
             setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name, withPlaceholder: Texts.Placeholders.nickname)
         case .name:
-            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name.uppercased(), withPlaceholder: Texts.Placeholders.surnamePlaceholder)
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name, withPlaceholder: Texts.Placeholders.namePlaceholder)
         case .surname:
-            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.surname.uppercased(), withPlaceholder: Texts.Placeholders.surnamePlaceholder)
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.surname, withPlaceholder: Texts.Placeholders.surnamePlaceholder)
         case .repeatPassword:
             setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.repeatPassword, withPlaceholder: Texts.Placeholders.repeatPassword)
         }

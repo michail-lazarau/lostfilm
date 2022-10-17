@@ -22,34 +22,37 @@ enum Texts {
     case buttons( _buttons: Buttons)
 
     enum Placeholders {
-        static let nickname = "Login(nickname)"
-        static let email = "Please enter your E-mail"
-        static let password = "Please enter your password"
-        static let repeatPassword = "Please repeat password"
-        static let namePlaceholder = "Please enter your name"
-        static let surnamePlaceholder = "Please enter your surname"
+        static let nickname = NSLocalizedString("Login(nickname)", comment: "")
+        static let email = NSLocalizedString("Please enter your E-mail", comment: "")
+        static let password =  NSLocalizedString("Please enter your password", comment: "")
+        static let repeatPassword = NSLocalizedString("Please repeat password", comment: "")
+        static let namePlaceholder = NSLocalizedString("Please enter your name", comment: "")
+        static let surnamePlaceholder = NSLocalizedString("Please enter your surname", comment: "")
     }
 
     enum Titles {
-        static let welcome = "WELCOM TO LOST FILM"
-        static let logIn = "LOG IN"
-        static let name = "Name"
-        static let surname = "Surname"
-        static let password = "Password"
-        static let email = "Email"
-        static let repeatPassword = "Repeat Password"
+        static let welcome = NSLocalizedString("WELCOM TO LOST FILM", comment: "")
+        static let logIn =  NSLocalizedString( "LOG IN", comment: "")
+        static let name = NSLocalizedString("Name", comment: "")
+        static let surname = NSLocalizedString("Surname", comment: "")
+        static let password = NSLocalizedString("Password", comment: "")
+        static let email =  NSLocalizedString("Email", comment: "")
+        static let repeatPassword = NSLocalizedString("Repeat Password", comment: "")
     }
 
     enum Buttons {
-        static let logIn = "Log In"
-        static let singUp = "Sing Up"
-        static let forgotPassword = "Forgot Password?"
-        static let ready = "Ready"
-        static let alreadyHaveAnAccount = "Already have an account?"
+        static let logIn =  NSLocalizedString("Log In", comment: "")
+        static let singUp = NSLocalizedString( "Sing Up", comment: "")
+        static let forgotPassword = NSLocalizedString( "Forgot Password?", comment: "")
+        static let ready = NSLocalizedString("Ready", comment: "")
+        static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
         static let locString = NSLocalizedString("LOG IN", comment: "")
     }
 }
 
-enum Spacings {
-    
+enum Paddings {
+    static let left = CGFloat(40)
+    static let right = CGFloat( -40)
+    static let top = CGFloat(8)
+    static let bottom = CGFloat(-8)
 }
