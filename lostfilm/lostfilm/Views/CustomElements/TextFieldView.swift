@@ -30,7 +30,7 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.font = UIFont.font
+        textField.font = UIFont.body
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.layer.cornerRadius = 5
@@ -42,7 +42,7 @@ final class TextFieldView: UIView {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.font
+        titleLabel.font = UIFont.body
         titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
@@ -58,6 +58,7 @@ final class TextFieldView: UIView {
         let image = UIImage(systemName: "eye")
         button.layer.cornerRadius = 5
         button.setImage(image, for: .normal)
+        button.tintColor = .lightGray
         button.addTarget(self, action: #selector(passwordButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -93,7 +94,6 @@ final class TextFieldView: UIView {
 
     func hidePassword() {
         textField.isSecureTextEntry = false
-        textField.alpha = 1
     }
 
     func showPassword() {
@@ -102,7 +102,7 @@ final class TextFieldView: UIView {
 
     @objc func passwordButtonPressed() {
         if isButtonSelected {
-            passwordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
             hidePassword()
         } else {
             showPassword()
@@ -123,7 +123,6 @@ extension TextFieldView {
     }
 
     func setupContentView() {
-        contentView.contentMode = .scaleToFill
         contentView.addSubview(dividedView)
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)

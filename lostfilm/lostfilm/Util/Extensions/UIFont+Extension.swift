@@ -8,6 +8,5 @@
 import Foundation
 
 extension UIFont {
-  static let font = UIFont(name: "ArialMT", size: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize)
+  static let body = UIFont(name: "ArialMT", size: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize)
 }
-//AppleSymbols

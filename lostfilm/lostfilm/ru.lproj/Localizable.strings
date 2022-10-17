@@ -22,13 +22,13 @@
 "Please enter your name" = "Пожалуйста введите свое имя";
 "Please enter your surname" = "Пожалуйста введите свою фамилию";
 "WELCOM TO LOST FILM" = "ДОБРО ПОЖАЛОВАТЬ В ЛОСТФИЛЬ";
-"LOG IN" ="АВТОРИЗАЦИЯ";
+"Enter" ="Вход";
 "Name" = "Имя";
 "Surname" = "Фамилия";
 "Password" = "Пароль";
 "Email" = "электронная почта";
 "Repeat Password" = "Повторите пароль";
-"Log In" = "Авторизация";
+"Log In" = "Войти";
 "Sing Up" = "Зарегистрироваться";
 "Forgot Password?" = "Забыли пароль?";
 "Ready" = "Готово";
