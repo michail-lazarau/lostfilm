@@ -9,8 +9,7 @@ import UIKit
 
 // MARK: File Private Variables
 
-fileprivate let defaultFontSize: CGFloat = 10
-
+//fileprivate let fontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
 final class TextFieldView: UIView {
 
     // MARK: Variabels
@@ -31,10 +30,11 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.font = .systemFont(ofSize: defaultFontSize, weight: .medium)
+        textField.font = UIFont.body
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.layer.cornerRadius = 5
+        textField.textAlignment  = .natural
         return textField
     }()
 
@@ -42,7 +42,7 @@ final class TextFieldView: UIView {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
-        titleLabel.font = .systemFont(ofSize: defaultFontSize, weight: .semibold)
+        titleLabel.font = UIFont.body
         titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
@@ -58,6 +58,7 @@ final class TextFieldView: UIView {
         let image = UIImage(systemName: "eye")
         button.layer.cornerRadius = 5
         button.setImage(image, for: .normal)
+        button.tintColor = .lightGray
         button.addTarget(self, action: #selector(passwordButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -93,7 +94,6 @@ final class TextFieldView: UIView {
 
     func hidePassword() {
         textField.isSecureTextEntry = false
-        textField.alpha = 1
     }
 
     func showPassword() {
@@ -102,7 +102,7 @@ final class TextFieldView: UIView {
 
     @objc func passwordButtonPressed() {
         if isButtonSelected {
-            passwordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
             hidePassword()
         } else {
             showPassword()
@@ -123,7 +123,6 @@ extension TextFieldView {
     }
 
     func setupContentView() {
-        contentView.contentMode = .scaleToFill
         contentView.addSubview(dividedView)
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)
@@ -168,15 +167,15 @@ extension TextFieldView {
     func configureInputField(on platform: CustomFields) {
         switch platform {
         case .email:
-            setupCommonInputView(withImage: Icons.mail, withTitleLabel: Texts.Titles.email.uppercased(), withPlaceholder: Texts.Placeholders.email)
+            setupCommonInputView(withImage: Icons.mail, withTitleLabel: Texts.Titles.email, withPlaceholder: Texts.Placeholders.email)
         case .password:
             setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.password, withPlaceholder: Texts.Titles.password)
         case .nickname:
             setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name, withPlaceholder: Texts.Placeholders.nickname)
         case .name:
-            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name.uppercased(), withPlaceholder: Texts.Placeholders.surnamePlaceholder)
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.name, withPlaceholder: Texts.Placeholders.namePlaceholder)
         case .surname:
-            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.surname.uppercased(), withPlaceholder: Texts.Placeholders.surnamePlaceholder)
+            setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.surname, withPlaceholder: Texts.Placeholders.surnamePlaceholder)
         case .repeatPassword:
             setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.repeatPassword, withPlaceholder: Texts.Placeholders.repeatPassword)
         }

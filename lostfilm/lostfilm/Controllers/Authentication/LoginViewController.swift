@@ -64,7 +64,7 @@ final class LoginViewController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Texts.Buttons.locString, for: .normal)
+        button.setTitle(Texts.Buttons.buttonLogIn, for: .normal)
         button.backgroundColor = UIColor(named: "themeColor")
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -82,7 +82,7 @@ final class LoginViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 20
         return stackView
     }()
 
@@ -97,27 +97,27 @@ final class LoginViewController: UIViewController {
 //        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton])
         setupConstraints()
     }
-    
+
     private func initialSetup() {
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 //        loginButton.addTarget(self, action: #selector(self.animateLoginButton(sender:)), for: .touchUpInside)
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
         passwordView.textField.delegate = self
     }
-    
-    @objc  fileprivate func animateLoginButton(sender: UIButton) {
-        self.animateView(sender)
+
+    @objc fileprivate func animateLoginButton(sender: UIButton) {
+        animateView(sender)
     }
-    
+
     func animateView(_ viewToAnimate: UIView) {
-        UIView.animate( withDuration: 0.25,
+        UIView.animate( withDuration: 0.20,
                         delay: 0,
                         usingSpringWithDamping: 1,
                         initialSpringVelocity: 1,
                         options: .curveEaseOut) {
 
-            viewToAnimate.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 
         } completion: { _ in
             UIView.animate( withDuration: 0.25,
@@ -158,7 +158,6 @@ extension LoginViewController {
     }
 
     func setupConstraints() {
-
         let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 0.0)
         contentViewHeightConstraint.priority = .defaultLow
 
@@ -176,10 +175,10 @@ extension LoginViewController {
 
                     contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
 
-                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 8.0),
-                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8.0),
-                    stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40.0),
-                    stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0),
+                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
+                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Paddings.bottom),
+                    stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Paddings.left),
+                    stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
                     stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
                     contentViewHeightConstraint
@@ -201,6 +200,7 @@ extension LoginViewController {
       else { return }
 
       let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+
       scrollView.contentInset = contentInsets
       scrollView.scrollIndicatorInsets = contentInsets
     }
@@ -213,7 +213,7 @@ extension LoginViewController {
     }
 
     @objc private func hideKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     private func removeKeyboardNotification() {
