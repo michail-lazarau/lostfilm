@@ -21,8 +21,8 @@ final class LoginViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.Titles.welcome
-        label.textColor = UIColor(named: "themeColor")
+        label.text = NSLocalizedString("Photo", comment: "")
+        label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -52,7 +52,7 @@ final class LoginViewController: UIViewController {
     }()
 
     private func setupView() {
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = UIColor.backgroundColor
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -101,9 +101,6 @@ final class LoginViewController: UIViewController {
         registerKeyboardNotification()
         initialSetup()
         setupConstraints()
-    }
-    deinit {
-        removeKeyboardNotification()
     }
 }
 
@@ -177,11 +174,6 @@ extension LoginViewController {
 
     @objc private func hideKeyboard() {
         view.endEditing(true)
-    }
-
-    private func removeKeyboardNotification() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 

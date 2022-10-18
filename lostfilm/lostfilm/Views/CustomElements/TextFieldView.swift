@@ -138,7 +138,7 @@ extension TextFieldView {
         passwordButton.anchor(top: contentView.topAnchor, left: textField.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
 
-        dividedView.backgroundColor = .red
+        dividedView.backgroundColor = UIColor(named: "newSet")
         dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: passwordButton.leftAnchor, height: 0.75)
 
         textFieldIcon.setDimensions(width: 25, height: 25)
