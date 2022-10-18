@@ -41,7 +41,6 @@ enum Texts {
     }
 
     enum Buttons {
-        static let logIn =  NSLocalizedString("Log In", comment: "")
         static let singUp = NSLocalizedString( "Sing Up", comment: "")
         static let forgotPassword = NSLocalizedString( "Forgot Password?", comment: "")
         static let ready = NSLocalizedString("Ready", comment: "")

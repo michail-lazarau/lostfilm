@@ -30,7 +30,6 @@ final class LoginViewController: UIViewController {
 
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Texts.Buttons.buttonLogIn, for: .normal)
         button.backgroundColor = UIColor(named: "themeColor")
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -59,7 +58,7 @@ final class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton])
+        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, loginButton])
         setupConstraints()
     }
 
@@ -98,7 +97,6 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
         registerKeyboardNotification()
         initialSetup()

@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarRootVC
         */
 
-        let vc = LoginViewController()
+//        let vc = LoginViewController()
+        let vc = TabBarRootController()
         window?.rootViewController = vc
 //        vc.loadViewIfNeeded() MARK: commented - the screen seemingly works fine without this line. Is this necessary line of code?
         window?.makeKeyAndVisible()
