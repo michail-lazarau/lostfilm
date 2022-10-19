@@ -3,25 +3,25 @@ import XCTest
 
 class LoginViewModelTests: XCTestCase {
     var sut: LoginViewModel!
+    var delegate: LoginViewModelDelegateMock!
 
     override func setUpWithError() throws {
         sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()))
+        delegate = LoginViewModelDelegateMock()
+        sut.loginViewModelDelegate = delegate
     }
 
     override func tearDownWithError() throws {
         sut = nil
+        delegate = nil
     }
 
     // MARK: captcha
     func test_nagative_showErrorForCaptchaCheck() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = "stub"
 
-        loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
-
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation]
+        delegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.showErrorFuncExpectation]
 
         try verifyCheckForCaptcha(email: "", password: "", captcha: nil, expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
@@ -29,17 +29,14 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_positive_renderCaptchaWhenCaptchaRequired() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting captcha response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data()
 
-        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
-        loginViewModelDelegate.showErrorFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.updateCaptchaFuncExpectation, loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation]
+        delegate.authoriseFuncExpectation.isInverted = true
+        delegate.showErrorFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation]
 
         try verifyCheckForCaptcha(email: "", password: "", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
@@ -47,18 +44,15 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_negative_renderCaptchaReceiveErrorInResponse() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting captcha response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.error = URLError(.badURL)
 
-        loginViewModelDelegate.updateCaptchaFuncExpectation.isInverted = true
-        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
+        delegate.updateCaptchaFuncExpectation.isInverted = true
+        delegate.authoriseFuncExpectation.isInverted = true
 
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.updateCaptchaFuncExpectation, loginViewModelDelegate.authoriseFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation]
 
         try verifyCheckForCaptcha(email: "", password: "", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
@@ -67,16 +61,13 @@ class LoginViewModelTests: XCTestCase {
 
     // MARK: Login
     func test_positive_loginSucceededWithCaptchaNotRequired() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.success, error: nil).body?.data
 
-        loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.authoriseFuncExpectation]
+        delegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.authoriseFuncExpectation]
 
         try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
@@ -84,20 +75,17 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_positive_loginSucceededWithCaptchaRequired() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         sut.htmlParserWrapper.setValue("file://" + url, forKey: "url") // faking session url
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data()
         sut.checkForCaptcha(email: "Mocked", password: "Mocked", captcha: "Mocked")
-        wait(for: [loginViewModelDelegate.updateCaptchaFuncExpectation], timeout: 0.1)
+        wait(for: [delegate.updateCaptchaFuncExpectation], timeout: 0.1)
 
         // setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.success, error: nil).body?.data
 
-        let expectations: [XCTestExpectation] = [ loginViewModelDelegate.authoriseFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation]
 
         try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: "Mocked", expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
@@ -105,16 +93,13 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_negative_loginFailedDueToNeedCaptchaError() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .needCaptcha), error: nil).body?.data
 
-        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
+        delegate.authoriseFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
         try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
@@ -123,16 +108,13 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_negative_loginFailedDueToInvalidCaptchaError() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCaptcha), error: nil).body?.data
 
-        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
+        delegate.authoriseFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
         try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
@@ -141,17 +123,14 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_negative_loginFailedDueToInvalidCredentialsError() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCredentials), error: nil).body?.data
 
-        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
-        loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
+        delegate.authoriseFuncExpectation.isInverted = true
+        delegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
         try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
@@ -160,17 +139,14 @@ class LoginViewModelTests: XCTestCase {
     }
 
     func test_negative_loginFailedDueToUnknownLoginError() throws {
-        let delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
-        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericOne), error: nil).body?.data
 
-        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
-        loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
+        delegate.authoriseFuncExpectation.isInverted = true
+        delegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
         try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
