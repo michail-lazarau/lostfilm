@@ -11,12 +11,12 @@ final class LoginViewModel {
         self.dataProvider = dataProvider
     }
 
-    func checkForCaptcha(email: String, password: String, captcha: String?) {
+    func login(email: String, password: String, captcha: String?) {
         // TODO: launch loading indicator
         if !(captchaModel?.captchaIsRequired ?? false) {
             checkForCaptcha(htmlParserWrapper: htmlParserWrapper, email: email, password: password, captcha: captcha)
         } else {
-            login(email: email, password: password, captcha: captcha)
+            authenticate(email: email, password: password, captcha: captcha)
         }
     }
 }
@@ -46,7 +46,7 @@ private extension LoginViewModel {
                 if captchaModel.captchaIsRequired {
                     self.renderCaptcha(url: captchaModel.captchaUrl)
                 } else {
-                    self.login(email: email, password: password, captcha: captcha)
+                    self.authenticate(email: email, password: password, captcha: captcha)
                 }
             case let .failure(error):
                 self.loginViewModelDelegate?.showError(error: error)
@@ -54,7 +54,7 @@ private extension LoginViewModel {
         }
     }
 
-    func login(email: String, password: String, captcha: String?) {
+    func authenticate(email: String, password: String, captcha: String?) {
         // TODO: launch loading indicator
         dataProvider.login(email: email, password: password, captcha: captcha) { [weak self] result in
             guard let self = self else {
