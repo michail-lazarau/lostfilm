@@ -42,8 +42,8 @@ private extension LoginViewModel {
 
             switch result {
             case let .success(captchaModel):
+                self.captchaModel = captchaModel
                 if captchaModel.captchaIsRequired {
-                    self.captchaModel = captchaModel
                     self.renderCaptcha(url: captchaModel.captchaUrl)
                 } else {
                     self.login(eMail: eMail, password: password, captcha: captcha)
