@@ -8,9 +8,9 @@ final class LoginService<T: URLSessionProtocol>: LoginServiceProtocol {
         self.session = session
     }
 
-    func login(eMail: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void) {
+    func login(email: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void) {
         do {
-            let request = try composeLoginRequest(username: eMail, password: password, captcha: captcha)
+            let request = try composeLoginRequest(username: email, password: password, captcha: captcha)
             login(request: request, response: response)
         } catch let requestError {
             response(.failure(requestError))

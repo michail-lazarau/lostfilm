@@ -23,7 +23,7 @@ class LoginViewModelTests: XCTestCase {
 
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation]
 
-        try verifyCheckForCaptcha(eMail: "", password: "", captcha: nil, expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "", password: "", captcha: nil, expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
@@ -41,7 +41,7 @@ class LoginViewModelTests: XCTestCase {
         loginViewModelDelegate.showErrorFuncExpectation.isInverted = true
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.updateCaptchaFuncExpectation, loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation]
 
-        try verifyCheckForCaptcha(eMail: "", password: "", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "", password: "", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
@@ -60,13 +60,13 @@ class LoginViewModelTests: XCTestCase {
 
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.updateCaptchaFuncExpectation, loginViewModelDelegate.authoriseFuncExpectation]
 
-        try verifyCheckForCaptcha(eMail: "", password: "", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "", password: "", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
 
     // MARK: Login
-    func test_positive_authenticateWhenCaptchaNotRequired() throws {
+    func test_positive_loginSucceededWithCaptchaNotRequired() throws {
         let delegate = LoginViewModelDelegateMock()
         sut.loginViewModelDelegate = delegate
         let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
@@ -78,12 +78,12 @@ class LoginViewModelTests: XCTestCase {
         loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation, loginViewModelDelegate.authoriseFuncExpectation]
 
-        try verifyCheckForCaptcha(eMail: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
 
-    func test_positive_authenticateWhenRequestedCaptchaRequired() throws {
+    func test_positive_loginSucceededWithCaptchaRequired() throws {
         let delegate = LoginViewModelDelegateMock()
         sut.loginViewModelDelegate = delegate
         let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
@@ -91,7 +91,7 @@ class LoginViewModelTests: XCTestCase {
 
         sut.htmlParserWrapper.setValue("file://" + url, forKey: "url") // faking session url
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data()
-        sut.checkForCaptcha(eMail: "Mocked", password: "Mocked", captcha: "Mocked")
+        sut.checkForCaptcha(email: "Mocked", password: "Mocked", captcha: "Mocked")
         wait(for: [loginViewModelDelegate.updateCaptchaFuncExpectation], timeout: 0.1)
 
         // setting login response
@@ -99,12 +99,12 @@ class LoginViewModelTests: XCTestCase {
 
         let expectations: [XCTestExpectation] = [ loginViewModelDelegate.authoriseFuncExpectation]
 
-        try verifyCheckForCaptcha(eMail: "Mocked", password: "Mocked", captcha: "Mocked", expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: "Mocked", expectedCaptcha: nil, expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
 
-    func test_negative_authenticateWhenRequiredCaptchaNotProvided() throws {
+    func test_negative_loginFailedDueToNeedCaptchaError() throws {
         let delegate = LoginViewModelDelegateMock()
         sut.loginViewModelDelegate = delegate
         let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
@@ -117,12 +117,12 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyCheckForCaptcha(eMail: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
 
-    func test_negative_authenticateWhenRequiredCaptchaNotValid() throws {
+    func test_negative_loginFailedDueToInvalidCaptchaError() throws {
         let delegate = LoginViewModelDelegateMock()
         sut.loginViewModelDelegate = delegate
         let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
@@ -135,12 +135,12 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyCheckForCaptcha(eMail: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
 
-    func test_negative_authenticateWhenRequiredCaptchaCaughtErrorIrrelevantToCaptcha() throws {
+    func test_negative_loginFailedDueToInvalidCredentialsError() throws {
         let delegate = LoginViewModelDelegateMock()
         sut.loginViewModelDelegate = delegate
         let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
@@ -154,17 +154,36 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyCheckForCaptcha(eMail: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
+        try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
             XCTAssertEqual(result, expected)
         })
     }
 
-    func verifyCheckForCaptcha(eMail: String, password: String, captcha: String?, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], urlStub: String, assertHandler: (LoginViewModel.Captcha?, LoginViewModel.Captcha?) throws -> Void) throws {
+    func test_negative_loginFailedDueToUnknownLoginError() throws {
+        let delegate = LoginViewModelDelegateMock()
+        sut.loginViewModelDelegate = delegate
+        let loginViewModelDelegate = sut.loginViewModelDelegate as! LoginViewModelDelegateMock
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
+
+        // setting login response
+        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericOne), error: nil).body?.data
+
+        loginViewModelDelegate.authoriseFuncExpectation.isInverted = true
+        loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
+        let expectations: [XCTestExpectation] = [loginViewModelDelegate.authoriseFuncExpectation, loginViewModelDelegate.showErrorFuncExpectation, loginViewModelDelegate.prepareCaptchaToDisplayFuncExpectation]
+
+        // do i need check captcha here? I guess no
+        try verifyCheckForCaptcha(email: "Mocked", password: "Mocked", captcha: nil, expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, urlStub: url, assertHandler: { result, expected in
+            XCTAssertEqual(result, expected)
+        })
+    }
+
+    func verifyCheckForCaptcha(email: String, password: String, captcha: String?, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], urlStub: String, assertHandler: (LoginViewModel.Captcha?, LoginViewModel.Captcha?) throws -> Void) throws {
         // Given
         sut.htmlParserWrapper.setValue("file://" + urlStub, forKey: "url") // faking session url
 
         // When
-        sut.checkForCaptcha(eMail: eMail, password: password, captcha: captcha)
+        sut.checkForCaptcha(email: email, password: password, captcha: captcha)
         wait(for: expectations, timeout: 0.1)
 
         // Then

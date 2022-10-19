@@ -6,7 +6,7 @@ func login() {
     let captcha: String? = nil
 
     HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0))
-    LoginService(session: URLSession.shared).login(eMail: username, password: password, captcha: captcha) { result in
+    LoginService(session: URLSession.shared).login(email: username, password: password, captcha: captcha) { result in
         switch result {
         case .success:
             break

@@ -1,7 +1,7 @@
 import Foundation
 
 protocol LoginServiceProtocol {
-    func login(eMail: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void)
+    func login(email: String, password: String, captcha: String?, response: @escaping (Result<String, Error>) -> Void)
     func getCaptcha(url: URL, response: @escaping (Result<Data, Error>) -> Void)
 }
 

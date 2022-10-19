@@ -11,12 +11,12 @@ final class LoginViewModel {
         self.dataProvider = dataProvider
     }
 
-    func checkForCaptcha(eMail: String, password: String, captcha: String?) {
+    func checkForCaptcha(email: String, password: String, captcha: String?) {
         // TODO: launch loading indicator
         if !(captchaModel?.captchaIsRequired ?? false) {
-            checkForCaptcha(htmlParserWrapper: htmlParserWrapper, eMail: eMail, password: password, captcha: captcha)
+            checkForCaptcha(htmlParserWrapper: htmlParserWrapper, email: email, password: password, captcha: captcha)
         } else {
-            login(eMail: eMail, password: password, captcha: captcha)
+            login(email: email, password: password, captcha: captcha)
         }
     }
 }
@@ -34,7 +34,7 @@ private extension LoginViewModel {
         }
     }
 
-    func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, eMail: String, password: String, captcha: String?) {
+    func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
             guard let self = self else {
                 return
@@ -46,7 +46,7 @@ private extension LoginViewModel {
                 if captchaModel.captchaIsRequired {
                     self.renderCaptcha(url: captchaModel.captchaUrl)
                 } else {
-                    self.login(eMail: eMail, password: password, captcha: captcha)
+                    self.login(email: email, password: password, captcha: captcha)
                 }
             case let .failure(error):
                 self.loginViewModelDelegate?.showError(error: error)
@@ -54,9 +54,9 @@ private extension LoginViewModel {
         }
     }
 
-    func login(eMail: String, password: String, captcha: String?) {
+    func login(email: String, password: String, captcha: String?) {
         // TODO: launch loading indicator
-        dataProvider.login(eMail: eMail, password: password, captcha: captcha) { [weak self] result in
+        dataProvider.login(email: email, password: password, captcha: captcha) { [weak self] result in
             guard let self = self else {
                 return
             }
