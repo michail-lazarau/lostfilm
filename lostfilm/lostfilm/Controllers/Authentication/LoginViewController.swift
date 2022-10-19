@@ -10,15 +10,6 @@ import SDWebImage
 import UIKit
 
 final class LoginViewController: UIViewController {
-    init(viewModel: LoginViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -64,12 +55,20 @@ final class LoginViewController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(named: "themeColor")
+//        button.backgroundColor = UIColor(named: "themeColor")
+        button.setTitle(Texts.Buttons.buttonLogIn, for: .normal)
+        button.setBackgroundColor(.red, for: .selected)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.heightAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return button
     }()
+
+//    override open var isHighlighted: Bool {
+//        didSet {
+//            backgroundColor = isHighlighted ? UIColor.black : UIColor.white
+//        }
+//    }
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -85,6 +84,15 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
 
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
 
@@ -98,7 +106,7 @@ final class LoginViewController: UIViewController {
     }
 
     private func initialSetup() {
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(login), for: .touchDown)
 //        loginButton.addTarget(self, action: #selector(self.animateLoginButton(sender:)), for: .touchUpInside)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
@@ -106,7 +114,9 @@ final class LoginViewController: UIViewController {
     }
 
     @objc fileprivate func animateLoginButton(sender: UIButton) {
-        animateView(sender)
+//        animateView(sender)
+        sender.setBackgroundColor(UIColor(named: "themeColor")!, for: .normal)
+        sender.setBackgroundColor(.lightGray, for: .highlighted)
     }
 
     func animateView(_ viewToAnimate: UIView) {
@@ -297,4 +307,16 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
+}
+
+extension UIButton {
+    func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
+    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    UIGraphicsBeginImageContext(rect.size)
+    color.setFill()
+    UIRectFill(rect)
+    let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    setBackgroundImage(colorImage, for: state)
+  }
 }
