@@ -9,7 +9,6 @@ import UIKit
 
 // MARK: File Private Variables
 
-//fileprivate let fontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
 final class TextFieldView: UIView {
 
     // MARK: Variabels

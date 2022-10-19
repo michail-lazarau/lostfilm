@@ -133,16 +133,16 @@ extension LoginViewController {
 
         NSLayoutConstraint.activate([
 
-                    contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
 
-                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
-                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Paddings.bottom),
-                    stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Paddings.left),
-                    stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
-                    stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
+            stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Paddings.bottom),
+            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Paddings.left),
+            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
+            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
-                    contentViewHeightConstraint
-                    ])
+            contentViewHeightConstraint
+        ])
     }
 
     private func registerKeyboardNotification() {
