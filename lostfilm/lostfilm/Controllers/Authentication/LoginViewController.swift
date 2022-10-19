@@ -55,8 +55,8 @@ final class LoginViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.Titles.welcome
-        label.textColor = UIColor(named: "themeColor")
+        label.text = NSLocalizedString("Photo", comment: "")
+        label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,7 +64,6 @@ final class LoginViewController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Texts.Buttons.buttonLogIn, for: .normal)
         button.backgroundColor = UIColor(named: "themeColor")
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -87,14 +86,14 @@ final class LoginViewController: UIViewController {
     }()
 
     private func setupView() {
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = UIColor.backgroundColor
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), emailView, passwordView, captchaTextView, loginButton, captchaImageView])
-//        setupStackView(withViews: [UIView(), emailView, passwordView, loginButton])
+        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, captchaTextView, loginButton, captchaImageView])
+//        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, loginButton])
         setupConstraints()
     }
 
@@ -140,9 +139,6 @@ final class LoginViewController: UIViewController {
         initialSetup()
         setupConstraints()
     }
-    deinit {
-        removeKeyboardNotification()
-    }
 }
 
 extension LoginViewController {
@@ -173,16 +169,16 @@ extension LoginViewController {
 
         NSLayoutConstraint.activate([
 
-                    contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
 
-                    stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
-                    stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Paddings.bottom),
-                    stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Paddings.left),
-                    stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
-                    stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
+            stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Paddings.bottom),
+            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Paddings.left),
+            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
+            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
-                    contentViewHeightConstraint
-                    ])
+            contentViewHeightConstraint
+        ])
     }
     
     private func registerKeyboardNotification() {
