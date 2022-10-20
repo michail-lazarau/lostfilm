@@ -13,6 +13,7 @@ enum Icons {
     static let password = UIImage(systemName: "lock") ?? UIImage()
     static let openEye = UIImage(named: "eye.circle") ?? UIImage()
     static let closeEye = UIImage(systemName: "eye.slash.circle") ?? UIImage()
+    static let captcha = UIImage(systemName: "repeat") ?? UIImage()
 }
 
 enum Texts {
@@ -28,6 +29,7 @@ enum Texts {
         static let repeatPassword = NSLocalizedString("Please repeat password", comment: "")
         static let namePlaceholder = NSLocalizedString("Please enter your name", comment: "")
         static let surnamePlaceholder = NSLocalizedString("Please enter your surname", comment: "")
+        static let captcha = NSLocalizedString("Please enter captcha", comment: "")
     }
 
     enum Titles {
@@ -38,6 +40,7 @@ enum Texts {
         static let password = NSLocalizedString("Password", comment: "")
         static let email =  NSLocalizedString("Email", comment: "")
         static let repeatPassword = NSLocalizedString("Repeat Password", comment: "")
+        static let captcha = NSLocalizedString("Captcha", comment: "")
     }
 
     enum Buttons {

@@ -22,6 +22,7 @@ final class TextFieldView: UIView {
         case nickname
         case name
         case surname
+        case captcha
     }
 
     // MARK: Subviews
@@ -177,6 +178,8 @@ extension TextFieldView {
             setupCommonInputView(withImage: Icons.person, withTitleLabel: Texts.Titles.surname, withPlaceholder: Texts.Placeholders.surnamePlaceholder)
         case .repeatPassword:
             setupPasswordInputView(withImage: Icons.password, withTitleLabel: Texts.Titles.repeatPassword, withPlaceholder: Texts.Placeholders.repeatPassword)
+        case .captcha:
+            setupCommonInputView(withImage: Icons.captcha, withTitleLabel: Texts.Titles.captcha, withPlaceholder: Texts.Placeholders.captcha)
         }
     }
 }

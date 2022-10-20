@@ -19,15 +19,13 @@ class LoginViewModelTests: XCTestCase {
 
     // MARK: captcha
 
-    func test_nagative_showErrorForCaptchaCheck() throws {
+    func test_negative_showErrorForCaptchaCheck() throws {
         let mockUrlForGetLoginPageFunc = "mock"
 
         delegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
         let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.showErrorFuncExpectation]
 
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: nil, expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: nil, expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_positive_renderCaptchaWhenRequired() throws {
@@ -40,9 +38,7 @@ class LoginViewModelTests: XCTestCase {
         delegate.showErrorFuncExpectation.isInverted = true
         let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation]
 
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_negative_renderCaptchaReceiveErrorInResponse() throws {
@@ -55,14 +51,12 @@ class LoginViewModelTests: XCTestCase {
         delegate.authoriseFuncExpectation.isInverted = true
         let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation]
 
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     // MARK: Login
 
-    func test_positive_loginSucceededWithCaptchaNotRequired() throws {
+    func test_positive_loginSucceededWithNoCaptchaRequired() throws {
         let mockUrlForGetLoginPageFunc = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
@@ -71,9 +65,7 @@ class LoginViewModelTests: XCTestCase {
         delegate.prepareCaptchaToDisplayFuncExpectation.isInverted = true
         let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToDisplayFuncExpectation, delegate.authoriseFuncExpectation]
 
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: nil, expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: nil, expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_positive_loginSucceededWithCaptchaRequired() throws {
@@ -90,9 +82,7 @@ class LoginViewModelTests: XCTestCase {
 
         let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation]
 
-        try verifyLogin(credentials: ("Mocked", "Mocked", "Mocked"), expectedCaptcha: nil, expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", "Mocked"), expectedCaptcha: nil, expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_negative_loginFailedDueToNeedCaptchaError() throws {
@@ -105,9 +95,7 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_negative_loginFailedDueToInvalidCaptchaError() throws {
@@ -120,9 +108,7 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_negative_loginFailedDueToInvalidCredentialsError() throws {
@@ -136,9 +122,7 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
     func test_negative_loginFailedDueToUnknownLoginError() throws {
@@ -152,12 +136,10 @@ class LoginViewModelTests: XCTestCase {
         let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.prepareCaptchaToDisplayFuncExpectation]
 
         // do i need check captcha here? I guess no
-        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc, assertHandler: { result, expected in
-            XCTAssertEqual(result, expected)
-        })
+        try verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
 
-    func verifyLogin(credentials: Credentials, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], mockUrlForLoginPage: String, assertHandler: (LoginViewModel.Captcha?, LoginViewModel.Captcha?) throws -> Void) throws {
+    func verifyLogin(credentials: Credentials, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], mockUrlForLoginPage: String) throws {
         // Given
         sut.htmlParserWrapper.setValue("file://" + mockUrlForLoginPage, forKey: "url") // faking session url
 
@@ -166,6 +148,6 @@ class LoginViewModelTests: XCTestCase {
         wait(for: expectations, timeout: 0.1)
 
         // Then
-        try assertHandler(sut.captchaModel, expectedCaptcha)
+        XCTAssertEqual(sut.captchaModel, expectedCaptcha)
     }
 }

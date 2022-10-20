@@ -168,6 +168,7 @@
 		F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97232746CCA3001BD5F8 /* LFNewsModel.m */; };
 		F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97252746CCA3001BD5F8 /* LFPhotoModel.m */; };
 		F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97282746CCA3001BD5F8 /* LFJsonObject.m */; };
+		F7A95AE12900C518006325B2 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A95AE02900C518006325B2 /* UITextField+Extension.swift */; };
 		F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA54CA2791B200002A7179 /* FilterType.swift */; };
 		F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */; };
 		F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */; };
@@ -432,6 +433,7 @@
 		F79C97262746CCA3001BD5F8 /* LFPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPhotoModel.h; sourceTree = "<group>"; };
 		F79C97282746CCA3001BD5F8 /* LFJsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFJsonObject.m; sourceTree = "<group>"; };
 		F79C97292746CCA3001BD5F8 /* LFJsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFJsonObject.h; sourceTree = "<group>"; };
+		F7A95AE02900C518006325B2 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		F7AA54CA2791B200002A7179 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		F7AEE469273FEB7900C304D0 /* lostfilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lostfilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1317,6 +1319,7 @@
 				C542477D28E4429C006B2C7D /* TextFieldView.swift */,
 				F70DB90627C14CC700924479 /* ParagraphView.swift */,
 				F77226C128BE5148002143CC /* CarouselView.swift */,
+				F7A95AE02900C518006325B2 /* UITextField+Extension.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -1788,6 +1791,7 @@
 				F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */,
 				F751EBDA28CE4E310005B652 /* LoginService.swift in Sources */,
 				F756A72328BCFFE30086A9B9 /* NewsDetailsTVC.swift in Sources */,
+				F7A95AE12900C518006325B2 /* UITextField+Extension.swift in Sources */,
 				F79C972C2746CCA3001BD5F8 /* LFSeriesModel.m in Sources */,
 				F707A69E28F03FDF006F9110 /* LoginViewProtocol.swift in Sources */,
 				F79C97362746CCA3001BD5F8 /* LFTextContentItemModel.m in Sources */,

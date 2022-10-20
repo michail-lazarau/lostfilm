@@ -13,7 +13,14 @@ final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
-    private let captchaTextView = UITextField()
+    private let captchaTextView = {
+        let view = TextFieldView()
+        view.textField.keyboardType = .numberPad
+        view.textField.addDoneCancelToolbar()
+        view.isHidden = true
+        return view
+    }()
+
     private let captchaImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,8 +107,7 @@ final class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, captchaTextView, loginButton, captchaImageView])
-//        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, loginButton])
+        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, captchaImageView, captchaTextView, loginButton])
         setupConstraints()
     }
 
@@ -145,9 +151,18 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         viewModel.loginViewModelDelegate = self
         setupView()
-        registerKeyboardNotification()
         initialSetup()
         setupConstraints()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerKeyboardNotification()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyboardNotification()
     }
 }
 
@@ -155,6 +170,7 @@ extension LoginViewController {
     func setupTextFields() {
         emailView.configureInputField(on: .name)
         passwordView.configureInputField(on: .password)
+        captchaTextView.configureInputField(on: .captcha)
     }
 
     func setupStackView(withViews view: [UIView]) {
@@ -229,7 +245,7 @@ extension LoginViewController {
 
     @objc func login() {
         if let email = emailView.textField.text, let password = passwordView.textField.text {
-                viewModel.login(email: email, password: password, captcha: captchaTextView.text)
+                viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
         }
     }
 }
@@ -269,6 +285,7 @@ extension LoginViewController: LoginViewProtocol {
 
     func updateCaptcha(data: Data) {
         DispatchQueue.main.async { [weak self] in
+            self?.captchaTextView.isHidden = false
             self?.captchaImageView.image = UIImage(data: data)
             self?.captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
         }
