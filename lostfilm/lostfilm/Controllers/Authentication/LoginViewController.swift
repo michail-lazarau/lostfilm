@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
-    private let captchaTextView = {
+    private let captchaTextView: TextFieldView = {
         let view = TextFieldView()
         view.textField.keyboardType = .numberPad
         view.textField.addDoneCancelToolbar()
@@ -112,7 +112,7 @@ final class LoginViewController: UIViewController {
     }
 
     private func initialSetup() {
-        loginButton.addTarget(self, action: #selector(login), for: .touchDown)
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 //        loginButton.addTarget(self, action: #selector(self.animateLoginButton(sender:)), for: .touchUpInside)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
