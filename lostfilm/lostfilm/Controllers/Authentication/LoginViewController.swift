@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
+    private let loginButton = LostfilmButton()
 
     private let contentView: UIView = {
         let contentView = UIView()
@@ -21,29 +22,12 @@ class LoginViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Photo", comment: "")
+        label.text = NSLocalizedString(Texts.Titles.logIn, comment: "")
         label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-//        button.backgroundColor = UIColor(named: "themeColor")
-        button.setTitle(Texts.Buttons.buttonLogIn, for: .normal)
-        button.setBackgroundColor(.red, for: .selected)
-        button.layer.cornerRadius = 5
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        return button
-    }()
-
-//    override open var isHighlighted: Bool {
-//        didSet {
-//            backgroundColor = isHighlighted ? UIColor.black : UIColor.white
-//        }
-//    }
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -78,31 +62,7 @@ class LoginViewController: UIViewController {
     }
 
     @objc fileprivate func animateLoginButton(sender: UIButton) {
-//        animateView(sender)
-        sender.setBackgroundColor(UIColor(named: "themeColor")!, for: .normal)
         sender.setBackgroundColor(.lightGray, for: .highlighted)
-    }
-
-    func animateView(_ viewToAnimate: UIView) {
-        UIView.animate( withDuration: 0.20,
-                        delay: 0,
-                        usingSpringWithDamping: 1,
-                        initialSpringVelocity: 1,
-                        options: .curveEaseOut) {
-
-            viewToAnimate.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-
-        } completion: { _ in
-            UIView.animate( withDuration: 0.25,
-                            delay: 0,
-                            usingSpringWithDamping: 0.4,
-                            initialSpringVelocity: 2,
-                            options: .curveEaseIn,
-                            animations: {
-
-                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: nil)
-        }
     }
 
     override func viewDidLoad() {
@@ -189,9 +149,11 @@ extension LoginViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
         if emailView.textField == textField {
             passwordView.textField.becomeFirstResponder()
+        }
+        if passwordView.textField == textField {
+            hideKeyboard()
         }
         return true
     }

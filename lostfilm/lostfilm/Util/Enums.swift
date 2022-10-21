@@ -55,3 +55,7 @@ enum Paddings {
     static let top = CGFloat(8)
     static let bottom = CGFloat(-8)
 }
+
+enum Colors {
+   
+}

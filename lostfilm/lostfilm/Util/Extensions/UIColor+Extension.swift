@@ -8,5 +8,8 @@
 import Foundation
 
 extension UIColor {
-    static let backgroundColor = UIColor(named: "backgroundColor")
+    static let backgroundColor = UIColor(named: "background")
+    static let button = UIColor(named: "button")
+    static let dividedView =  UIColor(named: "dividedView")
+
 }
