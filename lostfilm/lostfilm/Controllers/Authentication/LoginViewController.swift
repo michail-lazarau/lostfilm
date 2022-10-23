@@ -11,6 +11,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
+    private let loginButton = LostfilmButton()
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
     private let captchaTextView: TextFieldView = {
@@ -44,7 +45,6 @@ final class LoginViewController: UIViewController {
         alertController.addAction(continueAction)
         return alertController
     }()
-    private let loginButton = LostfilmButton()
 
     private let contentView: UIView = {
         let contentView = UIView()
