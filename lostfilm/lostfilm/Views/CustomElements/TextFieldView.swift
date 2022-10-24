@@ -29,7 +29,7 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.font = UIFont.body
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.layer.cornerRadius = 5
@@ -41,7 +41,7 @@ final class TextFieldView: UIView {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.body
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
