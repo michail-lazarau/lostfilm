@@ -107,7 +107,7 @@ final class TextFieldView: UIView {
             showPassword()
             passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
         }
-        isButtonSelected = !isButtonSelected
+        isButtonSelected.toggle()
     }
 }
 
