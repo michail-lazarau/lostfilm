@@ -59,6 +59,8 @@ class LoginViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
         passwordView.textField.delegate = self
+        emailView.textField.returnKeyType = .next
+        passwordView.textField.returnKeyType = .done
     }
 
     @objc fileprivate func animateLoginButton(sender: UIButton) {
