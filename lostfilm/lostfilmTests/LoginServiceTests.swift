@@ -123,7 +123,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func test_negative_loginPageElementNotFound() throws {
-        let expected = DVHtmlError.failedToParseWebElement
+        let expected = DVHtmlError.failedToParseCaptchaElement
 
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageElementNotFound", ofType: "html"), "Unable to generate the url from the local context")
 

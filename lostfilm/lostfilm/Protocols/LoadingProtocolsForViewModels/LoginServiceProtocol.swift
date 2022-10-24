@@ -14,7 +14,7 @@ extension LoginServiceProtocol {
             } else if htmlData == nil {
                 response(.failure(DVHtmlError.failedToLoadOnUrl))
             } else {
-                response(.failure(DVHtmlError.failedToParseWebElement))
+                response(.failure(DVHtmlError.failedToParseCaptchaElement))
             }
         }
     }

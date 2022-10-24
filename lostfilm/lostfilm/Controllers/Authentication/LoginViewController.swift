@@ -11,13 +11,20 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
-    private let loginButton = LostfilmButton()
+    private let loginButton: LostfilmButton = {
+        let btn = LostfilmButton()
+        btn.indicator.color = .white
+        return btn
+    }()
+
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
     private let captchaTextView: TextFieldView = {
         let view = TextFieldView()
+//        view.textField.keyboardType = UIDevice.current.userInterfaceIdiom == .phone ? .numberPad : .default
         view.textField.keyboardType = .numberPad
         view.textField.addDoneCancelToolbar()
+//        view.textField.autocorrectionType = .no
         view.isHidden = true
         return view
     }()
@@ -28,12 +35,6 @@ final class LoginViewController: UIViewController {
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imageView.sd_imageIndicator?.stopAnimatingIndicator()
         return imageView
-    }()
-
-    private let screenLoadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .medium)
-        spinner.hidesWhenStopped = true
-        return spinner
     }()
 
     private let alertController: UIAlertController = {
@@ -60,23 +61,6 @@ final class LoginViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    //    private let loginButton: UIButton = {
-    //  let button = UIButton(type: .system)
-//        button.backgroundColor = UIColor(named: "themeColor")
-    //  button.setTitle(Texts.Buttons.buttonLogIn, for: .normal)
-    //  button.setBackgroundColor(.red, for: .selected)
-    //  button.layer.cornerRadius = 5
-    //  button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-    //  button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-    //  return button
-    // }()
-
-//    override open var isHighlighted: Bool {
-//        didSet {
-//            backgroundColor = isHighlighted ? UIColor.black : UIColor.white
-//        }
-//    }
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -102,8 +86,8 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = UIColor.backgroundColor
-
+//        view.backgroundColor = UIColor.backgroundColor
+        view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
@@ -129,7 +113,7 @@ final class LoginViewController: UIViewController {
         viewModel.loginViewModelDelegate = self
         setupView()
         initialSetup()
-        setupConstraints()
+//        setupConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -220,9 +204,13 @@ extension LoginViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc func login() {
+    @objc func login(_ sender: LoadingButton) {
+        sender.showLoader(userInteraction: false)
         if let email = emailView.textField.text, let password = passwordView.textField.text {
-                viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
+            viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            sender.hideLoader()
         }
     }
 }
@@ -270,26 +258,26 @@ extension LoginViewController: LoginViewProtocol {
 
     // FIXME: temporarily out of use
     func displayLoadingIndicator() {
-        DispatchQueue.main.async { [weak screenLoadingSpinner] in
-            guard let screenLoadingSpinner = screenLoadingSpinner else {
-                return
-            }
-            if !screenLoadingSpinner.isAnimating {
-                screenLoadingSpinner.startAnimating()
-            }
-        }
+//        DispatchQueue.main.async { [weak screenLoadingSpinner] in
+//            guard let screenLoadingSpinner = screenLoadingSpinner else {
+//                return
+//            }
+//            if !screenLoadingSpinner.isAnimating {
+//                screenLoadingSpinner.startAnimating()
+//            }
+//        }
     }
 
     // FIXME: temporarily out of use
     func removeLoadingIndicator() {
-        DispatchQueue.main.async { [weak screenLoadingSpinner] in
-            guard let screenLoadingSpinner = screenLoadingSpinner else {
-                return
-            }
-            if screenLoadingSpinner.isAnimating {
-                screenLoadingSpinner.stopAnimating()
-            }
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak screenLoadingSpinner] in
+//            guard let screenLoadingSpinner = screenLoadingSpinner else {
+//                return
+//            }
+//            if screenLoadingSpinner.isAnimating {
+//                screenLoadingSpinner.stopAnimating()
+//            }
+//        }
     }
 }
 
