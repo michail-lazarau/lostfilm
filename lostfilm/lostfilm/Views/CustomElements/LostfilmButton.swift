@@ -15,7 +15,8 @@ class LostfilmButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupButton()
     }
 
     convenience init (title: String) {
@@ -32,19 +33,9 @@ class LostfilmButton: UIButton {
     }
 
     func setupButton() {
-        setShadow()
         setBackgroundColor(UIColor.button ?? .blue, for: .normal)
-
         layer.cornerRadius  = 10
         layer.masksToBounds = true
-    }
-
-    func setShadow() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-        layer.shadowRadius = 8
-        layer.shadowOpacity = 0.8
-        clipsToBounds = true
-        layer.masksToBounds = false
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
     }
 }

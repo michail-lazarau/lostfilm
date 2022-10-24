@@ -54,7 +54,7 @@ final class TextFieldView: UIView {
 
     lazy var passwordButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: "eye")
+        let image = UIImage(systemName: "eye.slash")
         button.layer.cornerRadius = 5
         button.setImage(image, for: .normal)
         button.tintColor = .lightGray
@@ -101,11 +101,11 @@ final class TextFieldView: UIView {
 
     @objc func passwordButtonPressed() {
         if isButtonSelected {
-            passwordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
             hidePassword()
         } else {
             showPassword()
-            passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         }
         isButtonSelected.toggle()
     }
@@ -142,6 +142,8 @@ extension TextFieldView {
 
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
+
+        textField.isSecureTextEntry = true
     }
 
     func setupCommonInputView(withImage image: UIImage, withTitleLabel title: String, withPlaceholder placeholder: String) {

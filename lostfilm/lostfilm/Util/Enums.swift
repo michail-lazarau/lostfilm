@@ -11,8 +11,6 @@ enum Icons {
     static let person = UIImage(systemName: "person") ?? UIImage()
     static let mail = UIImage(systemName: "mail") ?? UIImage()
     static let password = UIImage(systemName: "lock") ?? UIImage()
-    static let openEye = UIImage(named: "eye.circle") ?? UIImage()
-    static let closeEye = UIImage(systemName: "eye.slash.circle") ?? UIImage()
 }
 
 enum Texts {

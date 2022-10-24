@@ -55,16 +55,11 @@ class LoginViewController: UIViewController {
     }
 
     private func initialSetup() {
-        loginButton.addTarget(self, action: #selector(self.animateLoginButton(sender:)), for: .touchDown)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
         passwordView.textField.delegate = self
         emailView.textField.returnKeyType = .next
         passwordView.textField.returnKeyType = .done
-    }
-
-    @objc fileprivate func animateLoginButton(sender: UIButton) {
-        sender.setBackgroundColor(.lightGray, for: .highlighted)
     }
 
     override func viewDidLoad() {
