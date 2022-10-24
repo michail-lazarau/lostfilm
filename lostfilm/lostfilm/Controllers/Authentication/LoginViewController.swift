@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
 
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
-    private let loginButton = LostfilmButton()
+    private let loginButton = LostfilmButton(title: Texts.Buttons.ready)
 
     private let contentView: UIView = {
         let contentView = UIView()

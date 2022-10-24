@@ -18,6 +18,11 @@ class LostfilmButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    convenience init (title: String) {
+        self.init(frame: .zero)
+        self.setTitle(title, for: .normal)
+    }
+
     override var isHighlighted: Bool {
         didSet {
             UIView.animate(withDuration: 0.15) {
@@ -28,7 +33,6 @@ class LostfilmButton: UIButton {
 
     func setupButton() {
         setShadow()
-        setTitle(Texts.Buttons.buttonLogIn, for: .normal)
         setBackgroundColor(UIColor.button ?? .blue, for: .normal)
 
         layer.cornerRadius  = 10
