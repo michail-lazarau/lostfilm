@@ -29,6 +29,7 @@ private extension LoginViewModel {
             case let .failure(error): // Define Error: unable to load captcha
                 loginViewModelDelegate?.showError(error: error)
             }
+            loginViewModelDelegate?.removeLoadingIndicator()
         }
     }
 
@@ -48,6 +49,7 @@ private extension LoginViewModel {
                 }
             case let .failure(error):
                 self.loginViewModelDelegate?.showError(error: error)
+                self.loginViewModelDelegate?.removeLoadingIndicator()
             }
         }
     }
@@ -61,6 +63,7 @@ private extension LoginViewModel {
             switch result {
             case let .success(username):
                 self.captchaModel = nil
+                self.loginViewModelDelegate?.removeLoadingIndicator() // before authorise
                 self.loginViewModelDelegate?.authorise(username: username)
             case let .failure(error):
                 self.loginViewModelDelegate?.showError(error: error)
@@ -68,6 +71,8 @@ private extension LoginViewModel {
                 if error == .invalidCaptcha || error == .needCaptcha {
                     if let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0 ..< 1))", relativeTo: captchaUrl) {
                         self.renderCaptcha(url: randomQueryCaptcha)
+                    } else {
+                        self.loginViewModelDelegate?.removeLoadingIndicator()
                     }
                 }
             }

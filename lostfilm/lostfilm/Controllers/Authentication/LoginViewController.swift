@@ -88,7 +88,6 @@ final class LoginViewController: UIViewController {
 
     private func initialSetup() {
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
-//        loginButton.addTarget(self, action: #selector(self.animateLoginButton(sender:)), for: .touchUpInside)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
         passwordView.textField.delegate = self
@@ -150,7 +149,7 @@ extension LoginViewController {
             stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
-            contentViewHeightConstraint,
+            contentViewHeightConstraint
         ])
     }
 
@@ -195,13 +194,16 @@ extension LoginViewController {
         if let email = emailView.textField.text, let password = passwordView.textField.text {
             viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            sender.hideLoader()
-        }
     }
 }
 
 extension LoginViewController: LoginViewProtocol {
+    func removeLoadingIndicator() {
+        DispatchQueue.main.async { [weak loginButton] in
+            loginButton?.hideLoader()
+        }
+    }
+
     func showError(error: Error) {
         DispatchQueue.main.async {
             // TODO: localisation
