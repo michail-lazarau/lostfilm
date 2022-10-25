@@ -11,30 +11,21 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
-    private let loginButton: LostfilmButton = {
-        let btn = LostfilmButton()
-        btn.indicator.color = .white
-        return btn
-    }()
-
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
-    private let captchaTextView: TextFieldView = {
-        let view = TextFieldView()
-//        view.textField.keyboardType = UIDevice.current.userInterfaceIdiom == .phone ? .numberPad : .default
-        view.textField.keyboardType = .numberPad
-        view.textField.addDoneCancelToolbar()
-//        view.textField.autocorrectionType = .no
-        view.isHidden = true
-        return view
+    private let captchaImageView = UIImageView()
+    private let loginButton: LostfilmButton = {
+        let button = LostfilmButton()
+        button.indicator.color = .white
+        return button
     }()
 
-    private let captchaImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        imageView.sd_imageIndicator?.stopAnimatingIndicator()
-        return imageView
+    private let captchaTextView: TextFieldView = {
+        let view = TextFieldView()
+        view.textField.keyboardType = .numberPad
+        view.textField.addDoneCancelToolbar()
+        view.isHidden = true
+        return view
     }()
 
     private let alertController: UIAlertController = {
@@ -84,10 +75,9 @@ final class LoginViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupView() {
-//        view.backgroundColor = UIColor.backgroundColor
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.backgroundColor
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
@@ -113,7 +103,6 @@ final class LoginViewController: UIViewController {
         viewModel.loginViewModelDelegate = self
         setupView()
         initialSetup()
-//        setupConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -155,7 +144,6 @@ extension LoginViewController {
                            right: scrollView.contentLayoutGuide.rightAnchor)
 
         NSLayoutConstraint.activate([
-
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: 0.0),
 
             stackView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Paddings.top),
@@ -164,10 +152,10 @@ extension LoginViewController {
             stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
-            contentViewHeightConstraint
+            contentViewHeightConstraint,
         ])
     }
-    
+
     private func registerKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -179,20 +167,20 @@ extension LoginViewController {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-      guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-      else { return }
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else { return }
 
-      let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
 
-      scrollView.contentInset = contentInsets
-      scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-      let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
 
-      scrollView.contentInset = contentInsets
-      scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
 
     @objc private func hideKeyboard() {
@@ -230,12 +218,6 @@ extension LoginViewController: LoginViewProtocol {
         }
     }
 
-    func prepareCaptchaToDisplay() {
-        DispatchQueue.main.async { [weak captchaImageView] in
-            captchaImageView?.sd_imageIndicator?.startAnimatingIndicator()
-        }
-    }
-
     func authorise(username: String) {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
@@ -252,32 +234,7 @@ extension LoginViewController: LoginViewProtocol {
         DispatchQueue.main.async { [weak self] in
             self?.captchaTextView.isHidden = false
             self?.captchaImageView.image = UIImage(data: data)
-            self?.captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
         }
-    }
-
-    // FIXME: temporarily out of use
-    func displayLoadingIndicator() {
-//        DispatchQueue.main.async { [weak screenLoadingSpinner] in
-//            guard let screenLoadingSpinner = screenLoadingSpinner else {
-//                return
-//            }
-//            if !screenLoadingSpinner.isAnimating {
-//                screenLoadingSpinner.startAnimating()
-//            }
-//        }
-    }
-
-    // FIXME: temporarily out of use
-    func removeLoadingIndicator() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak screenLoadingSpinner] in
-//            guard let screenLoadingSpinner = screenLoadingSpinner else {
-//                return
-//            }
-//            if screenLoadingSpinner.isAnimating {
-//                screenLoadingSpinner.stopAnimating()
-//            }
-//        }
     }
 }
 
@@ -295,12 +252,12 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension UIButton {
     func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
-    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-    UIGraphicsBeginImageContext(rect.size)
-    color.setFill()
-    UIRectFill(rect)
-    let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    setBackgroundImage(colorImage, for: state)
-  }
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        color.setFill()
+        UIRectFill(rect)
+        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        setBackgroundImage(colorImage, for: state)
+    }
 }

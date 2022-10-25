@@ -1,6 +1,7 @@
 import UIKit
 
-open class LoadingButton: UIButton {
+// https://medium.com/swlh/create-loading-buttons-in-ios-using-swift-63ec77eebda
+class LoadingButton: UIButton {
     var isLoading: Bool = false
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
 
@@ -28,7 +29,7 @@ open class LoadingButton: UIButton {
         isUserInteractionEnabled = userInteraction
         UIView.transition(with: self, duration: 0.2, options: .curveEaseOut, animations: { [weak titleLabel, imageView] in
             [titleLabel, imageView].forEach { $0?.alpha = 0.0 }
-        }) { [weak self] _ in
+        }, completion: { [weak self] _ in
             guard let self = self else { return }
             self.addSubview(self.indicator)
             if self.isLoading {
@@ -36,7 +37,7 @@ open class LoadingButton: UIButton {
             } else {
                 self.hideLoader()
             }
-        }
+        })
     }
     /**
      Hide the loader displayed.

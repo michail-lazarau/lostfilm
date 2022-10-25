@@ -12,7 +12,6 @@ final class LoginViewModel {
     }
 
     func login(email: String, password: String, captcha: String?) {
-        // TODO: launch loading indicator
         if !(captchaModel?.captchaIsRequired ?? false) {
             checkForCaptcha(htmlParserWrapper: htmlParserWrapper, email: email, password: password, captcha: captcha)
         } else {
@@ -23,7 +22,6 @@ final class LoginViewModel {
 
 private extension LoginViewModel {
     func renderCaptcha(url: URL) {
-        loginViewModelDelegate?.prepareCaptchaToDisplay()
         dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
             switch result {
             case let .success(data):
@@ -55,7 +53,6 @@ private extension LoginViewModel {
     }
 
     func authenticate(email: String, password: String, captcha: String?) {
-        // TODO: launch loading indicator
         dataProvider.login(email: email, password: password, captcha: captcha) { [weak self] result in
             guard let self = self else {
                 return
@@ -74,7 +71,6 @@ private extension LoginViewModel {
                     }
                 }
             }
-            // TODO: stop loading indicator
         }
     }
 }
