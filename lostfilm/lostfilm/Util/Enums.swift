@@ -11,8 +11,6 @@ enum Icons {
     static let person = UIImage(systemName: "person") ?? UIImage()
     static let mail = UIImage(systemName: "mail") ?? UIImage()
     static let password = UIImage(systemName: "lock") ?? UIImage()
-    static let openEye = UIImage(named: "eye.circle") ?? UIImage()
-    static let closeEye = UIImage(systemName: "eye.slash.circle") ?? UIImage()
     static let captcha = UIImage(systemName: "repeat") ?? UIImage()
 }
 
@@ -57,8 +55,4 @@ enum Paddings {
     static let right = CGFloat( -40)
     static let top = CGFloat(8)
     static let bottom = CGFloat(-8)
-}
-
-enum Colors {
-   
 }

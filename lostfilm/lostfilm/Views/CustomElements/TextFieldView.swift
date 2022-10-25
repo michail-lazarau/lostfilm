@@ -30,7 +30,7 @@ final class TextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
-        textField.font = UIFont.body
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.layer.cornerRadius = 5
@@ -42,7 +42,7 @@ final class TextFieldView: UIView {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.body
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         titleLabel.textColor = UIColor(named: "other")
         return titleLabel
     }()
@@ -55,7 +55,7 @@ final class TextFieldView: UIView {
 
     lazy var passwordButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: "eye")
+        let image = UIImage(systemName: "eye.slash")
         button.layer.cornerRadius = 5
         button.setImage(image, for: .normal)
         button.tintColor = .lightGray
@@ -102,13 +102,13 @@ final class TextFieldView: UIView {
 
     @objc func passwordButtonPressed() {
         if isButtonSelected {
-            passwordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
             hidePassword()
         } else {
             showPassword()
-            passwordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+            passwordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         }
-        isButtonSelected = !isButtonSelected
+        isButtonSelected.toggle()
     }
 }
 
@@ -143,6 +143,8 @@ extension TextFieldView {
 
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
+
+        textField.isSecureTextEntry = true
     }
 
     func setupCommonInputView(withImage image: UIImage, withTitleLabel title: String, withPlaceholder placeholder: String) {

@@ -15,7 +15,7 @@ final class LoginViewController: UIViewController {
     private let passwordView = TextFieldView()
     private let captchaImageView = UIImageView()
     private let loginButton: LostfilmButton = {
-        let button = LostfilmButton()
+        let button = LostfilmButton(title: Texts.Buttons.buttonLogIn)
         button.indicator.color = .white
         return button
     }()
@@ -92,10 +92,8 @@ final class LoginViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
         passwordView.textField.delegate = self
-    }
-
-    @objc fileprivate func animateLoginButton(sender: UIButton) {
-        sender.setBackgroundColor(.lightGray, for: .highlighted)
+        emailView.textField.returnKeyType = .next
+        passwordView.textField.returnKeyType = .done
     }
 
     override func viewDidLoad() {
