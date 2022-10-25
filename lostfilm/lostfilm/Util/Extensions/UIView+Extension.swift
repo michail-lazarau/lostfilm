@@ -1,14 +1,8 @@
-//
-//  Extentions.swift
-//  lostfilm
-//
-//  Created by u.yanouski on 20/09/2022.
-//
-
 import Foundation
 import UIKit
 
 extension UIView {
+
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
@@ -19,6 +13,7 @@ extension UIView {
                 paddingRight: CGFloat = 0,
                 width: CGFloat? = nil,
                 height: CGFloat? = nil) {
+
         translatesAutoresizingMaskIntoConstraints = false
 
         if let top = top {
@@ -56,5 +51,15 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         heightAnchor.constraint(equalToConstant: height).isActive = true
+    }
+
+    func centerY(inView view: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil, paddingLeft: CGFloat? = nil, constant: CGFloat? = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant!).isActive = true
+
+        if let leftAnchor = leftAnchor, let paddingLeft = paddingLeft {
+            self.leftAnchor.constraint(equalTo: leftAnchor, constant: paddingLeft).isActive = true
+        }
     }
 }
