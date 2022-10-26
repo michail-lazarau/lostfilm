@@ -3,6 +3,7 @@ import XCTest
 
 class LoginServiceTests: XCTestCase {
     var sut: LoginService<URLSessionMock>!
+    let captchaUrlString = "https://www.lostfilm.tv/simple_captcha.php"
 
     override func setUpWithError() throws {
         sut = LoginService(session: URLSessionMock())
@@ -92,7 +93,7 @@ class LoginServiceTests: XCTestCase {
 
     func test_positive_loginPageRenderedWithNoCaptchaRequired() throws {
         let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaStyleDisplay.stringValue: "display:none",
-                                               LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
+                                               LFLoginPageModel.Property.captchaUrl.stringValue: captchaUrlString])
 
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
@@ -102,7 +103,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func test_positive_loginPageRenderedWithCaptchaRequired() throws {
-        let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
+        let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: captchaUrlString])
 
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 

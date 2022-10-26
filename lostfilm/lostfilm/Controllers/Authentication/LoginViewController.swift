@@ -15,12 +15,11 @@ final class LoginViewController: UIViewController {
     private let passwordView = TextFieldView()
     private let captchaImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imageView.sd_imageIndicator?.stopAnimatingIndicator()
         return imageView
     }()
-    
+
     private let loginButton: LostfilmButton = {
         let button = LostfilmButton(title: Texts.Buttons.buttonLogIn)
         button.indicator.color = .white
@@ -35,15 +34,14 @@ final class LoginViewController: UIViewController {
         return view
     }()
 
-    private let alertController: UIAlertController = {
+    private var alertController: UIAlertController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alertController.view.translatesAutoresizingMaskIntoConstraints = false
         let continueAction = UIAlertAction(title: "Continue", style: .default) { _ in
             // TODO: show Tabbarviewcontroller, dismiss LoginViewController
         }
         alertController.addAction(continueAction)
         return alertController
-    }()
+    }
 
     private let contentView: UIView = {
         let contentView = UIView()
@@ -212,16 +210,18 @@ extension LoginViewController: LoginViewProtocol {
     }
 
     func showError(error: Error) {
-            // TODO: localisation
-            DispatchQueue.main.async { [weak self] in
-                if let self = self {
-                    // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
-                    self.alertController.message = error.localizedDescription
-                    self.present(self.alertController, animated: true) {
-                        // completion
-                    }
+        // TODO: localisation
+        DispatchQueue.main.async { [weak self] in
+            if let self = self {
+                // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
+
+                let alert = self.alertController
+                alert.message = error.localizedDescription
+                self.present(alert, animated: true) {
+                    // completion
                 }
             }
+        }
     }
 
     func prepareCaptchaToUpdate() {
@@ -234,7 +234,9 @@ extension LoginViewController: LoginViewProtocol {
 
     func updateCaptcha(data: Data) {
         DispatchQueue.main.async { [weak captchaTextView, captchaImageView] in
+
             // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
+
             captchaTextView?.isHidden = false
             captchaImageView.image = UIImage(data: data)
             captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
@@ -252,7 +254,9 @@ extension LoginViewController: LoginViewProtocol {
     func authorise(username: String) {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
+
             // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
+
             if let self = self {
                 self.alertController.message = "Welcome, \(username)"
                 self.present(self.alertController, animated: true) {

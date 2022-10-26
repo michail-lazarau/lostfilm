@@ -26,13 +26,12 @@ class LoadingButton: UIButton {
         guard !self.subviews.contains(indicator) else { return }
         // Set up loading indicator
         isLoading = true
-        addSubview(indicator) // MARK: adding indicator to subview within a  UIView.transition(completion:) may cause a bug of hideLoader() calling before the indicator appears which causes inability to stop it
+        addSubview(indicator)
         isUserInteractionEnabled = userInteraction
         UIView.transition(with: self, duration: 0.2, options: .curveEaseOut, animations: { [weak titleLabel, imageView] in
             [titleLabel, imageView].forEach { $0?.alpha = 0.0 }
         }, completion: { [weak self] _ in
             guard let self = self else { return }
-//            self.addSubview(self.indicator)
             if self.isLoading {
                 self.indicator.startAnimating()
             } else {
