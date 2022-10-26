@@ -13,7 +13,6 @@ final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
-//    private let captchaImageView = UIImageView()
     private let captchaImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +20,7 @@ final class LoginViewController: UIViewController {
         imageView.sd_imageIndicator?.stopAnimatingIndicator()
         return imageView
     }()
+    
     private let loginButton: LostfilmButton = {
         let button = LostfilmButton(title: Texts.Buttons.buttonLogIn)
         button.indicator.color = .white
@@ -215,7 +215,7 @@ extension LoginViewController: LoginViewProtocol {
             // TODO: localisation
             DispatchQueue.main.async { [weak self] in
                 if let self = self {
-//                    self.loginButton.hideLoader()
+                    // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
                     self.alertController.message = error.localizedDescription
                     self.present(self.alertController, animated: true) {
                         // completion
@@ -224,31 +224,41 @@ extension LoginViewController: LoginViewProtocol {
             }
     }
 
-    func prepareCaptchaToDisplay() {
+    func prepareCaptchaToUpdate() {
         DispatchQueue.main.async { [weak captchaImageView] in
-            if let _ = captchaImageView?.image {
+            if captchaImageView?.image != nil {
                 captchaImageView?.sd_imageIndicator?.startAnimatingIndicator()
             }
+        }
+    }
+
+    func updateCaptcha(data: Data) {
+        DispatchQueue.main.async { [weak captchaTextView, captchaImageView] in
+            // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
+            captchaTextView?.isHidden = false
+            captchaImageView.image = UIImage(data: data)
+            captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
+        }
+    }
+
+    func hideCaptchaWhenFailedToLoad() {
+        DispatchQueue.main.async { [weak captchaTextView, captchaImageView] in
+            captchaTextView?.isHidden = true
+            captchaImageView.image = nil
+            captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
         }
     }
 
     func authorise(username: String) {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
+            // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
             if let self = self {
                 self.alertController.message = "Welcome, \(username)"
                 self.present(self.alertController, animated: true) {
                     // completion
                 }
             }
-        }
-    }
-
-    func updateCaptcha(data: Data) {
-        DispatchQueue.main.async { [weak self] in
-            self?.captchaTextView.isHidden = false
-            self?.captchaImageView.image = UIImage(data: data)
-            self?.captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
         }
     }
 }

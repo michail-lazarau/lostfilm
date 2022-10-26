@@ -34,7 +34,7 @@ class LoginViewModelTests: XCTestCase {
 
         delegate.authoriseFuncExpectation.isInverted = true
         delegate.showErrorFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.prepareCaptchaToUpdateFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
 
         verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
@@ -47,7 +47,7 @@ class LoginViewModelTests: XCTestCase {
 
         delegate.updateCaptchaFuncExpectation.isInverted = true
         delegate.authoriseFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.hideCaptchaWhenFailedToLoadFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.authoriseFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
 
         verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
@@ -100,7 +100,7 @@ class LoginViewModelTests: XCTestCase {
         delegate.updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
 
         delegate.authoriseFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation, delegate.showErrorFuncExpectation]
 
         verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
@@ -121,7 +121,7 @@ class LoginViewModelTests: XCTestCase {
         delegate.updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
 
         delegate.authoriseFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation, delegate.showErrorFuncExpectation]
 
         verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: true, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
@@ -133,8 +133,9 @@ class LoginViewModelTests: XCTestCase {
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCredentials), error: nil).body?.data
 
         delegate.authoriseFuncExpectation.isInverted = true
+        delegate.prepareCaptchaToUpdateFuncExpectation.isInverted = true
         delegate.updateCaptchaFuncExpectation.isInverted = true
-        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.prepareCaptchaToUpdateFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation, delegate.showErrorFuncExpectation]
 
         verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }
@@ -146,9 +147,9 @@ class LoginViewModelTests: XCTestCase {
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericOne), error: nil).body?.data
 
         delegate.authoriseFuncExpectation.isInverted = true
+        delegate.prepareCaptchaToUpdateFuncExpectation.isInverted = true
         delegate.updateCaptchaFuncExpectation.isInverted = true
-        // showErrorFuncExpectation must be fulfilled only once thus calling its twice causes an error
-        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.showErrorFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
+        let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.prepareCaptchaToUpdateFuncExpectation, delegate.updateCaptchaFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation, delegate.showErrorFuncExpectation]
 
         verifyLogin(credentials: ("Mocked", "Mocked", nil), expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!), expectations: expectations, mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
     }

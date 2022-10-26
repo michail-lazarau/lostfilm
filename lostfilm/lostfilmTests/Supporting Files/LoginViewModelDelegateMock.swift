@@ -7,6 +7,8 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
     var authoriseFuncExpectation = XCTestExpectation(description: "authorise(username:) expectation")
     var updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
     var removeLoadingIndicatorFuncExpectation = XCTestExpectation(description: "removeLoadingIndicator() expectation")
+    var prepareCaptchaToUpdateFuncExpectation = XCTestExpectation(description: "prepareCaptchaToUpdate() expectation")
+    var hideCaptchaWhenFailedToLoadFuncExpectation = XCTestExpectation(description: "hideCaptchaWhenFailedToLoad() expectation")
 
     func showError(error: Error) {
         showErrorFuncExpectation.fulfill()
@@ -16,11 +18,19 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
         authoriseFuncExpectation.fulfill()
     }
 
+    func removeLoadingIndicator() {
+        removeLoadingIndicatorFuncExpectation.fulfill()
+    }
+
     func updateCaptcha(data: Data) {
         updateCaptchaFuncExpectation.fulfill()
     }
 
-    func removeLoadingIndicator() {
-        removeLoadingIndicatorFuncExpectation.fulfill()
+    func prepareCaptchaToUpdate() {
+        prepareCaptchaToUpdateFuncExpectation.fulfill()
+    }
+
+    func hideCaptchaWhenFailedToLoad() {
+        hideCaptchaWhenFailedToLoadFuncExpectation.fulfill()
     }
 }

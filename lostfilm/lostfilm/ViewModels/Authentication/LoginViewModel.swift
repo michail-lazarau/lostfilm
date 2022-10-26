@@ -21,20 +21,6 @@ final class LoginViewModel {
 }
 
 private extension LoginViewModel {
-    func renderCaptcha(url: URL) {
-         loginViewModelDelegate?.prepareCaptchaToDisplay()
-        dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
-            switch result {
-            case let .success(data):
-                loginViewModelDelegate?.updateCaptcha(data: data)
-            case let .failure(error): // Define Error: unable to load captcha
-                // TODO: stop animating captcha if failure
-                loginViewModelDelegate?.showError(error: error)
-            }
-            loginViewModelDelegate?.removeLoadingIndicator()
-        }
-    }
-
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
             guard let self = self else {
@@ -56,6 +42,20 @@ private extension LoginViewModel {
         }
     }
 
+    func renderCaptcha(url: URL) {
+         loginViewModelDelegate?.prepareCaptchaToUpdate()
+        dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
+            switch result {
+            case let .success(data):
+                loginViewModelDelegate?.updateCaptcha(data: data)
+            case let .failure(error):
+                loginViewModelDelegate?.hideCaptchaWhenFailedToLoad()
+                loginViewModelDelegate?.showError(error: error)
+            }
+            loginViewModelDelegate?.removeLoadingIndicator()
+        }
+    }
+
     func authenticate(email: String, password: String, captcha: String?) {
         dataProvider.login(email: email, password: password, captcha: captcha) { [weak self] result in
             guard let self = self else {
@@ -68,23 +68,18 @@ private extension LoginViewModel {
                 self.loginViewModelDelegate?.removeLoadingIndicator()
                 self.loginViewModelDelegate?.authorise(username: username)
             case let .failure(error):
-//                defer {
-//                    self.loginViewModelDelegate?.removeLoadingIndicator()
-//                    self.loginViewModelDelegate?.showError(error: error)
-//                }
+                defer {
+                    self.loginViewModelDelegate?.removeLoadingIndicator()
+                    self.loginViewModelDelegate?.showError(error: error)
+                }
+
                 let loginServiceError = error as? LoginServiceError
                 if loginServiceError == .invalidCaptcha || loginServiceError == .needCaptcha {
-                    if let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0 ..< 1))", relativeTo: captchaUrl) {
-                        self.renderCaptcha(url: randomQueryCaptcha)
-                    } else {
-                        // show another error?
-                        self.loginViewModelDelegate?.removeLoadingIndicator()
+                    guard let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0 ..< 1))", relativeTo: captchaUrl) else {
+                        return
                     }
-                } else {
-                    self.loginViewModelDelegate?.removeLoadingIndicator()
+                    self.renderCaptcha(url: randomQueryCaptcha)
                 }
-//                self.loginViewModelDelegate?.removeLoadingIndicator()
-                self.loginViewModelDelegate?.showError(error: error)
             }
         }
     }
