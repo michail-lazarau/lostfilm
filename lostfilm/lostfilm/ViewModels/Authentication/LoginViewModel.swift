@@ -43,7 +43,7 @@ private extension LoginViewModel {
     }
 
     func renderCaptcha(url: URL) {
-         loginViewModelDelegate?.prepareCaptchaToUpdate()
+        loginViewModelDelegate?.prepareCaptchaToUpdate()
         dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
             switch result {
             case let .success(data):

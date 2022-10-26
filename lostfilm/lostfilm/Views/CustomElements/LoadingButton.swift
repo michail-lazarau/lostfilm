@@ -13,17 +13,17 @@ class LoadingButton: UIButton {
         super.init(coder: aDecoder)
     }
 
-    open override func layoutSubviews() {
-            super.layoutSubviews()
-            indicator.center = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
-        }
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        indicator.center = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+    }
 
     /**
      Display the loader inside the button.
      - Parameter userInteraction: Enable the user interaction while displaying the loader.
      */
     open func showLoader(userInteraction: Bool) {
-        guard !self.subviews.contains(indicator) else { return }
+        guard !subviews.contains(indicator) else { return }
         // Set up loading indicator
         isLoading = true
         addSubview(indicator)
@@ -39,13 +39,14 @@ class LoadingButton: UIButton {
             }
         })
     }
+
     /**
      Hide the loader displayed.
      */
     open func hideLoader() {
-        guard self.subviews.contains(indicator) else { return }
+        guard subviews.contains(indicator) else { return }
         isLoading = false
-        self.isUserInteractionEnabled = true
+        isUserInteractionEnabled = true
         indicator.stopAnimating()
         indicator.removeFromSuperview()
         UIView.transition(with: self, duration: 0.2, options: .curveEaseIn, animations: { [weak titleLabel, imageView] in
