@@ -5,4 +5,5 @@ protocol LoginViewProtocol: AnyObject {
     func authorise(username: String)
     func updateCaptcha(data: Data)
     func removeLoadingIndicator()
+    func prepareCaptchaToDisplay()
 }

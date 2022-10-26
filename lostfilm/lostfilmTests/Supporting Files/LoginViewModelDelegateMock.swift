@@ -3,9 +3,10 @@ import XCTest
 @testable import lostfilm
 
 class LoginViewModelDelegateMock: LoginViewProtocol {
-    var showErrorFuncExpectation: XCTestExpectation = XCTestExpectation(description: "showError(error:) expectation")
-    var authoriseFuncExpectation: XCTestExpectation = XCTestExpectation(description: "authorise(username:) expectation")
-    var updateCaptchaFuncExpectation: XCTestExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
+    var showErrorFuncExpectation = XCTestExpectation(description: "showError(error:) expectation")
+    var authoriseFuncExpectation = XCTestExpectation(description: "authorise(username:) expectation")
+    var updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
+    var removeLoadingIndicatorFuncExpectation = XCTestExpectation(description: "removeLoadingIndicator() expectation")
 
     func showError(error: Error) {
         showErrorFuncExpectation.fulfill()
@@ -17,5 +18,9 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
 
     func updateCaptcha(data: Data) {
         updateCaptchaFuncExpectation.fulfill()
+    }
+
+    func removeLoadingIndicator() {
+        removeLoadingIndicatorFuncExpectation.fulfill()
     }
 }

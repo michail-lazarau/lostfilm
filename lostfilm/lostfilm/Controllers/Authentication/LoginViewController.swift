@@ -13,7 +13,14 @@ final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
-    private let captchaImageView = UIImageView()
+//    private let captchaImageView = UIImageView()
+    private let captchaImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        imageView.sd_imageIndicator?.stopAnimatingIndicator()
+        return imageView
+    }()
     private let loginButton: LostfilmButton = {
         let button = LostfilmButton(title: Texts.Buttons.buttonLogIn)
         button.indicator.color = .white
@@ -205,15 +212,22 @@ extension LoginViewController: LoginViewProtocol {
     }
 
     func showError(error: Error) {
-        DispatchQueue.main.async {
             // TODO: localisation
             DispatchQueue.main.async { [weak self] in
                 if let self = self {
+//                    self.loginButton.hideLoader()
                     self.alertController.message = error.localizedDescription
                     self.present(self.alertController, animated: true) {
                         // completion
                     }
                 }
+            }
+    }
+
+    func prepareCaptchaToDisplay() {
+        DispatchQueue.main.async { [weak captchaImageView] in
+            if let _ = captchaImageView?.image {
+                captchaImageView?.sd_imageIndicator?.startAnimatingIndicator()
             }
         }
     }
@@ -234,6 +248,7 @@ extension LoginViewController: LoginViewProtocol {
         DispatchQueue.main.async { [weak self] in
             self?.captchaTextView.isHidden = false
             self?.captchaImageView.image = UIImage(data: data)
+            self?.captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
         }
     }
 }

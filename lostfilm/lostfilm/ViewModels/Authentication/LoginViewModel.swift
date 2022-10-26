@@ -22,11 +22,13 @@ final class LoginViewModel {
 
 private extension LoginViewModel {
     func renderCaptcha(url: URL) {
+         loginViewModelDelegate?.prepareCaptchaToDisplay()
         dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
             switch result {
             case let .success(data):
                 loginViewModelDelegate?.updateCaptcha(data: data)
             case let .failure(error): // Define Error: unable to load captcha
+                // TODO: stop animating captcha if failure
                 loginViewModelDelegate?.showError(error: error)
             }
             loginViewModelDelegate?.removeLoadingIndicator()
@@ -48,8 +50,8 @@ private extension LoginViewModel {
                     self.authenticate(email: email, password: password, captcha: captcha)
                 }
             case let .failure(error):
-                self.loginViewModelDelegate?.showError(error: error)
                 self.loginViewModelDelegate?.removeLoadingIndicator()
+                self.loginViewModelDelegate?.showError(error: error)
             }
         }
     }
@@ -63,18 +65,26 @@ private extension LoginViewModel {
             switch result {
             case let .success(username):
                 self.captchaModel = nil
-                self.loginViewModelDelegate?.removeLoadingIndicator() // before authorise
+                self.loginViewModelDelegate?.removeLoadingIndicator()
                 self.loginViewModelDelegate?.authorise(username: username)
             case let .failure(error):
-                self.loginViewModelDelegate?.showError(error: error)
-                let error = error as? LoginServiceError
-                if error == .invalidCaptcha || error == .needCaptcha {
+//                defer {
+//                    self.loginViewModelDelegate?.removeLoadingIndicator()
+//                    self.loginViewModelDelegate?.showError(error: error)
+//                }
+                let loginServiceError = error as? LoginServiceError
+                if loginServiceError == .invalidCaptcha || loginServiceError == .needCaptcha {
                     if let captchaUrl = self.captchaModel?.captchaUrl, let randomQueryCaptcha = URL(string: "?\(Double.random(in: 0 ..< 1))", relativeTo: captchaUrl) {
                         self.renderCaptcha(url: randomQueryCaptcha)
                     } else {
+                        // show another error?
                         self.loginViewModelDelegate?.removeLoadingIndicator()
                     }
+                } else {
+                    self.loginViewModelDelegate?.removeLoadingIndicator()
                 }
+//                self.loginViewModelDelegate?.removeLoadingIndicator()
+                self.loginViewModelDelegate?.showError(error: error)
             }
         }
     }
