@@ -20,10 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarRootVC
         */
 
-//        let vc = LoginViewController()
-        let vc = LoginViewController()
+        let vc = LoginViewController(viewModel: LoginViewModel(dataProvider: LoginService(session: URLSession.shared)))
         window?.rootViewController = vc
-//        vc.loadViewIfNeeded() MARK: commented - the screen seemingly works fine without this line. Is this necessary line of code?
         window?.makeKeyAndVisible()
     }
 
@@ -35,6 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        // TODO: delete later
+        HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }

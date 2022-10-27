@@ -16,7 +16,7 @@ class MockGlobalSearchDC: NSObject, GlobalSearchProtocol {
             // FIXME: an error is caught when the output is out of records. Hence the datasource is not updated
             if error == nil {
                 DispatchQueue.main.async {
-                    strongSelf.delegate?.updateTableView()
+                    strongSelf.delegate?.updateView()
                 }
             }
         }

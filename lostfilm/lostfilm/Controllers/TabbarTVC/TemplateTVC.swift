@@ -4,7 +4,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     fileprivate let tableFooterHeight: CGFloat = 50
 
     private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
         return spinner
     }()

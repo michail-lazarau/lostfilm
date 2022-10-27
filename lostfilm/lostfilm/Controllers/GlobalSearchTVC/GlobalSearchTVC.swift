@@ -29,7 +29,7 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
         registerCells()
     }
 
-    func updateTableView() {
+    func updateView() {
         viewModel.populateWithData()
 //        spinner.stopAnimating()
         tableView.reloadData()

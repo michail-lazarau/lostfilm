@@ -5,7 +5,7 @@ final class CastVM: BaseViewModel<TVSeriesCastDataProvider, LFPersonModel>, ILoa
 
     func loadItems() {
         loadItems(dataProvider: dataProvider) { [weak self] in
-            self?.delegate?.updateTableView()
+            self?.delegate?.updateView()
         }
     }
 

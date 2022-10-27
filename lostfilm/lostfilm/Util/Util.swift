@@ -3,9 +3,10 @@ import Foundation
 func login() {
     let username = "creativemanhorde@gmail.com"
     let password = "unhollylm0106"
+    let captcha: String? = nil
 
     HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0))
-    LoginService(session: URLSession.shared).login(userLogin: username, password: password) { result in
+    LoginService(session: URLSession.shared).login(email: username, password: password, captcha: captcha) { result in
         switch result {
         case .success:
             break
