@@ -2,25 +2,22 @@ import Foundation
 import UIKit
 
 class ZoomTransitioningDelegate: NSObject {
-    var transitionDuration = 0.5
+    let transitionDuration = 0.5
     var operation: UINavigationController.Operation = .none
 //    private let zoomScale = CGFloat(15)
     private let backgroundScale = CGFloat(0.7)
 
+    // swiftlint:disable:next function_parameter_count
     func configureViews(for state: ImageViewTransitionState, containerView: UIView, fromViewController: UIViewController, fromImageView: UIImageView, toImageView: UIImageView, snapshotView: UIImageView) {
         switch state {
         case .initial:
             fromViewController.view.transform = CGAffineTransform.identity
             fromViewController.view.alpha = 1
             snapshotView.frame = containerView.convert(fromImageView.frame, from: fromImageView.superview)
-            //
-//            toImageView.alpha = 1
         case .final:
             fromViewController.view.transform = CGAffineTransform(scaleX: backgroundScale, y: backgroundScale)
             fromViewController.view.alpha = 0
             snapshotView.frame = containerView.convert(toImageView.frame, from: toImageView.superview)
-            //
-//            snapshotView.alpha = 0
         }
     }
 }

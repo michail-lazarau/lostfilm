@@ -4,7 +4,7 @@ import UIKit
 
 class BaseFilterViewCell: UITableViewCell {
     var switcherCallback: (() -> Void)?
-    var switcher: UISwitch!
+    let switcher: UISwitch
 
     class var reuseIdentifier: String {
         String(describing: self)
@@ -13,9 +13,8 @@ class BaseFilterViewCell: UITableViewCell {
 // MARK: ask about usage of << override var reuseIdentifier: String {"BaseFilterViewCell"} >>
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         switcher = UISwitch()
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryView = switcher
         switcher.addTarget(self, action: #selector(switcherTapped(_:)), for: .valueChanged)
     }
@@ -31,11 +30,4 @@ class BaseFilterViewCell: UITableViewCell {
     @objc func switcherTapped(_ sender: UISwitch) {
         switcherCallback?()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

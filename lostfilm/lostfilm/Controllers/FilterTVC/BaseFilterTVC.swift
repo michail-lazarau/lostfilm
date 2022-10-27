@@ -31,7 +31,7 @@ class BaseFilterTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //        let switcher = (self.tableView.cellForRow(at: indexPath)?.accessoryView) as! UISwitch
-        if let switcher = (self.tableView.cellForRow(at: indexPath) as! BaseFilterViewCell).switcher {
+        if let switcher = (self.tableView.cellForRow(at: indexPath) as? BaseFilterViewCell)?.switcher {
             switcher.setOn(!switcher.isOn, animated: true)
             switchFilter(switcher, filterModel: filtersToDisplay[indexPath.row])
         }
@@ -40,13 +40,17 @@ class BaseFilterTVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> BaseFilterViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.reuseIdentifier, for: indexPath) as! BaseFilterViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BaseFilterViewCell.reuseIdentifier, for: indexPath) as? BaseFilterViewCell else {
+            return UITableViewCell()
+        }
+
         cell.switcher.isOn = dcWithSelectedFilters.savedFilters.contains(filtersToDisplay[indexPath.row]) // setting an initial value for a switch
         cell.textLabel?.text = filtersToDisplay[indexPath.row].name
         cell.switcherCallback = { [unowned self] in
             switchFilter(cell.switcher, filterModel: filtersToDisplay[indexPath.row])
         }
+
         return cell
     }
 

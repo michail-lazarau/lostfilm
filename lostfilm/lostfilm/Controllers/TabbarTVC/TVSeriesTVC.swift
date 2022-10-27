@@ -23,22 +23,28 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     }
 
     @objc private func DidShowFilters() {
-        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataSource as! TVSeriesDataController)
+        guard let dataSource = dataSource as? TVSeriesDataController & FilteringDelegate else {
+            return
+        }
+
+        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataSource)
         let navController = FilteringNavigationController(rootViewController: filteringTVC)
-        filteringTVC.filteringDelegate = (dataSource as! FilteringDelegate)
+        filteringTVC.filteringDelegate = dataSource
         present(navController, animated: true)
     }
 
     @objc private func DidShowGlobalSearch() {
         let globalSearchTVC = GlobalSearchTVC(style: .grouped, viewModel: GlobalSearchVM(dataProvider: GlobalSearchDC()))
-        if let presentedVC = self.presentedViewController {
+        if let presentedVC = presentedViewController {
             presentedVC.dismiss(animated: false, completion: nil)
         }
 
-        self.navigationController?.setViewControllers([ self, globalSearchTVC ], animated: true)
+        navigationController?.setViewControllers([self, globalSearchTVC], animated: true)
     }
 }
+
 // MARK: how to display a VC
+
 //    addChild(filteringTVC)
 //    self.view.addSubview(filteringTVC.view)
 //    filteringTVC.didMove(toParent: self)
