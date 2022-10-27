@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		C53E119F2901544E002BE86B /* LostfilmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E119E2901544E002BE86B /* LostfilmButton.swift */; };
 		C542477E28E4429C006B2C7D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542477D28E4429C006B2C7D /* TextFieldView.swift */; };
+		C54E41EE29092BDB00FE6B29 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54E41ED29092BDB00FE6B29 /* Validator.swift */; };
 		C556012E28EF040B0032D75F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C556012D28EF040B0032D75F /* UIColor+Extension.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
+		C5AD3189290AB1DB0085D4D5 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F70DB90527C14C8200924479 /* ParagraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90427C14C8200924479 /* ParagraphView.xib */; };
@@ -241,10 +243,12 @@
 		AFE4152F105F7184813EB328 /* Pods-lostfilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.debug.xcconfig"; sourceTree = "<group>"; };
 		C53E119E2901544E002BE86B /* LostfilmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostfilmButton.swift; sourceTree = "<group>"; };
 		C542477D28E4429C006B2C7D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		C54E41ED29092BDB00FE6B29 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C556012D28EF040B0032D75F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 		F70DB90427C14C8200924479 /* ParagraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParagraphView.xib; sourceTree = "<group>"; };
@@ -538,6 +542,7 @@
 			children = (
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
 				C556012D28EF040B0032D75F /* UIColor+Extension.swift */,
+				C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -748,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				F7355EEF2772523C00B42B0F /* Util.swift */,
+				C54E41ED29092BDB00FE6B29 /* Validator.swift */,
 				C567D04728D9CC9A000FDCFE /* Utilities.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
 				C55218A528E7028800BC2CD0 /* Extensions */,
@@ -1727,6 +1733,7 @@
 				F7516D7C282C56CE00E1A138 /* SeriesCastViewCell.swift in Sources */,
 				F7471DDD27AAB0FD00BDA17A /* VMseriesItem.swift in Sources */,
 				F7516D6E282BDEC700E1A138 /* GlobalSearchItem+Extensions.swift in Sources */,
+				C54E41EE29092BDB00FE6B29 /* Validator.swift in Sources */,
 				F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */,
 				F7471DE127AAB69400BDA17A /* VMseriesPosterItem.swift in Sources */,
 				F78EC96027C6A7820041F998 /* TVSeriesNewsDataProvider.swift in Sources */,
@@ -1759,6 +1766,7 @@
 				F781ACCE27E1348A003ABF31 /* TVSeriesPhotosCVC.swift in Sources */,
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,
 				F7DBEE0927FA34570094A7D2 /* TVSeriesVideosDataProvider.swift in Sources */,
+				C5AD3189290AB1DB0085D4D5 /* String+Extention.swift in Sources */,
 				F75E66C428B8F13200984724 /* TextViewCell.swift in Sources */,
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
 				F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */,
