@@ -65,6 +65,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupAddTargetIsNotEmptyTextFields()
         registerKeyboardNotification()
         initialSetup()
         setupConstraints()
@@ -142,6 +143,24 @@ extension LoginViewController {
     @objc private func hideKeyboard() {
         view.endEditing(true)
     }
+
+    private func setupAddTargetIsNotEmptyTextFields() {
+        loginButton.isEnabled = false
+        emailView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        passwordView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+    }
+
+    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+      sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+      guard
+        let email = emailView.textField.text, !email.isEmpty,
+        let password = passwordView.textField.text, !password.isEmpty
+        else {
+        self.loginButton.isEnabled = false
+        return
+      }
+      loginButton.isEnabled = true
+      }
 }
 
 extension LoginViewController: UITextFieldDelegate {

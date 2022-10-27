@@ -30,8 +30,7 @@ final class Validator {
     func validateNickName(nickName: String) throws {
         if nickName.matches(nickNamesRegex) {
             print("NickName matches with requirements")
-    }
-        else if nickName.count < minNickNameLength {
+    } else if nickName.count < minNickNameLength {
             throw ValidatorError.invalidNickname
         } else {
             throw ValidatorError.invalidNickname
@@ -41,8 +40,7 @@ final class Validator {
     func validateFirstName( firstName: String) throws {
         if firstName.matches(firstNameRegex) {
             print("FirstName matches with requirements")
-        }
-        else if firstName.count > maxFirstNameLength {
+        } else if firstName.count > maxFirstNameLength {
             throw ValidatorError.invalidNickname
         } else {
             throw ValidatorError.invalidNickname
