@@ -258,7 +258,8 @@ extension LoginViewController: LoginViewProtocol {
             // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
 
             if let self = self {
-                self.alertController.message = "Welcome, \(username)"
+                let alert = self.alertController
+                alert.message = "Welcome, \(username)"
                 self.present(self.alertController, animated: true) {
                     // completion
                 }

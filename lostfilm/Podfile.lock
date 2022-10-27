@@ -87,7 +87,7 @@ PODS:
 
 DEPENDENCIES:
   - CarbonKit
-  - DVAppCore (from `https://github.com/denis-vashkovski/DVAppCore.git`)
+  - DVAppCore (from `https://github.com/michail-lazarau/DVAppCore.git`)
   - DVHtmlToModels (from `https://github.com/denis-vashkovski/DVHtmlToModels.git`)
   - hpple (from `https://github.com/topfunky/hpple.git`)
   - SDWebImage
@@ -101,7 +101,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   DVAppCore:
-    :git: https://github.com/denis-vashkovski/DVAppCore.git
+    :git: https://github.com/michail-lazarau/DVAppCore.git
   DVHtmlToModels:
     :git: https://github.com/denis-vashkovski/DVHtmlToModels.git
   hpple:
@@ -109,8 +109,8 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DVAppCore:
-    :commit: b9bb8c900c75d5a9b1ac3061922d1f0c8a22cfc0
-    :git: https://github.com/denis-vashkovski/DVAppCore.git
+    :commit: 547f80bfbf9d1bf6b566267e415ef74b48e2cf15
+    :git: https://github.com/michail-lazarau/DVAppCore.git
   DVHtmlToModels:
     :commit: 58ffad35dccbd0646a4d6c715310faf81524f75b
     :git: https://github.com/denis-vashkovski/DVHtmlToModels.git
@@ -126,6 +126,6 @@ SPEC CHECKSUMS:
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: fc03090d004f5bb58fe5f37f5a8de5145c655659
+PODFILE CHECKSUM: cce7633704bbaeebf46dc9f30831cdbf6c4efed1
 
 COCOAPODS: 1.11.3
