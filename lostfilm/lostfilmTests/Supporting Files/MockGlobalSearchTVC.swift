@@ -4,7 +4,7 @@ import Foundation
 class MockGlobalSearchTVC: NSObject, IUpdatingViewDelegate {
     @objc dynamic var didUpdateTableViewCalled: Bool = false
 
-    func updateTableView() {
+    func updateView() {
         if didUpdateTableViewCalled == true {
             fatalError("[didUpdateTableViewCalled] has been already [true]")
         }

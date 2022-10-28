@@ -35,7 +35,7 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
         tableView.separatorStyle = .none
     }
 
-    func updateTableView() {
+    func updateView() {
         tableView.reloadData()
         initialScreenLoadingSpinner.stopAnimating()
     }

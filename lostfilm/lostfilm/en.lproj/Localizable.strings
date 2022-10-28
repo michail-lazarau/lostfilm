@@ -21,12 +21,14 @@
 "Please repeat password" = "Please repeat password";
 "Please enter your name" = "Please enter your name";
 "Please enter your surname" = "Please enter your surname";
+"Please enter captcha" = "Please enter captcha";
 "WELCOM TO LOST FILM" = "WELCOM TO LOST FIL";
 "Enter" ="Enter";
 "Name" = "Name";
 "Surname" = "Surname";
 "Password" = "Password";
 "Email" = "Email";
+"Captcha" = "Captcha";
 "Repeat Password" = "Repeat Password ";
 "Log In" = "Log In";
 "Sing Up" = "Sing Up";

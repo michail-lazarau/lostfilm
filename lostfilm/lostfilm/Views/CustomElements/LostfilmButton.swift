@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LostfilmButton: UIButton {
+class LostfilmButton: LoadingButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

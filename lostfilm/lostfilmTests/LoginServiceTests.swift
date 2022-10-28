@@ -3,6 +3,7 @@ import XCTest
 
 class LoginServiceTests: XCTestCase {
     var sut: LoginService<URLSessionMock>!
+    let captchaUrlString = "https://www.lostfilm.tv/simple_captcha.php"
 
     override func setUpWithError() throws {
         sut = LoginService(session: URLSessionMock())
@@ -46,9 +47,9 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func test_negative_loginFailsWithUnknownErrorNo4() throws {
-        try verifyLogin(expectedResult: LoginServiceError.unknownLoginError,
-                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericFour), error: nil)) { result, expected in
+    func test_negative_loginFailsWithInvalidCaptchaError() throws {
+        try verifyLogin(expectedResult: LoginServiceError.invalidCaptcha,
+                        mockedResponse: LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCaptcha), error: nil)) { result, expected in
             XCTAssertThrowsError(try result.get(), "Catching error") { error in
                 XCTAssertEqual(error as! LoginServiceError, expected)
             }
@@ -73,12 +74,28 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
+    func test_positive_captchaReceived() throws {
+        let expectedCaptchaUrl = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "testCaptchaImage", ofType: "gif"), "Unable to generate the url from the local context")
+        let expected = try Data(contentsOf: URL(fileURLWithPath: expectedCaptchaUrl))
+
+        try verifyGetCaptcha(expectedResult: expected, mockedResponse: CaptchaResponseMock(body: expected, error: nil)) { result, expected in
+            XCTAssertEqual(try result.get(), expected)
+        }
+    }
+
+    func test_negative_captchaBadUrl() throws {
+        try verifyGetCaptcha(expectedResult: URLError(.badURL), mockedResponse: CaptchaResponseMock(body: nil, error: URLError(.badURL))) { result, expected in
+            XCTAssertThrowsError(try result.get(), "Catching error") { error in
+                XCTAssertEqual(error as! URLError, expected)
+            }
+        }
+    }
+
     func test_positive_loginPageRenderedWithNoCaptchaRequired() throws {
         let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaStyleDisplay.stringValue: "display:none",
-                                               LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
+                                               LFLoginPageModel.Property.captchaUrl.stringValue: captchaUrlString])
 
-        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"),
-                                "Unable to generate the url from the local context")
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertEqual(try result.get(), expected)
@@ -86,10 +103,9 @@ class LoginServiceTests: XCTestCase {
     }
 
     func test_positive_loginPageRenderedWithCaptchaRequired() throws {
-        let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: "http://www.lostfilm.tv/simple_captcha.php"])
+        let expected = LFLoginPageModel(data: [LFLoginPageModel.Property.captchaUrl.stringValue: captchaUrlString])
 
-        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"),
-                                "Unable to generate the url from the local context")
+        let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         try verifyGetLoginPage(expectedResult: expected, urlStub: url) { result, expected in
             XCTAssertEqual(try result.get(), expected)
@@ -108,7 +124,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func test_negative_loginPageElementNotFound() throws {
-        let expected = DVHtmlError.failedToParseWebElement
+        let expected = DVHtmlError.failedToParseCaptchaElement
 
         let url = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageElementNotFound", ofType: "html"), "Unable to generate the url from the local context")
 
@@ -129,7 +145,7 @@ extension LoginServiceTests {
         sut.session.data = mockedResponse.body?.data
         sut.session.error = mockedResponse.error
         // When
-        sut.login(request: URLRequest(url: URL(string: "mocked")!)) { result in
+        sut.login(email: "mocked", password: "mocked", captcha: nil) { result in
             exp.fulfill()
             loginResponse = result
         }
@@ -146,7 +162,7 @@ extension LoginServiceTests {
         guard let htmlToModel = DVHtmlToModels(contextByName: "GetLoginPageContext") else {
             return XCTFail("Unable to generate the html model from the local context")
         }
-
+        // faking session url
         htmlToModel.setValue("file://" + urlStub, forKey: "url")
 
         // When
@@ -158,5 +174,25 @@ extension LoginServiceTests {
 
         // Then
         try assertHandler(loginPageResponse, expectedResult)
+    }
+
+    func verifyGetCaptcha<T>(expectedResult: T, mockedResponse: CaptchaResponseMock, assertHandler: (Result<Data, Error>, T) throws -> Void) throws {
+        // Given
+        var captchaResponse: Result<Data, Error>!
+
+        let exp = expectation(description: "Requesting data")
+        sut.session.data = mockedResponse.body
+        sut.session.error = mockedResponse.error
+
+        // When
+        sut.getCaptcha(url: URL(string: "Stub")!, response: { result in
+            exp.fulfill()
+            captchaResponse = result
+        })
+        waitForExpectations(timeout: 0.1)
+
+        // Then
+        // XCTestFail
+        try assertHandler(captchaResponse, expectedResult)
     }
 }

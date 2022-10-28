@@ -4,7 +4,7 @@ final class NewsDetailsVM: BaseViewModel<NewsDetailsDataProvider, LFContentItemM
     weak var viewUpdatingDelegate: IUpdatingViewDelegate?
     func loadItems() {
         loadItems(dataProvider: dataProvider) { [weak self] in
-            self?.viewUpdatingDelegate?.updateTableView()
+            self?.viewUpdatingDelegate?.updateView()
         }
     }
 

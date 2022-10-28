@@ -28,7 +28,7 @@ class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
         viewModel.loadItems()
     }
 
-    func updateTableView() {
+    func updateView() {
         tableView.reloadData()
         initialScreenLoadingSpinner.stopAnimating()
     }

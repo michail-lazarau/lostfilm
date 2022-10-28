@@ -5,7 +5,7 @@ final class SeriesVM: BaseViewModel<TVSeriesOverviewDataProvider, VMseriesItem>,
 
     func loadItems() {
         loadItems(dataProvider: dataProvider) { [weak self] in
-            self?.delegate?.updateTableView()
+            self?.delegate?.updateView()
         }
     }
 
