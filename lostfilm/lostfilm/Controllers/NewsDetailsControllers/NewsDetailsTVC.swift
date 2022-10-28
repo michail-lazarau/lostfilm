@@ -4,7 +4,7 @@ class NewsDetailsTVC: UITableViewController, IUpdatingViewDelegate {
     let viewModel: NewsDetailsVM
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
         return spinner
     }()

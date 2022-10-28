@@ -71,11 +71,12 @@ class ScheduleTVC: UITableViewController, IUpdatingViewDelegate {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.reuseIdentifier, for: indexPath) as! NewEpisodeViewCell
-
-        if let model = dataSource?[indexPath.section, indexPath.row] {
-            cell.configureWith(dataModel: model)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewEpisodeViewCell.reuseIdentifier, for: indexPath) as? NewEpisodeViewCell,
+              let model = dataSource?[indexPath.section, indexPath.row] else {
+            return UITableViewCell()
         }
+
+        cell.configureWith(dataModel: model)
         return cell
     }
 

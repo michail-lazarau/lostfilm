@@ -5,7 +5,7 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITab
     fileprivate let tableFooterHeight: CGFloat = 50
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
         return spinner
     }()

@@ -57,7 +57,11 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
         let searchItem = viewModel.itemsForSections[indexPath.section]
         switch searchItem.type {
         case .series:
-            let seriesDetailsVC = LFSeriesDetailsVC(model: (searchItem as! GlobalSearchSeriesItem)[indexPath.row])
+            guard let model = (searchItem as? GlobalSearchSeriesItem)?[indexPath.row] else {
+                break
+            }
+
+            let seriesDetailsVC = LFSeriesDetailsVC(model: model)
             seriesDetailsVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(seriesDetailsVC, animated: true)
         default: break

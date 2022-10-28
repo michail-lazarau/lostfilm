@@ -58,8 +58,8 @@ extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
         let collectionViewController = self.controllers.last { $0 is TVSeriesPhotosCVC } as? TVSeriesPhotosCVC
         if let TVSeriesPhotosCVC = collectionViewController, let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
-            let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-            return cell.imageView
+            let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as? SeriesPhotoViewCell
+            return cell?.imageView
         }
         return nil
     }
