@@ -4,7 +4,7 @@ class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
     let viewModel: EpisodesVM
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
         return spinner
     }()

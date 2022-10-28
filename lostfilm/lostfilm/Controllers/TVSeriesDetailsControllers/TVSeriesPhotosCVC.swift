@@ -6,7 +6,7 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
     var selectedIndexPath: IndexPath?
 
     private let initialScreenLoadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
         return spinner
     }()
@@ -86,8 +86,14 @@ class TVSeriesPhotosCVC: UICollectionViewController, UICollectionViewDataSourceP
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
-        let cell = collectionView.cellForItem(at: indexPath) as! SeriesPhotoViewCell
-        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, model: cell.item!, image: cell.imageView.image ?? UIImage())
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SeriesPhotoViewCell,
+              let cellModel = cell.item else {
+            return
+        }
+
+        let photoVC = TVSeriesPhotoVC(nibName: TVSeriesPhotoVC.nibName, bundle: nil, model: cellModel, image: cell.imageView.image ?? UIImage())
         navigationController?.pushViewController(photoVC, animated: true)
+
+        collectionView.deselectItem(at: indexPath, animated: true) // makes no visible difference
     }
 }

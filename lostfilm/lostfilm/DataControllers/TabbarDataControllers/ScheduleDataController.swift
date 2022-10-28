@@ -57,7 +57,7 @@ class ScheduleDataController {
         let mondayInFortnight = today.getDay(weekday: 2, weekOffset: 2) // weekday 2 is Monday
         let comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow = Calendar.current.compare(sundayOfThisWeek, to: dayAfterTomorrow, toGranularity: .day)
         let dateIsOnThisWeekAfterTomorrow = comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedDescending
-        || comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedSame
+            || comparisonOfSundayOfThisWeekTowardsDayAfterTomorrow == .orderedSame
         let dateInterval: DateInterval
 
         switch intervalEnum {
@@ -65,7 +65,7 @@ class ScheduleDataController {
             dateInterval = DateInterval(start: today.startOfDay, end: today.endOfDay)
         case .tomorrow:
             dateInterval = DateInterval(start: tomorrow.startOfDay, end: tomorrow.endOfDay)
-        case .thisWeek where dateIsOnThisWeekAfterTomorrow :
+        case .thisWeek where dateIsOnThisWeekAfterTomorrow:
             dateInterval = DateInterval(start: dayAfterTomorrow.startOfDay, end: sundayOfThisWeek.endOfDay)
         case .nextWeek:
             dateInterval = DateInterval(start: mondayOfNextWeek.startOfDay, duration: 604800 - 1)

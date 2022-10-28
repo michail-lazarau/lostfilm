@@ -108,10 +108,12 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
-        if let model = dataSource?[indexPath.row] {
-            cell.configureWith(dataModel: model as! Cell.DataModel)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as? Cell,
+              let model = dataSource?[indexPath.row] as? Cell.DataModel else {
+            return UITableViewCell()
         }
+
+        cell.configureWith(dataModel: model)
         return cell
     }
 

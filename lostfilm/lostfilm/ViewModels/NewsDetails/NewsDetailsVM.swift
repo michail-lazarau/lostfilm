@@ -21,19 +21,23 @@ extension NewsDetailsVM: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
-        let identifier = (item as! IModelCellReuseIdentifiable).cellReuseIdentifier
+        let model = items[indexPath.row]
+        guard let identifier = (model as? IModelCellReuseIdentifiable)?.cellReuseIdentifier else {
+            return UITableViewCell()
+        }
+
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        switch item {
+        switch model {
             // MARK: force unwrapping is put by intention - items array must not contain any objects those do not conform to the Class Types mentioned below
 
         case is LFAttributedTextContentItemModel:
-            (cell as! TextViewCell).item = item
+            (cell as? TextViewCell)?.item = model
         case is LFPhotoListContentItemModel:
-            (cell as! CarouselTableViewCell).item = item
+            (cell as? CarouselTableViewCell)?.item = model
         case is LFVideoContentItemModel:
-            (cell as! VideoViewCell).item = (item as! LFVideoContentItemModel).videoModel
-        default: fatalError("\(NewsDetailsVM.self): cell cannot be free of data")
+            (cell as? VideoViewCell)?.item = (model as? LFVideoContentItemModel)?.videoModel
+        default:
+            print("\(model.self) does not suit to the given types")
         }
         return cell
     }
