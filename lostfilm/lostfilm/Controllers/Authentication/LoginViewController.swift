@@ -104,11 +104,8 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         viewModel.loginViewModelDelegate = self
         setupView()
-<<<<<<< HEAD
         setupAddTargetIsNotEmptyTextFields()
         registerKeyboardNotification()
-=======
->>>>>>> main
         initialSetup()
     }
 
@@ -194,7 +191,6 @@ extension LoginViewController {
         view.endEditing(true)
     }
 
-<<<<<<< HEAD
     private func setupAddTargetIsNotEmptyTextFields() {
         loginButton.isEnabled = false
         emailView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
@@ -212,7 +208,7 @@ extension LoginViewController {
       }
       loginButton.isEnabled = true
       }
-=======
+
     private func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -290,7 +286,7 @@ extension LoginViewController: LoginViewProtocol {
             }
         }
     }
->>>>>>> main
+
 }
 
 extension LoginViewController: UITextFieldDelegate {
