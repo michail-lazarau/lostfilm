@@ -198,15 +198,7 @@ extension LoginViewController {
     }
 
     @objc func textFieldsIsNotEmpty(sender: UITextField) {
-      sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-      guard
-        let email = emailView.textField.text, !email.isEmpty,
-        let password = passwordView.textField.text, !password.isEmpty
-        else {
-        self.loginButton.isEnabled = false
-        return
-      }
-      loginButton.isEnabled = true
+        viewModel.checkTF(sender: sender, emailView: emailView, passwordView: passwordView, button: loginButton)
       }
 
     private func removeKeyboardNotification() {
