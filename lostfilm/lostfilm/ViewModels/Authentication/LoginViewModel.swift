@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Test: AnyObject {
-    func checkTF(sender: UITextField, emailView: TextFieldView, passwordView: TextFieldView, button: UIButton)
+    func checkTF(sender: UITextField, emailView: TextFieldView, passwordView: TextFieldView, captchaView: TextFieldView, button: UIButton)
 }
 
   final class LoginViewModel {
@@ -26,16 +26,29 @@ protocol Test: AnyObject {
 
   extension LoginViewModel: Test {
 
-      func checkTF(sender: UITextField, emailView: TextFieldView, passwordView: TextFieldView, button: UIButton) {
-          sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-          guard
-            let email = emailView.textField.text, !email.isEmpty,
-            let password = passwordView.textField.text, !password.isEmpty
-          else {
-              button.isEnabled = false
-              return
+      func checkTF(sender: UITextField, emailView: TextFieldView, passwordView: TextFieldView, captchaView: TextFieldView, button: UIButton) {
+          if captchaView.isHidden  == true {
+              sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+              if let email = emailView.textField.text, !email.isEmpty,
+                 let password = passwordView.textField.text, !password.isEmpty {
+                  button.isEnabled = true
+                  return
+              } else {
+                  button.isEnabled = false
+                  return
+              }
+          } else if captchaView.isHidden == false {
+              sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+              if let email = emailView.textField.text, !email.isEmpty,
+                 let password = passwordView.textField.text, !password.isEmpty,
+                 let captcha = captchaView.textField.text, !captcha.isEmpty {
+                  button.isEnabled = true
+                  return
+              } else {
+                  button.isEnabled = false
+                  return
+              }
           }
-          button.isEnabled = true
       }
 
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {

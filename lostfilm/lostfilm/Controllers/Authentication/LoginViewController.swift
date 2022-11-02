@@ -195,10 +195,11 @@ extension LoginViewController {
         loginButton.isEnabled = false
         emailView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
         passwordView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        captchaTextView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
     }
 
     @objc func textFieldsIsNotEmpty(sender: UITextField) {
-        viewModel.checkTF(sender: sender, emailView: emailView, passwordView: passwordView, button: loginButton)
+        viewModel.checkTF(sender: sender, emailView: emailView, passwordView: passwordView, captchaView: captchaTextView, button: loginButton)
       }
 
     private func removeKeyboardNotification() {
@@ -252,6 +253,8 @@ extension LoginViewController: LoginViewProtocol {
             captchaTextView?.isHidden = false
             captchaImageView.image = UIImage(data: data)
             captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
+            // call function change button state
+            self.loginButton.isEnabled = false // написать сетуп логин баттон стаейт
         }
     }
 
