@@ -2,65 +2,83 @@
 //  Validator.swift
 //  lostfilm
 //
-//  Created by u.yanouski on 2022-10-26.
+//  Created by u.yanouski on 2022-11-03.
 //
 
 import Foundation
 
-enum ValidatorError: Error {
+enum ValidationError: Error {
+    case invalidUserName
     case invalidFirstName
     case invalidLastName
-    case invalidNickname
     case invalidEmail
     case invalidPassword
 }
 
-final class Validator {
-    private let minNickNameLength = 4
-    private let minPasswordLength = 6
-    private let maxFirstNameLength = 16
-    private let maxLastNameLength = 24
-
-    private lazy var nickNamesRegex = "^[a-zA-Z0-9_]{1,13}${\(minNickNameLength)}"
+class Validator {
+    private let minLength = 6
+    private lazy var comonRegex = "([(0-9)(A-Z)(!@#$%ˆ&*+-=<>)]+)([a-z]*){\(minLength)}"
+    private lazy var userNamesRegex = "^[a-zA-Z0-9_]{1,13}$"
     private lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-    private lazy var passwordRegex = "([(0-9)(A-Z)(!@#$%ˆ&*+-=<>)]+)([a-z]*){\(minPasswordLength)}"
-    private lazy var firstNameRegex = "([(0-9)(A-Z)(!@#$%ˆ&*+-=<>)]+)([a-z]*){\(maxFirstNameLength)}"
-    private lazy var lastNameRegex = "([(0-9)(A-Z)(!@#$%ˆ&*+-=<>)]+)([a-z]*){\(maxLastNameLength)}"
 
-    func validateNickName(nickName: String) throws {
-        if nickName.matches(nickNamesRegex) {
-            print("NickName matches with requirements")
-    } else if nickName.count < minNickNameLength {
-            throw ValidatorError.invalidNickname
-        } else {
-            throw ValidatorError.invalidNickname
+    func validateUsername(username: String) throws {
+        if username.matches(userNamesRegex) {
+            print("Username matches with requirements")
+        } else if username.count < minLength {throw ValidationError.invalidUserName} else {
+            throw  ValidationError.invalidUserName
         }
     }
 
-    func validateFirstName( firstName: String) throws {
-        if firstName.matches(firstNameRegex) {
-            print("FirstName matches with requirements")
-        } else if firstName.count > maxFirstNameLength {
-            throw ValidatorError.invalidNickname
+    func validateFirstName(firstname: String) throws {
+        if firstname.matches(userNamesRegex) {
+            print("Firstname matches with requirements")
+        } else if firstname.count < minLength {
+            throw ValidationError.invalidFirstName
         } else {
-            throw ValidatorError.invalidNickname
+            throw ValidationError.invalidFirstName
+        }
+    }
+
+    func validateLastName(lastname: String) throws {
+        if lastname.matches(userNamesRegex) {
+            print("Lastname matches with requirements")
+        } else if lastname.count < minLength {
+            throw ValidationError.invalidLastName
+        } else {
+            throw ValidationError.invalidLastName
+        }
+    }
+
+    func validateEmail(email: String) throws {
+        if email.matches(emailRegex) {
+           print("Email matches with requirements")
+        } else {
+            throw ValidationError.invalidEmail
+        }
+    }
+
+    func validatePassword (password: String) throws {
+        if password.matches(comonRegex) {
+            print("Password matches with requirements")
+        } else if password.count < minLength {throw  ValidationError.invalidPassword} else {
+            throw  ValidationError.invalidPassword
         }
     }
 }
 
-extension ValidatorError: LocalizedError {
+extension ValidationError: LocalizedError {
     var errorDescription: String? {
         switch self {
+        case .invalidUserName:
+            return NSLocalizedString("Username allows only small a to z, capital A to Z, 0 to 9 number with _ underscore and without spaces.", comment: "")
         case .invalidFirstName:
-            return NSLocalizedString("FirstName Error", comment: "")
+            return NSLocalizedString("Firstname allows only small a to z, capital A to Z, 0 to 9 number with _ underscore and without spaces.", comment: "")
         case .invalidLastName:
-            return NSLocalizedString("LastName Error", comment: "")
-        case .invalidNickname:
-            return NSLocalizedString("Nick Name Error", comment: "")
+            return NSLocalizedString("Lastname allows only small a to z, capital A to Z, 0 to 9 number with _ underscore and without spaces.", comment: "")
         case .invalidEmail:
-            return NSLocalizedString("Email Error", comment: "")
+            return NSLocalizedString("Invalid e-mail format.", comment: "")
         case .invalidPassword:
-            return NSLocalizedString("Password Error", comment: "")
+            return NSLocalizedString("Password must contain: 1 capital letter, 1 small letter, number and 1 special character", comment: "")
         }
     }
 }

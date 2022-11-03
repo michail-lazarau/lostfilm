@@ -33,7 +33,7 @@ protocol Test: AnyObject {
               }
           } else {
               guard let captchaString = captchaViewString  else { return }
-              if  !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty {
+              if !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty {
                   loginViewModelDelegate?.setButtonEnable(true)
               }
           }
