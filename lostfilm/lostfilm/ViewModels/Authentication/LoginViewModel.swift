@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Test: AnyObject {
-    func checkTF(sender: UITextField, emailView: TextFieldView, passwordView: TextFieldView, captchaView: TextFieldView, button: UIButton)
+    func checkTF(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool)
 }
 
   final class LoginViewModel {
@@ -26,27 +26,15 @@ protocol Test: AnyObject {
 
   extension LoginViewModel: Test {
 
-      func checkTF(sender: UITextField, emailView: TextFieldView, passwordView: TextFieldView, captchaView: TextFieldView, button: UIButton) {
-          if captchaView.isHidden  == true {
-              sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-              if let email = emailView.textField.text, !email.isEmpty,
-                 let password = passwordView.textField.text, !password.isEmpty {
-                  button.isEnabled = true
-                  return
-              } else {
-                  button.isEnabled = false
-                  return
+      func checkTF(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
+          if isCaptchaHidden {
+              if  !emailViewString.isEmpty && !passwordViewString.isEmpty {
+                  loginViewModelDelegate?.setButtonEnable(true)
               }
-          } else if captchaView.isHidden == false {
-              sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-              if let email = emailView.textField.text, !email.isEmpty,
-                 let password = passwordView.textField.text, !password.isEmpty,
-                 let captcha = captchaView.textField.text, !captcha.isEmpty {
-                  button.isEnabled = true
-                  return
-              } else {
-                  button.isEnabled = false
-                  return
+          } else {
+              guard let captchaString = captchaViewString  else { return }
+              if  !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty {
+                  loginViewModelDelegate?.setButtonEnable(true)
               }
           }
       }
@@ -78,6 +66,7 @@ protocol Test: AnyObject {
             switch result {
             case let .success(data):
                 loginViewModelDelegate?.updateCaptcha(data: data)
+                loginViewModelDelegate?.setButtonEnable(false)
             case let .failure(error):
                 loginViewModelDelegate?.hideCaptchaWhenFailedToLoad()
                 loginViewModelDelegate?.showError(error: error)
