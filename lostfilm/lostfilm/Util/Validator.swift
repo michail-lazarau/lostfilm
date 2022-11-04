@@ -7,14 +7,6 @@
 
 import Foundation
 
-enum ValidationError: Error {
-    case invalidUserName
-    case invalidFirstName
-    case invalidLastName
-    case invalidEmail
-    case invalidPassword
-}
-
 class Validator {
     private let minLength = 6
     private lazy var comonRegex = "([(0-9)(A-Z)(!@#$%ˆ&*+-=<>)]+)([a-z]*){\(minLength)}"
@@ -62,23 +54,6 @@ class Validator {
             print("Password matches with requirements")
         } else if password.count < minLength {throw  ValidationError.invalidPassword} else {
             throw  ValidationError.invalidPassword
-        }
-    }
-}
-
-extension ValidationError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .invalidUserName:
-            return NSLocalizedString("Username allows only small a to z, capital A to Z, 0 to 9 number with _ underscore and without spaces.", comment: "")
-        case .invalidFirstName:
-            return NSLocalizedString("Firstname allows only small a to z, capital A to Z, 0 to 9 number with _ underscore and without spaces.", comment: "")
-        case .invalidLastName:
-            return NSLocalizedString("Lastname allows only small a to z, capital A to Z, 0 to 9 number with _ underscore and without spaces.", comment: "")
-        case .invalidEmail:
-            return NSLocalizedString("Invalid e-mail format.", comment: "")
-        case .invalidPassword:
-            return NSLocalizedString("Password must contain: 1 capital letter, 1 small letter, number and 1 special character", comment: "")
         }
     }
 }

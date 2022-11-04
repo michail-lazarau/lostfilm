@@ -7,5 +7,5 @@ protocol LoginViewProtocol: AnyObject {
     func prepareCaptchaToUpdate()
     func updateCaptcha(data: Data)
     func hideCaptchaWhenFailedToLoad()
-    func setButtonEnable(_ isEnable: Bool)
+    func setButtonEnabled(_ isEnable: Bool)
 }

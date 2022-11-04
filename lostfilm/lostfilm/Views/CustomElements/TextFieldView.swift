@@ -14,6 +14,9 @@ final class TextFieldView: UIView {
     // MARK: Variabels
 
     var isButtonSelected = false
+    var validate: ValidationType = .isEmpty
+
+    // MARK: Enum
 
     enum CustomFields {
         case email
@@ -98,6 +101,10 @@ final class TextFieldView: UIView {
 
     func showPassword() {
         textField.isSecureTextEntry = true
+    }
+
+    func isValid() -> ValidationResult {
+         return validate.isValid(textField.text ?? "")
     }
 
     @objc func passwordButtonPressed() {

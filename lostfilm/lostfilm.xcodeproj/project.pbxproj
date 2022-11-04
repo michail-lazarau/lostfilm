@@ -14,6 +14,9 @@
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
 		C56F70CD2913D4A70098F6A5 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70CC2913D4A70098F6A5 /* Validator.swift */; };
+		C56F70D1291401B40098F6A5 /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D0291401B40098F6A5 /* ValidationType.swift */; };
+		C56F70D3291402C70098F6A5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D2291402C70098F6A5 /* ValidationResult.swift */; };
+		C56F70D5291406450098F6A5 /* Extention+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D4291406450098F6A5 /* Extention+String.swift */; };
 		C5AD3189290AB1DB0085D4D5 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
@@ -257,6 +260,9 @@
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C56F70CC2913D4A70098F6A5 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		C56F70D0291401B40098F6A5 /* ValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationType.swift; sourceTree = "<group>"; };
+		C56F70D2291402C70098F6A5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		C56F70D4291406450098F6A5 /* Extention+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+String.swift"; sourceTree = "<group>"; };
 		C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -573,6 +579,15 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		C56F70CE2913FD190098F6A5 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				C56F70D0291401B40098F6A5 /* ValidationType.swift */,
+				C56F70D2291402C70098F6A5 /* ValidationResult.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,8 +791,10 @@
 				C567D04728D9CC9A000FDCFE /* Utilities.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
 				C56F70CC2913D4A70098F6A5 /* Validator.swift */,
+				C56F70CE2913FD190098F6A5 /* Validator */,
 				C55218A528E7028800BC2CD0 /* Extensions */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
+				C56F70D4291406450098F6A5 /* Extention+String.swift */,
 				F7AA54CA2791B200002A7179 /* FilterType.swift */,
 				C567D04128D9B468000FDCFE /* Enums.swift */,
 				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
@@ -1718,6 +1735,7 @@
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */,
+				C56F70D3291402C70098F6A5 /* ValidationResult.swift in Sources */,
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F77226C228BE5148002143CC /* CarouselView.swift in Sources */,
@@ -1748,6 +1766,7 @@
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
 				F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */,
 				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
+				C56F70D1291401B40098F6A5 /* ValidationType.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
 				F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */,
 				F766765728DBCCA1009B9516 /* LFLoginPageModel.swift in Sources */,
@@ -1794,6 +1813,7 @@
 				F7471DEE27AAE03C00BDA17A /* VMseriesDetailOfficialSiteItem.swift in Sources */,
 				F79C97332746CCA3001BD5F8 /* LFContentItemModel.m in Sources */,
 				F79C97352746CCA3001BD5F8 /* LFLinkContentItemModel.m in Sources */,
+				C56F70D5291406450098F6A5 /* Extention+String.swift in Sources */,
 				F76E41D428914A6B0086D5B2 /* IHaveDataModelFetchedOnce.swift in Sources */,
 				F7516D76282C013900E1A138 /* GlobalSearchVM+UITableViewDataSource.swift in Sources */,
 				F72E277228B4051C00E751B5 /* CastVM.swift in Sources */,

@@ -98,6 +98,7 @@ final class LoginViewController: UIViewController {
         passwordView.textField.delegate = self
         emailView.textField.returnKeyType = .next
         passwordView.textField.returnKeyType = .done
+        emailView.validate = .email// ADD
     }
 
     override func viewDidLoad() {
@@ -199,7 +200,7 @@ extension LoginViewController {
     }
 
     @objc func textFieldsIsNotEmpty(sender: UITextField) {
-        viewModel.checkTF(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden) // развернуть опционалы в функции во вью модели
+        viewModel.checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
       }
 
     private func removeKeyboardNotification() {
@@ -212,11 +213,17 @@ extension LoginViewController {
         if let email = emailView.textField.text, let password = passwordView.textField.text {
             viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
         }
+        let validTest = emailView.isValid()
+        if validTest.isSuccess {
+            titleLabel.text = "OK"
+        } else {
+            titleLabel.text = validTest.error ?? "Error"
+        }
     }
 }
 
 extension LoginViewController: LoginViewProtocol {
-    func setButtonEnable(_ isEnable: Bool) {
+    func setButtonEnabled(_ isEnable: Bool) {
         DispatchQueue.main.async { [weak loginButton] in
             loginButton?.isEnabled = isEnable
         }
@@ -288,17 +295,20 @@ extension LoginViewController: LoginViewProtocol {
             }
         }
     }
-
 }
 
 extension LoginViewController: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailView.textField == textField {
+        switch textField {
+        case emailView.textField:
             passwordView.textField.becomeFirstResponder()
-        }
-        if passwordView.textField == textField {
+        case passwordView.textField:
             hideKeyboard()
+        default:
+            emailView.textField.resignFirstResponder()
         }
+
         return true
     }
 }
