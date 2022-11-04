@@ -13,7 +13,6 @@
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
-		C56F70CD2913D4A70098F6A5 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70CC2913D4A70098F6A5 /* Validator.swift */; };
 		C56F70D1291401B40098F6A5 /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D0291401B40098F6A5 /* ValidationType.swift */; };
 		C56F70D3291402C70098F6A5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D2291402C70098F6A5 /* ValidationResult.swift */; };
 		C56F70D5291406450098F6A5 /* Extention+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D4291406450098F6A5 /* Extention+String.swift */; };
@@ -259,7 +258,6 @@
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		C56F70CC2913D4A70098F6A5 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C56F70D0291401B40098F6A5 /* ValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationType.swift; sourceTree = "<group>"; };
 		C56F70D2291402C70098F6A5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		C56F70D4291406450098F6A5 /* Extention+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+String.swift"; sourceTree = "<group>"; };
@@ -790,7 +788,6 @@
 				F7355EEF2772523C00B42B0F /* Util.swift */,
 				C567D04728D9CC9A000FDCFE /* Utilities.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
-				C56F70CC2913D4A70098F6A5 /* Validator.swift */,
 				C56F70CE2913FD190098F6A5 /* Validator */,
 				C55218A528E7028800BC2CD0 /* Extensions */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
@@ -1802,7 +1799,6 @@
 				F78EC96027C6A7820041F998 /* TVSeriesNewsDataProvider.swift in Sources */,
 				F7B72B9727C271C3000DFBA3 /* UIView+Extension.swift in Sources */,
 				F79C97302746CCA3001BD5F8 /* LFVideoModel.m in Sources */,
-				C56F70CD2913D4A70098F6A5 /* Validator.swift in Sources */,
 				F7C2813627C802F900DA8A62 /* SeriesNewsViewCell.swift in Sources */,
 				F7471DEC27AAE02200BDA17A /* VMseriesDetailTypeItem.swift in Sources */,
 				F756A71C28BCD5B30086A9B9 /* IModelCellReuseIdentifiable.swift in Sources */,

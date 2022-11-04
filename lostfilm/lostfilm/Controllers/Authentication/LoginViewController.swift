@@ -98,7 +98,8 @@ final class LoginViewController: UIViewController {
         passwordView.textField.delegate = self
         emailView.textField.returnKeyType = .next
         passwordView.textField.returnKeyType = .done
-        emailView.validate = .email// ADD
+        // MARK:   Added Validator
+        emailView.validate = .password
     }
 
     override func viewDidLoad() {
@@ -213,6 +214,7 @@ extension LoginViewController {
         if let email = emailView.textField.text, let password = passwordView.textField.text {
             viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
         }
+        // MARK:   Validator  for test
         let validTest = emailView.isValid()
         if validTest.isSuccess {
             titleLabel.text = "OK"

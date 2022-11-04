@@ -35,5 +35,7 @@
 "Forgot Password?" = "Забыли пароль?";
 "Ready" = "Готово";
 "Already have an account?" = "Уже есть аккаунт?";
+"InvalidEmail" = "Неверный адрес электронной почты";
+"InvalidPassword" = "Неверный пароль";
 
 

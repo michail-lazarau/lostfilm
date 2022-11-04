@@ -48,6 +48,11 @@ enum Texts {
         static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
     }
+
+    enum ValidationErrors {
+        static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
+        static let invalidPassword = NSLocalizedString("InvalidPassword", comment: "")
+    }
 }
 
 enum Paddings {

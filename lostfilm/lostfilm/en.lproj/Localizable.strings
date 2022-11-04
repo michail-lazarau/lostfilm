@@ -35,3 +35,5 @@
 "Forgot Password?" = "Forgot Password?";
 "Ready" = "Ready";
 "Already have an account?" = "Already have an account?";
+"InvalidEmail" = "InvalidEmail";
+"InvalidPassword" = "InvalidPassword";
