@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DVAppCore:
-    :commit: 547f80bfbf9d1bf6b566267e415ef74b48e2cf15
+    :commit: 5927bd8b08b1d49923c9337a7d84e4ad1ccb7d2f
     :git: https://github.com/michail-lazarau/DVAppCore.git
   DVHtmlToModels:
     :commit: 58ffad35dccbd0646a4d6c715310faf81524f75b
@@ -126,6 +126,6 @@ SPEC CHECKSUMS:
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: cce7633704bbaeebf46dc9f30831cdbf6c4efed1
+PODFILE CHECKSUM: 1659616db4dfeca4cc660fedc3f6632bfaacb2ea
 
 COCOAPODS: 1.11.3
