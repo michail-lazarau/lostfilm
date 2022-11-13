@@ -6,23 +6,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
         guard let scene = (scene as? UIWindowScene) else { return }
-
         window = UIWindow(windowScene: scene)
 
-        /*
-        // MARK: uncomment this block comments to display TabBarController
-        let tabBarRootVC = TabBarRootController()
-        window?.rootViewController = tabBarRootVC
-        */
+        let router = DefaultRouter(rootTransition: EmptyTransition())
+        let tabBarRootVC = TabBarRootController(router: router)
+        router.root = tabBarRootVC
 
-        let vc = LoginViewController(viewModel: LoginViewModel(dataProvider: LoginService(session: URLSession.shared)))
-        window?.rootViewController = vc
+        window?.rootViewController = tabBarRootVC
         window?.makeKeyAndVisible()
+        tabBarRootVC.openLogin()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -33,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // TODO: delete later
+        // FIXME: delete later removeCookies(since:)
         HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.

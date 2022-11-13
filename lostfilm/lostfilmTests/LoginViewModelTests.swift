@@ -5,16 +5,19 @@ class LoginViewModelTests: XCTestCase {
     typealias Credentials = (email: String, password: String, captcha: String?)
     var sut: LoginViewModel!
     var delegate: LoginViewModelDelegateMock!
+    var router: DefaultRouterMock!
 
     override func setUpWithError() throws {
-        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()))
+        router = DefaultRouterMock()
         delegate = LoginViewModelDelegateMock()
+        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router)
         sut.loginViewModelDelegate = delegate
     }
 
     override func tearDownWithError() throws {
         sut = nil
         delegate = nil
+        router = nil
     }
 
     // MARK: captcha
@@ -111,7 +114,7 @@ class LoginViewModelTests: XCTestCase {
         // Given: setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .needCaptcha), error: nil).body?.data
 
-            // resetting updateCaptchaFuncExpectation to reuse
+        // resetting updateCaptchaFuncExpectation to reuse
         delegate.updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
 
         delegate.authoriseFuncExpectation.isInverted = true
@@ -135,7 +138,7 @@ class LoginViewModelTests: XCTestCase {
         // Given: setting login response
         (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCaptcha), error: nil).body?.data
 
-            // resetting updateCaptchaFuncExpectation to reuse
+        // resetting updateCaptchaFuncExpectation to reuse
         delegate.updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
 
         delegate.authoriseFuncExpectation.isInverted = true
@@ -179,6 +182,13 @@ class LoginViewModelTests: XCTestCase {
                     expectedCaptcha: LoginViewModel.Captcha(captchaIsRequired: false, captchaUrl: URL(string: "https://www.lostfilm.tv/simple_captcha.php")!),
                     expectations: expectations,
                     mockUrlForLoginPage: mockUrlForGetLoginPageFunc)
+    }
+
+    // Router
+
+    func test_positive_dismissLoginScreen() {
+        sut.dismissLoginScreen()
+        wait(for: [router.dismissWithCompletionFuncExpectation], timeout: 0.1)
     }
 
     func verifyLogin(credentials: Credentials, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], mockUrlForLoginPage: String) {
