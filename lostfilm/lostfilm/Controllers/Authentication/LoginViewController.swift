@@ -10,6 +10,8 @@ import SDWebImage
 import UIKit
 
 final class LoginViewController: UIViewController {
+    // MARK: Variables
+    var activeTextField = UITextField()
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -72,6 +74,7 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
 
+    // MARK: Inits
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -81,6 +84,7 @@ final class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Functions
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(scrollView)
@@ -98,15 +102,14 @@ final class LoginViewController: UIViewController {
         passwordView.textField.delegate = self
         emailView.textField.returnKeyType = .next
         passwordView.textField.returnKeyType = .done
-        // MARK:   Added Validator
-        emailView.validate = .password
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.loginViewModelDelegate = self
+        viewModel.view = self
         setupView()
-        setupAddTargetIsNotEmptyTextFields()
+        bindTextFields()
         registerKeyboardNotification()
         initialSetup()
     }
@@ -122,6 +125,7 @@ final class LoginViewController: UIViewController {
     }
 }
 
+    // MARK: Extentions
 extension LoginViewController {
     func setupTextFields() {
         emailView.configureInputField(on: .name)
@@ -193,16 +197,29 @@ extension LoginViewController {
         view.endEditing(true)
     }
 
-    private func setupAddTargetIsNotEmptyTextFields() {
+    private func bindTextFields() {
         loginButton.isEnabled = false
-        emailView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-        passwordView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-        captchaTextView.textField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        emailView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        passwordView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        captchaTextView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
     }
 
-    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+    @objc func textFieldEditingChanged(sender: UITextField) {
         viewModel.checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+        viewModel.checkPassword(passwordViewString: emailView.textField.text ?? "")
       }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
+    }
+
+    func selectedTextField() {
+        if let activeTextFieldText = activeTextField.text {
+            print("Active text field text: \(activeTextField.text)")
+            return
+        }
+        print("Epty textfield")
+    }
 
     private func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -210,21 +227,22 @@ extension LoginViewController {
     }
 
     @objc func login(_ sender: LoadingButton) {
+        selectedTextField()
+//        viewModel.checkEmail(emailViewString: emailView.textField.text ?? "ERROR FIELD")
         sender.showLoader(userInteraction: false)
         if let email = emailView.textField.text, let password = passwordView.textField.text {
             viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
-        }
-        // MARK:   Validator  for test
-        let validTest = emailView.isValid()
-        if validTest.isSuccess {
-            titleLabel.text = "OK"
-        } else {
-            titleLabel.text = validTest.error ?? "Error"
         }
     }
 }
 
 extension LoginViewController: LoginViewProtocol {
+
+    func sendErrorMessage(_ errorMessage: String) {
+        passwordView.errorLabel.text = errorMessage
+
+    }
+
     func setButtonEnabled(_ isEnable: Bool) {
         DispatchQueue.main.async { [weak loginButton] in
             loginButton?.isEnabled = isEnable

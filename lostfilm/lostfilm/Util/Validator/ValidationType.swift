@@ -7,28 +7,28 @@
 
 import Foundation
 
-enum ValidationType {
-    case isEmpty
-    case isNotEmpty
-    case email
-    case password
-}
-
-extension ValidationType {
-
-    func isValid(_ text: String) -> ValidationResult {
-        switch self {
-        case .isEmpty:
-            return text.isEmpty
-        case .isNotEmpty:
-            return text.isNotEmpty
-        case .email:
-            return text.isEmail
-        case .password:
-            return text.isPassword
-        }
-    }
-}
+//enum ValidationType {
+//    case isEmpty
+//    case isNotEmpty
+//    case email
+//    case password
+//}
+//
+//extension ValidationType {
+//
+//    func isValid(_ text: String) -> ValidationResult {
+//        switch self {
+//        case .isEmpty:
+//            return text.isEmpty
+//        case .isNotEmpty:
+//            return text.isNotEmpty
+//        case .email:
+//            return text.isEmail
+//        case .password:
+//            return text.isPassword
+//        }
+//    }
+//}
 
 enum RegEx {
     case email

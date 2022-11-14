@@ -8,4 +8,5 @@ protocol LoginViewProtocol: AnyObject {
     func updateCaptcha(data: Data)
     func hideCaptchaWhenFailedToLoad()
     func setButtonEnabled(_ isEnable: Bool)
+    func sendErrorMessage(_ errorMessage: String)
 }

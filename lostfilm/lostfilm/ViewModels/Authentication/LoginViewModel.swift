@@ -7,7 +7,7 @@ protocol Test: AnyObject {
   final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
     private(set) var captchaModel: Captcha?
-    weak var loginViewModelDelegate: LoginViewProtocol?
+    weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
     let dataProvider: LoginServiceProtocol
 
@@ -24,24 +24,38 @@ protocol Test: AnyObject {
     }
 }
 
-  extension LoginViewModel: Test {
+extension LoginViewModel: Test {
 
       func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
           if isCaptchaHidden {
               if  !emailViewString.isEmpty && !passwordViewString.isEmpty {
-                  loginViewModelDelegate?.setButtonEnabled(true)
+                  view?.setButtonEnabled(true)
               }
           } else {
               guard let captchaString = captchaViewString  else { return }
               if !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty {
-                  loginViewModelDelegate?.setButtonEnabled(true)
+                  view?.setButtonEnabled(true)
               }
           }
       }
 
-      func checkEmail(emailViewString: String) -> Bool {
-          return false
+      func checkEmail(emailViewString: String) {
+          if Validators.email.validate(emailViewString) {
+             return
+          } else {
+              guard let controller = view else { return }
+              controller.sendErrorMessage(ValidationError.invalidEmail.localizedDescription)
+          }
       }
+
+    func checkPassword(passwordViewString: String) {
+        if Validators.password.validate(passwordViewString) {
+
+        } else {
+            guard let controller = view else { return }
+            controller.sendErrorMessage(ValidationError.invalidPassword.localizedDescription)
+        }
+    }
 
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
@@ -58,24 +72,24 @@ protocol Test: AnyObject {
                     self.authenticate(email: email, password: password, captcha: captcha)
                 }
             case let .failure(error):
-                self.loginViewModelDelegate?.removeLoadingIndicator()
-                self.loginViewModelDelegate?.showError(error: error)
+                self.view?.removeLoadingIndicator()
+                self.view?.showError(error: error)
             }
         }
     }
 
     func renderCaptcha(url: URL) {
-        loginViewModelDelegate?.prepareCaptchaToUpdate()
-        dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
+        view?.prepareCaptchaToUpdate()
+        dataProvider.getCaptcha(url: url) { [view] result in
             switch result {
             case let .success(data):
-                loginViewModelDelegate?.updateCaptcha(data: data)
-                loginViewModelDelegate?.setButtonEnabled(false)
+                view?.updateCaptcha(data: data)
+                view?.setButtonEnabled(false)
             case let .failure(error):
-                loginViewModelDelegate?.hideCaptchaWhenFailedToLoad()
-                loginViewModelDelegate?.showError(error: error)
+                view?.hideCaptchaWhenFailedToLoad()
+                view?.showError(error: error)
             }
-            loginViewModelDelegate?.removeLoadingIndicator()
+            view?.removeLoadingIndicator()
         }
     }
 
@@ -88,12 +102,12 @@ protocol Test: AnyObject {
             switch result {
             case let .success(username):
                 self.captchaModel = nil
-                self.loginViewModelDelegate?.removeLoadingIndicator()
-                self.loginViewModelDelegate?.authorise(username: username)
+                self.view?.removeLoadingIndicator()
+                self.view?.authorise(username: username)
             case let .failure(error):
                 defer {
-                    self.loginViewModelDelegate?.removeLoadingIndicator()
-                    self.loginViewModelDelegate?.showError(error: error)
+                    self.view?.removeLoadingIndicator()
+                    self.view?.showError(error: error)
                 }
 
                 let loginServiceError = error as? LoginServiceError

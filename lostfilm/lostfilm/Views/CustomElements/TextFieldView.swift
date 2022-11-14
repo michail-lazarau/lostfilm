@@ -14,7 +14,6 @@ final class TextFieldView: UIView {
     // MARK: Variabels
 
     var isButtonSelected = false
-    var validate: ValidationType = .isEmpty
 
     // MARK: Enum
 
@@ -76,6 +75,7 @@ final class TextFieldView: UIView {
 
     private let contentView = UIView()
     private let dividedView = UIView()
+    var errorLabel = UILabel()
 
     // MARK: Inits
 
@@ -101,10 +101,6 @@ final class TextFieldView: UIView {
 
     func showPassword() {
         textField.isSecureTextEntry = true
-    }
-
-    func isValid() -> ValidationResult {
-         return validate.isValid(textField.text ?? "")
     }
 
     @objc func passwordButtonPressed() {
@@ -134,6 +130,7 @@ extension TextFieldView {
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)
         contentView.addSubview(textFieldIcon)
+        contentView.addSubview(errorLabel)
     }
 
     func setupPasswordInputView(withImage image: UIImage, withTitleLabel title: String, withPlaceholder placeholder: String) {
@@ -146,8 +143,10 @@ extension TextFieldView {
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
 
         dividedView.backgroundColor = UIColor.dividedView
-        dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: passwordButton.leftAnchor, height: 0.75)
+        dividedView.anchor(top: textFieldIcon.bottomAnchor, left: textFieldIcon.rightAnchor, bottom: errorLabel.topAnchor, right: passwordButton.leftAnchor, height: 0.75)
 
+        errorLabel.anchor(top: dividedView.bottomAnchor, left: textFieldIcon.rightAnchor, right: passwordButton.leftAnchor)
+    
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
 
@@ -158,6 +157,8 @@ extension TextFieldView {
         titleLabel.text = title
         textField.placeholder = placeholder
         textFieldIcon.image = image
+
+        errorLabel.isHidden = true
 
         textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)

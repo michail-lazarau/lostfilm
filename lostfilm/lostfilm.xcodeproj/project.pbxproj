@@ -16,6 +16,7 @@
 		C56F70D1291401B40098F6A5 /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D0291401B40098F6A5 /* ValidationType.swift */; };
 		C56F70D3291402C70098F6A5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D2291402C70098F6A5 /* ValidationResult.swift */; };
 		C56F70D5291406450098F6A5 /* Extention+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D4291406450098F6A5 /* Extention+String.swift */; };
+		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
 		C5AD3189290AB1DB0085D4D5 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
@@ -261,6 +262,7 @@
 		C56F70D0291401B40098F6A5 /* ValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationType.swift; sourceTree = "<group>"; };
 		C56F70D2291402C70098F6A5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		C56F70D4291406450098F6A5 /* Extention+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+String.swift"; sourceTree = "<group>"; };
+		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
 				C556012D28EF040B0032D75F /* UIColor+Extension.swift */,
 				C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */,
+				C56F70D4291406450098F6A5 /* Extention+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				C56F70D0291401B40098F6A5 /* ValidationType.swift */,
+				C57C867E291A711900DC039F /* Validator.swift */,
 				C56F70D2291402C70098F6A5 /* ValidationResult.swift */,
 			);
 			path = Validator;
@@ -791,7 +795,6 @@
 				C56F70CE2913FD190098F6A5 /* Validator */,
 				C55218A528E7028800BC2CD0 /* Extensions */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
-				C56F70D4291406450098F6A5 /* Extention+String.swift */,
 				F7AA54CA2791B200002A7179 /* FilterType.swift */,
 				C567D04128D9B468000FDCFE /* Enums.swift */,
 				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
@@ -1854,6 +1857,7 @@
 				F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */,
 				F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */,
 				F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */,
+				C57C867F291A711900DC039F /* Validator.swift in Sources */,
 				F7471DF027AAE09400BDA17A /* VMseriesDescriptionItem.swift in Sources */,
 				F7978D6427BC2D6C00C71147 /* EpisodeViewCell.swift in Sources */,
 				F7355EF02772523C00B42B0F /* Util.swift in Sources */,

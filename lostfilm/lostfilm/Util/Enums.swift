@@ -61,3 +61,32 @@ enum Paddings {
     static let top = CGFloat(8)
     static let bottom = CGFloat(-8)
 }
+
+enum ValidationError: Error {
+    case invalidUserName
+    case invalidFirstName
+    case invalidLastName
+    case invalidEmail
+    case invalidPassword
+    case invalidPhone
+}
+
+extension ValidationError: LocalizedError { // почему не могу использовать и в чем разница на практике между LocalizedError и заранее написанной строкой в переменой
+    var errorDescription: String? {
+        switch self {
+        case .invalidUserName:
+            return NSLocalizedString("Invalid Username format", comment: "")
+        case .invalidFirstName:
+            return NSLocalizedString("Invalid Firstname format", comment: "")
+        case .invalidLastName:
+            return NSLocalizedString("Invalid Lastname format.", comment: "")
+        case .invalidEmail:
+            return NSLocalizedString("Invalid e-mail format.", comment: "")
+        case .invalidPassword:
+            return NSLocalizedString("Invalid password format", comment: "")
+        case .invalidPhone:
+            return NSLocalizedString("Invalid Phone format", comment: "")
+
+        }
+    }
+}

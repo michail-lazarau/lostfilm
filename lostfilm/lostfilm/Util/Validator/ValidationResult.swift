@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct ValidationResult {
-    var isSuccess: Bool = true
-    var error: String?
-
-    init(error: String? = nil) {
-        if error == nil {
-            isSuccess = true
-        } else {
-            isSuccess = false
-            self.error = error
-        }
-    }
-}
+//struct ValidationResult {
+//    var isSuccess: Bool = true
+//    var error: String?
+//
+//    init(error: String? = nil) {
+//        if error == nil {
+//            isSuccess = true
+//        } else {
+//            isSuccess = false
+//            self.error = error
+//        }
+//    }
+//}
