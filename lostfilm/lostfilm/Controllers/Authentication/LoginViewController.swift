@@ -34,15 +34,6 @@ final class LoginViewController: UIViewController {
         return view
     }()
 
-    private var alertController: UIAlertController {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        let continueAction = UIAlertAction(title: "Continue", style: .default) { _ in
-            // TODO: show Tabbarviewcontroller, dismiss LoginViewController
-        }
-        alertController.addAction(continueAction)
-        return alertController
-    }
-
     private let contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -158,6 +149,16 @@ extension LoginViewController {
         ])
     }
 
+    private func makeAlertController(message: String, continueAction: (() -> Void)?) -> UIAlertController {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alertController.message = message
+        let continueAction = UIAlertAction(title: "Continue", style: .default) { _ in
+            continueAction?()
+        }
+        alertController.addAction(continueAction)
+        return alertController
+    }
+
     private func registerKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -213,13 +214,8 @@ extension LoginViewController: LoginViewProtocol {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
             if let self = self {
-                // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
-
-                let alert = self.alertController
-                alert.message = error.localizedDescription
-                self.present(alert, animated: true) {
-                    // completion
-                }
+                let alert = self.makeAlertController(message: error.localizedDescription, continueAction: nil)
+                self.present(alert, animated: true)
             }
         }
     }
@@ -234,9 +230,6 @@ extension LoginViewController: LoginViewProtocol {
 
     func updateCaptcha(data: Data) {
         DispatchQueue.main.async { [weak captchaTextView, captchaImageView] in
-
-            // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
-
             captchaTextView?.isHidden = false
             captchaImageView.image = UIImage(data: data)
             captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
@@ -254,15 +247,11 @@ extension LoginViewController: LoginViewProtocol {
     func authorise(username: String) {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
-
-            // MARK: should self.loginButton.hideLoader() be put instead of removeLoadingIndicator() delegate func?
-
             if let self = self {
-                let alert = self.alertController
-                alert.message = "Welcome, \(username)"
-                self.present(self.alertController, animated: true) {
-                    // completion
-                }
+                let alert = self.makeAlertController(message: "Welcome, \(username)", continueAction: {
+                    self.viewModel.dismissLoginScreen()
+                })
+                self.present(alert, animated: true)
             }
         }
     }
