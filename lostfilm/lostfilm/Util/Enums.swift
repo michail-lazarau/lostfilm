@@ -62,6 +62,11 @@ enum Paddings {
     static let bottom = CGFloat(-8)
 }
 
+enum ValidationConfirmation {
+    static let validEmail = NSLocalizedString("Email confirmed", comment: "")
+    static let validPassword = NSLocalizedString("Password confirmed", comment: "")
+}
+
 enum ValidationError: Error {
     case invalidUserName
     case invalidFirstName
@@ -71,7 +76,7 @@ enum ValidationError: Error {
     case invalidPhone
 }
 
-extension ValidationError: LocalizedError { // почему не могу использовать и в чем разница на практике между LocalizedError и заранее написанной строкой в переменой
+extension ValidationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidUserName:
@@ -87,6 +92,22 @@ extension ValidationError: LocalizedError { // почему не могу исп
         case .invalidPhone:
             return NSLocalizedString("Invalid Phone format", comment: "")
 
+        }
+    }
+}
+
+enum RegEx {
+    case email
+    case password
+}
+
+extension RegEx {
+    var expression: String {
+        switch self {
+        case .email:
+            return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        case .password:
+            return "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$"
         }
     }
 }

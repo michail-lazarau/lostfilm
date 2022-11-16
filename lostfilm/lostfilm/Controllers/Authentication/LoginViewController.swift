@@ -104,7 +104,6 @@ final class LoginViewController: UIViewController {
         passwordView.textField.returnKeyType = .done
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.view = self
@@ -125,7 +124,7 @@ final class LoginViewController: UIViewController {
     }
 }
 
-    // MARK: Extentions
+    // MARK: Extension
 extension LoginViewController {
     func setupTextFields() {
         emailView.configureInputField(on: .name)
@@ -205,21 +204,15 @@ extension LoginViewController {
     }
 
     @objc func textFieldEditingChanged(sender: UITextField) {
-        viewModel.checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
-        viewModel.checkPassword(passwordViewString: emailView.textField.text ?? "")
-      }
+        if sender == emailView.textField {
+            viewModel.checkEmail(emailViewString: sender.text ?? "")
 
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
-    }
-
-    func selectedTextField() {
-        if let activeTextFieldText = activeTextField.text {
-            print("Active text field text: \(activeTextField.text)")
-            return
+        } else if sender == passwordView.textField {
+            viewModel.checkPassword(passwordViewString: sender.text ?? "")
         }
-        print("Epty textfield")
-    }
+        viewModel.checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+
+      }
 
     private func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -227,8 +220,6 @@ extension LoginViewController {
     }
 
     @objc func login(_ sender: LoadingButton) {
-        selectedTextField()
-//        viewModel.checkEmail(emailViewString: emailView.textField.text ?? "ERROR FIELD")
         sender.showLoader(userInteraction: false)
         if let email = emailView.textField.text, let password = passwordView.textField.text {
             viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
@@ -238,9 +229,24 @@ extension LoginViewController {
 
 extension LoginViewController: LoginViewProtocol {
 
+    func sendEmailConfirmationMessage(_ ConfirmationMessage: String, color: UIColor) {
+        emailView.setConfirmationState(with: ConfirmationMessage, color: color)
+    }
+
+    func sendPasswordConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
+        passwordView.setConfirmationState(with: confirmationMessage, color: color)
+    }
+
+    func sendEmailErrorMessage(_ errorMessage: String, color: UIColor) {
+        emailView.setErrorState(with: errorMessage, color: color)
+    }
+
+    func sendPasswordErrorMessage(_ errorMessage: String, color: UIColor) {
+        passwordView.setErrorState(with: errorMessage, color: color)
+    }
+
     func sendErrorMessage(_ errorMessage: String) {
         passwordView.errorLabel.text = errorMessage
-
     }
 
     func setButtonEnabled(_ isEnable: Bool) {

@@ -74,7 +74,7 @@ final class TextFieldView: UIView {
     }()
 
     private let contentView = UIView()
-    private let dividedView = UIView()
+    var dividedView = UIView()
     var errorLabel = UILabel()
 
     // MARK: Inits
@@ -150,6 +150,7 @@ extension TextFieldView {
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
 
+
         textField.isSecureTextEntry = true
     }
 
@@ -158,15 +159,27 @@ extension TextFieldView {
         textField.placeholder = placeholder
         textFieldIcon.image = image
 
-        errorLabel.isHidden = true
-
         textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
 
         dividedView.backgroundColor = UIColor.dividedView
         dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: textField.rightAnchor, paddingRight: 25, height: 0.75)
 
+        errorLabel.anchor(top: dividedView.bottomAnchor, left: textFieldIcon.rightAnchor, right: textField.rightAnchor)
+
         textFieldIcon.setDimensions(width: 25, height: 25)
+    }
+
+    func setErrorState(with inlineMessage: String, color: UIColor) {
+        errorLabel.text = inlineMessage
+        errorLabel.textColor = color
+        dividedView.backgroundColor = color
+    }
+
+    func setConfirmationState(with confirmationMessage: String, color: UIColor){
+        errorLabel.text = confirmationMessage
+        errorLabel.textColor = color
+        dividedView.backgroundColor = color
     }
 
     func configurePasswordFieldConstraint() {

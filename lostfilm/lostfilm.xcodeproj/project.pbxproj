@@ -13,8 +13,6 @@
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
-		C56F70D1291401B40098F6A5 /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D0291401B40098F6A5 /* ValidationType.swift */; };
-		C56F70D3291402C70098F6A5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D2291402C70098F6A5 /* ValidationResult.swift */; };
 		C56F70D5291406450098F6A5 /* Extention+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F70D4291406450098F6A5 /* Extention+String.swift */; };
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
 		C5AD3189290AB1DB0085D4D5 /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */; };
@@ -259,8 +257,6 @@
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		C56F70D0291401B40098F6A5 /* ValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationType.swift; sourceTree = "<group>"; };
-		C56F70D2291402C70098F6A5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		C56F70D4291406450098F6A5 /* Extention+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+String.swift"; sourceTree = "<group>"; };
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C5AD3188290AB1DB0085D4D5 /* String+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
@@ -583,9 +579,7 @@
 		C56F70CE2913FD190098F6A5 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
-				C56F70D0291401B40098F6A5 /* ValidationType.swift */,
 				C57C867E291A711900DC039F /* Validator.swift */,
-				C56F70D2291402C70098F6A5 /* ValidationResult.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
@@ -1735,7 +1729,6 @@
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */,
-				C56F70D3291402C70098F6A5 /* ValidationResult.swift in Sources */,
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F77226C228BE5148002143CC /* CarouselView.swift in Sources */,
@@ -1766,7 +1759,6 @@
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
 				F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */,
 				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
-				C56F70D1291401B40098F6A5 /* ValidationType.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
 				F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */,
 				F766765728DBCCA1009B9516 /* LFLoginPageModel.swift in Sources */,

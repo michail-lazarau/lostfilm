@@ -41,10 +41,12 @@ extension LoginViewModel: Test {
 
       func checkEmail(emailViewString: String) {
           if Validators.email.validate(emailViewString) {
+              guard let controller = view else { return }
+              controller.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
              return
           } else {
               guard let controller = view else { return }
-              controller.sendErrorMessage(ValidationError.invalidEmail.localizedDescription)
+              controller.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
           }
       }
 
@@ -53,7 +55,7 @@ extension LoginViewModel: Test {
 
         } else {
             guard let controller = view else { return }
-            controller.sendErrorMessage(ValidationError.invalidPassword.localizedDescription)
+            controller.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
         }
     }
 
