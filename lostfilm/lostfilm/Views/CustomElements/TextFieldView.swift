@@ -150,7 +150,6 @@ extension TextFieldView {
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
 
-
         textField.isSecureTextEntry = true
     }
 

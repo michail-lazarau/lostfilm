@@ -52,7 +52,8 @@ extension LoginViewModel: Test {
 
     func checkPassword(passwordViewString: String) {
         if Validators.password.validate(passwordViewString) {
-
+            guard let controller = view else { return }
+            controller.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
         } else {
             guard let controller = view else { return }
             controller.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
