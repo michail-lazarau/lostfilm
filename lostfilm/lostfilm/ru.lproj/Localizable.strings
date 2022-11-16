@@ -37,5 +37,7 @@
 "Already have an account?" = "Уже есть аккаунт?";
 "InvalidEmail" = "Неверный адрес электронной почты";
 "InvalidPassword" = "Неверный пароль";
+"Email confirmed" = "Электронная почта подтверждена";
+"Password confirmed" "Пароль подтвержден";
 
 
