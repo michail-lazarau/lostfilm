@@ -11,7 +11,6 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     // MARK: Variables
-    var activeTextField = UITextField()
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -109,7 +108,6 @@ final class LoginViewController: UIViewController {
         viewModel.view = self
         setupView()
         bindTextFields()
-        registerKeyboardNotification()
         initialSetup()
     }
 

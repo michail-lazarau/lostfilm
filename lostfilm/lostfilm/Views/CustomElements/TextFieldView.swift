@@ -175,7 +175,7 @@ extension TextFieldView {
         dividedView.backgroundColor = color
     }
 
-    func setConfirmationState(with confirmationMessage: String, color: UIColor){
+    func setConfirmationState(with confirmationMessage: String, color: UIColor) {
         errorLabel.text = confirmationMessage
         errorLabel.textColor = color
         dividedView.backgroundColor = color

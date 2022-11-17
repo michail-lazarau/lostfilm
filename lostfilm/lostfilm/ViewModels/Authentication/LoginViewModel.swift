@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Test: AnyObject {
+protocol LoginViewModelProtocol: AnyObject {
     func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool)
 }
 
@@ -24,7 +24,7 @@ protocol Test: AnyObject {
     }
 }
 
-extension LoginViewModel: Test {
+extension LoginViewModel: LoginViewModelProtocol {
 
       func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
           if isCaptchaHidden {
@@ -41,22 +41,19 @@ extension LoginViewModel: Test {
 
       func checkEmail(emailViewString: String) {
           if Validators.email.validate(emailViewString) {
-              guard let controller = view else { return }
-              controller.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
+
+              view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
              return
           } else {
-              guard let controller = view else { return }
-              controller.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+              view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
           }
       }
 
     func checkPassword(passwordViewString: String) {
         if Validators.password.validate(passwordViewString) {
-            guard let controller = view else { return }
-            controller.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+            view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
         } else {
-            guard let controller = view else { return }
-            controller.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+            view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
         }
     }
 
