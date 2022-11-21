@@ -58,7 +58,9 @@ class TVSeriesEpisodesTVC: UITableViewController, IUpdatingViewDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let item = viewModel.items[section]
         if item.seasonPosterUrl != nil && item.seasonDetails != nil {
-            return 200
+            return UITableView.automaticDimension
+
+//            return 200
         } else {
             return 50
         }

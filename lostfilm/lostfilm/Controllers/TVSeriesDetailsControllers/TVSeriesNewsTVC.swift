@@ -76,7 +76,7 @@ class TVSeriesNewsTVC: UITableViewController, IUpdatingViewByPageDelegate, UITab
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return tableView.bounds.width / 2 / 162 * 97
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
