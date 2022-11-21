@@ -41,8 +41,7 @@ extension LoginViewModel: LoginViewModelProtocol {
 
       func checkEmail(emailViewString: String) {
           if Validators.email.validate(emailViewString) {
-
-              view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
+            view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
              return
           } else {
               view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)

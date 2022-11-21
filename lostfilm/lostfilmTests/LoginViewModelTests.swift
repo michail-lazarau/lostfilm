@@ -9,7 +9,7 @@ class LoginViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()))
         delegate = LoginViewModelDelegateMock()
-        sut.loginViewModelDelegate = delegate
+        sut.view = delegate
     }
 
     override func tearDownWithError() throws {
@@ -192,6 +192,17 @@ class LoginViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.captchaModel, expectedCaptcha)
     }
+
+    //MARK: Validator
+
+   func verifyLoginInvalidEmail(email: String) {
+       // Given
+
+
+   }
+
 }
 
 // *1: for LoginServiceProtocol.getLoginPage(htmlParserWrapper:, response:)
+
+
