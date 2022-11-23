@@ -87,6 +87,9 @@
 		F7471DF527AAF72D00BDA17A /* SeriesVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7471DF427AAF72D00BDA17A /* SeriesVM+UITableViewDataSource.swift */; };
 		F7471DF827AAFAB100BDA17A /* TVSeriesOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7471DF627AAFAB100BDA17A /* TVSeriesOverviewTVC.swift */; };
 		F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */; };
+		F7514739292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7514737292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf */; };
+		F751473A292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7514738292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf */; };
+		F751473C292D075200DE6B2D /* OrderNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F751473B292D075200DE6B2D /* OrderNumberLabel.swift */; };
 		F7516D6A282BDD8300E1A138 /* GlobalSearchItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7516D69282BDD8200E1A138 /* GlobalSearchItemType.swift */; };
 		F7516D6C282BDE8400E1A138 /* GlobalSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7516D6B282BDE8400E1A138 /* GlobalSearchItem.swift */; };
 		F7516D6E282BDEC700E1A138 /* GlobalSearchItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7516D6D282BDEC700E1A138 /* GlobalSearchItem+Extensions.swift */; };
@@ -343,6 +346,9 @@
 		F7471DF427AAF72D00BDA17A /* SeriesVM+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesVM+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		F7471DF627AAFAB100BDA17A /* TVSeriesOverviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesOverviewTVC.swift; sourceTree = "<group>"; };
 		F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterTVC.swift; sourceTree = "<group>"; };
+		F7514737292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AzeretMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F7514738292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AzeretMono-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F751473B292D075200DE6B2D /* OrderNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNumberLabel.swift; sourceTree = "<group>"; };
 		F7516D69282BDD8200E1A138 /* GlobalSearchItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchItemType.swift; sourceTree = "<group>"; };
 		F7516D6B282BDE8400E1A138 /* GlobalSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchItem.swift; sourceTree = "<group>"; };
 		F7516D6D282BDEC700E1A138 /* GlobalSearchItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GlobalSearchItem+Extensions.swift"; sourceTree = "<group>"; };
@@ -876,6 +882,15 @@
 			path = ClassDelegates;
 			sourceTree = "<group>";
 		};
+		F751472E292CFBCD00DE6B2D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F7514738292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf */,
+				F7514737292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F7516D67282BDAC900E1A138 /* GlobalSearchSeriesCast */ = {
 			isa = PBXGroup;
 			children = (
@@ -1199,6 +1214,7 @@
 		F7AEE46B273FEB7900C304D0 /* lostfilm */ = {
 			isa = PBXGroup;
 			children = (
+				F751472E292CFBCD00DE6B2D /* Fonts */,
 				F7355EEE2772522500B42B0F /* Util */,
 				F7C4EE852753E539006B5961 /* Other */,
 				F79C97012746CCA3001BD5F8 /* Models */,
@@ -1393,6 +1409,7 @@
 				F77226C128BE5148002143CC /* CarouselView.swift */,
 				F7A95AE02900C518006325B2 /* UITextField+Extension.swift */,
 				F75AEB3B2902EB6500038144 /* LoadingButton.swift */,
+				F751473B292D075200DE6B2D /* OrderNumberLabel.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -1620,8 +1637,10 @@
 				F7516D7D282C56CE00E1A138 /* SeriesCastViewCell.xib in Resources */,
 				F7DFCF9B27F0F6F9006A0789 /* TVSeriesPhotoVC.xib in Resources */,
 				F711A4482745A84A00E1515D /* GetSeriesVideoListContext.plist in Resources */,
+				F751473A292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf in Resources */,
 				F711A4472745A84A00E1515D /* GetSeriesListContext.plist in Resources */,
 				F711A4442745A84A00E1515D /* GetNewsListContext.plist in Resources */,
+				F7514739292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf in Resources */,
 				F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */,
 				F7AEE479273FEB7A00C304D0 /* LaunchScreen.storyboard in Resources */,
 				F711A4432745A84A00E1515D /* GetSeriesDetailsContext.plist in Resources */,
@@ -1777,6 +1796,7 @@
 				F7516D70282BE1F900E1A138 /* GlobalSearchSeriesItem.swift in Sources */,
 				F792183328C9F48E00230630 /* Request.swift in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
+				F751473C292D075200DE6B2D /* OrderNumberLabel.swift in Sources */,
 				F7DFCF9527F0B5EB006A0789 /* ImageViewTransitionState.swift in Sources */,
 				F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */,
 				F77E8DF1277CF7B0005E7F50 /* FilteringDataController.swift in Sources */,
