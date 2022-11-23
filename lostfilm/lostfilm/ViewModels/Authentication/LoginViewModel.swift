@@ -26,20 +26,23 @@ protocol LoginViewModelProtocol: AnyObject {
 
 extension LoginViewModel: LoginViewModelProtocol {
 
-      func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
-          if isCaptchaHidden {
-              if  !emailViewString.isEmpty && !passwordViewString.isEmpty {
-                  view?.setButtonEnabled(true)
-              }
-          } else {
-              guard let captchaString = captchaViewString  else { return }
-              if !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty {
-                  view?.setButtonEnabled(true)
-              }
-          }
+    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
+        if isCaptchaHidden {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
+                view?.setButtonEnabled(true)
+            } else {
+                view?.setButtonEnabled(false)
+            }
+        } else if let  captchaString = captchaViewString {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
+                view?.setButtonEnabled(true)
+            } else {
+                view?.setButtonEnabled(false)
+            }
+        }
       }
 
-      func checkEmail(emailViewString: String) {
+      func didEnterEmailTextFieldWithString(emailViewString: String) {
           if Validators.email.validate(emailViewString) {
             view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
              return
@@ -48,7 +51,7 @@ extension LoginViewModel: LoginViewModelProtocol {
           }
       }
 
-    func checkPassword(passwordViewString: String) {
+    func didEnterPasswordTextFieldWithString(passwordViewString: String) {
         if Validators.password.validate(passwordViewString) {
             view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
         } else {

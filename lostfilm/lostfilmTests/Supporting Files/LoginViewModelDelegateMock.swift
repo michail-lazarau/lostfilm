@@ -8,7 +8,15 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
     var updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
     var removeLoadingIndicatorFuncExpectation = XCTestExpectation(description: "removeLoadingIndicator() expectation")
     var prepareCaptchaToUpdateFuncExpectation = XCTestExpectation(description: "prepareCaptchaToUpdate() expectation")
-    var hideCaptchaWhenFailedToLoadFuncExpectation = XCTestExpectation(description: "hideCaptchaWhenFailedToLoad() expectation")
+    var hideCaptchaWhenFailedToLoadFuncExpectation = XCTestExpectation(description: "hideCaptchaWhenFailedToLoad() expectation") //  описание нужно для дебага 
+
+    var didCallConfirmationMessage: ((String) -> Void)? 
+    var didCallEmailErrorMessage: ((String) -> Void)?
+    var didCallPasswordConfirmationMessage: ((String) -> Void)?
+    var didCallPasswordErrorMessage: ((String) -> Void)?
+    var buttonStatus: ((Bool) -> Void)?
+
+
 
     func showError(error: Error) {
         showErrorFuncExpectation.fulfill()
@@ -32,5 +40,25 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
 
     func hideCaptchaWhenFailedToLoad() {
         hideCaptchaWhenFailedToLoadFuncExpectation.fulfill()
+    }
+
+    func setButtonEnabled(_ isEnable: Bool) {
+        buttonStatus?(isEnable)
+    }
+
+    func sendEmailConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
+        didCallConfirmationMessage?(confirmationMessage)
+    }
+
+    func sendPasswordConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
+       didCallPasswordConfirmationMessage?(confirmationMessage)
+    }
+
+    func sendEmailErrorMessage(_ errorMessage: String, color: UIColor) {
+        didCallEmailErrorMessage?(errorMessage)
+    }
+
+    func sendPasswordErrorMessage(_ errorMessage: String, color: UIColor) {
+        didCallPasswordErrorMessage?(errorMessage)
     }
 }
