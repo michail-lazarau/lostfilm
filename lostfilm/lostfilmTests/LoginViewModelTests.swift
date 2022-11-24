@@ -195,6 +195,7 @@ class LoginViewModelTests: XCTestCase {
 
     //MARK: Validator
 
+    // MARK: sendMessage Functionality
     func test_showEmailConfirmation() { // rename func sendConfirmationEmailMessage ||
         let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation") // механизм ожидания Почитать //1
         delegate.didCallConfirmationMessage = { message in // !2! присловли кусок кода переменной   message  значение которое пришло в клоужер из функции sendEmailConfiramtionMessage// Присвоили переменной тип Клоужера
@@ -236,24 +237,15 @@ class LoginViewModelTests: XCTestCase {
         wait(for: [sendPasswordErrorMessage], timeout: 0)
     }
 
-    func test_isLoginButtonEnable() {
-        let buttonExp = XCTestExpectation()
-        delegate.buttonStatus = { isEnabled in
-            XCTAssertTrue(isEnabled)
-            buttonExp.fulfill()
-        }
-        sut.checkButtonStatus(emailViewString: "2", passwordViewString: "2", captchaViewString: "Test", isCaptchaHidden: false) 
-        wait(for: [buttonExp], timeout: 0)
-    }
+    // MARK: Button isEnbaled
 
-
-    func test_isLoginButtonEnabledWithoutCaptcha() { //разобраться поводу пустой строки или нила
+    func test_isLoginButtonEnabledWithoutCaptcha() { 
         let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonEnabledWithoutCaptchaAllDataIsCorrect() expectation" )
         delegate.buttonStatus = { isEnabled in
             XCTAssertTrue(isEnabled)
             buttonExpectation.fulfill()
         }
-        sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "ASPgo123", captchaViewString: "", isCaptchaHidden: false)
+        sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "ASPgo123", captchaViewString: nil, isCaptchaHidden: true)
     }
 
     func test_isLoginButtonEnabledWithCaptcha() {
@@ -262,9 +254,75 @@ class LoginViewModelTests: XCTestCase {
             XCTAssertTrue(isEnable)
             buttonExpectation.fulfill()
         }
-        sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "ASPgo123", captchaViewString: "1234", isCaptchaHidden: true)
+        sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "ASPgo123", captchaViewString: "captcha", isCaptchaHidden: false)
     }
 
+    // MARK: Button isDisabled
+
+    // MARK: Button isDisabled without Captcha
+    func test_isLoginButtonDisabledWithoutCaptchaAllTextFieldsIsEmpty() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaAllTextFieldsIsEmpty() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: true)
+    }
+
+    func test_isLoginButtonDisabledWithoutCaptchaEmailIsValid() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaEmailIsValid() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: true)
+    }
+
+    func test_isLoginButtonDisabledWithoutCaptchaPasswordIsValid() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaPasswordIsValid() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "ASPgo123", captchaViewString: nil, isCaptchaHidden: true)
+    }
+
+    // MARK: Button isDisabled with Captcha
+    func test_isLoginButtonDisabledWithCaptchaAllTextFieldsIsEmpty() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaCaptchaStringIsNotEmpty() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: false)
+    }
+
+    func test_isLoginButtonDisabledWithCaptchaEmailIsValid() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaEmailIsValid() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: false)
+    }
+
+    func test_isLoginButtonDisabledWithCaptchaPasswordIsValid() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaEmailIsValid() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "ASPgo123", captchaViewString: nil, isCaptchaHidden: false)
+    }
+
+    func test_isLoginButtonDisabledWithCaptchaCaptchaStringIsNotEmpty() {
+        let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonDisabledWithoutCaptchaCaptchaStringIsNotEmpty() expectation" )
+        delegate.buttonStatus = { isEnable in
+            XCTAssertFalse(isEnable)
+            buttonExpectation.fulfill()
+        }
+        sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "AS", captchaViewString: "captcha", isCaptchaHidden: false)
+    }
 }
 
 // *1: for LoginServiceProtocol.getLoginPage(htmlParserWrappe:, response:)

@@ -33,8 +33,8 @@ extension LoginViewModel: LoginViewModelProtocol {
             } else {
                 view?.setButtonEnabled(false)
             }
-        } else if let  captchaString = captchaViewString {
-            if !emailViewString.isEmpty && !passwordViewString.isEmpty && !captchaString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
+        } else if !isCaptchaHidden {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
                 view?.setButtonEnabled(true)
             } else {
                 view?.setButtonEnabled(false)

@@ -10,9 +10,6 @@ import XCTest
 
 final class ValidatorTest: XCTestCase {
 
-
-
-
     func test_ValidateEmailWithValidString() {
         XCTAssertTrue(Validators.email.validate("ValidEmail@gmail.com"))
     }
@@ -32,7 +29,6 @@ final class ValidatorTest: XCTestCase {
     func test_ValidateEmptyStringWithString() {
         XCTAssertTrue(Validators.nonEmpty.validate("NonEpmty"))
     }
-
 
     func test_ValidateEmptyStringWithoutString() {
         XCTAssertFalse(Validators.nonEmpty.validate(""))
