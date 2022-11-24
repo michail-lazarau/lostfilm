@@ -206,10 +206,9 @@ extension LoginViewController {
             didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
 
         } else if sender == passwordView.textField {
-          didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
+            didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
         }
-        checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
-
+            checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
       }
 
     private func removeKeyboardNotification() {
@@ -237,7 +236,6 @@ extension LoginViewController: LoginViewProtocol {
     func didEnterEmailTextFieldWithString(emailViewString: String) {
         viewModel.didEnterEmailTextFieldWithString(emailViewString: emailViewString)
     }
-
 
     func sendEmailConfirmationMessage(_ ConfirmationMessage: String, color: UIColor) {
         emailView.setConfirmationState(with: ConfirmationMessage, color: color)
