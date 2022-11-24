@@ -15,8 +15,6 @@ final class TextFieldView: UIView {
 
     var isButtonSelected = false
 
-    // MARK: Enum
-
     enum CustomFields {
         case email
         case password
@@ -74,7 +72,7 @@ final class TextFieldView: UIView {
     }()
 
     private let contentView = UIView()
-    var dividedView = UIView()
+    private var dividerView = UIView()
     var errorLabel = UILabel()
 
     // MARK: Inits
@@ -126,7 +124,7 @@ extension TextFieldView {
     }
 
     func setupContentView() {
-        contentView.addSubview(dividedView)
+        contentView.addSubview(dividerView)
         contentView.addSubview(textField)
         contentView.addSubview(passwordButton)
         contentView.addSubview(textFieldIcon)
@@ -142,10 +140,10 @@ extension TextFieldView {
         passwordButton.anchor(top: contentView.topAnchor, left: textField.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
 
-        dividedView.backgroundColor = UIColor.dividedView
-        dividedView.anchor(top: textFieldIcon.bottomAnchor, left: textFieldIcon.rightAnchor, bottom: errorLabel.topAnchor, right: passwordButton.leftAnchor, height: 0.75)
+        dividerView.backgroundColor = UIColor.dividedView
+        dividerView.anchor(top: textFieldIcon.bottomAnchor, left: textFieldIcon.rightAnchor, bottom: errorLabel.topAnchor, right: passwordButton.leftAnchor, height: 0.75)
 
-        errorLabel.anchor(top: dividedView.bottomAnchor, left: textFieldIcon.rightAnchor, right: passwordButton.leftAnchor)
+        errorLabel.anchor(top: dividerView.bottomAnchor, left: textFieldIcon.rightAnchor, right: passwordButton.leftAnchor)
     
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
@@ -161,10 +159,10 @@ extension TextFieldView {
         textField.anchor(top: contentView.topAnchor, left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor)
         textFieldIcon.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: textField.leftAnchor)
 
-        dividedView.backgroundColor = UIColor.dividedView
-        dividedView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: textField.rightAnchor, paddingRight: 25, height: 0.75)
+        dividerView.backgroundColor = UIColor.dividedView
+        dividerView.anchor(left: textFieldIcon.rightAnchor, bottom: contentView.bottomAnchor, right: textField.rightAnchor, paddingRight: 25, height: 0.75)
 
-        errorLabel.anchor(top: dividedView.bottomAnchor, left: textFieldIcon.rightAnchor, right: textField.rightAnchor)
+        errorLabel.anchor(top: dividerView.bottomAnchor, left: textFieldIcon.rightAnchor, right: textField.rightAnchor)
 
         textFieldIcon.setDimensions(width: 25, height: 25)
     }
@@ -172,13 +170,13 @@ extension TextFieldView {
     func setErrorState(with inlineMessage: String, color: UIColor) {
         errorLabel.text = inlineMessage
         errorLabel.textColor = color
-        dividedView.backgroundColor = color
+        dividerView.backgroundColor = color
     }
 
     func setConfirmationState(with confirmationMessage: String, color: UIColor) {
         errorLabel.text = confirmationMessage
         errorLabel.textColor = color
-        dividedView.backgroundColor = color
+        dividerView.backgroundColor = color
     }
 
     func configurePasswordFieldConstraint() {

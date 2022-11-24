@@ -18,12 +18,20 @@ final class ValidatorTest: XCTestCase {
         XCTAssertFalse(Validators.email.validate("InvalidEmail.com"))
     }
 
+    func test_ValidateEmailWithEmptyString() {
+        XCTAssertFalse(Validators.email.validate(""))
+    }
+
     func test_ValidatePasswordWithValidString() {
         XCTAssertTrue(Validators.password.validate("ASPgo123"))
     }
 
     func test_ValidatePasswordWithInvalidString() {
         XCTAssertFalse(Validators.password.validate("Invalidpassword"))
+    }
+
+    func test_ValidatePasswordEmptyString() {
+        XCTAssertFalse(Validators.password.validate(""))
     }
 
     func test_ValidateEmptyStringWithString() {
@@ -33,4 +41,5 @@ final class ValidatorTest: XCTestCase {
     func test_ValidateEmptyStringWithoutString() {
         XCTAssertFalse(Validators.nonEmpty.validate(""))
     }
+
 }

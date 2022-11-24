@@ -33,7 +33,7 @@ extension LoginViewModel: LoginViewModelProtocol {
             } else {
                 view?.setButtonEnabled(false)
             }
-        } else if !isCaptchaHidden {
+        } else {
             if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
                 view?.setButtonEnabled(true)
             } else {
@@ -45,7 +45,6 @@ extension LoginViewModel: LoginViewModelProtocol {
       func didEnterEmailTextFieldWithString(emailViewString: String) {
           if Validators.email.validate(emailViewString) {
             view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
-             return
           } else {
               view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
           }

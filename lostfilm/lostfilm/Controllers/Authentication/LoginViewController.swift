@@ -203,7 +203,7 @@ extension LoginViewController {
 
     @objc func textFieldEditingChanged(sender: UITextField) {
         if sender == emailView.textField {
-            didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
+            didEnterEmailTextFieldWithString(emailViewString: emailView.textField.text ?? "")
 
         } else if sender == passwordView.textField {
             didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")

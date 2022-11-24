@@ -323,6 +323,9 @@ class LoginViewModelTests: XCTestCase {
         }
         sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "AS", captchaViewString: "captcha", isCaptchaHidden: false)
     }
+    
+
+
 }
 
-// *1: for LoginServiceProtocol.getLoginPage(htmlParserWrappe:, response:)
+// *1: for LoginServiceProtocol.getLoginPage(htmlParserWrapper:, response:)

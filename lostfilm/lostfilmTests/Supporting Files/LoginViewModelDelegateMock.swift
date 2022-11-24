@@ -3,6 +3,8 @@ import XCTest
 @testable import lostfilm
 
 class LoginViewModelDelegateMock: LoginViewProtocol {
+
+
     var showErrorFuncExpectation = XCTestExpectation(description: "showError(error:) expectation")
     var authoriseFuncExpectation = XCTestExpectation(description: "authorise(username:) expectation")
     var updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
@@ -61,4 +63,10 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
     func sendPasswordErrorMessage(_ errorMessage: String, color: UIColor) {
         didCallPasswordErrorMessage?(errorMessage)
     }
+
+    func didEnterEmailTextFieldWithString(emailViewString: String) {}
+
+    func didEnterPasswordTextFieldWithString(passwordViewString: String) {}
+
+    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {}
 }
