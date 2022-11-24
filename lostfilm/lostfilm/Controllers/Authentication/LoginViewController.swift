@@ -226,6 +226,18 @@ extension LoginViewController {
 }
 
 extension LoginViewController: LoginViewProtocol {
+    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
+        viewModel.checkButtonStatus(emailViewString: emailViewString, passwordViewString: passwordViewString, captchaViewString: captchaViewString, isCaptchaHidden: captchaTextView.isHidden)
+    }
+
+    func didEnterPasswordTextFieldWithString(passwordViewString: String) {
+        viewModel.didEnterPasswordTextFieldWithString(passwordViewString: passwordViewString)
+    }
+
+    func didEnterEmailTextFieldWithString(emailViewString: String) {
+        viewModel.didEnterEmailTextFieldWithString(emailViewString: emailViewString)
+    }
+
 
     func sendEmailConfirmationMessage(_ ConfirmationMessage: String, color: UIColor) {
         emailView.setConfirmationState(with: ConfirmationMessage, color: color)
