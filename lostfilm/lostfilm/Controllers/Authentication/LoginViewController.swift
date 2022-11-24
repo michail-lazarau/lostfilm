@@ -203,12 +203,12 @@ extension LoginViewController {
 
     @objc func textFieldEditingChanged(sender: UITextField) {
         if sender == emailView.textField {
-            viewModel.didEnterEmailTextFieldWithString(emailViewString: sender.text ?? "")
+            didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
 
         } else if sender == passwordView.textField {
-            viewModel.didEnterPasswordTextFieldWithString(passwordViewString: sender.text ?? "")
+          didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
         }
-        viewModel.checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+        checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
 
       }
 
