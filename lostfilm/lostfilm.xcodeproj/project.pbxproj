@@ -86,6 +86,7 @@
 		F7471DF227AAE3EB00BDA17A /* SeriesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7471DF127AAE3EB00BDA17A /* SeriesVM.swift */; };
 		F7471DF527AAF72D00BDA17A /* SeriesVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7471DF427AAF72D00BDA17A /* SeriesVM+UITableViewDataSource.swift */; };
 		F7471DF827AAFAB100BDA17A /* TVSeriesOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7471DF627AAFAB100BDA17A /* TVSeriesOverviewTVC.swift */; };
+		F74C090C2930DD9C00EFB84E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C090B2930DD9C00EFB84E /* UIFont+Extension.swift */; };
 		F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */; };
 		F7514739292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7514737292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf */; };
 		F751473A292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7514738292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf */; };
@@ -343,6 +344,7 @@
 		F7471DF127AAE3EB00BDA17A /* SeriesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesVM.swift; sourceTree = "<group>"; };
 		F7471DF427AAF72D00BDA17A /* SeriesVM+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesVM+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		F7471DF627AAFAB100BDA17A /* TVSeriesOverviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesOverviewTVC.swift; sourceTree = "<group>"; };
+		F74C090B2930DD9C00EFB84E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		F74C4BDA27863950008C5969 /* BaseFilterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterTVC.swift; sourceTree = "<group>"; };
 		F7514737292CFF4C00DE6B2D /* AzeretMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AzeretMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		F7514738292CFF4C00DE6B2D /* AzeretMono-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AzeretMono-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 			children = (
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
 				C556012D28EF040B0032D75F /* UIColor+Extension.swift */,
+				F74C090B2930DD9C00EFB84E /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1905,6 +1908,7 @@
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
 				F7DFCF9127F0A423006A0789 /* ZoomTransitioningDelegate.swift in Sources */,
 				F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */,
+				F74C090C2930DD9C00EFB84E /* UIFont+Extension.swift in Sources */,
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
 				F7DFCF9A27F0F6F9006A0789 /* TVSeriesPhotoVC.swift in Sources */,
 				F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */,

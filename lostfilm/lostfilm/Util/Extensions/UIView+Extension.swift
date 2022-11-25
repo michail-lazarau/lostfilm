@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 extension UIView {
-
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
@@ -13,7 +12,6 @@ extension UIView {
                 paddingRight: CGFloat = 0,
                 width: CGFloat? = nil,
                 height: CGFloat? = nil) {
-
         translatesAutoresizingMaskIntoConstraints = false
 
         if let top = top {
@@ -64,12 +62,12 @@ extension UIView {
     }
 
     func findViewController() -> UIViewController? {
-            if let nextResponder = self.next as? UIViewController {
-                return nextResponder
-            } else if let nextResponder = self.next as? UIView {
-                return nextResponder.findViewController()
-            } else {
-                return nil
-            }
+        if let nextResponder = next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
         }
+    }
 }

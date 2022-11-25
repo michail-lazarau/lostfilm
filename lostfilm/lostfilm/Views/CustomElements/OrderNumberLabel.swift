@@ -12,10 +12,13 @@ class OrderNumberLabel: UILabel {
 
     override var intrinsicContentSize: CGSize {
         let originalContentSize = super.intrinsicContentSize
-        let customContentSize = text?.count == 3
-        ? originalContentSize
-        : (text?.count == 2 ? CGSize(width: originalContentSize.width * 1.5, height: originalContentSize.height)
-           : CGSize(width: originalContentSize.width * 3, height: originalContentSize.height))
-        return customContentSize
+        let maxNumOfDigits = 3
+
+        guard let actualNumOfDigits = text?.count else {
+            return originalContentSize
+        }
+
+        let widthMultiplier = CGFloat(maxNumOfDigits) / CGFloat(actualNumOfDigits)
+        return CGSize(width: originalContentSize.width * widthMultiplier, height: originalContentSize.height)
     }
 }
