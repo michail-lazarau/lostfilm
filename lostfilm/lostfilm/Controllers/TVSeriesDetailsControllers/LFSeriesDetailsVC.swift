@@ -43,7 +43,6 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
-
         self.navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white
