@@ -10,6 +10,7 @@ import SDWebImage
 import UIKit
 
 final class LoginViewController: UIViewController {
+    // MARK: Variables
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -63,6 +64,7 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
 
+    // MARK: Inits
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -72,6 +74,7 @@ final class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Functions
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(scrollView)
@@ -93,8 +96,9 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.loginViewModelDelegate = self
+        viewModel.view = self
         setupView()
+        bindTextFields()
         initialSetup()
     }
 
@@ -109,6 +113,7 @@ final class LoginViewController: UIViewController {
     }
 }
 
+    // MARK: Extension
 extension LoginViewController {
     func setupTextFields() {
         emailView.configureInputField(on: .name)
@@ -190,6 +195,23 @@ extension LoginViewController {
         view.endEditing(true)
     }
 
+    private func bindTextFields() {
+        loginButton.isEnabled = false
+        emailView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        passwordView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        captchaTextView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+    }
+
+    @objc func textFieldEditingChanged(sender: UITextField) {
+        if sender == emailView.textField {
+            didEnterEmailTextFieldWithString(emailViewString: emailView.textField.text ?? "")
+
+        } else if sender == passwordView.textField {
+            didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
+        }
+            checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+      }
+
     private func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -204,6 +226,45 @@ extension LoginViewController {
 }
 
 extension LoginViewController: LoginViewProtocol {
+    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
+        viewModel.checkButtonStatus(emailViewString: emailViewString, passwordViewString: passwordViewString, captchaViewString: captchaViewString, isCaptchaHidden: captchaTextView.isHidden)
+    }
+
+    func didEnterPasswordTextFieldWithString(passwordViewString: String) {
+        viewModel.didEnterPasswordTextFieldWithString(passwordViewString: passwordViewString)
+    }
+
+    func didEnterEmailTextFieldWithString(emailViewString: String) {
+        viewModel.didEnterEmailTextFieldWithString(emailViewString: emailViewString)
+    }
+
+    func sendEmailConfirmationMessage(_ ConfirmationMessage: String, color: UIColor) {
+        emailView.setConfirmationState(with: ConfirmationMessage, color: color)
+    }
+
+    func sendPasswordConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
+        passwordView.setConfirmationState(with: confirmationMessage, color: color)
+    }
+
+    func sendEmailErrorMessage(_ errorMessage: String, color: UIColor) {
+        emailView.setErrorState(with: errorMessage, color: color)
+    }
+
+    func sendPasswordErrorMessage(_ errorMessage: String, color: UIColor) {
+        passwordView.setErrorState(with: errorMessage, color: color)
+    }
+
+    func sendErrorMessage(_ errorMessage: String) {
+        passwordView.errorLabel.text = errorMessage
+    }
+
+    func setButtonEnabled(_ isEnable: Bool) {
+        DispatchQueue.main.async { [weak loginButton] in
+            loginButton?.isEnabled = isEnable
+        }
+
+    }
+
     func removeLoadingIndicator() {
         DispatchQueue.main.async { [weak loginButton] in
             loginButton?.hideLoader()
@@ -233,6 +294,8 @@ extension LoginViewController: LoginViewProtocol {
             captchaTextView?.isHidden = false
             captchaImageView.image = UIImage(data: data)
             captchaImageView.sd_imageIndicator?.stopAnimatingIndicator()
+            // call function change button state
+            self.loginButton.isEnabled = false
         }
     }
 
@@ -258,13 +321,17 @@ extension LoginViewController: LoginViewProtocol {
 }
 
 extension LoginViewController: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if emailView.textField == textField {
+        switch textField {
+        case emailView.textField:
             passwordView.textField.becomeFirstResponder()
-        }
-        if passwordView.textField == textField {
+        case passwordView.textField:
             hideKeyboard()
+        default:
+            emailView.textField.resignFirstResponder()
         }
+
         return true
     }
 }

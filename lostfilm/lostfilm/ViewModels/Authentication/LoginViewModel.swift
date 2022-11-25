@@ -1,11 +1,17 @@
 import Foundation
 
-final class LoginViewModel {
+protocol LoginViewModelProtocol: AnyObject {
+    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool)
+    func didEnterEmailTextFieldWithString(emailViewString: String)
+    func didEnterPasswordTextFieldWithString(passwordViewString: String)
+}
+
+  final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
     private(set) var captchaModel: Captcha?
-    weak var loginViewModelDelegate: LoginViewProtocol?
+    weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
     let dataProvider: LoginServiceProtocol
 
@@ -27,7 +33,40 @@ final class LoginViewModel {
     }
 }
 
-private extension LoginViewModel {
+extension LoginViewModel: LoginViewModelProtocol {
+
+    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
+        if isCaptchaHidden {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
+                view?.setButtonEnabled(true)
+            } else {
+                view?.setButtonEnabled(false)
+            }
+        } else {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
+                view?.setButtonEnabled(true)
+            } else {
+                view?.setButtonEnabled(false)
+            }
+        }
+      }
+
+      func didEnterEmailTextFieldWithString(emailViewString: String) {
+          if Validators.email.validate(emailViewString) {
+            view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
+          } else {
+              view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+          }
+      }
+
+    func didEnterPasswordTextFieldWithString(passwordViewString: String) {
+        if Validators.password.validate(passwordViewString) {
+            view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+        } else {
+            view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+        }
+    }
+
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
             guard let self = self else {
@@ -43,23 +82,24 @@ private extension LoginViewModel {
                     self.authenticate(email: email, password: password, captcha: captcha)
                 }
             case let .failure(error):
-                self.loginViewModelDelegate?.removeLoadingIndicator()
-                self.loginViewModelDelegate?.showError(error: error)
+                self.view?.removeLoadingIndicator()
+                self.view?.showError(error: error)
             }
         }
     }
 
     func renderCaptcha(url: URL) {
-        loginViewModelDelegate?.prepareCaptchaToUpdate()
-        dataProvider.getCaptcha(url: url) { [loginViewModelDelegate] result in
+        view?.prepareCaptchaToUpdate()
+        dataProvider.getCaptcha(url: url) { [view] result in
             switch result {
             case let .success(data):
-                loginViewModelDelegate?.updateCaptcha(data: data)
+                view?.updateCaptcha(data: data)
+                view?.setButtonEnabled(false)
             case let .failure(error):
-                loginViewModelDelegate?.hideCaptchaWhenFailedToLoad()
-                loginViewModelDelegate?.showError(error: error)
+                view?.hideCaptchaWhenFailedToLoad()
+                view?.showError(error: error)
             }
-            loginViewModelDelegate?.removeLoadingIndicator()
+            view?.removeLoadingIndicator()
         }
     }
 
@@ -72,12 +112,12 @@ private extension LoginViewModel {
             switch result {
             case let .success(username):
                 self.captchaModel = nil
-                self.loginViewModelDelegate?.removeLoadingIndicator()
-                self.loginViewModelDelegate?.authorise(username: username)
+                self.view?.removeLoadingIndicator()
+                self.view?.authorise(username: username)
             case let .failure(error):
                 defer {
-                    self.loginViewModelDelegate?.removeLoadingIndicator()
-                    self.loginViewModelDelegate?.showError(error: error)
+                    self.view?.removeLoadingIndicator()
+                    self.view?.showError(error: error)
                 }
 
                 let loginServiceError = error as? LoginServiceError

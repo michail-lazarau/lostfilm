@@ -48,6 +48,11 @@ enum Texts {
         static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
     }
+
+    enum ValidationErrors {
+        static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
+        static let invalidPassword = NSLocalizedString("InvalidPassword", comment: "")
+    }
 }
 
 enum Paddings {
@@ -55,4 +60,54 @@ enum Paddings {
     static let right = CGFloat( -40)
     static let top = CGFloat(8)
     static let bottom = CGFloat(-8)
+}
+
+enum ValidationConfirmation {
+    static let validEmail = NSLocalizedString("Email confirmed", comment: "")
+    static let validPassword = NSLocalizedString("Password confirmed", comment: "")
+}
+
+enum ValidationError: Error {
+    case invalidUserName
+    case invalidFirstName
+    case invalidLastName
+    case invalidEmail
+    case invalidPassword
+    case invalidPhone
+}
+
+extension ValidationError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .invalidUserName:
+            return NSLocalizedString("Invalid Username format", comment: "")
+        case .invalidFirstName:
+            return NSLocalizedString("Invalid Firstname format", comment: "")
+        case .invalidLastName:
+            return NSLocalizedString("Invalid Lastname format.", comment: "")
+        case .invalidEmail:
+            return NSLocalizedString("Invalid e-mail format.", comment: "")
+        case .invalidPassword:
+            return NSLocalizedString("Invalid password format", comment: "")
+        case .invalidPhone:
+            return NSLocalizedString("Invalid Phone format", comment: "")
+
+        }
+    }
+}
+
+enum RegEx {
+    case email
+    case password
+}
+
+extension RegEx {
+    var expression: String {
+        switch self {
+        case .email:
+            return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        case .password:
+            return "^(?=.*\\d).{4,8}$"
+        }
+    }
 }
