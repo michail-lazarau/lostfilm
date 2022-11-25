@@ -46,7 +46,6 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white
-        UIFont.preferredFont(forTextStyle: .title2)
 
         if traitCollection.userInterfaceIdiom == .pad {
             carbonTabSwipeNavigation?.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2).italic()], for: .normal)
