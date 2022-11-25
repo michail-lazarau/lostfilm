@@ -4,7 +4,6 @@ import XCTest
 
 class LoginViewModelDelegateMock: LoginViewProtocol {
 
-
     var showErrorFuncExpectation = XCTestExpectation(description: "showError(error:) expectation")
     var authoriseFuncExpectation = XCTestExpectation(description: "authorise(username:) expectation")
     var updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
@@ -17,8 +16,6 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
     var didCallPasswordConfirmationMessage: ((String) -> Void)?
     var didCallPasswordErrorMessage: ((String) -> Void)?
     var buttonStatus: ((Bool) -> Void)?
-
-
 
     func showError(error: Error) {
         showErrorFuncExpectation.fulfill()
