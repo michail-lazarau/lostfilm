@@ -29,10 +29,6 @@ class NewsDetailsTVC: UITableViewController, IUpdatingViewDelegate {
         viewModel.loadItems()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     func updateView() {
         tableView.reloadData()
         initialScreenLoadingSpinner.stopAnimating()
