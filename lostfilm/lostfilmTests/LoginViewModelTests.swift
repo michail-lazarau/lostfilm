@@ -10,7 +10,6 @@ class LoginViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         router = DefaultRouterMock()
         delegate = LoginViewModelDelegateMock()
-        sut.view = delegate
         sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router)
         sut.view = delegate
     }
