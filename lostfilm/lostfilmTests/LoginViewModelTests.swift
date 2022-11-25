@@ -196,15 +196,14 @@ class LoginViewModelTests: XCTestCase {
     //MARK: Validator
 
     // MARK: sendMessage Functionality
-    func test_showEmailConfirmation() { // rename func sendConfirmationEmailMessage ||
-        let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation") // механизм ожидания Почитать //1
-        delegate.didCallConfirmationMessage = { message in // !2! присловли кусок кода переменной   message  значение которое пришло в клоужер из функции sendEmailConfiramtionMessage// Присвоили переменной тип Клоужера
-
-            XCTAssertEqual(message, ValidationConfirmation.validEmail) // cравнивааем то что пришло с ожидаемой строкой // 4
-            sendEmailConfirmationMessage.fulfill() //   ждем пока придет сообщение //5
+    func test_showEmailConfirmation() {
+        let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation")
+        delegate.didCallConfirmationMessage = { message in
+            XCTAssertEqual(message, ValidationConfirmation.validEmail)
+            sendEmailConfirmationMessage.fulfill()
         }
-        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com") // 3
-        wait(for: [sendEmailConfirmationMessage], timeout: 0) // 6 Ждем пока выполняется sendEmailConfirmationMessage.fulfill() но не более указаного времени в timeout
+        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com") 
+        wait(for: [sendEmailConfirmationMessage], timeout: 0)
     }
 
     func test_sendErrorEmailMessage() {
@@ -246,6 +245,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "ASPgo123", captchaViewString: nil, isCaptchaHidden: true)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     func test_isLoginButtonEnabledWithCaptcha() {
@@ -255,6 +255,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "ASPgo123", captchaViewString: "captcha", isCaptchaHidden: false)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     // MARK: Button isDisabled
@@ -267,6 +268,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: true)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     func test_isLoginButtonDisabledWithoutCaptchaEmailIsValid() {
@@ -276,6 +278,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: true)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     func test_isLoginButtonDisabledWithoutCaptchaPasswordIsValid() {
@@ -285,6 +288,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "ASPgo123", captchaViewString: nil, isCaptchaHidden: true)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     // MARK: Button isDisabled with Captcha
@@ -295,6 +299,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: false)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     func test_isLoginButtonDisabledWithCaptchaEmailIsValid() {
@@ -304,6 +309,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "ValidEmail@gmail.com", passwordViewString: "", captchaViewString: nil, isCaptchaHidden: false)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     func test_isLoginButtonDisabledWithCaptchaPasswordIsValid() {
@@ -313,6 +319,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "ASPgo123", captchaViewString: nil, isCaptchaHidden: false)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 
     func test_isLoginButtonDisabledWithCaptchaCaptchaStringIsNotEmpty() {
@@ -322,6 +329,7 @@ class LoginViewModelTests: XCTestCase {
             buttonExpectation.fulfill()
         }
         sut.checkButtonStatus(emailViewString: "Invalid", passwordViewString: "AS", captchaViewString: "captcha", isCaptchaHidden: false)
+        wait(for: [buttonExpectation], timeout: 0)
     }
 }
 
