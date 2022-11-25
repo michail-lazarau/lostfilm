@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DVAppCore:
-    :commit: 547f80bfbf9d1bf6b566267e415ef74b48e2cf15
+    :commit: 5927bd8b08b1d49923c9337a7d84e4ad1ccb7d2f
     :git: https://github.com/michail-lazarau/DVAppCore.git
   DVHtmlToModels:
     :commit: 58ffad35dccbd0646a4d6c715310faf81524f75b

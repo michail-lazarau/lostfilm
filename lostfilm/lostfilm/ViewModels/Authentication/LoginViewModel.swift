@@ -8,13 +8,16 @@ protocol LoginViewModelProtocol: AnyObject {
 
   final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
+    typealias Routes = Dismissable
+    private let router: Routes
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
     let dataProvider: LoginServiceProtocol
 
-    init(dataProvider: LoginServiceProtocol) {
+    init(dataProvider: LoginServiceProtocol, router: Routes) {
         self.dataProvider = dataProvider
+        self.router = router
     }
 
     func login(email: String, password: String, captcha: String?) {
@@ -23,6 +26,10 @@ protocol LoginViewModelProtocol: AnyObject {
         } else {
             authenticate(email: email, password: password, captcha: captcha)
         }
+    }
+
+    func dismissLoginScreen() {
+        router.dismiss()
     }
 }
 

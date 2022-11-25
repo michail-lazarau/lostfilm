@@ -1,6 +1,18 @@
 import UIKit
 
 class TabBarRootController: UITabBarController {
+    typealias Routes = LoginRoute
+    private var router: Routes?
+
+    init(router: Routes) {
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
@@ -28,5 +40,9 @@ class TabBarRootController: UITabBarController {
         scheduleVC.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "icon_timetable"), tag: 4)
 
         viewControllers = [tvSeriesNC, newsNC, videosNC, newEpisodesNC, scheduleNC]
+    }
+
+    func openLogin() {
+        router?.openLogin()
     }
 }
