@@ -12,7 +12,7 @@ class LoginViewModelTests: XCTestCase {
         delegate = LoginViewModelDelegateMock()
         sut.view = delegate
         sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router)
-        sut.loginViewModelDelegate = delegate
+        sut.view = delegate
     }
 
     override func tearDownWithError() throws {
