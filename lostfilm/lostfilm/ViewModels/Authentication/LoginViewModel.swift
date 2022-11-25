@@ -2,6 +2,8 @@ import Foundation
 
 protocol LoginViewModelProtocol: AnyObject {
     func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool)
+    func didEnterEmailTextFieldWithString(emailViewString: String)
+    func didEnterPasswordTextFieldWithString(passwordViewString: String)
 }
 
   final class LoginViewModel {

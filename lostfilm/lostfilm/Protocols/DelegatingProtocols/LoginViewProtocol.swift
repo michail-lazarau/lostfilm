@@ -12,7 +12,4 @@ protocol LoginViewProtocol: AnyObject {
     func sendPasswordConfirmationMessage(_ confirmationMessage: String, color: UIColor)
     func sendEmailErrorMessage(_ errorMessage: String, color: UIColor)
     func sendPasswordErrorMessage(_ errorMessage: String, color: UIColor)
-    func didEnterEmailTextFieldWithString(emailViewString: String)
-    func didEnterPasswordTextFieldWithString(passwordViewString: String)
-    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool)
 }
