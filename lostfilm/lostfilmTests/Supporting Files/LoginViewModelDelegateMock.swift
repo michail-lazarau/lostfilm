@@ -11,7 +11,7 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
     var prepareCaptchaToUpdateFuncExpectation = XCTestExpectation(description: "prepareCaptchaToUpdate() expectation")
     var hideCaptchaWhenFailedToLoadFuncExpectation = XCTestExpectation(description: "hideCaptchaWhenFailedToLoad() expectation") //  описание нужно для дебага 
 
-    var didCallConfirmationMessage: ((String) -> Void)? 
+    var didCallConfirmationMessage: ((String) -> Void)?
     var didCallEmailErrorMessage: ((String) -> Void)?
     var didCallPasswordConfirmationMessage: ((String) -> Void)?
     var didCallPasswordErrorMessage: ((String) -> Void)?
