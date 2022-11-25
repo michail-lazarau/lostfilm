@@ -203,7 +203,7 @@ class LoginViewModelTests: XCTestCase {
         XCTAssertEqual(sut.captchaModel, expectedCaptcha)
     }
 
-    //MARK: Validator
+    // MARK: Validator
 
     // MARK: sendMessage Functionality
     func test_showEmailConfirmation() {
@@ -212,8 +212,8 @@ class LoginViewModelTests: XCTestCase {
             XCTAssertEqual(message, ValidationConfirmation.validEmail)
             sendEmailConfirmationMessage.fulfill()
         }
-        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com") 
-        wait(for: [sendEmailConfirmationMessage], timeout: 0)
+         sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
+         wait(for: [sendEmailConfirmationMessage], timeout: 0)
     }
 
     func test_sendErrorEmailMessage() {
@@ -248,7 +248,7 @@ class LoginViewModelTests: XCTestCase {
 
     // MARK: Button isEnbaled
 
-    func test_isLoginButtonEnabledWithoutCaptcha() { 
+    func test_isLoginButtonEnabledWithoutCaptcha() {
         let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonEnabledWithoutCaptchaAllDataIsCorrect() expectation" )
         delegate.buttonStatus = { isEnabled in
             XCTAssertTrue(isEnabled)
