@@ -51,7 +51,7 @@ class TVSeriesOverviewTVC: UITableViewController, IUpdatingViewDelegate {
         let item = viewModel.items[indexPath.section]
         switch item.type {
         case .poster:
-            return 175
+            return UIScreen.main.bounds.width / 13 * 6
         case .detailPremiereDate, .detailChannelCountry, .detailRatingIMDb, .detailGenre, .detailType, .detailOfficialSite, .description:
             return UITableView.automaticDimension
         }

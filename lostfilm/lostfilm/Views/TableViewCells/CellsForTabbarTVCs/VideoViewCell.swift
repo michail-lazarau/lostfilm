@@ -26,7 +26,6 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellView()
-
     }
 
     override func awakeFromNib() {
@@ -55,29 +54,32 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
         return imageView
     }()
 
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let title = UILabel()
-        title.font = UIFont.systemFont(ofSize: 12.0)
+        title.font = traitCollection.userInterfaceIdiom == .pad
+        ? UIFont.preferredFont(forTextStyle: .title3)
+        : UIFont.systemFont(ofSize: 12.0)
         title.textColor = .white
         title.numberOfLines = 1
         title.lineBreakMode = .byTruncatingTail
         return title
     }()
 
-    private let detailsLabel: UILabel = {
+    private lazy var detailsLabel: UILabel = {
         let details = UILabel()
-        details.font = UIFont.systemFont(ofSize: 9.0)
+        details.font = traitCollection.userInterfaceIdiom == .pad
+        ? UIFont.preferredFont(forTextStyle: .body)
+        : UIFont.systemFont(ofSize: 9.0)
         details.textColor = .white
         details.numberOfLines = 1
         details.lineBreakMode = .byTruncatingTail
         return details
     }()
 
-    private lazy var launchButton: UIButton = {
+    private lazy var playButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "icon_play"), for: .normal)
-        button.frame.size = CGSize(width: 45, height: 45)
+        button.setBackgroundImage(UIImage(named: "icon_play"), for: .normal)
         button.layer.cornerRadius = button.frame.width / 2
         button.addTarget(self, action: #selector(launchVideoPlayer), for: .touchUpInside)
         return button
@@ -101,7 +103,10 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
 
         contentView.addSubview(videoImageView)
         contentView.addSubview(labelStackView)
-        contentView.addSubview(launchButton)
+        contentView.addSubview(playButton)
+
+        let labelStackHeightConstant: CGFloat = traitCollection.userInterfaceIdiom == .pad ? 66 : 44
+        let playButtonHeightWidthConstant: CGFloat = traitCollection.userInterfaceIdiom == .pad ? 90 : 45
 
         NSLayoutConstraint.activate([
             videoImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
@@ -109,11 +114,12 @@ class VideoViewCell: UITableViewCell, CellConfigurable {
             videoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             videoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            launchButton.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
-            launchButton.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
-            launchButton.heightAnchor.constraint(equalTo: launchButton.widthAnchor, multiplier: 1.0 / 1.0),
+            playButton.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
+            playButton.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
+            playButton.heightAnchor.constraint(equalToConstant: playButtonHeightWidthConstant),
+            playButton.widthAnchor.constraint(equalToConstant: playButtonHeightWidthConstant),
 
-            labelStackView.heightAnchor.constraint(equalToConstant: 44),
+            labelStackView.heightAnchor.constraint(equalToConstant: labelStackHeightConstant),
             labelStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
             labelStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)

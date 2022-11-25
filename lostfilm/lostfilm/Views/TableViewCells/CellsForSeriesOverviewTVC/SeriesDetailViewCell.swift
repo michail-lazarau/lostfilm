@@ -37,7 +37,9 @@ class SeriesDetailViewCell: UITableViewCell {
 
             if let item = item as? VMseriesDescriptionItem {
                 keyLabel.text = item.sectionTitle
-                valueLabel.attributedText = item.seriesDescription.ac_htmlAttributedString()
+                valueLabel.attributedText = traitCollection.userInterfaceIdiom == .pad
+                ? item.seriesDescription.ac_htmlAttributedString(with: UIFont.preferredFont(forTextStyle: .title2), colorHex: "000000")
+                : item.seriesDescription.ac_htmlAttributedString(with: UIFont.systemFont(ofSize: 14.0), colorHex: "000000")
             }
         }
     }

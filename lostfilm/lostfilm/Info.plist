@@ -26,5 +26,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AzeretMono-Italic-VariableFont_wght.ttf</string>
+		<string>AzeretMono-VariableFont_wght.ttf</string>
+	</array>
 </dict>
 </plist>

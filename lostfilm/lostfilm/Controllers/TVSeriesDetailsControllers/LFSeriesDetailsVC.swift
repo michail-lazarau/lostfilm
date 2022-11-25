@@ -9,7 +9,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3.0, height: UIScreen.main.bounds.width/3.0)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3.0, height: UIScreen.main.bounds.width / 3.0)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return layout
     }()
@@ -30,7 +30,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
                        TVSeriesCastTVC(style: .plain, viewModel: castViewModel)]
 
         super.init(nibName: nil, bundle: nil)
-        self.navigationItem.title = model.nameRu
+        navigationItem.title = model.nameRu
     }
 
     required init(coder: NSCoder) {
@@ -43,10 +43,14 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items, delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self)
         carbonTabSwipeNavigation?.toolbar.isTranslucent = false
-
-        self.navigationItem.largeTitleDisplayMode = .never
+        navigationItem.largeTitleDisplayMode = .never
         carbonTabSwipeNavigation?.modalPresentationCapturesStatusBarAppearance = true
         view.backgroundColor = .white
+
+        if traitCollection.userInterfaceIdiom == .pad {
+            carbonTabSwipeNavigation?.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2).italic()], for: .normal)
+            carbonTabSwipeNavigation?.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2).italic()], for: .selected)
+        }
     }
 
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
@@ -56,7 +60,7 @@ class LFSeriesDetailsVC: UIViewController, CarbonTabSwipeNavigationDelegate {
 
 extension LFSeriesDetailsVC: ImageViewZoomable {
     func zoomingImageView(for transition: ZoomTransitioningDelegate) -> UIImageView? {
-        let collectionViewController = self.controllers.last { $0 is TVSeriesPhotosCVC } as? TVSeriesPhotosCVC
+        let collectionViewController = controllers.last { $0 is TVSeriesPhotosCVC } as? TVSeriesPhotosCVC
         if let TVSeriesPhotosCVC = collectionViewController, let indexPath = TVSeriesPhotosCVC.selectedIndexPath {
             let cell = TVSeriesPhotosCVC.collectionView.cellForItem(at: indexPath) as? SeriesPhotoViewCell
             return cell?.imageView

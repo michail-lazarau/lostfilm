@@ -7,6 +7,7 @@ class SeriesNewsViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var briefTextLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+
     var item: LFNewsModel? {
         didSet {
             guard let item = item else {
