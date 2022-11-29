@@ -11,6 +11,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     // MARK: Variables
+    weak var userProfileDelegate: UserProfileDelegate? // FIXME: check out before the merge
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -313,6 +314,13 @@ extension LoginViewController: LoginViewProtocol {
             if let self = self {
                 let alert = self.makeAlertController(message: "Welcome, \(username)", continueAction: {
                     self.viewModel.dismissLoginScreen()
+                    // FIXME: check out before the merge
+                    // responderChain
+                    // перенеси присваивание делегата в другое место?
+                    // посмотри создание состояний для uiview
+                    self.userProfileDelegate = (((self.viewModel.router as? Router)?.root?.presentingViewController as? TabBarRootController)?.children[0] as? UINavigationController)?.children[0] as? UserProfileDelegate
+                    //    (children.first as? LoginViewController)?.userProfileDelegate = self
+                    self.userProfileDelegate?.updateProfileButton(username: username)
                 })
                 self.present(alert, animated: true)
             }

@@ -68,6 +68,7 @@
 		F73459DA2765F98B00E45725 /* TemplateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459D92765F98B00E45725 /* TemplateTVC.swift */; };
 		F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DB276610F000E45725 /* CellConfigurable.swift */; };
 		F73459E0276647ED00E45725 /* TemplateDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73459DF276647ED00E45725 /* TemplateDataController.swift */; };
+		F7351040293590EE009404AF /* UserProfileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F735103F293590EE009404AF /* UserProfileDelegate.swift */; };
 		F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */; };
 		F7355EF02772523C00B42B0F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEF2772523C00B42B0F /* Util.swift */; };
 		F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */; };
@@ -328,6 +329,7 @@
 		F73459D92765F98B00E45725 /* TemplateTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTVC.swift; sourceTree = "<group>"; };
 		F73459DB276610F000E45725 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		F73459DF276647ED00E45725 /* TemplateDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataController.swift; sourceTree = "<group>"; };
+		F735103F293590EE009404AF /* UserProfileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDelegate.swift; sourceTree = "<group>"; };
 		F7355EEC2772414200B42B0F /* NewEpisodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodeViewCell.swift; sourceTree = "<group>"; };
 		F7355EEF2772523C00B42B0F /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesDataController.swift; sourceTree = "<group>"; };
@@ -1436,6 +1438,7 @@
 				F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */,
 				F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */,
 				F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */,
+				F735103F293590EE009404AF /* UserProfileDelegate.swift */,
 			);
 			path = DelegatingProtocols;
 			sourceTree = "<group>";
@@ -1943,6 +1946,7 @@
 				F781ACCB27E11F3F003ABF31 /* SeriesPhotoViewCell.swift in Sources */,
 				F721A0432792273800C614C7 /* FilteringDelegate.swift in Sources */,
 				F76D1F7727B949C5007E5933 /* VMepisodeItem.swift in Sources */,
+				F7351040293590EE009404AF /* UserProfileDelegate.swift in Sources */,
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F766765928DE0274009B9516 /* DVHtmlError.swift in Sources */,
 				F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */,

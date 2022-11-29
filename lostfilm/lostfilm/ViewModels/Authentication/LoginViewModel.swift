@@ -9,7 +9,7 @@ protocol LoginViewModelProtocol: AnyObject {
   final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
-    private let router: Routes
+    let router: Routes
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")

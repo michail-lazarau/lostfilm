@@ -1,7 +1,14 @@
 import Foundation
 
-class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDelegate {
+class TVSeriesDataController: TemplateDataController<LFSeriesModel> {
     var savedFilters: [LFSeriesFilterBaseModel] = []
+    typealias Routes = LoginRoute
+    private(set) var router: Routes?
+
+    init(router: Routes) {
+        super.init()
+        self.router = router
+    }
 
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.shared
@@ -34,11 +41,15 @@ class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDe
         }
         return parameters.mapValues { String($0.dropLast(",".count)) }
 
-// MARK: should work as well
+        // MARK: should work as well
 
 //        let groupByKey: [String : [LFSeriesFilterBaseModel]] = Dictionary(grouping: savedFilters, by: {$0.key})
 //        return groupByKey.reduce(into: [String : String]()) { partialResult, tuple in
 //            partialResult.updateValue(tuple.value.map{$0.value}.joined(separator: ","), forKey: tuple.key)
 //        }
+    }
+
+    func openLogin() {
+        router?.openLogin()
     }
 }
