@@ -15,6 +15,7 @@
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
+		C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D4BE2934D4E100C6D393 /* Debouncer.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F707A69828EC5EA0006F9110 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */; };
@@ -270,6 +271,7 @@
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		C596D4BE2934D4E100C6D393 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 		F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
@@ -859,6 +861,7 @@
 				C55218A528E7028800BC2CD0 /* Extensions */,
 				F7FFA1032777D486004B5D38 /* Date.swift */,
 				F7AA54CA2791B200002A7179 /* FilterType.swift */,
+				C596D4BE2934D4E100C6D393 /* Debouncer.swift */,
 				C567D04128D9B468000FDCFE /* Enums.swift */,
 				F7DFCF9427F0B5EB006A0789 /* ImageViewTransitionState.swift */,
 				F78C5DB528319B6100AF8400 /* WeakTimer.swift */,
@@ -1783,6 +1786,7 @@
 				F79C97322746CCA3001BD5F8 /* LFContentModel.m in Sources */,
 				F7DBEE1027FA472E0094A7D2 /* VideosVM+UITableViewDataSource.swift in Sources */,
 				F7471DE427AABB1D00BDA17A /* VMseriesDetailPremiereDateItem.swift in Sources */,
+				C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */,
 				F76BEDD728AD3A4E00A4B33E /* ILoadingDataByPage.swift in Sources */,
 				F7FFB18128E5C41F00334400 /* LoginViewModel.swift in Sources */,
 				F7997CD2276FBAE700DFCC19 /* VideosDataController.swift in Sources */,

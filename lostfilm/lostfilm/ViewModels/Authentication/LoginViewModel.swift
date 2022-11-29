@@ -6,7 +6,8 @@ protocol LoginViewModelProtocol: AnyObject {
     func didEnterPasswordTextFieldWithString(passwordViewString: String)
 }
 
-  final class LoginViewModel {
+final class LoginViewModel {
+    let debouncer = Debouncer(timeInterval: 0.5)
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
@@ -51,20 +52,26 @@ extension LoginViewModel: LoginViewModelProtocol {
         }
       }
 
-      func didEnterEmailTextFieldWithString(emailViewString: String) {
-          if Validators.email.validate(emailViewString) {
-            view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
+    func didEnterEmailTextFieldWithString(emailViewString: String) {
+        debouncer.handler = { [weak self] in
+            if Validators.email.validate(emailViewString) {
+                self?.view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
           } else {
-              view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+              self?.view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
           }
-      }
+        }
+        debouncer.renewInterval()
+    }
 
     func didEnterPasswordTextFieldWithString(passwordViewString: String) {
-        if Validators.password.validate(passwordViewString) {
-            view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
-        } else {
-            view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+        debouncer.handler = { [weak self] in
+            if Validators.password.validate(passwordViewString) {
+                self?.view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+            } else {
+                self?.view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+            }
         }
+        debouncer.renewInterval()
     }
 
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
