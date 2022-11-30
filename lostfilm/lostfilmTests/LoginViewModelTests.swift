@@ -208,45 +208,46 @@ class LoginViewModelTests: XCTestCase {
     // MARK: Validator
 
     // MARK: sendMessage Functionality
+
     func test_showEmailConfirmation() {
-            let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation")
-            delegate.didCallConfirmationMessage = { message in
-                XCTAssertEqual(message, ValidationConfirmation.validEmail)
-                sendEmailConfirmationMessage.fulfill()
-            }
-            sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
-            wait(for: [sendEmailConfirmationMessage], timeout: 0)
+        let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation")
+        delegate.didCallConfirmationMessage = { message in
+            XCTAssertEqual(message, ValidationConfirmation.validEmail)
+            sendEmailConfirmationMessage.fulfill()
+        }
+        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
+        wait(for: [sendEmailConfirmationMessage], timeout: 0)
     }
 
     func test_sendErrorEmailMessage() {
-            let sendEmailErrorMessage = XCTestExpectation(description: "sendEmailErrorMessage() expectation")
-            delegate.didCallEmailErrorMessage = { message in
-                XCTAssertEqual(message, ValidationError.invalidEmail.localizedDescription)
-                sendEmailErrorMessage.fulfill()
-            }
-            sut.didEnterEmailTextFieldWithString(emailViewString: "InvalidEmail")
-            wait(for: [sendEmailErrorMessage], timeout: 0)
+        let sendEmailErrorMessage = XCTestExpectation(description: "sendEmailErrorMessage() expectation")
+        delegate.didCallEmailErrorMessage = { message in
+            XCTAssertEqual(message, ValidationError.invalidEmail.localizedDescription)
+            sendEmailErrorMessage.fulfill()
         }
+        sut.didEnterEmailTextFieldWithString(emailViewString: "InvalidEmail")
+        wait(for: [sendEmailErrorMessage], timeout: 0)
+    }
 
     func test_sendConfirmationPasswordMessage() {
-            let sendPasswordConfirmationMessage = XCTestExpectation(description: "sendPasswordConfirmationMessage() expectation")
-            delegate.didCallPasswordConfirmationMessage = { message in
-                XCTAssertEqual(message, ValidationConfirmation.validPassword)
-                sendPasswordConfirmationMessage.fulfill()
-            }
-           sut.didEnterPasswordTextFieldWithString(passwordViewString: "ASPgo123")
-            wait(for: [sendPasswordConfirmationMessage], timeout: 0)
+        let sendPasswordConfirmationMessage = XCTestExpectation(description: "sendPasswordConfirmationMessage() expectation")
+        delegate.didCallPasswordConfirmationMessage = { message in
+            XCTAssertEqual(message, ValidationConfirmation.validPassword)
+            sendPasswordConfirmationMessage.fulfill()
         }
+        sut.didEnterPasswordTextFieldWithString(passwordViewString: "ASPgo123")
+        wait(for: [sendPasswordConfirmationMessage], timeout: 0)
+    }
 
     func test_sendPasswordErrorMessage() {
-            let sendPasswordErrorMessage = XCTestExpectation(description: "sendPasswordErrorMessage() expectation")
-            delegate.didCallPasswordErrorMessage = { message in
-                XCTAssertEqual(message, ValidationError.invalidPassword.localizedDescription)
-                sendPasswordErrorMessage.fulfill()
-            }
-            sut.didEnterPasswordTextFieldWithString(passwordViewString: "InvalidPassword")
-           wait(for: [sendPasswordErrorMessage], timeout: 0)
+        let sendPasswordErrorMessage = XCTestExpectation(description: "sendPasswordErrorMessage() expectation")
+        delegate.didCallPasswordErrorMessage = { message in
+            XCTAssertEqual(message, ValidationError.invalidPassword.localizedDescription)
+            sendPasswordErrorMessage.fulfill()
         }
+        sut.didEnterPasswordTextFieldWithString(passwordViewString: "InvalidPassword")
+        wait(for: [sendPasswordErrorMessage], timeout: 0)
+    }
 
     // MARK: Button isEnbaled
 

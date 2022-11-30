@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Debouncer: DebouncerProtocol {
+final class Debouncer: DebouncerProtocol {
 
     private let timeInterval: TimeInterval
     private var timer: Timer?

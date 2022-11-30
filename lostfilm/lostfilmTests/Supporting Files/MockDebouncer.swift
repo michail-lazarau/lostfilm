@@ -8,7 +8,7 @@
 @testable import lostfilm
 import Foundation
 
-class MockDebouncer: DebouncerProtocol {
+final class MockDebouncer: DebouncerProtocol {
     func debounce(handler: @escaping (() -> Void)) {
         handler()
     }
