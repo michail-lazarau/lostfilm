@@ -54,7 +54,8 @@ extension LoginViewModel: LoginViewModelProtocol {
                 view?.setButtonEnabled(false)
             }
         } else {
-            if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) &&
+                Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
                 view?.setButtonEnabled(true)
             } else {
                 view?.setButtonEnabled(false)
@@ -66,9 +67,9 @@ extension LoginViewModel: LoginViewModelProtocol {
         debouncer.debounce { [weak self] in
             if Validators.email.validate(emailViewString) {
                 self?.view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
-          } else {
-              self?.view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
-          }
+            } else {
+                self?.view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+            }
         }
     }
 
