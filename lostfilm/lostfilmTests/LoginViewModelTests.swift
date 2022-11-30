@@ -10,7 +10,7 @@ class LoginViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         router = DefaultRouterMock()
         delegate = LoginViewModelDelegateMock()
-        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router)
+        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router, debouncer: MockDebouncer())
         sut.view = delegate
     }
 
@@ -207,54 +207,46 @@ class LoginViewModelTests: XCTestCase {
 
     // MARK: sendMessage Functionality
     func test_showEmailConfirmation() {
-        sut.debouncer.handler  = { [weak self] in
             let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation")
-            self?.delegate.didCallConfirmationMessage = { message in
+            delegate.didCallConfirmationMessage = { message in
                 XCTAssertEqual(message, ValidationConfirmation.validEmail)
                 sendEmailConfirmationMessage.fulfill()
             }
-            self?.sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
-            self?.wait(for: [sendEmailConfirmationMessage], timeout: 0)
-        }
+            sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
+            wait(for: [sendEmailConfirmationMessage], timeout: 0)
     }
 
     func test_sendErrorEmailMessage() {
-        sut.debouncer.handler  = { [weak self] in
             let sendEmailErrorMessage = XCTestExpectation(description: "sendEmailErrorMessage() expectation")
-            self?.delegate.didCallEmailErrorMessage = { message in
+            delegate.didCallEmailErrorMessage = { message in
                 XCTAssertEqual(message, ValidationError.invalidEmail.localizedDescription)
                 sendEmailErrorMessage.fulfill()
             }
-            self?.sut.didEnterEmailTextFieldWithString(emailViewString: "InvalidEmail")
-            self?.wait(for: [sendEmailErrorMessage], timeout: 0)
+            sut.didEnterEmailTextFieldWithString(emailViewString: "InvalidEmail")
+            wait(for: [sendEmailErrorMessage], timeout: 0)
         }
 
-    }
-
     func test_sendConfirmationPasswordMessage() {
-        sut.debouncer.handler  = { [weak self] in
             let sendPasswordConfirmationMessage = XCTestExpectation(description: "sendPasswordConfirmationMessage() expectation")
-            self?.delegate.didCallPasswordConfirmationMessage = { message in
+            delegate.didCallPasswordConfirmationMessage = { message in
                 XCTAssertEqual(message, ValidationConfirmation.validPassword)
                 sendPasswordConfirmationMessage.fulfill()
             }
-            self?.sut.didEnterPasswordTextFieldWithString(passwordViewString: "ASPgo123")
-            self?.sut.debouncer.renewInterval()
-            self?.wait(for: [sendPasswordConfirmationMessage], timeout: 0)
+           sut.didEnterPasswordTextFieldWithString(passwordViewString: "ASPgo123")
+            wait(for: [sendPasswordConfirmationMessage], timeout: 0)
         }
-    }
+
 
     func test_sendPasswordErrorMessage() {
-        sut.debouncer.handler  = { [weak self] in
             let sendPasswordErrorMessage = XCTestExpectation(description: "sendPasswordErrorMessage() expectation")
-            self?.delegate.didCallPasswordErrorMessage = { message in
+            delegate.didCallPasswordErrorMessage = { message in
                 XCTAssertEqual(message, ValidationError.invalidPassword.localizedDescription)
                 sendPasswordErrorMessage.fulfill()
             }
-            self?.sut.didEnterPasswordTextFieldWithString(passwordViewString: "InvalidPassword")
-            self?.wait(for: [sendPasswordErrorMessage], timeout: 0)
+            sut.didEnterPasswordTextFieldWithString(passwordViewString: "InvalidPassword")
+           wait(for: [sendPasswordErrorMessage], timeout: 0)
         }
-    }
+
 
     // MARK: Button isEnbaled
 

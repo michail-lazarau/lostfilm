@@ -15,6 +15,8 @@
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
+		C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B522936416F00EB7E9A /* MockDebouncer.swift */; };
+		C5905B552936424D00EB7E9A /* DebouncerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */; };
 		C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D4BE2934D4E100C6D393 /* Debouncer.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
@@ -271,6 +273,8 @@
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		C5905B522936416F00EB7E9A /* MockDebouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDebouncer.swift; sourceTree = "<group>"; };
+		C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncerProtocol.swift; sourceTree = "<group>"; };
 		C596D4BE2934D4E100C6D393 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -830,6 +834,7 @@
 				F721B88528B7A1ED00D521D0 /* ProtocolsForCells */,
 				F721B88228B7A08100D521D0 /* LoadingProtocolsForViewModels */,
 				F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */,
+				C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1093,6 +1098,7 @@
 				F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */,
 				F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */,
 				F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */,
+				C5905B522936416F00EB7E9A /* MockDebouncer.swift */,
 				F773D2C228FC92FA00B20C75 /* LoginViewModelDelegateMock.swift */,
 				F7AD60E92921AB0300184FA5 /* DefaultRouterMock.swift */,
 			);
@@ -1788,6 +1794,7 @@
 				F7471DE427AABB1D00BDA17A /* VMseriesDetailPremiereDateItem.swift in Sources */,
 				C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */,
 				F76BEDD728AD3A4E00A4B33E /* ILoadingDataByPage.swift in Sources */,
+				C5905B552936424D00EB7E9A /* DebouncerProtocol.swift in Sources */,
 				F7FFB18128E5C41F00334400 /* LoginViewModel.swift in Sources */,
 				F7997CD2276FBAE700DFCC19 /* VideosDataController.swift in Sources */,
 				F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */,
@@ -1975,6 +1982,7 @@
 				C500DC80292BEB570002ABD4 /* ValidatorTest.swift in Sources */,
 				F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */,
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
+				C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */,
 				F7AD60EA2921AB0300184FA5 /* DefaultRouterMock.swift in Sources */,
 				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
 				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,

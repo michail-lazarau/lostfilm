@@ -7,7 +7,6 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 final class LoginViewModel {
-    let debouncer = Debouncer(timeInterval: 0.5)
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
@@ -15,10 +14,12 @@ final class LoginViewModel {
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
     let dataProvider: LoginServiceProtocol
-
-    init(dataProvider: LoginServiceProtocol, router: Routes) {
+    private let debouncer: DebouncerProtocol
+    
+    init(dataProvider: LoginServiceProtocol, router: Routes, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
+        self.debouncer = debouncer
     }
 
     func login(email: String, password: String, captcha: String?) {
@@ -53,26 +54,22 @@ extension LoginViewModel: LoginViewModelProtocol {
       }
 
     func didEnterEmailTextFieldWithString(emailViewString: String) {
-        debouncer.handler = { [weak self] in
+        debouncer.debounce { [weak self] in
             if Validators.email.validate(emailViewString) {
                 self?.view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
           } else {
               self?.view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
           }
         }
-        debouncer.renewInterval()
-    }
+        }
 
     func didEnterPasswordTextFieldWithString(passwordViewString: String) {
-        debouncer.handler = { [weak self] in
             if Validators.password.validate(passwordViewString) {
-                self?.view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+                self.view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
             } else {
-                self?.view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+                self.view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
             }
         }
-        debouncer.renewInterval()
-    }
 
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
