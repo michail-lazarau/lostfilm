@@ -61,15 +61,17 @@ extension LoginViewModel: LoginViewModelProtocol {
               self?.view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
           }
         }
-        }
+    }
 
     func didEnterPasswordTextFieldWithString(passwordViewString: String) {
+        debouncer.debounce { [weak self] in
             if Validators.password.validate(passwordViewString) {
-                self.view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+                self?.view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
             } else {
-                self.view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+                self?.view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
             }
         }
+    }
 
     func checkForCaptcha(htmlParserWrapper: DVHtmlToModels, email: String, password: String, captcha: String?) {
         dataProvider.getLoginPage(htmlParserWrapper: htmlParserWrapper) { [weak self] result in
