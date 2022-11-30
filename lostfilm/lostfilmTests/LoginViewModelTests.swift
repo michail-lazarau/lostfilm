@@ -237,7 +237,7 @@ class LoginViewModelTests: XCTestCase {
            sut.didEnterPasswordTextFieldWithString(passwordViewString: "ASPgo123")
             wait(for: [sendPasswordConfirmationMessage], timeout: 0)
         }
-    
+
     func test_sendPasswordErrorMessage() {
             let sendPasswordErrorMessage = XCTestExpectation(description: "sendPasswordErrorMessage() expectation")
             delegate.didCallPasswordErrorMessage = { message in
