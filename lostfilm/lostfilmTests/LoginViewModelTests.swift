@@ -236,7 +236,6 @@ class LoginViewModelTests: XCTestCase {
             wait(for: [sendPasswordConfirmationMessage], timeout: 0)
         }
 
-
     func test_sendPasswordErrorMessage() {
             let sendPasswordErrorMessage = XCTestExpectation(description: "sendPasswordErrorMessage() expectation")
             delegate.didCallPasswordErrorMessage = { message in

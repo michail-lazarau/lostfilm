@@ -7,8 +7,6 @@
 
 import Foundation
 
-
 protocol DebouncerProtocol {
-    // add debounce func  и передать клоужер bounds как параметр функции
     func debounce(handler: @escaping (() -> Void))
 }

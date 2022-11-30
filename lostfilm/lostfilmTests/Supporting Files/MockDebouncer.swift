@@ -9,9 +9,7 @@
 import Foundation
 
 class MockDebouncer: DebouncerProtocol {
-
     func debounce(handler: @escaping (() -> Void)) {
         handler()
     }
-    
 }

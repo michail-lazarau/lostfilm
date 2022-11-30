@@ -15,7 +15,7 @@ final class LoginViewModel {
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
     let dataProvider: LoginServiceProtocol
     private let debouncer: DebouncerProtocol
-    
+
     init(dataProvider: LoginServiceProtocol, router: Routes, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
