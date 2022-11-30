@@ -2,6 +2,8 @@
 import XCTest
 
 class LoginViewModelTests: XCTestCase {
+
+    // MARK: Variables
     typealias Credentials = (email: String, password: String, captcha: String?)
     var sut: LoginViewModel!
     var delegate: LoginViewModelDelegateMock!
@@ -20,7 +22,7 @@ class LoginViewModelTests: XCTestCase {
         router = nil
     }
 
-    // MARK: captcha
+    // MARK: Captcha
 
     func test_negative_showErrorForCaptchaCheck() throws {
         let mockUrlForGetLoginPageFunc = "mock"
@@ -235,7 +237,7 @@ class LoginViewModelTests: XCTestCase {
            sut.didEnterPasswordTextFieldWithString(passwordViewString: "ASPgo123")
             wait(for: [sendPasswordConfirmationMessage], timeout: 0)
         }
-
+    
     func test_sendPasswordErrorMessage() {
             let sendPasswordErrorMessage = XCTestExpectation(description: "sendPasswordErrorMessage() expectation")
             delegate.didCallPasswordErrorMessage = { message in
@@ -245,7 +247,6 @@ class LoginViewModelTests: XCTestCase {
             sut.didEnterPasswordTextFieldWithString(passwordViewString: "InvalidPassword")
            wait(for: [sendPasswordErrorMessage], timeout: 0)
         }
-
 
     // MARK: Button isEnbaled
 

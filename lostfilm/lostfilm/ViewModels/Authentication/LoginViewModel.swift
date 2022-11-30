@@ -7,6 +7,9 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 final class LoginViewModel {
+
+    // MARK: Variables
+
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
@@ -16,11 +19,15 @@ final class LoginViewModel {
     let dataProvider: LoginServiceProtocol
     private let debouncer: DebouncerProtocol
 
+    // MARK: Lifecycle
+
     init(dataProvider: LoginServiceProtocol, router: Routes, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
         self.debouncer = debouncer
     }
+
+    // MARK: Functions
 
     func login(email: String, password: String, captcha: String?) {
         if !(captchaModel?.captchaIsRequired ?? false) {
@@ -34,6 +41,8 @@ final class LoginViewModel {
         router.dismiss()
     }
 }
+
+// MARK: Extension
 
 extension LoginViewModel: LoginViewModelProtocol {
 
