@@ -1,14 +1,7 @@
 import Foundation
 
-class TVSeriesDataController: TemplateDataController<LFSeriesModel> {
+class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDelegate {
     var savedFilters: [LFSeriesFilterBaseModel] = []
-    typealias Routes = LoginRoute
-    private(set) var router: Routes?
-
-    init(router: Routes) {
-        super.init()
-        self.router = router
-    }
 
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
         let apiHelper = LFApplicationHelper.shared
@@ -47,9 +40,5 @@ class TVSeriesDataController: TemplateDataController<LFSeriesModel> {
 //        return groupByKey.reduce(into: [String : String]()) { partialResult, tuple in
 //            partialResult.updateValue(tuple.value.map{$0.value}.joined(separator: ","), forKey: tuple.key)
 //        }
-    }
-
-    func openLogin() {
-        router?.openLogin()
     }
 }

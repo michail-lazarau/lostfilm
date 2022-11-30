@@ -3,6 +3,13 @@ import UIKit
 class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable, DataModel: LFJsonObject {
     fileprivate let tableFooterHeight: CGFloat = 50
 
+    private let profileButton: UIBarButtonItem = {
+        if let username = UserSessionService.username, UserSessionService.authorised() {
+            return UIBarButtonItem(customView: ProfileButton(title: username, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
+        }
+        return UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: nil, action: nil)
+    }()
+
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
@@ -28,6 +35,9 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewController()
+
+        (UIApplication.shared.windows.first?.rootViewController as? TabBarRootController)?.profileButton.target = self // FIXME: checkout
+        (UIApplication.shared.windows.first?.rootViewController as? TabBarRootController)?.profileButton.action = #selector(DidShowLoginPage)
     }
 
     func setupTableViewController() {
@@ -47,6 +57,10 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         tableView.reloadData()
         dataSource?.LoadingData()
         sender.endRefreshing()
+    }
+
+    @objc func DidShowLoginPage() {
+        dataSource?.openLogin()
     }
 
     func updateUIForTableWith(rowsRange: Range<Int>) {
@@ -101,6 +115,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         let deltaOffset = maximumOffset - currentOffset
         if deltaOffset <= 0 {
             spinner.startAnimating() // MARK: must be inside the loadingData() to follow the looped calling
+
             dataSource?.LoadingData()
         }
     }

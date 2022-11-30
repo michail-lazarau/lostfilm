@@ -1,63 +1,54 @@
 import UIKit
 
-class TabBarRootController: UITabBarController {
-//    typealias Routes = LoginRoute
-//    private var router: Routes?
-//
-//    init(router: Routes) {
-//        self.router = router
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
+class TabBarRootController: UITabBarController, UserProfileDelegate {
+
+    let profileButton: UIBarButtonItem = {
+        if let username = UserSessionService.username, UserSessionService.authorised() {
+            return UIBarButtonItem(customView: ProfileButton(title: username, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
+        }
+        return UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: nil, action: nil)
+    }()
+
+    func drawProfileButton(username: String) {
+        let title = username.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
+            partialResult.append(substring.first?.uppercased() ?? "?")
+        }
+        profileButton.customView = ProfileButton(title: title, titleColor: UIColor.white, backgroundColor: UIColor(named: "button"))
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
 
-        let newsVC = NewsTVC(style: .plain, dataController: NewsDataController())
-        let newsNC = UINavigationController(rootViewController: newsVC)
-        newsNC.navigationBar.prefersLargeTitles = true
-        let videosVC = VideosTVC(style: .plain, dataController: VideosDataController())
-        let videosNC = UINavigationController(rootViewController: videosVC)
-        videosNC.navigationBar.prefersLargeTitles = true
-        let newEpisodesVC = NewEpisodesTVC(style: .plain, dataController: NewEpisodesDataController())
-        let newEpisodesNC = UINavigationController(rootViewController: newEpisodesVC)
-        newEpisodesNC.navigationBar.prefersLargeTitles = true
-        let scheduleVC = ScheduleTVC(style: .grouped, dataController: ScheduleDataController())
-        let scheduleNC = UINavigationController(rootViewController: scheduleVC)
-        scheduleNC.navigationBar.prefersLargeTitles = true
+        let seriesVC = TVSeriesTVC(style: .plain, dataController: TVSeriesDataController(router: DefaultRouter(rootTransition: EmptyTransition())))
+        let newsVC = NewsTVC(style: .plain, dataController: NewsDataController(router: DefaultRouter(rootTransition: EmptyTransition())))
+        let videosVC = VideosTVC(style: .plain, dataController: VideosDataController(router: DefaultRouter(rootTransition: EmptyTransition())))
+        let newEpisodesVC = NewEpisodesTVC(style: .plain, dataController: NewEpisodesDataController(router: DefaultRouter(rootTransition: EmptyTransition())))
+        let scheduleVC = ScheduleTVC(style: .grouped, dataController: ScheduleDataController(router: DefaultRouter(rootTransition: EmptyTransition())))
 
-        newsVC.tabBarItem = Tabs.news.item
-        videosVC.tabBarItem = Tabs.videos.item
-        newEpisodesVC.tabBarItem = Tabs.newEpisodes.item
-        scheduleVC.tabBarItem = Tabs.schedule.item
-
-        viewControllers = [makeSeriesTab(), newsNC, videosNC, newEpisodesNC, scheduleNC]
+        viewControllers = [makeTab(tab: Tabs.series.item, viewController: seriesVC),
+                           makeTab(tab: Tabs.news.item, viewController: newsVC),
+                           makeTab(tab: Tabs.videos.item, viewController: videosVC),
+                           makeTab(tab: Tabs.newEpisodes.item, viewController: newEpisodesVC),
+                           makeTab(tab: Tabs.schedule.item, viewController: scheduleVC)]
     }
 
-    private func makeSeriesTab() -> UIViewController {
-        // No transitions since these are managed by the TabBarController
-        let router = DefaultRouter(rootTransition: EmptyTransition())
-        let tvSeriesVC = TVSeriesTVC(style: .plain, dataController: TVSeriesDataController(router: router))
-        router.root = tvSeriesVC
-
-        return tvSeriesVC.makeTab(tab: Tabs.series.item)
+    private func makeTab(tab: UITabBarItem, viewController: TemplateTVC<some CellConfigurable, some LFJsonObject>) -> UIViewController {
+        (viewController.dataSource?.router as? Router)?.root = viewController
+        viewController.navigationItem.rightBarButtonItems = [profileButton]
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem = tab
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
     }
 
-//    func openLogin() {
-//        router?.openLogin()
-//    }
-}
-
-fileprivate extension UIViewController {
-    func makeTab(tab: UITabBarItem) -> UIViewController {
-        let tvSeriesNC = UINavigationController(rootViewController: self)
-        tvSeriesNC.tabBarItem = tab
-        tvSeriesNC.navigationBar.prefersLargeTitles = true
-        return tvSeriesNC
+    private func makeTab(tab: UITabBarItem, viewController: ScheduleTVC) -> UIViewController {
+        (viewController.dataSource?.router as? Router)?.root = viewController
+        viewController.navigationItem.rightBarButtonItems = [profileButton]
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem = tab
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
     }
 }
 

@@ -1,6 +1,8 @@
 import Foundation
 
 class TemplateDataController<DataModel> where DataModel: LFJsonObject {
+    typealias Routes = LoginRoute
+    private(set) var router: Routes?
     weak var delegate: DataControllerDelegate?
     var isLoading: Bool = false
     private var itemList: [DataModel] = []
@@ -9,8 +11,8 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
         itemList.count
     }
 
-    init() {
-        // empty
+    init(router: Routes) {
+        self.router = router
     }
 
     func LoadingData() {
@@ -52,5 +54,9 @@ extension TemplateDataController {
     func DidEmptyItemList() {
         itemList.removeAll()
         currentPage = 0
+    }
+
+    func openLogin() {
+        router?.openLogin()
     }
 }

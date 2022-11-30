@@ -1,10 +1,7 @@
 import UIKit
 
-class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, UserProfileDelegate {
+class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
-    private lazy var profileButton: UIBarButtonItem = {
-        return UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(DidShowLoginPage))
-    }()
 
     override internal var tableCellHeight: CGFloat {
         return 175
@@ -13,10 +10,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, UserProfileDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "TV Series"
-        navigationItem.rightBarButtonItems = [
-            profileButton,
-            UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
-        ]
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "magnifying_glass"), style: .plain, target: self, action: #selector(DidShowGlobalSearch))
     }
 
@@ -28,15 +22,6 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, UserProfileDelega
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    func updateProfileButton(username: String) {
-        // проверка на токен
-        profileButton.image = nil
-        profileButton.title = username.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
-            return partialResult.append(substring.first?.uppercased() ?? "?")
-        }
-        (profileButton.value(forKey: "view") as? UIView)?.backgroundColor = UIColor(named: "button")
-    }
-
     @objc private func DidShowFilters() {
         guard let dataSource = dataSource as? TVSeriesDataController & FilteringDelegate else {
             return
@@ -46,12 +31,6 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, UserProfileDelega
         let navController = FilteringNavigationController(rootViewController: filteringTVC)
         filteringTVC.filteringDelegate = dataSource
         present(navController, animated: true)
-    }
-
-    @objc private func DidShowLoginPage() {
-        (dataSource as? TVSeriesDataController)?.openLogin()
-        
-//        ((dataSource as? TVSeriesDataController)?.router as? DefaultRouter)?.root
     }
 
     @objc private func DidShowGlobalSearch() {

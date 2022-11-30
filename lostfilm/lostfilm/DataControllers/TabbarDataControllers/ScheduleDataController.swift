@@ -1,11 +1,17 @@
 import Foundation
 
 class ScheduleDataController {
+    typealias Routes = LoginRoute
+    private(set) var router: Routes?
     weak var delegate: IUpdatingViewDelegate?
     private var itemList: [[LFEpisodeModel]] = Array(repeating: [], count: 5)
     private var isLoading: Bool = false
     var sectionsCount: Int {
         itemList.count
+    }
+
+    init(router: Routes) {
+        self.router = router
     }
 
     private let sections: [ScheduleDateInterval] = [.today, .tomorrow, .thisWeek, .nextWeek, .later]

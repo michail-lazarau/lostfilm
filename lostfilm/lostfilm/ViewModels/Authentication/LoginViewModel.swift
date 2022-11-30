@@ -9,6 +9,7 @@ protocol LoginViewModelProtocol: AnyObject {
   final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
+      // FIXME: check out before the merge. private router?
     let router: Routes
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
