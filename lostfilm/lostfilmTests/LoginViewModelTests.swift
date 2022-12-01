@@ -2,6 +2,8 @@
 import XCTest
 
 class LoginViewModelTests: XCTestCase {
+
+    // MARK: Variables
     typealias Credentials = (email: String, password: String, captcha: String?)
     var sut: LoginViewModel!
     var delegate: LoginViewModelDelegateMock!
@@ -10,7 +12,7 @@ class LoginViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         router = DefaultRouterMock()
         delegate = LoginViewModelDelegateMock()
-        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router)
+        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router, debouncer: MockDebouncer())
         sut.view = delegate
     }
 
@@ -20,7 +22,7 @@ class LoginViewModelTests: XCTestCase {
         router = nil
     }
 
-    // MARK: captcha
+    // MARK: Captcha
 
     func test_negative_showErrorForCaptchaCheck() throws {
         let mockUrlForGetLoginPageFunc = "mock"
@@ -206,14 +208,15 @@ class LoginViewModelTests: XCTestCase {
     // MARK: Validator
 
     // MARK: sendMessage Functionality
+
     func test_showEmailConfirmation() {
         let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation")
         delegate.didCallConfirmationMessage = { message in
             XCTAssertEqual(message, ValidationConfirmation.validEmail)
             sendEmailConfirmationMessage.fulfill()
         }
-         sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
-         wait(for: [sendEmailConfirmationMessage], timeout: 0)
+        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
+        wait(for: [sendEmailConfirmationMessage], timeout: 0)
     }
 
     func test_sendErrorEmailMessage() {
@@ -223,7 +226,7 @@ class LoginViewModelTests: XCTestCase {
             sendEmailErrorMessage.fulfill()
         }
         sut.didEnterEmailTextFieldWithString(emailViewString: "InvalidEmail")
-        wait(for: [sendEmailErrorMessage], timeout: 1)
+        wait(for: [sendEmailErrorMessage], timeout: 0)
     }
 
     func test_sendConfirmationPasswordMessage() {
