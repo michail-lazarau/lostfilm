@@ -9,7 +9,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = TabBarRootController()
+        let router = DefaultRouter(rootTransition: EmptyTransition())
+        let tabBarRootVC = TabBarRootController(router: router, userSessionInfo: UserSessionInfo())
+        router.root = tabBarRootVC
+        window?.rootViewController = tabBarRootVC
         window?.makeKeyAndVisible()
     }
 

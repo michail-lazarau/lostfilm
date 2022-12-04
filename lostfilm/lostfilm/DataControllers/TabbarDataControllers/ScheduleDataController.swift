@@ -1,8 +1,8 @@
 import Foundation
 
 class ScheduleDataController {
-    typealias Routes = LoginRoute
-    private(set) var router: Routes?
+    typealias Routes = Router // TODO: amend later
+    private let router: Routes
     weak var delegate: IUpdatingViewDelegate?
     private var itemList: [[LFEpisodeModel]] = Array(repeating: [], count: 5)
     private var isLoading: Bool = false

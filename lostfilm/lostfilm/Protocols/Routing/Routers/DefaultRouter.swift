@@ -49,4 +49,4 @@ class DefaultRouter: NSObject, Router, Closable, Dismissable {
     }
 }
 
-extension DefaultRouter: LoginRoute {}
+extension DefaultRouter: LoginRoute, TabRoute {}

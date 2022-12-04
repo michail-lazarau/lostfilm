@@ -11,10 +11,8 @@ class NewsTVC: TemplateTVC<NewsViewCell, LFNewsModel> {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let dataSource = dataSource {
-            let vm = NewsDetailsVM(dataProvider: NewsDetailsDataProvider(modelId: dataSource[indexPath.row].id))
-            navigationController?.pushViewController(NewsDetailsTVC(style: .plain, viewModel: vm), animated: true)
-        }
+        let vm = NewsDetailsVM(dataProvider: NewsDetailsDataProvider(modelId: dataController[indexPath.row].id))
+        navigationController?.pushViewController(NewsDetailsTVC(style: .plain, viewModel: vm), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

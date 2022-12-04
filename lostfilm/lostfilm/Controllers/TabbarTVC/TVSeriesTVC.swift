@@ -15,21 +15,19 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let dataSource = dataSource {
-            navigationController?.delegate = customNavigationControllerDelegate
-            navigationController?.pushViewController(LFSeriesDetailsVC(model: dataSource[indexPath.row]), animated: true)
-        }
+        navigationController?.delegate = customNavigationControllerDelegate
+        navigationController?.pushViewController(LFSeriesDetailsVC(model: dataController[indexPath.row]), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     @objc private func DidShowFilters() {
-        guard let dataSource = dataSource as? TVSeriesDataController & FilteringDelegate else {
+        guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {
             return
         }
 
-        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataSource)
+        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataController)
         let navController = FilteringNavigationController(rootViewController: filteringTVC)
-        filteringTVC.filteringDelegate = dataSource
+        filteringTVC.filteringDelegate = dataController
         present(navController, animated: true)
     }
 

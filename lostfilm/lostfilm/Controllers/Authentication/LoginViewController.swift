@@ -11,7 +11,6 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     // MARK: Variables
-    weak var userProfileDelegate: UserProfileDelegate?
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -311,13 +310,11 @@ extension LoginViewController: LoginViewProtocol {
     func authorise(username: String) {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
-            UserDefaults.standard.set(username, forKey: "lf_username")
             if let self = self {
+                // FIXME: dirty but it does the job
+                (self.navigationController?.presentingViewController as? TabBarRootController)?.resetProfileButton(username: username)
                 let alert = self.makeAlertController(message: "Welcome, \(username)", continueAction: {
                     self.viewModel.dismissLoginScreen()
-                    // перенеси присваивание делегата в другое место?
-                    self.userProfileDelegate = (UIApplication.shared.windows.first?.rootViewController as? UserProfileDelegate) // FIXME: put in another place
-                    self.userProfileDelegate?.drawProfileButton(username: username)
                 })
                 self.present(alert, animated: true)
             }
