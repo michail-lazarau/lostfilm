@@ -144,6 +144,7 @@ extension TextFieldView {
         dividerView.anchor(top: textFieldIcon.bottomAnchor, left: textFieldIcon.rightAnchor, bottom: errorLabel.topAnchor, right: passwordButton.leftAnchor, height: 0.75)
 
         errorLabel.anchor(top: dividerView.bottomAnchor, left: textFieldIcon.rightAnchor, right: passwordButton.leftAnchor)
+
         textFieldIcon.setDimensions(width: 25, height: 25)
         passwordButton.setDimensions(width: 25, height: 25)
 
