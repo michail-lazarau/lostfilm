@@ -7,7 +7,6 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 final class LoginViewModel {
-
     // MARK: Variables
 
     typealias Captcha = LFLoginPageModel
@@ -19,7 +18,7 @@ final class LoginViewModel {
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
-    
+
     init(dataProvider: LoginServiceProtocol, router: Routes, userSessionData: UserSessionService, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
@@ -28,7 +27,7 @@ final class LoginViewModel {
     }
 
     // MARK: Functions
-    
+
     func login(email: String, password: String, captcha: String?) {
         if !(captchaModel?.captchaIsRequired ?? false) {
             checkForCaptcha(htmlParserWrapper: htmlParserWrapper, email: email, password: password, captcha: captcha)
@@ -101,6 +100,7 @@ extension LoginViewModel: LoginViewModelProtocol {
             }
         }
     }
+
     func renderCaptcha(url: URL) {
         view?.prepareCaptchaToUpdate()
         dataProvider.getCaptcha(url: url) { [view] result in

@@ -11,6 +11,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     // MARK: Variables
+
     private let viewModel: LoginViewModel
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
@@ -65,6 +66,7 @@ final class LoginViewController: UIViewController {
     }()
 
     // MARK: Inits
+
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -75,6 +77,7 @@ final class LoginViewController: UIViewController {
     }
 
     // MARK: Functions
+
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(scrollView)
@@ -113,7 +116,8 @@ final class LoginViewController: UIViewController {
     }
 }
 
-    // MARK: Extension
+// MARK: Extension
+
 extension LoginViewController {
     func setupTextFields() {
         emailView.configureInputField(on: .name)
@@ -209,8 +213,8 @@ extension LoginViewController {
         } else if sender == passwordView.textField {
             didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
         }
-            checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
-      }
+        checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+    }
 
     private func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -262,7 +266,6 @@ extension LoginViewController: LoginViewProtocol {
         DispatchQueue.main.async { [weak loginButton] in
             loginButton?.isEnabled = isEnable
         }
-
     }
 
     func removeLoadingIndicator() {
@@ -321,7 +324,6 @@ extension LoginViewController: LoginViewProtocol {
 }
 
 extension LoginViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailView.textField:
