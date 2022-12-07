@@ -7,21 +7,28 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 final class LoginViewModel {
+
+    // MARK: Variables
+
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
     private let dataProvider: LoginServiceProtocol
     private weak var userSessionData: UserSessionService?
+    private let debouncer: DebouncerProtocol
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
-
-    init(dataProvider: LoginServiceProtocol, router: Routes, userSessionData: UserSessionService) {
+    
+    init(dataProvider: LoginServiceProtocol, router: Routes, userSessionData: UserSessionService, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
         self.userSessionData = userSessionData
+        self.debouncer = debouncer
     }
 
+    // MARK: Functions
+    
     func login(email: String, password: String, captcha: String?) {
         if !(captchaModel?.captchaIsRequired ?? false) {
             checkForCaptcha(htmlParserWrapper: htmlParserWrapper, email: email, password: password, captcha: captcha)
@@ -34,6 +41,8 @@ final class LoginViewModel {
         router.dismiss()
     }
 }
+
+// MARK: Extension
 
 extension LoginViewModel: LoginViewModelProtocol {
     func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
@@ -53,18 +62,22 @@ extension LoginViewModel: LoginViewModelProtocol {
     }
 
     func didEnterEmailTextFieldWithString(emailViewString: String) {
-        if Validators.email.validate(emailViewString) {
-            view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
-        } else {
-            view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+        debouncer.debounce { [weak self] in
+            if Validators.email.validate(emailViewString) {
+                self?.view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
+            } else {
+                self?.view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+            }
         }
     }
 
     func didEnterPasswordTextFieldWithString(passwordViewString: String) {
-        if Validators.password.validate(passwordViewString) {
-            view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
-        } else {
-            view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+        debouncer.debounce { [weak self] in
+            if Validators.password.validate(passwordViewString) {
+                self?.view?.sendPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+            } else {
+                self?.view?.sendPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+            }
         }
     }
 
@@ -88,7 +101,6 @@ extension LoginViewModel: LoginViewModelProtocol {
             }
         }
     }
-
     func renderCaptcha(url: URL) {
         view?.prepareCaptchaToUpdate()
         dataProvider.getCaptcha(url: url) { [view] result in

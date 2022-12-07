@@ -9,7 +9,7 @@ class LoginViewModelDelegateMock: LoginViewProtocol {
     var updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
     var removeLoadingIndicatorFuncExpectation = XCTestExpectation(description: "removeLoadingIndicator() expectation")
     var prepareCaptchaToUpdateFuncExpectation = XCTestExpectation(description: "prepareCaptchaToUpdate() expectation")
-    var hideCaptchaWhenFailedToLoadFuncExpectation = XCTestExpectation(description: "hideCaptchaWhenFailedToLoad() expectation") //  описание нужно для дебага 
+    var hideCaptchaWhenFailedToLoadFuncExpectation = XCTestExpectation(description: "hideCaptchaWhenFailedToLoad() expectation")
 
     var didCallConfirmationMessage: ((String) -> Void)?
     var didCallEmailErrorMessage: ((String) -> Void)?

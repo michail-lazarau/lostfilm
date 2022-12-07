@@ -51,7 +51,7 @@ enum Texts {
 
     enum ValidationErrors {
         static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
-        static let invalidPassword = NSLocalizedString("InvalidPassword", comment: "")
+        static let invalidPassword = NSLocalizedString(" Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
     }
 }
 

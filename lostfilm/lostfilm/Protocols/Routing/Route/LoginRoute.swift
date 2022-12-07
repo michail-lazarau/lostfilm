@@ -7,7 +7,8 @@ protocol LoginRoute {
 extension LoginRoute where Self: Router {
     func openLogin(with transition: Transition, userSessionData: UserSessionService) {
         let router = DefaultRouter(rootTransition: transition)
-        let viewModel = LoginViewModel(dataProvider: LoginService(session: URLSession.shared), router: router, userSessionData: userSessionData)
+        let debouncer = Debouncer(timeInterval: 0.5)
+        let viewModel = LoginViewModel(dataProvider: LoginService(session: URLSession.shared), router: router, userSessionData: userSessionData, debouncer: debouncer)
         let viewController = LoginViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         router.root = viewController
