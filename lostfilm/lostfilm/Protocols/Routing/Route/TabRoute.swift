@@ -2,6 +2,7 @@ import Foundation
 
 protocol TabRoute {
     func makeTab(for tab: Tabs, router: DefaultRouter, rightBarButtonItems: [UIBarButtonItem]) -> UINavigationController
+//    func makeTab(for tab: Tabs, router: DefaultRouter) -> UINavigationController
 }
 
 extension TabRoute where Self: Router {
@@ -31,6 +32,14 @@ extension TabRoute where Self: Router {
         navController.navigationBar.prefersLargeTitles = true
         return navController
     }
+
+//    func makeTab(for tab: Tabs, router: DefaultRouter) -> UINavigationController {
+//        let viewController = makeViewController(for: tab, router: router)
+//        let navController = UINavigationController(rootViewController: viewController)
+//        navController.tabBarItem = tab.item
+//        navController.navigationBar.prefersLargeTitles = true
+//        return navController
+//    }
 }
 
 enum Tabs: Int {

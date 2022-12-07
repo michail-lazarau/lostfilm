@@ -2,7 +2,6 @@ import UIKit
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
-
     override internal var tableCellHeight: CGFloat {
         return 175
     }

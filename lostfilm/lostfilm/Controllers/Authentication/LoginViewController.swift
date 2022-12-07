@@ -311,8 +311,6 @@ extension LoginViewController: LoginViewProtocol {
         // TODO: localisation
         DispatchQueue.main.async { [weak self] in
             if let self = self {
-                // FIXME: dirty but it does the job
-                (self.navigationController?.presentingViewController as? TabBarRootController)?.resetProfileButton(username: username)
                 let alert = self.makeAlertController(message: "Welcome, \(username)", continueAction: {
                     self.viewModel.dismissLoginScreen()
                 })

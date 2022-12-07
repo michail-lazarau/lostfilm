@@ -1,29 +1,38 @@
 import Foundation
 
-protocol UserSessionService {
-    var username: String? { get }
-    func authorised() -> Bool
-    func willSaveToUserDefaults(key: UserProperties, value: Any?)
+protocol UserSessionService: AnyObject {
+    var username: String? { get set }
+    func isAuthorised() -> Bool
 }
 
-class UserSessionInfo: UserSessionService {
+class UserSessionStoredData: UserSessionService {
+    private var _username: String?
     var username: String? {
-        return UserDefaults.standard.object(forKey: UserProperties.username.rawValue) as? String
+        get {
+            return _username ?? UserDefaults.standard.object(forKey: UserProperties.username.rawValue) as? String
+        }
+        set {
+            _username = newValue
+            saveToUserDefaults(key: .username, value: newValue)
+        }
     }
 
-    func authorised() -> Bool {
+    func isAuthorised() -> Bool {
         guard let url = URL(string: "https://www.lostfilm.tv"), let cookies = HTTPCookieStorage.shared.cookies(for: url) else {
             return false
         }
-        return cookies.contains { $0.name == UserProperties.session.rawValue }
+        return cookies.contains { $0.name == SessionProperties.session.rawValue }
     }
 
-    func willSaveToUserDefaults(key: UserProperties, value: Any?) {
+    private func saveToUserDefaults(key: UserProperties, value: Any?) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 }
 
-enum UserProperties: String {
+private enum UserProperties: String {
     case username = "lf_username"
-    case session = "lf_session"
+}
+
+private enum SessionProperties: String {
+case session = "lf_session"
 }

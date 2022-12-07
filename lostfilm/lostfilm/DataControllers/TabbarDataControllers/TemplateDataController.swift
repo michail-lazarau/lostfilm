@@ -1,7 +1,7 @@
 import Foundation
 
 class TemplateDataController<DataModel> where DataModel: LFJsonObject {
-    typealias Routes = Router // TODO: amend later
+    typealias Routes = LoginRoute
     private(set) var router: Routes
     weak var delegate: DataControllerDelegate?
     var isLoading: Bool = false

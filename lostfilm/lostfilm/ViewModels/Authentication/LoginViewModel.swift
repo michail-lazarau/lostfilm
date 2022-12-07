@@ -6,18 +6,20 @@ protocol LoginViewModelProtocol: AnyObject {
     func didEnterPasswordTextFieldWithString(passwordViewString: String)
 }
 
-  final class LoginViewModel {
+final class LoginViewModel {
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
+    private let dataProvider: LoginServiceProtocol
+    private weak var userSessionData: UserSessionService?
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
-    let dataProvider: LoginServiceProtocol
 
-    init(dataProvider: LoginServiceProtocol, router: Routes) {
+    init(dataProvider: LoginServiceProtocol, router: Routes, userSessionData: UserSessionService) {
         self.dataProvider = dataProvider
         self.router = router
+        self.userSessionData = userSessionData
     }
 
     func login(email: String, password: String, captcha: String?) {
@@ -34,7 +36,6 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 extension LoginViewModel: LoginViewModelProtocol {
-
     func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
         if isCaptchaHidden {
             if !emailViewString.isEmpty && !passwordViewString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
@@ -43,21 +44,21 @@ extension LoginViewModel: LoginViewModelProtocol {
                 view?.setButtonEnabled(false)
             }
         } else {
-            if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
+            if !emailViewString.isEmpty && !passwordViewString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
                 view?.setButtonEnabled(true)
             } else {
                 view?.setButtonEnabled(false)
             }
         }
-      }
+    }
 
-      func didEnterEmailTextFieldWithString(emailViewString: String) {
-          if Validators.email.validate(emailViewString) {
+    func didEnterEmailTextFieldWithString(emailViewString: String) {
+        if Validators.email.validate(emailViewString) {
             view?.sendEmailConfirmationMessage(ValidationConfirmation.validEmail, color: .green)
-          } else {
-              view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
-          }
-      }
+        } else {
+            view?.sendEmailErrorMessage(ValidationError.invalidEmail.localizedDescription, color: .red)
+        }
+    }
 
     func didEnterPasswordTextFieldWithString(passwordViewString: String) {
         if Validators.password.validate(passwordViewString) {
@@ -112,6 +113,7 @@ extension LoginViewModel: LoginViewModelProtocol {
             switch result {
             case let .success(username):
                 self.captchaModel = nil
+                self.userSessionData?.username = username
                 self.view?.removeLoadingIndicator()
                 self.view?.authorise(username: username)
             case let .failure(error):

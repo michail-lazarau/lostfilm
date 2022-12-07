@@ -1,8 +1,13 @@
 import Foundation
 
+protocol RouterDelegate: AnyObject {
+    func routerDidComplete(_ router: DefaultRouter)
+}
+
 class DefaultRouter: NSObject, Router, Closable, Dismissable {
     private let rootTransition: Transition
     weak var root: UIViewController?
+    weak var routerDelegate: RouterDelegate?
 
     init(rootTransition: Transition) {
         self.rootTransition = rootTransition
@@ -45,7 +50,12 @@ class DefaultRouter: NSObject, Router, Closable, Dismissable {
     }
 
     func dismiss() {
-        dismiss(completion: nil)
+//        dismiss(completion: nil)
+        dismiss { [weak self] in
+            if let self = self {
+                self.routerDelegate?.routerDidComplete(self)
+            }
+        }
     }
 }
 
