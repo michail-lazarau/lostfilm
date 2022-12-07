@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let router = DefaultRouter(rootTransition: EmptyTransition())
         let tabBarRootVC = TabBarRootController(router: router, userSessionData: UserSessionStoredData())
-        router.routerDelegate = tabBarRootVC // necessary
         router.root = tabBarRootVC
         window?.rootViewController = tabBarRootVC
         window?.makeKeyAndVisible()

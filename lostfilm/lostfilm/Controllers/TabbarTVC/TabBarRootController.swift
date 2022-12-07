@@ -23,7 +23,7 @@ class TabBarRootController: UITabBarController, RouterDelegate {
         return UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: nil, action: #selector(openLogin))
     }()
 
-    func routerDidComplete(_ router: DefaultRouter) {
+    func routerWillComplete(_ router: DefaultRouter) {
         let title = userSessionData.username?.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
             partialResult.append(substring.first?.uppercased() ?? "?")
         }
@@ -31,17 +31,6 @@ class TabBarRootController: UITabBarController, RouterDelegate {
             navController.children.first?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: ProfileButton(title: title, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
         })
     }
-
-//    func resetProfileButton() {
-//        let title = userSessionData.username?.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
-//            partialResult.append(substring.first?.uppercased() ?? "?")
-//        }
-////        profileButton = UIBarButtonItem(customView: ProfileButton(title: title, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
-//        // FIXME: dirty but it does the job
-//        viewControllers?.forEach({ navController in
-//            navController.children.first?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: ProfileButton(title: title, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
-//        })
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +43,6 @@ class TabBarRootController: UITabBarController, RouterDelegate {
             router.makeTab(for: .videos, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton]),
             router.makeTab(for: .newEpisodes, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton]),
             router.makeTab(for: .schedule, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton])]
-//            router.makeTab(for: .series, router: DefaultRouter(rootTransition: EmptyTransition())),
-//            router.makeTab(for: .news, router: DefaultRouter(rootTransition: EmptyTransition())),
-//            router.makeTab(for: .videos, router: DefaultRouter(rootTransition: EmptyTransition())),
-//            router.makeTab(for: .newEpisodes, router: DefaultRouter(rootTransition: EmptyTransition())),
-//            router.makeTab(for: .schedule, router: DefaultRouter(rootTransition: EmptyTransition()))]
     }
 
     @objc func openLogin() {

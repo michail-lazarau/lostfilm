@@ -12,7 +12,6 @@ extension LoginRoute where Self: Router {
         let navigationController = UINavigationController(rootViewController: viewController)
         router.root = viewController
         router.routerDelegate = self.root as? RouterDelegate // what?!
-//        viewController.profileButtonDelegate = (self as! DefaultRouter).root as! any ProfileButtonDelegate  // new
         route(to: navigationController, as: transition)
     }
 
