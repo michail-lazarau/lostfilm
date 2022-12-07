@@ -4,7 +4,6 @@ class TabBarRootController: UITabBarController, RouterDelegate {
     typealias Routes = LoginRoute & TabRoute
     private let router: Routes
     private let userSessionData: UserSessionService
-//    weak var routerDelegate: RouterDelegate?
 
     init(router: Routes, userSessionData: UserSessionService) {
         self.router = router
@@ -23,7 +22,7 @@ class TabBarRootController: UITabBarController, RouterDelegate {
         return UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: nil, action: #selector(openLogin))
     }()
 
-    func routerWillComplete(_ router: DefaultRouter) {
+    func routerWillComplete() {
         let title = userSessionData.username?.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
             partialResult.append(substring.first?.uppercased() ?? "?")
         }

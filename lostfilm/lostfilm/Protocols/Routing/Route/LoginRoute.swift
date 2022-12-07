@@ -11,7 +11,7 @@ extension LoginRoute where Self: Router {
         let viewController = LoginViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         router.root = viewController
-        router.routerDelegate = self.root as? RouterDelegate // what?!
+        router.parent = self.root as? RouterDelegate // what?!
         route(to: navigationController, as: transition)
     }
 
