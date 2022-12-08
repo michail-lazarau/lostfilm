@@ -1,12 +1,16 @@
 import Foundation
 
 protocol Router: Routable {
-    var root: UIViewController? { get set }
+    var parent: RouterDelegate? { get set }
+    func start() -> UIViewController
 }
 
 protocol Routable: AnyObject {
     func route(to viewController: UIViewController, as transition: Transition)
     func route(to viewController: UIViewController, as transition: Transition, completion: (() -> Void)?)
+
+    func route(to router: Router, using transition: Transition)
+    func route(to router: Router, using transition: Transition, completion: (() -> Void)?)
 }
 
 protocol Closable: AnyObject {

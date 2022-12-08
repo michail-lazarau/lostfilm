@@ -1,6 +1,7 @@
 import UIKit
 
 final class ProfileButton: UIButton {
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup(title: nil, titleColor: nil, backgroundColor: nil)

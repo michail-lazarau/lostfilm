@@ -1,8 +1,8 @@
 import Foundation
 
-class TemplateDataController<DataModel> where DataModel: LFJsonObject {
-    typealias Routes = LoginRoute
-    private(set) var router: Routes
+class TemplateDataController<DataModel: LFJsonObject>: TabModuleInput {
+
+    private let router: TemplateRouter
     weak var delegate: DataControllerDelegate?
     var isLoading: Bool = false
     private var itemList: [DataModel] = []
@@ -11,7 +11,7 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
         itemList.count
     }
 
-    init(router: Routes) {
+    init(router: TemplateRouter) {
         self.router = router
     }
 
@@ -41,8 +41,24 @@ class TemplateDataController<DataModel> where DataModel: LFJsonObject {
         }
     }
 
-    internal func getItemListForPage(number: UInt, completionHander: @escaping ([DataModel]?, NSError?) -> Void) {
+    func getItemListForPage(number: UInt, completionHander: @escaping ([DataModel]?, NSError?) -> Void) {
         fatalError("This func must be overridden")
+    }
+
+    func didTapProfileButton() {
+        print("TODO open profile screen")
+    }
+
+    func didTapSignInButton() {
+        router.showLogin()
+    }
+
+    func showSignedInUserProfileButton(with username: String) {
+        delegate?.showProfileButton(with: username)
+    }
+
+    func showSignedOutUserProfileButton() {
+        delegate?.showSignedOutProfileButton()
     }
 }
 

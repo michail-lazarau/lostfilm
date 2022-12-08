@@ -2,9 +2,10 @@ import SDWebImage
 import UIKit
 
 class TVSeriesPhotoVC: UIViewController {
+
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var imageView: UIImageView!
-    weak var tabbarRootController = UIApplication.shared.windows.first?.rootViewController as? TabBarRootController
+
     let model: LFPhotoModel?
     let thumbnailImg: UIImage
 
@@ -12,6 +13,7 @@ class TVSeriesPhotoVC: UIViewController {
         thumbnailImg = image
         self.model = model
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        hidesBottomBarWhenPushed = true
     }
 
     required init(coder: NSCoder) {
@@ -46,13 +48,11 @@ class TVSeriesPhotoVC: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        tabbarRootController?.tabBar.isHidden = false
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
 
     private func hidingTabAndNavigationBars() {
-        tabbarRootController?.tabBar.isHidden = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }

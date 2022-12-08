@@ -1,6 +1,7 @@
 import Foundation
 
 class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDelegate {
+
     var savedFilters: [LFSeriesFilterBaseModel] = []
 
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
