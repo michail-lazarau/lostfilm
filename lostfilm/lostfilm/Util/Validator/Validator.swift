@@ -34,4 +34,12 @@ struct Validators {
             return passwordValidation.evaluate(with: text)
         }
     }
+
+    static var nickname: Validator<String> {
+        return Validator<String> { text in
+            let nicknameRegEx = RegEx.nickname.expression
+            let nicknameValidation = NSPredicate(format: "SELF MATCHES %@", nicknameRegEx)
+            return nicknameValidation.evaluate(with: text)
+        }
+    }
 }

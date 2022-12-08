@@ -19,7 +19,7 @@ final class LoginViewModel {
     let dataProvider: LoginServiceProtocol
     private let debouncer: DebouncerProtocol
 
-    // MARK: Lifecycle
+    // MARK: Inits
 
     init(dataProvider: LoginServiceProtocol, router: Routes, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider

@@ -51,7 +51,8 @@ enum Texts {
 
     enum ValidationErrors {
         static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
-        static let invalidPassword = NSLocalizedString(" Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
+        static let invalidPassword = NSLocalizedString("Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
+        static let invalidNickName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
     }
 }
 
@@ -65,6 +66,7 @@ enum Paddings {
 enum ValidationConfirmation {
     static let validEmail = NSLocalizedString("Email confirmed", comment: "")
     static let validPassword = NSLocalizedString("Password confirmed", comment: "")
+    static let validNickname = NSLocalizedString("Nickname confirmed", comment: "")
 }
 
 enum ValidationError: Error {
@@ -74,6 +76,7 @@ enum ValidationError: Error {
     case invalidEmail
     case invalidPassword
     case invalidPhone
+    case invalidNickname
 }
 
 extension ValidationError: LocalizedError {
@@ -91,6 +94,8 @@ extension ValidationError: LocalizedError {
             return NSLocalizedString("Invalid password format", comment: "")
         case .invalidPhone:
             return NSLocalizedString("Invalid Phone format", comment: "")
+        case .invalidNickname:
+            return NSLocalizedString("Invalid nickName format", comment: "")
 
         }
     }
@@ -99,6 +104,7 @@ extension ValidationError: LocalizedError {
 enum RegEx {
     case email
     case password
+    case nickname
 }
 
 extension RegEx {
@@ -108,6 +114,8 @@ extension RegEx {
             return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         case .password:
             return "^(?=.*\\d).{4,8}$"
+        case .nickname:
+            return "[A-Z][a-z]+"
         }
     }
 }
