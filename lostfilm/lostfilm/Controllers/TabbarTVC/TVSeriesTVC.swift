@@ -2,7 +2,6 @@ import UIKit
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
-
     override internal var tableCellHeight: CGFloat {
         return 175
     }
@@ -10,26 +9,24 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "TV Series"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters))
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "magnifying_glass"), style: .plain, target: self, action: #selector(DidShowGlobalSearch))
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let dataSource = dataSource {
-            navigationController?.delegate = customNavigationControllerDelegate
-            navigationController?.pushViewController(LFSeriesDetailsVC(model: dataSource[indexPath.row]), animated: true)
-        }
+        navigationController?.delegate = customNavigationControllerDelegate
+        navigationController?.pushViewController(LFSeriesDetailsVC(model: dataController[indexPath.row]), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     @objc private func DidShowFilters() {
-        guard let dataSource = dataSource as? TVSeriesDataController & FilteringDelegate else {
+        guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {
             return
         }
 
-        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataSource)
+        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataController)
         let navController = FilteringNavigationController(rootViewController: filteringTVC)
-        filteringTVC.filteringDelegate = dataSource
+        filteringTVC.filteringDelegate = dataController
         present(navController, animated: true)
     }
 

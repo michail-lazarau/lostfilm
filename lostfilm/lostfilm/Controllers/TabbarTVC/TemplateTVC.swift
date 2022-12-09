@@ -2,7 +2,6 @@ import UIKit
 
 class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable, DataModel: LFJsonObject {
     fileprivate let tableFooterHeight: CGFloat = 50
-
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
@@ -13,16 +12,16 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         return 0
     }
 
-    internal var dataSource: TemplateDataController<DataModel>?
+    internal let dataController: TemplateDataController<DataModel>
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(style: UITableView.Style, dataController: TemplateDataController<DataModel>) {
+    required init(style: UITableView.Style, dataController: TemplateDataController<DataModel>) {
+        self.dataController = dataController
         super.init(style: style)
-        dataSource = dataController
-        dataSource!.delegate = self
+        dataController.delegate = self
     }
 
     override func viewDidLoad() {
@@ -43,9 +42,9 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     }
 
     @objc func pullToRefresh(_ sender: UIRefreshControl) {
-        dataSource?.DidEmptyItemList()
+        dataController.DidEmptyItemList()
         tableView.reloadData()
-        dataSource?.LoadingData()
+        dataController.LoadingData()
         sender.endRefreshing()
     }
 
@@ -101,7 +100,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         let deltaOffset = maximumOffset - currentOffset
         if deltaOffset <= 0 {
             spinner.startAnimating() // MARK: must be inside the loadingData() to follow the looped calling
-            dataSource?.LoadingData()
+            dataController.LoadingData()
         }
     }
 
@@ -109,7 +108,7 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as? Cell,
-              let model = dataSource?[indexPath.row] as? Cell.DataModel else {
+              let model = dataController[indexPath.row] as? Cell.DataModel else {
             return UITableViewCell()
         }
 
@@ -122,7 +121,6 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = dataSource?.count else { return 0 }
-        return count
+        return dataController.count
     }
 }

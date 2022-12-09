@@ -6,16 +6,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-
         let router = DefaultRouter(rootTransition: EmptyTransition())
-        let tabBarRootVC = TabBarRootController(router: router)
+        let tabBarRootVC = TabBarRootController(router: router, userSessionData: UserSessionStoredData())
         router.root = tabBarRootVC
-
         window?.rootViewController = tabBarRootVC
         window?.makeKeyAndVisible()
-        tabBarRootVC.openLogin()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -26,8 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // FIXME: delete later removeCookies(since:)
-        HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }

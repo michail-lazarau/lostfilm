@@ -1,48 +1,50 @@
 import UIKit
 
-class TabBarRootController: UITabBarController {
-    typealias Routes = LoginRoute
-    private var router: Routes?
+class TabBarRootController: UITabBarController, RouterDelegate {
+    typealias Routes = LoginRoute & TabRoute
+    private let router: Routes
+    private let userSessionData: UserSessionService
 
-    init(router: Routes) {
+    init(router: Routes, userSessionData: UserSessionService) {
         self.router = router
+        self.userSessionData = userSessionData
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    lazy var profileButton: UIBarButtonItem = {
+//        if let username = userSessionData.username, userSessionData.isAuthorised() {
+//            return UIBarButtonItem(customView: ProfileButton(title: username, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
+//        }
+        return UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: nil, action: #selector(openLogin))
+    }()
+
+    func routerWillComplete() {
+        let title = userSessionData.username?.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
+            partialResult.append(substring.first?.uppercased() ?? "?")
+        }
+        viewControllers?.forEach({ navController in
+            navController.children.first?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: ProfileButton(title: title, titleColor: UIColor.white, backgroundColor: UIColor(named: "button")))
+        })
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
+//        profileButton.target = self // comment to disable button
 
-        let tvSeriesVC = TVSeriesTVC(style: .plain, dataController: TVSeriesDataController())
-        let tvSeriesNC = UINavigationController(rootViewController: tvSeriesVC)
-        tvSeriesNC.navigationBar.prefersLargeTitles = true
-        let newsVC = NewsTVC(style: .plain, dataController: NewsDataController())
-        let newsNC = UINavigationController(rootViewController: newsVC)
-        newsNC.navigationBar.prefersLargeTitles = true
-        let videosVC = VideosTVC(style: .plain, dataController: VideosDataController())
-        let videosNC = UINavigationController(rootViewController: videosVC)
-        videosNC.navigationBar.prefersLargeTitles = true
-        let newEpisodesVC = NewEpisodesTVC(style: .plain, dataController: NewEpisodesDataController())
-        let newEpisodesNC = UINavigationController(rootViewController: newEpisodesVC)
-        newEpisodesNC.navigationBar.prefersLargeTitles = true
-        let scheduleVC = ScheduleTVC(style: .grouped, dataController: ScheduleDataController())
-        let scheduleNC = UINavigationController(rootViewController: scheduleVC)
-        scheduleNC.navigationBar.prefersLargeTitles = true
-
-        tvSeriesVC.tabBarItem = UITabBarItem(title: "TV Series", image: UIImage(named: "icon_series_list"), tag: 0)
-        newsVC.tabBarItem = UITabBarItem(title: "News", image: UIImage(named: "icon_news"), tag: 1)
-        videosVC.tabBarItem = UITabBarItem(title: "Videos", image: UIImage(named: "icon_videos"), tag: 2)
-        newEpisodesVC.tabBarItem = UITabBarItem(title: "New Episodes", image: UIImage(named: "icon_novelties"), tag: 3)
-        scheduleVC.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "icon_timetable"), tag: 4)
-
-        viewControllers = [tvSeriesNC, newsNC, videosNC, newEpisodesNC, scheduleNC]
+        viewControllers = [
+            router.makeTab(for: .series, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton]),
+            router.makeTab(for: .news, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton]),
+            router.makeTab(for: .videos, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton]),
+            router.makeTab(for: .newEpisodes, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton]),
+            router.makeTab(for: .schedule, router: DefaultRouter(rootTransition: EmptyTransition()), rightBarButtonItems: [profileButton])]
     }
 
-    func openLogin() {
-        router?.openLogin()
+    @objc func openLogin() {
+        router.openLogin(userSessionData: userSessionData)
     }
 }

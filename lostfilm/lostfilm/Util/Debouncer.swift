@@ -8,7 +8,6 @@
 import Foundation
 
 final class Debouncer: DebouncerProtocol {
-
     private let timeInterval: TimeInterval
     private var timer: Timer?
 
@@ -18,7 +17,7 @@ final class Debouncer: DebouncerProtocol {
 
     func debounce(handler: @escaping (() -> Void)) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false, block: { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false, block: { timer in
             guard timer.isValid else { return }
             handler()
         })

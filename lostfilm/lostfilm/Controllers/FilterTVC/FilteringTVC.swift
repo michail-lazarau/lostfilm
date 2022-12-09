@@ -49,7 +49,7 @@ class FilteringTVC: UITableViewController {
         let controller: BaseFilterTVC
 
         switch sectionCells[indexPath.section][indexPath.row] {
-//        TODO: case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataSource?.filtersModel.)
+//        TODO: case "Сортировать": controller = BaseFilterTVC(style: .plain, dataController: dataController?.filtersModel.)
         case .CustomType:
             controller = BaseFilterTVC(style: .plain, filtersToDisplay: baseFilters.types, DCwithSelectedFilters: DCwithSavedFilters)
             controller.navigationItem.title = "\(choose) \(FilterType.CustomType.localizedString())"
