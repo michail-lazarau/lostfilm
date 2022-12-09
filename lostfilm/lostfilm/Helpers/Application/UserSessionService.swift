@@ -9,7 +9,11 @@ class UserSessionStoredData: UserSessionService {
     private var _username: String?
     var username: String? {
         get {
-            return _username ?? UserDefaults.standard.object(forKey: UserProperties.username.rawValue) as? String
+            let name = _username ?? UserDefaults.standard.object(forKey: UserProperties.username.rawValue) as? String
+            let title = name?.split { $0 == " " }.reduce(into: String()) { partialResult, substring in
+                partialResult.append(substring.first?.uppercased() ?? "?")
+            }
+            return title
         }
         set {
             _username = newValue

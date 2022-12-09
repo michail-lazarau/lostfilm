@@ -1,8 +1,8 @@
 import UIKit
 
 class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBarDelegate {
+
     private var viewModel: GlobalSearchVM
-    private weak var tabbarRootController = UIApplication.shared.windows.first?.rootViewController as? TabBarRootController
     private let searchController = UISearchController(searchResultsController: nil)
     private var lastSearchText: String?
     private var refreshTimer: Timer?
@@ -16,6 +16,7 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
         self.viewModel = viewModel
         super.init(style: style)
         self.viewModel.dataProvider.delegate = self
+        hidesBottomBarWhenPushed = true
     }
 
     required init(coder: NSCoder) {
@@ -35,11 +36,6 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
         tableView.reloadData()
     }
 
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabbarRootController?.tabBar.isHidden = true
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchController.isActive = true
@@ -47,7 +43,6 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
 
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        tabbarRootController?.tabBar.isHidden = false
         searchController.searchBar.resignFirstResponder()
     }
 
@@ -62,7 +57,6 @@ class GlobalSearchTVC: UITableViewController, IUpdatingViewDelegate, UISearchBar
             }
 
             let seriesDetailsVC = LFSeriesDetailsVC(model: model)
-            seriesDetailsVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(seriesDetailsVC, animated: true)
         default: break
         }

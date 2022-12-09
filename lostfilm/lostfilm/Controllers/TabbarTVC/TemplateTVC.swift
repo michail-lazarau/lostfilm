@@ -1,6 +1,7 @@
 import UIKit
 
 class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegate where Cell: CellConfigurable, DataModel: LFJsonObject {
+
     fileprivate let tableFooterHeight: CGFloat = 50
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .medium)
@@ -8,11 +9,11 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         return spinner
     }()
 
-    internal var tableCellHeight: CGFloat {
+    var tableCellHeight: CGFloat {
         return 0
     }
 
-    internal let dataController: TemplateDataController<DataModel>
+    let dataController: TemplateDataController<DataModel>
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,6 +65,32 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
             tableView.insertRows(at: array, with: .bottom)
         }
         spinner.stopAnimating()
+    }
+
+    func showProfileButton(with username: String) {
+        let button = ProfileButton(title: username, titleColor: UIColor.white, backgroundColor: UIColor(named: "button"))
+        button.addTarget(self, action: #selector(profileButtonAction), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: button)
+        item.accessibilityIdentifier = "profileButton"
+        var buttons = navigationItem.rightBarButtonItems?.filter { $0.accessibilityIdentifier != "signInButton" } ?? []
+        buttons.insert(item, at: 0)
+        navigationItem.setRightBarButtonItems(buttons, animated: false)
+    }
+
+    func showSignedOutProfileButton() {
+        let item = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(loginButtonAction))
+        item.accessibilityIdentifier = "signInButton"
+        var buttons = navigationItem.rightBarButtonItems?.filter { $0.accessibilityIdentifier != "profileButton" } ?? []
+        buttons.insert(item, at: 0)
+        navigationItem.setRightBarButtonItems(buttons, animated: false)
+    }
+
+    @objc private func profileButtonAction() {
+        dataController.didTapProfileButton()
+    }
+
+    @objc private func loginButtonAction() {
+        dataController.didTapSignInButton()
     }
 
     override func viewWillLayoutSubviews() {
