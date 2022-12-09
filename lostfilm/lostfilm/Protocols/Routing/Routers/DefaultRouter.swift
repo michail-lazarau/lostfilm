@@ -1,7 +1,7 @@
 import Foundation
 
 protocol RouterDelegate: AnyObject {
-    func routerDidComplete(_ router: DefaultRouter)
+    func shouldCompleteRouter(_ router: DefaultRouter)
 }
 
 class DefaultRouter: NSObject, Router, Closable, Dismissable, RouterDelegate {
@@ -66,12 +66,12 @@ class DefaultRouter: NSObject, Router, Closable, Dismissable, RouterDelegate {
     }
 
     func dismiss() {
-        parent?.routerDidComplete(self)
+        parent?.shouldCompleteRouter(self)
     }
 
     // MARK: - RouterDelegate
 
-    func routerDidComplete(_ router: DefaultRouter) {
+    func shouldCompleteRouter(_ router: DefaultRouter) {
         dismiss()
     }
 }

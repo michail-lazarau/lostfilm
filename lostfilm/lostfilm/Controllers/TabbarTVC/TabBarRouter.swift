@@ -38,13 +38,12 @@ final class TabBarRouter: DefaultRouter {
         return tabBarController
     }
 
-    override func routerDidComplete(_ router: DefaultRouter) {
+    override func shouldCompleteRouter(_ router: DefaultRouter) {
         if router is LoginRouter {
-            root?.dismiss(animated: true) {
-                self.refreshProfileButton()
-            }
+            refreshProfileButton()
+            root?.dismiss(animated: true)
         } else {
-            super.routerDidComplete(router)
+            super.shouldCompleteRouter(router)
         }
     }
 
