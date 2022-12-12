@@ -15,6 +15,9 @@ final class RegistrationViewController: UIViewController {
     private let emailView = TextFieldView()
     private let passwordView = TextFieldView()
     private let repeatPasswordView = TextFieldView()
+    private var isRememberMeButtonSelected = false
+    private var isCaptchaButtonSelected = false
+    private let captchaView = CaptchaView()
     private let linkURL = "https://www.apple.com"
 
     private let readyButton: LostfilmButton  = {
@@ -23,18 +26,23 @@ final class RegistrationViewController: UIViewController {
         return button
     }()
 
+    lazy var rememberMeButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: "checkmark.square")
+        button.setDimensions(width: 25, height: 25)
+        button.setTitle("Remember Me", for: .normal)
+        button.setTitleColor(.button, for: .normal)
+        button.layer.cornerRadius = 5
+        button.setImage(image, for: .normal)
+        button.tintColor = .lightGray
+        return button
+    }()
+
     private let linkTextView: UITextView = {
         let view  = UITextView()
         view.backgroundColor =  UIColor.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setDimensions(width: 0, height: 20) // уточинть как тут лучше сделать тк высталнеие ширины не имеет значение
-        return view
-    }()
-
-    private let captchaView: UIView = {
-        let view = UIView()
-        view.backgroundColor = . red
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setDimensions(width: 0, height: 20)
         return view
     }()
 
@@ -46,7 +54,7 @@ final class RegistrationViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "LABEL TEST"
+        label.text = "Регистрация"
         label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -101,12 +109,14 @@ final class RegistrationViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), titleLabel, nickNameView, emailView, passwordView, repeatPasswordView, readyButton, linkTextView])
+        setupStackView(withViews: [UIView(), titleLabel, nickNameView, emailView, passwordView, repeatPasswordView, rememberMeButton, captchaView, linkTextView, readyButton])
         setupConstraints()
     }
 
     func initialSetup() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        rememberMeButton.addTarget(self, action: #selector(rememberMeButtonPressed), for: .touchUpInside)
+        captchaView.checkmarkButton.addTarget(self, action: #selector(captchaButtonPressed), for: .touchUpInside)
         linkTextView.delegate = self
         nickNameView.textField.delegate = self
         emailView.textField.delegate = self
@@ -164,7 +174,6 @@ extension RegistrationViewController {
     }
 
     // MARK: Keyboard
-
     private func registerKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -210,8 +219,13 @@ extension RegistrationViewController {
     }
 
     // MARK: Logic
-
-    private func didChangeButtonStatus() {}
+    private func didChangeButtonStatus(niknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
+        viewModel.checkButtonStatus(nicknameViewString: niknameViewString,
+                                    emailViewString: emailViewString,
+                                    passwordViewString: passwordViewString,
+                                    repeatPasswordViewString: repeatPasswordViewString,
+                                    isRememberMeButtonSelected: isRememberMeButtonSelected)
+    }
 
     private func didChangeInputNicknameTextField(nicknameViewString: String) {
         viewModel.didEnterNicknameTextFieldWithString(nicknameViewString: nicknameViewString)
@@ -225,22 +239,59 @@ extension RegistrationViewController {
         viewModel.didEnterPasswordTextFieldWithString(passwordViewString: passwordViewString)
     }
 
-    private func didChangeInputRepeatPasswordTextField(repeatPasswordViewString: String) {}
+    private func didChangeInputRepeatPasswordTextField(repeatPasswordViewString: String, passwordViewString: String ) {
+        viewModel.didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: repeatPasswordViewString, passwordViewString: passwordViewString)
+    }
 
     @objc func textFieldEditingChanged(sender: UITextField) {
-        if sender == nickNameView.textField {
+        switch sender {
+        case nickNameView.textField:
             didChangeInputNicknameTextField(nicknameViewString: nickNameView.textField.text ?? "")
-        } else if sender == emailView.textField {
+        case emailView.textField:
             didChangeInputEmailTextField(emailViewString: emailView.textField.text ?? "")
-        } else if sender == passwordView.textField {
+        case passwordView.textField:
             didChangeInputPasswordTextField(passwordViewString: passwordView.textField.text ?? "")
+        case repeatPasswordView.textField:
+            didChangeInputRepeatPasswordTextField(repeatPasswordViewString: repeatPasswordView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "")
+        default:
+            nickNameView.textField.resignFirstResponder()
         }
+        didChangeButtonStatus(niknameViewString: nickNameView.textField.text ?? "",
+                              emailViewString: emailView.textField.text ?? "",
+                              passwordViewString: passwordView.textField.text ?? "",
+                              repeatPasswordViewString: repeatPasswordView.textField.text ?? "",
+                              isRememberMeButtonSelected: isCaptchaButtonSelected)
+    }
+
+    @objc func rememberMeButtonPressed() {
+        if isRememberMeButtonSelected {
+            rememberMeButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        } else {
+            rememberMeButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+        }
+        isRememberMeButtonSelected.toggle()
+    }
+
+    @objc func captchaButtonPressed() {
+        if isCaptchaButtonSelected {
+            captchaView.checkmarkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        } else {
+            captchaView.checkmarkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+        }
+        isCaptchaButtonSelected.toggle()
+        didChangeButtonStatus(niknameViewString: nickNameView.textField.text ?? "",
+                              emailViewString: emailView.textField.text ?? "",
+                              passwordViewString: passwordView.textField.text ?? "",
+                              repeatPasswordViewString: repeatPasswordView.textField.text ?? "",
+                              isRememberMeButtonSelected: isCaptchaButtonSelected)
     }
 }
 
 extension RegistrationViewController: RegistrationViewProtocol {
     func setButtonEnabled(_ isEnable: Bool) {
-        print("")
+        DispatchQueue.main.async { [weak readyButton] in
+            readyButton?.isEnabled = isEnable
+        }
     }
 
     func sendNicknameConformationMessage(_ confirmationMessage: String, color: UIColor) {
@@ -256,7 +307,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
     }
 
     func sendRepeatPasswordConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
-        print("")
+        repeatPasswordView.setConfirmationState(with: confirmationMessage, color: color)
     }
 
     func sendNicknameErrorMessage(_ errorMessage: String, color: UIColor) {
@@ -272,7 +323,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
     }
 
     func sendRepeatPasswordErrorMessage(_ errorMessage: String, color: UIColor) {
-        print("")
+        repeatPasswordView.setErrorState(with: errorMessage, color: color)
     }
 }
 
@@ -295,7 +346,6 @@ extension RegistrationViewController: UITextFieldDelegate {
 }
 
 extension RegistrationViewController: UITextViewDelegate {
-
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         if  URL.absoluteString == linkURL {
             UIApplication.shared.open(URL)

@@ -75,6 +75,7 @@ enum ValidationError: Error {
     case invalidLastName
     case invalidEmail
     case invalidPassword
+    case invalidRepeatPassword
     case invalidPhone
     case invalidNickname
 }
@@ -96,6 +97,8 @@ extension ValidationError: LocalizedError {
             return NSLocalizedString("Invalid Phone format", comment: "")
         case .invalidNickname:
             return NSLocalizedString("Invalid nickName format", comment: "")
+        case .invalidRepeatPassword:
+            return NSLocalizedString("Passwords must be the same", comment: "")
 
         }
     }

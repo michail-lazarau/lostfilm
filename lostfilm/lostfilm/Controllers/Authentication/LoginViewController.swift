@@ -151,7 +151,7 @@ extension LoginViewController {
             stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Paddings.right),
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0.0),
 
-            contentViewHeightConstraint
+            contentViewHeightConstraint // cинтаксис вопрос 
         ])
     }
 
@@ -332,7 +332,6 @@ extension LoginViewController: UITextFieldDelegate {
         default:
             emailView.textField.resignFirstResponder()
         }
-
         return true
     }
 }

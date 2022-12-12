@@ -8,11 +8,11 @@
 import Foundation
 
 protocol RegistrationViewModelProtocol: AnyObject {
-    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String)
+    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool)
     func didEnterNicknameTextFieldWithString(nicknameViewString: String)
     func didEnterEmailTextFieldWithString(emailViewString: String)
     func didEnterPasswordTextFieldWithString(passwordViewString: String)
-    func didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: String)
+    func didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: String, passwordViewString: String)
 }
 
 final class RegistrationViewModel {
@@ -27,8 +27,16 @@ final class RegistrationViewModel {
 }
 
 extension RegistrationViewModel: RegistrationViewModelProtocol {
-    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String) {
-        print("")
+    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
+        if !nicknameViewString.isEmpty && Validators.nickname.validate(nicknameViewString)  &&
+            !emailViewString.isEmpty && Validators.email.validate(emailViewString) &&
+            !passwordViewString.isEmpty && Validators.password.validate(passwordViewString) &&
+            !repeatPasswordViewString.isEmpty && Validators.password.validate(repeatPasswordViewString) && passwordViewString == repeatPasswordViewString &&
+            !isRememberMeButtonSelected == false {
+            view?.setButtonEnabled(true)
+        } else {
+            view?.setButtonEnabled(false)
+        }
     }
 
     func didEnterNicknameTextFieldWithString(nicknameViewString: String) {
@@ -61,7 +69,13 @@ extension RegistrationViewModel: RegistrationViewModelProtocol {
         }
     }
 
-    func didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: String) {
-        print("Not ready")
+    func didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: String, passwordViewString: String) {
+        debouncer.debounce { [weak self] in
+            if Validators.password.validate(repeatPasswordViewString) && repeatPasswordViewString == passwordViewString {
+                self?.view?.sendRepeatPasswordConfirmationMessage(ValidationConfirmation.validPassword, color: .green)
+            } else {
+                self?.view?.sendRepeatPasswordErrorMessage(ValidationError.invalidPassword.localizedDescription, color: .red)
+            }
+        }
     }
 }
