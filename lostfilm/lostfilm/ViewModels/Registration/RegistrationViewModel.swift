@@ -28,10 +28,10 @@ final class RegistrationViewModel {
 
 extension RegistrationViewModel: RegistrationViewModelProtocol {
     func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
-        if !nicknameViewString.isEmpty && Validators.nickname.validate(nicknameViewString)  &&
-            !emailViewString.isEmpty && Validators.email.validate(emailViewString) &&
-            !passwordViewString.isEmpty && Validators.password.validate(passwordViewString) &&
-            !repeatPasswordViewString.isEmpty && Validators.password.validate(repeatPasswordViewString) && passwordViewString == repeatPasswordViewString &&
+        if  Validators.nickname.validate(nicknameViewString)  &&
+            Validators.email.validate(emailViewString) &&
+            Validators.password.validate(passwordViewString) &&
+            Validators.password.validate(repeatPasswordViewString) && passwordViewString == repeatPasswordViewString &&
             !isRememberMeButtonSelected == false {
             view?.setButtonEnabled(true)
         } else {
@@ -42,7 +42,7 @@ extension RegistrationViewModel: RegistrationViewModelProtocol {
     func didEnterNicknameTextFieldWithString(nicknameViewString: String) {
         debouncer.debounce { [weak self] in
             if Validators.nickname.validate(nicknameViewString) {
-                self?.view?.sendNicknameConformationMessage(ValidationConfirmation.validNickname, color: .green)
+                self?.view?.sendNicknameConformationMessage(ValidationConfirmation.validNickname, color: .green) // true test выполняется  sendNicknameConformationMessage
             } else {
                 self?.view?.sendNicknameErrorMessage(ValidationError.invalidNickname.localizedDescription, color: .red)
             }

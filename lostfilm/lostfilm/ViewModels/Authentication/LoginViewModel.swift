@@ -48,14 +48,13 @@ extension LoginViewModel: LoginViewModelProtocol {
 
     func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
         if isCaptchaHidden {
-            if !emailViewString.isEmpty && !passwordViewString.isEmpty && Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
+            if Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
                 view?.setButtonEnabled(true)
             } else {
                 view?.setButtonEnabled(false)
             }
         } else {
-            if !emailViewString.isEmpty && !passwordViewString.isEmpty &&  Validators.email.validate(emailViewString) &&
-                Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
+            if  Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) && !(captchaViewString?.isEmpty ?? true) {
                 view?.setButtonEnabled(true)
             } else {
                 view?.setButtonEnabled(false)

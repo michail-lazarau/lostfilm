@@ -10,6 +10,8 @@
 		C500DC80292BEB570002ABD4 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */; };
 		C53E119F2901544E002BE86B /* LostfilmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E119E2901544E002BE86B /* LostfilmButton.swift */; };
 		C542477E28E4429C006B2C7D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542477D28E4429C006B2C7D /* TextFieldView.swift */; };
+		C54DF5C829489A56007EB79F /* RegistrationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DF5C729489A56007EB79F /* RegistrationViewModelTests.swift */; };
+		C54DF5CB29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DF5CA29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift */; };
 		C556012E28EF040B0032D75F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C556012D28EF040B0032D75F /* UIColor+Extension.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
@@ -275,6 +277,8 @@
 		C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTest.swift; sourceTree = "<group>"; };
 		C53E119E2901544E002BE86B /* LostfilmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostfilmButton.swift; sourceTree = "<group>"; };
 		C542477D28E4429C006B2C7D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		C54DF5C729489A56007EB79F /* RegistrationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModelTests.swift; sourceTree = "<group>"; };
+		C54DF5CA29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		C556012D28EF040B0032D75F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -597,6 +601,15 @@
 				0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C54DF5C929489C7F007EB79F /* RegistationTests */ = {
+			isa = PBXGroup;
+			children = (
+				C54DF5C729489A56007EB79F /* RegistrationViewModelTests.swift */,
+				C54DF5CA29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift */,
+			);
+			path = RegistationTests;
 			sourceTree = "<group>";
 		};
 		C55218A528E7028800BC2CD0 /* Extensions */ = {
@@ -1308,6 +1321,7 @@
 			children = (
 				F793AE8A2853A5150004BF0C /* Supporting Files */,
 				F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */,
+				C54DF5C929489C7F007EB79F /* RegistationTests */,
 				F7E8390128D3CE4E00FC2398 /* LoginServiceTests.swift */,
 				C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */,
 				F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */,
@@ -2024,6 +2038,7 @@
 				F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */,
 				F773D2C328FC92FA00B20C75 /* LoginViewModelDelegateMock.swift in Sources */,
 				C500DC80292BEB570002ABD4 /* ValidatorTest.swift in Sources */,
+				C54DF5C829489A56007EB79F /* RegistrationViewModelTests.swift in Sources */,
 				F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */,
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
 				C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */,
@@ -2032,6 +2047,7 @@
 				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,
 				F773D2C128FC84D500B20C75 /* CaptchaResponseMock.swift in Sources */,
 				F7232D7028D1D63A00BA94B0 /* LoginResponseMock.swift in Sources */,
+				C54DF5CB29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift in Sources */,
 				F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2078,7 +2094,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
@@ -2097,7 +2113,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
@@ -2314,7 +2330,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;

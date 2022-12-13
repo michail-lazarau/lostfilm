@@ -279,11 +279,6 @@ extension RegistrationViewController {
             captchaView.checkmarkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
         }
         isCaptchaButtonSelected.toggle()
-        didChangeButtonStatus(niknameViewString: nickNameView.textField.text ?? "",
-                              emailViewString: emailView.textField.text ?? "",
-                              passwordViewString: passwordView.textField.text ?? "",
-                              repeatPasswordViewString: repeatPasswordView.textField.text ?? "",
-                              isRememberMeButtonSelected: isCaptchaButtonSelected)
     }
 }
 
