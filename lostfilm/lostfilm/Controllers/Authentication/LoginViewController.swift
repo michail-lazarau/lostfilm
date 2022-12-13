@@ -218,11 +218,10 @@ extension LoginViewController {
     @objc func textFieldEditingChanged(sender: UITextField) {
         if sender == emailView.textField {
             didChangeInputEmailTextField(emailViewString: emailView.textField.text ?? "")
-
         } else if sender == passwordView.textField {
             didChangeInputPasswordTextField(passwordViewString: passwordView.textField.text ?? "")
         }
-            checkIsButtonEnabled(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+        checkIsButtonEnabled(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
       }
 
     private func removeKeyboardNotification() {
