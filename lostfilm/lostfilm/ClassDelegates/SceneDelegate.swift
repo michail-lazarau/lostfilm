@@ -9,16 +9,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 
-//        let router = DefaultRouter(rootTransition: EmptyTransition())
-//        let tabBarRootVC = TabBarRootController(router: router)
-//        router.root = tabBarRootVC
-//
-//        window?.rootViewController = tabBarRootVC
-//        window?.makeKeyAndVisible()
-//        tabBarRootVC.openLogin()
-        window?.rootViewController = RegistrationViewController(viewModel: RegistrationViewModel(debouncer: Debouncer(timeInterval: 1)))
-        window?.makeKeyAndVisible()
+        let router = DefaultRouter(rootTransition: EmptyTransition())
+        let tabBarRootVC = TabBarRootController(router: router)
+        router.root = tabBarRootVC
 
+        window?.rootViewController = tabBarRootVC
+        window?.makeKeyAndVisible()
+        tabBarRootVC.openLogin()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
