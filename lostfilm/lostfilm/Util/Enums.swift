@@ -19,6 +19,7 @@ enum Texts {
     case placeholders( _placeholders: Placeholders )
     case titles( _titles: Titles)
     case buttons( _buttons: Buttons)
+    case rulesTexts( _rulesTexts: RulesTexts)
 
     enum Placeholders {
         static let nickname = NSLocalizedString("Login(nickname)", comment: "")
@@ -49,11 +50,16 @@ enum Texts {
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
     }
 
-    enum ValidationErrors {
-        static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
-        static let invalidPassword = NSLocalizedString("Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
-        static let invalidNickName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
+    enum RulesTexts {
+        static let ruleLinkText = NSLocalizedString("To find out more please visit our website", comment: "")
+        static let hyperLink = NSLocalizedString("Site Rules", comment: "")
     }
+}
+
+enum ValidationErrors {
+    static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
+    static let invalidPassword = NSLocalizedString("Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
+    static let invalidNickName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
 }
 
 enum Paddings {
@@ -121,4 +127,8 @@ extension RegEx {
             return "[A-Z][a-z]+"
         }
     }
+}
+
+enum Links {
+    static let rules = "https://www.lostfilm.tv/rules/"
 }

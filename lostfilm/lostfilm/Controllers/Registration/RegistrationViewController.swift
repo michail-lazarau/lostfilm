@@ -18,7 +18,6 @@ final class RegistrationViewController: UIViewController {
     private var isRememberMeButtonSelected = false
     private var isCaptchaButtonSelected = false
     private let captchaView = CaptchaView()
-    private let linkURL = "https://www.apple.com"
 
     private let readyButton: LostfilmButton  = {
         let button = LostfilmButton(title: Texts.Buttons.ready)
@@ -126,7 +125,7 @@ final class RegistrationViewController: UIViewController {
         emailView.textField.returnKeyType = .next
         passwordView.textField.returnKeyType = .next
         repeatPasswordView.textField.returnKeyType = .done
-        linkTextView.hyperLink(originalText: "To find out more please visit our website", hyperLink: "website", urlString: linkURL)
+        linkTextView.hyperLink(originalText: Texts.RulesTexts.ruleLinkText, hyperLink: Texts.RulesTexts.hyperLink, urlString: Links.rules)
     }
 }
 
@@ -342,7 +341,7 @@ extension RegistrationViewController: UITextFieldDelegate {
 
 extension RegistrationViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        if  URL.absoluteString == linkURL {
+        if  URL.absoluteString == Links.rules {
             UIApplication.shared.open(URL)
         }
         return false

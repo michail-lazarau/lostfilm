@@ -645,13 +645,6 @@
 			isa = PBXGroup;
 			children = (
 				C57D77BF293A436000C30E1A /* RegistrationViewController.swift */,
-			);
-			path = Registration;
-			sourceTree = "<group>";
-		};
-		C5B1AF37293D68CE00DC7D92 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
 				C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */,
 			);
 			path = Registration;
@@ -923,7 +916,6 @@
 		F7471DE227AABA4100BDA17A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C5B1AF37293D68CE00DC7D92 /* Registration */,
 				F77288BF28A007D200AB28AB /* BaseViewModel.swift */,
 				F7FFB17F28E5BF9100334400 /* Authentication */,
 				F7516D67282BDAC900E1A138 /* GlobalSearchSeriesCast */,
