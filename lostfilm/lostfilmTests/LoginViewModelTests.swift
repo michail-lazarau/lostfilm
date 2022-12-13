@@ -6,13 +6,15 @@ class LoginViewModelTests: XCTestCase {
     // MARK: Variables
     typealias Credentials = (email: String, password: String, captcha: String?)
     var sut: LoginViewModel!
+    var session: URLSessionMock!
     var delegate: LoginViewModelDelegateMock!
     var router: DefaultRouterMock!
 
     override func setUpWithError() throws {
+        session = URLSessionMock()
         router = DefaultRouterMock()
         delegate = LoginViewModelDelegateMock()
-        sut = LoginViewModel(dataProvider: LoginService(session: URLSessionMock()), router: router, debouncer: MockDebouncer())
+        sut = LoginViewModel(dataProvider: LoginService(session: session), router: router, userSessionData: UserSessionStoredData(), debouncer: MockDebouncer())
         sut.view = delegate
     }
 
@@ -38,7 +40,8 @@ class LoginViewModelTests: XCTestCase {
     func test_positive_renderCaptchaWhenRequired() throws {
         let mockUrlForGetLoginPageFunc = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data() // faking successful response to get a captcha *1
+        session.data = Data() // faking successful response to get a captcha *1
+//        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data() // faking successful response to get a captcha *1
 
         delegate.authoriseFuncExpectation.isInverted = true
         delegate.showErrorFuncExpectation.isInverted = true
@@ -54,7 +57,7 @@ class LoginViewModelTests: XCTestCase {
         let mockUrlForGetLoginPageFunc = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.error = URLError(.badURL)
+        session.error = URLError(.badURL)
 
         delegate.updateCaptchaFuncExpectation.isInverted = true
         delegate.authoriseFuncExpectation.isInverted = true
@@ -72,7 +75,7 @@ class LoginViewModelTests: XCTestCase {
         let mockUrlForGetLoginPageFunc = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.success, error: nil).body?.data
+        session.data = LoginResponseMock(body: LoginResponseBodyMock.success, error: nil).body?.data
 
         delegate.updateCaptchaFuncExpectation.isInverted = true
         delegate.showErrorFuncExpectation.isInverted = true
@@ -89,12 +92,12 @@ class LoginViewModelTests: XCTestCase {
 
         // Given: requesting login to get a captcha (because it cannot be set directly to the LoginViewModel)
         sut.htmlParserWrapper.setValue("file://" + mockUrlForGetLoginPageFunc, forKey: "url") // faking session url *1
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data() // faking successful response to get a captcha *1
+        session.data = Data() // faking successful response to get a captcha *1
         sut.login(email: "Mocked", password: "Mocked", captcha: "Mocked")
         wait(for: [delegate.updateCaptchaFuncExpectation], timeout: 0.1)
 
         // Given: setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.success, error: nil).body?.data
+        session.data = LoginResponseMock(body: LoginResponseBodyMock.success, error: nil).body?.data
 
         let expectations: [XCTestExpectation] = [delegate.authoriseFuncExpectation, delegate.removeLoadingIndicatorFuncExpectation]
 
@@ -109,12 +112,12 @@ class LoginViewModelTests: XCTestCase {
 
         // Given: requesting login to get a captcha (because it cannot be set directly to the LoginViewModel)
         sut.htmlParserWrapper.setValue("file://" + mockUrlForGetLoginPageFunc, forKey: "url") // faking session url *1
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data() // faking successful response to get a captcha *1
+        session.data = Data() // faking successful response to get a captcha *1
         sut.login(email: "Mocked", password: "Mocked", captcha: "Mocked")
         wait(for: [delegate.updateCaptchaFuncExpectation], timeout: 0.1)
 
         // Given: setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .needCaptcha), error: nil).body?.data
+        session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .needCaptcha), error: nil).body?.data
 
         // resetting updateCaptchaFuncExpectation to reuse
         delegate.updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
@@ -133,12 +136,12 @@ class LoginViewModelTests: XCTestCase {
 
         // Given: requesting login to get a captcha (because it cannot be set directly to the LoginViewModel)
         sut.htmlParserWrapper.setValue("file://" + mockUrlForGetLoginPageFunc, forKey: "url") // faking session url *1
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = Data() // faking successful response to get a captcha *1
+        session.data = Data() // faking successful response to get a captcha *1
         sut.login(email: "Mocked", password: "Mocked", captcha: "Mocked")
         wait(for: [delegate.updateCaptchaFuncExpectation], timeout: 0.1)
 
         // Given: setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCaptcha), error: nil).body?.data
+        session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCaptcha), error: nil).body?.data
 
         // resetting updateCaptchaFuncExpectation to reuse
         delegate.updateCaptchaFuncExpectation = XCTestExpectation(description: "updateCaptcha(data:) expectation")
@@ -156,7 +159,7 @@ class LoginViewModelTests: XCTestCase {
         let mockUrlForGetLoginPageFunc = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // Given: setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCredentials), error: nil).body?.data
+        session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .invalidCredentials), error: nil).body?.data
 
         delegate.authoriseFuncExpectation.isInverted = true
         delegate.prepareCaptchaToUpdateFuncExpectation.isInverted = true
@@ -173,7 +176,7 @@ class LoginViewModelTests: XCTestCase {
         let mockUrlForGetLoginPageFunc = try XCTUnwrap(Bundle(for: type(of: self)).path(forResource: "LoginPageRenderedWithNoCaptchaRequired", ofType: "html"), "Unable to generate the url from the local context")
 
         // setting login response
-        (sut.dataProvider as! LoginService<URLSessionMock>).session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericOne), error: nil).body?.data
+        session.data = LoginResponseMock(body: LoginResponseBodyMock.fail(type: .genericOne), error: nil).body?.data
 
         delegate.authoriseFuncExpectation.isInverted = true
         delegate.prepareCaptchaToUpdateFuncExpectation.isInverted = true

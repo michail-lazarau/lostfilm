@@ -107,6 +107,7 @@ class RegistrationViewModelTest: XCTestCase {
         let sendRepeatPasswordErrorMessageWithoutString = XCTestExpectation(description: "sendRepeatPasswordErrorMessageWithoutString() expectation")
         delegate.didCallRepeatPasswordErrorMessage = { message in
             XCTAssertEqual(message, ValidationError.invalidPassword.localizedDescription)
+            sendRepeatPasswordErrorMessageWithoutString.fulfill()
         }
         sut.didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: "invalid", passwordViewString: "Asap123")
         wait(for: [sendRepeatPasswordErrorMessageWithoutString], timeout: 0)

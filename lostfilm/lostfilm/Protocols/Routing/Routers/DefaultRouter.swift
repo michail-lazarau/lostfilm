@@ -1,11 +1,21 @@
 import Foundation
 
-class DefaultRouter: NSObject, Router, Closable, Dismissable {
+protocol RouterDelegate: AnyObject {
+    func shouldCompleteRouter(_ router: DefaultRouter)
+}
+
+class DefaultRouter: NSObject, Router, Closable, Dismissable, RouterDelegate {
+
     private let rootTransition: Transition
     weak var root: UIViewController?
+    weak var parent: RouterDelegate?
 
     init(rootTransition: Transition) {
         self.rootTransition = rootTransition
+    }
+
+    func start() -> UIViewController {
+        fatalError("Need to be overridden")
     }
 
     deinit {
@@ -21,6 +31,17 @@ class DefaultRouter: NSObject, Router, Closable, Dismissable {
 
     func route(to viewController: UIViewController, as transition: Transition) {
         route(to: viewController, as: transition, completion: nil)
+    }
+
+    func route(to router: Router, using transition: Transition) {
+        guard let root = root else { return }
+        router.parent = self
+        transition.open(router.start(), from: root, completion: nil)
+    }
+
+    func route(to router: Router, using transition: Transition, completion: (() -> Void)?) {
+        router.parent = self
+        route(to: router.start(), as: transition, completion: completion)
     }
 
     // MARK: - Closable
@@ -45,8 +66,12 @@ class DefaultRouter: NSObject, Router, Closable, Dismissable {
     }
 
     func dismiss() {
-        dismiss(completion: nil)
+        parent?.shouldCompleteRouter(self)
+    }
+
+    // MARK: - RouterDelegate
+
+    func shouldCompleteRouter(_ router: DefaultRouter) {
+        dismiss()
     }
 }
-
-extension DefaultRouter: LoginRoute {}

@@ -7,23 +7,22 @@ protocol LoginViewModelProtocol: AnyObject {
 }
 
 final class LoginViewModel {
-
     // MARK: Variables
 
     typealias Captcha = LFLoginPageModel
     typealias Routes = Dismissable
     private let router: Routes
+    private let dataProvider: LoginServiceProtocol
+    private weak var userSessionData: UserSessionService?
+    private let debouncer: DebouncerProtocol
     private(set) var captchaModel: Captcha?
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
-    let dataProvider: LoginServiceProtocol
-    private let debouncer: DebouncerProtocol
 
-    // MARK: Inits
-
-    init(dataProvider: LoginServiceProtocol, router: Routes, debouncer: DebouncerProtocol) {
+    init(dataProvider: LoginServiceProtocol, router: Routes, userSessionData: UserSessionService, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
+        self.userSessionData = userSessionData
         self.debouncer = debouncer
     }
 
@@ -45,7 +44,6 @@ final class LoginViewModel {
 // MARK: Extension
 
 extension LoginViewModel: LoginViewModelProtocol {
-
     func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
         if isCaptchaHidden {
             if Validators.email.validate(emailViewString) && Validators.password.validate(passwordViewString) {
@@ -60,7 +58,7 @@ extension LoginViewModel: LoginViewModelProtocol {
                 view?.setButtonEnabled(false)
             }
         }
-      }
+    }
 
     func didEnterEmailTextFieldWithString(emailViewString: String) {
         debouncer.debounce { [weak self] in
@@ -127,6 +125,7 @@ extension LoginViewModel: LoginViewModelProtocol {
             switch result {
             case let .success(username):
                 self.captchaModel = nil
+                self.userSessionData?.username = username
                 self.view?.removeLoadingIndicator()
                 self.view?.authorise(username: username)
             case let .failure(error):

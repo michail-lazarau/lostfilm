@@ -1,11 +1,22 @@
 import Foundation
 
-class ScheduleDataController {
-    weak var delegate: IUpdatingViewDelegate?
+protocol ScheduleViewProtocol: IUpdatingViewDelegate {
+    func showProfileButton(with username: String)
+    func showSignedOutProfileButton()
+}
+
+final class ScheduleDataController {
+
+    private let router: ScheduleRouterProtocol
+    weak var delegate: ScheduleViewProtocol?
     private var itemList: [[LFEpisodeModel]] = Array(repeating: [], count: 5)
     private var isLoading: Bool = false
     var sectionsCount: Int {
         itemList.count
+    }
+
+    init(router: ScheduleRouterProtocol) {
+        self.router = router
     }
 
     private let sections: [ScheduleDateInterval] = [.today, .tomorrow, .thisWeek, .nextWeek, .later]
@@ -81,6 +92,14 @@ class ScheduleDataController {
         itemList.removeAll()
         itemList = Array(repeating: [], count: 5)
     }
+
+    func didTapProfileButton() {
+        print("TODO open profile screen")
+    }
+
+    func didTapSignInButton() {
+        router.showLogin()
+    }
 }
 
 extension ScheduleDataController {
@@ -90,5 +109,16 @@ extension ScheduleDataController {
 
     subscript(section: Int) -> [LFEpisodeModel] {
         itemList[section]
+    }
+}
+
+extension ScheduleDataController: TabModuleInput {
+
+    func showSignedInUserProfileButton(with username: String) {
+        delegate?.showProfileButton(with: username)
+    }
+
+    func showSignedOutUserProfileButton() {
+        delegate?.showSignedOutProfileButton()
     }
 }

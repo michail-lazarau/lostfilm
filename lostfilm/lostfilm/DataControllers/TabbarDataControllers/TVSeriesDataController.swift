@@ -1,6 +1,7 @@
 import Foundation
 
 class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDelegate {
+
     var savedFilters: [LFSeriesFilterBaseModel] = []
 
     override func getItemListForPage(number: UInt, completionHander: @escaping ([LFSeriesModel]?, NSError?) -> Void) {
@@ -34,7 +35,7 @@ class TVSeriesDataController: TemplateDataController<LFSeriesModel>, FilteringDe
         }
         return parameters.mapValues { String($0.dropLast(",".count)) }
 
-// MARK: should work as well
+        // MARK: should work as well
 
 //        let groupByKey: [String : [LFSeriesFilterBaseModel]] = Dictionary(grouping: savedFilters, by: {$0.key})
 //        return groupByKey.reduce(into: [String : String]()) { partialResult, tuple in

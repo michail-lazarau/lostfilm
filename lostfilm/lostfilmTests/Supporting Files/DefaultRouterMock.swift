@@ -5,6 +5,21 @@ import XCTest
 // MARK: mock transition
 // https://cassiuspacheco.com/unit-testing-composable-routing-in-swift-for-ios-apps-part-3
 class DefaultRouterMock: NSObject, Router, Closable, Dismissable {
+
+    var parent: lostfilm.RouterDelegate?
+
+    func start() -> UIViewController {
+        UIViewController()
+    }
+
+    func route(to router: lostfilm.Router, using transition: lostfilm.Transition) {
+
+    }
+
+    func route(to router: lostfilm.Router, using transition: lostfilm.Transition, completion: (() -> Void)?) {
+
+    }
+
     var root: UIViewController?
 
     var closeWithCompletionFuncExpectation = XCTestExpectation(description: "close(completion:) expectation")
