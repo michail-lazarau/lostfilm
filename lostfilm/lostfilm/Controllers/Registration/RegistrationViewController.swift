@@ -11,8 +11,8 @@ import UIKit
 final class RegistrationViewController: UIViewController {
     // MARK: Variables
     private let viewModel: RegistrationViewModel
-    private lazy var isRememberMeButtonSelected = false
-    private lazy var isCaptchaButtonSelected = false
+    private var isRememberMeButtonSelected = false
+    private var isCaptchaButtonSelected = false
 
     private lazy var nickNameView: TextFieldView  = {
         let view = TextFieldView()
