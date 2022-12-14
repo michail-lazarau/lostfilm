@@ -19,7 +19,7 @@ final class RegistrationViewController: UIViewController {
     private var isCaptchaButtonSelected = false
     private let captchaView = CaptchaView()
 
-    private let readyButton: LostfilmButton  = {
+    lazy var readyButton: LostfilmButton  = {
         let button = LostfilmButton(title: Texts.Buttons.ready)
         button.indicator.color = .white
         return button
@@ -37,7 +37,7 @@ final class RegistrationViewController: UIViewController {
         return button
     }()
 
-    private let linkTextView: UITextView = {
+    lazy var linkTextView: UITextView = {
         let view  = UITextView()
         view.backgroundColor =  UIColor.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,13 +45,13 @@ final class RegistrationViewController: UIViewController {
         return view
     }()
 
-    private let contentView: UIView = {
+    lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
 
-    private let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
         label.textColor = UIColor(named: "color")
@@ -60,13 +60,13 @@ final class RegistrationViewController: UIViewController {
         return label
     }()
 
-    private let scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
 
-    private let stackView: UIStackView = {
+    lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -83,14 +83,6 @@ final class RegistrationViewController: UIViewController {
         bindTextFields()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
     // MARK: Inits
     init(viewModel: RegistrationViewModel) {
         self.viewModel = viewModel
@@ -102,7 +94,7 @@ final class RegistrationViewController: UIViewController {
     }
 
     // MARK: Functions
-    func setupView() {
+    private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -112,7 +104,7 @@ final class RegistrationViewController: UIViewController {
         setupConstraints()
     }
 
-    func initialSetup() {
+    private func initialSetup() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         rememberMeButton.addTarget(self, action: #selector(rememberMeButtonPressed), for: .touchUpInside)
         captchaView.checkmarkButton.addTarget(self, action: #selector(captchaButtonPressed), for: .touchUpInside)
@@ -130,7 +122,7 @@ final class RegistrationViewController: UIViewController {
 }
 
 // MARK: Extension
-extension RegistrationViewController {
+private extension RegistrationViewController {
     // MARK: UI functions
     func setupTextFields() {
         nickNameView.configureInputField(on: .name)
@@ -173,17 +165,7 @@ extension RegistrationViewController {
     }
 
     // MARK: Keyboard
-    private func registerKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-
-    private func removeKeyboardNotification() {
+    func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -205,11 +187,11 @@ extension RegistrationViewController {
         scrollView.scrollIndicatorInsets = contentInsets
     }
 
-    @objc private func hideKeyboard() {
+    @objc func hideKeyboard() {
         view.endEditing(true)
     }
 
-    private func bindTextFields() {
+    func bindTextFields() {
         readyButton.isEnabled = false
         nickNameView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         emailView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
@@ -218,7 +200,7 @@ extension RegistrationViewController {
     }
 
     // MARK: Logic
-    private func didChangeButtonStatus(niknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
+    func didChangeButtonStatus(niknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
         viewModel.checkButtonStatus(nicknameViewString: niknameViewString,
                                     emailViewString: emailViewString,
                                     passwordViewString: passwordViewString,
@@ -226,19 +208,19 @@ extension RegistrationViewController {
                                     isRememberMeButtonSelected: isRememberMeButtonSelected)
     }
 
-    private func didChangeInputNicknameTextField(nicknameViewString: String) {
+    func didChangeInputNicknameTextField(nicknameViewString: String) {
         viewModel.didEnterNicknameTextFieldWithString(nicknameViewString: nicknameViewString)
     }
 
-    private func didChangeInputEmailTextField(emailViewString: String) {
+    func didChangeInputEmailTextField(emailViewString: String) {
         viewModel.didEnterEmailTextFieldWithString(emailViewString: emailViewString)
     }
 
-    private func didChangeInputPasswordTextField(passwordViewString: String) {
+    func didChangeInputPasswordTextField(passwordViewString: String) {
         viewModel.didEnterPasswordTextFieldWithString(passwordViewString: passwordViewString)
     }
 
-    private func didChangeInputRepeatPasswordTextField(repeatPasswordViewString: String, passwordViewString: String ) {
+    func didChangeInputRepeatPasswordTextField(repeatPasswordViewString: String, passwordViewString: String ) {
         viewModel.didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: repeatPasswordViewString, passwordViewString: passwordViewString)
     }
 

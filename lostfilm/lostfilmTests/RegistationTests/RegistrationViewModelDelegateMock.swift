@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import lostfilm
 
-class RegistrationViewModelDelegateMock: RegistrationViewProtocol {
+final class RegistrationViewModelDelegateMock: RegistrationViewProtocol {
 
     var didCallNicknameConfirmationMessage: ((String) -> Void)?
     var didCallNicknameErrorMessage: ((String) -> Void)?
