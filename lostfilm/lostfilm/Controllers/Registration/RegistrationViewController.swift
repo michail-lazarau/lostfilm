@@ -11,21 +11,45 @@ import UIKit
 final class RegistrationViewController: UIViewController {
     // MARK: Variables
     private let viewModel: RegistrationViewModel
-    private let nickNameView = TextFieldView()
-    private let emailView = TextFieldView()
-    private let passwordView = TextFieldView()
-    private let repeatPasswordView = TextFieldView()
-    private var isRememberMeButtonSelected = false
-    private var isCaptchaButtonSelected = false
-    private let captchaView = CaptchaView()
+    private lazy var isRememberMeButtonSelected = false
+    private lazy var isCaptchaButtonSelected = false
 
-    lazy var readyButton: LostfilmButton  = {
+    private lazy var nickNameView: TextFieldView  = {
+        let view = TextFieldView()
+        view.configureInputField(on: .nickname)
+        return view
+    }()
+
+    private lazy var emailView: TextFieldView = {
+        let view = TextFieldView()
+        view.configureInputField(on: .email)
+        return view
+    }()
+
+    private lazy var passwordView: TextFieldView = {
+        let view = TextFieldView()
+        view.configureInputField(on: .password)
+        return view
+    }()
+
+    private lazy var repeatPasswordView: TextFieldView = {
+        let view = TextFieldView()
+        view.configureInputField(on: .repeatPassword)
+        return view
+    }()
+
+    private lazy var readyButton: LostfilmButton  = {
         let button = LostfilmButton(title: Texts.Buttons.ready)
         button.indicator.color = .white
         return button
     }()
 
-    lazy var rememberMeButton: UIButton = {
+    private lazy var captchaView: CaptchaView = {
+        let view = CaptchaView()
+        return view
+    }()
+
+    private lazy var rememberMeButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "checkmark.square")
         button.setDimensions(width: 25, height: 25)
@@ -37,7 +61,7 @@ final class RegistrationViewController: UIViewController {
         return button
     }()
 
-    lazy var linkTextView: UITextView = {
+    private lazy var linkTextView: UITextView = {
         let view  = UITextView()
         view.backgroundColor =  UIColor.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,13 +69,13 @@ final class RegistrationViewController: UIViewController {
         return view
     }()
 
-    lazy var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
 
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
         label.textColor = UIColor(named: "color")
@@ -60,13 +84,13 @@ final class RegistrationViewController: UIViewController {
         return label
     }()
 
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
 
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -81,6 +105,16 @@ final class RegistrationViewController: UIViewController {
         initialSetup()
         setupView()
         bindTextFields()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerKeyboardNotification()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyboardNotification()
     }
 
     // MARK: Inits
@@ -99,7 +133,6 @@ final class RegistrationViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        setupTextFields()
         setupStackView(withViews: [UIView(), titleLabel, nickNameView, emailView, passwordView, repeatPasswordView, rememberMeButton, captchaView, linkTextView, readyButton])
         setupConstraints()
     }
@@ -124,13 +157,6 @@ final class RegistrationViewController: UIViewController {
 // MARK: Extension
 private extension RegistrationViewController {
     // MARK: UI functions
-    func setupTextFields() {
-        nickNameView.configureInputField(on: .name)
-        emailView.configureInputField(on: .email)
-        passwordView.configureInputField(on: .password)
-        repeatPasswordView.configureInputField(on: .repeatPassword)
-    }
-
     func setupStackView(withViews views: [UIView]) {
         for view in views {
             stackView.addArrangedSubview(view)
@@ -165,6 +191,16 @@ private extension RegistrationViewController {
     }
 
     // MARK: Keyboard
+   func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
     func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
