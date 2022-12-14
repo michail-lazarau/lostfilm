@@ -97,6 +97,7 @@ final class LoginViewController: UIViewController {
         passwordView.textField.returnKeyType = .done
     }
 
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.view = self
@@ -206,14 +207,25 @@ extension LoginViewController {
         captchaTextView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
     }
 
+    private func checkIsButtonEnabled(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
+        viewModel.checkButtonStatus(emailViewString: emailViewString, passwordViewString: passwordViewString, captchaViewString: captchaViewString, isCaptchaHidden: captchaTextView.isHidden)
+    }
+
+    private func didChangeInputPasswordTextField(passwordViewString: String) {
+        viewModel.didEnterPasswordTextFieldWithString(passwordViewString: passwordViewString)
+    }
+
+    private func didChangeInputEmailTextField(emailViewString: String) {
+        viewModel.didEnterEmailTextFieldWithString(emailViewString: emailViewString)
+    }
+
     @objc func textFieldEditingChanged(sender: UITextField) {
         if sender == emailView.textField {
-            didEnterEmailTextFieldWithString(emailViewString: emailView.textField.text ?? "")
-
+            didChangeInputEmailTextField(emailViewString: emailView.textField.text ?? "")
         } else if sender == passwordView.textField {
-            didEnterPasswordTextFieldWithString(passwordViewString: passwordView.textField.text ?? "")
+            didChangeInputPasswordTextField(passwordViewString: passwordView.textField.text ?? "")
         }
-        checkButtonStatus(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
+        checkIsButtonEnabled(emailViewString: emailView.textField.text ?? "", passwordViewString: passwordView.textField.text ?? "", captchaViewString: captchaTextView.textField.text ?? "", isCaptchaHidden: captchaTextView.isHidden)
     }
 
     private func removeKeyboardNotification() {
@@ -228,19 +240,8 @@ extension LoginViewController {
         }
     }
 }
-
+// MARK: Extensions
 extension LoginViewController: LoginViewProtocol {
-    func checkButtonStatus(emailViewString: String, passwordViewString: String, captchaViewString: String?, isCaptchaHidden: Bool) {
-        viewModel.checkButtonStatus(emailViewString: emailViewString, passwordViewString: passwordViewString, captchaViewString: captchaViewString, isCaptchaHidden: captchaTextView.isHidden)
-    }
-
-    func didEnterPasswordTextFieldWithString(passwordViewString: String) {
-        viewModel.didEnterPasswordTextFieldWithString(passwordViewString: passwordViewString)
-    }
-
-    func didEnterEmailTextFieldWithString(emailViewString: String) {
-        viewModel.didEnterEmailTextFieldWithString(emailViewString: emailViewString)
-    }
 
     func sendEmailConfirmationMessage(_ ConfirmationMessage: String, color: UIColor) {
         emailView.setConfirmationState(with: ConfirmationMessage, color: color)
@@ -333,19 +334,6 @@ extension LoginViewController: UITextFieldDelegate {
         default:
             emailView.textField.resignFirstResponder()
         }
-
         return true
-    }
-}
-
-extension UIButton {
-    func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContext(rect.size)
-        color.setFill()
-        UIRectFill(rect)
-        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        setBackgroundImage(colorImage, for: state)
     }
 }

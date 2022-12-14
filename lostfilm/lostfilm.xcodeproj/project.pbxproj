@@ -10,14 +10,23 @@
 		C500DC80292BEB570002ABD4 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */; };
 		C53E119F2901544E002BE86B /* LostfilmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E119E2901544E002BE86B /* LostfilmButton.swift */; };
 		C542477E28E4429C006B2C7D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542477D28E4429C006B2C7D /* TextFieldView.swift */; };
+		C54DF5C829489A56007EB79F /* RegistrationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DF5C729489A56007EB79F /* RegistrationViewModelTests.swift */; };
+		C54DF5CB29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DF5CA29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift */; };
 		C556012E28EF040B0032D75F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C556012D28EF040B0032D75F /* UIColor+Extension.swift */; };
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
+		C56F5F20294354A10025F5B1 /* CaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F5F1F294354A10025F5B1 /* CaptchaView.swift */; };
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
+		C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D77BF293A436000C30E1A /* RegistrationViewController.swift */; };
+		C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */; };
 		C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B522936416F00EB7E9A /* MockDebouncer.swift */; };
 		C5905B552936424D00EB7E9A /* DebouncerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */; };
 		C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D4BE2934D4E100C6D393 /* Debouncer.swift */; };
+		C5B1AF30293D203D00DC7D92 /* RegistrationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF2F293D203D00DC7D92 /* RegistrationViewProtocol.swift */; };
+		C5B1AF33293D2E2B00DC7D92 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */; };
+		C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */; };
+		C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F707A69828EC5EA0006F9110 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */; };
@@ -278,14 +287,23 @@
 		C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTest.swift; sourceTree = "<group>"; };
 		C53E119E2901544E002BE86B /* LostfilmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostfilmButton.swift; sourceTree = "<group>"; };
 		C542477D28E4429C006B2C7D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		C54DF5C729489A56007EB79F /* RegistrationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModelTests.swift; sourceTree = "<group>"; };
+		C54DF5CA29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		C556012D28EF040B0032D75F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C56F5F1F294354A10025F5B1 /* CaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaView.swift; sourceTree = "<group>"; };
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		C57D77BF293A436000C30E1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		C5905B522936416F00EB7E9A /* MockDebouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDebouncer.swift; sourceTree = "<group>"; };
 		C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncerProtocol.swift; sourceTree = "<group>"; };
 		C596D4BE2934D4E100C6D393 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		C5B1AF2F293D203D00DC7D92 /* RegistrationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewProtocol.swift; sourceTree = "<group>"; };
+		C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
+		C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 		F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
@@ -605,12 +623,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C54DF5C929489C7F007EB79F /* RegistationTests */ = {
+			isa = PBXGroup;
+			children = (
+				C54DF5C729489A56007EB79F /* RegistrationViewModelTests.swift */,
+				C54DF5CA29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift */,
+			);
+			path = RegistationTests;
+			sourceTree = "<group>";
+		};
 		C55218A528E7028800BC2CD0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
+				C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */,
 				C556012D28EF040B0032D75F /* UIColor+Extension.swift */,
+				C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */,
 				F74C090B2930DD9C00EFB84E /* UIFont+Extension.swift */,
+				C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -631,6 +661,15 @@
 				C57C867E291A711900DC039F /* Validator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		C57D77BE293A2A7200C30E1A /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				C57D77BF293A436000C30E1A /* RegistrationViewController.swift */,
+				C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
@@ -1286,6 +1325,7 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C57D77BE293A2A7200C30E1A /* Registration */,
 				C567D04428D9BC3A000FDCFE /* Authentication */,
 				F7EA704D281FCE99006444B9 /* GlobalSearchTVC */,
 				F7551D27274D886E00E1748E /* TabbarTVC */,
@@ -1301,6 +1341,7 @@
 			children = (
 				F793AE8A2853A5150004BF0C /* Supporting Files */,
 				F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */,
+				C54DF5C929489C7F007EB79F /* RegistationTests */,
 				F7E8390128D3CE4E00FC2398 /* LoginServiceTests.swift */,
 				C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */,
 				F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */,
@@ -1448,6 +1489,7 @@
 				C542477D28E4429C006B2C7D /* TextFieldView.swift */,
 				F70DB90627C14CC700924479 /* ParagraphView.swift */,
 				F77226C128BE5148002143CC /* CarouselView.swift */,
+				C56F5F1F294354A10025F5B1 /* CaptchaView.swift */,
 				F7A95AE02900C518006325B2 /* UITextField+Extension.swift */,
 				F75AEB3B2902EB6500038144 /* LoadingButton.swift */,
 				F751473B292D075200DE6B2D /* OrderNumberLabel.swift */,
@@ -1475,6 +1517,7 @@
 				F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */,
 				F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */,
 				F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */,
+				C5B1AF2F293D203D00DC7D92 /* RegistrationViewProtocol.swift */,
 			);
 			path = DelegatingProtocols;
 			sourceTree = "<group>";
@@ -1832,6 +1875,7 @@
 				F711A4BE2745A94E00E1515D /* LFApiVideos.m in Sources */,
 				F73459DA2765F98B00E45725 /* TemplateTVC.swift in Sources */,
 				F7997CCE276F933000DFCC19 /* VideosTVC.swift in Sources */,
+				C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */,
 				F7D7D18127B057D100970959 /* SeriesDetailViewCell.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
 				F76E41CC2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift in Sources */,
@@ -1862,7 +1906,9 @@
 				F7C2812627C7A80000DA8A62 /* NewsVM.swift in Sources */,
 				F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */,
 				F780418828C9454E007B4CE0 /* HTTPHeader.swift in Sources */,
+				C56F5F20294354A10025F5B1 /* CaptchaView.swift in Sources */,
 				F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */,
+				C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */,
 				F75E66C028B8D2E600984724 /* NewsDetailsVM.swift in Sources */,
 				F70D0E0E291A8E9F004CAA81 /* Router.swift in Sources */,
 				F7E022A12844273A00123B56 /* GlobalSearchHeaderView.swift in Sources */,
@@ -1885,6 +1931,7 @@
 				F766765728DBCCA1009B9516 /* LFLoginPageModel.swift in Sources */,
 				C567D04228D9B468000FDCFE /* Enums.swift in Sources */,
 				F7516D74282BF29000E1A138 /* GlobalSearchVM.swift in Sources */,
+				C5B1AF33293D2E2B00DC7D92 /* NSAttributedString.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
 				F7355EF42772584E00B42B0F /* NewEpisodesTVC.swift in Sources */,
 				F7471DF227AAE3EB00BDA17A /* SeriesVM.swift in Sources */,
@@ -1997,11 +2044,14 @@
 				F766765928DE0274009B9516 /* DVHtmlError.swift in Sources */,
 				F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
+				C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */,
 				F7471DF827AAFAB100BDA17A /* TVSeriesOverviewTVC.swift in Sources */,
 				F76D9CDA27691D12008D8CA4 /* NewsViewCell.swift in Sources */,
 				F711A4BD2745A94E00E1515D /* LFApiHelper.m in Sources */,
 				F70D0E13291A9236004CAA81 /* AnimatedTransition.swift in Sources */,
+				C5B1AF30293D203D00DC7D92 /* RegistrationViewProtocol.swift in Sources */,
 				F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */,
+				C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */,
 				F7169BAE2821347E00B16251 /* GlobalSearchDC.swift in Sources */,
 				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
 				FB31403429427C5A006DFE61 /* VideosRouter.swift in Sources */,
@@ -2020,6 +2070,7 @@
 				F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */,
 				F773D2C328FC92FA00B20C75 /* LoginViewModelDelegateMock.swift in Sources */,
 				C500DC80292BEB570002ABD4 /* ValidatorTest.swift in Sources */,
+				C54DF5C829489A56007EB79F /* RegistrationViewModelTests.swift in Sources */,
 				F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */,
 				F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */,
 				C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */,
@@ -2028,6 +2079,7 @@
 				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,
 				F773D2C128FC84D500B20C75 /* CaptchaResponseMock.swift in Sources */,
 				F7232D7028D1D63A00BA94B0 /* LoginResponseMock.swift in Sources */,
+				C54DF5CB29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift in Sources */,
 				F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2074,7 +2126,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
@@ -2093,7 +2145,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
@@ -2239,7 +2291,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2276,7 +2328,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2310,7 +2362,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W8CYASRM76;
+				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
