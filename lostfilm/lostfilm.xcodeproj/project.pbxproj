@@ -27,6 +27,8 @@
 		C5B1AF33293D2E2B00DC7D92 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */; };
 		C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */; };
 		C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */; };
+		C5D8A49C294B3F59002FB2DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */; };
+		C5D8A49E294B3F69002FB2DF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
 		F707A69828EC5EA0006F9110 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */; };
@@ -304,6 +306,8 @@
 		C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
 		F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
@@ -670,6 +674,15 @@
 				C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		C5D8A49A294B3F34002FB2DF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */,
+				C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
@@ -1325,6 +1338,7 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5D8A49A294B3F34002FB2DF /* Profile */,
 				C57D77BE293A2A7200C30E1A /* Registration */,
 				C567D04428D9BC3A000FDCFE /* Authentication */,
 				F7EA704D281FCE99006444B9 /* GlobalSearchTVC */,
@@ -1946,6 +1960,7 @@
 				F711A4BC2745A94E00E1515D /* LFApiSeries.m in Sources */,
 				F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */,
 				FB31402E29424F41006DFE61 /* LoginRouter.swift in Sources */,
+				C5D8A49E294B3F69002FB2DF /* ProfileViewModel.swift in Sources */,
 				F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */,
 				C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */,
 				F711A4C02745A94E00E1515D /* LFApiBase.m in Sources */,
@@ -2027,6 +2042,7 @@
 				F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */,
 				C57C867F291A711900DC039F /* Validator.swift in Sources */,
 				F70D0E17291A9261004CAA81 /* ModalTransition.swift in Sources */,
+				C5D8A49C294B3F59002FB2DF /* ProfileViewController.swift in Sources */,
 				F7471DF027AAE09400BDA17A /* VMseriesDescriptionItem.swift in Sources */,
 				F70D0E19291A927C004CAA81 /* PushTransition.swift in Sources */,
 				F7978D6427BC2D6C00C71147 /* EpisodeViewCell.swift in Sources */,
