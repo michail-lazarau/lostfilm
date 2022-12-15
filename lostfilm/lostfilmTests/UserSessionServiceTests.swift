@@ -17,8 +17,7 @@ final class UserSessionServiceTests: XCTestCase {
                                                     domainUrlForCookies: URL(string: ""))
         userSessionData.username = "Test Username"
 
-        let expectedResult = "TU"
-        XCTAssertEqual(userSessionData.userInitials, expectedResult)
+        XCTAssertEqual(userSessionData.userInitials, "TU")
     }
 
     func test_positive_convertUsernameIntoInitials2() throws {
@@ -27,8 +26,7 @@ final class UserSessionServiceTests: XCTestCase {
                                                     domainUrlForCookies: URL(string: ""))
         userSessionData.username = " Username "
 
-        let expectedResult = "U"
-        XCTAssertEqual(userSessionData.userInitials, expectedResult)
+        XCTAssertEqual(userSessionData.userInitials, "U")
     }
 
     func test_positive_convertUsernameIntoInitials3() throws {
@@ -37,8 +35,7 @@ final class UserSessionServiceTests: XCTestCase {
                                                     domainUrlForCookies: URL(string: ""))
         userSessionData.username = " "
 
-        let expectedResult = "?"
-        XCTAssertEqual(userSessionData.userInitials, expectedResult)
+        XCTAssertEqual(userSessionData.userInitials, "?")
     }
 
     func test_positive_convertUsernameIntoInitials4() throws {
@@ -47,8 +44,7 @@ final class UserSessionServiceTests: XCTestCase {
                                                     domainUrlForCookies: URL(string: ""))
         userSessionData.username = ""
 
-        let expectedResult = "?"
-        XCTAssertEqual(userSessionData.userInitials, expectedResult)
+        XCTAssertEqual(userSessionData.userInitials, "?")
     }
 
     func test_positive_convertUsernameIntoInitials5() throws {
@@ -57,8 +53,7 @@ final class UserSessionServiceTests: XCTestCase {
                                                     domainUrlForCookies: URL(string: ""))
         userSessionData.username = "? ?"
 
-        let expectedResult = "??"
-        XCTAssertEqual(userSessionData.userInitials, expectedResult)
+        XCTAssertEqual(userSessionData.userInitials, "??")
     }
 
     func test_positive_isAuthorised_True() throws {
@@ -74,8 +69,7 @@ final class UserSessionServiceTests: XCTestCase {
                                                     httpCookieStorage: cookieStorage,
                                                     domainUrlForCookies: domainUrl)
 
-        let expectedResult = true
-        XCTAssertEqual(userSessionData.isAuthorised, expectedResult)
+        XCTAssertEqual(userSessionData.isAuthorised, true)
     }
 
     func test_positive_isAuthorised_False() throws {
@@ -85,7 +79,6 @@ final class UserSessionServiceTests: XCTestCase {
                                                     httpCookieStorage: cookieStorage,
                                                     domainUrlForCookies: domainUrl)
 
-        let expectedResult = false
-        XCTAssertEqual(userSessionData.isAuthorised, expectedResult)
+        XCTAssertEqual(userSessionData.isAuthorised, false)
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import KeychainAccess
 
-class UserSessionStoredData: UserSessionService {
+final class UserSessionStoredData: UserSessionService {
     private let httpCookieStorage: HTTPCookieStorageable
     private let sensitiveDataStorage: Keychainable
     private let domainUrl: URL?
