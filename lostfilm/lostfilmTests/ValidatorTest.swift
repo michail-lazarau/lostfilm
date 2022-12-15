@@ -34,12 +34,15 @@ final class ValidatorTest: XCTestCase {
         XCTAssertFalse(Validators.password.validate(""))
     }
 
-    func test_ValidateEmptyStringWithString() {
-        XCTAssertTrue(Validators.nonEmpty.validate("NonEpmty"))
+    func test_ValidateNicknameWithValidString() {
+        XCTAssertTrue(Validators.nickname.validate("Name"))
     }
 
-    func test_ValidateEmptyStringWithoutString() {
-        XCTAssertFalse(Validators.nonEmpty.validate(""))
+    func test_ValidateNicknameWithInvalidString() {
+        XCTAssertFalse(Validators.nickname.validate("inv"))
     }
 
+    func test_ValidateNicknameWithEmptySting() {
+        XCTAssertFalse(Validators.nickname.validate(""))
+    }
 }

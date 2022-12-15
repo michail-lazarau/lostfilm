@@ -217,15 +217,16 @@ class LoginViewModelTests: XCTestCase {
     // MARK: Validator
 
     // MARK: sendMessage Functionality
-
     func test_showEmailConfirmation() {
-        let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation")
-        delegate.didCallConfirmationMessage = { message in
-            XCTAssertEqual(message, ValidationConfirmation.validEmail)
-            sendEmailConfirmationMessage.fulfill()
+        let sendEmailConfirmationMessage = XCTestExpectation(description: "sendEmailConfirmationMessage()  expectation") // №1 Создается экспектейнш штука тчо бы подождать  как флаг
+        delegate.didCallConfirmationMessage = { message in // №2 инициализация клоужера / присвоили проперти как обычная строка или инт его тут не вызываем
+            XCTAssertEqual(message, ValidationConfirmation.validEmail) // №5 сравниваем то что пришло в клоужер с  тем что ожидаем верным тестокм
+            sendEmailConfirmationMessage.fulfill() // №6 ждем выполнеие кода выше
         }
-        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com")
-        wait(for: [sendEmailConfirmationMessage], timeout: 0)
+        sut.didEnterEmailTextFieldWithString(emailViewString: "test@gmail.com") //  №3 функция вызывается на логни вью контроллер
+        wait(for: [sendEmailConfirmationMessage], timeout: 5) // №4 будет ждать timeout:  секунд пока не выполниться .fulfill() и если за 5 секунд не выполниться тест упадет
+        // если по
+        print("код после выполнение wait а если нет то будет фейл теста ")
     }
 
     func test_sendErrorEmailMessage() {
