@@ -175,6 +175,7 @@
 		F792183128C9F3DC00230630 /* DataTaskError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183028C9F3DC00230630 /* DataTaskError.swift */; };
 		F792183328C9F48E00230630 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183228C9F48E00230630 /* Request.swift */; };
 		F792183D28CB442900230630 /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183C28CB442900230630 /* UserLoginResponse.swift */; };
+		F793B7E5294B62410044EDF4 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F793B7E4294B62410044EDF4 /* KeychainAccess */; };
 		F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5D27BC195800C71147 /* EpisodesVM.swift */; };
 		F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5F27BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift */; };
 		F7978D6427BC2D6C00C71147 /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D6227BC2D6C00C71147 /* EpisodeViewCell.swift */; };
@@ -598,6 +599,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F793B7E5294B62410044EDF4 /* KeychainAccess in Frameworks */,
 				F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1665,6 +1667,9 @@
 			dependencies = (
 			);
 			name = lostfilm;
+			packageProductDependencies = (
+				F793B7E4294B62410044EDF4 /* KeychainAccess */,
+			);
 			productName = lostfilm;
 			productReference = F7AEE469273FEB7900C304D0 /* lostfilm.app */;
 			productType = "com.apple.product-type.application";
@@ -1721,6 +1726,9 @@
 				ru,
 			);
 			mainGroup = F7AEE460273FEB7900C304D0;
+			packageReferences = (
+				F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = F7AEE46A273FEB7900C304D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2471,6 +2479,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F793B7E4294B62410044EDF4 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7AEE461273FEB7900C304D0 /* Project object */;
 }

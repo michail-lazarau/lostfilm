@@ -8,7 +8,6 @@ target 'lostfilm' do
   pod 'DVAppCore', :git => 'https://github.com/michail-lazarau/DVAppCore.git'
   pod 'DVHtmlToModels', :git => 'https://github.com/denis-vashkovski/DVHtmlToModels.git'
   pod 'SwiftLint'
-  pod 'KeychainAccess'
 
   target 'lostfilmTests' do
     inherit! :search_paths
