@@ -14,7 +14,13 @@ class LoginViewModelTests: XCTestCase {
         session = URLSessionMock()
         router = DefaultRouterMock()
         delegate = LoginViewModelDelegateMock()
-        sut = LoginViewModel(dataProvider: LoginService(session: session), router: router, userSessionData: UserSessionStoredData(), debouncer: MockDebouncer())
+        let userSessionData = UserSessionStoredData(sensitiveDataStorage: KeychainMock(),
+                                                    httpCookieStorage: HTTPCookieStorageMock(),
+                                                    domainUrlForCookies: URL(string: ""))
+        sut = LoginViewModel(dataProvider: LoginService(session: session),
+                             router: router,
+                             userSessionData: userSessionData,
+                             debouncer: MockDebouncer())
         sut.view = delegate
     }
 

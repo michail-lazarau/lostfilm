@@ -80,6 +80,7 @@ PODS:
   - DVAppCore/Views/LayoutConstraintHairline (0.9.1)
   - DVHtmlToModels (0.1.4)
   - hpple (0.3.0)
+  - KeychainAccess (4.2.2)
   - SDWebImage (5.14.2):
     - SDWebImage/Core (= 5.14.2)
   - SDWebImage/Core (5.14.2)
@@ -90,12 +91,14 @@ DEPENDENCIES:
   - DVAppCore (from `https://github.com/michail-lazarau/DVAppCore.git`)
   - DVHtmlToModels (from `https://github.com/denis-vashkovski/DVHtmlToModels.git`)
   - hpple (from `https://github.com/topfunky/hpple.git`)
+  - KeychainAccess
   - SDWebImage
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - CarbonKit
+    - KeychainAccess
     - SDWebImage
     - SwiftLint
 
@@ -123,9 +126,10 @@ SPEC CHECKSUMS:
   DVAppCore: fc1bad763b32c720aa171252a132459801e19c79
   DVHtmlToModels: ce76fe6b54409937e9529d9218d693a9a0a60002
   hpple: 37ac0a804d0f8a7f488712b5ff5f06129e1c9e31
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   SDWebImage: b9a731e1d6307f44ca703b3976d18c24ca561e84
   SwiftLint: 9cbf846727f3312f3ba722f2d7108a162cd050a5
 
-PODFILE CHECKSUM: 1659616db4dfeca4cc660fedc3f6632bfaacb2ea
+PODFILE CHECKSUM: 119584cea8ad1b82175848851f85298d41e6daf1
 
 COCOAPODS: 1.11.3
