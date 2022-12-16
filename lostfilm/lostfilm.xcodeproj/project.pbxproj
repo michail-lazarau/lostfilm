@@ -20,6 +20,8 @@
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
 		C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D77BF293A436000C30E1A /* RegistrationViewController.swift */; };
 		C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */; };
+		C58D27DB294CC2D600F04BA8 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DA294CC2D600F04BA8 /* Segment.swift */; };
+		C58D27DD294CD30100F04BA8 /* SegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */; };
 		C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B522936416F00EB7E9A /* MockDebouncer.swift */; };
 		C5905B552936424D00EB7E9A /* DebouncerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */; };
 		C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D4BE2934D4E100C6D393 /* Debouncer.swift */; };
@@ -299,6 +301,8 @@
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C57D77BF293A436000C30E1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
+		C58D27DA294CC2D600F04BA8 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlView.swift; sourceTree = "<group>"; };
 		C5905B522936416F00EB7E9A /* MockDebouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDebouncer.swift; sourceTree = "<group>"; };
 		C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncerProtocol.swift; sourceTree = "<group>"; };
 		C596D4BE2934D4E100C6D393 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
@@ -681,6 +685,7 @@
 			children = (
 				C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */,
 				C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */,
+				C58D27DA294CC2D600F04BA8 /* Segment.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1501,6 +1506,7 @@
 				C53E119E2901544E002BE86B /* LostfilmButton.swift */,
 				F70DB90427C14C8200924479 /* ParagraphView.xib */,
 				C542477D28E4429C006B2C7D /* TextFieldView.swift */,
+				C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */,
 				F70DB90627C14CC700924479 /* ParagraphView.swift */,
 				F77226C128BE5148002143CC /* CarouselView.swift */,
 				C56F5F1F294354A10025F5B1 /* CaptchaView.swift */,
@@ -1974,6 +1980,7 @@
 				F7516D7C282C56CE00E1A138 /* SeriesCastViewCell.swift in Sources */,
 				F7471DDD27AAB0FD00BDA17A /* VMseriesItem.swift in Sources */,
 				F7516D6E282BDEC700E1A138 /* GlobalSearchItem+Extensions.swift in Sources */,
+				C58D27DD294CD30100F04BA8 /* SegmentControlView.swift in Sources */,
 				F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */,
 				F7471DE127AAB69400BDA17A /* VMseriesPosterItem.swift in Sources */,
 				F78EC96027C6A7820041F998 /* TVSeriesNewsDataProvider.swift in Sources */,
@@ -2031,6 +2038,7 @@
 				F7B2DB90274A82250099CF29 /* TVSeriesDataController.swift in Sources */,
 				F780418628C94048007B4CE0 /* HTTPMethod.swift in Sources */,
 				FB31403229427BE8006DFE61 /* NewsRouter.swift in Sources */,
+				C58D27DB294CC2D600F04BA8 /* Segment.swift in Sources */,
 				F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */,
 				F7DFCF9127F0A423006A0789 /* ZoomTransitioningDelegate.swift in Sources */,
 				F74C4BDB27863950008C5969 /* BaseFilterTVC.swift in Sources */,

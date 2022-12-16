@@ -9,41 +9,8 @@ import Foundation
 
 final class ProfileViewController: UIViewController {
     // MARK: Variables:
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Расскажите о себе"
-        label.textColor = UIColor(named: "color")
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private lazy var nameView: TextFieldView = {
-        let view = TextFieldView()
-        view.configureInputField(on: .name)
-        return view
-    }()
-
-    private lazy var surnameView: TextFieldView = {
-        let view = TextFieldView()
-        view.configureInputField(on: .surname)
-        return view
-    }()
-
-    private lazy var nextButton: UIButton = {
-        let button =  UIButton()
-        button.setDimensions(width: 25, height: 25)
-        button.setTitle("Next", for: .normal)
-        button.setTitleColor(.button, for: .normal)
-        button.layer.cornerRadius = 5
-        button.tintColor = .lightGray
-        return button
-    }()
-
-    private lazy var sexPicker: UIPickerView = {
-        let picker = UIPickerView()
-        return picker
-    }()
+    private var selectedSex: String?
+    private let testArray = ["Male", "Female"]
 
     private lazy var contentView: UIView = {
         let view = UIView()
@@ -65,10 +32,57 @@ final class ProfileViewController: UIViewController {
         return stackView
     }()
 
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Расскажите о себе"
+        label.textColor = UIColor(named: "color")
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var nameView: TextFieldView = {
+        let view = TextFieldView()
+        view.configureInputField(on: .name)
+        return view
+    }()
+
+    private lazy var surnameView: TextFieldView = {
+        let view = TextFieldView()
+        view.configureInputField(on: .surname)
+        return view
+    }()
+
+    private lazy var segmentView: SegmentControlView = {
+        let view = SegmentControlView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var segment: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["One", "Two"])
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        segment.addTarget(self, action: #selector(handle), for: .valueChanged)
+        return segment
+    }()
+
+    private lazy var nextButton: UIButton = {
+        let button =  UIButton()
+        button.setDimensions(width: 25, height: 25)
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(.button, for: .normal)
+        button.layer.cornerRadius = 5
+        button.tintColor = .lightGray
+        return button
+    }()
+
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+//        dismissAndClosePickerView()
+        initialSetup()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +102,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        setupStackView(withViews: [UIView(), titleLabel, nameView, surnameView, nextButton])
+        setupStackView(withViews: [UIView(), titleLabel, nameView, surnameView, segment, nextButton])
         setupConstraints()
     }
 
@@ -96,8 +110,10 @@ final class ProfileViewController: UIViewController {
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         nameView.textField.delegate = self
         surnameView.textField.delegate = self
-        sexPicker.delegate = self
-        sexPicker.dataSource = self
+
+//        sexPicker.delegate = self
+//        sexPicker.dataSource = self
+//        selectedSexTextField.inputView = sexPicker
     }
 }
 
@@ -174,6 +190,33 @@ private extension ProfileViewController {
     @objc func hideKeyboard() {
         view.endEditing(true)
     }
+
+    @objc func handle(sender: UISegmentedControl) {
+             switch sender.selectedSegmentIndex {
+             case 0:
+                 print("0")
+             case 1:
+                 print("1")
+             default:
+                 print("-1")
+             }
+         }
+
+
+    // MARK: UIPickerView
+//    func dismissAndClosePickerView() {
+//        let toolBar = UIToolbar()
+//        toolBar.sizeToFit()
+//
+//        let button = UIBarButtonItem(title: "Done",
+//                                     style: .plain,
+//                                     target: self,
+//                                     action: #selector(dismissAction))
+//        toolBar.setItems([button], animated: true)
+//        toolBar.isUserInteractionEnabled = true
+//        selectedSexTextField.inputAccessoryView = toolBar
+//    }
+
 }
 
 extension ProfileViewController: UITextFieldDelegate {
@@ -190,13 +233,31 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 
-extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+//extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return testArray.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return testArray[row]
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        selectedSex = testArray[row]
+//        selectedSexTextField.text = selectedSex
+//    }
+//}
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        <#code#>
-    }
 
-}
+
+
+
+//private lazy var sexPicker: UIPickerView = {
+//    let picker = UIPickerView()
+//    picker.translatesAutoresizingMaskIntoConstraints = false
+//    return picker
+//}()
