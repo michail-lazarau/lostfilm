@@ -107,7 +107,7 @@ final class ProfileViewController: UIViewController {
     }
 
     private func initialSetup() {
-        view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         nameView.textField.delegate = self
         surnameView.textField.delegate = self
 
