@@ -8,12 +8,11 @@
 import Foundation
 
 @objc protocol TabModuleInput: AnyObject {
-    func showSignedInUserProfileButton(with username: String)
+    func showSignedInUserProfileButton(with userInitials: String)
     func showSignedOutUserProfileButton()
 }
 
 final class TabBarRouter: DefaultRouter {
-
     private let userSessionData: UserSessionService
     private var tabs: [WeakBox<TabModuleInput>] = []
 
@@ -33,7 +32,7 @@ final class TabBarRouter: DefaultRouter {
         ]
         tabBarController.viewControllers = tabs.compactMap { $0.0 }
         self.tabs = tabs.compactMap { $0.1 }.compactMap { WeakBox($0) }
-        self.root = tabBarController
+        root = tabBarController
         refreshProfileButton()
         return tabBarController
     }
@@ -49,8 +48,8 @@ final class TabBarRouter: DefaultRouter {
 
     private func refreshProfileButton() {
         let tabs = tabs.compactMap { $0.value }
-        if userSessionData.isAuthorised(), let name = userSessionData.username {
-            tabs.forEach { $0.showSignedInUserProfileButton(with: name) }
+        if userSessionData.isAuthorised {
+            tabs.forEach { $0.showSignedInUserProfileButton(with: userSessionData.userInitials) }
         } else {
             tabs.forEach { $0.showSignedOutUserProfileButton() }
         }

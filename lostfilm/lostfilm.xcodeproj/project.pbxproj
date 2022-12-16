@@ -86,6 +86,8 @@
 		F7355EF02772523C00B42B0F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EEF2772523C00B42B0F /* Util.swift */; };
 		F7355EF22772571200B42B0F /* NewEpisodesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */; };
 		F7355EF42772584E00B42B0F /* NewEpisodesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7355EF32772584E00B42B0F /* NewEpisodesTVC.swift */; };
+		F738B3C92943C78A00D8EFCA /* KeychainMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F738B3C82943C78A00D8EFCA /* KeychainMock.swift */; };
+		F738B3CB29473CA200D8EFCA /* UserSessionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F738B3CA29473CA200D8EFCA /* UserSessionServiceTests.swift */; };
 		F73CEF5727494FD40011AE04 /* TVSeriesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73CEF5627494FD40011AE04 /* TVSeriesTVC.swift */; };
 		F7439DEF27F8E68400ACB015 /* CustomNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7439DEE27F8E68300ACB015 /* CustomNavigationControllerDelegate.swift */; };
 		F7471DDB27AAADF700BDA17A /* SeriesModelItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7471DDA27AAADF700BDA17A /* SeriesModelItemType.swift */; };
@@ -173,6 +175,7 @@
 		F792183128C9F3DC00230630 /* DataTaskError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183028C9F3DC00230630 /* DataTaskError.swift */; };
 		F792183328C9F48E00230630 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183228C9F48E00230630 /* Request.swift */; };
 		F792183D28CB442900230630 /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F792183C28CB442900230630 /* UserLoginResponse.swift */; };
+		F793B7E5294B62410044EDF4 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F793B7E4294B62410044EDF4 /* KeychainAccess */; };
 		F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5D27BC195800C71147 /* EpisodesVM.swift */; };
 		F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D5F27BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift */; };
 		F7978D6427BC2D6C00C71147 /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7978D6227BC2D6C00C71147 /* EpisodeViewCell.swift */; };
@@ -206,6 +209,10 @@
 		F7AEE479273FEB7A00C304D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AEE477273FEB7A00C304D0 /* LaunchScreen.storyboard */; };
 		F7B2DB90274A82250099CF29 /* TVSeriesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB8F274A82250099CF29 /* TVSeriesDataController.swift */; };
 		F7B2DB96274AA3E60099CF29 /* LFApplicationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */; };
+		F7B6F8AE294A896A00742194 /* HTTPCookieStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6F8AD294A896A00742194 /* HTTPCookieStorageMock.swift */; };
+		F7B6F8B0294A93CA00742194 /* UserSessionStoredData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6F8AF294A93CA00742194 /* UserSessionStoredData.swift */; };
+		F7B6F8B4294AA3AE00742194 /* HTTPCookieStorageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6F8B3294AA3AE00742194 /* HTTPCookieStorageable.swift */; };
+		F7B6F8B6294AA3CE00742194 /* Keychainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6F8B5294AA3CE00742194 /* Keychainable.swift */; };
 		F7B72B9727C271C3000DFBA3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */; };
 		F7C2812627C7A80000DA8A62 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2812527C7A80000DA8A62 /* NewsVM.swift */; };
 		F7C2812C27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2812B27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift */; };
@@ -368,6 +375,8 @@
 		F7355EEF2772523C00B42B0F /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F7355EF12772571200B42B0F /* NewEpisodesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesDataController.swift; sourceTree = "<group>"; };
 		F7355EF32772584E00B42B0F /* NewEpisodesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEpisodesTVC.swift; sourceTree = "<group>"; };
+		F738B3C82943C78A00D8EFCA /* KeychainMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainMock.swift; sourceTree = "<group>"; };
+		F738B3CA29473CA200D8EFCA /* UserSessionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionServiceTests.swift; sourceTree = "<group>"; };
 		F73CEF5627494FD40011AE04 /* TVSeriesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesTVC.swift; sourceTree = "<group>"; };
 		F7439DEE27F8E68300ACB015 /* CustomNavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		F7471DDA27AAADF700BDA17A /* SeriesModelItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModelItemType.swift; sourceTree = "<group>"; };
@@ -513,6 +522,10 @@
 		F7B02F79284E6D17004D95A1 /* lostfilmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lostfilmTests.swift; sourceTree = "<group>"; };
 		F7B2DB8F274A82250099CF29 /* TVSeriesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesDataController.swift; sourceTree = "<group>"; };
 		F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFApplicationHelper.swift; sourceTree = "<group>"; };
+		F7B6F8AD294A896A00742194 /* HTTPCookieStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCookieStorageMock.swift; sourceTree = "<group>"; };
+		F7B6F8AF294A93CA00742194 /* UserSessionStoredData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionStoredData.swift; sourceTree = "<group>"; };
+		F7B6F8B3294AA3AE00742194 /* HTTPCookieStorageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCookieStorageable.swift; sourceTree = "<group>"; };
+		F7B6F8B5294AA3CE00742194 /* Keychainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychainable.swift; sourceTree = "<group>"; };
 		F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F7C2812527C7A80000DA8A62 /* NewsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVM.swift; sourceTree = "<group>"; };
 		F7C2812B27C7AB7600DA8A62 /* NewsVM+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsVM+UITableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -586,6 +599,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F793B7E5294B62410044EDF4 /* KeychainAccess in Frameworks */,
 				F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,7 +706,6 @@
 				F70D0E0D291A8E9F004CAA81 /* Router.swift */,
 				F70D0E1A291A930C004CAA81 /* Animator */,
 				F70D0E1D291AAF95004CAA81 /* Routers */,
-				F70D0E22291AB113004CAA81 /* Route */,
 				F70D0E0F291A8F63004CAA81 /* Transitions */,
 			);
 			path = Routing;
@@ -724,13 +737,6 @@
 				F70D0E1E291AAFA9004CAA81 /* DefaultRouter.swift */,
 			);
 			path = Routers;
-			sourceTree = "<group>";
-		};
-		F70D0E22291AB113004CAA81 /* Route */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Route;
 			sourceTree = "<group>";
 		};
 		F711A41A2745A74300E1515D /* Resources */ = {
@@ -889,12 +895,15 @@
 		F73459DD276642E200E45725 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				F7B6F8B1294AA32C00742194 /* UnitTestProtocols */,
 				F70D0E0C291A8E84004CAA81 /* Routing */,
 				F7DFCF8F27F0A339006A0789 /* DelegatingProtocols */,
 				F721B88528B7A1ED00D521D0 /* ProtocolsForCells */,
 				F721B88228B7A08100D521D0 /* LoadingProtocolsForViewModels */,
 				F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */,
 				C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */,
+				F735104129363A28009404AF /* UserSessionService.swift */,
+				F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1168,6 +1177,8 @@
 				C5905B522936416F00EB7E9A /* MockDebouncer.swift */,
 				F773D2C228FC92FA00B20C75 /* LoginViewModelDelegateMock.swift */,
 				F7AD60E92921AB0300184FA5 /* DefaultRouterMock.swift */,
+				F738B3C82943C78A00D8EFCA /* KeychainMock.swift */,
+				F7B6F8AD294A896A00742194 /* HTTPCookieStorageMock.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1345,6 +1356,7 @@
 				F7E8390128D3CE4E00FC2398 /* LoginServiceTests.swift */,
 				C500DC7F292BEB570002ABD4 /* ValidatorTest.swift */,
 				F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */,
+				F738B3CA29473CA200D8EFCA /* UserSessionServiceTests.swift */,
 			);
 			path = lostfilmTests;
 			sourceTree = "<group>";
@@ -1364,19 +1376,35 @@
 		F7B2DB91274AA29B0099CF29 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				F7E838F428D35F2E00FC2398 /* Networking */,
 				F751EBDB28CE5BA10005B652 /* JsonModels */,
 				F7B2DB95274AA3E60099CF29 /* LFApplicationHelper.swift */,
 				F751EBD928CE4E300005B652 /* LoginService.swift */,
-				F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */,
 				F780418528C94048007B4CE0 /* HTTPMethod.swift */,
 				F780418728C9454E007B4CE0 /* HTTPHeader.swift */,
 				F792183028C9F3DC00230630 /* DataTaskError.swift */,
 				F792183228C9F48E00230630 /* Request.swift */,
 				F766765828DE0274009B9516 /* DVHtmlError.swift */,
-				F735104129363A28009404AF /* UserSessionService.swift */,
+				F7B6F8AF294A93CA00742194 /* UserSessionStoredData.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		F7B6F8B1294AA32C00742194 /* UnitTestProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				F7E838F428D35F2E00FC2398 /* Networking */,
+				F7B6F8B2294AA34D00742194 /* Storaging */,
+			);
+			path = UnitTestProtocols;
+			sourceTree = "<group>";
+		};
+		F7B6F8B2294AA34D00742194 /* Storaging */ = {
+			isa = PBXGroup;
+			children = (
+				F7B6F8B3294AA3AE00742194 /* HTTPCookieStorageable.swift */,
+				F7B6F8B5294AA3CE00742194 /* Keychainable.swift */,
+			);
+			path = Storaging;
 			sourceTree = "<group>";
 		};
 		F7C2812727C7AA8F00DA8A62 /* News */ = {
@@ -1639,6 +1667,9 @@
 			dependencies = (
 			);
 			name = lostfilm;
+			packageProductDependencies = (
+				F793B7E4294B62410044EDF4 /* KeychainAccess */,
+			);
 			productName = lostfilm;
 			productReference = F7AEE469273FEB7900C304D0 /* lostfilm.app */;
 			productType = "com.apple.product-type.application";
@@ -1695,6 +1726,9 @@
 				ru,
 			);
 			mainGroup = F7AEE460273FEB7900C304D0;
+			packageReferences = (
+				F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = F7AEE46A273FEB7900C304D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1891,6 +1925,7 @@
 				F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */,
 				F78C5DB628319B6100AF8400 /* WeakTimer.swift in Sources */,
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
+				F7B6F8B0294A93CA00742194 /* UserSessionStoredData.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
 				F77226C228BE5148002143CC /* CarouselView.swift in Sources */,
 				F717BF1527AC86E10029B796 /* SeriesPosterViewCell.swift in Sources */,
@@ -1908,6 +1943,7 @@
 				F780418828C9454E007B4CE0 /* HTTPHeader.swift in Sources */,
 				C56F5F20294354A10025F5B1 /* CaptchaView.swift in Sources */,
 				F7DAE2C627A176CF003AED19 /* NavigationViewButton.swift in Sources */,
+				F7B6F8B6294AA3CE00742194 /* Keychainable.swift in Sources */,
 				C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */,
 				F75E66C028B8D2E600984724 /* NewsDetailsVM.swift in Sources */,
 				F70D0E0E291A8E9F004CAA81 /* Router.swift in Sources */,
@@ -1942,6 +1978,7 @@
 				F73459DC276610F000E45725 /* CellConfigurable.swift in Sources */,
 				F7471DE827AADF8700BDA17A /* VMseriesDetailRatingIMDbItem.swift in Sources */,
 				F79C97392746CCA3001BD5F8 /* LFPhotoModel.m in Sources */,
+				F7B6F8B4294AA3AE00742194 /* HTTPCookieStorageable.swift in Sources */,
 				F7C693A12782133A002C6D25 /* FilteringViewCell.swift in Sources */,
 				F711A4BC2745A94E00E1515D /* LFApiSeries.m in Sources */,
 				F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */,
@@ -2065,6 +2102,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B6F8AE294A896A00742194 /* HTTPCookieStorageMock.swift in Sources */,
 				F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */,
 				F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */,
 				F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */,
@@ -2077,10 +2115,12 @@
 				F7AD60EA2921AB0300184FA5 /* DefaultRouterMock.swift in Sources */,
 				F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */,
 				F7E8390028D361CB00FC2398 /* URLSessionDataTaskMock.swift in Sources */,
+				F738B3C92943C78A00D8EFCA /* KeychainMock.swift in Sources */,
 				F773D2C128FC84D500B20C75 /* CaptchaResponseMock.swift in Sources */,
 				F7232D7028D1D63A00BA94B0 /* LoginResponseMock.swift in Sources */,
 				C54DF5CB29489CD8007EB79F /* RegistrationViewModelDelegateMock.swift in Sources */,
 				F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */,
+				F738B3CB29473CA200D8EFCA /* UserSessionServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2439,6 +2479,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F793B7E4294B62410044EDF4 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7AEE461273FEB7900C304D0 /* Project object */;
 }
