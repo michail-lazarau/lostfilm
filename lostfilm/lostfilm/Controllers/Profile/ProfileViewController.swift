@@ -15,7 +15,9 @@ import Foundation
 final class ProfileViewController: UIViewController {
     // MARK: Variables:
     private let viewModel: ProfileViewModel
-    private var selectedSex: String?
+    private var selectedCountry: String?
+    private var selectedCity: String?
+    private var selectedCites: [String] = []
     private let testArray = ["Male", "Female"]
 
     private lazy var contentView: UIView = {
@@ -59,6 +61,12 @@ final class ProfileViewController: UIViewController {
         return view
     }()
 
+    private lazy var selectSexLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Укажите свой пол"
+        return label
+    }()
+
     private lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["One", "Two"])
         segment.translatesAutoresizingMaskIntoConstraints = false
@@ -66,11 +74,52 @@ final class ProfileViewController: UIViewController {
         return segment
     }()
 
+    private lazy var dateOfBirthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Укажите свой возраст"
+        return label
+    }()
+
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         return picker
+    }()
 
+    private lazy var countryLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Country"
+        return label
+    }()
+
+    private lazy var cityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "City"
+        return label
+    }()
+
+    private lazy var countryTextField: UITextField  = {
+        let textField = UITextField()
+        textField.placeholder = "Select country"
+        return textField
+    }()
+
+    private lazy var citiesTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Select your city"
+        return textField
+    }()
+
+    private lazy var countryPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
+
+    private lazy var cityPiker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
     }()
 
     private lazy var nextButton: UIButton = {
@@ -87,11 +136,11 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-//        dismissAndClosePickerView()
+        dismissAndClosePickerView()
         initialSetup()
-        setupDatePicker()
+//        setupDatePicker()
         viewModel.viewIsLoaded() // вызываем функцию один раз при запуске когда загрузится вью
-        getCitiesForSelectedCountry(country: "Japan")
+        selectedCites = viewModel.getCytiesList(countryName: "Japan")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +168,14 @@ final class ProfileViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        setupStackView(withViews: [UIView(), titleLabel, nameView, surnameView, segment, datePicker, nextButton])
+        setupStackView(withViews: [UIView(),
+                                   titleLabel,
+                                   nameView, surnameView,
+                                   selectSexLabel, segment,
+                                   dateOfBirthLabel, datePicker,
+                                   countryLabel, countryPicker,
+                                   cityLabel, cityPiker,
+                                   nextButton])
         setupConstraints()
     }
     private func initialSetup() {
@@ -127,9 +183,14 @@ final class ProfileViewController: UIViewController {
         nameView.textField.delegate = self
         surnameView.textField.delegate = self
 
-//        sexPicker.delegate = self
-//        sexPicker.dataSource = self
-//        selectedSexTextField.inputView = sexPicker
+        countryPicker.delegate = self
+        countryPicker.dataSource = self
+        countryTextField.inputView = countryPicker
+
+        cityPiker.delegate = self
+        cityPiker.dataSource = self
+        citiesTextField.inputView = cityPiker
+
     }
 }
 
@@ -216,6 +277,10 @@ private extension ProfileViewController {
         view.endEditing(true)
     }
 
+    @objc func dismissAction() {
+        view.endEditing(true)
+    }
+
     @objc func handle(sender: UISegmentedControl) {
              switch sender.selectedSegmentIndex {
              case 0:
@@ -227,24 +292,19 @@ private extension ProfileViewController {
              }
          }
 
-    func getCitiesForSelectedCountry(country: String) {
-        viewModel.getCytiesList(countryName: country)
-    }
-
-
     // MARK: UIPickerView
-//    func dismissAndClosePickerView() {
-//        let toolBar = UIToolbar()
-//        toolBar.sizeToFit()
-//
-//        let button = UIBarButtonItem(title: "Done",
-//                                     style: .plain,
-//                                     target: self,
-//                                     action: #selector(dismissAction))
-//        toolBar.setItems([button], animated: true)
-//        toolBar.isUserInteractionEnabled = true
-//        selectedSexTextField.inputAccessoryView = toolBar
-//    }
+    func dismissAndClosePickerView() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+
+        let button = UIBarButtonItem(title: "Done",
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(dismissAction))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        countryTextField.inputAccessoryView = toolBar
+    }
 
 }
 
@@ -262,27 +322,37 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 
-//extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return testArray.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return testArray[row]
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        selectedSex = testArray[row]
-//        selectedSexTextField.text = selectedSex
-//    }
-//}
+extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
-//private lazy var sexPicker: UIPickerView = {
-//    let picker = UIPickerView()
-//    picker.translatesAutoresizingMaskIntoConstraints = false
-//    return picker
-//}()
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == countryPicker {
+            return viewModel.getCountryNamesList(countries: viewModel.countriesList).count
+        } else if pickerView == cityPiker {
+            return selectedCites.count
+
+        }
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == countryPicker {
+            return viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
+        } else if pickerView == cityPiker {
+            return selectedCites[row]
+        }
+        return "Error"
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == countryPicker {
+            selectedCountry = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
+            countryTextField.text = selectedCountry
+        } else if  pickerView == cityPiker {
+            selectedCity = selectedCites[row]
+            citiesTextField.text = selectedCity
+        }
+    }
+}

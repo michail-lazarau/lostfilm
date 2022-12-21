@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ProfileViewModelProtocol {
+    func getCountryNamesList(countries: [Country]) -> [String]
     func getCytiesList(countryName: String) -> [String]
 
 }
@@ -15,9 +16,7 @@ protocol ProfileViewModelProtocol {
 final class ProfileViewModel: ProfileViewModelProtocol {
     // MARK: Variables
     private let countryService: CountryServiceProtocol
-    private var countriesList: [Country] = []
-    private var selectedCities: [City] = []
-    private var selectedString: [String] = []
+    var countriesList: [Country] = []
 
     // MARK: Inits
     init(countryService: CountryServiceProtocol) {
@@ -31,15 +30,21 @@ final class ProfileViewModel: ProfileViewModelProtocol {
         }
     }
 
+    func getCountryNamesList(countries: [Country]) -> [String] {
+        let countriesNames = countries.map { $0.name }
+        return countriesNames
+    }
+
     func getCytiesList(countryName: String) -> [String] {
-        var citiesList: [String] = []
+        var selectedCities: [City] = []
+        var citiesNames: [String] = []
         if let result = countriesList.first(where: { $0.name == countryName }) {
             selectedCities = result.cities
             for city in selectedCities {
-                citiesList.append(city.name)
+                citiesNames.append(city.name)
             }
         }
-        print(citiesList)
-        return citiesList
+        print(citiesNames)
+        return citiesNames
     }
 }
