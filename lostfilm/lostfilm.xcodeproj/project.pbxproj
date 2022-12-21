@@ -16,9 +16,11 @@
 		C567D04228D9B468000FDCFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04128D9B468000FDCFE /* Enums.swift */; };
 		C567D04628D9BC72000FDCFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04528D9BC72000FDCFE /* LoginViewController.swift */; };
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
+		C56AD7A92950850800345C72 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56AD7A82950850800345C72 /* CountryService.swift */; };
 		C56F5F20294354A10025F5B1 /* CaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F5F1F294354A10025F5B1 /* CaptchaView.swift */; };
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
 		C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D77BF293A436000C30E1A /* RegistrationViewController.swift */; };
+		C58026C92951EFE700F12EAD /* DomainCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58026C82951EFE700F12EAD /* DomainCountryModel.swift */; };
 		C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */; };
 		C58D27DB294CC2D600F04BA8 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DA294CC2D600F04BA8 /* Segment.swift */; };
 		C58D27DD294CD30100F04BA8 /* SegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */; };
@@ -297,9 +299,11 @@
 		C567D04128D9B468000FDCFE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C567D04528D9BC72000FDCFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C56AD7A82950850800345C72 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		C56F5F1F294354A10025F5B1 /* CaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaView.swift; sourceTree = "<group>"; };
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C57D77BF293A436000C30E1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		C58026C82951EFE700F12EAD /* DomainCountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCountryModel.swift; sourceTree = "<group>"; };
 		C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		C58D27DA294CC2D600F04BA8 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlView.swift; sourceTree = "<group>"; };
@@ -685,6 +689,7 @@
 			children = (
 				C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */,
 				C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */,
+				C58026C82951EFE700F12EAD /* DomainCountryModel.swift */,
 				C58D27DA294CC2D600F04BA8 /* Segment.swift */,
 			);
 			path = Profile;
@@ -938,6 +943,7 @@
 			isa = PBXGroup;
 			children = (
 				F7355EEF2772523C00B42B0F /* Util.swift */,
+				C56AD7A82950850800345C72 /* CountryService.swift */,
 				C567D04728D9CC9A000FDCFE /* Utilities.swift */,
 				F72518282775FAC800C60103 /* ScheduleDateIntervalEnum.swift */,
 				C56F70CE2913FD190098F6A5 /* Validator */,
@@ -1898,6 +1904,7 @@
 				C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */,
 				F7D7D18127B057D100970959 /* SeriesDetailViewCell.swift in Sources */,
 				F79C97342746CCA3001BD5F8 /* LFVideoContentItemModel.m in Sources */,
+				C58026C92951EFE700F12EAD /* DomainCountryModel.swift in Sources */,
 				F76E41CC2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift in Sources */,
 				F7516D6A282BDD8300E1A138 /* GlobalSearchItemType.swift in Sources */,
 				F7516D70282BE1F900E1A138 /* GlobalSearchSeriesItem.swift in Sources */,
@@ -1933,6 +1940,7 @@
 				F70D0E0E291A8E9F004CAA81 /* Router.swift in Sources */,
 				F7E022A12844273A00123B56 /* GlobalSearchHeaderView.swift in Sources */,
 				F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */,
+				C56AD7A92950850800345C72 /* CountryService.swift in Sources */,
 				F7516D72282BE20800E1A138 /* GlobalSearchPersonsItem.swift in Sources */,
 				F77288C028A007D200AB28AB /* BaseViewModel.swift in Sources */,
 				F717BF1827AD54F30029B796 /* TVSeriesOverviewDataProvider.swift in Sources */,

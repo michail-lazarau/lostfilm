@@ -7,8 +7,14 @@
 
 import Foundation
 
+//protocol ProfileViewControllerProtocol {
+//    func getCitiesForSelectedCountry(country: String)
+//    
+//}
+
 final class ProfileViewController: UIViewController {
     // MARK: Variables:
+    private let viewModel: ProfileViewModel
     private var selectedSex: String?
     private let testArray = ["Male", "Female"]
 
@@ -53,17 +59,18 @@ final class ProfileViewController: UIViewController {
         return view
     }()
 
-    private lazy var segmentView: SegmentControlView = {
-        let view = SegmentControlView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     private lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["One", "Two"])
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.addTarget(self, action: #selector(handle), for: .valueChanged)
         return segment
+    }()
+
+    private lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        return picker
+
     }()
 
     private lazy var nextButton: UIButton = {
@@ -82,7 +89,9 @@ final class ProfileViewController: UIViewController {
         setupView()
 //        dismissAndClosePickerView()
         initialSetup()
-
+        setupDatePicker()
+        viewModel.viewIsLoaded() // вызываем функцию один раз при запуске когда загрузится вью
+        getCitiesForSelectedCountry(country: "Japan")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +103,14 @@ final class ProfileViewController: UIViewController {
     }
 
     // MARK: Inits
+    init(viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: Functions
 
@@ -102,10 +119,9 @@ final class ProfileViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        setupStackView(withViews: [UIView(), titleLabel, nameView, surnameView, segment, nextButton])
+        setupStackView(withViews: [UIView(), titleLabel, nameView, surnameView, segment, datePicker, nextButton])
         setupConstraints()
     }
-
     private func initialSetup() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         nameView.textField.delegate = self
@@ -150,6 +166,15 @@ private extension ProfileViewController {
 
             contentViewHeightConstraint
         ])
+    }
+
+    func setupDatePicker() {
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .automatic
+        } else {
+            print("End")
+        }
+
     }
 
     // MARK: Keyboard
@@ -202,6 +227,10 @@ private extension ProfileViewController {
              }
          }
 
+    func getCitiesForSelectedCountry(country: String) {
+        viewModel.getCytiesList(countryName: country)
+    }
+
 
     // MARK: UIPickerView
 //    func dismissAndClosePickerView() {
@@ -251,10 +280,6 @@ extension ProfileViewController: UITextFieldDelegate {
 //        selectedSexTextField.text = selectedSex
 //    }
 //}
-
-
-
-
 
 //private lazy var sexPicker: UIPickerView = {
 //    let picker = UIPickerView()

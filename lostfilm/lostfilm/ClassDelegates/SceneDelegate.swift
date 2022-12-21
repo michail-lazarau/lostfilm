@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let router = TabBarRouter(userSessionData: UserSessionStoredData())
-        let viewController = ProfileViewController()
+        let viewController = ProfileViewController(viewModel: ProfileViewModel(countryService: CountryService()))
         self.tabBarRouter = router
         window?.rootViewController = viewController
 //        let viewController = ProfileViewController()

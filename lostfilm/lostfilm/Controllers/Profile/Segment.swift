@@ -9,14 +9,13 @@ import Foundation
 
 class Segment: UIViewController {
 
-    var segment: UISegmentedControl = {
+        lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["One", "Two"])
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(handle), for: .valueChanged)
         return segment
     }()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +28,9 @@ class Segment: UIViewController {
                     segment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
                     segment.heightAnchor.constraint(greaterThanOrEqualToConstant: 35)
                 ])
-
     }
 
-    @objc func handle(sender: UISegmentedControl){
+    @objc func handle(sender: UISegmentedControl) {
              switch sender.selectedSegmentIndex {
              case 0:
                  print("0")
