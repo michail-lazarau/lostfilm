@@ -7,18 +7,9 @@
 
 import Foundation
 
-//protocol ProfileViewControllerProtocol {
-//    func getCitiesForSelectedCountry(country: String)
-//    
-//}
-
 final class ProfileViewController: UIViewController {
     // MARK: Variables:
     private let viewModel: ProfileViewModel
-    private var selectedCountry: String?
-    private var selectedCity: String?
-    private var selectedCites: [String] = []
-    private let testArray = ["Male", "Female"]
 
     private lazy var contentView: UIView = {
         let view = UIView()
@@ -139,7 +130,6 @@ final class ProfileViewController: UIViewController {
         dismissAndClosePickerView()
         initialSetup()
         viewModel.viewIsLoaded() // вызываем функцию один раз при запуске когда загрузится вью
-        selectedCites = viewModel.getCytiesList(countryName: "Japan")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -167,7 +157,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        setupStackView(withViews: [UIView(),
+        stackView.setupSubViews(withViews: [UIView(),
                                    titleLabel,
                                    nameView, surnameView,
                                    selectSexLabel, segment,
@@ -194,11 +184,6 @@ final class ProfileViewController: UIViewController {
 
 private extension ProfileViewController {
     // MARK: UI Functions
-    func setupStackView(withViews views: [UIView]) { // cделать экстенш к функции стэк вью
-        for view in views {
-            stackView.addArrangedSubview(view)
-        }
-    }
 
     func setupConstraints() {
         let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 0.0)
@@ -273,11 +258,11 @@ private extension ProfileViewController {
     @objc func handle(sender: UISegmentedControl) {
              switch sender.selectedSegmentIndex {
              case 0:
-                 print("0")
+                 print("Do smth")
              case 1:
-                 print("1")
+                 print("Do smth")
              default:
-                 print("-1")
+                 print("Do smth")
              }
          }
 
@@ -293,6 +278,7 @@ private extension ProfileViewController {
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         countryTextField.inputAccessoryView = toolBar
+        citiesTextField.inputAccessoryView = toolBar
     }
 
 }
@@ -337,6 +323,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == countryPicker {
             countryTextField.text = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
+            citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "").first
         } else if pickerView == cityPiker {
             citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
         }

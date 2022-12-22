@@ -133,7 +133,7 @@ final class RegistrationViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        setupStackView(withViews: [UIView(), titleLabel, nickNameView, emailView, passwordView, repeatPasswordView, rememberMeButton, captchaView, linkTextView, readyButton])
+        stackView.setupSubViews(withViews: [UIView(), titleLabel, nickNameView, emailView, passwordView, repeatPasswordView, rememberMeButton, captchaView, linkTextView, readyButton])
         setupConstraints()
     }
 
@@ -157,11 +157,6 @@ final class RegistrationViewController: UIViewController {
 // MARK: Extension
 private extension RegistrationViewController {
     // MARK: UI functions
-    func setupStackView(withViews views: [UIView]) {
-        for view in views {
-            stackView.addArrangedSubview(view)
-        }
-    }
 
     func setupConstraints() {
         let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 0.0)

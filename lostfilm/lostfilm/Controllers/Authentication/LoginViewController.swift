@@ -84,7 +84,7 @@ final class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         setupTextFields()
-        setupStackView(withViews: [UIView(), titleLabel, emailView, passwordView, captchaImageView, captchaTextView, loginButton])
+        stackView.setupSubViews(withViews: [UIView(), titleLabel, emailView, passwordView, captchaImageView, captchaTextView, loginButton])
         setupConstraints()
     }
 
@@ -124,12 +124,6 @@ extension LoginViewController {
         emailView.configureInputField(on: .name)
         passwordView.configureInputField(on: .password)
         captchaTextView.configureInputField(on: .captcha)
-    }
-
-    func setupStackView(withViews view: [UIView]) {
-        for view in view {
-            stackView.addArrangedSubview(view)
-        }
     }
 
     func setupConstraints() {

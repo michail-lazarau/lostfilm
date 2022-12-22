@@ -21,6 +21,7 @@
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
 		C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D77BF293A436000C30E1A /* RegistrationViewController.swift */; };
 		C58026C92951EFE700F12EAD /* DomainCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58026C82951EFE700F12EAD /* DomainCountryModel.swift */; };
+		C583AF002954ADA1004A6E32 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583AEFF2954ADA1004A6E32 /* UIStackView+Extension.swift */; };
 		C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */; };
 		C58D27DB294CC2D600F04BA8 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DA294CC2D600F04BA8 /* Segment.swift */; };
 		C58D27DD294CD30100F04BA8 /* SegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */; };
@@ -304,6 +305,7 @@
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C57D77BF293A436000C30E1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C58026C82951EFE700F12EAD /* DomainCountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCountryModel.swift; sourceTree = "<group>"; };
+		C583AEFF2954ADA1004A6E32 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		C58D27DA294CC2D600F04BA8 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlView.swift; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B72B9627C271C3000DFBA3 /* UIView+Extension.swift */,
+				C583AEFF2954ADA1004A6E32 /* UIStackView+Extension.swift */,
 				C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */,
 				C556012D28EF040B0032D75F /* UIColor+Extension.swift */,
 				C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */,
@@ -2085,6 +2088,7 @@
 				F79C972A2746CCA3001BD5F8 /* LFSeriesFilterBaseModel.m in Sources */,
 				C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */,
 				F7169BAE2821347E00B16251 /* GlobalSearchDC.swift in Sources */,
+				C583AF002954ADA1004A6E32 /* UIStackView+Extension.swift in Sources */,
 				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
 				FB31403429427C5A006DFE61 /* VideosRouter.swift in Sources */,
 				F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */,
