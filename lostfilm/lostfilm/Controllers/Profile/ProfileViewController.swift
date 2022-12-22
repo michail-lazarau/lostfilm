@@ -138,7 +138,6 @@ final class ProfileViewController: UIViewController {
         setupView()
         dismissAndClosePickerView()
         initialSetup()
-//        setupDatePicker()
         viewModel.viewIsLoaded() // вызываем функцию один раз при запуске когда загрузится вью
         selectedCites = viewModel.getCytiesList(countryName: "Japan")
     }
@@ -173,8 +172,8 @@ final class ProfileViewController: UIViewController {
                                    nameView, surnameView,
                                    selectSexLabel, segment,
                                    dateOfBirthLabel, datePicker,
-                                   countryLabel, countryPicker,
-                                   cityLabel, cityPiker,
+                                   countryLabel, countryTextField,
+                                   cityLabel, citiesTextField,
                                    nextButton])
         setupConstraints()
     }
@@ -190,7 +189,6 @@ final class ProfileViewController: UIViewController {
         cityPiker.delegate = self
         cityPiker.dataSource = self
         citiesTextField.inputView = cityPiker
-
     }
 }
 
@@ -227,15 +225,6 @@ private extension ProfileViewController {
 
             contentViewHeightConstraint
         ])
-    }
-
-    func setupDatePicker() {
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .automatic
-        } else {
-            print("End")
-        }
-
     }
 
     // MARK: Keyboard
@@ -330,9 +319,8 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == countryPicker {
             return viewModel.getCountryNamesList(countries: viewModel.countriesList).count
-        } else if pickerView == cityPiker {
-            return selectedCites.count
-
+        } else if  pickerView == cityPiker {
+            return viewModel.getCytiesList(countryName: countryTextField.text ?? "").count
         }
         return 1
     }
@@ -341,18 +329,16 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == countryPicker {
             return viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
         } else if pickerView == cityPiker {
-            return selectedCites[row]
+            return viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
         }
         return "Error"
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == countryPicker {
-            selectedCountry = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
-            countryTextField.text = selectedCountry
-        } else if  pickerView == cityPiker {
-            selectedCity = selectedCites[row]
-            citiesTextField.text = selectedCity
+            countryTextField.text = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
+        } else if pickerView == cityPiker {
+            citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
         }
     }
 }
