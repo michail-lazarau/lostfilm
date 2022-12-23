@@ -126,6 +126,7 @@
 		F756A72028BCE7A90086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A71F28BCE7A80086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift */; };
 		F756A72328BCFFE30086A9B9 /* NewsDetailsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A72228BCFFE30086A9B9 /* NewsDetailsTVC.swift */; };
 		F75960CE29547580005C6F79 /* AlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CD29547580005C6F79 /* AlertWindow.swift */; };
+		F75960D02955BFF6005C6F79 /* AlertPresentingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CF2955BFF6005C6F79 /* AlertPresentingController.swift */; };
 		F75AEB3C2902EB6500038144 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75AEB3B2902EB6500038144 /* LoadingButton.swift */; };
 		F75E66C028B8D2E600984724 /* NewsDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E66BF28B8D2E600984724 /* NewsDetailsVM.swift */; };
 		F75E66C428B8F13200984724 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E66C228B8F13200984724 /* TextViewCell.swift */; };
@@ -416,6 +417,7 @@
 		F756A71F28BCE7A80086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LFVideoContentItemModel+IModelCellReuseIdentifiable.swift"; sourceTree = "<group>"; };
 		F756A72228BCFFE30086A9B9 /* NewsDetailsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsTVC.swift; sourceTree = "<group>"; };
 		F75960CD29547580005C6F79 /* AlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
+		F75960CF2955BFF6005C6F79 /* AlertPresentingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentingController.swift; sourceTree = "<group>"; };
 		F75AEB3B2902EB6500038144 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		F75E66BF28B8D2E600984724 /* NewsDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsVM.swift; sourceTree = "<group>"; };
 		F75E66C228B8F13200984724 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
@@ -1525,6 +1527,7 @@
 				F751473B292D075200DE6B2D /* OrderNumberLabel.swift */,
 				F73510452937A1CB009404AF /* ProfileButton.swift */,
 				F75960CD29547580005C6F79 /* AlertWindow.swift */,
+				F75960CF2955BFF6005C6F79 /* AlertPresentingController.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -1963,6 +1966,7 @@
 				F77288C428A1606400AB28AB /* ILoadingDataOnce.swift in Sources */,
 				F7516D6C282BDE8400E1A138 /* GlobalSearchItem.swift in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
+				F75960D02955BFF6005C6F79 /* AlertPresentingController.swift in Sources */,
 				F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */,
 				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
