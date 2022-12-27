@@ -34,8 +34,8 @@ extension ProfileViewModel: ProfileViewModelProtocol {
     func checkButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String) {
         if  Validators.nickname.validate(nameViewString) &&
             Validators.nickname.validate(surnameViewString) &&
-            !countryPickerString.isEmpty == false &&
-            !cityPickerString.isEmpty == false {
+            !countryPickerString.isEmpty == true &&
+            !cityPickerString.isEmpty == true {
             view?.setButtonEnabled(true)
         } else {
             view?.setButtonEnabled(false)

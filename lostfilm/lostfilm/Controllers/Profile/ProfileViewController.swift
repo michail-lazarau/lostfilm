@@ -293,7 +293,9 @@ private extension ProfileViewController {
     }
 
     // MARK: Logic
-    func didChangeButtonStatus() {}
+    func didChangeButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String) {
+        viewModel.checkButtonStatus(nameViewString: nameViewString, surnameViewString: surnameViewString, countryPickerString: countryPickerString, cityPickerString: cityPickerString)
+    }
 
     func didChangeInputNameTextField(nameViewString: String) {
         viewModel.didEnterNameTextFieldWithString(nameViewString: nameViewString)
@@ -312,6 +314,7 @@ private extension ProfileViewController {
         default:
             nameView.textField.resignFirstResponder()
         }
+        didChangeButtonStatus(nameViewString: nameView.textField.text ?? "", surnameViewString: surnameView.textField.text ?? "", countryPickerString: countryTextField.text ?? "", cityPickerString: citiesTextField.text ?? "")
     }
 }
 
@@ -320,7 +323,6 @@ extension ProfileViewController: ProfileViewProtocol {
         DispatchQueue.main.async { [weak nextButton] in
             nextButton?.isEnabled = isEnable
         }
-
     }
 
     func sendNameConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
