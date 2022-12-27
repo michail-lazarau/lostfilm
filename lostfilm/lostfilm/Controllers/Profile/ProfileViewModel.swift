@@ -8,19 +8,38 @@
 import Foundation
 
 protocol ProfileViewModelProtocol {
+    func viewIsLoaded()
+    func didEnterNameTextFieldWithString(nameViewString: String)
+    func didEnterSurnameTextFieldWithString(surnameViewString: String)
     func getCountryNamesList(countries: [Country]) -> [String]
     func getCytiesList(countryName: String) -> [String]
-
+    func checkButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String)
 }
 
-final class ProfileViewModel: ProfileViewModelProtocol {
+final class ProfileViewModel {
     // MARK: Variables
+    weak var view: ProfileViewProtocol?
     private let countryService: CountryServiceProtocol
     var countriesList: [Country] = []
+    private let debouncer: DebouncerProtocol
 
     // MARK: Inits
-    init(countryService: CountryServiceProtocol) {
+    init(countryService: CountryServiceProtocol, debouncer: DebouncerProtocol) {
         self.countryService = countryService
+        self.debouncer = debouncer
+    }
+}
+
+extension ProfileViewModel: ProfileViewModelProtocol {
+    func checkButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String) {
+        if  Validators.nickname.validate(nameViewString) &&
+            Validators.nickname.validate(surnameViewString) &&
+            !countryPickerString.isEmpty == false &&
+            !cityPickerString.isEmpty == false {
+            view?.setButtonEnabled(true)
+        } else {
+            view?.setButtonEnabled(false)
+        }
     }
 
     // MARK: Functions
@@ -44,7 +63,26 @@ final class ProfileViewModel: ProfileViewModelProtocol {
                 citiesNames.append(city.name)
             }
         }
-        print(citiesNames)
         return citiesNames
+    }
+
+    func didEnterNameTextFieldWithString(nameViewString: String) {
+        debouncer.debounce { [weak self] in
+            if Validators.nickname.validate(nameViewString) {
+                self?.view?.sendNameConfirmationMessage(ValidationConfirmation.validName, color: .green)
+            } else {
+                self?.view?.sendNameErrorMessage(ValidationErrors.invalidName, color: .red)
+            }
+        }
+    }
+
+    func didEnterSurnameTextFieldWithString(surnameViewString: String) {
+        debouncer.debounce { [weak self] in
+            if Validators.nickname.validate(surnameViewString) {
+                self?.view?.sendSurnameConfirmationMessage(ValidationConfirmation.validSurname, color: .green)
+            } else {
+                self?.view?.sendSurnameErrorMessage(ValidationErrors.invalidSurname, color: .red)
+            }
+        }
     }
 }

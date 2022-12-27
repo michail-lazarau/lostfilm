@@ -126,10 +126,14 @@ final class ProfileViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.view = self
         setupView()
         dismissAndClosePickerView()
         initialSetup()
-        viewModel.viewIsLoaded() // вызываем функцию один раз при запуске когда загрузится вью
+        viewModel.viewIsLoaded()
+        bindTextFields()
+        cityLabel.isHidden = true
+        citiesTextField.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -151,14 +155,12 @@ final class ProfileViewController: UIViewController {
     }
 
     // MARK: Functions
-
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        stackView.setupSubViews(withViews: [UIView(),
-                                   titleLabel,
+        stackView.setupSubViews(withViews: [UIView(), titleLabel,
                                    nameView, surnameView,
                                    selectSexLabel, segment,
                                    dateOfBirthLabel, datePicker,
@@ -171,6 +173,8 @@ final class ProfileViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         nameView.textField.delegate = self
         surnameView.textField.delegate = self
+        nameView.textField.returnKeyType = .next
+        surnameView.textField.returnKeyType = .done
 
         countryPicker.delegate = self
         countryPicker.dataSource = self
@@ -179,12 +183,12 @@ final class ProfileViewController: UIViewController {
         cityPiker.delegate = self
         cityPiker.dataSource = self
         citiesTextField.inputView = cityPiker
+
     }
 }
 
 private extension ProfileViewController {
     // MARK: UI Functions
-
     func setupConstraints() {
         let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 0.0)
         contentViewHeightConstraint.priority = .defaultLow
@@ -210,6 +214,11 @@ private extension ProfileViewController {
 
             contentViewHeightConstraint
         ])
+    }
+
+    func hideCitySection() {
+        cityLabel.isHidden = false
+        citiesTextField.isHidden = false
     }
 
     // MARK: Keyboard
@@ -251,8 +260,10 @@ private extension ProfileViewController {
         view.endEditing(true)
     }
 
-    @objc func dismissAction() {
-        view.endEditing(true)
+    func bindTextFields() {
+        nextButton.isEnabled = false
+        nameView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        surnameView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
     }
 
     @objc func handle(sender: UISegmentedControl) {
@@ -274,13 +285,59 @@ private extension ProfileViewController {
         let button = UIBarButtonItem(title: "Done",
                                      style: .plain,
                                      target: self,
-                                     action: #selector(dismissAction))
+                                     action: #selector(hideKeyboard))
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         countryTextField.inputAccessoryView = toolBar
         citiesTextField.inputAccessoryView = toolBar
     }
 
+    // MARK: Logic
+    func didChangeButtonStatus() {}
+
+    func didChangeInputNameTextField(nameViewString: String) {
+        viewModel.didEnterNameTextFieldWithString(nameViewString: nameViewString)
+    }
+
+    func didChangeInputSurnameTextField(surnameViewString: String) {
+        viewModel.didEnterSurnameTextFieldWithString(surnameViewString: surnameViewString)
+    }
+
+    @objc func textFieldEditingChanged(sender: UITextField) {
+        switch sender {
+        case nameView.textField:
+            didChangeInputNameTextField(nameViewString: nameView.textField.text ?? "")
+        case surnameView.textField:
+            didChangeInputSurnameTextField(surnameViewString: surnameView.textField.text ?? "")
+        default:
+            nameView.textField.resignFirstResponder()
+        }
+    }
+}
+
+extension ProfileViewController: ProfileViewProtocol {
+    func setButtonEnabled(_ isEnable: Bool) {
+        DispatchQueue.main.async { [weak nextButton] in
+            nextButton?.isEnabled = isEnable
+        }
+
+    }
+
+    func sendNameConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
+        nameView.setConfirmationState(with: confirmationMessage, color: color)
+    }
+
+    func sendSurnameConfirmationMessage(_ confirmationMessage: String, color: UIColor) {
+        surnameView.setConfirmationState(with: confirmationMessage, color: color)
+    }
+
+    func sendNameErrorMessage(_ errorMessage: String, color: UIColor) {
+        nameView.setErrorState(with: errorMessage, color: color)
+    }
+
+    func sendSurnameErrorMessage(_ errorMessage: String, color: UIColor) {
+        surnameView.setErrorState(with: errorMessage, color: color)
+    }
 }
 
 extension ProfileViewController: UITextFieldDelegate {
@@ -324,6 +381,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == countryPicker {
             countryTextField.text = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
             citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "").first
+            hideCitySection()
         } else if pickerView == cityPiker {
             citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
         }

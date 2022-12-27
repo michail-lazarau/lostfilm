@@ -8,9 +8,9 @@
 import Foundation
 
 extension UIStackView {
-    func setupSubViews(withViews views: [UIView]) { // cделать экстенш к функции стэк вью
+    func setupSubViews(withViews views: [UIView]) {
         for view in views {
-            self.addArrangedSubview(view)
+            addArrangedSubview(view)
         }
     }
 }

@@ -60,6 +60,8 @@ enum ValidationErrors {
     static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
     static let invalidPassword = NSLocalizedString("Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
     static let invalidNickName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
+    static let invalidName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
+    static let invalidSurname = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Surname' within 'strFirstSurnameName'.", comment: "")
 }
 
 enum Paddings {
@@ -73,6 +75,9 @@ enum ValidationConfirmation {
     static let validEmail = NSLocalizedString("Email confirmed", comment: "")
     static let validPassword = NSLocalizedString("Password confirmed", comment: "")
     static let validNickname = NSLocalizedString("Nickname confirmed", comment: "")
+    static let validName = NSLocalizedString("Name confirmed", comment: "")
+    static let validSurname = NSLocalizedString("Surname confirmed", comment: "")
+
 }
 
 enum ValidationError: Error {
