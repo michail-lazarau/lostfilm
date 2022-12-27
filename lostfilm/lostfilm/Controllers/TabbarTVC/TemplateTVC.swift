@@ -67,8 +67,8 @@ class TemplateTVC<Cell, DataModel>: UITableViewController, DataControllerDelegat
         spinner.stopAnimating()
     }
 
-    func showProfileButton(with username: String) {
-        let button = ProfileButton(title: username, titleColor: UIColor.white, backgroundColor: UIColor(named: "button"))
+    func showSignedInUserProfileButton(with userInitials: String) {
+        let button = ProfileButton(title: userInitials, titleColor: UIColor.white, backgroundColor: UIColor(named: "button"))
         button.addTarget(self, action: #selector(profileButtonAction), for: .touchUpInside)
         let item = UIBarButtonItem(customView: button)
         item.accessibilityIdentifier = "profileButton"

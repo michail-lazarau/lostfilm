@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ScheduleViewProtocol: IUpdatingViewDelegate {
-    func showProfileButton(with username: String)
+    func showProfileButton(with userInitials: String)
     func showSignedOutProfileButton()
 }
 
@@ -114,8 +114,8 @@ extension ScheduleDataController {
 
 extension ScheduleDataController: TabModuleInput {
 
-    func showSignedInUserProfileButton(with username: String) {
-        delegate?.showProfileButton(with: username)
+    func showSignedInUserProfileButton(with userInitials: String) {
+        delegate?.showProfileButton(with: userInitials)
     }
 
     func showSignedOutUserProfileButton() {

@@ -53,8 +53,8 @@ class TemplateDataController<DataModel: LFJsonObject>: TabModuleInput {
         router.showLogin()
     }
 
-    func showSignedInUserProfileButton(with username: String) {
-        delegate?.showProfileButton(with: username)
+    func showSignedInUserProfileButton(with userInitials: String) {
+        delegate?.showSignedInUserProfileButton(with: userInitials)
     }
 
     func showSignedOutUserProfileButton() {

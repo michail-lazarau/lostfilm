@@ -36,8 +36,8 @@ class ScheduleTVC: UITableViewController, ScheduleViewProtocol {
         refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
 
-    func showProfileButton(with username: String) {
-        let button = ProfileButton(title: username, titleColor: UIColor.white, backgroundColor: UIColor(named: "button"))
+    func showProfileButton(with userInitials: String) {
+        let button = ProfileButton(title: userInitials, titleColor: UIColor.white, backgroundColor: UIColor(named: "button"))
         button.addTarget(self, action: #selector(profileButtonAction), for: .touchUpInside)
         let item = UIBarButtonItem(customView: button)
         item.accessibilityIdentifier = "profileButton"
