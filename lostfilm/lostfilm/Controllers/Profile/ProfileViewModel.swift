@@ -13,7 +13,7 @@ protocol ProfileViewModelProtocol {
     func didEnterSurnameTextFieldWithString(surnameViewString: String)
     func getCountryNamesList(countries: [Country]) -> [String]
     func getCytiesList(countryName: String) -> [String]
-    func checkButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String)
+    func checkButtonStatus(nameViewString: String, surnameViewString: String, countyPickerString: String, cityPickerString: String)
 }
 
 final class ProfileViewModel {
@@ -31,11 +31,9 @@ final class ProfileViewModel {
 }
 
 extension ProfileViewModel: ProfileViewModelProtocol {
-    func checkButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String) {
-        if  Validators.nickname.validate(nameViewString) &&
-            Validators.nickname.validate(surnameViewString) &&
-            !countryPickerString.isEmpty == true &&
-            !cityPickerString.isEmpty == true {
+    func checkButtonStatus(nameViewString: String, surnameViewString: String, countyPickerString countryPickerString: String, cityPickerString: String) {
+        if Validators.nickname.validate(nameViewString)  && Validators.nickname.validate(surnameViewString),
+           !countryPickerString.isEmpty && !cityPickerString.isEmpty {
             view?.setButtonEnabled(true)
         } else {
             view?.setButtonEnabled(false)

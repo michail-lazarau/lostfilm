@@ -12,8 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let router = TabBarRouter(userSessionData: UserSessionStoredData())
         self.tabBarRouter = router
-//        let viewController = router.start()
-        let viewController = ProfileViewController(viewModel: ProfileViewModel(countryService: CountryService(), debouncer: Debouncer(timeInterval: 1)))
+        let viewController = router.start()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }

@@ -114,12 +114,8 @@ final class ProfileViewController: UIViewController {
     }()
 
     private lazy var nextButton: UIButton = {
-        let button =  UIButton()
-        button.setDimensions(width: 25, height: 25)
-        button.setTitle("Next", for: .normal)
-        button.setTitleColor(.button, for: .normal)
-        button.layer.cornerRadius = 5
-        button.tintColor = .lightGray
+        let button = LostfilmButton(title: "Next")
+        button.indicator.color = .white
         return button
     }()
 
@@ -183,7 +179,6 @@ final class ProfileViewController: UIViewController {
         cityPiker.delegate = self
         cityPiker.dataSource = self
         citiesTextField.inputView = cityPiker
-
     }
 }
 
@@ -264,6 +259,8 @@ private extension ProfileViewController {
         nextButton.isEnabled = false
         nameView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         surnameView.textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        countryTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .allEvents)
+        citiesTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .allEvents)
     }
 
     @objc func handle(sender: UISegmentedControl) {
@@ -293,8 +290,10 @@ private extension ProfileViewController {
     }
 
     // MARK: Logic
-    func didChangeButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String, cityPickerString: String) {
-        viewModel.checkButtonStatus(nameViewString: nameViewString, surnameViewString: surnameViewString, countryPickerString: countryPickerString, cityPickerString: cityPickerString)
+    func didChangeButtonStatus(nameViewString: String, surnameViewString: String, countryPickerString: String,
+                               cityPickerString: String) {
+        viewModel.checkButtonStatus(nameViewString: nameViewString, surnameViewString: surnameViewString,
+                                    countyPickerString: countryPickerString, cityPickerString: cityPickerString)
     }
 
     func didChangeInputNameTextField(nameViewString: String) {
@@ -311,10 +310,13 @@ private extension ProfileViewController {
             didChangeInputNameTextField(nameViewString: nameView.textField.text ?? "")
         case surnameView.textField:
             didChangeInputSurnameTextField(surnameViewString: surnameView.textField.text ?? "")
+            didChangeButtonStatus(nameViewString: nameView.textField.text ?? "", surnameViewString: surnameView.textField.text ?? "",
+                                  countryPickerString: countryTextField.text ?? "", cityPickerString: citiesTextField.text ?? "")
         default:
             nameView.textField.resignFirstResponder()
         }
-        didChangeButtonStatus(nameViewString: nameView.textField.text ?? "", surnameViewString: surnameView.textField.text ?? "", countryPickerString: countryTextField.text ?? "", cityPickerString: citiesTextField.text ?? "")
+        didChangeButtonStatus(nameViewString: nameView.textField.text ?? "", surnameViewString: surnameView.textField.text ?? "",
+                              countryPickerString: countryTextField.text ?? "", cityPickerString: citiesTextField.text ?? "")
     }
 }
 
