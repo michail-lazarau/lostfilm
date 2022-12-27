@@ -15,7 +15,7 @@ final class ProfileViewModelDelegateMock: ProfileViewProtocol {
     var didCallSurnameConformationMessage: ((String) -> Void)?
     var didCallNameErrorMessage: ((String) -> Void)?
     var didCallSurnameErrorMessage: ((String) -> Void)?
-    
+
     func setButtonEnabled(_ isEnable: Bool) {
         buttonStatus?(isEnable)
     }
