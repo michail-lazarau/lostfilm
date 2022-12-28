@@ -1,6 +1,6 @@
 import UIKit
 
-class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
+class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, AlertWindowProtocol {
 
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
 
@@ -25,7 +25,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     }
 
     // Toast Test
-    private var overlayWindow: UIWindow!
+    private var overlayWindow: AlertWindow!
 
     @objc private func DidToggleToast() {
         guard let scene = view.window?.windowScene else {
@@ -37,28 +37,17 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button.backgroundColor = UIColor.systemBlue
 
-        let alertWindow = AlertWindow(rootViewController: AlertPresentingController(alertButton: button), windowScene: scene)
+        let rootVC = AlertPresentingController(alertButton: button)
+        let alertWindow = AlertWindow(rootViewController: rootVC, windowScene: scene)
+        rootVC.windowDelegate = self
 
         alertWindow.makeKeyAndVisible()
         self.overlayWindow = alertWindow
     }
 
-//    @objc private func DidToggleToast() {
-//        guard let scene = view.window?.windowScene else {
-//            return
-//        }
-//        let button = UIButton()
-//        button.setTitle("Toast Text", for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-//        button.backgroundColor = UIColor.systemBlue
-//
-//        let alertWindow = AlertWindow(label: button, windowScene: scene)
-//        alertWindow.backgroundColor = .clear
-//        alertWindow.windowLevel = UIWindow.Level.alert
-//
-//        alertWindow.makeKeyAndVisible()
-//        self.overlayWindow = alertWindow
-//    }
+    func dismissWindow() {
+        overlayWindow = nil
+    }
 
     @objc private func DidShowFilters() {
         guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {
