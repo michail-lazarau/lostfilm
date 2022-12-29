@@ -12,6 +12,7 @@ enum Icons {
     static let mail = UIImage(systemName: "mail") ?? UIImage()
     static let password = UIImage(systemName: "lock") ?? UIImage()
     static let captcha = UIImage(systemName: "repeat") ?? UIImage()
+    static let addPhotoButton = UIImage(systemName: "person.crop.circle.badge.plus") ?? UIImage()
 }
 
 enum Texts {
