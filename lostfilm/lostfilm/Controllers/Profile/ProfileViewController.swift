@@ -132,14 +132,6 @@ final class ProfileViewController: UIViewController {
         citiesTextField.isHidden = true
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
     // MARK: Inits
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
@@ -264,15 +256,15 @@ private extension ProfileViewController {
     }
 
     @objc func handle(sender: UISegmentedControl) {
-             switch sender.selectedSegmentIndex {
-             case 0:
-                 print("Do smth")
-             case 1:
-                 print("Do smth")
-             default:
-                 print("Do smth")
-             }
-         }
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("Do smth")
+        case 1:
+            print("Do smth")
+        default:
+            print("Do smth")
+        }
+    }
 
     // MARK: UIPickerView
     func dismissAndClosePickerView() {
