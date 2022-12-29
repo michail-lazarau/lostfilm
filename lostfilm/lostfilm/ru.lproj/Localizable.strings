@@ -41,5 +41,12 @@
 "Password confirmed" "Пароль подтвержден";
 "To find out more please visit our website" = "Чтобы узнать больше, пожалуйста, посетите наш веб-сайт";
 "Site Rules" = "Правила сайта";
-
+"About yourself" = "Расскажите о себе";
+"Please enter your gender" = "Укажите свой пол";
+"Enter your age" = "Укажите свой возраст";
+"Country" = "Страна";
+"Town" = "Город";
+"Next" = "Далее";
+"Male" = "Мужской";
+"Female" = "Женский";
 

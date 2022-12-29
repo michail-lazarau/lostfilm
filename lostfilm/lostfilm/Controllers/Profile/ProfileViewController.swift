@@ -33,7 +33,7 @@ final class ProfileViewController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Расскажите о себе"
+        label.text =  Texts.Titles.aboutYourself
         label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,12 +54,12 @@ final class ProfileViewController: UIViewController {
 
     private lazy var selectSexLabel: UILabel = {
         let label = UILabel()
-        label.text = "Укажите свой пол"
+        label.text = Texts.Titles.gender
         return label
     }()
 
     private lazy var segment: UISegmentedControl = {
-        let segment = UISegmentedControl(items: ["One", "Two"])
+        let segment = UISegmentedControl(items: [Texts.Placeholders.male, Texts.Placeholders.female])
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.addTarget(self, action: #selector(handle), for: .valueChanged)
         return segment
@@ -67,7 +67,7 @@ final class ProfileViewController: UIViewController {
 
     private lazy var dateOfBirthLabel: UILabel = {
         let label = UILabel()
-        label.text = "Укажите свой возраст"
+        label.text = Texts.Titles.age
         return label
     }()
 
@@ -79,13 +79,13 @@ final class ProfileViewController: UIViewController {
 
     private lazy var countryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Country"
+        label.text = Texts.Titles.country
         return label
     }()
 
     private lazy var cityLabel: UILabel = {
         let label = UILabel()
-        label.text = "City"
+        label.text = Texts.Titles.city
         return label
     }()
 
@@ -114,7 +114,7 @@ final class ProfileViewController: UIViewController {
     }()
 
     private lazy var nextButton: UIButton = {
-        let button = LostfilmButton(title: "Next")
+        let button = LostfilmButton(title: Texts.Buttons.next)
         button.indicator.color = .white
         return button
     }()
