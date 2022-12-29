@@ -31,8 +31,6 @@ enum Texts {
         static let captcha = NSLocalizedString("Please enter captcha", comment: "")
         static let male = NSLocalizedString("Male", comment: "")
         static let female = NSLocalizedString("Female", comment: "")
-
-
     }
 
     enum Titles {
