@@ -12,7 +12,7 @@ protocol ProfileViewModelProtocol {
     func didEnterNameTextFieldWithString(nameViewString: String)
     func didEnterSurnameTextFieldWithString(surnameViewString: String)
     func getCountryNamesList(countries: [Country]) -> [String]
-    func getCytiesList(countryName: String) -> [String]
+    func getCitiesList(countryName: String) -> [String]
     func checkButtonStatus(nameViewString: String, surnameViewString: String, countyPickerString: String, cityPickerString: String)
 }
 
@@ -52,7 +52,7 @@ extension ProfileViewModel: ProfileViewModelProtocol {
         return countriesNames
     }
 
-    func getCytiesList(countryName: String) -> [String] {
+    func getCitiesList(countryName: String) -> [String] {
         var selectedCities: [City] = []
         var citiesNames: [String] = []
         if let result = countriesList.first(where: { $0.name == countryName }) {

@@ -367,7 +367,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == countryPicker {
             return viewModel.getCountryNamesList(countries: viewModel.countriesList).count
         } else if  pickerView == cityPiker {
-            return viewModel.getCytiesList(countryName: countryTextField.text ?? "").count
+            return viewModel.getCitiesList(countryName: countryTextField.text ?? "").count
         }
         return 1
     }
@@ -376,7 +376,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == countryPicker {
             return viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
         } else if pickerView == cityPiker {
-            return viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
+            return viewModel.getCitiesList(countryName: countryTextField.text ?? "")[row]
         }
         return "Error"
     }
@@ -384,10 +384,10 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == countryPicker {
             countryTextField.text = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
-            citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "").first
+            citiesTextField.text = viewModel.getCitiesList(countryName: countryTextField.text ?? "").first
             hideCitySection()
         } else if pickerView == cityPiker {
-            citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
+            citiesTextField.text = viewModel.getCitiesList(countryName: countryTextField.text ?? "")[row]
         }
     }
 }
