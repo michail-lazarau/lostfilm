@@ -24,6 +24,7 @@
 "Please enter captcha" = "Please enter captcha";
 "WELCOM TO LOST FILM" = "WELCOM TO LOST FIL";
 "Enter" ="Enter";
+"Next" = "Next";
 "Name" = "Name";
 "Surname" = "Surname";
 "Password" = "Password";
@@ -41,3 +42,10 @@
 "Password confirmed" = "Password confirmed";
 "Site Rules" = "Site Rules";
 "To find out more please visit our website" = "To find out more please visit our website";
+"About yourself" = "About yourself";
+"Please enter your gender" = "Please enter your gender";
+"Enter your age" = "Enter your age";
+"A country" = "A country";
+"Town" = "Town";
+"Male" = "Male";
+"Female" = "Female";

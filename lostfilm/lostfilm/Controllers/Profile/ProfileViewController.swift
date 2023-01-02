@@ -33,7 +33,7 @@ final class ProfileViewController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Расскажите о себе"
+        label.text =  Texts.Titles.aboutYourself
         label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,12 +54,12 @@ final class ProfileViewController: UIViewController {
 
     private lazy var selectSexLabel: UILabel = {
         let label = UILabel()
-        label.text = "Укажите свой пол"
+        label.text = Texts.Titles.gender
         return label
     }()
 
     private lazy var segment: UISegmentedControl = {
-        let segment = UISegmentedControl(items: ["One", "Two"])
+        let segment = UISegmentedControl(items: [Texts.Placeholders.male, Texts.Placeholders.female])
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.addTarget(self, action: #selector(handle), for: .valueChanged)
         return segment
@@ -67,7 +67,7 @@ final class ProfileViewController: UIViewController {
 
     private lazy var dateOfBirthLabel: UILabel = {
         let label = UILabel()
-        label.text = "Укажите свой возраст"
+        label.text = Texts.Titles.age
         return label
     }()
 
@@ -79,13 +79,13 @@ final class ProfileViewController: UIViewController {
 
     private lazy var countryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Country"
+        label.text = Texts.Titles.country
         return label
     }()
 
     private lazy var cityLabel: UILabel = {
         let label = UILabel()
-        label.text = "City"
+        label.text = Texts.Titles.city
         return label
     }()
 
@@ -114,7 +114,7 @@ final class ProfileViewController: UIViewController {
     }()
 
     private lazy var nextButton: UIButton = {
-        let button = LostfilmButton(title: "Next")
+        let button = LostfilmButton(title: Texts.Buttons.next)
         button.indicator.color = .white
         return button
     }()
@@ -134,10 +134,12 @@ final class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        registerKeyboardNotification()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        removeKeyboardNotification()
     }
 
     // MARK: Inits
@@ -217,31 +219,29 @@ private extension ProfileViewController {
     }
 
     // MARK: Keyboard
-    func registerKeyboardNotification() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
+    private func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-
     }
 
-    func removeKeyboardNotification() {
+    private func removeKeyboardNotification() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else { return }
 
-        let contentInsert = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
 
-        scrollView.contentInset = contentInsert
-        scrollView.scrollIndicatorInsets = contentInsert
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -264,15 +264,15 @@ private extension ProfileViewController {
     }
 
     @objc func handle(sender: UISegmentedControl) {
-             switch sender.selectedSegmentIndex {
-             case 0:
-                 print("Do smth")
-             case 1:
-                 print("Do smth")
-             default:
-                 print("Do smth")
-             }
-         }
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("Do smth")
+        case 1:
+            print("Do smth")
+        default:
+            print("Do smth")
+        }
+    }
 
     // MARK: UIPickerView
     func dismissAndClosePickerView() {
@@ -367,7 +367,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == countryPicker {
             return viewModel.getCountryNamesList(countries: viewModel.countriesList).count
         } else if  pickerView == cityPiker {
-            return viewModel.getCytiesList(countryName: countryTextField.text ?? "").count
+            return viewModel.getCitiesList(countryName: countryTextField.text ?? "").count
         }
         return 1
     }
@@ -376,7 +376,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == countryPicker {
             return viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
         } else if pickerView == cityPiker {
-            return viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
+            return viewModel.getCitiesList(countryName: countryTextField.text ?? "")[row]
         }
         return "Error"
     }
@@ -384,10 +384,10 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == countryPicker {
             countryTextField.text = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
-            citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "").first
+            citiesTextField.text = viewModel.getCitiesList(countryName: countryTextField.text ?? "").first
             hideCitySection()
         } else if pickerView == cityPiker {
-            citiesTextField.text = viewModel.getCytiesList(countryName: countryTextField.text ?? "")[row]
+            citiesTextField.text = viewModel.getCitiesList(countryName: countryTextField.text ?? "")[row]
         }
     }
 }
