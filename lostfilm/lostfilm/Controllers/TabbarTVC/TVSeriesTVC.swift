@@ -37,7 +37,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, AlertWindowProtoc
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button.backgroundColor = UIColor.systemBlue
 
-        let rootVC = AlertPresentingController(alertButton: button)
+        let rootVC = ToastPresentingController(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
         let alertWindow = AlertWindow(rootViewController: rootVC, windowScene: scene)
         rootVC.windowDelegate = self
 
