@@ -29,6 +29,8 @@ enum Texts {
         static let namePlaceholder = NSLocalizedString("Please enter your name", comment: "")
         static let surnamePlaceholder = NSLocalizedString("Please enter your surname", comment: "")
         static let captcha = NSLocalizedString("Please enter captcha", comment: "")
+        static let male = NSLocalizedString("Male", comment: "")
+        static let female = NSLocalizedString("Female", comment: "")
     }
 
     enum Titles {
@@ -40,6 +42,12 @@ enum Texts {
         static let email =  NSLocalizedString("Email", comment: "")
         static let repeatPassword = NSLocalizedString("Repeat Password", comment: "")
         static let captcha = NSLocalizedString("Captcha", comment: "")
+        static let aboutYourself = NSLocalizedString("About yourself", comment: "")
+        static let gender = NSLocalizedString("Please enter your gender", comment: "")
+        static let age = NSLocalizedString("Enter your age", comment: "")
+        static let country = NSLocalizedString("Country", comment: "")
+        static let city = NSLocalizedString("City", comment: "")
+
     }
 
     enum Buttons {
@@ -48,6 +56,7 @@ enum Texts {
         static let ready = NSLocalizedString("Ready", comment: "")
         static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
+        static let next = NSLocalizedString("Next", comment: "")
     }
 
     enum RulesTexts {
@@ -60,6 +69,8 @@ enum ValidationErrors {
     static let invalidEmail = NSLocalizedString("InvalidEmail", comment: "")
     static let invalidPassword = NSLocalizedString("Password must be between 4 and 8 digits long and include at least one numeric digit.", comment: "")
     static let invalidNickName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
+    static let invalidName = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Name' within 'strFirstName'.", comment: "")
+    static let invalidSurname = NSLocalizedString("Title cased words within a Camel cased variable name. So it will match 'First' and 'Surname' within 'strFirstSurnameName'.", comment: "")
 }
 
 enum Paddings {
@@ -73,6 +84,9 @@ enum ValidationConfirmation {
     static let validEmail = NSLocalizedString("Email confirmed", comment: "")
     static let validPassword = NSLocalizedString("Password confirmed", comment: "")
     static let validNickname = NSLocalizedString("Nickname confirmed", comment: "")
+    static let validName = NSLocalizedString("Name confirmed", comment: "")
+    static let validSurname = NSLocalizedString("Surname confirmed", comment: "")
+
 }
 
 enum ValidationError: Error {

@@ -83,7 +83,7 @@ final class TextFieldView: UIView {
         addSubview(stackView)
         addSubview(textFieldIcon)
         setupContentView()
-        setupStackView(withViews: [titleLabel, contentView])
+        stackView.setupSubViews(withViews: [titleLabel, contentView])
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
     }
 
@@ -116,12 +116,6 @@ final class TextFieldView: UIView {
     // MARK: Extension
 
 extension TextFieldView {
-
-    func setupStackView(withViews views: [UIView]) {
-        for view in views {
-            stackView.addArrangedSubview(view)
-        }
-    }
 
     func setupContentView() {
         contentView.addSubview(dividerView)
