@@ -6,6 +6,7 @@
 ////
 //
 import Foundation
+import PhotosUI
 
 final class PhotoViewController: UIViewController {
     // MARK: Variables
@@ -21,24 +22,12 @@ final class PhotoViewController: UIViewController {
         return label
     }()
 
-    private lazy var photoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    private lazy var contentView: UIView = {
-        let contentView = UIView()
-        contentView.backgroundColor = .red
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        return contentView
-    }()
-
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton()
-        button.setImage(Icons.addPhotoButton, for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = UIColor.button
+//        button.setImage(Icons.addPhotoButton, for: .normal)
+        button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -46,18 +35,23 @@ final class PhotoViewController: UIViewController {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.backgroundColor
-        view.setDimensions(width: 0, height: 20)
+        view.textAlignment = .right
         return view
     }()
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetup()
         setupView()
     }
 
     // MARK: Functions
     private func initialSetup() {
+        imagePicker.delegate  = self
+        imagePicker.allowsEditing = true
+        addPhotoButton.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
+        linkTextView.hyperLink(originalText: Texts.RulesTexts.ruleLinkText, hyperLink: Texts.RulesTexts.hyperLink, urlString: Links.rules)
     }
 }
 
@@ -66,24 +60,26 @@ private extension PhotoViewController {
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(titleLabel)
-        view.addSubview(contentView)
+        view.addSubview(addPhotoButton)
         view.addSubview(linkTextView)
         setupConstraints()
     }
 
     func setupConstraints() {
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor,
-                          bottom: contentView.topAnchor, right: view.safeAreaLayoutGuide.rightAnchor,
-                          paddingTop: 15, paddingLeft: 15, paddingRight: 15)
-        contentView.anchor(top: titleLabel.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor,
-                           bottom: linkTextView.topAnchor, right: view.safeAreaLayoutGuide.rightAnchor,
-                           paddingLeft: 50, paddingRight: 50)
-        contentView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25)
+                          bottom: addPhotoButton.topAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 50)
 
+        addPhotoButton.setDimensions(width: 150, height: 150)
+        addPhotoButton.centerX(inView: view)
 
-        linkTextView.anchor(top: contentView.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor,
-                            bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor,
-                            paddingLeft: 15, paddingBottom: 15, paddingRight: 15)
+        linkTextView.anchor(left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                            right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 30)
+        linkTextView.setDimensions(width: view.frame.width, height: 50)
+    }
+
+    @objc func handleAddProfilePhoto() {
+        print("handleAddProfilePhoto")
+        present(imagePicker, animated: true, completion: nil)
     }
 
 }
@@ -91,5 +87,17 @@ private extension PhotoViewController {
 extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else { return }
+
+        self.profileImage = profileImage
+
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
+        addPhotoButton.layer.masksToBounds = true
+        addPhotoButton.imageView?.contentMode = .scaleAspectFill
+        addPhotoButton.imageView?.clipsToBounds = true
+        addPhotoButton.layer.borderColor = UIColor.white.cgColor
+        addPhotoButton.layer.borderWidth = 3
+        addPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+
+        dismiss(animated: true, completion: nil)
     }
 }

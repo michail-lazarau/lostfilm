@@ -18,6 +18,7 @@
 		C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567D04728D9CC9A000FDCFE /* Utilities.swift */; };
 		C56AD7A92950850800345C72 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56AD7A82950850800345C72 /* CountryService.swift */; };
 		C56F5F20294354A10025F5B1 /* CaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F5F1F294354A10025F5B1 /* CaptchaView.swift */; };
+		C579478E2965C75B00EC209F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C579478D2965C75B00EC209F /* InfoPlist.strings */; };
 		C57C867F291A711900DC039F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C867E291A711900DC039F /* Validator.swift */; };
 		C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D77BF293A436000C30E1A /* RegistrationViewController.swift */; };
 		C58026C92951EFE700F12EAD /* DomainCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58026C82951EFE700F12EAD /* DomainCountryModel.swift */; };
@@ -316,6 +317,7 @@
 		C567D04728D9CC9A000FDCFE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C56AD7A82950850800345C72 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		C56F5F1F294354A10025F5B1 /* CaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaView.swift; sourceTree = "<group>"; };
+		C579478D2965C75B00EC209F /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		C57C867E291A711900DC039F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		C57D77BF293A436000C30E1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C58026C82951EFE700F12EAD /* DomainCountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCountryModel.swift; sourceTree = "<group>"; };
@@ -1390,6 +1392,7 @@
 				F7AEE47A273FEB7A00C304D0 /* Info.plist */,
 				F7839838274017840025A6B5 /* Localizable.strings */,
 				FB0A1C0728CBAB3B001C9C51 /* lostfilm-Bridging-Header.h */,
+				C579478D2965C75B00EC209F /* InfoPlist.strings */,
 			);
 			path = lostfilm;
 			sourceTree = "<group>";
@@ -1849,6 +1852,7 @@
 				F711A44F2745A84A00E1515D /* GetVideoListContext.plist in Resources */,
 				F711A4492745A84A00E1515D /* GetNewEpisodeListContext.plist in Resources */,
 				F711A44B2745A84A00E1515D /* GetNewsDetailsContext.plist in Resources */,
+				C579478E2965C75B00EC209F /* InfoPlist.strings in Resources */,
 				F711A44A2745A84A00E1515D /* GetSeriesCastContext.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2414,6 +2418,7 @@
 				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = NSPhotoLibraryUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -2451,6 +2456,7 @@
 				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = NSPhotoLibraryUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
