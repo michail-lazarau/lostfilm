@@ -24,7 +24,6 @@ final class PhotoViewController: UIViewController {
 
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton()
-//        button.setImage(Icons.addPhotoButton, for: .normal)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +77,9 @@ private extension PhotoViewController {
     }
 
     @objc func handleAddProfilePhoto() {
-        print("handleAddProfilePhoto")
+        let actionSheet = UIAlertController(title: "",
+                                            message: "Select more photos or go to Settings to allow access to all photos.",
+                                            preferredStyle: .actionSheet)
         present(imagePicker, animated: true, completion: nil)
     }
 
