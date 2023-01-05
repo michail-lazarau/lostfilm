@@ -125,7 +125,7 @@
 		F756A71E28BCDBA90086A9B9 /* LFAttributedTextContentItemModel+IModelCellReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A71D28BCDBA90086A9B9 /* LFAttributedTextContentItemModel+IModelCellReuseIdentifiable.swift */; };
 		F756A72028BCE7A90086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A71F28BCE7A80086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift */; };
 		F756A72328BCFFE30086A9B9 /* NewsDetailsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A72228BCFFE30086A9B9 /* NewsDetailsTVC.swift */; };
-		F75960CE29547580005C6F79 /* AlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CD29547580005C6F79 /* AlertWindow.swift */; };
+		F75960CE29547580005C6F79 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CD29547580005C6F79 /* ToastWindow.swift */; };
 		F75960D02955BFF6005C6F79 /* ToastPresentingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */; };
 		F75AEB3C2902EB6500038144 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75AEB3B2902EB6500038144 /* LoadingButton.swift */; };
 		F75E66C028B8D2E600984724 /* NewsDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E66BF28B8D2E600984724 /* NewsDetailsVM.swift */; };
@@ -253,7 +253,7 @@
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
 		F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */; };
 		F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */; };
-		F7EB1871295B0AE100ADD50D /* AlertWindowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB1870295B0AE100ADD50D /* AlertWindowProtocol.swift */; };
+		F7EB1871295B0AE100ADD50D /* ToastWindowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */; };
 		F7EB18742963182C00ADD50D /* ToastPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB18732963182C00ADD50D /* ToastPosition.swift */; };
 		F7EB18762963211C00ADD50D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB18752963211C00ADD50D /* Queue.swift */; };
 		F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */; };
@@ -420,7 +420,7 @@
 		F756A71D28BCDBA90086A9B9 /* LFAttributedTextContentItemModel+IModelCellReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LFAttributedTextContentItemModel+IModelCellReuseIdentifiable.swift"; sourceTree = "<group>"; };
 		F756A71F28BCE7A80086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LFVideoContentItemModel+IModelCellReuseIdentifiable.swift"; sourceTree = "<group>"; };
 		F756A72228BCFFE30086A9B9 /* NewsDetailsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsTVC.swift; sourceTree = "<group>"; };
-		F75960CD29547580005C6F79 /* AlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
+		F75960CD29547580005C6F79 /* ToastWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWindow.swift; sourceTree = "<group>"; };
 		F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresentingController.swift; sourceTree = "<group>"; };
 		F75AEB3B2902EB6500038144 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		F75E66BF28B8D2E600984724 /* NewsDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsVM.swift; sourceTree = "<group>"; };
@@ -574,7 +574,7 @@
 		F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFSeriesDetailsVC.swift; sourceTree = "<group>"; };
 		F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSearchTVC.swift; sourceTree = "<group>"; };
 		F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GetGlobalSearchContext.plist; sourceTree = "<group>"; };
-		F7EB1870295B0AE100ADD50D /* AlertWindowProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindowProtocol.swift; sourceTree = "<group>"; };
+		F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWindowProtocol.swift; sourceTree = "<group>"; };
 		F7EB18732963182C00ADD50D /* ToastPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPosition.swift; sourceTree = "<group>"; };
 		F7EB18752963211C00ADD50D /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerDelegate.swift; sourceTree = "<group>"; };
@@ -1608,9 +1608,9 @@
 		F7EB1872296317CE00ADD50D /* Toast */ = {
 			isa = PBXGroup;
 			children = (
-				F75960CD29547580005C6F79 /* AlertWindow.swift */,
+				F75960CD29547580005C6F79 /* ToastWindow.swift */,
 				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
-				F7EB1870295B0AE100ADD50D /* AlertWindowProtocol.swift */,
+				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
 				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
 				F7EB18752963211C00ADD50D /* Queue.swift */,
 				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
@@ -2090,7 +2090,7 @@
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
 				F7DFCF9A27F0F6F9006A0789 /* TVSeriesPhotoVC.swift in Sources */,
 				F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */,
-				F75960CE29547580005C6F79 /* AlertWindow.swift in Sources */,
+				F75960CE29547580005C6F79 /* ToastWindow.swift in Sources */,
 				F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */,
 				F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */,
 				C57C867F291A711900DC039F /* Validator.swift in Sources */,
@@ -2111,7 +2111,7 @@
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F766765928DE0274009B9516 /* DVHtmlError.swift in Sources */,
 				F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */,
-				F7EB1871295B0AE100ADD50D /* AlertWindowProtocol.swift in Sources */,
+				F7EB1871295B0AE100ADD50D /* ToastWindowProtocol.swift in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
 				C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */,
 				F7471DF827AAFAB100BDA17A /* TVSeriesOverviewTVC.swift in Sources */,

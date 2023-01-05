@@ -11,7 +11,7 @@ class ToastPresentingController: UIViewController {
     let toast: UIButton
     var toastPosition: ToastPosition
     var toastConstraints: (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)?
-    weak var windowDelegate: AlertWindowProtocol?
+    weak var windowDelegate: ToastWindowProtocol?
     private let screenHeight: CGFloat = UIScreen.main.bounds.height // view.window?.windowScene?.screen.bounds.height
     private let screenWidth: CGFloat = UIScreen.main.bounds.width
     private var dismissalTimer: Timer?
@@ -38,6 +38,11 @@ class ToastPresentingController: UIViewController {
         toast.addTarget(self, action: #selector(DidTapToast), for: .touchUpInside)
 
         activateConstraints(for: toast, superview: view)
+
+
+//        let cView = UIView(frame: .zero)
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(DidTapToast))
+//        cView.addGestureRecognizer(gesture)
     }
 
     private func activateConstraints(for toast: UIButton, superview: UIView) {
@@ -75,6 +80,7 @@ class ToastPresentingController: UIViewController {
             }
             self?.DidTapToast()
         })
+        // MARK: check out timer modes
         RunLoop.current.add(dismissalTimer!, forMode: .common)
     }
 

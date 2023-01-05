@@ -1,6 +1,6 @@
 import UIKit
 
-class AlertWindow: UIWindow {
+class ToastWindow: UIWindow {
     init(rootViewController: UIViewController, windowScene: UIWindowScene) {
         super.init(windowScene: windowScene)
         self.rootViewController = rootViewController

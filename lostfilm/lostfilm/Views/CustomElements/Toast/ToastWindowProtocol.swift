@@ -1,5 +1,5 @@
 import Foundation
 
-protocol AlertWindowProtocol: AnyObject {
+protocol ToastWindowProtocol: AnyObject {
     func dismissWindow()
 }

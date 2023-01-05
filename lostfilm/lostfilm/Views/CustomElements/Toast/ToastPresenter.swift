@@ -1,15 +1,25 @@
 import Foundation
 
-class ToastPresenter: AlertWindowProtocol {
-    private var toastQueue = Queue<AlertWindow>()
-    private(set) var activeToastWindow: AlertWindow?
+class ToastPresenter: ToastWindowProtocol {
+    private var toastQueue = Queue<ToastWindow>()
+    private(set) var activeToastWindow: ToastWindow?
 
     static let shared = ToastPresenter()
 
-    func enqueueToastForPresentation(_ alertWindow: AlertWindow) {
-        toastQueue.enqueue(alertWindow)
-
+    func enqueueToastForPresentation(_ toastWindow: ToastWindow) {
+        toastQueue.enqueue(toastWindow)
         showNextAlertIfPresent()
+    }
+
+    func enqueueToastForPresentation(toast: UIButton, position: ToastPosition) {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return
+        }
+
+        let rootVC = ToastPresentingController(toast: toast, position: position)
+        let toastWindow = ToastWindow(rootViewController: rootVC, windowScene: scene)
+
+        enqueueToastForPresentation(toastWindow)
     }
 
     private func showNextAlertIfPresent() {

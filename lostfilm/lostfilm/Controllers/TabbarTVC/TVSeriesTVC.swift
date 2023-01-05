@@ -28,21 +28,12 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let toastPresenter = ToastPresenter.shared
 
     @objc private func DidToggleToast() {
-        guard let scene = view.window?.windowScene else {
-            return
-        }
-
-        // ---
-
         let button = UIButton()
         button.setTitle("Toast Text", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button.backgroundColor = UIColor.systemBlue
 
-        let rootVC = ToastPresentingController(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
-        let alertWindow = AlertWindow(rootViewController: rootVC, windowScene: scene)
-
-        toastPresenter.enqueueToastForPresentation(alertWindow)
+        toastPresenter.enqueueToastForPresentation(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
 
         // ---
 
@@ -51,11 +42,29 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         button2.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button2.backgroundColor = UIColor.systemGreen
 
-        let rootVC2 = ToastPresentingController(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
-        let alertWindow2 = AlertWindow(rootViewController: rootVC2, windowScene: scene)
-
-        toastPresenter.enqueueToastForPresentation(alertWindow2)
+        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
     }
+
+    @objc private func DidShowFilters() {
+        guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {
+            return
+        }
+
+        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataController)
+        let navController = FilteringNavigationController(rootViewController: filteringTVC)
+        filteringTVC.filteringDelegate = dataController
+        present(navController, animated: true)
+    }
+
+    @objc private func DidShowGlobalSearch() {
+        let globalSearchTVC = GlobalSearchTVC(style: .grouped, viewModel: GlobalSearchVM(dataProvider: GlobalSearchDC()))
+        if let presentedVC = presentedViewController {
+            presentedVC.dismiss(animated: false, completion: nil)
+        }
+
+        navigationController?.setViewControllers([self, globalSearchTVC], animated: true)
+    }
+}
 
 //    private var overlayWindow: AlertWindow!
 //
@@ -80,27 +89,6 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
 //    func dismissWindow() {
 //        overlayWindow = nil
 //    }
-
-    @objc private func DidShowFilters() {
-        guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {
-            return
-        }
-
-        let filteringTVC = FilteringTVC(style: .grouped, DCwithSavedFilters: dataController)
-        let navController = FilteringNavigationController(rootViewController: filteringTVC)
-        filteringTVC.filteringDelegate = dataController
-        present(navController, animated: true)
-    }
-
-    @objc private func DidShowGlobalSearch() {
-        let globalSearchTVC = GlobalSearchTVC(style: .grouped, viewModel: GlobalSearchVM(dataProvider: GlobalSearchDC()))
-        if let presentedVC = presentedViewController {
-            presentedVC.dismiss(animated: false, completion: nil)
-        }
-
-        navigationController?.setViewControllers([self, globalSearchTVC], animated: true)
-    }
-}
 
 // MARK: how to display a VC
 
