@@ -40,6 +40,7 @@
 		C5B1AF33293D2E2B00DC7D92 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */; };
 		C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */; };
 		C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */; };
+		C5B2B98F29671611003AC8F2 /* PhotoAttaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2B98E29671611003AC8F2 /* PhotoAttaching.swift */; };
 		C5D8A49C294B3F59002FB2DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */; };
 		C5D8A49E294B3F69002FB2DF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
@@ -339,6 +340,7 @@
 		C5B1AF32293D2E2B00DC7D92 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		C5B2B98E29671611003AC8F2 /* PhotoAttaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttaching.swift; sourceTree = "<group>"; };
 		C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
@@ -964,6 +966,7 @@
 				F7DFCF9227F0AEA5006A0789 /* ImageViewZoomable.swift */,
 				C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */,
 				F735104129363A28009404AF /* UserSessionService.swift */,
+				C5B2B98E29671611003AC8F2 /* PhotoAttaching.swift */,
 				F780418328C92961007B4CE0 /* NetworkDataDecodableProtocol.swift */,
 			);
 			path = Protocols;
@@ -2172,6 +2175,7 @@
 				F7169BAE2821347E00B16251 /* GlobalSearchDC.swift in Sources */,
 				C583AF002954ADA1004A6E32 /* UIStackView+Extension.swift in Sources */,
 				F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */,
+				C5B2B98F29671611003AC8F2 /* PhotoAttaching.swift in Sources */,
 				FB31403429427C5A006DFE61 /* VideosRouter.swift in Sources */,
 				F7978D6027BC2A1E00C71147 /* EpisodesVM+UITableViewDataSource.swift in Sources */,
 				F75AEB3C2902EB6500038144 /* LoadingButton.swift in Sources */,
@@ -2418,6 +2422,7 @@
 				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = CameraUsageDescription;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = NSPhotoLibraryUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2456,6 +2461,7 @@
 				DEVELOPMENT_TEAM = FG8R9U2Q79;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = CameraUsageDescription;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = NSPhotoLibraryUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

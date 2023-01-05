@@ -7,3 +7,4 @@
 */
 
 NSPhotoLibraryUsageDescription = "Lostfilm requires to access Photo Library";
+CameraUsageDescription = "CameraUsageDescription";

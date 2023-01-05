@@ -8,9 +8,10 @@
 import Foundation
 import PhotosUI
 
-final class PhotoViewController: UIViewController {
+final class PhotoViewController: UIViewController, PhotoAttaching {
+    var imagePickerController: UIImagePickerController
+
     // MARK: Variables
-    private let imagePicker = UIImagePickerController()
     private var profileImage: UIImage?
 
     private lazy var titleLabel: UILabel = {
@@ -45,10 +46,19 @@ final class PhotoViewController: UIViewController {
         setupView()
     }
 
+    init(imagePickerController: UIImagePickerController) {
+        self.imagePickerController = UIImagePickerController()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: Functions
     private func initialSetup() {
-        imagePicker.delegate  = self
-        imagePicker.allowsEditing = true
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         addPhotoButton.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
         linkTextView.hyperLink(originalText: Texts.RulesTexts.ruleLinkText, hyperLink: Texts.RulesTexts.hyperLink, urlString: Links.rules)
     }
@@ -77,12 +87,8 @@ private extension PhotoViewController {
     }
 
     @objc func handleAddProfilePhoto() {
-        let actionSheet = UIAlertController(title: "",
-                                            message: "Select more photos or go to Settings to allow access to all photos.",
-                                            preferredStyle: .actionSheet)
-        present(imagePicker, animated: true, completion: nil)
+        showChoosingOptions()
     }
-
 }
 
 extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

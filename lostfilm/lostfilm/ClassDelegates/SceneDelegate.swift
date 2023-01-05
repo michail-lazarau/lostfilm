@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let router = TabBarRouter(userSessionData: UserSessionStoredData())
         self.tabBarRouter = router
 //        let viewController = router.start()
-        let viewController = PhotoViewController()
+        let viewController = PhotoViewController(imagePickerController: UIImagePickerController())
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
