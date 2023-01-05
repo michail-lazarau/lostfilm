@@ -1,6 +1,6 @@
 import UIKit
 
-class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, AlertWindowProtocol {
+class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
 
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
 
@@ -25,12 +25,14 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, AlertWindowProtoc
     }
 
     // Toast Test
-    private var overlayWindow: AlertWindow!
+    private let toastPresenter = ToastPresenter.shared
 
     @objc private func DidToggleToast() {
         guard let scene = view.window?.windowScene else {
             return
         }
+
+        // ---
 
         let button = UIButton()
         button.setTitle("Toast Text", for: .normal)
@@ -39,15 +41,45 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel>, AlertWindowProtoc
 
         let rootVC = ToastPresentingController(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
         let alertWindow = AlertWindow(rootViewController: rootVC, windowScene: scene)
-        rootVC.windowDelegate = self
 
-        alertWindow.makeKeyAndVisible()
-        self.overlayWindow = alertWindow
+        toastPresenter.enqueueToastForPresentation(alertWindow)
+
+        // ---
+
+        let button2 = UIButton()
+        button2.setTitle("Toast Text 2", for: .normal)
+        button2.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
+        button2.backgroundColor = UIColor.systemGreen
+
+        let rootVC2 = ToastPresentingController(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
+        let alertWindow2 = AlertWindow(rootViewController: rootVC2, windowScene: scene)
+
+        toastPresenter.enqueueToastForPresentation(alertWindow2)
     }
 
-    func dismissWindow() {
-        overlayWindow = nil
-    }
+//    private var overlayWindow: AlertWindow!
+//
+//    @objc private func DidToggleToast() {
+//        guard let scene = view.window?.windowScene else {
+//            return
+//        }
+//
+//        let button = UIButton()
+//        button.setTitle("Toast Text", for: .normal)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
+//        button.backgroundColor = UIColor.systemBlue
+//
+//        let rootVC = ToastPresentingController(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
+//        let alertWindow = AlertWindow(rootViewController: rootVC, windowScene: scene)
+//        rootVC.windowDelegate = self
+//
+//        alertWindow.makeKeyAndVisible()
+//        self.overlayWindow = alertWindow
+//    }
+//
+//    func dismissWindow() {
+//        overlayWindow = nil
+//    }
 
     @objc private func DidShowFilters() {
         guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {

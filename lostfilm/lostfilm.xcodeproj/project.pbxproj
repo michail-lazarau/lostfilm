@@ -244,6 +244,7 @@
 		F7E022A32844276400123B56 /* GlobalSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */; };
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
+		F7E4813A2966CFE500C8A8D9 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */; };
 		F7E838F828D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838F728D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift */; };
 		F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FB28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift */; };
 		F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */; };
@@ -564,6 +565,7 @@
 		F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlobalSearchHeaderView.xib; sourceTree = "<group>"; };
 		F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterDelegate.swift; sourceTree = "<group>"; };
 		F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilterViewCell.swift; sourceTree = "<group>"; };
+		F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
 		F7E838F728D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDataTaskProtocol+URLSessionDataTask.swift"; sourceTree = "<group>"; };
 		F7E838FB28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionProtocol+URLSession.swift"; sourceTree = "<group>"; };
 		F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
@@ -1611,6 +1613,7 @@
 				F7EB1870295B0AE100ADD50D /* AlertWindowProtocol.swift */,
 				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
 				F7EB18752963211C00ADD50D /* Queue.swift */,
+				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -1938,6 +1941,7 @@
 				F76E41CC2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift in Sources */,
 				F7516D6A282BDD8300E1A138 /* GlobalSearchItemType.swift in Sources */,
 				F7516D70282BE1F900E1A138 /* GlobalSearchSeriesItem.swift in Sources */,
+				F7E4813A2966CFE500C8A8D9 /* ToastPresenter.swift in Sources */,
 				F792183328C9F48E00230630 /* Request.swift in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
 				F751473C292D075200DE6B2D /* OrderNumberLabel.swift in Sources */,
