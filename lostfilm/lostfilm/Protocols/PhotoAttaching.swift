@@ -16,16 +16,23 @@ protocol PhotoAttaching {
     func choosePhoto()
 }
 
+final class AlertBuilder {
+    var title: String?
+    var message: String?
+    var style: UIAlertController.Style = .alert
+    var actions: [UIAlertAction] = []
+}
+
 extension PhotoAttaching where Self: UIViewController {
 
     func showChoosingOptions() {
-        UIAlertController.show(on: self, buildClosure: { builder in // разбрать как работает алерт билдер дефолтный
+        UIAlertController.show(on: self, buildClosure: { builder in
             builder.style = .actionSheet
             builder.actions = [
-                .default(title: "photo_attaching_take", handler: {
+                .default(title: Texts.Titles.takePhoto, handler: {
                     self.takePhoto()
                 }),
-                .default(title: "photo_attaching_choose", handler: { 
+                .default(title: Texts.Titles.selectPhoto, handler: {
                     self.choosePhoto()
                 }),
                 .cancel(title: "cancel", handler: nil)
@@ -41,8 +48,8 @@ extension PhotoAttaching where Self: UIViewController {
                     self.present(self.imagePickerController, animated: true, completion: nil)
                 } else {
                     self.showAccessDeniedAlertController(
-                        with: "camera_access_denied_title",
-                        message: "camera_access_denied_message"
+                        with: Texts.Titles.cameraAccessDeniedTitle,
+                        message: Texts.Titles.cameraAccessDeniedMessage
                     )
                 }
             }
@@ -58,8 +65,8 @@ extension PhotoAttaching where Self: UIViewController {
                     self.present(self.imagePickerController, animated: true, completion: nil)
                 default:
                     self.showAccessDeniedAlertController(
-                        with: "photo_library_access_denied_title",
-                        message: "photo_library_access_denied_message"
+                        with: Texts.Titles.photoLibraryAccessDeniedTitle,
+                        message: Texts.Titles.photoLibraryAccessDeniedMessage
                     )
                 }
             }
@@ -72,10 +79,10 @@ extension PhotoAttaching where Self: UIViewController {
             builder.title = title
             builder.message = message
             builder.actions = [
-                .default(title: "settings", handler: {
+                .default(title: Texts.Buttons.settings, handler: {
                     self.openSettings()
                 }),
-                .cancel(title: "cancel", handler: nil)
+                .cancel(title: Texts.Buttons.cancel, handler: nil)
             ]
         })
     }
@@ -86,13 +93,6 @@ extension PhotoAttaching where Self: UIViewController {
             application.open(url)
         }
     }
-}
-
-final class AlertBuilder {
-    var title: String?
-    var message: String?
-    var style: UIAlertController.Style = .alert
-    var actions: [UIAlertAction] = []
 }
 
 extension UIAlertController {

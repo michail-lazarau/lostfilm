@@ -16,7 +16,7 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Загрузите фотографию Вашего профиля:"
+        label.text = Texts.Titles.selectProfilePhoto
         label.textColor = UIColor(named: "color")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,10 +32,9 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
     }()
 
     private lazy var linkTextView: UITextView = {
-        let view = UITextView()
+        let view  = UITextView()
+        view.backgroundColor =  UIColor.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.backgroundColor
-        view.textAlignment = .right
         return view
     }()
 
@@ -59,6 +58,7 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
     private func initialSetup() {
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
+        linkTextView.delegate = self
         addPhotoButton.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
         linkTextView.hyperLink(originalText: Texts.RulesTexts.ruleLinkText, hyperLink: Texts.RulesTexts.hyperLink, urlString: Links.rules)
     }
@@ -107,4 +107,13 @@ extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationCont
 
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension PhotoViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        if  URL.absoluteString == Links.rules {
+            UIApplication.shared.open(URL)
+        }
+        return false
+        }
 }
