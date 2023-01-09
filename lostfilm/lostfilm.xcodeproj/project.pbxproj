@@ -28,7 +28,7 @@
 		C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */; };
 		C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
-		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; };
+		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		F707A69828EC5EA0006F9110 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */; };
 		F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */; };
 		F707A69E28F03FDF006F9110 /* LoginViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */; };
@@ -45,6 +45,12 @@
 		F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DB90627C14CC700924479 /* ParagraphView.swift */; };
 		F70DB90927C1526800924479 /* EpisodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */; };
 		F70DB90B27C1527200924479 /* EpisodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DB90A27C1527200924479 /* EpisodeTableHeaderView.swift */; };
+		F71088DE29680CA600482CFD /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CD29547580005C6F79 /* ToastWindow.swift */; };
+		F71088DF29680CA600482CFD /* ToastPresentingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */; };
+		F71088E029680CA600482CFD /* ToastPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB18732963182C00ADD50D /* ToastPosition.swift */; };
+		F71088E129680CA600482CFD /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */; };
+		F71088E229680CA600482CFD /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB18752963211C00ADD50D /* Queue.swift */; };
+		F71088E329680CA600482CFD /* ToastWindowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */; };
 		F711A4432745A84A00E1515D /* GetSeriesDetailsContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F711A4362745A84900E1515D /* GetSeriesDetailsContext.plist */; };
 		F711A4442745A84A00E1515D /* GetNewsListContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F711A4372745A84900E1515D /* GetNewsListContext.plist */; };
 		F711A4452745A84A00E1515D /* GetSeriesNewsListContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F711A4382745A84900E1515D /* GetSeriesNewsListContext.plist */; };
@@ -125,8 +131,6 @@
 		F756A71E28BCDBA90086A9B9 /* LFAttributedTextContentItemModel+IModelCellReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A71D28BCDBA90086A9B9 /* LFAttributedTextContentItemModel+IModelCellReuseIdentifiable.swift */; };
 		F756A72028BCE7A90086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A71F28BCE7A80086A9B9 /* LFVideoContentItemModel+IModelCellReuseIdentifiable.swift */; };
 		F756A72328BCFFE30086A9B9 /* NewsDetailsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F756A72228BCFFE30086A9B9 /* NewsDetailsTVC.swift */; };
-		F75960CE29547580005C6F79 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CD29547580005C6F79 /* ToastWindow.swift */; };
-		F75960D02955BFF6005C6F79 /* ToastPresentingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */; };
 		F75AEB3C2902EB6500038144 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75AEB3B2902EB6500038144 /* LoadingButton.swift */; };
 		F75E66C028B8D2E600984724 /* NewsDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E66BF28B8D2E600984724 /* NewsDetailsVM.swift */; };
 		F75E66C428B8F13200984724 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75E66C228B8F13200984724 /* TextViewCell.swift */; };
@@ -147,6 +151,7 @@
 		F76E41D2289144FA0086D5B2 /* BaseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D1289144FA0086D5B2 /* BaseDataProvider.swift */; };
 		F76E41D428914A6B0086D5B2 /* IHaveDataModelFetchedOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D328914A6B0086D5B2 /* IHaveDataModelFetchedOnce.swift */; };
 		F76E41D82891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */; };
+		F77219F0296C29D8007E8365 /* libWindowToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F71088D729680C6000482CFD /* libWindowToast.a */; };
 		F77226BF28BE4FEB002143CC /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77226BD28BE4FEB002143CC /* CarouselCollectionViewCell.swift */; };
 		F77226C028BE4FEB002143CC /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77226BE28BE4FEB002143CC /* CarouselCollectionViewCell.xib */; };
 		F77226C228BE5148002143CC /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77226C128BE5148002143CC /* CarouselView.swift */; };
@@ -244,7 +249,6 @@
 		F7E022A32844276400123B56 /* GlobalSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7E022A22844276400123B56 /* GlobalSearchHeaderView.xib */; };
 		F7E1F7432788CFA200E7A709 /* BaseFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F7422788CFA200E7A709 /* BaseFilterDelegate.swift */; };
 		F7E1F746278A457900E7A709 /* BaseFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E1F745278A457900E7A709 /* BaseFilterViewCell.swift */; };
-		F7E4813A2966CFE500C8A8D9 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */; };
 		F7E838F828D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838F728D35F8300FC2398 /* URLSessionDataTaskProtocol+URLSessionDataTask.swift */; };
 		F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FB28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift */; };
 		F7E838FE28D361BB00FC2398 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E838FD28D361BB00FC2398 /* URLSessionMock.swift */; };
@@ -253,9 +257,6 @@
 		F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E8E46527A80A0600BA9DC7 /* LFSeriesDetailsVC.swift */; };
 		F7EA704F281FCECE006444B9 /* GlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA704E281FCECE006444B9 /* GlobalSearchTVC.swift */; };
 		F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */; };
-		F7EB1871295B0AE100ADD50D /* ToastWindowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */; };
-		F7EB18742963182C00ADD50D /* ToastPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB18732963182C00ADD50D /* ToastPosition.swift */; };
-		F7EB18762963211C00ADD50D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EB18752963211C00ADD50D /* Queue.swift */; };
 		F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */; };
 		F7EC8ED927CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */; };
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
@@ -282,6 +283,13 @@
 			remoteGlobalIDString = F7AEE468273FEB7900C304D0;
 			remoteInfo = lostfilm;
 		};
+		F77219F1296C29D8007E8365 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7AEE461273FEB7900C304D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F71088D629680C6000482CFD;
+			remoteInfo = WindowToast;
+		};
 		F7B02F7B284E6D17004D95A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7AEE461273FEB7900C304D0 /* Project object */;
@@ -290,6 +298,18 @@
 			remoteInfo = lostfilm;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F71088D529680C6000482CFD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0DD3B3F7EB4813B6A43804FD /* Pods-lostfilm-lostfilmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm-lostfilmTests.debug.xcconfig"; path = "Target Support Files/Pods-lostfilm-lostfilmTests/Pods-lostfilm-lostfilmTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +355,7 @@
 		F70DB90627C14CC700924479 /* ParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphView.swift; sourceTree = "<group>"; };
 		F70DB90827C1526800924479 /* EpisodeTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeTableHeaderView.xib; sourceTree = "<group>"; };
 		F70DB90A27C1527200924479 /* EpisodeTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableHeaderView.swift; sourceTree = "<group>"; };
+		F71088D729680C6000482CFD /* libWindowToast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWindowToast.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F711A4362745A84900E1515D /* GetSeriesDetailsContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GetSeriesDetailsContext.plist; sourceTree = "<group>"; };
 		F711A4372745A84900E1515D /* GetNewsListContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GetNewsListContext.plist; sourceTree = "<group>"; };
 		F711A4382745A84900E1515D /* GetSeriesNewsListContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GetSeriesNewsListContext.plist; sourceTree = "<group>"; };
@@ -600,6 +621,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F71088D429680C6000482CFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7640B5028512DF200D8365B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -612,6 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F793B7E5294B62410044EDF4 /* KeychainAccess in Frameworks */,
+				F77219F0296C29D8007E8365 /* libWindowToast.a in Frameworks */,
 				F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,6 +778,19 @@
 				F70D0E1E291AAFA9004CAA81 /* DefaultRouter.swift */,
 			);
 			path = Routers;
+			sourceTree = "<group>";
+		};
+		F71088D829680C6000482CFD /* WindowToast */ = {
+			isa = PBXGroup;
+			children = (
+				F75960CD29547580005C6F79 /* ToastWindow.swift */,
+				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
+				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
+				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
+				F7EB18752963211C00ADD50D /* Queue.swift */,
+				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
+			);
+			path = WindowToast;
 			sourceTree = "<group>";
 		};
 		F711A41A2745A74300E1515D /* Resources */ = {
@@ -1305,6 +1347,7 @@
 				F7AEE46B273FEB7900C304D0 /* lostfilm */,
 				F7B02F78284E6D17004D95A1 /* lostfilmTests */,
 				F7640B5428512DF200D8365B /* lostfilmUITests */,
+				F71088D829680C6000482CFD /* WindowToast */,
 				F7AEE46A273FEB7900C304D0 /* Products */,
 				2B89820781B4F7ACD1604C0A /* Pods */,
 				74E4AB7C1BAA9FE998558E52 /* Frameworks */,
@@ -1317,6 +1360,7 @@
 				F7AEE469273FEB7900C304D0 /* lostfilm.app */,
 				F7B02F77284E6D17004D95A1 /* lostfilmTests.xctest */,
 				F7640B5328512DF200D8365B /* lostfilmUITests.xctest */,
+				F71088D729680C6000482CFD /* libWindowToast.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1523,7 +1567,6 @@
 		F7DAE2C427A17676003AED19 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
-				F7EB1872296317CE00ADD50D /* Toast */,
 				F7DAE2C527A176CF003AED19 /* NavigationViewButton.swift */,
 				C53E119E2901544E002BE86B /* LostfilmButton.swift */,
 				F70DB90427C14C8200924479 /* ParagraphView.xib */,
@@ -1605,19 +1648,6 @@
 			path = GlobalSearchTVC;
 			sourceTree = "<group>";
 		};
-		F7EB1872296317CE00ADD50D /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				F75960CD29547580005C6F79 /* ToastWindow.swift */,
-				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
-				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
-				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
-				F7EB18752963211C00ADD50D /* Queue.swift */,
-				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
-			);
-			path = Toast;
-			sourceTree = "<group>";
-		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1659,6 +1689,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F71088D629680C6000482CFD /* WindowToast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F71088DD29680C6000482CFD /* Build configuration list for PBXNativeTarget "WindowToast" */;
+			buildPhases = (
+				F71088D329680C6000482CFD /* Sources */,
+				F71088D429680C6000482CFD /* Frameworks */,
+				F71088D529680C6000482CFD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WindowToast;
+			productName = WindowToast;
+			productReference = F71088D729680C6000482CFD /* libWindowToast.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		F7640B5228512DF200D8365B /* lostfilmUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7640B5B28512DF200D8365B /* Build configuration list for PBXNativeTarget "lostfilmUITests" */;
@@ -1691,6 +1738,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F77219F2296C29D8007E8365 /* PBXTargetDependency */,
 			);
 			name = lostfilm;
 			packageProductDependencies = (
@@ -1726,9 +1774,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					F71088D629680C6000482CFD = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					F7640B5228512DF200D8365B = {
 						CreatedOnToolsVersion = 13.3.1;
 						TestTargetID = F7AEE468273FEB7900C304D0;
@@ -1762,6 +1813,7 @@
 				F7AEE468273FEB7900C304D0 /* lostfilm */,
 				F7B02F76284E6D17004D95A1 /* lostfilmTests */,
 				F7640B5228512DF200D8365B /* lostfilmUITests */,
+				F71088D629680C6000482CFD /* WindowToast */,
 			);
 		};
 /* End PBXProject section */
@@ -1909,6 +1961,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F71088D329680C6000482CFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F71088E229680CA600482CFD /* Queue.swift in Sources */,
+				F71088DE29680CA600482CFD /* ToastWindow.swift in Sources */,
+				F71088E329680CA600482CFD /* ToastWindowProtocol.swift in Sources */,
+				F71088E029680CA600482CFD /* ToastPosition.swift in Sources */,
+				F71088DF29680CA600482CFD /* ToastPresentingController.swift in Sources */,
+				F71088E129680CA600482CFD /* ToastPresenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F7640B4F28512DF200D8365B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1941,7 +2006,6 @@
 				F76E41CC2890267D0086D5B2 /* IHaveDataModelFetchedByPage.swift in Sources */,
 				F7516D6A282BDD8300E1A138 /* GlobalSearchItemType.swift in Sources */,
 				F7516D70282BE1F900E1A138 /* GlobalSearchSeriesItem.swift in Sources */,
-				F7E4813A2966CFE500C8A8D9 /* ToastPresenter.swift in Sources */,
 				F792183328C9F48E00230630 /* Request.swift in Sources */,
 				F711A4BF2745A94E00E1515D /* LFApiNews.m in Sources */,
 				F751473C292D075200DE6B2D /* OrderNumberLabel.swift in Sources */,
@@ -1954,7 +2018,6 @@
 				F7FFA1042777D486004B5D38 /* Date.swift in Sources */,
 				F7B6F8B0294A93CA00742194 /* UserSessionStoredData.swift in Sources */,
 				F79C97382746CCA3001BD5F8 /* LFNewsModel.m in Sources */,
-				F7EB18762963211C00ADD50D /* Queue.swift in Sources */,
 				F77226C228BE5148002143CC /* CarouselView.swift in Sources */,
 				F717BF1527AC86E10029B796 /* SeriesPosterViewCell.swift in Sources */,
 				F7E8E46627A80A0600BA9DC7 /* LFSeriesDetailsVC.swift in Sources */,
@@ -1988,7 +2051,6 @@
 				F77288C428A1606400AB28AB /* ILoadingDataOnce.swift in Sources */,
 				F7516D6C282BDE8400E1A138 /* GlobalSearchItem.swift in Sources */,
 				F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */,
-				F75960D02955BFF6005C6F79 /* ToastPresentingController.swift in Sources */,
 				F7DFCF9327F0AEA5006A0789 /* ImageViewZoomable.swift in Sources */,
 				F7E838FC28D35FF900FC2398 /* URLSessionProtocol+URLSession.swift in Sources */,
 				F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */,
@@ -1997,7 +2059,6 @@
 				C567D04228D9B468000FDCFE /* Enums.swift in Sources */,
 				F7516D74282BF29000E1A138 /* GlobalSearchVM.swift in Sources */,
 				C5B1AF33293D2E2B00DC7D92 /* NSAttributedString.swift in Sources */,
-				F7EB18742963182C00ADD50D /* ToastPosition.swift in Sources */,
 				F7355EED2772414200B42B0F /* NewEpisodeViewCell.swift in Sources */,
 				F7355EF42772584E00B42B0F /* NewEpisodesTVC.swift in Sources */,
 				F7471DF227AAE3EB00BDA17A /* SeriesVM.swift in Sources */,
@@ -2090,7 +2151,6 @@
 				F7997CCA276DF70700DFCC19 /* NewsDataController.swift in Sources */,
 				F7DFCF9A27F0F6F9006A0789 /* TVSeriesPhotoVC.swift in Sources */,
 				F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */,
-				F75960CE29547580005C6F79 /* ToastWindow.swift in Sources */,
 				F7978D5E27BC195800C71147 /* EpisodesVM.swift in Sources */,
 				F76D9CD727691CC2008D8CA4 /* NewsTVC.swift in Sources */,
 				C57C867F291A711900DC039F /* Validator.swift in Sources */,
@@ -2111,7 +2171,6 @@
 				F79C972B2746CCA3001BD5F8 /* LFSeriesFilterModel.m in Sources */,
 				F766765928DE0274009B9516 /* DVHtmlError.swift in Sources */,
 				F7DAE2C827A1887A003AED19 /* FilteringNavigationController.swift in Sources */,
-				F7EB1871295B0AE100ADD50D /* ToastWindowProtocol.swift in Sources */,
 				F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */,
 				C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */,
 				F7471DF827AAFAB100BDA17A /* TVSeriesOverviewTVC.swift in Sources */,
@@ -2164,6 +2223,11 @@
 			target = F7AEE468273FEB7900C304D0 /* lostfilm */;
 			targetProxy = F7640B5928512DF200D8365B /* PBXContainerItemProxy */;
 		};
+		F77219F2296C29D8007E8365 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F71088D629680C6000482CFD /* WindowToast */;
+			targetProxy = F77219F1296C29D8007E8365 /* PBXContainerItemProxy */;
+		};
 		F7B02F7C284E6D17004D95A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F7AEE468273FEB7900C304D0 /* lostfilm */;
@@ -2193,6 +2257,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F71088DB29680C6000482CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W8CYASRM76;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F71088DC29680C6000482CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W8CYASRM76;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F7640B5C28512DF200D8365B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2363,7 +2459,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FG8R9U2Q79;
+				DEVELOPMENT_TEAM = W8CYASRM76;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2376,6 +2472,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CarbonKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DVAppCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DVHtmlToModels\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/hpple\"",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2384,6 +2488,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/lostfilm-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2400,7 +2505,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FG8R9U2Q79;
+				DEVELOPMENT_TEAM = W8CYASRM76;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lostfilm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2413,6 +2518,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CarbonKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DVAppCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DVHtmlToModels\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/hpple\"",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lostfilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2421,6 +2534,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/lostfilm-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2474,6 +2588,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F71088DD29680C6000482CFD /* Build configuration list for PBXNativeTarget "WindowToast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71088DB29680C6000482CFD /* Debug */,
+				F71088DC29680C6000482CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F7640B5B28512DF200D8365B /* Build configuration list for PBXNativeTarget "lostfilmUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

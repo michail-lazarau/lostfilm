@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 public struct ToastPosition {
-    init(xAxisPosition: XAxisPosition, yAxisPosition: YAxisPosition) {
+    public init(xAxisPosition: XAxisPosition, yAxisPosition: YAxisPosition) {
         self.xAxisPosition = xAxisPosition
         self.yAxisPosition = yAxisPosition
     }
@@ -21,7 +22,7 @@ public struct ToastPosition {
     }
 }
 
-enum XAxisPosition {
+public enum XAxisPosition {
     case leading(constant: CGFloat? = nil), center(constant: CGFloat? = nil), trailing(constant: CGFloat? = nil)
 
     fileprivate func setupPosition(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
@@ -40,7 +41,7 @@ enum XAxisPosition {
     }
 }
 
-enum YAxisPosition {
+public enum YAxisPosition {
     case top(constant: CGFloat? = nil), center(constant: CGFloat? = nil), bottom(constant: CGFloat? = nil)
 
     fileprivate func setupPosition(toast: UIButton, superview: UIView) -> NSLayoutConstraint {

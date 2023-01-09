@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // https://medium.com/@JoyceMatos/data-structures-in-swift-queues-and-stacks-e7d715634f07
 struct Queue<T> {
     private var list = [T]()

@@ -1,4 +1,5 @@
 import UIKit
+import WindowToast
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
 
@@ -65,30 +66,6 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         navigationController?.setViewControllers([self, globalSearchTVC], animated: true)
     }
 }
-
-//    private var overlayWindow: AlertWindow!
-//
-//    @objc private func DidToggleToast() {
-//        guard let scene = view.window?.windowScene else {
-//            return
-//        }
-//
-//        let button = UIButton()
-//        button.setTitle("Toast Text", for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-//        button.backgroundColor = UIColor.systemBlue
-//
-//        let rootVC = ToastPresentingController(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
-//        let alertWindow = AlertWindow(rootViewController: rootVC, windowScene: scene)
-//        rootVC.windowDelegate = self
-//
-//        alertWindow.makeKeyAndVisible()
-//        self.overlayWindow = alertWindow
-//    }
-//
-//    func dismissWindow() {
-//        overlayWindow = nil
-//    }
 
 // MARK: how to display a VC
 

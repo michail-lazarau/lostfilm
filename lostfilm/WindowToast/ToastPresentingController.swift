@@ -39,7 +39,6 @@ class ToastPresentingController: UIViewController {
 
         activateConstraints(for: toast, superview: view)
 
-
 //        let cView = UIView(frame: .zero)
 //        let gesture = UITapGestureRecognizer(target: self, action: #selector(DidTapToast))
 //        cView.addGestureRecognizer(gesture)
