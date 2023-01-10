@@ -38,7 +38,6 @@ class ToastPresentingController: UIViewController {
         toast.addTarget(self, action: #selector(DidTapToast), for: .touchUpInside)
 
         activateConstraints(for: toast, superview: view)
-
 //        let cView = UIView(frame: .zero)
 //        let gesture = UITapGestureRecognizer(target: self, action: #selector(DidTapToast))
 //        cView.addGestureRecognizer(gesture)
@@ -46,7 +45,10 @@ class ToastPresentingController: UIViewController {
 
     private func activateConstraints(for toast: UIButton, superview: UIView) {
         // MARK: setting a toast's initial position (default: beyond boundaries)
-        toast.sizeToFit()
+        if !UIDevice.current.hasNotch {
+            toast.sizeToFit()
+        }
+        
         toastConstraints = toastPosition.setupPosition(toast: toast, superview: superview)
         guard let toastConstraints = toastConstraints else {
             return
@@ -58,16 +60,23 @@ class ToastPresentingController: UIViewController {
     }
 
     // MARK: Make a delegate with default implementation
-    func toastDidAppearWithAnimation(_ toast: ToastPresentingController, duration: TimeInterval) {
+    func toastDidAppearWithAnimation(_ toastPresentingController: ToastPresentingController, duration: TimeInterval) {
         view.layoutIfNeeded()
+        toast.alpha = 0.0
+
+        // USE CONSTRAINTS FOR WIDTH AND HEIGHT HERE?
+
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else {
                 return
-            }
-
+        }
+            self.toast.alpha = 1.0
             self.toastConstraints?.yAxisConstraint.constant = self.screenHeight / 10
             self.view.layoutIfNeeded()
         }
+
+//        UIView.transition(with: toast, duration: duration, options: .curveEaseOut) { [weak toast] in
+//        }
     }
 
     // TODO: suspend timer if the button receive a long tap
@@ -103,6 +112,11 @@ class ToastPresentingController: UIViewController {
         })
     }
 }
+
+//        let size = self.view.systemLayoutSizeFitting(self.toast.frame.size) // delete
+//        let finalSize = toast.frame.size
+//        toast.frame.size.width = 227 - 40 // notch width for 'iPhone 12 mini' without rounding along the edges.
+//        toast.frame.size.height = 0 // delete
 
 //        UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }
 //        var window: UIWindow? = UIApplication.shared.windows.first { $0 is AlertWindow }

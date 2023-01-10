@@ -152,6 +152,7 @@
 		F76E41D428914A6B0086D5B2 /* IHaveDataModelFetchedOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D328914A6B0086D5B2 /* IHaveDataModelFetchedOnce.swift */; };
 		F76E41D82891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */; };
 		F77219F0296C29D8007E8365 /* libWindowToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F71088D729680C6000482CFD /* libWindowToast.a */; };
+		F77219F5296C6D6F007E8365 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77219F3296C6AB4007E8365 /* UIDevice+Extension.swift */; };
 		F77226BF28BE4FEB002143CC /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77226BD28BE4FEB002143CC /* CarouselCollectionViewCell.swift */; };
 		F77226C028BE4FEB002143CC /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77226BE28BE4FEB002143CC /* CarouselCollectionViewCell.xib */; };
 		F77226C228BE5148002143CC /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77226C128BE5148002143CC /* CarouselView.swift */; };
@@ -464,6 +465,7 @@
 		F76E41D1289144FA0086D5B2 /* BaseDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataProvider.swift; sourceTree = "<group>"; };
 		F76E41D328914A6B0086D5B2 /* IHaveDataModelFetchedOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHaveDataModelFetchedOnce.swift; sourceTree = "<group>"; };
 		F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoPlayerDelegate+Extension.swift"; sourceTree = "<group>"; };
+		F77219F3296C6AB4007E8365 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		F77226BD28BE4FEB002143CC /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		F77226BE28BE4FEB002143CC /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		F77226C128BE5148002143CC /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
@@ -783,6 +785,7 @@
 		F71088D829680C6000482CFD /* WindowToast */ = {
 			isa = PBXGroup;
 			children = (
+				F77219F3296C6AB4007E8365 /* UIDevice+Extension.swift */,
 				F75960CD29547580005C6F79 /* ToastWindow.swift */,
 				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
 				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
@@ -1966,6 +1969,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71088E229680CA600482CFD /* Queue.swift in Sources */,
+				F77219F5296C6D6F007E8365 /* UIDevice+Extension.swift in Sources */,
 				F71088DE29680CA600482CFD /* ToastWindow.swift in Sources */,
 				F71088E329680CA600482CFD /* ToastWindowProtocol.swift in Sources */,
 				F71088E029680CA600482CFD /* ToastPosition.swift in Sources */,
