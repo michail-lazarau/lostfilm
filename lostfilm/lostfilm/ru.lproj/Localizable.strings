@@ -53,12 +53,8 @@
 "Take a photo" = "Cделать фото";
 "Select Photo" = "Выбрать фото";
 "Settings" = "Настройки";
-"Cancel" = "Отмена"
-"Camera Access Denied" = "Доступ к камере запрещен"
-"Please Add Access to camera" = "Пожалуйста предоставьте доступ к камере"
-"Photo Library Access Denied" = "Доступ к фото запрещен"
-"Please Add Access to photo library" = "Пожалуйста предоставьте доступ к фото"
-
-
-
-
+"Cancel" = "Отмена";
+"Camera Access Denied" = "Доступ к камере запрещен";
+"Please Add Access to camera" = "Пожалуйста предоставьте доступ к камере";
+"Photo Library Access Denied" = "Доступ к фото запрещен";
+"Please Add Access to photo library" = "Пожалуйста предоставьте доступ к фото";
