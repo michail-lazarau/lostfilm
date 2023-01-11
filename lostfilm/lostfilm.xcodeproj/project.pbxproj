@@ -29,6 +29,7 @@
 		C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
 		F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB2C3CAED7695770F0829485 /* libPods-lostfilm.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		F705071D296F31B300A71870 /* ToastConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F705071C296F31B300A71870 /* ToastConfiguration.swift */; };
 		F707A69828EC5EA0006F9110 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */; };
 		F707A69C28EF0C59006F9110 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */; };
 		F707A69E28F03FDF006F9110 /* LoginViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */; };
@@ -340,6 +341,7 @@
 		C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
 		D39D5AF9B71B1F9F8E2AB85B /* Pods-lostfilmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilmTests.release.xcconfig"; path = "Target Support Files/Pods-lostfilmTests/Pods-lostfilmTests.release.xcconfig"; sourceTree = "<group>"; };
+		F705071C296F31B300A71870 /* ToastConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastConfiguration.swift; sourceTree = "<group>"; };
 		F707A69728EC5EA0006F9110 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
 		F707A69B28EF0C59006F9110 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewProtocol.swift; sourceTree = "<group>"; };
@@ -792,6 +794,7 @@
 				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
 				F7EB18752963211C00ADD50D /* Queue.swift */,
 				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
+				F705071C296F31B300A71870 /* ToastConfiguration.swift */,
 			);
 			path = WindowToast;
 			sourceTree = "<group>";
@@ -1974,6 +1977,7 @@
 				F71088E329680CA600482CFD /* ToastWindowProtocol.swift in Sources */,
 				F71088E029680CA600482CFD /* ToastPosition.swift in Sources */,
 				F71088DF29680CA600482CFD /* ToastPresentingController.swift in Sources */,
+				F705071D296F31B300A71870 /* ToastConfiguration.swift in Sources */,
 				F71088E129680CA600482CFD /* ToastPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

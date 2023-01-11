@@ -7,7 +7,7 @@ import UIKit
  extension UIDevice {
     /// Returns `true` if the device has a notch
     var hasNotch: Bool {
-        guard #available(iOS 13.0, *), let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first, let orientation = window.windowScene?.interfaceOrientation else { return false }
+        guard #available(iOS 13.0, *), let window = UIApplication.shared.connectedScenes.flatMap({ ($0 as? UIWindowScene)?.windows ?? [] }).first(where: { $0.isKeyWindow }), let orientation = window.windowScene?.interfaceOrientation else { return false }
         if orientation.isPortrait {
             return window.safeAreaInsets.top >= 44
         } else {

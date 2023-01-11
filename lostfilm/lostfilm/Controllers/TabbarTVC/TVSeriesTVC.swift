@@ -34,9 +34,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button.backgroundColor = UIColor.systemBlue
 
-//        UIApplication.shared.statusBarFrame.size.height
-
-        toastPresenter.enqueueToastForPresentation(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: 34))) // constant for the 'iphone 12 mini' notch
+        toastPresenter.enqueueToastForPresentation(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top())) // constant for the 'iphone 12 mini' notch
 
         // ---
 
@@ -45,7 +43,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         button2.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button2.backgroundColor = UIColor.systemGreen
 
-        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: 34))) // constant for the 'iphone 12 mini' notch
+        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top())) // constant for the 'iphone 12 mini' notch
     }
 
     @objc private func DidShowFilters() {

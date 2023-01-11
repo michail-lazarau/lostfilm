@@ -28,7 +28,6 @@ class ToastPresentingController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         view.addSubview(toast)
@@ -44,11 +43,8 @@ class ToastPresentingController: UIViewController {
     }
 
     private func activateConstraints(for toast: UIButton, superview: UIView) {
-        // MARK: setting a toast's initial position (default: beyond boundaries)
-        if !UIDevice.current.hasNotch {
-            toast.sizeToFit()
-        }
-        
+        toast.sizeToFit()
+
         toastConstraints = toastPosition.setupPosition(toast: toast, superview: superview)
         guard let toastConstraints = toastConstraints else {
             return
@@ -64,8 +60,6 @@ class ToastPresentingController: UIViewController {
         view.layoutIfNeeded()
         toast.alpha = 0.0
 
-        // USE CONSTRAINTS FOR WIDTH AND HEIGHT HERE?
-
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else {
                 return
@@ -74,9 +68,6 @@ class ToastPresentingController: UIViewController {
             self.toastConstraints?.yAxisConstraint.constant = self.screenHeight / 10
             self.view.layoutIfNeeded()
         }
-
-//        UIView.transition(with: toast, duration: duration, options: .curveEaseOut) { [weak toast] in
-//        }
     }
 
     // TODO: suspend timer if the button receive a long tap
@@ -112,6 +103,11 @@ class ToastPresentingController: UIViewController {
         })
     }
 }
+
+// MARK: setting a toast's initial position (default: beyond boundaries)
+//        if !UIDevice.current.hasNotch { // makes difference if alpha is 1.0 in the beginning of animation
+//            toast.sizeToFit()
+//        }
 
 //        let size = self.view.systemLayoutSizeFitting(self.toast.frame.size) // delete
 //        let finalSize = toast.frame.size

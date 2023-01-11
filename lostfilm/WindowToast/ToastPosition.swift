@@ -49,7 +49,15 @@ public enum YAxisPosition {
 
         switch self {
         case let .top(constant):
-            axisConstraint = toast.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant ?? -toast.bounds.height)
+            let defaultConstantValue: CGFloat
+            let scene = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }?.windowScene
+            let statusBarHeight = scene?.statusBarManager?.statusBarFrame.height
+            if scene?.interfaceOrientation.isPortrait == true, UIDevice.current.hasNotch, let statusBarHeight = statusBarHeight {
+                defaultConstantValue = statusBarHeight - 15
+            } else {
+                defaultConstantValue = -toast.bounds.height
+            }
+            axisConstraint = toast.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant ?? defaultConstantValue)
         case let .center(constant):
             axisConstraint = toast.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant ?? 0)
         case let .bottom(constant):
