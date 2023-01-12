@@ -14,11 +14,29 @@ public struct ToastPosition {
         self.yAxisPosition = yAxisPosition
     }
 
-    let xAxisPosition: XAxisPosition
-    let yAxisPosition: YAxisPosition
+    private let xAxisPosition: XAxisPosition
+    private let yAxisPosition: YAxisPosition
 
-    func setupPosition(toast: UIButton, superview: UIView) -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint) {
-        return (xAxisPosition.setupPosition(toast: toast, superview: superview), yAxisPosition.setupPosition(toast: toast, superview: superview))
+    var xAxisConstraint: NSLayoutConstraint?
+    var yAxisConstraint: NSLayoutConstraint?
+
+    mutating func setupPosition(toast: UIButton, superview: UIView, isActivated: Bool) /* -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)*/ {
+        toast.sizeToFit()
+//        let toastConstraints = (xAxisPosition.setupPosition(toast: toast, superview: superview), yAxisPosition.setupPosition(toast: toast, superview: superview))
+        xAxisConstraint = xAxisPosition.setupPosition(toast: toast, superview: superview)
+        yAxisConstraint = yAxisPosition.setupPosition(toast: toast, superview: superview)
+
+        guard let xAxisConstraint = xAxisConstraint, let yAxisConstraint = yAxisConstraint else {
+            return
+        }
+        if isActivated {
+            NSLayoutConstraint.activate([
+                xAxisConstraint, yAxisConstraint
+//                toastConstraints.0, toastConstraints.1
+            ])
+        }
+
+//        return (xAxisPosition.setupPosition(toast: toast, superview: superview), yAxisPosition.setupPosition(toast: toast, superview: superview))
     }
 }
 

@@ -10,7 +10,6 @@ import UIKit
 class ToastPresentingController: UIViewController {
     let toast: UIButton
     var toastPosition: ToastPosition
-    var toastConstraints: (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)?
     weak var windowDelegate: ToastWindowProtocol?
     private let screenHeight: CGFloat = UIScreen.main.bounds.height // view.window?.windowScene?.screen.bounds.height
     private let screenWidth: CGFloat = UIScreen.main.bounds.width
@@ -35,24 +34,19 @@ class ToastPresentingController: UIViewController {
         toast.translatesAutoresizingMaskIntoConstraints = false
         toast.isUserInteractionEnabled = true
         toast.addTarget(self, action: #selector(DidTapToast), for: .touchUpInside)
+        toastPosition.setupPosition(toast: toast, superview: view, isActivated: true)
 
-        activateConstraints(for: toast, superview: view)
+//        activateConstraints(for: toast, superview: view)
 //        let cView = UIView(frame: .zero)
 //        let gesture = UITapGestureRecognizer(target: self, action: #selector(DidTapToast))
 //        cView.addGestureRecognizer(gesture)
     }
 
-    private func activateConstraints(for toast: UIButton, superview: UIView) {
-        toast.sizeToFit()
+    func didMoveToAppear(constraints: (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)) {
+    }
 
-        toastConstraints = toastPosition.setupPosition(toast: toast, superview: superview)
-        guard let toastConstraints = toastConstraints else {
-            return
-        }
+    func didMoveToDisappear(constraints: (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)) {
 
-        NSLayoutConstraint.activate([
-            toastConstraints.0, toastConstraints.1
-        ])
     }
 
     // MARK: Make a delegate with default implementation
@@ -65,7 +59,9 @@ class ToastPresentingController: UIViewController {
                 return
         }
             self.toast.alpha = 1.0
-            self.toastConstraints?.yAxisConstraint.constant = self.screenHeight / 10
+
+            // activate
+            self.toastPosition.yAxisConstraint?.constant = self.screenHeight / 10
             self.view.layoutIfNeeded()
         }
     }
@@ -95,7 +91,8 @@ class ToastPresentingController: UIViewController {
             guard let self = self else {
                 return
             }
-            self.toastConstraints?.xAxisConstraint.isActive = false
+            self.toastPosition.xAxisConstraint?.isActive = false
+//            self.toastConstraints?.xAxisConstraint.isActive = false
             self.toast.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: self.screenWidth + self.toast.bounds.width).isActive = true
             self.view.layoutIfNeeded()
         }, completion: { _ in
