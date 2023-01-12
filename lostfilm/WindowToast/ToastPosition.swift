@@ -17,33 +17,16 @@ public struct ToastPosition {
     private let xAxisPosition: XAxisPosition
     private let yAxisPosition: YAxisPosition
 
-    var xAxisConstraint: NSLayoutConstraint?
-    var yAxisConstraint: NSLayoutConstraint?
-
-    mutating func setupPosition(toast: UIButton, superview: UIView, isActivated: Bool) /* -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)*/ {
+    func setupConstraints(toast: UIButton, superview: UIView) -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint) {
         toast.sizeToFit()
-//        let toastConstraints = (xAxisPosition.setupPosition(toast: toast, superview: superview), yAxisPosition.setupPosition(toast: toast, superview: superview))
-        xAxisConstraint = xAxisPosition.setupPosition(toast: toast, superview: superview)
-        yAxisConstraint = yAxisPosition.setupPosition(toast: toast, superview: superview)
-
-        guard let xAxisConstraint = xAxisConstraint, let yAxisConstraint = yAxisConstraint else {
-            return
-        }
-        if isActivated {
-            NSLayoutConstraint.activate([
-                xAxisConstraint, yAxisConstraint
-//                toastConstraints.0, toastConstraints.1
-            ])
-        }
-
-//        return (xAxisPosition.setupPosition(toast: toast, superview: superview), yAxisPosition.setupPosition(toast: toast, superview: superview))
+        return (xAxisPosition.setupConstraint(toast: toast, superview: superview), yAxisPosition.setupConstraint(toast: toast, superview: superview))
     }
 }
 
 public enum XAxisPosition {
     case leading(constant: CGFloat? = nil), center(constant: CGFloat? = nil), trailing(constant: CGFloat? = nil)
 
-    fileprivate func setupPosition(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
+    fileprivate func setupConstraint(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
         let axisConstraint: NSLayoutConstraint
 
         switch self {
@@ -52,7 +35,7 @@ public enum XAxisPosition {
         case let .center(constant):
             axisConstraint = toast.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant ?? 0)
         case let .trailing(constant):
-            axisConstraint = toast.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: constant ?? toast.bounds.width)
+            axisConstraint = toast.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: constant ?? toast.bounds.width)
         }
 
         return axisConstraint
@@ -62,7 +45,7 @@ public enum XAxisPosition {
 public enum YAxisPosition {
     case top(constant: CGFloat? = nil), center(constant: CGFloat? = nil), bottom(constant: CGFloat? = nil)
 
-    fileprivate func setupPosition(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
+    fileprivate func setupConstraint(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
         let axisConstraint: NSLayoutConstraint
 
         switch self {

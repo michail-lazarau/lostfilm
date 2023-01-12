@@ -9,15 +9,18 @@ import UIKit
 
 class ToastPresentingController: UIViewController {
     let toast: UIButton
-    var toastPosition: ToastPosition
+    var xAxisConstraint: NSLayoutConstraint?
+    var yAxisConstraint: NSLayoutConstraint?
+
+    let toastManager: ToastManager
     weak var windowDelegate: ToastWindowProtocol?
     private let screenHeight: CGFloat = UIScreen.main.bounds.height // view.window?.windowScene?.screen.bounds.height
     private let screenWidth: CGFloat = UIScreen.main.bounds.width
     private var dismissalTimer: Timer?
 
-    init(toast: UIButton, position: ToastPosition) {
+    init(toast: UIButton, toastManager: ToastManager) {
         self.toast = toast
-        toastPosition = position
+        self.toastManager = toastManager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,7 +37,8 @@ class ToastPresentingController: UIViewController {
         toast.translatesAutoresizingMaskIntoConstraints = false
         toast.isUserInteractionEnabled = true
         toast.addTarget(self, action: #selector(DidTapToast), for: .touchUpInside)
-        toastPosition.setupPosition(toast: toast, superview: view, isActivated: true)
+
+        setupPosition(toastManager.prePosition, toast: toast, superview: view)
 
 //        activateConstraints(for: toast, superview: view)
 //        let cView = UIView(frame: .zero)
@@ -42,11 +46,18 @@ class ToastPresentingController: UIViewController {
 //        cView.addGestureRecognizer(gesture)
     }
 
-    func didMoveToAppear(constraints: (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)) {
-    }
+    func setupPosition(_ position: ToastPosition?, toast: UIButton, superview: UIView) {
+        guard let position = position else {
+            return
+        }
 
-    func didMoveToDisappear(constraints: (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint)) {
+        xAxisConstraint?.isActive = false
+        yAxisConstraint?.isActive = false
 
+        (xAxisConstraint, yAxisConstraint) = position.setupConstraints(toast: toast, superview: superview)
+
+        xAxisConstraint?.isActive = true
+        yAxisConstraint?.isActive = true
     }
 
     // MARK: Make a delegate with default implementation
@@ -59,9 +70,7 @@ class ToastPresentingController: UIViewController {
                 return
         }
             self.toast.alpha = 1.0
-
-            // activate
-            self.toastPosition.yAxisConstraint?.constant = self.screenHeight / 10
+            self.setupPosition(self.toastManager.playPosition, toast: self.toast, superview: self.view)
             self.view.layoutIfNeeded()
         }
     }
@@ -91,9 +100,9 @@ class ToastPresentingController: UIViewController {
             guard let self = self else {
                 return
             }
-            self.toastPosition.xAxisConstraint?.isActive = false
-//            self.toastConstraints?.xAxisConstraint.isActive = false
-            self.toast.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: self.screenWidth + self.toast.bounds.width).isActive = true
+
+            self.setupPosition(self.toastManager.postPosition, toast: self.toast, superview: self.view)
+            self.toast.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.windowDelegate?.dismissWindow()
@@ -105,11 +114,6 @@ class ToastPresentingController: UIViewController {
 //        if !UIDevice.current.hasNotch { // makes difference if alpha is 1.0 in the beginning of animation
 //            toast.sizeToFit()
 //        }
-
-//        let size = self.view.systemLayoutSizeFitting(self.toast.frame.size) // delete
-//        let finalSize = toast.frame.size
-//        toast.frame.size.width = 227 - 40 // notch width for 'iPhone 12 mini' without rounding along the edges.
-//        toast.frame.size.height = 0 // delete
 
 //        UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }
 //        var window: UIWindow? = UIApplication.shared.windows.first { $0 is AlertWindow }

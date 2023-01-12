@@ -16,7 +16,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "magnifying_glass"), style: .plain, target: self, action: #selector(DidShowGlobalSearch))
 
         // Toast Test
-        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "T", style: .plain, target: self, action: #selector(DidToggleToast)))
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "T", style: .plain, target: self, action: #selector(didToggleToast)))
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -28,13 +28,17 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     // Toast Test
     private let toastPresenter = ToastPresenter.shared
 
-    @objc private func DidToggleToast() {
+    @objc private func didToggleToast() {
         let button = UIButton()
         button.setTitle("Lorem ipsum dolor sit amet, consectetur adipiscing elit", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button.backgroundColor = UIColor.systemBlue
 
-        toastPresenter.enqueueToastForPresentation(toast: button, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top())) // constant for the 'iphone 12 mini' notch
+        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: UIScreen.main.bounds.height / 10)),
+                                        prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()),
+                                        postPosition: ToastPosition(xAxisPosition: .trailing(constant: UIScreen.main.bounds.width + button.bounds.width), yAxisPosition: .top(constant: UIScreen.main.bounds.height / 10)))
+
+        toastPresenter.enqueueToastForPresentation(toast: button, toastManager: toastManager) // constant for the 'iphone 12 mini' notch
 
         // ---
 
@@ -43,7 +47,7 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         button2.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button2.backgroundColor = UIColor.systemGreen
 
-        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top())) // constant for the 'iphone 12 mini' notch
+//        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top())) // constant for the 'iphone 12 mini' notch
     }
 
     @objc private func DidShowFilters() {
