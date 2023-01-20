@@ -9,7 +9,7 @@ import Foundation
 
 final class ProfileViewController: UIViewController {
     // MARK: Variables:
-    private let viewModel: ProfileViewModel
+    private let viewModel: ProfileViewModelProtocol
 
     private lazy var contentView: UIView = {
         let view = UIView()
@@ -122,7 +122,7 @@ final class ProfileViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.view = self
+        viewModel.viewReady(self)
         setupView()
         dismissAndClosePickerView()
         initialSetup()
@@ -169,6 +169,7 @@ final class ProfileViewController: UIViewController {
     }
     private func initialSetup() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         nameView.textField.delegate = self
         surnameView.textField.delegate = self
         nameView.textField.returnKeyType = .next
@@ -213,7 +214,7 @@ private extension ProfileViewController {
         ])
     }
 
-    func hideCitySection() {
+    func showCitySection() {
         cityLabel.isHidden = false
         citiesTextField.isHidden = false
     }
@@ -253,6 +254,10 @@ private extension ProfileViewController {
 
     @objc func hideKeyboard() {
         view.endEditing(true)
+    }
+
+    @objc func nextButtonPressed() {
+        viewModel.nextButtonAction()
     }
 
     func bindTextFields() {
@@ -365,7 +370,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == countryPicker {
-            return viewModel.getCountryNamesList(countries: viewModel.countriesList).count
+            return viewModel.countriesList.count
         } else if  pickerView == cityPiker {
             return viewModel.getCitiesList(countryName: countryTextField.text ?? "").count
         }
@@ -374,7 +379,7 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == countryPicker {
-            return viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
+            return viewModel.countriesList[row].name
         } else if pickerView == cityPiker {
             return viewModel.getCitiesList(countryName: countryTextField.text ?? "")[row]
         }
@@ -383,9 +388,9 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == countryPicker {
-            countryTextField.text = viewModel.getCountryNamesList(countries: viewModel.countriesList)[row]
+            countryTextField.text = viewModel.countriesList[row].name // проверка на нил
             citiesTextField.text = viewModel.getCitiesList(countryName: countryTextField.text ?? "").first
-            hideCitySection()
+            showCitySection()
         } else if pickerView == cityPiker {
             citiesTextField.text = viewModel.getCitiesList(countryName: countryTextField.text ?? "")[row]
         }

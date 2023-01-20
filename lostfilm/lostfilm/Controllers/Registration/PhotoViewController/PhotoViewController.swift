@@ -1,17 +1,19 @@
-////
-////  PhotoViewController.swift
-////  lostfilm
-////
-////  Created by u.yanouski on 2022-12-28.
-////
 //
+//  PhotoViewController.swift
+//  lostfilm
+//
+//  Created by u.yanouski on 2022-12-28.
+//
+//
+
 import Foundation
 import PhotosUI
-
+// добавить ВиюМодел // тесты проверить как вызываются методы // 
 final class PhotoViewController: UIViewController, PhotoAttaching {
     var imagePickerController: UIImagePickerController
 
     // MARK: Variables
+    private let viewModel: PhotoViewModelProtocol
     private var profileImage: UIImage?
 
     private lazy var titleLabel: UILabel = {
@@ -31,6 +33,12 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
         return button
     }()
 
+    private lazy var doneButton: UIButton = {
+        let button = LostfilmButton(title: Texts.Buttons.ready)
+        button.indicator.color = .white
+        return button
+    }()
+
     private lazy var linkTextView: UITextView = {
         let view  = UITextView()
         view.backgroundColor =  UIColor.backgroundColor
@@ -45,8 +53,9 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
         setupView()
     }
 
-    init(imagePickerController: UIImagePickerController) {
+    init(imagePickerController: UIImagePickerController, viewModel: PhotoViewModelProtocol) {
         self.imagePickerController = UIImagePickerController()
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -60,6 +69,7 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
         imagePickerController.allowsEditing = true
         linkTextView.delegate = self
         addPhotoButton.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         linkTextView.hyperLink(originalText: Texts.RulesTexts.ruleLinkText, hyperLink: Texts.RulesTexts.hyperLink, urlString: Links.rules)
     }
 }
@@ -70,6 +80,7 @@ private extension PhotoViewController {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(titleLabel)
         view.addSubview(addPhotoButton)
+        view.addSubview(doneButton)
         view.addSubview(linkTextView)
         setupConstraints()
     }
@@ -81,13 +92,20 @@ private extension PhotoViewController {
         addPhotoButton.setDimensions(width: 150, height: 150)
         addPhotoButton.centerX(inView: view)
 
+        doneButton.anchor(left: view.safeAreaLayoutGuide.leftAnchor, bottom: linkTextView.topAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 20, width: 150, height: 50)
+
         linkTextView.anchor(left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                            right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 30)
+                            right: view.safeAreaLayoutGuide.rightAnchor, paddingBottom: 20)
         linkTextView.setDimensions(width: view.frame.width, height: 50)
     }
 
     @objc func handleAddProfilePhoto() {
         showChoosingOptions()
+        viewModel.photoButtonAction()
+    }
+
+    @objc func doneButtonTapped() {
+        viewModel.doneButtonAction()
     }
 }
 
@@ -117,3 +135,4 @@ extension PhotoViewController: UITextViewDelegate {
         return false
         }
 }
+

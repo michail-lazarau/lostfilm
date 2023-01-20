@@ -8,31 +8,44 @@
 import Foundation
 
 protocol RegistrationViewModelProtocol: AnyObject {
-    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool)
+    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isCaptchaButtonSelected: Bool)
     func didEnterNicknameTextFieldWithString(nicknameViewString: String)
     func didEnterEmailTextFieldWithString(emailViewString: String)
     func didEnterPasswordTextFieldWithString(passwordViewString: String)
     func didEnterRepeatPasswordTextFieldWithString(repeatPasswordViewString: String, passwordViewString: String)
+    func viewReady(_ view: RegistrationViewProtocol)
+    func readyButtonAction()
 }
 
 final class RegistrationViewModel {
     // MARK: Variables
     weak var view: RegistrationViewProtocol?
     private let debouncer: DebouncerProtocol
+    private let router: RegistrationRouterProtocol
 
     // MARK: Inits
-    init(debouncer: DebouncerProtocol) {
+    init(debouncer: DebouncerProtocol, router: RegistrationRouterProtocol) {
         self.debouncer = debouncer
+        self.router = router
     }
 }
 
 extension RegistrationViewModel: RegistrationViewModelProtocol {
-    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
+
+    func viewReady(_ view: RegistrationViewProtocol) {
+        self.view = view
+    }
+
+    func readyButtonAction() {
+        router.openProfileViewController()
+    }
+
+    func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isCaptchaButtonSelected: Bool) {
         if  Validators.nickname.validate(nicknameViewString)  &&
             Validators.email.validate(emailViewString) &&
             Validators.password.validate(passwordViewString) &&
             Validators.password.validate(repeatPasswordViewString) && passwordViewString == repeatPasswordViewString &&
-            !isRememberMeButtonSelected == false {
+            isCaptchaButtonSelected == true {
             view?.setButtonEnabled(true)
         } else {
             view?.setButtonEnabled(false)

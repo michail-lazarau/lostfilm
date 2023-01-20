@@ -65,6 +65,7 @@ enum Texts {
         static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
         static let next = NSLocalizedString("Next", comment: "")
+        static let done = NSLocalizedString("Done", comment: "")
         static let cancel = NSLocalizedString("Cancel", comment: "")
         static let settings = NSLocalizedString("Settings", comment: "")
     }

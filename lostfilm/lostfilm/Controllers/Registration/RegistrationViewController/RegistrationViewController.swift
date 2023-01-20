@@ -10,7 +10,7 @@ import UIKit
 
 final class RegistrationViewController: UIViewController {
     // MARK: Variables
-    private let viewModel: RegistrationViewModel
+    private let viewModel: RegistrationViewModelProtocol
     private var isRememberMeButtonSelected = false
     private var isCaptchaButtonSelected = false
 
@@ -101,7 +101,7 @@ final class RegistrationViewController: UIViewController {
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.view = self
+        viewModel.viewReady(self)
         initialSetup()
         setupView()
         bindTextFields()
@@ -140,6 +140,7 @@ final class RegistrationViewController: UIViewController {
     private func initialSetup() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         rememberMeButton.addTarget(self, action: #selector(rememberMeButtonPressed), for: .touchUpInside)
+        readyButton.addTarget(self, action: #selector(captchaButtonPressed), for: .touchUpInside)
         captchaView.checkmarkButton.addTarget(self, action: #selector(captchaButtonPressed), for: .touchUpInside)
         linkTextView.delegate = self
         nickNameView.textField.delegate = self
@@ -231,12 +232,12 @@ private extension RegistrationViewController {
     }
 
     // MARK: Logic
-    func didChangeButtonStatus(niknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isRememberMeButtonSelected: Bool) {
+    func didChangeButtonStatus(niknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isCaptchaButtonSelected: Bool) {
         viewModel.checkButtonStatus(nicknameViewString: niknameViewString,
                                     emailViewString: emailViewString,
                                     passwordViewString: passwordViewString,
                                     repeatPasswordViewString: repeatPasswordViewString,
-                                    isRememberMeButtonSelected: isRememberMeButtonSelected)
+                                    isCaptchaButtonSelected: isCaptchaButtonSelected)
     }
 
     func didChangeInputNicknameTextField(nicknameViewString: String) {
@@ -272,7 +273,7 @@ private extension RegistrationViewController {
                               emailViewString: emailView.textField.text ?? "",
                               passwordViewString: passwordView.textField.text ?? "",
                               repeatPasswordViewString: repeatPasswordView.textField.text ?? "",
-                              isRememberMeButtonSelected: isCaptchaButtonSelected)
+                              isCaptchaButtonSelected: isCaptchaButtonSelected)
     }
 
     @objc func rememberMeButtonPressed() {

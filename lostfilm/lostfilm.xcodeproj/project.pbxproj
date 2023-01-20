@@ -29,6 +29,7 @@
 		C58D27DD294CD30100F04BA8 /* SegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */; };
 		C5905B532936416F00EB7E9A /* MockDebouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B522936416F00EB7E9A /* MockDebouncer.swift */; };
 		C5905B552936424D00EB7E9A /* DebouncerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */; };
+		C593E64B2979C1A900EABBEF /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593E64A2979C1A900EABBEF /* PhotoViewModel.swift */; };
 		C596D4BF2934D4E100C6D393 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D4BE2934D4E100C6D393 /* Debouncer.swift */; };
 		C5A306DF295B2F1F000AF812 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A306DE295B2F1F000AF812 /* ProfileViewModelTests.swift */; };
 		C5A306E1295B2F35000AF812 /* ProfileViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A306E0295B2F35000AF812 /* ProfileViewModelDelegateMock.swift */; };
@@ -39,6 +40,7 @@
 		C5B1AF35293D682100DC7D92 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */; };
 		C5B1AF39293D68F400DC7D92 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */; };
 		C5B2B98F29671611003AC8F2 /* PhotoAttaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2B98E29671611003AC8F2 /* PhotoAttaching.swift */; };
+		C5D0670B296F037B00787B96 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D0670A296F037B00787B96 /* RegistrationRouter.swift */; };
 		C5D8A49C294B3F59002FB2DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */; };
 		C5D8A49E294B3F69002FB2DF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */; };
 		E0849089D027AF96E2E776B1 /* libPods-lostfilmTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F373689FFDC9F1670CC0402 /* libPods-lostfilmTests.a */; };
@@ -327,6 +329,7 @@
 		C58D27DC294CD30100F04BA8 /* SegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlView.swift; sourceTree = "<group>"; };
 		C5905B522936416F00EB7E9A /* MockDebouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDebouncer.swift; sourceTree = "<group>"; };
 		C5905B542936424D00EB7E9A /* DebouncerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncerProtocol.swift; sourceTree = "<group>"; };
+		C593E64A2979C1A900EABBEF /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		C596D4BE2934D4E100C6D393 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		C5A306DE295B2F1F000AF812 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		C5A306E0295B2F35000AF812 /* ProfileViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelDelegateMock.swift; sourceTree = "<group>"; };
@@ -337,6 +340,7 @@
 		C5B1AF34293D682100DC7D92 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C5B2B98E29671611003AC8F2 /* PhotoAttaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttaching.swift; sourceTree = "<group>"; };
+		C5D0670A296F037B00787B96 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 		C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6E477F68F9C5624767B34FA /* Pods-lostfilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lostfilm.release.xcconfig"; path = "Target Support Files/Pods-lostfilm/Pods-lostfilm.release.xcconfig"; sourceTree = "<group>"; };
@@ -706,13 +710,14 @@
 			path = Validator;
 			sourceTree = "<group>";
 		};
-		C57D77BE293A2A7200C30E1A /* Registration */ = {
+		C57D77BE293A2A7200C30E1A /* RegistrationViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C57D77BF293A436000C30E1A /* RegistrationViewController.swift */,
 				C5B1AF38293D68F400DC7D92 /* RegistrationViewModel.swift */,
+				C5B1AF2F293D203D00DC7D92 /* RegistrationViewProtocol.swift */,
 			);
-			path = Registration;
+			path = RegistrationViewController;
 			sourceTree = "<group>";
 		};
 		C5A306DD295B2EF4000AF812 /* ProfilePageTests */ = {
@@ -728,19 +733,40 @@
 			isa = PBXGroup;
 			children = (
 				C5AEC873295C77F9007A134E /* PhotoViewController.swift */,
+				C593E64A2979C1A900EABBEF /* PhotoViewModel.swift */,
 			);
 			path = PhotoViewController;
 			sourceTree = "<group>";
 		};
-		C5D8A49A294B3F34002FB2DF /* Profile */ = {
+		C5D8A49A294B3F34002FB2DF /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C5D8A49B294B3F59002FB2DF /* ProfileViewController.swift */,
 				C5D8A49D294B3F69002FB2DF /* ProfileViewModel.swift */,
+				C583AF012954C2E3004A6E32 /* ProfileViewProtocol.swift */,
 				C58026C82951EFE700F12EAD /* DomainCountryModel.swift */,
 				C58D27DA294CC2D600F04BA8 /* Segment.swift */,
 			);
-			path = Profile;
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		C5EE32F329702AA9007AE35F /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				C5EE32F529702AD8007AE35F /* RegistrationRouter */,
+				C57D77BE293A2A7200C30E1A /* RegistrationViewController */,
+				C5D8A49A294B3F34002FB2DF /* ProfileViewController */,
+				C5AEC872295C77E2007A134E /* PhotoViewController */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		C5EE32F529702AD8007AE35F /* RegistrationRouter */ = {
+			isa = PBXGroup;
+			children = (
+				C5D0670A296F037B00787B96 /* RegistrationRouter.swift */,
+			);
+			path = RegistrationRouter;
 			sourceTree = "<group>";
 		};
 		F70C500828D0DC06004157AD /* NetworkMocks */ = {
@@ -1397,9 +1423,7 @@
 		F7AEE480273FF2C600C304D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C5AEC872295C77E2007A134E /* PhotoViewController */,
-				C5D8A49A294B3F34002FB2DF /* Profile */,
-				C57D77BE293A2A7200C30E1A /* Registration */,
+				C5EE32F329702AA9007AE35F /* Registration */,
 				C567D04428D9BC3A000FDCFE /* Authentication */,
 				F7EA704D281FCE99006444B9 /* GlobalSearchTVC */,
 				F7551D27274D886E00E1748E /* TabbarTVC */,
@@ -1610,8 +1634,6 @@
 				F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */,
 				F76E41D72891AA8A0086D5B2 /* VideoPlayerDelegate+Extension.swift */,
 				F707A69D28F03FDF006F9110 /* LoginViewProtocol.swift */,
-				C5B1AF2F293D203D00DC7D92 /* RegistrationViewProtocol.swift */,
-				C583AF012954C2E3004A6E32 /* ProfileViewProtocol.swift */,
 			);
 			path = DelegatingProtocols;
 			sourceTree = "<group>";
@@ -2052,6 +2074,7 @@
 				F7C693A12782133A002C6D25 /* FilteringViewCell.swift in Sources */,
 				F711A4BC2745A94E00E1515D /* LFApiSeries.m in Sources */,
 				F72518292775FAC800C60103 /* ScheduleDateIntervalEnum.swift in Sources */,
+				C5D0670B296F037B00787B96 /* RegistrationRouter.swift in Sources */,
 				FB31402E29424F41006DFE61 /* LoginRouter.swift in Sources */,
 				C5D8A49E294B3F69002FB2DF /* ProfileViewModel.swift in Sources */,
 				F70DB90727C14CC700924479 /* ParagraphView.swift in Sources */,
@@ -2110,6 +2133,7 @@
 				F79C972E2746CCA3001BD5F8 /* LFEpisodeModel.m in Sources */,
 				F7DBEE0927FA34570094A7D2 /* TVSeriesVideosDataProvider.swift in Sources */,
 				F75E66C428B8F13200984724 /* TextViewCell.swift in Sources */,
+				C593E64B2979C1A900EABBEF /* PhotoViewModel.swift in Sources */,
 				F7551D29274D88CF00E1748E /* SeriesViewCell.swift in Sources */,
 				F77300D62773BB0B007FF03B /* ScheduleDataController.swift in Sources */,
 				F70D0E15291A9253004CAA81 /* EmptyTransition.swift in Sources */,
