@@ -29,16 +29,15 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let toastPresenter = ToastPresenter.shared
 
     @objc private func didToggleToast() {
-        let button = UIButton()
-        button.setTitle("Lorem ipsum dolor sit amet, consectetur adipiscing elit", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-        button.backgroundColor = UIColor.systemBlue
+        let toastView = DefaultToastView(image: UIImage(named: "magnifying_glass"))
+        toastView.messageLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+        toastView.descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 
-        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: UIScreen.main.bounds.height / 10)),
+        let playYAxisConstant = view.safeAreaInsets.top - (navigationController?.navigationBar.largeTitleHeight ?? 0)
+        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: playYAxisConstant)),
                                         prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()),
-                                        postPosition: ToastPosition(xAxisPosition: .trailing(constant: UIScreen.main.bounds.width + button.bounds.width), yAxisPosition: .top(constant: UIScreen.main.bounds.height / 10)))
-
-        toastPresenter.enqueueToastForPresentation(toast: button, toastManager: toastManager) // constant for the 'iphone 12 mini' notch
+                                        postPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
+        toastPresenter.enqueueToastForPresentation(toast: toastView, toastManager: toastManager)
 
         // ---
 
@@ -47,8 +46,13 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         button2.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         button2.backgroundColor = UIColor.systemGreen
 
-//        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top())) // constant for the 'iphone 12 mini' notch
+//        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
     }
+    //        navigationController?.navigationBar.isTranslucent
+    //        navigationController?.navigationBar.standardAppearance.shadowImage
+    //        navigationController?.navigationBar.standardAppearance.backgroundEffect
+    //        playXAxisConstant = UIApplication.shared.statusBarFrame.height + (navigationController?.navigationBar.frame.height ?? 0)
+    //        .trailing(constant: UIScreen.main.bounds.width + button.bounds.width)
 
     @objc private func DidShowFilters() {
         guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {

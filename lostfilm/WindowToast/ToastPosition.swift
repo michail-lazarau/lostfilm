@@ -17,7 +17,7 @@ public struct ToastPosition {
     private let xAxisPosition: XAxisPosition
     private let yAxisPosition: YAxisPosition
 
-    func setupConstraints(toast: UIButton, superview: UIView) -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint) {
+    func setupConstraints(toast: UIView, superview: UIView) -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint) {
         toast.sizeToFit()
         return (xAxisPosition.setupConstraint(toast: toast, superview: superview), yAxisPosition.setupConstraint(toast: toast, superview: superview))
     }
@@ -26,7 +26,7 @@ public struct ToastPosition {
 public enum XAxisPosition {
     case leading(constant: CGFloat? = nil), center(constant: CGFloat? = nil), trailing(constant: CGFloat? = nil)
 
-    fileprivate func setupConstraint(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
+    fileprivate func setupConstraint(toast: UIView, superview: UIView) -> NSLayoutConstraint {
         let axisConstraint: NSLayoutConstraint
 
         switch self {
@@ -45,7 +45,7 @@ public enum XAxisPosition {
 public enum YAxisPosition {
     case top(constant: CGFloat? = nil), center(constant: CGFloat? = nil), bottom(constant: CGFloat? = nil)
 
-    fileprivate func setupConstraint(toast: UIButton, superview: UIView) -> NSLayoutConstraint {
+    fileprivate func setupConstraint(toast: UIView, superview: UIView) -> NSLayoutConstraint {
         let axisConstraint: NSLayoutConstraint
 
         switch self {

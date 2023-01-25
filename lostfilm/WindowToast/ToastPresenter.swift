@@ -12,12 +12,13 @@ public class ToastPresenter: ToastWindowProtocol {
         showNextAlertIfPresent()
     }
 
-    public func enqueueToastForPresentation(toast: UIButton, toastManager: ToastManager) {
+    public func enqueueToastForPresentation(toast: UIView, toastManager: ToastManager) {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return
         }
 
         let rootVC = ToastPresentingController(toast: toast, toastManager: toastManager)
+        toastManager.sizeLimits.screenDelegate = rootVC
         let toastWindow = ToastWindow(rootViewController: rootVC, windowScene: scene)
 
         enqueueToastForPresentation(toastWindow)
