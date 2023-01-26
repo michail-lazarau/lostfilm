@@ -11,6 +11,11 @@ public class DefaultToastView: UIView {
 
     public let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.tintColor = UIColor { trait in
+            trait.userInterfaceStyle == .dark
+            ? UIColor.white
+            : UIColor.black
+        }
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
@@ -22,7 +27,10 @@ public class DefaultToastView: UIView {
         let message = UILabel()
         let staticFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
         message.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: staticFont)
-        message.textColor = UIColor(red: 32 / 255, green: 32 / 255, blue: 32 / 255, alpha: 1.0)
+        message.textColor = UIColor { trait in
+            trait.userInterfaceStyle == .dark
+            ? UIColor.white : UIColor(red: 32 / 255, green: 32 / 255, blue: 32 / 255, alpha: 1.0)
+        }
         message.numberOfLines = 2
         return message
     }()
@@ -31,15 +39,13 @@ public class DefaultToastView: UIView {
         let description = UILabel()
         let staticFont = UIFont.systemFont(ofSize: 10, weight: .light)
         description.font = UIFontMetrics(forTextStyle: .footnote).scaledFont(for: staticFont)
-        description.textColor = UIColor(red: 157 / 255, green: 157 / 255, blue: 160 / 255, alpha: 1.0)
+
+        description.textColor = UIColor { trait in
+            trait.userInterfaceStyle == .dark
+            ? UIColor.lightGray : UIColor(red: 157 / 255, green: 157 / 255, blue: 160 / 255, alpha: 1.0)
+        }
         description.numberOfLines = 0
         return description
-    }()
-
-    public let backgroundColorSet: [UIUserInterfaceStyle: UIColor] = {
-        [.dark: UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 0.96),
-         .light: UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 0.96),
-         .unspecified: UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 0.96)]
     }()
 
     public let generalContainer: UIStackView = {
@@ -60,19 +66,15 @@ public class DefaultToastView: UIView {
         return stackView
     }()
 
-//    public let blurredView: UIVisualEffectView = {
-//        let blurredView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
-//        blurredView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        blurredView.alpha = 0.97
-//        return blurredView
-//    }()
-
     public init(image: UIImage? = nil, edgeInsets: NSDirectionalEdgeInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)) {
         super.init(frame: .zero)
-        imageView.image = image
+        imageView.image =  image?.withRenderingMode(.alwaysTemplate)
         generalContainer.directionalLayoutMargins = edgeInsets
-//        backgroundColor = nil
-        backgroundColor = backgroundColorSet[traitCollection.userInterfaceStyle]
+        backgroundColor = UIColor { trait in
+            trait.userInterfaceStyle == .dark
+            ? UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 0.96)
+            : UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 0.96)
+        }
         didSetupGeneralContainer()
     }
 
@@ -86,17 +88,12 @@ public class DefaultToastView: UIView {
         generalContainer.addArrangedSubview(labelStackView)
         addSubview(generalContainer)
 
-//        self.insertSubview(blurredView, at: 0)
-
         NSLayoutConstraint.activate([
             generalContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             generalContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             generalContainer.topAnchor.constraint(equalTo: topAnchor),
             generalContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
-//        generalContainer.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-//        generalContainer.frame = self.bounds
     }
 
     private func didSetupLabelStackView() {
@@ -107,8 +104,5 @@ public class DefaultToastView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.height / 4
-
-//        blurredView.frame = self.bounds
-//        blurredView.layer.cornerRadius = layer.cornerRadius
     }
 }

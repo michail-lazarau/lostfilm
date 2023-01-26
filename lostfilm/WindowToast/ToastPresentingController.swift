@@ -122,12 +122,10 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
             self?.didTapToast()
         })
 
-        // MARK: check out timer modes
-
         RunLoop.current.add(dismissalTimer!, forMode: .common)
     }
 
-    // Rely on screen.bounds accessible since the 'viewDidAppear' step
+    // MARK: constraints initialisation relies on the screen.bounds property, which is accessible since the 'viewDidAppear' step
     private func activateToastSizeLimitingConstraints() {
         minWidthConstraint?.isActive = true
         maxWidthConstraint?.isActive = true
@@ -154,36 +152,3 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
 extension ToastPresentingController {
 
 }
-
-// MARK: setting a toast's initial position (default: beyond boundaries)
-
-//        if !UIDevice.current.hasNotch { // makes difference if alpha is 1.0 in the beginning of animation
-//            toast.sizeToFit()
-//        }
-
-//        UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }
-//        var window: UIWindow? = UIApplication.shared.windows.first { $0 is AlertWindow }
-
-//        var windowToClose: UIWindow
-//        for window in view.window!.windowScene!.windows {
-//            if !window.isKeyWindow {
-//                windowToClose = window
-//                break
-//            }
-//        }
-//        view.window!.windowScene!.windows.map { !$0.isKeyWindow = nil }
-
-//    func didTimerSetup(timeInterval: TimeInterval, completeWhenFires: @escaping @Sendable (Timer) -> Void) {
-//        dismissalTimer?.invalidate()
-//        dismissalTimer = Timer(timeInterval: timeInterval, repeats: false, block: completeWhenFires)
-//        RunLoop.current.add(dismissalTimer!, forMode: .common)
-//    }
-
-//        didTimerSetup(timeInterval: 1) { [weak self] timer in
-//            guard timer.isValid else {
-//                return
-//            }
-//            Task { @MainActor [weak self] in
-//                self?.DidTapToast()
-//            }
-//        }
