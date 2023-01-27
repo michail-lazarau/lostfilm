@@ -76,7 +76,6 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
 }
 
 private extension PhotoViewController {
-
     private func setupView() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(titleLabel)

@@ -24,7 +24,6 @@
 		C57D77C0293A436000C30E1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D77BF293A436000C30E1A /* RegistrationViewController.swift */; };
 		C58026C92951EFE700F12EAD /* DomainCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58026C82951EFE700F12EAD /* DomainCountryModel.swift */; };
 		C581C538298400BB00E0745D /* PhotoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581C537298400BB00E0745D /* PhotoViewModelTests.swift */; };
-		C581C53A2984012900E0745D /* PhotoViewModelDelegetaMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C581C5392984012900E0745D /* PhotoViewModelDelegetaMock.swift */; };
 		C583AF002954ADA1004A6E32 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583AEFF2954ADA1004A6E32 /* UIStackView+Extension.swift */; };
 		C583AF022954C2E3004A6E32 /* ProfileViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583AF012954C2E3004A6E32 /* ProfileViewProtocol.swift */; };
 		C588BDD02940EF8A00AB37CA /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */; };
@@ -327,7 +326,6 @@
 		C57D77BF293A436000C30E1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		C58026C82951EFE700F12EAD /* DomainCountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCountryModel.swift; sourceTree = "<group>"; };
 		C581C537298400BB00E0745D /* PhotoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModelTests.swift; sourceTree = "<group>"; };
-		C581C5392984012900E0745D /* PhotoViewModelDelegetaMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModelDelegetaMock.swift; sourceTree = "<group>"; };
 		C583AEFF2954ADA1004A6E32 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		C583AF012954C2E3004A6E32 /* ProfileViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewProtocol.swift; sourceTree = "<group>"; };
 		C588BDCF2940EF8A00AB37CA /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
@@ -730,7 +728,6 @@
 			isa = PBXGroup;
 			children = (
 				C581C537298400BB00E0745D /* PhotoViewModelTests.swift */,
-				C581C5392984012900E0745D /* PhotoViewModelDelegetaMock.swift */,
 			);
 			path = PhotoPageTest;
 			sourceTree = "<group>";
@@ -2224,7 +2221,6 @@
 				F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */,
 				F7345787284FAE7A00570A2A /* lostfilmTests.swift in Sources */,
 				C5A306E3295B3AAF000AF812 /* MockContryService.swift in Sources */,
-				C581C53A2984012900E0745D /* PhotoViewModelDelegetaMock.swift in Sources */,
 				F7E8390228D3CE4E00FC2398 /* LoginServiceTests.swift in Sources */,
 				C581C538298400BB00E0745D /* PhotoViewModelTests.swift in Sources */,
 				F773D2C328FC92FA00B20C75 /* LoginViewModelDelegateMock.swift in Sources */,

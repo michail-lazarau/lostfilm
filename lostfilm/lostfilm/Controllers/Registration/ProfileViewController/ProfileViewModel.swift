@@ -15,7 +15,7 @@ protocol ProfileViewModelProtocol {
     func checkButtonStatus(nameViewString: String, surnameViewString: String, countyPickerString: String, cityPickerString: String)
     func nextButtonAction()
     func viewReady(_ view: ProfileViewProtocol)
-    var countriesList: [Country] { get } // get только для чтения
+    var countriesList: [Country] { get }
     var view: ProfileViewProtocol? { get }
 }
 
@@ -54,7 +54,7 @@ extension ProfileViewModel: ProfileViewModelProtocol {
     }
 
     // MARK: Functions
-    func viewIsLoaded() { // заменить название
+    func viewIsLoaded() {
         countryService.getCountries { countries in
             self.countriesList = countries
         }

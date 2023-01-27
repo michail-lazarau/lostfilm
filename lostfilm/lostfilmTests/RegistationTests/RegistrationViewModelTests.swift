@@ -7,8 +7,6 @@
 @testable import lostfilm
 import XCTest
 
-// СОздать моковый роутер
-
 class RegistrationViewModelTest: XCTestCase {
 
     var sut: RegistrationViewModel! // объект вью модели  (ссылки)
