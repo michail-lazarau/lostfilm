@@ -26,7 +26,6 @@ final class PhotoViewModel {
 extension PhotoViewModel: PhotoViewModelProtocol {
     func photoButtonAction() {
         print("PhotoButton clicked")
-        router.sendPhotoToServer()
     }
 
     func doneButtonAction() {

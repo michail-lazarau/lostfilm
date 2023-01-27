@@ -140,7 +140,7 @@ final class RegistrationViewController: UIViewController {
     private func initialSetup() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         rememberMeButton.addTarget(self, action: #selector(rememberMeButtonPressed), for: .touchUpInside)
-        readyButton.addTarget(self, action: #selector(captchaButtonPressed), for: .touchUpInside)
+        readyButton.addTarget(self, action: #selector(readyButtonPressed), for: .touchUpInside)
         captchaView.checkmarkButton.addTarget(self, action: #selector(captchaButtonPressed), for: .touchUpInside)
         linkTextView.delegate = self
         nickNameView.textField.delegate = self
@@ -292,6 +292,15 @@ private extension RegistrationViewController {
             captchaView.checkmarkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
         }
         isCaptchaButtonSelected.toggle()
+        didChangeButtonStatus(niknameViewString: nickNameView.textField.text ?? "",
+                              emailViewString: emailView.textField.text ?? "",
+                              passwordViewString: passwordView.textField.text ?? "",
+                              repeatPasswordViewString: repeatPasswordView.textField.text ?? "",
+                              isCaptchaButtonSelected: isCaptchaButtonSelected)
+    }
+
+    @objc func readyButtonPressed() {
+        viewModel.readyButtonAction()
     }
 }
 

@@ -11,12 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-//        let router = TabBarRouter(userSessionData: UserSessionStoredData())
-        let router = RegistrationRouter(rootTransition: EmptyTransition())
-//        self.tabBarRouter = router
-        self.registrationRouter = router
+        let router = TabBarRouter(userSessionData: UserSessionStoredData())
+//        let router = RegistrationRouter(rootTransition: ModalTransition())
+        self.tabBarRouter = router
+//        self.registrationRouter = router
         let viewController = router.start()
-//        let viewController = ProfileViewController(viewModel: ProfileViewModel(countryService: CountryService(), debouncer: Debouncer(timeInterval: 1), router: RegistrationRouter(rootTransition: EmptyTransition())))
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }

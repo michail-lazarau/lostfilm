@@ -8,7 +8,7 @@
 
 import Foundation
 import PhotosUI
-// добавить ВиюМодел // тесты проверить как вызываются методы // 
+
 final class PhotoViewController: UIViewController, PhotoAttaching {
     var imagePickerController: UIImagePickerController
 
@@ -43,6 +43,7 @@ final class PhotoViewController: UIViewController, PhotoAttaching {
         let view  = UITextView()
         view.backgroundColor =  UIColor.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.setDimensions(width: 0, height: 20)
         return view
     }()
 
@@ -104,7 +105,7 @@ private extension PhotoViewController {
         viewModel.photoButtonAction()
     }
 
-    @objc func doneButtonTapped() {
+    @objc private func doneButtonTapped() {
         viewModel.doneButtonAction()
     }
 }
@@ -135,4 +136,3 @@ extension PhotoViewController: UITextViewDelegate {
         return false
         }
 }
-

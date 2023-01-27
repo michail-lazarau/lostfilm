@@ -16,9 +16,7 @@ protocol DetailInformationProtocol {
 }
 
 protocol PhotoViewRouterProtocol {
-    func sendPhotoToServer()
     func closeController()
-
 }
 
 final class RegistrationRouter: DefaultRouter {
@@ -43,12 +41,7 @@ extension RegistrationRouter: RegistrationRouterProtocol, DetailInformationProto
         route(to: viewController, as: PushTransition(isAnimated: true))
     }
 
-    func sendPhotoToServer() {
-        print("Do smth")
-    }
-
     func closeController() {
         close()
     }
-
 }
