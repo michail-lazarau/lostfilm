@@ -12,9 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let router = TabBarRouter(userSessionData: UserSessionStoredData())
-//        let router = RegistrationRouter(rootTransition: ModalTransition())
         self.tabBarRouter = router
-//        self.registrationRouter = router
         let viewController = router.start()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
