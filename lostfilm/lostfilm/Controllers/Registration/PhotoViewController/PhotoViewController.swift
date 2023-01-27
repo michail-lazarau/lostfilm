@@ -104,7 +104,7 @@ private extension PhotoViewController {
         viewModel.photoButtonAction()
     }
 
-    @objc private func doneButtonTapped() {
+    @objc func doneButtonTapped() {
         viewModel.doneButtonAction()
     }
 }
