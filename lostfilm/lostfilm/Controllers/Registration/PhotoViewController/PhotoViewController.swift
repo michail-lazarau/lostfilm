@@ -133,5 +133,5 @@ extension PhotoViewController: UITextViewDelegate {
             UIApplication.shared.open(URL)
         }
         return false
-        }
+    }
 }
