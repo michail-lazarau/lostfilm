@@ -102,12 +102,12 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
         view.layoutIfNeeded()
         toast.alpha = 0.0
 
+        setupPosition(self.toastManager.playPosition, toast: self.toast, superview: self.view)
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else {
                 return
             }
             self.toast.alpha = 1.0
-            self.setupPosition(self.toastManager.playPosition, toast: self.toast, superview: self.view)
             self.view.layoutIfNeeded()
         }
     }
@@ -135,20 +135,16 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
 
     @objc func didTapToast() {
         view.layoutIfNeeded()
+        setupPosition(toastManager.postPosition, toast: toast, superview: view)
         UIView.animate(withDuration: toastManager.disappearingDuration, animations: { [weak self] in
             guard let self = self else {
                 return
             }
 
-            self.setupPosition(self.toastManager.postPosition, toast: self.toast, superview: self.view)
             self.toast.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.windowDelegate?.dismissWindow()
         })
     }
-}
-
-extension ToastPresentingController {
-
 }

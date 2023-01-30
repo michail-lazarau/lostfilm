@@ -8,13 +8,11 @@
 import UIKit
 
 public class DefaultToastView: UIView {
-
     public let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = UIColor { trait in
             trait.userInterfaceStyle == .dark
-            ? UIColor.white
-            : UIColor.black
+                ? UIColor.white : UIColor.black
         }
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -29,7 +27,7 @@ public class DefaultToastView: UIView {
         message.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: staticFont)
         message.textColor = UIColor { trait in
             trait.userInterfaceStyle == .dark
-            ? UIColor.white : UIColor(red: 32 / 255, green: 32 / 255, blue: 32 / 255, alpha: 1.0)
+                ? UIColor.white : UIColor(red: 32 / 255, green: 32 / 255, blue: 32 / 255, alpha: 1.0)
         }
         message.numberOfLines = 2
         return message
@@ -42,7 +40,7 @@ public class DefaultToastView: UIView {
 
         description.textColor = UIColor { trait in
             trait.userInterfaceStyle == .dark
-            ? UIColor.lightGray : UIColor(red: 157 / 255, green: 157 / 255, blue: 160 / 255, alpha: 1.0)
+                ? UIColor.lightGray : UIColor(red: 157 / 255, green: 157 / 255, blue: 160 / 255, alpha: 1.0)
         }
         description.numberOfLines = 0
         return description
@@ -68,12 +66,12 @@ public class DefaultToastView: UIView {
 
     public init(image: UIImage? = nil, edgeInsets: NSDirectionalEdgeInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)) {
         super.init(frame: .zero)
-        imageView.image =  image?.withRenderingMode(.alwaysTemplate)
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
         generalContainer.directionalLayoutMargins = edgeInsets
         backgroundColor = UIColor { trait in
             trait.userInterfaceStyle == .dark
-            ? UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 0.96)
-            : UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 0.96)
+                ? UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 0.96)
+                : UIColor(red: 241 / 255, green: 241 / 255, blue: 241 / 255, alpha: 0.96)
         }
         didSetupGeneralContainer()
     }
@@ -101,7 +99,7 @@ public class DefaultToastView: UIView {
         labelStackView.addArrangedSubview(descriptionLabel)
     }
 
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.height / 4
     }

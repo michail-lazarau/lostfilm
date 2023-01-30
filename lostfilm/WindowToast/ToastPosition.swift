@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 public struct ToastPosition {
+    private let xAxisPosition: XAxisPosition
+    private let yAxisPosition: YAxisPosition
+
     public init(xAxisPosition: XAxisPosition, yAxisPosition: YAxisPosition) {
         self.xAxisPosition = xAxisPosition
         self.yAxisPosition = yAxisPosition
     }
-
-    private let xAxisPosition: XAxisPosition
-    private let yAxisPosition: YAxisPosition
 
     func setupConstraints(toast: UIView, superview: UIView) -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint) {
         toast.sizeToFit()
@@ -50,15 +50,7 @@ public enum YAxisPosition {
 
         switch self {
         case let .top(constant):
-            let defaultConstantValue: CGFloat
-            let scene = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }?.windowScene
-            let statusBarHeight = scene?.statusBarManager?.statusBarFrame.height
-            if scene?.interfaceOrientation.isPortrait == true, UIDevice.current.hasNotch, let statusBarHeight = statusBarHeight {
-                defaultConstantValue = statusBarHeight - 15
-            } else {
-                defaultConstantValue = -toast.bounds.height
-            }
-            axisConstraint = toast.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant ?? defaultConstantValue)
+            axisConstraint = toast.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant ?? 0)
         case let .center(constant):
             axisConstraint = toast.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant ?? 0)
         case let .bottom(constant):
@@ -66,5 +58,24 @@ public enum YAxisPosition {
         }
 
         return axisConstraint
+    }
+
+    public static var notchIndent: CGFloat? {
+        // notch height varies from device to device, therefore an approximate value is calculated
+        let scene = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }?.windowScene
+        if scene?.interfaceOrientation.isPortrait == true, UIDevice.current.hasNotch, let statusBarHeight = scene?.statusBarManager?.statusBarFrame.height {
+            return statusBarHeight - 15
+        } else {
+            return nil
+        }
+    }
+
+    public static var navigationBarIndent: CGFloat? {
+        if let viewControllerOnTop = UIApplication.shared.getWindowsByLevel(.normal).first?
+            .rootViewController?.getLastDescendantViewController() {
+            return viewControllerOnTop.view.safeAreaInsets.top - (viewControllerOnTop.navigationController?.navigationBar.largeTitleHeight ?? 0)
+        } else {
+            return nil
+        }
     }
 }

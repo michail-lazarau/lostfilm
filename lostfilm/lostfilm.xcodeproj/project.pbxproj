@@ -231,7 +231,6 @@
 		F7C693A12782133A002C6D25 /* FilteringViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C693A02782133A002C6D25 /* FilteringViewCell.swift */; };
 		F7CDE392297EAA7900908DD8 /* ToastSizeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDE391297EAA7900908DD8 /* ToastSizeLimits.swift */; };
 		F7CDE395297EAB9600908DD8 /* DefaultToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDE394297EAB9600908DD8 /* DefaultToastView.swift */; };
-		F7CDE3972980490500908DD8 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDE3962980490500908DD8 /* UINavigationBar+Extension.swift */; };
 		F7CEB3F3285657640056CE03 /* MockGlobalSearchDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F2285657640056CE03 /* MockGlobalSearchDC.swift */; };
 		F7CEB3F5285684AF0056CE03 /* MockGlobalSearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F4285684AF0056CE03 /* MockGlobalSearchTVC.swift */; };
 		F7CEB3F728568EBC0056CE03 /* TestDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEB3F628568EBC0056CE03 /* TestDataObject.swift */; };
@@ -265,6 +264,9 @@
 		F7EA7051282056FD006444B9 /* GetGlobalSearchContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EA7050282056FD006444B9 /* GetGlobalSearchContext.plist */; };
 		F7EC8A9C2754B567005C6D81 /* DataControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */; };
 		F7EC8ED927CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */; };
+		F7ECA98D29841373004CF256 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDE3962980490500908DD8 /* UINavigationBar+Extension.swift */; };
+		F7ECA98F298438DE004CF256 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ECA98E298438DE004CF256 /* UIApplication+Extension.swift */; };
+		F7ECA991298825F5004CF256 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ECA990298825F5004CF256 /* UIViewController+Extension.swift */; };
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
 		F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */; };
 		F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FC47B827DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift */; };
@@ -612,6 +614,8 @@
 		F7EB18752963211C00ADD50D /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		F7EC8A9B2754B567005C6D81 /* DataControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerDelegate.swift; sourceTree = "<group>"; };
 		F7EC8ED827CC0A7E00616727 /* IUpdatingViewByPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUpdatingViewByPageDelegate.swift; sourceTree = "<group>"; };
+		F7ECA98E298438DE004CF256 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		F7ECA990298825F5004CF256 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		F7EF678C2747DB3500A2A8DD /* NSError+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LF.h"; sourceTree = "<group>"; };
 		F7EF678D2747DB3600A2A8DD /* NSError+LF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LF.m"; sourceTree = "<group>"; };
 		F7EF67902747E41F00A2A8DD /* NSDictionary+LF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LF.h"; sourceTree = "<group>"; };
@@ -795,7 +799,7 @@
 		F71088D829680C6000482CFD /* WindowToast */ = {
 			isa = PBXGroup;
 			children = (
-				F77219F3296C6AB4007E8365 /* UIDevice+Extension.swift */,
+				F7ECA9922988264C004CF256 /* Extensions */,
 				F75960CD29547580005C6F79 /* ToastWindow.swift */,
 				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
 				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
@@ -1106,7 +1110,6 @@
 				FB31403529427C9F006DFE61 /* NewEpisodesRouter.swift */,
 				FB31403729427CE3006DFE61 /* ScheduleRouter.swift */,
 				FB31403B29428B28006DFE61 /* TemplateRouter.swift */,
-				F7CDE3962980490500908DD8 /* UINavigationBar+Extension.swift */,
 			);
 			path = TabbarTVC;
 			sourceTree = "<group>";
@@ -1666,6 +1669,17 @@
 			path = GlobalSearchTVC;
 			sourceTree = "<group>";
 		};
+		F7ECA9922988264C004CF256 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F7ECA98E298438DE004CF256 /* UIApplication+Extension.swift */,
+				F7ECA990298825F5004CF256 /* UIViewController+Extension.swift */,
+				F7CDE3962980490500908DD8 /* UINavigationBar+Extension.swift */,
+				F77219F3296C6AB4007E8365 /* UIDevice+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1987,13 +2001,16 @@
 				F71088E229680CA600482CFD /* Queue.swift in Sources */,
 				F7AAE4AB29757B7C000CD4ED /* PresentingControllerProtocol.swift in Sources */,
 				F77219F5296C6D6F007E8365 /* UIDevice+Extension.swift in Sources */,
+				F7ECA991298825F5004CF256 /* UIViewController+Extension.swift in Sources */,
 				F7CDE395297EAB9600908DD8 /* DefaultToastView.swift in Sources */,
+				F7ECA98D29841373004CF256 /* UINavigationBar+Extension.swift in Sources */,
 				F71088DE29680CA600482CFD /* ToastWindow.swift in Sources */,
 				F71088E329680CA600482CFD /* ToastWindowProtocol.swift in Sources */,
 				F71088E029680CA600482CFD /* ToastPosition.swift in Sources */,
 				F71088DF29680CA600482CFD /* ToastPresentingController.swift in Sources */,
 				F705071D296F31B300A71870 /* ToastManager.swift in Sources */,
 				F71088E129680CA600482CFD /* ToastPresenter.swift in Sources */,
+				F7ECA98F298438DE004CF256 /* UIApplication+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2103,7 +2120,6 @@
 				F70DB90B27C1527200924479 /* EpisodeTableHeaderView.swift in Sources */,
 				C567D04828D9CC9A000FDCFE /* Utilities.swift in Sources */,
 				F79C97372746CCA3001BD5F8 /* LFPhotoListContentItemModel.m in Sources */,
-				F7CDE3972980490500908DD8 /* UINavigationBar+Extension.swift in Sources */,
 				F76D1F7527B9454C007E5933 /* TVSeriesEpisodesTVC.swift in Sources */,
 				F7471DDB27AAADF700BDA17A /* SeriesModelItemType.swift in Sources */,
 				FB31403029427A64006DFE61 /* TVSeriesRouter.swift in Sources */,

@@ -33,26 +33,14 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         toastView.messageLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
         toastView.descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 
-        let playYAxisConstant = view.safeAreaInsets.top - (navigationController?.navigationBar.largeTitleHeight ?? 0)
-        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: playYAxisConstant)),
-                                        prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()),
-                                        postPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
+//        let playYAxisConstant = view.safeAreaInsets.top - (navigationController?.navigationBar.largeTitleHeight ?? 0)
+        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.navigationBarIndent)),
+                                        prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)),
+                                        postPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)))
         toastPresenter.enqueueToastForPresentation(toast: toastView, toastManager: toastManager)
 
-        // ---
-
-        let button2 = UIButton()
-        button2.setTitle("Lorem ipsum dolor sit amet, consectetur adipiscing elit", for: .normal)
-        button2.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-        button2.backgroundColor = UIColor.systemGreen
-
-//        toastPresenter.enqueueToastForPresentation(toast: button2, position: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top()))
+        // ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent))
     }
-    //        navigationController?.navigationBar.isTranslucent
-    //        navigationController?.navigationBar.standardAppearance.shadowImage
-    //        navigationController?.navigationBar.standardAppearance.backgroundEffect
-    //        playXAxisConstant = UIApplication.shared.statusBarFrame.height + (navigationController?.navigationBar.frame.height ?? 0)
-    //        .trailing(constant: UIScreen.main.bounds.width + button.bounds.width)
 
     @objc private func DidShowFilters() {
         guard let dataController = dataController as? TVSeriesDataController & FilteringDelegate else {

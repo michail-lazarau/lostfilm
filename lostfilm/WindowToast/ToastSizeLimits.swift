@@ -24,7 +24,6 @@ public struct ToastSizeLimits {
         guard let screen = screenDelegate?.screen else {
             return [:]
         }
-
         return [.phone: 120,
                 .pad: screen.bounds.width / 5]
     }()
