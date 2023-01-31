@@ -12,6 +12,7 @@ enum Icons {
     static let mail = UIImage(systemName: "mail") ?? UIImage()
     static let password = UIImage(systemName: "lock") ?? UIImage()
     static let captcha = UIImage(systemName: "repeat") ?? UIImage()
+    static let addPhotoButton = UIImage(systemName: "person.crop.circle.badge.plus") ?? UIImage()
 }
 
 enum Texts {
@@ -47,7 +48,14 @@ enum Texts {
         static let age = NSLocalizedString("Enter your age", comment: "")
         static let country = NSLocalizedString("Country", comment: "")
         static let city = NSLocalizedString("City", comment: "")
-
+        static let selectProfilePhoto = NSLocalizedString("Upload your profile picture", comment: "")
+        static let takePhoto = NSLocalizedString("Take a photo", comment: "")
+        static let selectPhoto = NSLocalizedString("Select Photo", comment: "")
+        static let photoLibraryAccessD = NSLocalizedString("Select Photo", comment: "")
+        static let cameraAccessDeniedTitle = NSLocalizedString("Camera Access Denied", comment: "")
+        static let cameraAccessDeniedMessage = NSLocalizedString("Please Add Access to camera", comment: "")
+        static let photoLibraryAccessDeniedTitle = NSLocalizedString("Photo Library Access Denied", comment: "")
+        static let photoLibraryAccessDeniedMessage = NSLocalizedString("Please Add Access to photo library", comment: "")
     }
 
     enum Buttons {
@@ -57,6 +65,9 @@ enum Texts {
         static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
         static let next = NSLocalizedString("Next", comment: "")
+        static let done = NSLocalizedString("Done", comment: "")
+        static let cancel = NSLocalizedString("Cancel", comment: "")
+        static let settings = NSLocalizedString("Settings", comment: "")
     }
 
     enum RulesTexts {

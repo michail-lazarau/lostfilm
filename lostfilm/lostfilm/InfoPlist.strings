@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  lostfilm
+
+  Created by u.yanouski on 2023-01-04.
+ 
+*/
+
+NSPhotoLibraryUsageDescription = "Lostfilm requires to access Photo Library";
+CameraUsageDescription = "CameraUsageDescription";

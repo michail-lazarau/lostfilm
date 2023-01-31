@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CountryServiceProtocol {
-    func  getCountries(_ cities: @escaping ([Country]) -> Void) // функция для вью модели которая отдает вью моедли Массив структур countries
+    func  getCountries(_ cities: @escaping ([Country]) -> Void)
 }
 
 final class CountryService: CountryServiceProtocol {

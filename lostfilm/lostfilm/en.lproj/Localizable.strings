@@ -49,3 +49,13 @@
 "Town" = "Town";
 "Male" = "Male";
 "Female" = "Female";
+"Upload your profile picture" = "Upload your profile picture";
+"Take a photo" = "Take a photo";
+"Select Photo" = "Select Photo";
+"Cancel" = "Cancel";
+"Settings" = "Settings";
+"Camera Access Denied" = "Camera Access Denied";
+"Please Add Access to camera" = "Please Add Access to camera";
+"Photo Library Access Denied" = "Photo Library Access Denied";
+"Please Add Access to photo library" = "Please Add Access to photo library";
+"Done" = "Done";

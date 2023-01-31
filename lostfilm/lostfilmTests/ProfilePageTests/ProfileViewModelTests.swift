@@ -12,9 +12,11 @@ final class ProfileViewModelTests: XCTestCase {
 
     var sut: ProfileViewModel!
     var delegate: ProfileViewModelDelegateMock!
+    var router: MockRegistrationRouter!
 
     override func setUpWithError() throws {
-        sut = ProfileViewModel(countryService: MockCountyService(), debouncer: MockDebouncer())
+        router = MockRegistrationRouter()
+        sut = ProfileViewModel(countryService: MockCountyService(), debouncer: MockDebouncer(), router: router)
         delegate = ProfileViewModelDelegateMock()
         sut.view = delegate
     }
@@ -22,6 +24,7 @@ final class ProfileViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
         delegate = nil
+        router = nil
     }
 
     // MARK: sendMessage Functionality
@@ -145,5 +148,10 @@ final class ProfileViewModelTests: XCTestCase {
         }
         sut.checkButtonStatus(nameViewString: "Name", surnameViewString: "inv", countyPickerString: "Japan", cityPickerString: "Tokio")
         wait(for: [buttonExpectation], timeout: 0)
+    }
+
+    func test_NextButtonAction() {
+        sut.nextButtonAction()
+        wait(for: [router.showCallFuncOpenPhotoViewControllerExpectation], timeout: 0)
     }
 }

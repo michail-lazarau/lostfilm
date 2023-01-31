@@ -11,9 +11,12 @@ protocol ProfileViewModelProtocol {
     func viewIsLoaded()
     func didEnterNameTextFieldWithString(nameViewString: String)
     func didEnterSurnameTextFieldWithString(surnameViewString: String)
-    func getCountryNamesList(countries: [Country]) -> [String]
     func getCitiesList(countryName: String) -> [String]
     func checkButtonStatus(nameViewString: String, surnameViewString: String, countyPickerString: String, cityPickerString: String)
+    func nextButtonAction()
+    func viewReady(_ view: ProfileViewProtocol)
+    var countriesList: [Country] { get }
+    var view: ProfileViewProtocol? { get }
 }
 
 final class ProfileViewModel {
@@ -22,15 +25,25 @@ final class ProfileViewModel {
     private let countryService: CountryServiceProtocol
     var countriesList: [Country] = []
     private let debouncer: DebouncerProtocol
+    private let router: DetailInformationProtocol
 
     // MARK: Inits
-    init(countryService: CountryServiceProtocol, debouncer: DebouncerProtocol) {
+    init(countryService: CountryServiceProtocol, debouncer: DebouncerProtocol, router: DetailInformationProtocol) {
         self.countryService = countryService
         self.debouncer = debouncer
+        self.router = router
     }
 }
 
 extension ProfileViewModel: ProfileViewModelProtocol {
+    func nextButtonAction() {
+        router.openPhotoViewController()
+    }
+
+    func viewReady(_ view: ProfileViewProtocol) {
+        self.view = view
+    }
+
     func checkButtonStatus(nameViewString: String, surnameViewString: String, countyPickerString countryPickerString: String, cityPickerString: String) {
         if Validators.nickname.validate(nameViewString)  && Validators.nickname.validate(surnameViewString),
            !countryPickerString.isEmpty && !cityPickerString.isEmpty {
@@ -45,11 +58,6 @@ extension ProfileViewModel: ProfileViewModelProtocol {
         countryService.getCountries { countries in
             self.countriesList = countries
         }
-    }
-
-    func getCountryNamesList(countries: [Country]) -> [String] {
-        let countriesNames = countries.map { $0.name }
-        return countriesNames
     }
 
     func getCitiesList(countryName: String) -> [String] {

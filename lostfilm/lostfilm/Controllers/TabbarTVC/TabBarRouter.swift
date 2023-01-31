@@ -62,7 +62,7 @@ extension TabBarRouter: LoginRoute {
 
     func openLogin() {
         let transition = ModalTransition()
-        let router = LoginRouter(userSessionData: userSessionData, rootTransition: transition)
+        let router = RegistrationRouter(rootTransition: transition)
         route(to: router, using: transition)
     }
 }

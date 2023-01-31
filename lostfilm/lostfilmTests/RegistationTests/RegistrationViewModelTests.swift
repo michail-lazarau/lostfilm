@@ -11,9 +11,11 @@ class RegistrationViewModelTest: XCTestCase {
 
     var sut: RegistrationViewModel! // объект вью модели  (ссылки)
     var delegate: RegistrationViewModelDelegateMock! // "обьект"  RegistrationViewModelDelegateMock (ссылка/ указатель на объкт этого класса ) мы меняет реализацию протокола из класса RegistrationViewModel!  с RegistrationViewProtocol на моконовый  RegistrationViewModelDelegateMock!
+    var router: MockRegistrationRouter! // обхявил то что есть роутре типа БМокРегистрейшнРоутер
 
     override func setUpWithError() throws {
-        sut = RegistrationViewModel(debouncer: MockDebouncer()) // инитим 
+        router = MockRegistrationRouter() // засетали обьект класса MockRegistrationRouter()
+        sut = RegistrationViewModel(debouncer: MockDebouncer(), router: router) // инитим
         delegate = RegistrationViewModelDelegateMock() // инитим
         sut.view = delegate // вью как проперти класса RegistrationViewModel! на которой выпоняется фунция теста (didEnterNicknameTextFieldWithString)  и вью реализует   RegistrationViewProtocol?
     }
@@ -21,6 +23,13 @@ class RegistrationViewModelTest: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
         delegate = nil
+        router = nil
+    }
+
+    func test_Action_Ready_Button() {
+        print("")
+        sut.readyButtonAction()
+        wait(for: [router.showCallFuncOpenProfileViewControllerExpectation], timeout: 0)
     }
 
     func test_SendNicknameConfirmationMessage() {
