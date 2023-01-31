@@ -4,7 +4,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     private var tabBarRouter: TabBarRouter?
-    
+
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         HTTPCookieStorage.shared.removeCookies(since: Date(timeIntervalSince1970: 0)) // MARK: purging the token
