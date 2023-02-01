@@ -212,7 +212,6 @@
 		F79C973A2746CCA3001BD5F8 /* LFJsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F79C97282746CCA3001BD5F8 /* LFJsonObject.m */; };
 		F7A95AE12900C518006325B2 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A95AE02900C518006325B2 /* UITextField+Extension.swift */; };
 		F7AA54CB2791B200002A7179 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA54CA2791B200002A7179 /* FilterType.swift */; };
-		F7AAE4AB29757B7C000CD4ED /* PresentingControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AAE4AA29757B7C000CD4ED /* PresentingControllerProtocol.swift */; };
 		F7AD60EA2921AB0300184FA5 /* DefaultRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AD60E92921AB0300184FA5 /* DefaultRouterMock.swift */; };
 		F7AEE46D273FEB7900C304D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */; };
 		F7AEE46F273FEB7900C304D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AEE46E273FEB7900C304D0 /* SceneDelegate.swift */; };
@@ -550,7 +549,6 @@
 		F79C97292746CCA3001BD5F8 /* LFJsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFJsonObject.h; sourceTree = "<group>"; };
 		F7A95AE02900C518006325B2 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		F7AA54CA2791B200002A7179 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
-		F7AAE4AA29757B7C000CD4ED /* PresentingControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentingControllerProtocol.swift; sourceTree = "<group>"; };
 		F7AD60E92921AB0300184FA5 /* DefaultRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRouterMock.swift; sourceTree = "<group>"; };
 		F7AEE469273FEB7900C304D0 /* lostfilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lostfilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7AEE46C273FEB7900C304D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -803,7 +801,6 @@
 				F75960CD29547580005C6F79 /* ToastWindow.swift */,
 				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
 				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
-				F7AAE4AA29757B7C000CD4ED /* PresentingControllerProtocol.swift */,
 				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
 				F7EB18752963211C00ADD50D /* Queue.swift */,
 				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
@@ -1999,7 +1996,6 @@
 			files = (
 				F7CDE392297EAA7900908DD8 /* ToastSizeLimits.swift in Sources */,
 				F71088E229680CA600482CFD /* Queue.swift in Sources */,
-				F7AAE4AB29757B7C000CD4ED /* PresentingControllerProtocol.swift in Sources */,
 				F77219F5296C6D6F007E8365 /* UIDevice+Extension.swift in Sources */,
 				F7ECA991298825F5004CF256 /* UIViewController+Extension.swift in Sources */,
 				F7CDE395297EAB9600908DD8 /* DefaultToastView.swift in Sources */,

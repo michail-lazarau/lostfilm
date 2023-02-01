@@ -18,7 +18,6 @@ public struct ToastPosition {
     }
 
     func setupConstraints(toast: UIView, superview: UIView) -> (xAxisConstraint: NSLayoutConstraint, yAxisConstraint: NSLayoutConstraint) {
-        toast.sizeToFit()
         return (xAxisPosition.setupConstraint(toast: toast, superview: superview), yAxisPosition.setupConstraint(toast: toast, superview: superview))
     }
 }

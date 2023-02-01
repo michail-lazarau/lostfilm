@@ -9,10 +9,15 @@ import Foundation
 import UIKit
 
 public struct ToastSizeLimits {
-    weak var screenDelegate: PresentingControllerProtocol?
+
+    private lazy var screen: UIScreen? = {
+        return UIApplication.shared.connectedScenes
+            .flatMap({ ($0 as? UIWindowScene)?.windows ?? [] })
+            .first(where: { $0 is ToastWindow })?.windowScene?.screen
+    }()
 
      public lazy var maxWidthConstant: [UIUserInterfaceIdiom: CGFloat] = {
-        guard let screen = screenDelegate?.screen else {
+        guard let screen = screen else {
             return [:]
         }
 
@@ -21,7 +26,7 @@ public struct ToastSizeLimits {
     }()
 
     public lazy var minWidthConstant: [UIUserInterfaceIdiom: CGFloat] = {
-        guard let screen = screenDelegate?.screen else {
+        guard let screen = screen else {
             return [:]
         }
         return [.phone: 120,
@@ -29,7 +34,7 @@ public struct ToastSizeLimits {
     }()
 
     public lazy var maxHeightConstant: [UIUserInterfaceIdiom: CGFloat] = {
-        guard let screen = screenDelegate?.screen else {
+        guard let screen = screen else {
             return [:]
         }
 
@@ -38,7 +43,7 @@ public struct ToastSizeLimits {
     }()
 
     public lazy var minHeightConstant: [UIUserInterfaceIdiom: CGFloat] = {
-        guard let screen = screenDelegate?.screen else {
+        guard let screen = screen else {
             return [:]
         }
 

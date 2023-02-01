@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ToastPresentingController: UIViewController, PresentingControllerProtocol {
+class ToastPresentingController: UIViewController {
     let toast: UIView
     var xAxisConstraint: NSLayoutConstraint?
     var yAxisConstraint: NSLayoutConstraint?
@@ -43,10 +43,6 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
     let toastManager: ToastManager
     weak var windowDelegate: ToastWindowProtocol?
 
-    var screen: UIScreen? {
-        view.window?.windowScene?.screen
-    }
-
     private var dismissalTimer: Timer?
 
     init(toast: UIView, toastManager: ToastManager) {
@@ -64,18 +60,18 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         view.addSubview(toast)
-//        toast.sizeToFit()
 
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapToast))
         toast.addGestureRecognizer(gesture)
         toast.translatesAutoresizingMaskIntoConstraints = false
         toast.isUserInteractionEnabled = true
+        toast.alpha = 0.0
+        activateToastSizeLimitingConstraints()
         setupPosition(toastManager.prePosition, toast: toast, superview: view)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        activateToastSizeLimitingConstraints()
         toastDidAppearWithAnimation(self, duration: toastManager.appearingDuration)
         setupTimer(timeInterval: toastManager.autohideDuration)
     }
@@ -96,13 +92,10 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
         }
     }
 
-    // MARK: Make a delegate with default implementation
-
     func toastDidAppearWithAnimation(_ toastPresentingController: ToastPresentingController, duration: TimeInterval) {
         view.layoutIfNeeded()
-        toast.alpha = 0.0
+        setupPosition(toastManager.playPosition, toast: toast, superview: view)
 
-        setupPosition(self.toastManager.playPosition, toast: self.toast, superview: self.view)
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else {
                 return
@@ -125,7 +118,6 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
         RunLoop.current.add(dismissalTimer!, forMode: .common)
     }
 
-    // MARK: constraints initialisation relies on the screen.bounds property, which is accessible since the 'viewDidAppear' step
     private func activateToastSizeLimitingConstraints() {
         minWidthConstraint?.isActive = true
         maxWidthConstraint?.isActive = true
@@ -136,6 +128,7 @@ class ToastPresentingController: UIViewController, PresentingControllerProtocol 
     @objc func didTapToast() {
         view.layoutIfNeeded()
         setupPosition(toastManager.postPosition, toast: toast, superview: view)
+
         UIView.animate(withDuration: toastManager.disappearingDuration, animations: { [weak self] in
             guard let self = self else {
                 return

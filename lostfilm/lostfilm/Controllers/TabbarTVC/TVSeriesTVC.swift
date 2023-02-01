@@ -33,13 +33,10 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         toastView.messageLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
         toastView.descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 
-//        let playYAxisConstant = view.safeAreaInsets.top - (navigationController?.navigationBar.largeTitleHeight ?? 0)
         let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.navigationBarIndent)),
                                         prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)),
                                         postPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)))
         toastPresenter.enqueueToastForPresentation(toast: toastView, toastManager: toastManager)
-
-        // ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent))
     }
 
     @objc private func DidShowFilters() {

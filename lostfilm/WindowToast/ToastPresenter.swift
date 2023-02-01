@@ -18,7 +18,6 @@ public class ToastPresenter: ToastWindowProtocol {
         }
 
         let rootVC = ToastPresentingController(toast: toast, toastManager: toastManager)
-        toastManager.sizeLimits.screenDelegate = rootVC
         let toastWindow = ToastWindow(rootViewController: rootVC, windowScene: scene)
 
         enqueueToastForPresentation(toastWindow)
