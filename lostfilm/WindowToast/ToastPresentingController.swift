@@ -96,12 +96,14 @@ class ToastPresentingController: UIViewController {
         view.layoutIfNeeded()
         setupPosition(toastManager.playPosition, toast: toast, superview: view)
 
-        UIView.animate(withDuration: duration) { [weak self] in
+        UIView.animate(withDuration: duration) { [weak self, toastManager] in
             guard let self = self else {
                 return
             }
             self.toast.alpha = 1.0
-            self.view.layoutIfNeeded()
+            if toastManager.prePosition != nil {
+                self.view.layoutIfNeeded()
+            }
         }
     }
 
