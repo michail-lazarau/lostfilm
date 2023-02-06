@@ -10,8 +10,7 @@ final class LoginViewModel {
     // MARK: Variables
 
     typealias Captcha = LFLoginPageModel
-    typealias Routes = Dismissable
-    private let router: Routes
+    private let router: RegistrationRouterProtocol
     private let dataProvider: LoginServiceProtocol
     private weak var userSessionData: UserSessionService?
     private let debouncer: DebouncerProtocol
@@ -19,7 +18,7 @@ final class LoginViewModel {
     weak var view: LoginViewProtocol?
     let htmlParserWrapper: DVHtmlToModels = DVHtmlToModels(contextByName: "GetLoginPageContext")
 
-    init(dataProvider: LoginServiceProtocol, router: Routes, userSessionData: UserSessionService, debouncer: DebouncerProtocol) {
+    init(dataProvider: LoginServiceProtocol, router: RegistrationRouterProtocol, userSessionData: UserSessionService, debouncer: DebouncerProtocol) {
         self.dataProvider = dataProvider
         self.router = router
         self.userSessionData = userSessionData
@@ -38,6 +37,10 @@ final class LoginViewModel {
 
     func dismissLoginScreen() {
         router.dismiss()
+    }
+
+    func openRegistrationViewController() {
+        router.openRegistrationViewController()
     }
 }
 

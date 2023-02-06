@@ -63,6 +63,7 @@ enum Texts {
         static let forgotPassword = NSLocalizedString( "Forgot Password?", comment: "")
         static let ready = NSLocalizedString("Ready", comment: "")
         static let alreadyHaveAnAccount = NSLocalizedString("Already have an account?", comment: "")
+        static let dontHaveAnAccount = NSLocalizedString("Don't have an account?", comment: "")
         static let buttonLogIn = NSLocalizedString("Enter", comment: "")
         static let next = NSLocalizedString("Next", comment: "")
         static let done = NSLocalizedString("Done", comment: "")

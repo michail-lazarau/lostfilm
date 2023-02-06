@@ -28,6 +28,12 @@ final class LoginViewController: UIViewController {
         return button
     }()
 
+    private let dontHaveAccountButton: LostfilmButton = {
+        let button = LostfilmButton(title: Texts.Buttons.dontHaveAnAccount)
+        button.indicator.color = .white
+        return button
+    }()
+
     private let captchaTextView: TextFieldView = {
         let view = TextFieldView()
         view.textField.keyboardType = .numberPad
@@ -84,12 +90,14 @@ final class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         setupTextFields()
-        stackView.setupSubViews(withViews: [UIView(), titleLabel, emailView, passwordView, captchaImageView, captchaTextView, loginButton])
+        stackView.setupSubViews(withViews: [UIView(), titleLabel, emailView, passwordView, captchaImageView, captchaTextView, loginButton, dontHaveAccountButton])
         setupConstraints()
     }
 
     private func initialSetup() {
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        dontHaveAccountButton.addTarget(self, action: #selector(dontHaveAccountButtonAction), for: .touchUpInside)
+
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         emailView.textField.delegate = self
         passwordView.textField.delegate = self
@@ -232,6 +240,10 @@ extension LoginViewController {
         if let email = emailView.textField.text, let password = passwordView.textField.text {
             viewModel.login(email: email, password: password, captcha: captchaTextView.textField.text)
         }
+    }
+
+    @objc func dontHaveAccountButtonAction() {
+        viewModel.openRegistrationViewController()
     }
 }
 // MARK: Extensions

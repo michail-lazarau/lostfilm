@@ -14,6 +14,13 @@ final class MockRegistrationRouter {
     var showCallFuncOpenProfileViewControllerExpectation = XCTestExpectation(description: "OpenProfileViewController() expectation")
     var showCallFuncOpenPhotoViewControllerExpectation = XCTestExpectation(description: "openPhotoViewController() expectation")
     var showCallFuncCloseControllerExpectation = XCTestExpectation(description: "CloseController() expectation")
+    var showCallOpenRegistrationViewControllerExpectation = XCTestExpectation(description: "OpenRegistrationViewController() expectation")
+
+    var dismissWithCompletionFuncExpectation = XCTestExpectation(description: "dismiss(completion:) expectation")
+
+    func incrementOpenRegistrationViewControllerCall() {
+        showCallOpenRegistrationViewControllerExpectation.fulfill()
+    }
 
     func incrementProfileControllerCall() {
        showCallFuncOpenProfileViewControllerExpectation.fulfill()
@@ -28,8 +35,16 @@ final class MockRegistrationRouter {
     }
 }
 
-extension MockRegistrationRouter: RegistrationRouterProtocol {
-    func openProfileViewController() {
+extension MockRegistrationRouter: RegistrationRouterProtocol, Dismissable {
+    func dismiss(completion: (() -> Void)?) {
+        dismissWithCompletionFuncExpectation.fulfill()
+    }
+
+    func dismiss() {
+        dismissWithCompletionFuncExpectation.fulfill()
+    }
+
+    func openRegistrationViewController() {
         print("openProfileViewController()")
         incrementProfileControllerCall()
     }

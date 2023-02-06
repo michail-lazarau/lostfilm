@@ -37,7 +37,7 @@ extension RegistrationViewModel: RegistrationViewModelProtocol {
     }
 
     func readyButtonAction() {
-        router.openProfileViewController()
+        router.openRegistrationViewController()
     }
 
     func checkButtonStatus(nicknameViewString: String, emailViewString: String, passwordViewString: String, repeatPasswordViewString: String, isCaptchaButtonSelected: Bool) {

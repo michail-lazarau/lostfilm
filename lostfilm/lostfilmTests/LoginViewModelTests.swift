@@ -8,11 +8,11 @@ class LoginViewModelTests: XCTestCase {
     var sut: LoginViewModel!
     var session: URLSessionMock!
     var delegate: LoginViewModelDelegateMock!
-    var router: DefaultRouterMock!
+    var router: MockRegistrationRouter!
 
     override func setUpWithError() throws {
         session = URLSessionMock()
-        router = DefaultRouterMock()
+        router = MockRegistrationRouter()
         delegate = LoginViewModelDelegateMock()
         let userSessionData = UserSessionStoredData(sensitiveDataStorage: KeychainMock(),
                                                     httpCookieStorage: HTTPCookieStorageMock(),
@@ -197,6 +197,11 @@ class LoginViewModelTests: XCTestCase {
 
     // Router
 
+    func test_Dont_Have_Account_Button() {
+        sut.openRegistrationViewController()
+        wait(for: [router.showCallFuncOpenProfileViewControllerExpectation], timeout: 0)
+    }
+
     func test_positive_dismissLoginScreen() {
         sut.dismissLoginScreen()
         wait(for: [router.dismissWithCompletionFuncExpectation], timeout: 0.1)
@@ -260,7 +265,6 @@ class LoginViewModelTests: XCTestCase {
     }
 
     // MARK: Button isEnbaled
-
     func test_isLoginButtonEnabledWithoutCaptcha() {
         let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonEnabledWithoutCaptchaAllDataIsCorrect() expectation" )
         delegate.buttonStatus = { isEnabled in

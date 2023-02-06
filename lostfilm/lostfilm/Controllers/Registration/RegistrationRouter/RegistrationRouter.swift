@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol RegistrationRouterProtocol {
-    func openProfileViewController()
+protocol RegistrationRouterProtocol: Dismissable {
+    func openRegistrationViewController()
 }
 
 protocol DetailInformationProtocol {
@@ -31,7 +31,7 @@ final class RegistrationRouter: DefaultRouter {
 
 extension RegistrationRouter: RegistrationRouterProtocol, DetailInformationProtocol, PhotoViewRouterProtocol {
 
-    func openProfileViewController() {
+    func openRegistrationViewController() {
         let viewController = ProfileViewController(viewModel: ProfileViewModel(countryService: CountryService(), debouncer: Debouncer(timeInterval: 0.5), router: self))
         route(to: viewController, as: PushTransition(isAnimated: true))
     }
