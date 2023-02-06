@@ -265,7 +265,6 @@ class LoginViewModelTests: XCTestCase {
     }
 
     // MARK: Button isEnbaled
-
     func test_isLoginButtonEnabledWithoutCaptcha() {
         let buttonExpectation = XCTestExpectation(description: "test_isLoginButtonEnabledWithoutCaptchaAllDataIsCorrect() expectation" )
         delegate.buttonStatus = { isEnabled in
