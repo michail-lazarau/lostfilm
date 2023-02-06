@@ -8,11 +8,11 @@ class LoginViewModelTests: XCTestCase {
     var sut: LoginViewModel!
     var session: URLSessionMock!
     var delegate: LoginViewModelDelegateMock!
-    var router: DefaultRouterMock!
+    var router: MockRegistrationRouter!
 
     override func setUpWithError() throws {
         session = URLSessionMock()
-        router = DefaultRouterMock()
+        router = MockRegistrationRouter()
         delegate = LoginViewModelDelegateMock()
         let userSessionData = UserSessionStoredData(sensitiveDataStorage: KeychainMock(),
                                                     httpCookieStorage: HTTPCookieStorageMock(),
@@ -197,9 +197,14 @@ class LoginViewModelTests: XCTestCase {
 
     // Router
 
+    func test_Dont_Have_Account_Button() {
+        sut.openRegistrationViewController()
+        wait(for: [router.showCallFuncOpenProfileViewControllerExpectation], timeout: 0)
+    }
+
     func test_positive_dismissLoginScreen() {
         sut.dismissLoginScreen()
-        wait(for: [router.dismissWithCompletionFuncExpectation], timeout: 0.1)
+        wait(for: [router.dismissWithCompletionFuncExpectation], timeout: 0.1) // перенсти в новый моковый роутер
     }
 
     func verifyLogin(credentials: Credentials, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], mockUrlForLoginPage: String) {
@@ -213,6 +218,7 @@ class LoginViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.captchaModel, expectedCaptcha)
     }
+
 
     // MARK: Validator
 

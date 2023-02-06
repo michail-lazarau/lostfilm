@@ -7,13 +7,25 @@
 
 import Foundation
 
-final class LoginRouter: DefaultRouter {
+protocol RegistrationPresenterProtocol: AnyObject {
+    func showRegistration()
+}
 
+final class LoginRouter: DefaultRouter, RegistrationRouterProtocol {
+    func openRegistrationViewController() {
+        dismiss { [weak self] in
+            self?.registrationPresenterDelegate?.showRegistration()
+        }
+    }
+
+    private weak var registrationPresenterDelegate: RegistrationPresenterProtocol?
     private let userSessionData: UserSessionService
 
-    init(userSessionData: UserSessionService, rootTransition: Transition) {
+    init(userSessionData: UserSessionService, rootTransition: Transition, registrationPresenterDelegate: RegistrationPresenterProtocol ) {
         self.userSessionData = userSessionData
+        self.registrationPresenterDelegate = registrationPresenterDelegate
         super.init(rootTransition: rootTransition)
+
     }
 
     override func start() -> UIViewController {
