@@ -219,7 +219,6 @@ class LoginViewModelTests: XCTestCase {
         XCTAssertEqual(sut.captchaModel, expectedCaptcha)
     }
 
-
     // MARK: Validator
 
     // MARK: sendMessage Functionality

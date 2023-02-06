@@ -18,8 +18,6 @@ final class MockRegistrationRouter {
 
     var dismissWithCompletionFuncExpectation = XCTestExpectation(description: "dismiss(completion:) expectation")
 
-
-
     func incrementOpenRegistrationViewControllerCall() {
         showCallOpenRegistrationViewControllerExpectation.fulfill()
     }
