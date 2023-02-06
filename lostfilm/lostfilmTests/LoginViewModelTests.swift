@@ -204,7 +204,7 @@ class LoginViewModelTests: XCTestCase {
 
     func test_positive_dismissLoginScreen() {
         sut.dismissLoginScreen()
-        wait(for: [router.dismissWithCompletionFuncExpectation], timeout: 0.1) // перенсти в новый моковый роутер
+        wait(for: [router.dismissWithCompletionFuncExpectation], timeout: 0.1)
     }
 
     func verifyLogin(credentials: Credentials, expectedCaptcha: LoginViewModel.Captcha?, expectations: [XCTestExpectation], mockUrlForLoginPage: String) {
