@@ -797,15 +797,13 @@
 		F71088D829680C6000482CFD /* WindowToast */ = {
 			isa = PBXGroup;
 			children = (
+				F7ECA993298AC543004CF256 /* ToastSettings */,
 				F7ECA9922988264C004CF256 /* Extensions */,
 				F75960CD29547580005C6F79 /* ToastWindow.swift */,
 				F75960CF2955BFF6005C6F79 /* ToastPresentingController.swift */,
 				F7EB1870295B0AE100ADD50D /* ToastWindowProtocol.swift */,
-				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
 				F7EB18752963211C00ADD50D /* Queue.swift */,
 				F7E481392966CFE500C8A8D9 /* ToastPresenter.swift */,
-				F705071C296F31B300A71870 /* ToastManager.swift */,
-				F7CDE391297EAA7900908DD8 /* ToastSizeLimits.swift */,
 				F7CDE394297EAB9600908DD8 /* DefaultToastView.swift */,
 			);
 			path = WindowToast;
@@ -1675,6 +1673,16 @@
 				F77219F3296C6AB4007E8365 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F7ECA993298AC543004CF256 /* ToastSettings */ = {
+			isa = PBXGroup;
+			children = (
+				F705071C296F31B300A71870 /* ToastManager.swift */,
+				F7EB18732963182C00ADD50D /* ToastPosition.swift */,
+				F7CDE391297EAA7900908DD8 /* ToastSizeLimits.swift */,
+			);
+			path = ToastSettings;
 			sourceTree = "<group>";
 		};
 		F7EF678B2747DB0F00A2A8DD /* NS */ = {

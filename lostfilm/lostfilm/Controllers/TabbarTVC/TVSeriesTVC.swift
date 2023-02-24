@@ -29,14 +29,10 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let toastPresenter = ToastPresenter.shared
 
     @objc private func didToggleToast() {
-        let toastView = DefaultToastView(image: UIImage(named: "magnifying_glass"))
-        toastView.messageLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        toastView.descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-
         let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.navigationBarIndent)),
                                         prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)),
                                         postPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)))
-        toastPresenter.enqueueToastForPresentation(toast: toastView, toastManager: toastManager)
+        toastPresenter.enqueueToastForPresentation(toast: DefaultToastView(), toastManager: toastManager)
     }
 
     @objc private func DidShowFilters() {

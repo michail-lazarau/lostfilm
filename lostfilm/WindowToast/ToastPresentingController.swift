@@ -11,6 +11,8 @@ class ToastPresentingController: UIViewController {
     let toast: UIView
     var xAxisConstraint: NSLayoutConstraint?
     var yAxisConstraint: NSLayoutConstraint?
+    var constantWidthConstraint: NSLayoutConstraint?
+    var constantHeightConstraint: NSLayoutConstraint?
 
     lazy var maxWidthConstraint: NSLayoutConstraint? = {
         guard let maxWidth = toastManager.sizeLimits.maxWidthConstant[traitCollection.userInterfaceIdiom] else {
@@ -76,6 +78,14 @@ class ToastPresentingController: UIViewController {
         setupTimer(timeInterval: toastManager.autohideDuration)
     }
 
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//    }
+
+//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+//        <#code#>
+//    }
+
     func setupPosition(_ position: ToastPosition?, toast: UIView, superview: UIView) {
         guard let position = position else {
             return
@@ -121,10 +131,18 @@ class ToastPresentingController: UIViewController {
     }
 
     private func activateToastSizeLimitingConstraints() {
-        minWidthConstraint?.isActive = true
-        maxWidthConstraint?.isActive = true
-        minHeightConstraint?.isActive = true
-        maxHeightConstraint?.isActive = true
+        if let constantWidthConstraint = constantWidthConstraint {
+            constantWidthConstraint.isActive = true
+        } else {
+            minWidthConstraint?.isActive = true
+            maxWidthConstraint?.isActive = true
+        }
+        if let constantHeightConstraint = constantHeightConstraint {
+            constantHeightConstraint.isActive = true
+        } else {
+            minHeightConstraint?.isActive = true
+            maxHeightConstraint?.isActive = true
+        }
     }
 
     @objc func didTapToast() {

@@ -21,7 +21,11 @@ public class DefaultToastView: UIView {
         return imageView
     }()
 
-    public let messageLabel: UILabel = {
+//    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//    }
+
+    public var messageLabel: UILabel = {
         let message = UILabel()
         let staticFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
         message.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: staticFont)
@@ -33,7 +37,7 @@ public class DefaultToastView: UIView {
         return message
     }()
 
-    public let descriptionLabel: UILabel = {
+    public var descriptionLabel: UILabel? = {
         let description = UILabel()
         let staticFont = UIFont.systemFont(ofSize: 10, weight: .light)
         description.font = UIFontMetrics(forTextStyle: .footnote).scaledFont(for: staticFont)
@@ -64,15 +68,34 @@ public class DefaultToastView: UIView {
         return stackView
     }()
 
-    public init(image: UIImage? = nil, edgeInsets: NSDirectionalEdgeInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)) {
-        super.init(frame: .zero)
-        imageView.image = image?.withRenderingMode(.alwaysTemplate)
-        generalContainer.directionalLayoutMargins = edgeInsets
-        backgroundColor = UIColor { trait in
+    public convenience init(backgroundColor: UIColor, message: UILabel, description: UILabel?, image: UIImage?, edgeInsets: NSDirectionalEdgeInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)) {
+        self.init(image: image, edgeInsets: edgeInsets)
+        messageLabel = message
+        descriptionLabel = description
+        self.backgroundColor = backgroundColor
+    }
+
+    public convenience init(backgroundColor: UIColor, message: String, description: String?, image: UIImage?, edgeInsets: NSDirectionalEdgeInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)) {
+        self.init(image: image, edgeInsets: edgeInsets)
+        messageLabel.text = message
+        descriptionLabel?.text = description
+        self.backgroundColor = backgroundColor
+    }
+
+    public convenience init() {
+        let mockText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+        let backgroundColor = UIColor { trait in
             trait.userInterfaceStyle == .dark
                 ? UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 0.96)
                 : UIColor(red: 241 / 255, green: 241 / 255, blue: 241 / 255, alpha: 0.96)
         }
+        self.init(backgroundColor: backgroundColor, message: mockText, description: mockText, image: UIImage(systemName: "magnifyingglass"))
+    }
+
+    private init(image: UIImage?, edgeInsets: NSDirectionalEdgeInsets) {
+        super.init(frame: .zero)
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        generalContainer.directionalLayoutMargins = edgeInsets
         didSetupGeneralContainer()
     }
 
@@ -96,7 +119,9 @@ public class DefaultToastView: UIView {
 
     private func didSetupLabelStackView() {
         labelStackView.addArrangedSubview(messageLabel)
-        labelStackView.addArrangedSubview(descriptionLabel)
+        if let descriptionLabel = descriptionLabel {
+            labelStackView.addArrangedSubview(descriptionLabel)
+        }
     }
 
     override public func layoutSubviews() {
