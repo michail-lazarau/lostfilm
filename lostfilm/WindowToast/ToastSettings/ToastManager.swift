@@ -14,6 +14,7 @@ open class ToastManager {
     public let playPosition: ToastPosition
     public var prePosition: ToastPosition?
     public var postPosition: ToastPosition?
+    public var currentPosition: ToastPosition
     public var autohideDuration: TimeInterval = 3.0
     public var appearingDuration: TimeInterval = 0.35
     public var disappearingDuration: TimeInterval = 0.35
@@ -23,6 +24,7 @@ open class ToastManager {
         self.playPosition = playPosition
         self.prePosition = prePosition
         self.postPosition = postPosition
+        currentPosition = prePosition ?? playPosition
     }
 }
 

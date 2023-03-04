@@ -9,6 +9,10 @@ import UIKit
 
 class ToastPresentingController: UIViewController {
     let toast: UIView
+    let toastManager: ToastManager
+    private var dismissalTimer: Timer?
+    weak var windowDelegate: ToastWindowProtocol?
+
     var xAxisConstraint: NSLayoutConstraint?
     var yAxisConstraint: NSLayoutConstraint?
     var constantWidthConstraint: NSLayoutConstraint?
@@ -42,11 +46,6 @@ class ToastPresentingController: UIViewController {
         return toast.heightAnchor.constraint(greaterThanOrEqualToConstant: minHeight)
     }()
 
-    let toastManager: ToastManager
-    weak var windowDelegate: ToastWindowProtocol?
-
-    private var dismissalTimer: Timer?
-
     init(toast: UIView, toastManager: ToastManager) {
         self.toast = toast
         self.toastManager = toastManager
@@ -78,18 +77,24 @@ class ToastPresentingController: UIViewController {
         setupTimer(timeInterval: toastManager.autohideDuration)
     }
 
-//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//        super.traitCollectionDidChange(previousTraitCollection)
-//    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupPosition(toastManager.currentPosition, toast: toast, superview: view)
+    }
 
 //    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-//        <#code#>
+    ////        super.willTransition(to: newCollection, with: coordinator)
+//        setupPosition(toastManager.currentPosition, toast: toast, superview: view)
+    ////        print("willTransition")
+//
+    ////        setupPosition(toastManager., toast: <#T##UIView#>, superview: <#T##UIView#>)
 //    }
 
     func setupPosition(_ position: ToastPosition?, toast: UIView, superview: UIView) {
         guard let position = position else {
             return
         }
+        toastManager.currentPosition = position
 
         if let xAxisConstraint = xAxisConstraint, let yAxisConstraint = yAxisConstraint {
             NSLayoutConstraint.deactivate([xAxisConstraint, yAxisConstraint])

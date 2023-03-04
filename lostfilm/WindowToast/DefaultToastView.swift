@@ -21,10 +21,6 @@ public class DefaultToastView: UIView {
         return imageView
     }()
 
-//    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//        super.traitCollectionDidChange(previousTraitCollection)
-//    }
-
     public var messageLabel: UILabel = {
         let message = UILabel()
         let staticFont = UIFont.systemFont(ofSize: 12, weight: .semibold)

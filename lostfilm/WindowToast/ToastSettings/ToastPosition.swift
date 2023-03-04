@@ -23,18 +23,21 @@ public struct ToastPosition {
 }
 
 public enum XAxisPosition {
-    case leading(constant: CGFloat? = nil), center(constant: CGFloat? = nil), trailing(constant: CGFloat? = nil)
+
+    case leading(constant: @autoclosure (() -> CGFloat?) = nil),
+         center(constant: @autoclosure (() -> CGFloat?) = nil),
+         trailing(constant: @autoclosure (() -> CGFloat?) = nil)
 
     fileprivate func setupConstraint(toast: UIView, superview: UIView) -> NSLayoutConstraint {
         let axisConstraint: NSLayoutConstraint
 
         switch self {
         case let .leading(constant):
-            axisConstraint = toast.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: constant ?? -toast.bounds.width)
+            axisConstraint = toast.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: constant() ?? -toast.bounds.width)
         case let .center(constant):
-            axisConstraint = toast.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant ?? 0)
+            axisConstraint = toast.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant() ?? 0)
         case let .trailing(constant):
-            axisConstraint = toast.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: constant ?? toast.bounds.width)
+            axisConstraint = toast.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: constant() ?? toast.bounds.width)
         }
 
         return axisConstraint
@@ -42,18 +45,20 @@ public enum XAxisPosition {
 }
 
 public enum YAxisPosition {
-    case top(constant: CGFloat? = nil), center(constant: CGFloat? = nil), bottom(constant: CGFloat? = nil)
+    case top(constant: @autoclosure (() -> CGFloat?) = nil),
+         center(constant: @autoclosure (() -> CGFloat?) = nil),
+         bottom(constant: @autoclosure (() -> CGFloat?) = nil)
 
     fileprivate func setupConstraint(toast: UIView, superview: UIView) -> NSLayoutConstraint {
         let axisConstraint: NSLayoutConstraint
 
         switch self {
         case let .top(constant):
-            axisConstraint = toast.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant ?? 0)
+            axisConstraint = toast.topAnchor.constraint(equalTo: superview.topAnchor, constant: constant() ?? 0)
         case let .center(constant):
-            axisConstraint = toast.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant ?? 0)
+            axisConstraint = toast.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant() ?? 0)
         case let .bottom(constant):
-            axisConstraint = toast.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: constant ?? toast.bounds.height)
+            axisConstraint = toast.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: constant() ?? toast.bounds.height)
         }
 
         return axisConstraint

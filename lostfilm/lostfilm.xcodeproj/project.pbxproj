@@ -269,6 +269,7 @@
 		F7EF678E2747DB3600A2A8DD /* NSError+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF678D2747DB3600A2A8DD /* NSError+LF.m */; };
 		F7EF67922747E41F00A2A8DD /* NSDictionary+LF.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EF67912747E41F00A2A8DD /* NSDictionary+LF.m */; };
 		F7FC47B927DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FC47B827DE79BE0002C3E4 /* TVSeriesPhotosDataProvider.swift */; };
+		F7FE716429A8FA6F00F426A8 /* UIKitWindowToast in Frameworks */ = {isa = PBXBuildFile; productRef = F7FE716329A8FA6F00F426A8 /* UIKitWindowToast */; };
 		F7FFA1042777D486004B5D38 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFA1032777D486004B5D38 /* Date.swift */; };
 		F7FFB18128E5C41F00334400 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FFB18028E5C41F00334400 /* LoginViewModel.swift */; };
 		FB31402B29420969006DFE61 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB31402A29420969006DFE61 /* TabBarRouter.swift */; };
@@ -654,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F793B7E5294B62410044EDF4 /* KeychainAccess in Frameworks */,
+				F7FE716429A8FA6F00F426A8 /* UIKitWindowToast in Frameworks */,
 				F77219F0296C29D8007E8365 /* libWindowToast.a in Frameworks */,
 				F4EFED4FCA32E03FA81B819B /* libPods-lostfilm.a in Frameworks */,
 			);
@@ -1780,6 +1782,7 @@
 			name = lostfilm;
 			packageProductDependencies = (
 				F793B7E4294B62410044EDF4 /* KeychainAccess */,
+				F7FE716329A8FA6F00F426A8 /* UIKitWindowToast */,
 			);
 			productName = lostfilm;
 			productReference = F7AEE469273FEB7900C304D0 /* lostfilm.app */;
@@ -1842,6 +1845,7 @@
 			mainGroup = F7AEE460273FEB7900C304D0;
 			packageReferences = (
 				F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				F7FE716229A8FA6F00F426A8 /* XCRemoteSwiftPackageReference "UIKitWindowToast" */,
 			);
 			productRefGroup = F7AEE46A273FEB7900C304D0 /* Products */;
 			projectDirPath = "";
@@ -2688,6 +2692,14 @@
 				kind = branch;
 			};
 		};
+		F7FE716229A8FA6F00F426A8 /* XCRemoteSwiftPackageReference "UIKitWindowToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/michail-lazarau/UIKitWindowToast";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2695,6 +2707,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F793B7E3294B62410044EDF4 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		F7FE716329A8FA6F00F426A8 /* UIKitWindowToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7FE716229A8FA6F00F426A8 /* XCRemoteSwiftPackageReference "UIKitWindowToast" */;
+			productName = UIKitWindowToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

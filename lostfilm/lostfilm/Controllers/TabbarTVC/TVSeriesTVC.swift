@@ -2,7 +2,6 @@ import UIKit
 import WindowToast
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
-
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
 
     override internal var tableCellHeight: CGFloat {
@@ -29,9 +28,12 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
     private let toastPresenter = ToastPresenter.shared
 
     @objc private func didToggleToast() {
-        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.navigationBarIndent)),
-                                        prePosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)),
-                                        postPosition: ToastPosition(xAxisPosition: .center(), yAxisPosition: .top(constant: YAxisPosition.notchIndent)))
+        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(),
+                                                                    yAxisPosition: .top(constant: YAxisPosition.navigationBarIndent)),
+                                        prePosition: ToastPosition(xAxisPosition: .center(),
+                                                                   yAxisPosition: .top(constant: YAxisPosition.notchIndent)),
+                                        postPosition: ToastPosition(xAxisPosition: .center(),
+                                                                    yAxisPosition: .top(constant: YAxisPosition.notchIndent)))
         toastPresenter.enqueueToastForPresentation(toast: DefaultToastView(), toastManager: toastManager)
     }
 
