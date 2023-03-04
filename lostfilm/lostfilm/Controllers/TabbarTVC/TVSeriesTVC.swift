@@ -1,7 +1,7 @@
 import UIKit
+import WindowToast
 
 class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
-
     private let customNavigationControllerDelegate = CustomNavigationControllerDelegate()
 
     override internal var tableCellHeight: CGFloat {
@@ -13,12 +13,28 @@ class TVSeriesTVC: TemplateTVC<SeriesViewCell, LFSeriesModel> {
         navigationItem.title = "TV Series"
         navigationItem.rightBarButtonItems?.append(UIBarButtonItem(image: UIImage(named: "icon_filter"), style: .plain, target: self, action: #selector(DidShowFilters)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "magnifying_glass"), style: .plain, target: self, action: #selector(DidShowGlobalSearch))
+
+        // Toast Test
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "T", style: .plain, target: self, action: #selector(didToggleToast)))
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.delegate = customNavigationControllerDelegate
         navigationController?.pushViewController(LFSeriesDetailsVC(model: dataController[indexPath.row]), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    // Toast Test
+    private let toastPresenter = ToastPresenter.shared
+
+    @objc private func didToggleToast() {
+        let toastManager = ToastManager(playPosition: ToastPosition(xAxisPosition: .center(),
+                                                                    yAxisPosition: .top(constant: YAxisPosition.navigationBarIndent)),
+                                        prePosition: ToastPosition(xAxisPosition: .center(),
+                                                                   yAxisPosition: .top(constant: YAxisPosition.notchIndent)),
+                                        postPosition: ToastPosition(xAxisPosition: .center(),
+                                                                    yAxisPosition: .top(constant: YAxisPosition.notchIndent)))
+        toastPresenter.enqueueToastForPresentation(toast: DefaultToastView(), toastManager: toastManager)
     }
 
     @objc private func DidShowFilters() {

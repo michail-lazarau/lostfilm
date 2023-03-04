@@ -28,8 +28,6 @@ extension NewsDetailsVM: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         switch model {
-            // MARK: force unwrapping is put by intention - items array must not contain any objects those do not conform to the Class Types mentioned below
-
         case is LFAttributedTextContentItemModel:
             (cell as? TextViewCell)?.item = model
         case is LFPhotoListContentItemModel:

@@ -8,6 +8,15 @@
         "branch" : "master",
         "revision" : "6299daec1d74be12164fec090faf9ed14d0da9d6"
       }
+    },
+    {
+      "identity" : "uikitwindowtoast",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/michail-lazarau/UIKitWindowToast",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b14ad1b8175b049d931a5b5a0a2f502e393b1e9c"
+      }
     }
   ],
   "version" : 2
